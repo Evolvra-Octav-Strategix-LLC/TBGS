@@ -11,52 +11,40 @@ export default function SpecialistNavigationBar() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0">
           {/* TDS - Totaal Dak Specialist */}
           <Link href="/totaal-dak-specialist" className="group block">
-            <div className="tbgs-red hover:bg-red-700 transition-colors px-4 py-3 text-center text-white">
-              <div className="flex items-center justify-center space-x-3">
-                <img src={tdsLogo} alt="TDS Logo" className="w-8 h-8 object-contain flex-shrink-0" />
-                <div className="text-left">
-                  <div className="font-bold text-sm leading-tight">Totaal Dak</div>
-                  <div className="text-xs opacity-90 leading-tight">Specialist</div>
-                </div>
+            <div className="tbgs-red hover:bg-red-700 transition-colors px-3 py-4 text-center text-white">
+              <div className="flex flex-col items-center space-y-2">
+                <img src={tdsLogo} alt="TDS Logo" className="w-10 h-10 object-contain" />
+                <div className="font-bold text-sm whitespace-nowrap">Totaal Dak Specialist</div>
               </div>
             </div>
           </Link>
 
           {/* TSS - Totaal Schoorsteen Specialist */}
           <Link href="/totaal-schoorsteen-specialist" className="group block">
-            <div className="tbgs-blue hover:bg-blue-700 transition-colors px-4 py-3 text-center text-white">
-              <div className="flex items-center justify-center space-x-3">
-                <img src={tssLogo} alt="TSS Logo" className="w-8 h-8 object-contain flex-shrink-0" />
-                <div className="text-left">
-                  <div className="font-bold text-sm leading-tight">Totaal Schoorsteen</div>
-                  <div className="text-xs opacity-90 leading-tight">Specialist</div>
-                </div>
+            <div className="tbgs-blue hover:bg-blue-700 transition-colors px-3 py-4 text-center text-white">
+              <div className="flex flex-col items-center space-y-2">
+                <img src={tssLogo} alt="TSS Logo" className="w-10 h-10 object-contain" />
+                <div className="font-bold text-sm whitespace-nowrap">Totaal Schoorsteen Specialist</div>
               </div>
             </div>
           </Link>
 
           {/* TOS - Totaal Onderhoud Specialist */}
           <Link href="/totaal-onderhoud-specialist" className="group block">
-            <div className="tbgs-green hover:bg-green-700 transition-colors px-4 py-3 text-center text-white">
-              <div className="flex items-center justify-center space-x-3">
-                <img src={tosLogo} alt="TOS Logo" className="w-8 h-8 object-contain flex-shrink-0" />
-                <div className="text-left">
-                  <div className="font-bold text-sm leading-tight">Totaal Onderhoud</div>
-                  <div className="text-xs opacity-90 leading-tight">Specialist</div>
-                </div>
+            <div className="tbgs-green hover:bg-green-700 transition-colors px-3 py-4 text-center text-white">
+              <div className="flex flex-col items-center space-y-2">
+                <img src={tosLogo} alt="TOS Logo" className="w-10 h-10 object-contain" />
+                <div className="font-bold text-sm whitespace-nowrap">Totaal Onderhoud Specialist</div>
               </div>
             </div>
           </Link>
 
           {/* TBS - Totaal Bouw Specialist */}
           <Link href="/totaal-bouw-specialist" className="group block">
-            <div className="tbgs-orange hover:bg-yellow-600 transition-colors px-4 py-3 text-center text-white">
-              <div className="flex items-center justify-center space-x-3">
-                <img src={tbsLogo} alt="TBS Logo" className="w-8 h-8 object-contain flex-shrink-0" />
-                <div className="text-left">
-                  <div className="font-bold text-sm leading-tight">Totaal Bouw</div>
-                  <div className="text-xs opacity-90 leading-tight">Specialist</div>
-                </div>
+            <div className="tbgs-orange hover:bg-yellow-600 transition-colors px-3 py-4 text-center text-white">
+              <div className="flex flex-col items-center space-y-2">
+                <img src={tbsLogo} alt="TBS Logo" className="w-10 h-10 object-contain" />
+                <div className="font-bold text-sm whitespace-nowrap">Totaal Bouw Specialist</div>
               </div>
             </div>
           </Link>
