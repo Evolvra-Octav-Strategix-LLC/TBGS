@@ -26,8 +26,8 @@ export default function SpecialistNavigationBar() {
             <div className={`tbgs-blue hover:bg-blue-700 transition-all duration-300 text-center text-white ${
               isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center transition-all duration-300 ${
-                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
+                isScrolled ? 'space-y-1 h-full' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tssLogo} alt="TSS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
@@ -46,8 +46,8 @@ export default function SpecialistNavigationBar() {
             <div className={`tbgs-red hover:bg-red-700 transition-all duration-300 text-center text-white ${
               isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center transition-all duration-300 ${
-                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
+                isScrolled ? 'space-y-1 h-full' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tdsLogo} alt="TDS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
@@ -66,8 +66,8 @@ export default function SpecialistNavigationBar() {
             <div className={`tbgs-green hover:bg-green-700 transition-all duration-300 text-center text-white ${
               isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center transition-all duration-300 ${
-                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
+                isScrolled ? 'space-y-1 h-full' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tosLogo} alt="TOS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
@@ -86,8 +86,8 @@ export default function SpecialistNavigationBar() {
             <div className={`tbgs-orange hover:bg-yellow-600 transition-all duration-300 text-center text-white ${
               isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center transition-all duration-300 ${
-                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
+                isScrolled ? 'space-y-1 h-full' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tbsLogo} alt="TBS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
