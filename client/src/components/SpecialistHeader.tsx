@@ -41,39 +41,8 @@ export default function SpecialistHeader({
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
-                {/* Desktop: Single line, Mobile: Multi-line */}
-                <h1 className={`text-xl font-bold ${primaryColor} hidden sm:block`}>{companyName}</h1>
-                <h1 className={`text-lg font-bold ${primaryColor} sm:hidden leading-tight`}>
-                  {specialist === "TDS" && (
-                    <>
-                      Totaal<br />
-                      Dak<br />
-                      Specialist
-                    </>
-                  )}
-                  {specialist === "TSS" && (
-                    <>
-                      Totaal<br />
-                      Schoorsteen<br />
-                      Specialist
-                    </>
-                  )}
-                  {specialist === "TOS" && (
-                    <>
-                      Totaal<br />
-                      Onderhoud<br />
-                      Specialist
-                    </>
-                  )}
-                  {specialist === "TBS" && (
-                    <>
-                      Totaal<br />
-                      Bouw<br />
-                      Specialist
-                    </>
-                  )}
-                </h1>
-                <p className="text-sm text-gray-600 hidden sm:block">{tagline}</p>
+                <h1 className={`text-xl font-bold ${primaryColor}`}>{companyName}</h1>
+                <p className="text-sm text-gray-600">{tagline}</p>
               </div>
             </div>
           </Link>
@@ -137,37 +106,8 @@ export default function SpecialistHeader({
                 <div className="flex items-center space-x-3">
                   <img src={logo} alt={`${companyName} Logo`} className="w-10 h-10 object-contain" />
                   <div>
-                    <h3 className={`font-bold ${primaryColor} text-sm leading-tight`}>
-                      {specialist === "TDS" && (
-                        <>
-                          Totaal<br />
-                          Dak<br />
-                          Specialist
-                        </>
-                      )}
-                      {specialist === "TSS" && (
-                        <>
-                          Totaal<br />
-                          Schoorsteen<br />
-                          Specialist
-                        </>
-                      )}
-                      {specialist === "TOS" && (
-                        <>
-                          Totaal<br />
-                          Onderhoud<br />
-                          Specialist
-                        </>
-                      )}
-                      {specialist === "TBS" && (
-                        <>
-                          Totaal<br />
-                          Bouw<br />
-                          Specialist
-                        </>
-                      )}
-                    </h3>
-                    <p className="text-xs text-gray-600 mt-1">Menu</p>
+                    <h3 className={`font-bold ${primaryColor}`}>{companyName}</h3>
+                    <p className="text-xs text-gray-600">Menu</p>
                   </div>
                 </div>
                 <button 
