@@ -26,7 +26,6 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Home</Link>
             <a href="#diensten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Diensten</a>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Kennisbank</Link>
             <a href="#projecten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Projecten</a>
