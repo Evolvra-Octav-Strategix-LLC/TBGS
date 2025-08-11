@@ -51,8 +51,8 @@ function Router() {
       {/* Only show main navigation for non-specialist pages */}
       {!isSpecialistPage && (
         <>
-          <SpecialistNavigationBar />
           <Header onOpenContactModal={() => setIsContactModalOpen(true)} />
+          <SpecialistNavigationBar />
         </>
       )}
       

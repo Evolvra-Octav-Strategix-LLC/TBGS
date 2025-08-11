@@ -18,7 +18,7 @@ export default function SpecialistNavigationBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <div className="w-full sticky top-0 z-50">
+    <div className="w-full sticky top-0 z-40">
       <div className="w-full">
         <div className="grid grid-cols-4 gap-0">
           {/* TSS - Totaal Schoorsteen Specialist */}
