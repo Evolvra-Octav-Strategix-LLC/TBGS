@@ -56,70 +56,111 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </button>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
-            <nav className="flex flex-col space-y-4 pt-4">
-              <Link 
-                href="/" 
-                className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <a 
-                href="#diensten" 
-                className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Diensten
-              </a>
-              <a 
-                href="#projecten" 
-                className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Projecten
-              </a>
-              <a 
-                href="#over-ons" 
-                className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Over Ons
-              </a>
-              <a 
-                href="#contact" 
-                className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-              
-              {/* Mobile Phone Link */}
-              <a 
-                href="tel:+31612345678" 
-                className="flex items-center text-tbgs-navy font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <i className="fas fa-phone mr-2"></i>
-                <span>+31 6 12 34 56 78</span>
-              </a>
-              
-              {/* Mobile CTA Button */}
-              <button 
-                onClick={() => {
-                  onOpenContactModal();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="bg-tbgs-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full mt-2"
-              >
-                Gratis Offerte
-              </button>
-            </nav>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Navigation Overlay */}
+      {isMobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Mobile Menu Panel */}
+          <div className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
+            <div className="flex flex-col h-full">
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <div className="flex items-center space-x-3">
+                  <img src={tbgsLogo} alt="TBGS Logo" className="w-10 h-10 object-contain" />
+                  <div>
+                    <h3 className="font-bold text-tbgs-navy">TBGS</h3>
+                    <p className="text-xs text-gray-600">Menu</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-gray-700 hover:text-tbgs-navy transition-colors"
+                >
+                  <i className="fas fa-times text-xl"></i>
+                </button>
+              </div>
+
+              {/* Menu Content */}
+              <div className="flex-1 overflow-y-auto">
+                <nav className="flex flex-col p-6 space-y-6">
+                  <Link 
+                    href="/" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-home mr-4 w-5"></i>
+                    Home
+                  </Link>
+                  <a 
+                    href="#diensten" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-cogs mr-4 w-5"></i>
+                    Diensten
+                  </a>
+                  <a 
+                    href="#projecten" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-briefcase mr-4 w-5"></i>
+                    Projecten
+                  </a>
+                  <a 
+                    href="#over-ons" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-users mr-4 w-5"></i>
+                    Over Ons
+                  </a>
+                  <a 
+                    href="#contact" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-envelope mr-4 w-5"></i>
+                    Contact
+                  </a>
+                </nav>
+              </div>
+
+              {/* Menu Footer */}
+              <div className="p-6 border-t border-gray-200 bg-gray-50">
+                {/* Phone Link */}
+                <a 
+                  href="tel:+31612345678" 
+                  className="flex items-center text-tbgs-navy font-medium py-3 mb-4 hover:bg-gray-100 rounded-lg px-3 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <i className="fas fa-phone mr-4 w-5"></i>
+                  <span>+31 6 12 34 56 78</span>
+                </a>
+                
+                {/* CTA Button */}
+                <button 
+                  onClick={() => {
+                    onOpenContactModal();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="bg-tbgs-navy text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full shadow-lg"
+                >
+                  <i className="fas fa-calculator mr-2"></i>
+                  Gratis Offerte
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   );
 }
