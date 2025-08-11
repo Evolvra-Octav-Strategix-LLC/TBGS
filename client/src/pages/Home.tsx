@@ -129,8 +129,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* TSS - Totaal Schoorsteen Specialist */}
             <Link href="/totaal-schoorsteen-specialist">
-              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-blue transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                <div className="text-center space-y-6">
+              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-blue transition-all duration-500 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
+                <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-blue group-hover:to-blue-600 transition-all duration-500 shadow-lg">
                       <i className="fas fa-industry text-4xl text-tbgs-blue group-hover:text-white transition-colors duration-500"></i>
@@ -154,8 +154,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
 
             {/* TDS - Totaal Dak Specialist */}
             <Link href="/totaal-dak-specialist">
-              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-red transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                <div className="text-center space-y-6">
+              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-red transition-all duration-500 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
+                <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-red group-hover:to-red-600 transition-all duration-500 shadow-lg">
                       <i className="fas fa-home text-4xl text-tbgs-red group-hover:text-white transition-colors duration-500"></i>
@@ -179,8 +179,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
 
             {/* TOS - Totaal Onderhoud Specialist */}
             <Link href="/totaal-onderhoud-specialist">
-              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-green transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                <div className="text-center space-y-6">
+              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-green transition-all duration-500 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
+                <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-green group-hover:to-green-600 transition-all duration-500 shadow-lg">
                       <i className="fas fa-wrench text-4xl text-tbgs-green group-hover:text-white transition-colors duration-500"></i>
@@ -204,8 +204,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
 
             {/* TBS - Totaal Bouw Specialist */}
             <Link href="/totaal-bouw-specialist">
-              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-orange transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                <div className="text-center space-y-6">
+              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-orange transition-all duration-500 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
+                <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-orange group-hover:to-orange-600 transition-all duration-500 shadow-lg">
                       <i className="fas fa-hammer text-4xl text-tbgs-orange group-hover:text-white transition-colors duration-500"></i>
