@@ -19,7 +19,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-sm text-gray-600">Totaal Bouw Groep Specialisten</p>
+                <p className="text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
               </div>
             </div>
           </Link>
@@ -35,11 +35,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <a href="tel:+31612345678" className="hidden md:flex items-center text-tbgs-navy">
-              <i className="fas fa-phone mr-2"></i>
-              <span className="font-semibold">+31 6 12 34 56 78</span>
-            </a>
+          <div className="hidden lg:flex items-center">
             <button 
               onClick={onOpenContactModal}
               className="bg-tbgs-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
