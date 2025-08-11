@@ -20,8 +20,8 @@ function Router() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header onOpenContactModal={() => setIsContactModalOpen(true)} />
       <SpecialistNavigationBar />
+      <Header onOpenContactModal={() => setIsContactModalOpen(true)} />
       
       <main className="flex-1">
         <Switch>
