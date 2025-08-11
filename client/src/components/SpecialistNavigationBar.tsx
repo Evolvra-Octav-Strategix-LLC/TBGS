@@ -14,7 +14,7 @@ export default function SpecialistNavigationBar() {
             <div className="tbgs-blue hover:bg-blue-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                 <img src={tssLogo} alt="TSS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-                <div className="font-bold text-xs sm:hidden">
+                <div className="font-bold text-xs">
                   Schoorsteen
                 </div>
               </div>
@@ -26,7 +26,7 @@ export default function SpecialistNavigationBar() {
             <div className="tbgs-red hover:bg-red-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                 <img src={tdsLogo} alt="TDS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-                <div className="font-bold text-xs sm:hidden">
+                <div className="font-bold text-xs">
                   Dak
                 </div>
               </div>
@@ -38,7 +38,7 @@ export default function SpecialistNavigationBar() {
             <div className="tbgs-green hover:bg-green-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                 <img src={tosLogo} alt="TOS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-                <div className="font-bold text-xs sm:hidden">
+                <div className="font-bold text-xs">
                   Onderhoud
                 </div>
               </div>
@@ -50,7 +50,7 @@ export default function SpecialistNavigationBar() {
             <div className="tbgs-orange hover:bg-yellow-600 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                 <img src={tbsLogo} alt="TBS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-                <div className="font-bold text-xs sm:hidden">
+                <div className="font-bold text-xs">
                   Bouw
                 </div>
               </div>
