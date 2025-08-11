@@ -48,13 +48,21 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <button 
-            className="lg:hidden text-gray-700 p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
-          </button>
+          {/* Mobile CTA Button and Menu */}
+          <div className="lg:hidden flex items-center space-x-2">
+            <button 
+              onClick={onOpenContactModal}
+              className="bg-tbgs-navy text-white px-3 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm"
+            >
+              Offerte
+            </button>
+            <button 
+              className="text-gray-700 p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+            </button>
+          </div>
         </div>
 
       </div>
