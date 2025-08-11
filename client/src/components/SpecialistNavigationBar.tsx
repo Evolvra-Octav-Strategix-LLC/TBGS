@@ -23,10 +23,8 @@ export default function SpecialistNavigationBar() {
         <div className="grid grid-cols-4 gap-0">
           {/* TSS - Totaal Schoorsteen Specialist */}
           <Link href="/totaal-schoorsteen-specialist" className="group block">
-            <div className={`transition-all duration-300 px-1 sm:px-3 text-center text-white ${
-              isScrolled 
-                ? 'py-2 sm:py-3 bg-blue-600 shadow-lg border-2 border-blue-400' 
-                : 'py-4 sm:py-6 tbgs-blue hover:bg-blue-700'
+            <div className={`tbgs-blue hover:bg-blue-700 transition-all duration-300 px-1 sm:px-3 text-center text-white ${
+              isScrolled ? 'py-2 sm:py-3' : 'py-4 sm:py-6'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
                 isScrolled ? 'space-y-1 sm:space-y-2' : 'space-y-2 sm:space-y-3'
@@ -43,10 +41,8 @@ export default function SpecialistNavigationBar() {
 
           {/* TDS - Totaal Dak Specialist */}
           <Link href="/totaal-dak-specialist" className="group block">
-            <div className={`transition-all duration-300 px-1 sm:px-3 text-center text-white ${
-              isScrolled 
-                ? 'py-2 sm:py-3 bg-red-600 shadow-lg border-2 border-red-400' 
-                : 'py-4 sm:py-6 tbgs-red hover:bg-red-700'
+            <div className={`tbgs-red hover:bg-red-700 transition-all duration-300 px-1 sm:px-3 text-center text-white ${
+              isScrolled ? 'py-2 sm:py-3' : 'py-4 sm:py-6'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
                 isScrolled ? 'space-y-1 sm:space-y-2' : 'space-y-2 sm:space-y-3'
@@ -63,10 +59,8 @@ export default function SpecialistNavigationBar() {
 
           {/* TOS - Totaal Onderhoud Specialist */}
           <Link href="/totaal-onderhoud-specialist" className="group block">
-            <div className={`transition-all duration-300 px-1 sm:px-3 text-center text-white ${
-              isScrolled 
-                ? 'py-2 sm:py-3 bg-green-600 shadow-lg border-2 border-green-400' 
-                : 'py-4 sm:py-6 tbgs-green hover:bg-green-700'
+            <div className={`tbgs-green hover:bg-green-700 transition-all duration-300 px-1 sm:px-3 text-center text-white ${
+              isScrolled ? 'py-2 sm:py-3' : 'py-4 sm:py-6'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
                 isScrolled ? 'space-y-1 sm:space-y-2' : 'space-y-2 sm:space-y-3'
@@ -83,10 +77,8 @@ export default function SpecialistNavigationBar() {
 
           {/* TBS - Totaal Bouw Specialist */}
           <Link href="/totaal-bouw-specialist" className="group block">
-            <div className={`transition-all duration-300 px-1 sm:px-3 text-center text-white ${
-              isScrolled 
-                ? 'py-2 sm:py-3 bg-yellow-500 shadow-lg border-2 border-yellow-300' 
-                : 'py-4 sm:py-6 tbgs-orange hover:bg-yellow-600'
+            <div className={`tbgs-orange hover:bg-yellow-600 transition-all duration-300 px-1 sm:px-3 text-center text-white ${
+              isScrolled ? 'py-2 sm:py-3' : 'py-4 sm:py-6'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
                 isScrolled ? 'space-y-1 sm:space-y-2' : 'space-y-2 sm:space-y-3'
