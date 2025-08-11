@@ -252,70 +252,64 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               {/* Heritage Story */}
-              <div className="bg-white rounded-3xl p-8 lg:p-16 shadow-xl border border-slate-200 mb-16">
-                <div className="grid lg:grid-cols-3 gap-16 items-start">
-                  <div className="lg:col-span-2">
-                    <div className="flex items-center mb-8">
-                      <div className="w-20 h-20 bg-gradient-to-br from-tbgs-navy via-blue-600 to-indigo-700 rounded-3xl flex items-center justify-center mr-6 shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <i className="fas fa-users text-3xl text-white drop-shadow-sm"></i>
+              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <div className="flex items-center mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                        <i className="fas fa-users text-2xl text-white"></i>
                       </div>
                       <div>
-                        <h4 className="text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">Van overgrootvader tot kleinzoon</h4>
-                        <p className="text-tbgs-navy font-semibold text-lg mt-2">4 generaties vakmanschap sinds 1943</p>
+                        <h4 className="text-2xl font-bold text-slate-900">Van overgrootvader tot kleinzoon</h4>
+                        <p className="text-tbgs-navy font-medium">4 generaties vakmanschap sinds 1943</p>
                       </div>
                     </div>
-                    <p className="text-xl text-slate-700 leading-relaxed mb-8">
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
                       Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden <strong>kostbare herstelprojecten</strong> uitgevoerd die eigenlijk voorkomen hadden kunnen worden.
                     </p>
 
-                    <p className="text-xl text-slate-700 leading-relaxed">
+                    <p className="text-lg text-slate-700 leading-relaxed">
                       <strong>Preventie is onze kracht.</strong> Met 80 jaar ervaring in dak-, schoorsteen-, onderhoud- en bouwwerkzaamheden weten wij precies waar problemen ontstaan. Wij investeren in grondige inspecties en preventieve maatregelen, zodat u nooit voor onaangename verrassingen komt te staan.
                     </p>
                   </div>
-                  <div className="space-y-8">
-                    <div className="bg-gradient-to-br from-tbgs-navy via-blue-600 to-indigo-700 rounded-3xl p-10 text-white shadow-xl">
-                      <div className="text-center mb-8">
-                        <div className="text-5xl font-black mb-2">1943 - 2025</div>
-                        <div className="text-xl font-light opacity-90">80+ jaar vakmanschap</div>
+                  <div className="space-y-6">
+                    <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-8 text-white">
+                      <div className="text-center mb-6">
+                        <div className="text-4xl font-bold">1943 - 2025</div>
+                        <div className="text-lg opacity-90">80+ jaar vakmanschap</div>
                       </div>
-                      <div className="space-y-5">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-green-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <i className="fas fa-check text-white text-lg"></i>
-                          </div>
-                          <span className="text-lg font-medium">4 Generaties Ervaring</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>4 Generaties Ervaring</span>
                         </div>
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-green-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <i className="fas fa-check text-white text-lg"></i>
-                          </div>
-                          <span className="text-lg font-medium">Duizenden Problemen Opgelost</span>
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>Duizenden Problemen Opgelost</span>
                         </div>
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-green-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                            <i className="fas fa-check text-white text-lg"></i>
-                          </div>
-                          <span className="text-lg font-medium">4 Gespecialiseerde Teams</span>
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>4 Gespecialiseerde Teams</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Compact Inspection CTA */}
-                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-2 border-tbgs-red/20 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-tbgs-red p-4 rounded-xl">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-gradient-to-br from-tbgs-red to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                          <i className="fas fa-exclamation-triangle text-white text-lg"></i>
+                        <div className="w-8 h-8 bg-tbgs-red/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <i className="fas fa-exclamation-triangle text-tbgs-red text-sm"></i>
                         </div>
-                        <h6 className="text-lg font-bold text-slate-900 mb-3">80% problemen zijn te voorkomen!</h6>
-                        <p className="text-sm text-slate-600 mb-5 leading-relaxed">
+                        <h6 className="text-sm font-bold text-slate-900 mb-2">80% problemen zijn te voorkomen!</h6>
+                        <p className="text-xs text-slate-600 mb-3 leading-relaxed">
                           Bespaar duizenden euro's met <strong>preventieve inspectie</strong>
                         </p>
                         <button 
                           onClick={onOpenContactModal}
-                          className="bg-gradient-to-r from-tbgs-red to-red-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 shadow-md transform hover:-translate-y-0.5 inline-flex items-center w-full justify-center"
+                          className="bg-tbgs-red text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center w-full justify-center"
                         >
-                          <i className="fas fa-search mr-3 text-sm"></i>
-                          Gratis Inspectie Aanvragen
+                          <i className="fas fa-search mr-2 text-xs"></i>
+                          Gratis Inspectie
                         </button>
                       </div>
                     </div>
