@@ -275,7 +275,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
       </section>
 
       {/* Recent Projects - Modern Portfolio */}
-      <section id="projecten" className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section id="projecten" className="pt-8 pb-24 lg:pt-12 lg:pb-32 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
