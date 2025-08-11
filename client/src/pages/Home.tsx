@@ -80,7 +80,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </div>
 
             <div className="relative">
-              <div className="relative z-10">
+              <div className="relative z-0">
                 <img 
                   src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                   alt="Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven" 
