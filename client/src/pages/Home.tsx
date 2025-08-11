@@ -229,7 +229,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           {/* Company Story Section */}
-          <div className="mt-24 bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-12 lg:p-16 relative overflow-hidden">
+          <div className="mt-24 bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-6 sm:p-8 lg:p-16 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-10 left-10 w-20 h-20 border-2 border-tbgs-navy rounded-full"></div>
@@ -252,23 +252,23 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               {/* Heritage Story */}
-              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div>
                     <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
-                        <i className="fas fa-users text-2xl text-white"></i>
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                        <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
                       </div>
                       <div>
-                        <h4 className="text-2xl font-bold text-slate-900">Van overgrootvader tot kleinzoon</h4>
-                        <p className="text-tbgs-navy font-medium">4 generaties vakmanschap sinds 1943</p>
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">Van overgrootvader tot kleinzoon</h4>
+                        <p className="text-tbgs-navy font-medium text-sm sm:text-base">4 generaties vakmanschap sinds 1943</p>
                       </div>
                     </div>
-                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
                       Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden <strong>kostbare herstelprojecten</strong> uitgevoerd die eigenlijk voorkomen hadden kunnen worden.
                     </p>
 
-                    <p className="text-lg text-slate-700 leading-relaxed">
+                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                       <strong>Preventie is onze kracht.</strong> Met 80 jaar ervaring in dak-, schoorsteen-, onderhoud- en bouwwerkzaamheden weten wij precies waar problemen ontstaan. Wij investeren in grondige inspecties en preventieve maatregelen, zodat u nooit voor onaangename verrassingen komt te staan.
                     </p>
                   </div>
