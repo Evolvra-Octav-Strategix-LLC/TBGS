@@ -129,6 +129,31 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* TSS - Totaal Schoorsteen Specialist */}
+            <Link href="/totaal-schoorsteen-specialist">
+              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-blue transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+                <div className="text-center space-y-6">
+                  <div className="relative">
+                    <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-blue group-hover:to-blue-600 transition-all duration-500 shadow-lg">
+                      <i className="fas fa-industry text-4xl text-tbgs-blue group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-blue rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <i className="fas fa-arrow-right text-white text-xs"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">Totaal Schoorsteen Specialist</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Schoorsteenrenovatie, reparatie, reiniging en onderhoud door <strong>ervaren schoorsteenspecialisten</strong> met moderne technieken.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center text-tbgs-blue font-bold opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    Meer informatie <i className="fas fa-arrow-right ml-2"></i>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
             {/* TDS - Totaal Dak Specialist */}
             <Link href="/totaal-dak-specialist">
               <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-red transition-all duration-500 hover:-translate-y-2 cursor-pointer">
@@ -154,31 +179,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
             </Link>
 
-            {/* TSS - Totaal Schoorsteen Specialist */}
-            <Link href="/totaal-schoorsteen-specialist">
-              <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-blue transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                <div className="text-center space-y-6">
-                  <div className="relative">
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-blue group-hover:to-blue-600 transition-all duration-500 shadow-lg">
-                      <i className="fas fa-industry text-4xl text-tbgs-blue group-hover:text-white transition-colors duration-500"></i>
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-blue rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <i className="fas fa-arrow-right text-white text-xs"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">Schoorsteen Specialist</h3>
-                    <p className="text-slate-600 leading-relaxed">
-                      Schoorsteenrenovatie, reparatie, reiniging en onderhoud door <strong>ervaren schoorsteenspecialisten</strong> met moderne technieken.
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center text-tbgs-blue font-bold opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    Meer informatie <i className="fas fa-arrow-right ml-2"></i>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
             {/* TOS - Totaal Onderhoud Specialist */}
             <Link href="/totaal-onderhoud-specialist">
               <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-green transition-all duration-500 hover:-translate-y-2 cursor-pointer">
@@ -192,7 +192,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors">Onderhoud Specialist</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors">Totaal Onderhoud Specialist</h3>
                     <p className="text-slate-600 leading-relaxed">
                       Preventief en curatief onderhoud aan <strong>woningen en bedrijfspanden</strong>. Van klein herstelwerk tot grote onderhoudskliussen.
                     </p>
@@ -217,7 +217,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors">Bouw Specialist</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors">Totaal Bouw Specialist</h3>
                     <p className="text-slate-600 leading-relaxed">
                       Algemene bouwwerkzaamheden, <strong>renovaties en uitbreidingen</strong>. Van concept tot oplevering met één aanspreekpunt.
                     </p>
