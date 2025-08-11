@@ -25,7 +25,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             <Link href="/" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Home</Link>
             <a href="#diensten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Diensten</a>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Kennisbank</Link>
@@ -35,7 +35,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden xl:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <a href="tel:+31612345678" className="hidden md:flex items-center text-tbgs-navy">
               <i className="fas fa-phone mr-2"></i>
               <span className="font-semibold">+31 6 12 34 56 78</span>
@@ -48,8 +48,8 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             </button>
           </div>
 
-          {/* Mobile/Tablet CTA Button and Menu */}
-          <div className="xl:hidden flex items-center space-x-2">
+          {/* Mobile CTA Button and Menu */}
+          <div className="lg:hidden flex items-center space-x-2">
             <button 
               onClick={onOpenContactModal}
               className="bg-tbgs-navy text-white px-3 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm"
@@ -72,12 +72,12 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 xl:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
             onClick={() => setIsMobileMenuOpen(false)}
           />
           
           {/* Mobile Menu Panel */}
-          <div className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 xl:hidden transform transition-transform duration-300 ease-in-out">
+          <div className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200">
