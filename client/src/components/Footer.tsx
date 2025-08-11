@@ -29,7 +29,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <div className="flex items-start space-x-4">
                   <img src={tbgsLogo} alt="TBGS Logo" className="w-16 h-16 object-contain flex-shrink-0" />
                   <div>
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-2">Totaal Bouw Groep Specialisten</h3>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">Totaal Bouw Groep Specialisten</h3>
                     <p className="text-white/80 text-lg">Samen duurzaam & innovatief (ver)bouwen</p>
                     <p className="text-white/60 mt-4 leading-relaxed">
                       Uw betrouwbare partner voor dakwerken, schoorsteenwerken, onderhoud en algemene bouw in Nederland en België. Vakmanschap met garantie sinds 2010.
