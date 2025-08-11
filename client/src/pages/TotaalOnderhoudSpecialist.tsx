@@ -57,7 +57,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <div className="flex items-center space-x-3 mb-4">
                   <img src={tosLogo} alt="TOS Logo" className="w-20 h-20 object-contain" />
                   <div>
-                    <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Onderhoud Specialist
                     </h1>
                     <p className="text-lg text-tbgs-green font-semibold">TOS - Uw onderhouds expert</p>
