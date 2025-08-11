@@ -252,7 +252,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               {/* Heritage Story */}
-              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
+              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-slate-200 mb-12 max-w-6xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   <div>
                     <div className="flex items-center mb-6">
