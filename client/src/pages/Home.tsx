@@ -267,31 +267,12 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <p className="text-lg text-slate-700 leading-relaxed mb-6">
                       Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden <strong>kostbare herstelprojecten</strong> uitgevoerd die eigenlijk voorkomen hadden kunnen worden.
                     </p>
-                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-tbgs-red p-6 rounded-2xl mb-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-tbgs-red/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                          <i className="fas fa-exclamation-triangle text-tbgs-red text-xl"></i>
-                        </div>
-                        <div>
-                          <h5 className="text-xl font-bold text-slate-900 mb-3">Wist u dat 80% van alle bouwproblemen voorkomen hadden kunnen worden?</h5>
-                          <p className="text-lg text-slate-700 leading-relaxed mb-4">
-                            Door <strong>tijdige inspectie en preventief onderhoud</strong> bespaart u duizenden euro's aan noodreparaties. Onze specialisten herkennen potentiële problemen voordat ze kostbaar worden.
-                          </p>
-                          <button 
-                            onClick={onOpenContactModal}
-                            className="bg-tbgs-red text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
-                          >
-                            <i className="fas fa-search mr-3"></i>
-                            Gratis Inspectie Aanvragen
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+
                     <p className="text-lg text-slate-700 leading-relaxed">
                       <strong>Preventie is onze kracht.</strong> Met 80 jaar ervaring in dak-, schoorsteen-, onderhoud- en bouwwerkzaamheden weten wij precies waar problemen ontstaan. Wij investeren in grondige inspecties en preventieve maatregelen, zodat u nooit voor onaangename verrassingen komt te staan.
                     </p>
                   </div>
-                  <div className="relative">
+                  <div className="space-y-6">
                     <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-8 text-white">
                       <div className="text-center mb-6">
                         <div className="text-4xl font-bold">1943 - 2025</div>
@@ -310,6 +291,26 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                           <i className="fas fa-check-circle text-green-300"></i>
                           <span>4 Gespecialiseerde Teams</span>
                         </div>
+                      </div>
+                    </div>
+
+                    {/* Compact Inspection CTA */}
+                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-tbgs-red p-4 rounded-xl">
+                      <div className="text-center">
+                        <div className="w-8 h-8 bg-tbgs-red/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <i className="fas fa-exclamation-triangle text-tbgs-red text-sm"></i>
+                        </div>
+                        <h6 className="text-sm font-bold text-slate-900 mb-2">80% problemen zijn te voorkomen!</h6>
+                        <p className="text-xs text-slate-600 mb-3 leading-relaxed">
+                          Bespaar duizenden euro's met <strong>preventieve inspectie</strong>
+                        </p>
+                        <button 
+                          onClick={onOpenContactModal}
+                          className="bg-tbgs-red text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center w-full justify-center"
+                        >
+                          <i className="fas fa-search mr-2 text-xs"></i>
+                          Gratis Inspectie
+                        </button>
                       </div>
                     </div>
                   </div>
