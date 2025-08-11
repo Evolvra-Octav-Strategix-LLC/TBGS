@@ -19,7 +19,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-sm text-gray-600">Totaal Bouw Groep Specialisten</p>
+                <p className="text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
               </div>
             </div>
           </Link>
@@ -85,7 +85,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                   <img src={tbgsLogo} alt="TBGS Logo" className="w-10 h-10 object-contain" />
                   <div>
                     <h3 className="font-bold text-tbgs-navy">TBGS BV</h3>
-                    <p className="text-xs text-gray-600">Menu</p>
+                    <p className="text-xs text-gray-600 whitespace-nowrap">Menu</p>
                   </div>
                 </div>
                 <button 
