@@ -1,8 +1,17 @@
 import { Link } from "wouter";
+import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
+import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
+import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
+import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
-export default function Footer() {
+interface FooterProps {
+  backgroundColor?: string;
+  accentColor?: string;
+}
+
+export default function Footer({ backgroundColor = "bg-gray-900", accentColor = "text-tbgs-red" }: FooterProps) {
   return (
-    <footer className="bg-gray-900 text-white py-16">
+    <footer className={`${backgroundColor} text-white py-16`}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
@@ -44,12 +53,12 @@ export default function Footer() {
 
           {/* Specialist Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Onze Specialismen</h4>
+            <h4 className="text-lg font-semibold mb-4">Onze Specialiteiten</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/totaal-dak-specialist" className="text-gray-300 hover:text-tbgs-red transition-colors flex items-center"><i className="fas fa-home w-4 mr-2"></i>Totaal Dak Specialist</Link></li>
-              <li><Link href="/totaal-schoorsteen-specialist" className="text-gray-300 hover:text-tbgs-blue transition-colors flex items-center"><i className="fas fa-industry w-4 mr-2"></i>Totaal Schoorsteen Specialist</Link></li>
-              <li><Link href="/totaal-onderhoud-specialist" className="text-gray-300 hover:text-tbgs-green transition-colors flex items-center"><i className="fas fa-tools w-4 mr-2"></i>Totaal Onderhoud Specialist</Link></li>
-              <li><Link href="/totaal-bouw-specialist" className="text-gray-300 hover:text-tbgs-orange transition-colors flex items-center"><i className="fas fa-hammer w-4 mr-2"></i>Totaal Bouw Specialist</Link></li>
+              <li><Link href="/totaal-dak-specialist" className="text-gray-300 hover:text-tbgs-red transition-colors flex items-center"><img src={tdsLogo} alt="TDS" className="w-4 h-4 mr-2" />Totaal Dak Specialist</Link></li>
+              <li><Link href="/totaal-schoorsteen-specialist" className="text-gray-300 hover:text-tbgs-blue transition-colors flex items-center"><img src={tssLogo} alt="TSS" className="w-4 h-4 mr-2" />Totaal Schoorsteen Specialist</Link></li>
+              <li><Link href="/totaal-onderhoud-specialist" className="text-gray-300 hover:text-tbgs-green transition-colors flex items-center"><img src={tosLogo} alt="TOS" className="w-4 h-4 mr-2" />Totaal Onderhoud Specialist</Link></li>
+              <li><Link href="/totaal-bouw-specialist" className="text-gray-300 hover:text-tbgs-orange transition-colors flex items-center"><img src={tbsLogo} alt="TBS" className="w-4 h-4 mr-2" />Totaal Bouw Specialist</Link></li>
             </ul>
 
             <h5 className="text-md font-semibold mt-6 mb-3">Populaire Diensten</h5>

@@ -95,7 +95,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Onze Specialismen
+              Onze Specialiteiten
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Van dak tot fundering, van schoorsteen tot gevelbekleding. TBGS biedt totaaloplossingen voor al uw bouwprojecten met gespecialiseerde teams per vakgebied.

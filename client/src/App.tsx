@@ -29,6 +29,22 @@ function Router() {
     '/totaal-bouw-specialist'
   ].includes(location);
 
+  // Get footer colors based on current page
+  const getFooterProps = () => {
+    switch(location) {
+      case '/totaal-dak-specialist':
+        return { backgroundColor: 'bg-tbgs-red', accentColor: 'text-tbgs-red' };
+      case '/totaal-schoorsteen-specialist':
+        return { backgroundColor: 'bg-tbgs-blue', accentColor: 'text-tbgs-blue' };
+      case '/totaal-onderhoud-specialist':
+        return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
+      case '/totaal-bouw-specialist':
+        return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
+      default:
+        return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy' };
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Only show main navigation for non-specialist pages */}
@@ -51,7 +67,7 @@ function Router() {
         </Switch>
       </main>
       
-      <Footer />
+      <Footer {...getFooterProps()} />
       <ContactModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
