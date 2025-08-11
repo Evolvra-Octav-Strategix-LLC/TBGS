@@ -128,7 +128,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* TSS - Totaal Schoorsteen Specialist */}
             <Link href="/totaal-schoorsteen-specialist">
               <div className="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl hover:border-tbgs-blue transition-all duration-500 hover:-translate-y-2 cursor-pointer">
