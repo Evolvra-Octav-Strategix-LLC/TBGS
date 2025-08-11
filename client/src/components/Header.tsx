@@ -94,14 +94,6 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               {/* Menu Content */}
               <div className="flex-1 overflow-y-auto">
                 <nav className="flex flex-col p-6 space-y-6">
-                  <Link 
-                    href="/" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <i className="fas fa-home mr-4 w-5"></i>
-                    Home
-                  </Link>
                   <a 
                     href="#diensten" 
                     className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
