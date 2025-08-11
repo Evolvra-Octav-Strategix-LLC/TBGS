@@ -1,5 +1,8 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
 import SEOHead from "@/lib/seo";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 interface KennisbankProps {
   onOpenContactModal: () => void;
@@ -18,10 +21,10 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
       color: 'tbgs-red',
       description: 'Complete gids voor dakonderoud, renovatie en preventieve zorg',
       articles: [
-        'Wanneer moet uw dak vervangen worden?',
-        'Daklekkage herkennen en voorkomen',
-        'Isolatiewaarden en energiebesparing',
-        'Zonnepanelen op uw dak plaatsen'
+        { title: 'Wanneer moet uw dak vervangen worden?', link: null },
+        { title: 'Daklekkage herkennen en voorkomen', link: '/kennisbank/daklekkage-herkennen-voorkomen' },
+        { title: 'Isolatiewaarden en energiebesparing', link: null },
+        { title: 'Zonnepanelen op uw dak plaatsen', link: null }
       ]
     },
     {
@@ -31,10 +34,10 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
       color: 'tbgs-blue',
       description: 'Alles over schoorsteenonderhoud, veiligheid en moderne systemen',
       articles: [
-        'Jaarlijkse schoorsteencontrole checklist',
-        'Rookgasafvoer en veiligheidsvoorschriften',
-        'HR-ketel aansluiting op schoorsteen',
-        'Historische schoorstenen renoveren'
+        { title: 'Jaarlijkse schoorsteencontrole checklist', link: '/kennisbank/jaarlijkse-schoorsteencontrole' },
+        { title: 'Rookgasafvoer en veiligheidsvoorschriften', link: null },
+        { title: 'HR-ketel aansluiting op schoorsteen', link: null },
+        { title: 'Historische schoorstenen renoveren', link: null }
       ]
     },
     {
@@ -44,10 +47,10 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
       color: 'tbgs-green',
       description: 'Preventieve maatregelen om kostbare reparaties te voorkomen',
       articles: [
-        'Seizoensgebonden onderhoudstaken',
-        'Waarom preventief onderhoud loont',
-        'Signalen die duiden op problemen',
-        'Onderhoudscontract of losse service?'
+        { title: 'Seizoensgebonden onderhoudstaken', link: null },
+        { title: 'Energiebesparing door isolatie', link: '/kennisbank/energiebesparing-door-isolatie' },
+        { title: 'Signalen die duiden op problemen', link: null },
+        { title: 'Onderhoudscontract of losse service?', link: null }
       ]
     },
     {
@@ -57,10 +60,10 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
       color: 'tbgs-orange', 
       description: 'Van aanbouw tot complete renovatie - alles wat u moet weten',
       articles: [
-        'Vergunningen voor aan- en verbouw',
-        'Keuken- en badkamerrenovatie',
-        'Gevelbekleding en isolatie',
-        'Duurzame materialen kiezen'
+        { title: 'Vergunningen voor aan- en verbouw', link: null },
+        { title: 'Keuken- en badkamerrenovatie', link: null },
+        { title: 'Gevelbekleding en isolatie', link: null },
+        { title: 'Duurzame materialen kiezen', link: null }
       ]
     }
   ];
@@ -146,11 +149,21 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
                 
                 <div className="space-y-3 mb-8">
                   {category.articles.map((article, index) => (
-                    <div key={index} className="flex items-center p-3 bg-white rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer">
-                      <div className="w-2 h-2 bg-tbgs-red rounded-full mr-4 flex-shrink-0"></div>
-                      <span className="text-slate-700 font-medium">{article}</span>
-                      <i className="fas fa-chevron-right text-slate-400 ml-auto"></i>
-                    </div>
+                    article.link ? (
+                      <Link key={index} href={article.link}>
+                        <div className="flex items-center p-3 bg-white rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer">
+                          <div className={`w-2 h-2 bg-${category.color} rounded-full mr-4 flex-shrink-0`}></div>
+                          <span className="text-slate-700 font-medium">{article.title}</span>
+                          <i className="fas fa-chevron-right text-slate-400 ml-auto"></i>
+                        </div>
+                      </Link>
+                    ) : (
+                      <div key={index} className="flex items-center p-3 bg-gray-100 rounded-xl border border-slate-100 opacity-60">
+                        <div className={`w-2 h-2 bg-${category.color} rounded-full mr-4 flex-shrink-0`}></div>
+                        <span className="text-slate-700 font-medium">{article.title}</span>
+                        <span className="text-xs text-gray-500 ml-auto">Binnenkort beschikbaar</span>
+                      </div>
+                    )
                   ))}
                 </div>
                 
