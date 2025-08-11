@@ -21,7 +21,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         url="https://tbgs.nl"
         keywords="dakwerken, schoorsteenwerken, onderhoud, bouw, renovatie, Eindhoven, België, Limburg, dakisolatie, dakgoten, gevelbekleding, TBGS"
       />
-
       {/* Hero Section - Modern & Engaging */}
       <section id="home" className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-20 lg:py-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
@@ -111,7 +110,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
-
       {/* Services Overview - Modern Design */}
       <section id="diensten" className="py-24 lg:py-32 bg-white relative">
         <div className="container mx-auto px-4">
@@ -144,7 +142,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">Totaal Schoorsteen Specialist</h3>
                     <p className="text-slate-600 leading-relaxed">
-                      Schoorsteenrenovatie, reparatie, reiniging en onderhoud door <strong>ervaren schoorsteenspecialisten</strong> met moderne technieken.
+                      Schoorsteenrenovatie, reparatie, reiniging en onderhoud door <strong>ervaren schoorsteen specialisten</strong> met moderne technieken.
                     </p>
                   </div>
                   <div className="flex items-center justify-center text-tbgs-blue font-bold opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -273,7 +271,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
-
       {/* Recent Projects - Modern Portfolio */}
       <section id="projecten" className="pt-8 pb-24 lg:pt-12 lg:pb-32 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
@@ -393,7 +390,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
-
       {/* Customer Testimonials - Premium Design */}
       <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/30"></div>
@@ -554,7 +550,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
-
       {/* Service Areas - Modern Design */}
       <section id="over-ons" className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50 relative">
         <div className="container mx-auto px-4">
@@ -710,7 +705,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
-
       {/* Contact CTA - Premium Design */}
       <section id="contact" className="py-24 lg:py-32 bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white relative overflow-hidden">
         {/* Background Elements */}
