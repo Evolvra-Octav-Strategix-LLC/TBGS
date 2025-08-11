@@ -13,7 +13,7 @@ export default function SpecialistNavigationBar() {
           <Link href="/totaal-dak-specialist" className="group block">
             <div className="tbgs-red hover:bg-red-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
-                <img src={tdsLogo} alt="TDS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
+                <img src={tdsLogo} alt="TDS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Dak Specialist</span>
                   <span className="sm:hidden">Dak</span>
@@ -26,7 +26,7 @@ export default function SpecialistNavigationBar() {
           <Link href="/totaal-schoorsteen-specialist" className="group block">
             <div className="tbgs-blue hover:bg-blue-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
-                <img src={tssLogo} alt="TSS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
+                <img src={tssLogo} alt="TSS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Schoorsteen Specialist</span>
                   <span className="sm:hidden">Schoorsteen</span>
@@ -39,7 +39,7 @@ export default function SpecialistNavigationBar() {
           <Link href="/totaal-onderhoud-specialist" className="group block">
             <div className="tbgs-green hover:bg-green-700 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
-                <img src={tosLogo} alt="TOS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
+                <img src={tosLogo} alt="TOS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Onderhoud Specialist</span>
                   <span className="sm:hidden">Onderhoud</span>
@@ -52,7 +52,7 @@ export default function SpecialistNavigationBar() {
           <Link href="/totaal-bouw-specialist" className="group block">
             <div className="tbgs-orange hover:bg-yellow-600 transition-colors px-1 sm:px-3 py-4 sm:py-6 text-center text-white">
               <div className="flex flex-col items-center space-y-2 sm:space-y-3">
-                <img src={tbsLogo} alt="TBS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
+                <img src={tbsLogo} alt="TBS Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Bouw Specialist</span>
                   <span className="sm:hidden">Bouw</span>
