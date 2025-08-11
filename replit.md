@@ -1,8 +1,8 @@
-# TBGS Website - Construction Business Website
+# TBGS BV Website - Construction Business Website
 
 ## Overview
 
-This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten B.V. (TBGS), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
+This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
 
 ## User Preferences
 

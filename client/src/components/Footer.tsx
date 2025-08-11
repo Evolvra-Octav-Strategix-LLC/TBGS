@@ -10,10 +10,10 @@ export default function Footer() {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-tbgs-red via-tbgs-blue to-tbgs-green rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">TBGS</span>
+                  <span className="text-white font-bold text-sm">TBGS BV</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">TBGS</h3>
+                  <h3 className="text-xl font-bold">TBGS BV</h3>
                   <p className="text-sm text-gray-400">Bouw Groep Specialisten</p>
                 </div>
               </div>
