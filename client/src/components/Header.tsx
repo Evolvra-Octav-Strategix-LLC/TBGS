@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
 
@@ -8,18 +8,45 @@ interface HeaderProps {
 
 export default function Header({ onOpenContactModal }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
+        : 'bg-white shadow-sm'
+    }`}>
+      <div className={`container mx-auto px-4 transition-all duration-300 ${
+        isScrolled ? 'py-2' : 'py-4'
+      }`}>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-3 cursor-pointer">
-              <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
-              <div>
-                <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-sm text-gray-600">Totaal Bouw Groep Specialisten</p>
+              <img src={tbgsLogo} alt="TBGS Logo" className={`object-contain transition-all duration-300 ${
+                isScrolled ? 'w-10 h-10' : 'w-12 h-12'
+              }`} />
+              <div className={`transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+                <h1 className={`font-bold text-tbgs-navy transition-all duration-300 ${
+                  isScrolled ? 'text-lg' : 'text-xl'
+                }`}>
+                  TBGS BV
+                </h1>
+                <p className={`text-gray-600 transition-all duration-300 ${
+                  isScrolled ? 'text-xs' : 'text-sm'
+                }`}>
+                  Totaal Bouw Groep Specialisten
+                </p>
               </div>
             </div>
           </Link>
@@ -36,9 +63,9 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a href="tel:+31612345678" className="hidden md:flex items-center text-tbgs-navy">
+            <a href="tel:+31402026744" className="hidden md:flex items-center text-tbgs-navy hover:text-blue-800 transition-colors">
               <i className="fas fa-phone mr-2"></i>
-              <span className="font-semibold">+31 6 12 34 56 78</span>
+              <span className="font-semibold">040 202 67 44</span>
             </a>
             <button 
               onClick={onOpenContactModal}
