@@ -228,44 +228,126 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </Link>
           </div>
 
-          {/* Why Choose Us Section */}
-          <div className="mt-24 bg-gradient-to-r from-slate-50 to-blue-50 rounded-3xl p-12 lg:p-16">
-            <div className="text-center mb-12">
-              <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Waarom Kiezen voor TBGS?</h3>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">Ontdek wat ons onderscheidt van andere bouwbedrijven</p>
+          {/* Company Story Section */}
+          <div className="mt-24 bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-12 lg:p-16 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-10 left-10 w-20 h-20 border-2 border-tbgs-navy rounded-full"></div>
+              <div className="absolute bottom-10 right-10 w-16 h-16 border-2 border-tbgs-blue rounded-lg rotate-45"></div>
+              <div className="absolute top-1/2 left-1/4 w-12 h-12 border-2 border-tbgs-red rounded-full"></div>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-certificate text-2xl text-green-600"></i>
+            <div className="relative z-10">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
+                  <i className="fas fa-building"></i>
+                  <span>Ons Verhaal</span>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Gecertificeerd</h4>
-                <p className="text-slate-600 text-sm">Alle specialisten zijn volledig gecertificeerd en verzekerd</p>
+                <h3 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                  Waarom Kiezen voor <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS?</span>
+                </h3>
+                <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+                  Complete ontzorging bij <strong>dak, schoorsteen, onderhoud en bouw</strong>. Wij nemen uw project volledig in beheer, zodat u zich nergens zorgen over hoeft te maken.
+                </p>
               </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-clock text-2xl text-blue-600"></i>
+
+              {/* Heritage Story */}
+              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <div className="flex items-center mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                        <i className="fas fa-history text-2xl text-white"></i>
+                      </div>
+                      <div>
+                        <h4 className="text-2xl font-bold text-slate-900">Van vakman tot specialist</h4>
+                        <p className="text-tbgs-navy font-medium">15+ jaar vakmanschap en expertise</p>
+                      </div>
+                    </div>
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                      Het begon in 2010 toen wij onze eerste dakpan legden. Het vakmanschap werd van project tot project verder ontwikkeld. Jaren later hebben wij duizenden problemen opgelost die voortkwamen uit fouten, slecht uitgevoerd werk en gebrek aan specialisatie.
+                    </p>
+                    <p className="text-lg text-slate-700 leading-relaxed">
+                      Na al die jaren van achteraf repareren en oplossen, hebben wij nu besloten ons concept uit te werken: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Wij willen precies weten wat er speelt en hoe, zodat u nooit meer voor verrassingen komt te staan.
+                    </p>
+                  </div>
+                  <div className="relative">
+                    <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-8 text-white">
+                      <div className="text-center mb-6">
+                        <div className="text-4xl font-bold">2010 - 2025</div>
+                        <div className="text-lg opacity-90">15 jaar expertise</div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>500+ Projecten Gerealiseerd</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>4 Gespecialiseerde Teams</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>Nederland & België Actief</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Snelle Service</h4>
-                <p className="text-slate-600 text-sm">Offerte binnen 24u, snelle projectstart mogelijk</p>
               </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-shield-alt text-2xl text-purple-600"></i>
+
+              {/* Mission Statement */}
+              <div className="text-center mb-12">
+                <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
+                  <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze Missie</h4>
+                  <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
+                    TBGS is geëvolueerd tot een <strong>totaal ontzorgende organisatie</strong> die de klant overal bij bijstaat. Van preventieve controles tot complete renovaties - niets is ons te gek. Wij nemen uw project volledig in beheer om problemen te voorkomen, niet om ze achteraf op te lossen.
+                  </p>
+                  <div className="mt-8">
+                    <button 
+                      onClick={() => scrollToSection('contact')}
+                      className="bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
+                    >
+                      <i className="fas fa-book-open mr-3"></i>
+                      Lees Ons Volledige Verhaal
+                    </button>
+                  </div>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Garantie</h4>
-                <p className="text-slate-600 text-sm">Uitgebreide garantie op alle uitgevoerde werkzaamheden</p>
               </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-handshake text-2xl text-yellow-600"></i>
+
+              {/* Key Differentiators */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i className="fas fa-shield-check text-2xl text-green-600"></i>
+                  </div>
+                  <h5 className="text-lg font-bold text-slate-900 mb-2">Preventief Werken</h5>
+                  <p className="text-slate-600 text-sm">Problemen voorkomen in plaats van achteraf oplossen</p>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">Persoonlijk</h4>
-                <p className="text-slate-600 text-sm">Één aanspreekpunt van offerte tot oplevering</p>
+                
+                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i className="fas fa-users-cog text-2xl text-blue-600"></i>
+                  </div>
+                  <h5 className="text-lg font-bold text-slate-900 mb-2">4 Specialisten</h5>
+                  <p className="text-slate-600 text-sm">Dak, schoorsteen, onderhoud én bouw onder één dak</p>
+                </div>
+                
+                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i className="fas fa-handshake text-2xl text-purple-600"></i>
+                  </div>
+                  <h5 className="text-lg font-bold text-slate-900 mb-2">Totale Ontzorging</h5>
+                  <p className="text-slate-600 text-sm">Eén aanspreekpunt van offerte tot nazorg</p>
+                </div>
+                
+                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i className="fas fa-clock text-2xl text-yellow-600"></i>
+                  </div>
+                  <h5 className="text-lg font-bold text-slate-900 mb-2">Altijd Vooruit</h5>
+                  <p className="text-slate-600 text-sm">Door jarenlange ervaring weten wij waar u tegenaan loopt</p>
+                </div>
               </div>
             </div>
           </div>
