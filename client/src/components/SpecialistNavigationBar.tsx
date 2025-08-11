@@ -6,7 +6,7 @@ import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 export default function SpecialistNavigationBar() {
   return (
-    <div className="w-full bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div className="w-full sticky top-0 z-50">
       <div className="w-full">
         <div className="grid grid-cols-4 gap-0">
           {/* TDS - Totaal Dak Specialist */}
