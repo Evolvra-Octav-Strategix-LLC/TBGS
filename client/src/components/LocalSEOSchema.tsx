@@ -33,11 +33,11 @@ export default function LocalSEOSchema({ businessData }: LocalSEOSchemaProps) {
     const schema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://tbgs-bv.nl/#organization",
+      "@id": "https://tbgs.nl/#organization",
       "name": businessData.name,
       "alternateName": ["TBGS BV", "Totaal Bouw Groep Specialisten"],
       "description": "Premium bouwspecialisten gespecialiseerd in dakwerken, schoorsteenwerken, onderhoud en renovatie in Nederland en België. Gecertificeerd vakmanschap met 15+ jaar ervaring.",
-      "url": businessData.website || "https://tbgs-bv.nl",
+      "url": businessData.website || "https://tbgs.nl",
       "telephone": businessData.telephone,
       "email": businessData.email,
       "address": {
@@ -125,7 +125,7 @@ export default function LocalSEOSchema({ businessData }: LocalSEOSchemaProps) {
       ],
       "logo": {
         "@type": "ImageObject",
-        "url": "https://tbgs-bv.nl/logo.png",
+        "url": "https://tbgs.nl/logo.png",
         "width": "400",
         "height": "400"
       },

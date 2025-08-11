@@ -32,7 +32,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         },
         telephone: "+31 40 202 6744",
         email: "info@tbgs.nl",
-        website: "https://tbgs-bv.nl",
+        website: "https://tbgs.nl",
         geo: {
           latitude: 51.4416,
           longitude: 5.4697
