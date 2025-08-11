@@ -839,8 +839,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
               <h4 className="font-bold mb-3 text-lg">Direct Bellen</h4>
               <p className="opacity-80 text-sm mb-4">Werkdagen 8:00 - 17:00</p>
-              <a href="tel:+31612345678" className="text-yellow-300 hover:text-white font-bold transition-colors text-lg">
-                +31 6 12 34 56 78
+              <a href="tel:+31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors text-lg">
+                040 202 6744
               </a>
             </div>
 
@@ -861,7 +861,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
               <h4 className="font-bold mb-3 text-lg">WhatsApp</h4>
               <p className="opacity-80 text-sm mb-4">Snelle communicatie</p>
-              <a href="https://wa.me/31612345678" className="text-yellow-300 hover:text-white font-bold transition-colors">
+              <a href="https://wa.me/31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors">
                 Chat Direct
               </a>
             </div>

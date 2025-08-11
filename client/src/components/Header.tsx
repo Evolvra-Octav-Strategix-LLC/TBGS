@@ -141,12 +141,12 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               <div className="p-6 border-t border-gray-200 bg-gray-50">
                 {/* Phone Link */}
                 <a 
-                  href="tel:+31612345678" 
+                  href="tel:+31402026744" 
                   className="flex items-center text-tbgs-navy font-medium py-3 mb-4 hover:bg-gray-100 rounded-lg px-3 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <i className="fas fa-phone mr-4 w-5"></i>
-                  <span>+31 6 12 34 56 78</span>
+                  <span>040 202 6744</span>
                 </a>
                 
                 {/* CTA Button */}

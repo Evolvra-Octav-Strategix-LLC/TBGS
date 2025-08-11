@@ -371,8 +371,8 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                 </div>
                 <h3 className="text-xl font-bold mb-2">Bel Direct</h3>
                 <p className="opacity-90 mb-4">Voor snelle afspraak</p>
-                <a href="tel:+31612345678" className="text-2xl font-bold text-yellow-400">
-                  +31 6 12 34 56 78
+                <a href="tel:+31402026744" className="text-2xl font-bold text-yellow-400">
+                  040 202 6744
                 </a>
               </div>
               

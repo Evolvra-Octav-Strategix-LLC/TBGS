@@ -78,7 +78,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   Schoorsteen Offerte
                 </button>
                 <a 
-                  href="tel:+31612345678"
+                  href="tel:+31402026744"
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
@@ -277,7 +277,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 Gratis Schoorsteen Offerte
               </button>
               <a 
-                href="tel:+31612345678"
+                href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-blue transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>

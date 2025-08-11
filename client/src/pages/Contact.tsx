@@ -94,10 +94,10 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Bel Direct</h3>
                     <p className="text-slate-700 mb-4">Voor spoedeisende zaken en directe vragen</p>
                     <a 
-                      href="tel:+31612345678" 
+                      href="tel:+31402026744" 
                       className="text-2xl font-bold text-green-600 hover:text-green-700 transition-colors"
                     >
-                      +31 6 12 34 56 78
+                      040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
                       <i className="fas fa-clock mr-2"></i>
@@ -140,12 +140,12 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
                     <p className="text-slate-700 mb-4">Snelle communicatie met foto's en berichten</p>
                     <a 
-                      href="https://wa.me/31612345678" 
+                      href="https://wa.me/31402026744" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
                     >
-                      +31 6 12 34 56 78
+                      040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
                       <i className="fas fa-camera mr-2"></i>
@@ -165,10 +165,10 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">24/7 Noodservice</h3>
                     <p className="text-slate-700 mb-4">Voor acute lekkages en noodreparaties</p>
                     <a 
-                      href="tel:+31612345679" 
+                      href="tel:+31402026744" 
                       className="text-2xl font-bold text-red-600 hover:text-red-700 transition-colors"
                     >
-                      +31 6 12 34 56 79
+                      040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
                       <i className="fas fa-clock mr-2"></i>

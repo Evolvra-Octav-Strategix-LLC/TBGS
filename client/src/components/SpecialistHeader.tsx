@@ -59,9 +59,9 @@ export default function SpecialistHeader({
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a href="tel:+31612345678" className={`hidden md:flex items-center ${primaryColor}`}>
+            <a href="tel:+31402026744" className={`hidden md:flex items-center ${primaryColor}`}>
               <i className="fas fa-phone mr-2"></i>
-              <span className="font-semibold">+31 6 12 34 56 78</span>
+              <span className="font-semibold">040 202 6744</span>
             </a>
             <button 
               onClick={onOpenContactModal}
@@ -176,12 +176,12 @@ export default function SpecialistHeader({
               <div className="p-6 border-t border-gray-200 bg-gray-50">
                 {/* Phone Link */}
                 <a 
-                  href="tel:+31612345678" 
+                  href="tel:+31402026744" 
                   className={`flex items-center ${primaryColor} font-medium py-3 mb-4 hover:bg-gray-100 rounded-lg px-3 transition-colors`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <i className="fas fa-phone mr-4 w-5"></i>
-                  <span>+31 6 12 34 56 78</span>
+                  <span>040 202 6744</span>
                 </a>
                 
                 {/* CTA Button */}

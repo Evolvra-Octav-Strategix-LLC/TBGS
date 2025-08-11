@@ -78,7 +78,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   Onderhoud Offerte
                 </button>
                 <a 
-                  href="tel:+31612345678"
+                  href="tel:+31402026744"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
@@ -338,7 +338,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 Gratis Onderhoud Offerte
               </button>
               <a 
-                href="tel:+31612345678"
+                href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-green transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>

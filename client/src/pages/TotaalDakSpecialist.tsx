@@ -78,7 +78,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   Dakwerk Offerte
                 </button>
                 <a 
-                  href="tel:+31612345678"
+                  href="tel:+31402026744"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
@@ -339,7 +339,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 Gratis Dakwerk Offerte
               </button>
               <a 
-                href="tel:+31612345678"
+                href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-red transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>
