@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
 
 interface HeaderProps {
   onOpenContactModal: () => void;
@@ -12,12 +13,10 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-3 cursor-pointer">
-              <div className="w-12 h-12 bg-gradient-to-br from-tbgs-red via-tbgs-blue to-tbgs-green rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">TBGS</span>
-              </div>
+              <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS</h1>
-                <p className="text-sm text-gray-600">Bouw Groep Specialisten</p>
+                <p className="text-sm text-gray-600">Totaal Bouw Groep Specialisten</p>
               </div>
             </div>
           </Link>
