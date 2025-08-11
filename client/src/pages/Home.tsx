@@ -247,7 +247,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   Waarom Kiezen voor <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS?</span>
                 </h3>
                 <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
-                  Complete ontzorging bij <strong>dak, schoorsteen, onderhoud en bouw</strong>. Wij nemen uw project volledig in beheer, zodat u zich nergens zorgen over hoeft te maken.
+                  Complete ontzorging bij <strong>dak, schoorsteen, onderhoud en bouw</strong> werkzaamheden. Wij nemen uw project volledig in beheer, zodat u zich nergens zorgen over hoeft te maken.
                 </p>
               </div>
 
@@ -257,38 +257,38 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div>
                     <div className="flex items-center mb-6">
                       <div className="w-16 h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
-                        <i className="fas fa-history text-2xl text-white"></i>
+                        <i className="fas fa-users text-2xl text-white"></i>
                       </div>
                       <div>
-                        <h4 className="text-2xl font-bold text-slate-900">Van vakman tot specialist</h4>
-                        <p className="text-tbgs-navy font-medium">15+ jaar vakmanschap en expertise</p>
+                        <h4 className="text-2xl font-bold text-slate-900">Van overgrootvader tot kleinzoon</h4>
+                        <p className="text-tbgs-navy font-medium">4 generaties vakmanschap sinds 1943</p>
                       </div>
                     </div>
                     <p className="text-lg text-slate-700 leading-relaxed mb-6">
-                      Het begon in 2010 toen wij onze eerste dakpan legden. Het vakmanschap werd van project tot project verder ontwikkeld. Jaren later hebben wij duizenden problemen opgelost die voortkwamen uit fouten, slecht uitgevoerd werk en gebrek aan specialisatie.
+                      Het begon in 1943 toen mijn overgrootvader zijn eerste dakpan legde. Het vakmanschap werd met de paplepel ingegoten van zoon op zoon. Vier generaties later hebben wij duizenden problemen opgelost die voortkwamen uit fouten, domme bouwfouten en slecht uitgevoerd werk van anderen.
                     </p>
                     <p className="text-lg text-slate-700 leading-relaxed">
-                      Na al die jaren van achteraf repareren en oplossen, hebben wij nu besloten ons concept uit te werken: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Wij willen precies weten wat er speelt en hoe, zodat u nooit meer voor verrassingen komt te staan.
+                      Na al die jaren van achteraf repareren en oplossen, hebben wij nu besloten dit concept uit te werken: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Wij willen precies weten wat er speelt en hoe, zodat u nooit meer voor verrassingen komt te staan.
                     </p>
                   </div>
                   <div className="relative">
                     <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-8 text-white">
                       <div className="text-center mb-6">
-                        <div className="text-4xl font-bold">2010 - 2025</div>
-                        <div className="text-lg opacity-90">15 jaar expertise</div>
+                        <div className="text-4xl font-bold">1943 - 2025</div>
+                        <div className="text-lg opacity-90">80+ jaar vakmanschap</div>
                       </div>
                       <div className="space-y-4">
                         <div className="flex items-center space-x-3">
                           <i className="fas fa-check-circle text-green-300"></i>
-                          <span>500+ Projecten Gerealiseerd</span>
+                          <span>4 Generaties Ervaring</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <i className="fas fa-check-circle text-green-300"></i>
+                          <span>Duizenden Problemen Opgelost</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <i className="fas fa-check-circle text-green-300"></i>
                           <span>4 Gespecialiseerde Teams</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <i className="fas fa-check-circle text-green-300"></i>
-                          <span>Nederland & België Actief</span>
                         </div>
                       </div>
                     </div>
@@ -301,7 +301,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
                   <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze Missie</h4>
                   <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
-                    TBGS is geëvolueerd tot een <strong>totaal ontzorgende organisatie</strong> die de klant overal bij bijstaat. Van preventieve controles tot complete renovaties - niets is ons te gek. Wij nemen uw project volledig in beheer om problemen te voorkomen, niet om ze achteraf op te lossen.
+                    TBGS is daarom geëvolueerd tot een <strong>totaal ontzorgende organisatie</strong> die de klant overal bij bijstaat. Van preventieve controles tot noodreparaties - niets is ons te gek. Wij nemen uw project volledig in beheer om problemen te voorkomen, niet om ze achteraf op te lossen.
+                  </p>
+                  <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
+                    Door onze jarenlange ervaring met alle mogelijke bouwproblemen weten wij als geen ander waar u tegenaan kunt lopen. Onze specialistische aanpak zorgt ervoor dat wij altijd een stapje voor zijn, zodat u zich nooit zorgen hoeft te maken over uw dak, schoorsteen of bouwproject.
                   </p>
                   <div className="mt-8">
                     <button 
