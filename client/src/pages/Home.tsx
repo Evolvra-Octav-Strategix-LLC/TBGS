@@ -265,10 +265,30 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                     </div>
                     <p className="text-lg text-slate-700 leading-relaxed mb-6">
-                      Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden problemen opgelost die voortkwamen uit slecht uitgevoerd werk en gebrek aan vakkennis.
+                      Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden <strong>kostbare herstelprojecten</strong> uitgevoerd die eigenlijk voorkomen hadden kunnen worden.
                     </p>
+                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-tbgs-red p-6 rounded-2xl mb-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-tbgs-red/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                          <i className="fas fa-exclamation-triangle text-tbgs-red text-xl"></i>
+                        </div>
+                        <div>
+                          <h5 className="text-xl font-bold text-slate-900 mb-3">Wist u dat 80% van alle bouwproblemen voorkomen hadden kunnen worden?</h5>
+                          <p className="text-lg text-slate-700 leading-relaxed mb-4">
+                            Door <strong>tijdige inspectie en preventief onderhoud</strong> bespaart u duizenden euro's aan noodreparaties. Onze specialisten herkennen potentiële problemen voordat ze kostbaar worden.
+                          </p>
+                          <button 
+                            onClick={onOpenContactModal}
+                            className="bg-tbgs-red text-white px-8 py-3 rounded-xl font-bold text-lg hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
+                          >
+                            <i className="fas fa-search mr-3"></i>
+                            Gratis Inspectie Aanvragen
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     <p className="text-lg text-slate-700 leading-relaxed">
-                      Na al die jaren van achteraf repareren en oplossen, hebben wij onze werkwijze aangepast: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Door onze jarenlange ervaring weten wij precies wat er kan gebeuren en hoe wij dit kunnen voorkomen.
+                      <strong>Preventie is onze kracht.</strong> Met 80 jaar ervaring in dak-, schoorsteen-, onderhoud- en bouwwerkzaamheden weten wij precies waar problemen ontstaan. Wij investeren in grondige inspecties en preventieve maatregelen, zodat u nooit voor onaangename verrassingen komt te staan.
                     </p>
                   </div>
                   <div className="relative">
