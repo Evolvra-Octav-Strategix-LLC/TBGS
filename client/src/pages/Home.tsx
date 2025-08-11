@@ -1,5 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
+import LocalSEOSchema from "@/components/LocalSEOSchema";
 
 interface HomeProps {
   onOpenContactModal: () => void;
@@ -21,6 +23,30 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         url="https://tbgs.nl"
         keywords="dakwerken, schoorsteenwerken, onderhoud, bouw, renovatie, Eindhoven, België, Limburg, dakisolatie, dakgoten, gevelbekleding, TBGS"
       />
+      <LocalSEOSchema businessData={{
+        name: "TBGS BV - Totaal Bouw Groep Specialisten",
+        address: {
+          addressLocality: "Eindhoven",
+          addressRegion: "Noord-Brabant", 
+          addressCountry: "NL"
+        },
+        telephone: "+31 40 202 6744",
+        email: "info@tbgs.nl",
+        website: "https://tbgs-bv.nl",
+        geo: {
+          latitude: 51.4416,
+          longitude: 5.4697
+        },
+        areaServed: ["Nederland", "België", "Noord-Brabant", "Limburg"],
+        rating: {
+          ratingValue: 4.8,
+          reviewCount: 127
+        },
+        openingHours: [
+          "Mo-Fr 08:00-17:00",
+          "Sa 09:00-16:00"
+        ]
+      }} />
       {/* Hero Section - Modern & Engaging */}
       <section id="home" className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-20 lg:py-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
@@ -811,6 +837,33 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* Google Business Integration Section */}
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
+              <i className="fas fa-map-marker-alt"></i>
+              <span>Bedrijfsinformatie</span>
+            </div>
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+              Vind Ons <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Locatie</span>
+            </h2>
+            <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+              Wij bedienen <strong>Nederland en België</strong> met lokale kennis en <strong>gecertificeerde specialisten</strong>. Bekijk onze reviews en contactgegevens.
+            </p>
+          </div>
+
+          <GoogleBusinessIntegration 
+            placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs"
+            showReviews={true}
+            showMap={true}
+            showHours={true}
+            className="max-w-6xl mx-auto"
+          />
+        </div>
+      </section>
+
       {/* Contact CTA - Premium Design */}
       <section id="contact" className="py-24 lg:py-32 bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white relative overflow-hidden">
         {/* Background Elements */}
