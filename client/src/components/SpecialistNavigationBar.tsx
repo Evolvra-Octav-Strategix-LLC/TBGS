@@ -24,16 +24,16 @@ export default function SpecialistNavigationBar() {
           {/* TSS - Totaal Schoorsteen Specialist */}
           <Link href="/totaal-schoorsteen-specialist" className="group block">
             <div className={`tbgs-blue hover:bg-blue-700 transition-all duration-300 text-center text-white ${
-              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl flex items-center justify-center' : 'px-1 sm:px-3 py-4 sm:py-6'
+              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
-                isScrolled ? 'space-y-1' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center transition-all duration-300 ${
+                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tssLogo} alt="TSS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
                 }`}>
                   Schoorsteen
                 </div>
@@ -44,16 +44,16 @@ export default function SpecialistNavigationBar() {
           {/* TDS - Totaal Dak Specialist */}
           <Link href="/totaal-dak-specialist" className="group block">
             <div className={`tbgs-red hover:bg-red-700 transition-all duration-300 text-center text-white ${
-              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl flex items-center justify-center' : 'px-1 sm:px-3 py-4 sm:py-6'
+              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
-                isScrolled ? 'space-y-1' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center transition-all duration-300 ${
+                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tdsLogo} alt="TDS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
                 }`}>
                   Dak
                 </div>
@@ -64,16 +64,16 @@ export default function SpecialistNavigationBar() {
           {/* TOS - Totaal Onderhoud Specialist */}
           <Link href="/totaal-onderhoud-specialist" className="group block">
             <div className={`tbgs-green hover:bg-green-700 transition-all duration-300 text-center text-white ${
-              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl flex items-center justify-center' : 'px-1 sm:px-3 py-4 sm:py-6'
+              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
-                isScrolled ? 'space-y-1' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center transition-all duration-300 ${
+                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tosLogo} alt="TOS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
                 }`}>
                   Onderhoud
                 </div>
@@ -84,16 +84,16 @@ export default function SpecialistNavigationBar() {
           {/* TBS - Totaal Bouw Specialist */}
           <Link href="/totaal-bouw-specialist" className="group block">
             <div className={`tbgs-orange hover:bg-yellow-600 transition-all duration-300 text-center text-white ${
-              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl flex items-center justify-center' : 'px-1 sm:px-3 py-4 sm:py-6'
+              isScrolled ? 'px-2 sm:px-4 py-3 sm:py-4 shadow-xl' : 'px-1 sm:px-3 py-4 sm:py-6'
             }`}>
-              <div className={`flex flex-col items-center justify-center transition-all duration-300 ${
-                isScrolled ? 'space-y-1' : 'space-y-2 sm:space-y-3'
+              <div className={`flex flex-col items-center transition-all duration-300 ${
+                isScrolled ? 'space-y-2' : 'space-y-2 sm:space-y-3'
               }`}>
                 <img src={tbsLogo} alt="TBS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
                 }`}>
                   Bouw
                 </div>
