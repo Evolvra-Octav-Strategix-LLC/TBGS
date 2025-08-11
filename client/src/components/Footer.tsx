@@ -55,7 +55,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       </div>
                       <div>
                         <p className="font-medium">Direct Contact</p>
-                        <a href="tel:+31612345678" className="text-white/70 text-sm hover:text-white transition-colors">+31 6 12 34 56 78</a>
+                        <a href="tel:+31402026744" className="text-white/70 text-sm hover:text-white transition-colors">040 202 67 44</a>
                       </div>
                     </div>
                   </div>
@@ -94,9 +94,9 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       <i className="fas fa-calculator mr-2"></i>
                       Gratis Offerte Aanvragen
                     </button>
-                    <a href="tel:+31612345678" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
-                      <i className="fas fa-phone mr-2"></i>
-                      Direct Bellen
+                    <a href="https://wa.me/31614595142" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
+                      <i className="fab fa-whatsapp mr-2"></i>
+                      WhatsApp Chat
                     </a>
                   </div>
                 </div>
