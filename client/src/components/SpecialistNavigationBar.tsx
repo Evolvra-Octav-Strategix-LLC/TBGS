@@ -16,7 +16,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tdsLogo} alt="TDS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Dak Specialist</span>
-                  <span className="sm:hidden">TDS</span>
+                  <span className="sm:hidden">Dak</span>
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tssLogo} alt="TSS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Schoorsteen Specialist</span>
-                  <span className="sm:hidden">TSS</span>
+                  <span className="sm:hidden">Schoorsteen</span>
                 </div>
               </div>
             </div>
@@ -42,7 +42,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tosLogo} alt="TOS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Onderhoud Specialist</span>
-                  <span className="sm:hidden">TOS</span>
+                  <span className="sm:hidden">Onderhoud</span>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tbsLogo} alt="TBS Logo" className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
                 <div className="font-bold text-xs sm:text-sm">
                   <span className="hidden sm:inline">Totaal Bouw Specialist</span>
-                  <span className="sm:hidden">TBS</span>
+                  <span className="sm:hidden">Bouw</span>
                 </div>
               </div>
             </div>
