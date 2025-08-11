@@ -33,7 +33,7 @@ export default function SpecialistNavigationBar() {
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
                 }`}>
                   Schoorsteen
                 </div>
@@ -53,7 +53,7 @@ export default function SpecialistNavigationBar() {
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
                 }`}>
                   Dak
                 </div>
@@ -73,7 +73,7 @@ export default function SpecialistNavigationBar() {
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
                 }`}>
                   Onderhoud
                 </div>
@@ -93,7 +93,7 @@ export default function SpecialistNavigationBar() {
                   isScrolled ? 'w-10 h-10 sm:w-14 sm:h-14' : 'w-10 h-10 sm:w-12 sm:h-12'
                 }`} />
                 <div className={`font-bold transition-all duration-300 ${
-                  isScrolled ? 'text-sm sm:text-base' : 'text-xs'
+                  isScrolled ? 'text-sm sm:text-base mt-1' : 'text-xs'
                 }`}>
                   Bouw
                 </div>
