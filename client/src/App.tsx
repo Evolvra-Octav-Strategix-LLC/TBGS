@@ -71,6 +71,7 @@ function Router() {
           <Route path="/totaal-bouw-specialist" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank" component={() => <Kennisbank onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/gratis-offerte" component={() => <GratisOfferte />} />
+          <Route path="/offerte" component={() => <GratisOfferte />} />
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/gratis-inspectie" component={() => <GratisInspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />

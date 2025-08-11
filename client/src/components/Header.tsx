@@ -28,29 +28,22 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           <nav className="hidden lg:flex items-center space-x-8">
             <a href="#diensten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Diensten</a>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Kennisbank</Link>
-            <Link href="/gratis-inspectie" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Gratis Inspectie</Link>
             <Link href="/over-ons" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Over Ons</Link>
             <Link href="/contact" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Contact</Link>
           </nav>
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center">
-            <button 
-              onClick={onOpenContactModal}
-              className="bg-tbgs-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-            >
+            <Link href="/offerte" className="bg-tbgs-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
               Gratis Offerte
-            </button>
+            </Link>
           </div>
 
           {/* Mobile CTA Button and Menu */}
           <div className="lg:hidden flex items-center space-x-2">
-            <button 
-              onClick={onOpenContactModal}
-              className="bg-tbgs-navy text-white px-3 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm"
-            >
+            <Link href="/offerte" className="bg-tbgs-navy text-white px-3 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm">
               Offerte
-            </button>
+            </Link>
             <button 
               className="text-gray-700 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -109,14 +102,6 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                   >
                     <i className="fas fa-book mr-4 w-5"></i>
                     Kennisbank
-                  </Link>
-                  <Link 
-                    href="/gratis-inspectie" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <i className="fas fa-search mr-4 w-5"></i>
-                    Gratis Inspectie
                   </Link>
                   <Link 
                     href="/over-ons" 
