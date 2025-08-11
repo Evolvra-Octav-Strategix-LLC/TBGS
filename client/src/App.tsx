@@ -24,6 +24,17 @@ import ContactModal from "@/components/ContactModal";
 import { useState } from "react";
 import { useLocation } from "wouter";
 
+// Location Pages - Netherlands
+import LocationEindhoven from "@/pages/LocationEindhoven";
+import LocationNuenen from "@/pages/LocationNuenen";
+import LocationVeldhoven from "@/pages/LocationVeldhoven";
+import LocationBest from "@/pages/LocationBest";
+import LocationSonEnBreugel from "@/pages/LocationSonEnBreugel";
+
+// Location Pages - Belgium
+import LocationRetie from "@/pages/LocationRetie";
+import LocationLommel from "@/pages/LocationLommel";
+
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
@@ -78,6 +89,18 @@ function Router() {
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location Pages - Netherlands */}
+          <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nuenen" component={() => <LocationNuenen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/son-en-breugel" component={() => <LocationSonEnBreugel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location Pages - Belgium */}
+          <Route path="/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
           <Route component={NotFound} />
         </Switch>
       </main>

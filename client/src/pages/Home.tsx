@@ -716,16 +716,16 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div>
                     <h4 className="font-bold text-slate-900 mb-3">Hoofdlocaties</h4>
                     <ul className="space-y-2 text-slate-600">
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Eindhoven</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Nuenen</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Veldhoven</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Best</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/eindhoven" className="hover:text-tbgs-navy font-medium">Eindhoven</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/nuenen" className="hover:text-tbgs-navy font-medium">Nuenen</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/veldhoven" className="hover:text-tbgs-navy font-medium">Veldhoven</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/best" className="hover:text-tbgs-navy font-medium">Best</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-3">Ook beschikbaar</h4>
                     <ul className="space-y-2 text-slate-600">
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Son en Breugel</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/son-en-breugel" className="hover:text-tbgs-navy font-medium">Son en Breugel</Link></li>
                       <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Geldrop</li>
                       <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Mierlo</li>
                       <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Waalre</li>
@@ -749,19 +749,19 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div>
                     <h4 className="font-bold text-slate-900 mb-3">Actieve gebieden</h4>
                     <ul className="space-y-2 text-slate-600">
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Hasselt</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Genk</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Bilzen</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Tongeren</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/retie" className="hover:text-tbgs-navy font-medium">Retie</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/lommel" className="hover:text-tbgs-navy font-medium">Lommel</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Hamont-Achel</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Hamont</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-3">Aangrenzende</h4>
                     <ul className="space-y-2 text-slate-600">
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Maaseik</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Sint-Truiden</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Lanaken</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Lummen</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Pelt</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Sint-Huibrechts-Lille</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Overpelt</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Neerpelt</li>
                     </ul>
                   </div>
                 </div>
