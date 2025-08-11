@@ -49,12 +49,12 @@ export default function SpecialistHeader({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href={getSpecialistPath()} className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Home</Link>
-            <a href="#diensten" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Diensten</a>
+            <Link href="/" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Home</Link>
+            <a href="/#diensten" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Diensten</a>
             <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Kennisbank</Link>
-            <a href="#projecten" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Projecten</a>
-            <a href="#over-ons" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Over Ons</a>
-            <a href="#contact" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Contact</a>
+            <Link href="/gratis-inspectie" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Gratis Inspectie</Link>
+            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Contact</Link>
           </nav>
 
           {/* Desktop CTA Button */}
@@ -122,7 +122,7 @@ export default function SpecialistHeader({
               <div className="flex-1 overflow-y-auto">
                 <nav className="flex flex-col p-6 space-y-6">
                   <Link 
-                    href={getSpecialistPath()} 
+                    href="/" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -130,7 +130,7 @@ export default function SpecialistHeader({
                     Home
                   </Link>
                   <a 
-                    href="#diensten" 
+                    href="/#diensten" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -145,30 +145,30 @@ export default function SpecialistHeader({
                     <i className="fas fa-book mr-4 w-5"></i>
                     Kennisbank
                   </Link>
-                  <a 
-                    href="#projecten" 
+                  <Link 
+                    href="/gratis-inspectie" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-briefcase mr-4 w-5"></i>
-                    Projecten
-                  </a>
-                  <a 
-                    href="#over-ons" 
+                    <i className="fas fa-search mr-4 w-5"></i>
+                    Gratis Inspectie
+                  </Link>
+                  <Link 
+                    href="/over-ons" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-users mr-4 w-5"></i>
                     Over Ons
-                  </a>
-                  <a 
-                    href="#contact" 
+                  </Link>
+                  <Link 
+                    href="/contact" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-envelope mr-4 w-5"></i>
                     Contact
-                  </a>
+                  </Link>
                 </nav>
               </div>
 
