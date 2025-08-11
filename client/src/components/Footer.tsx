@@ -90,10 +90,10 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                     Vraag vandaag nog een vrijblijvende offerte aan en ontdek wat TBGS voor u kan betekenen.
                   </p>
                   <div className="space-y-3">
-                    <button className="w-full bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors">
+                    <a href="/gratis-offerte" className="w-full bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors flex items-center justify-center">
                       <i className="fas fa-calculator mr-2"></i>
                       Gratis Offerte Aanvragen
-                    </button>
+                    </a>
                     <a href="https://wa.me/31614595142" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
                       <i className="fab fa-whatsapp mr-2"></i>
                       WhatsApp Chat

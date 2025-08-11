@@ -15,6 +15,26 @@ const contactFormSchema = z.object({
   privacy: z.boolean().refine(val => val === true, "Akkoord met privacyverklaring is verplicht")
 });
 
+// Offerte form schema
+const offerteFormSchema = z.object({
+  voornaam: z.string().min(2, "Voornaam moet minimaal 2 karakters zijn"),
+  achternaam: z.string().min(2, "Achternaam moet minimaal 2 karakters zijn"),
+  email: z.string().email("Voer een geldig e-mailadres in"),
+  telefoon: z.string().min(10, "Voer een geldig telefoonnummer in"),
+  adres: z.string().min(5, "Voer uw volledige adres in"),
+  postcode: z.string().min(6, "Voer een geldige postcode in"),
+  plaats: z.string().min(2, "Voer uw woonplaats in"),
+  specialisme: z.string().min(1, "Kies een specialisme"),
+  projectType: z.string().min(1, "Kies een projecttype"),
+  projectOmvang: z.string().min(1, "Kies de projectomvang"),
+  tijdlijn: z.string().min(1, "Kies de gewenste tijdlijn"),
+  budget: z.string().optional(),
+  beschrijving: z.string().min(20, "Beschrijf uw project in minimaal 20 karakters"),
+  contactVoorkeur: z.string().min(1, "Kies uw contactvoorkeur"),
+  privacyAkkoord: z.boolean().refine(val => val === true, "U moet akkoord gaan met de privacyverklaring"),
+  nieuwsbrief: z.boolean().optional(),
+});
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
@@ -61,6 +81,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(500).json({
           success: false,
           message: "Er is een fout opgetreden bij het versturen van uw bericht. Probeer het opnieuw of neem telefonisch contact op."
+        });
+      }
+    }
+  });
+
+  // Offerte form submission endpoint
+  app.post("/api/offerte", async (req, res) => {
+    try {
+      // Validate request body
+      const validatedData = offerteFormSchema.parse(req.body);
+      
+      // Log the offerte submission (in production, you'd save to database or send email)
+      console.log("Offerte form submission:", {
+        timestamp: new Date().toISOString(),
+        name: `${validatedData.voornaam} ${validatedData.achternaam}`,
+        email: validatedData.email,
+        telefoon: validatedData.telefoon,
+        adres: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
+        specialisme: validatedData.specialisme,
+        projectType: validatedData.projectType,
+        projectOmvang: validatedData.projectOmvang,
+        tijdlijn: validatedData.tijdlijn,
+        budget: validatedData.budget || "Niet opgegeven",
+        beschrijving: validatedData.beschrijving,
+        contactVoorkeur: validatedData.contactVoorkeur,
+        nieuwsbrief: validatedData.nieuwsbrief || false
+      });
+
+      // In a production environment, you would:
+      // 1. Save to database
+      // 2. Send email notification to company
+      // 3. Send confirmation email to customer
+      // 4. Integrate with CRM system
+      // 5. Create lead in project management system
+
+      res.status(200).json({ 
+        success: true, 
+        message: "Uw offerte aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op voor een afspraak." 
+      });
+
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Validation errors
+        res.status(400).json({
+          success: false,
+          message: "Controleer uw invoer en probeer opnieuw.",
+          errors: error.errors.map(err => ({
+            field: err.path.join('.'),
+            message: err.message
+          }))
+        });
+      } else {
+        // Other errors
+        console.error("Offerte form error:", error);
+        res.status(500).json({
+          success: false,
+          message: "Er is een fout opgetreden bij het versturen van uw offerte aanvraag. Probeer het opnieuw of neem telefonisch contact op."
         });
       }
     }

@@ -10,6 +10,7 @@ import TotaalSchoorsteenSpecialist from "@/pages/TotaalSchoorsteenSpecialist";
 import TotaalOnderhoudSpecialist from "@/pages/TotaalOnderhoudSpecialist";
 import TotaalBouwSpecialist from "@/pages/TotaalBouwSpecialist";
 import Kennisbank from "@/pages/Kennisbank";
+import GratisOfferte from "@/pages/GratisOfferte";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
@@ -63,6 +64,7 @@ function Router() {
           <Route path="/totaal-onderhoud-specialist" component={() => <TotaalOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/totaal-bouw-specialist" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank" component={() => <Kennisbank onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/gratis-offerte" component={() => <GratisOfferte />} />
           <Route component={NotFound} />
         </Switch>
       </main>
