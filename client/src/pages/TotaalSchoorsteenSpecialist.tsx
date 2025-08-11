@@ -20,7 +20,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
         specialist="TSS"
         logo={tssLogo}
         companyName="Totaal Schoorsteen Specialist"
-        tagline="TSS - Uw schoorsteenwerken expert"
+        tagline="TSS - Uw schoorsteen expert"
         primaryColor="text-tbgs-blue"
         hoverColor="text-blue-700"
         onOpenContactModal={onOpenContactModal}
@@ -60,7 +60,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Schoorsteen Specialist
                     </h1>
-                    <p className="text-lg text-tbgs-blue font-semibold">TSS - Uw schoorsteenwerken expert</p>
+                    <p className="text-lg text-tbgs-blue font-semibold">TSS - Uw schoorsteen expert</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
