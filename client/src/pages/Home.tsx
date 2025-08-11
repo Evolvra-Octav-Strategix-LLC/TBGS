@@ -452,7 +452,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 "Uitstekend werk geleverd aan ons dak. Het team van TBGS was <strong>professioneel, punctueel</strong> en heeft alles perfect achtergelaten. Het resultaat overtreft onze verwachtingen!"
               </blockquote>
               <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                   MV
                 </div>
                 <div className="ml-4">
@@ -479,7 +479,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 "Fantastische service voor onze schoorsteenrenovatie. <strong>Vakkundig, netjes en binnen budget</strong>. TBGS denkt echt mee in oplossingen. Absoluut aan te raden!"
               </blockquote>
               <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-blue to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-tbgs-blue to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                   JD
                 </div>
                 <div className="ml-4">
@@ -506,7 +506,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 "Complete renovatie van A tot Z perfect uitgevoerd. <strong>Transparante communicatie</strong>, geen verrassingen en het eindresultaat is werkelijk prachtig. Top bedrijf!"
               </blockquote>
               <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-orange to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-tbgs-orange to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                   RS
                 </div>
                 <div className="ml-4">
