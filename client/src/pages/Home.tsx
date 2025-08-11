@@ -329,7 +329,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </p>
                   <div className="mt-8">
                     <button 
-                      onClick={() => scrollToSection('contact')}
+                      onClick={() => scrollToSection('over-ons')}
                       className="bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
                     >
                       <i className="fas fa-book-open mr-3"></i>
