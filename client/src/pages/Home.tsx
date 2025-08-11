@@ -265,10 +265,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                     </div>
                     <p className="text-lg text-slate-700 leading-relaxed mb-6">
-                      Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden problemen opgelost die voortkwamen uit fouten, domme bouwfouten en slecht uitgevoerd werk van anderen.
+                      Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden problemen opgelost die voortkwamen uit slecht uitgevoerd werk en gebrek aan vakkennis.
                     </p>
                     <p className="text-lg text-slate-700 leading-relaxed">
-                      Na al die jaren van achteraf repareren en oplossen, hebben wij nu besloten dit concept uit te werken: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Wij willen precies weten wat er speelt en hoe, zodat u nooit meer voor verrassingen komt te staan.
+                      Na al die jaren van achteraf repareren en oplossen, hebben wij onze werkwijze aangepast: <strong>wij willen de problemen voorblijven in plaats van achteraf oplossen</strong>. Door onze jarenlange ervaring weten wij precies wat er kan gebeuren en hoe wij dit kunnen voorkomen.
                     </p>
                   </div>
                   <div className="relative">
