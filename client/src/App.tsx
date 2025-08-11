@@ -15,14 +15,29 @@ import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [location] = useLocation();
+
+  // Check if current page is a specialist page (which has its own header)
+  const isSpecialistPage = [
+    '/totaal-dak-specialist',
+    '/totaal-schoorsteen-specialist', 
+    '/totaal-onderhoud-specialist',
+    '/totaal-bouw-specialist'
+  ].includes(location);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SpecialistNavigationBar />
-      <Header onOpenContactModal={() => setIsContactModalOpen(true)} />
+      {/* Only show main navigation for non-specialist pages */}
+      {!isSpecialistPage && (
+        <>
+          <SpecialistNavigationBar />
+          <Header onOpenContactModal={() => setIsContactModalOpen(true)} />
+        </>
+      )}
       
       <main className="flex-1">
         <Switch>

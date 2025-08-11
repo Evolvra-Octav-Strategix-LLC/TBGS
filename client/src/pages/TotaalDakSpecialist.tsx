@@ -1,5 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import SpecialistHeader from "@/components/SpecialistHeader";
+import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
 
 interface TotaalDakSpecialistProps {
   onOpenContactModal: () => void;
@@ -12,6 +14,16 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         title="Totaal Dak Specialist (TDS) - Dakwerken & Dakisolatie | TBGS"
         description="TDS - Totaal Dak Specialist van TBGS. Specialist in hellende en platte daken, dakisolatie, lekkagedetectie en dakgoten in Nederland en België."
         url="https://tbgs.nl/totaal-dak-specialist"
+      />
+
+      <SpecialistHeader
+        specialist="TDS"
+        logo={tdsLogo}
+        companyName="Totaal Dak Specialist"
+        tagline="TDS - Uw dakwerken specialist"
+        primaryColor="text-tbgs-red"
+        hoverColor="text-red-700"
+        onOpenContactModal={onOpenContactModal}
       />
 
       {/* Breadcrumbs */}
@@ -43,9 +55,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center">
-                    <i className="fas fa-home text-2xl text-white"></i>
-                  </div>
+                  <img src={tdsLogo} alt="TDS Logo" className="w-20 h-20 object-contain" />
                   <div>
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
                       Totaal Dak Specialist

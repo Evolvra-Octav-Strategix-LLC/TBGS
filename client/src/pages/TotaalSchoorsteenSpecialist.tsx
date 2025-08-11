@@ -1,5 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import SpecialistHeader from "@/components/SpecialistHeader";
+import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;
@@ -12,6 +14,16 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
         title="Totaal Schoorsteen Specialist (TSS) - Schoorsteenwerken | TBGS"
         description="TSS - Totaal Schoorsteen Specialist van TBGS. Expert in schoorsteenonderhoud, reparaties, vervangingen en rookkanaal services in Nederland en België."
         url="https://tbgs.nl/totaal-schoorsteen-specialist"
+      />
+
+      <SpecialistHeader
+        specialist="TSS"
+        logo={tssLogo}
+        companyName="Totaal Schoorsteen Specialist"
+        tagline="TSS - Uw schoorsteenwerken expert"
+        primaryColor="text-tbgs-blue"
+        hoverColor="text-blue-700"
+        onOpenContactModal={onOpenContactModal}
       />
 
       {/* Breadcrumbs */}
@@ -43,9 +55,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center">
-                    <i className="fas fa-industry text-2xl text-white"></i>
-                  </div>
+                  <img src={tssLogo} alt="TSS Logo" className="w-20 h-20 object-contain" />
                   <div>
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
                       Totaal Schoorsteen Specialist

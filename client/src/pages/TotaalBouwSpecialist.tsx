@@ -1,5 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import SpecialistHeader from "@/components/SpecialistHeader";
+import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 interface TotaalBouwSpecialistProps {
   onOpenContactModal: () => void;
@@ -12,6 +14,16 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         title="Totaal Bouw Specialist (TBS) - Verbouwingen & Renovaties | TBGS"
         description="TBS - Totaal Bouw Specialist van TBGS. Expert in verbouwingen, renovaties, aanbouw, badkamer- en keukenrenovaties in Nederland en België."
         url="https://tbgs.nl/totaal-bouw-specialist"
+      />
+
+      <SpecialistHeader
+        specialist="TBS"
+        logo={tbsLogo}
+        companyName="Totaal Bouw Specialist"
+        tagline="TBS - Uw bouw expert"
+        primaryColor="text-tbgs-orange"
+        hoverColor="text-orange-700"
+        onOpenContactModal={onOpenContactModal}
       />
 
       {/* Breadcrumbs */}
@@ -43,9 +55,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-16 h-16 bg-tbgs-orange rounded-full flex items-center justify-center">
-                    <i className="fas fa-hammer text-2xl text-white"></i>
-                  </div>
+                  <img src={tbsLogo} alt="TBS Logo" className="w-20 h-20 object-contain" />
                   <div>
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
                       Totaal Bouw Specialist

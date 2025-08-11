@@ -1,5 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import SpecialistHeader from "@/components/SpecialistHeader";
+import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
 
 interface TotaalOnderhoudSpecialistProps {
   onOpenContactModal: () => void;
@@ -12,6 +14,16 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
         title="Totaal Onderhoud Specialist (TOS) - Gevelonderhoud & Schilderwerk | TBGS"
         description="TOS - Totaal Onderhoud Specialist van TBGS. Expert in gevelreiniging, schilderwerk, preventief onderhoud en algemene reparaties in Nederland en België."
         url="https://tbgs.nl/totaal-onderhoud-specialist"
+      />
+
+      <SpecialistHeader
+        specialist="TOS"
+        logo={tosLogo}
+        companyName="Totaal Onderhoud Specialist"
+        tagline="TOS - Uw onderhouds expert"
+        primaryColor="text-tbgs-green"
+        hoverColor="text-green-700"
+        onOpenContactModal={onOpenContactModal}
       />
 
       {/* Breadcrumbs */}
@@ -43,9 +55,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-16 h-16 bg-tbgs-green rounded-full flex items-center justify-center">
-                    <i className="fas fa-tools text-2xl text-white"></i>
-                  </div>
+                  <img src={tosLogo} alt="TOS Logo" className="w-20 h-20 object-contain" />
                   <div>
                     <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
                       Totaal Onderhoud Specialist
