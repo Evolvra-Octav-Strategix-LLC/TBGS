@@ -9,6 +9,7 @@ import TotaalDakSpecialist from "@/pages/TotaalDakSpecialist";
 import TotaalSchoorsteenSpecialist from "@/pages/TotaalSchoorsteenSpecialist";
 import TotaalOnderhoudSpecialist from "@/pages/TotaalOnderhoudSpecialist";
 import TotaalBouwSpecialist from "@/pages/TotaalBouwSpecialist";
+import Kennisbank from "@/pages/Kennisbank";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
@@ -30,6 +31,7 @@ function Router() {
           <Route path="/totaal-schoorsteen-specialist" component={() => <TotaalSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/totaal-onderhoud-specialist" component={() => <TotaalOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/totaal-bouw-specialist" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank" component={() => <Kennisbank onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route component={NotFound} />
         </Switch>
       </main>
