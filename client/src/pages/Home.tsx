@@ -540,26 +540,51 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </p>
           </div>
 
-          {/* Trust Score */}
+          {/* Trust Score - Mobile Responsive */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-6 bg-white/80 backdrop-blur-sm border border-slate-200 px-8 py-6 rounded-2xl shadow-lg">
-              <div className="flex items-center space-x-2">
-                <div className="flex text-yellow-400 text-2xl">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
+            <div className="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl shadow-lg mx-auto max-w-md md:max-w-none">
+              {/* Mobile Layout */}
+              <div className="md:hidden px-6 py-6 space-y-4">
+                <div className="flex items-center justify-center space-x-3">
+                  <div className="flex text-yellow-400 text-xl">
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                  </div>
+                  <span className="text-2xl font-black text-slate-900">4.9</span>
                 </div>
-                <span className="text-3xl font-black text-slate-900">4.9</span>
+                <div className="text-center border-t border-slate-200 pt-4">
+                  <div className="font-bold text-slate-900">Google Reviews</div>
+                  <div className="text-sm text-slate-600">127+ verified reviews</div>
+                </div>
+                <div className="text-center border-t border-slate-200 pt-4">
+                  <div className="font-bold text-slate-900">97%</div>
+                  <div className="text-sm text-slate-600">Recommend us</div>
+                </div>
               </div>
-              <div className="border-l border-slate-300 pl-6">
-                <div className="font-bold text-slate-900">Google Reviews</div>
-                <div className="text-sm text-slate-600">127+ verified reviews</div>
-              </div>
-              <div className="border-l border-slate-300 pl-6">
-                <div className="font-bold text-slate-900">97%</div>
-                <div className="text-sm text-slate-600">Recommend us</div>
+              
+              {/* Desktop Layout */}
+              <div className="hidden md:flex items-center space-x-6 px-8 py-6">
+                <div className="flex items-center space-x-2">
+                  <div className="flex text-yellow-400 text-2xl">
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                  </div>
+                  <span className="text-3xl font-black text-slate-900">4.9</span>
+                </div>
+                <div className="border-l border-slate-300 pl-6">
+                  <div className="font-bold text-slate-900">Google Reviews</div>
+                  <div className="text-sm text-slate-600">127+ verified reviews</div>
+                </div>
+                <div className="border-l border-slate-300 pl-6">
+                  <div className="font-bold text-slate-900">97%</div>
+                  <div className="text-sm text-slate-600">Recommend us</div>
+                </div>
               </div>
             </div>
           </div>
