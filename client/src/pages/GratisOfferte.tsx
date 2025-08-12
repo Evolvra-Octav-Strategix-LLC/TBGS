@@ -270,25 +270,16 @@ export default function GratisOfferte() {
                                   {serviceTypes.map((service) => (
                                     <div
                                       key={service.value}
-                                      className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
+                                      className={`p-6 border-2 rounded-xl cursor-pointer transition-all hover:shadow-lg hover:scale-105 ${
                                         field.value === service.value
-                                          ? 'border-tbgs-navy bg-tbgs-navy text-white'
-                                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                                          ? 'border-tbgs-navy bg-tbgs-navy text-white shadow-lg'
+                                          : 'border-gray-200 hover:border-tbgs-navy hover:bg-blue-50 bg-white'
                                       }`}
                                       onClick={() => field.onChange(service.value)}
                                     >
-                                      <div className="flex items-start space-x-3">
-                                        <div className={`w-5 h-5 rounded-full border-2 mt-1 ${
-                                          field.value === service.value
-                                            ? 'border-white bg-white'
-                                            : 'border-gray-300'
-                                        }`}>
-                                          {field.value === service.value && (
-                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full mx-auto mt-0.5"></div>
-                                          )}
-                                        </div>
+                                      <div className="flex items-start justify-between w-full">
                                         <div className="flex-1">
-                                          <h4 className={`font-semibold mb-1 ${
+                                          <h4 className={`font-semibold text-lg mb-2 ${
                                             field.value === service.value ? 'text-white' : 'text-gray-900'
                                           }`}>
                                             {service.label}
@@ -299,6 +290,11 @@ export default function GratisOfferte() {
                                             {service.description}
                                           </p>
                                         </div>
+                                        {field.value === service.value && (
+                                          <div className="text-white ml-4">
+                                            <CheckCircle className="w-6 h-6" />
+                                          </div>
+                                        )}
                                       </div>
                                     </div>
                                   ))}
@@ -329,15 +325,15 @@ export default function GratisOfferte() {
                                   {specialismen.map((spec) => (
                                     <div
                                       key={spec.value}
-                                      className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
+                                      className={`p-6 border-2 rounded-xl cursor-pointer transition-all hover:shadow-lg hover:scale-105 ${
                                         field.value === spec.value
-                                          ? `${spec.color} text-white border-transparent`
-                                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                                          ? `${spec.color} text-white border-transparent shadow-lg`
+                                          : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50 bg-white'
                                       }`}
                                       onClick={() => field.onChange(spec.value)}
                                     >
-                                      <div className="flex items-center space-x-3">
-                                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2">
+                                      <div className="flex items-center space-x-3 w-full">
+                                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
                                           <img 
                                             src={spec.logo} 
                                             alt={spec.label}
@@ -345,26 +341,18 @@ export default function GratisOfferte() {
                                           />
                                         </div>
                                         <div className="flex-1">
-                                          <h4 className={`font-semibold ${
+                                          <h4 className={`font-semibold text-lg ${
                                             field.value === spec.value ? 'text-white' : 'text-gray-900'
                                           }`}>
                                             {spec.label}
                                           </h4>
                                         </div>
-                                        <div className={`w-5 h-5 rounded-full border-2 ${
-                                          field.value === spec.value
-                                            ? 'border-white bg-white'
-                                            : 'border-gray-300'
-                                        }`}>
-                                          {field.value === spec.value && (
-                                            <div className={`w-2 h-2 rounded-full mx-auto mt-0.5 ${
-                                              spec.value === 'tds' ? 'bg-red-500' :
-                                              spec.value === 'tss' ? 'bg-blue-500' :
-                                              spec.value === 'tos' ? 'bg-green-500' :
-                                              spec.value === 'tbs' ? 'bg-orange-500' : 'bg-tbgs-navy'
-                                            }`}></div>
-                                          )}
-                                        </div>
+                                        {field.value === spec.value && (
+                                          <div className="text-white">
+                                            <CheckCircle className="w-6 h-6" />
+                                          </div>
+                                        )}
+
                                       </div>
                                     </div>
                                   ))}
