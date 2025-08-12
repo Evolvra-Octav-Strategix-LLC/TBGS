@@ -125,9 +125,25 @@ export function GooglePlacesInput({
     <Input
       ref={inputRef}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        // Only allow changes if Google Places hasn't been initialized yet
+        if (!autocompleteRef.current) {
+          onChange(e.target.value);
+        }
+      }}
+      onKeyDown={(e) => {
+        // Prevent manual typing once Google Places is initialized, but allow deletion
+        if (autocompleteRef.current) {
+          const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Tab', 'Enter'];
+          if (!allowedKeys.includes(e.key)) {
+            e.preventDefault();
+          }
+        }
+      }}
       placeholder={placeholder}
-      className={`${className} text-gray-900 placeholder:text-gray-400`}
+      className={`${className} text-gray-900 placeholder:text-gray-400 ${autocompleteRef.current ? 'cursor-pointer' : ''}`}
+      title="Select address from Google suggestions"
+      readOnly={!!autocompleteRef.current}
     />
   );
 }
