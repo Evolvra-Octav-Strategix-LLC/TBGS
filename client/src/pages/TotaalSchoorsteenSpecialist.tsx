@@ -153,8 +153,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Paintbrush2 className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <Paintbrush2 className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenvegen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -172,8 +172,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <X className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <X className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -191,8 +191,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Wrench className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <Wrench className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenreparatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -210,8 +210,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Cog className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <Cog className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -229,8 +229,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Hammer className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <Hammer className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -248,8 +248,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4 relative z-10">
-                <AlertTriangle className="w-8 h-8 text-tbgs-blue relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
+                <AlertTriangle className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Spoedservice 24/7</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
