@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
 interface GoogleReview {
   author_name: string;
@@ -12,68 +13,25 @@ interface GoogleReview {
 }
 
 interface GoogleReviewSliderProps {
+  placeId: string;
   className?: string;
 }
 
-export default function GoogleReviewSlider({ className = "" }: GoogleReviewSliderProps) {
+export default function GoogleReviewSlider({ placeId, className = "" }: GoogleReviewSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Real TBGS Google Reviews
-  const reviews: GoogleReview[] = [
-    {
-      author_name: "Marco van den Berg",
-      rating: 5,
-      relative_time_description: "3 weken geleden",
-      text: "Uitstekende service van TBGS! Ons dak werd professioneel gerepareerd, binnen budget en op tijd. Zeer tevreden met de kwaliteit en communicatie.",
-      time: 1703875200,
-      profile_photo_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      author_name: "Sandra Willems",
-      rating: 5,
-      relative_time_description: "4 weken geleden",
-      text: "TBGS heeft onze schoorstenen gereinigd en onderhouden. Zeer vakkundige medewerkers en faire prijzen. Zeker een aanrader voor dakwerk!",
-      time: 1703788800,
-      profile_photo_url: "https://images.unsplash.com/photo-1494790108755-2616b612b93c?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      author_name: "Robert de Jong", 
-      rating: 5,
-      relative_time_description: "1 maand geleden",
-      text: "Complete dakrenovatie door TBGS uitgevoerd. Van offerte tot oplevering alles perfect geregeld. Goede communicatie en vakmanschap!",
-      time: 1703702400,
-      profile_photo_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      author_name: "Linda Janssen",
-      rating: 4,
-      relative_time_description: "1 maand geleden",
-      text: "TBGS heeft ons geholpen met dakisolatie. Professioneel team en goede service. Kleine vertraging door weer, maar eindresultaat is prima.",
-      time: 1703616000,
-      profile_photo_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      author_name: "Peter Hendriks",
-      rating: 5,
-      relative_time_description: "1 maand geleden",
-      text: "Al jaren klant bij TBGS voor onderhoud. Betrouwbaar bedrijf met eerlijke prijzen. Laatste dakgoten vervangen en weer keurig werk geleverd!",
-      time: 1703529600,
-      profile_photo_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      author_name: "Erik van der Meer",
-      rating: 5,
-      relative_time_description: "2 maanden geleden",
-      text: "Snelle en efficiënte dakreparatie na stormschade. TBGS was er snel bij en heeft alles vakkundig opgelost. Zeer tevreden klant!",
-      time: 1701110400,
-      profile_photo_url: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop&crop=face"
-    }
-  ];
+  // Fetch real Google reviews
+  const { data: businessData, isLoading, error } = useQuery({
+    queryKey: ['/api/google-business', placeId],
+    queryFn: () => fetch(`/api/google-business/${placeId}`).then(res => res.json())
+  });
+
+  const reviews: GoogleReview[] = businessData?.reviews || [];
 
   // Auto-advance slider
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || reviews.length === 0) return;
     
     const interval = setInterval(() => {
       setCurrentIndex((current) => (current + 1) % reviews.length);
@@ -81,6 +39,38 @@ export default function GoogleReviewSlider({ className = "" }: GoogleReviewSlide
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, reviews.length]);
+
+  // Handle loading and error states
+  if (isLoading) {
+    return (
+      <div className={`text-center py-12 ${className}`}>
+        <div className="inline-flex items-center space-x-2">
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-tbgs-navy"></div>
+          <span className="text-slate-600">Reviews laden...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || reviews.length === 0) {
+    return (
+      <div className={`text-center py-12 ${className}`}>
+        <div className="text-slate-600">
+          <p className="mb-4">Reviews kunnen momenteel niet worden geladen.</p>
+          <a 
+            href="https://share.google/egYatvuB3Rli6d2Jz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-tbgs-navy text-white px-6 py-3 rounded-2xl font-bold hover:bg-blue-800 transition-all duration-300"
+          >
+            <i className="fab fa-google mr-3"></i>
+            Bekijk Google Reviews
+            <i className="fas fa-external-link-alt ml-3"></i>
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -122,9 +112,9 @@ export default function GoogleReviewSlider({ className = "" }: GoogleReviewSlide
             <span className="font-medium text-slate-700">Google Reviews</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="flex">{renderStars(4.8)}</div>
-            <span className="font-bold text-slate-900">4.8</span>
-            <span className="text-slate-600">(127 reviews)</span>
+            <div className="flex">{renderStars(businessData?.rating || 4.8)}</div>
+            <span className="font-bold text-slate-900">{businessData?.rating || 4.8}</span>
+            <span className="text-slate-600">({businessData?.user_ratings_total || 127} reviews)</span>
           </div>
         </div>
       </div>

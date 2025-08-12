@@ -565,7 +565,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           {/* Real Google Reviews Slider */}
-          <GoogleReviewSlider className="mb-12" />
+          <GoogleReviewSlider placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs" className="mb-12" />
 
           {/* Trust Badges */}
           <div className="bg-slate-50 rounded-3xl p-8 lg:p-12">

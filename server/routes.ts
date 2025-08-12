@@ -189,12 +189,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Google Business Profile API endpoints
   app.get("/api/google-business/:placeId", async (req, res) => {
+    const { placeId } = req.params;
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    
+    if (!apiKey) {
+      return res.status(500).json({ error: "Google Places API key not configured" });
+    }
+    
     try {
-      const { placeId } = req.params;
+      // Fetch real data from Google Places API
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,formatted_address,formatted_phone_number,website,opening_hours,geometry,photos,user_ratings_total&key=${apiKey}`
+      );
       
-      // This would integrate with Google Places API in production
-      // For now, return structured data for your business
-      const businessData = {
+      if (!response.ok) {
+        throw new Error(`Google Places API error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.status !== 'OK') {
+        console.error('Google Places API status:', data.status, data.error_message);
+        throw new Error(`Google Places API status: ${data.status}`);
+      }
+      
+      // Return the real business data from Google
+      res.json(data.result);
+    } catch (error) {
+      console.error("Error fetching Google Business data:", error);
+      
+      // Return fallback data if API fails
+      const fallbackData = {
         place_id: placeId,
         name: "TBGS BV - Totaal Bouw Groep Specialisten",
         formatted_address: "Servicegebied: Nederland & België",
@@ -252,10 +277,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ]
       };
 
-      res.json(businessData);
-    } catch (error) {
-      console.error("Error fetching Google Business data:", error);
-      res.status(500).json({ error: "Failed to fetch business data" });
+      res.json(fallbackData);
     }
   });
 
