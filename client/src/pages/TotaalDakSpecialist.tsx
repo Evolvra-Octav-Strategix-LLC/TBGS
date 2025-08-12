@@ -92,7 +92,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   <div className="text-sm text-gray-600">Daken per jaar</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-tbgs-red">10+</div>
+                  <div className="text-3xl font-bold text-tbgs-red">20+</div>
                   <div className="text-sm text-gray-600">Jaar ervaring</div>
                 </div>
                 <div className="text-center">

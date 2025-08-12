@@ -119,7 +119,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
 
             <div className="grid md:grid-cols-4 gap-6">
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-tbgs-navy mb-2">80+</div>
+                <div className="text-3xl font-bold text-tbgs-navy mb-2">20+</div>
                 <div className="text-slate-600 text-sm">Jaar ervaring</div>
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">

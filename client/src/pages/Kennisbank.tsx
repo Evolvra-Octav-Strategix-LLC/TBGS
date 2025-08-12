@@ -92,7 +92,7 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
             </h1>
             
             <p className="text-xl lg:text-2xl text-slate-600 font-light leading-relaxed mb-12 max-w-3xl mx-auto">
-              <strong>80 jaar ervaring</strong> gebundeld in praktische tips, uitgebreide gidsen en professioneel advies. Van <strong>dakonderhoud</strong> tot <strong>complete renovaties</strong>.
+              <strong>20+ jaar ervaring</strong> gebundeld in praktische tips, uitgebreide gidsen en professioneel advies. Van <strong>dakonderhoud</strong> tot <strong>complete renovaties</strong>.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
