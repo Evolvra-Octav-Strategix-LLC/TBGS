@@ -100,10 +100,7 @@ export default function GratisOfferte() {
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
-      return apiRequest("/api/offerte", {
-        method: "POST",
-        body: { ...data, attachments: uploadedFiles },
-      });
+      return apiRequest("POST", "/api/offerte", { ...data, attachments: uploadedFiles });
     },
     onSuccess: () => {
       toast({
@@ -125,12 +122,11 @@ export default function GratisOfferte() {
 
   const handleGetUploadParameters = async () => {
     try {
-      const response = await apiRequest("/api/objects/upload", {
-        method: "POST",
-      });
+      const response = await apiRequest("POST", "/api/objects/upload");
+      const data = await response.json();
       return {
         method: "PUT" as const,
-        url: response.uploadURL,
+        url: data.uploadURL,
       };
     } catch (error) {
       console.error("Failed to get upload URL:", error);
