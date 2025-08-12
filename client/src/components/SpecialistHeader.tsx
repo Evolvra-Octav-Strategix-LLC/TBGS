@@ -41,7 +41,7 @@ export default function SpecialistHeader({
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
-                <h1 className={`text-sm sm:text-base md:text-lg lg:text-xl font-bold ${primaryColor} leading-tight`}>{companyName}</h1>
+                <h1 className={`text-sm sm:text-base md:text-lg lg:text-xl font-bold ${primaryColor} whitespace-nowrap`}>{companyName}</h1>
                 <p className="text-xs sm:text-sm text-gray-600">{tagline}</p>
               </div>
             </div>
@@ -49,7 +49,6 @@ export default function SpecialistHeader({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Home</Link>
             <a href="/#diensten" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Diensten</a>
             <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Kennisbank</Link>
             <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Over Ons</Link>
@@ -57,11 +56,7 @@ export default function SpecialistHeader({
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <a href="tel:+31402026744" className={`hidden md:flex items-center ${primaryColor}`}>
-              <i className="fas fa-phone mr-2"></i>
-              <span className="font-semibold">040 202 6744</span>
-            </a>
+          <div className="hidden lg:flex items-center">
             <button 
               onClick={onOpenContactModal}
               className={`${primaryColor.replace('text-', 'bg-')} text-white px-6 py-3 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors`}
@@ -120,14 +115,6 @@ export default function SpecialistHeader({
               {/* Menu Content */}
               <div className="flex-1 overflow-y-auto">
                 <nav className="flex flex-col p-6 space-y-6">
-                  <Link 
-                    href="/" 
-                    className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <i className="fas fa-home mr-4 w-5"></i>
-                    Home
-                  </Link>
                   <a 
                     href="/#diensten" 
                     className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
@@ -165,16 +152,6 @@ export default function SpecialistHeader({
 
               {/* Menu Footer */}
               <div className="p-6 border-t border-gray-200 bg-gray-50">
-                {/* Phone Link */}
-                <a 
-                  href="tel:+31402026744" 
-                  className={`flex items-center ${primaryColor} font-medium py-3 mb-4 hover:bg-gray-100 rounded-lg px-3 transition-colors`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <i className="fas fa-phone mr-4 w-5"></i>
-                  <span>040 202 6744</span>
-                </a>
-                
                 {/* CTA Button */}
                 <button 
                   onClick={() => {
