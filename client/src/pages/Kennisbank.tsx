@@ -191,79 +191,85 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* Popular Article 1 */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <img 
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                alt="Daklekkage herkennen en voorkomen - TBGS expert tips"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="bg-tbgs-red/10 text-tbgs-red px-3 py-1 rounded-full text-xs font-bold">Dakwerk</span>
-                  <span className="text-slate-500 text-xs">5 min leestijd</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Daklekkage Herkennen en Voorkomen</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Leer de vroege signalen herkennen en voorkom kostbare waterschade met onze expert tips.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500">TDS Expert • Dec 2024</span>
-                  <button className="text-tbgs-red font-bold text-sm hover:underline">
-                    Lees meer →
-                  </button>
+            <Link href="/kennisbank/daklekkage-herkennen-voorkomen">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                  alt="Daklekkage herkennen en voorkomen - TBGS expert tips"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <span className="bg-tbgs-red/10 text-tbgs-red px-3 py-1 rounded-full text-xs font-bold">Dakwerk</span>
+                    <span className="text-slate-500 text-xs">5 min leestijd</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Daklekkage Herkennen en Voorkomen</h3>
+                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                    Leer de vroege signalen herkennen en voorkom kostbare waterschade met onze expert tips.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">TDS Expert • Dec 2024</span>
+                    <button className="text-tbgs-red font-bold text-sm hover:underline">
+                      Lees meer →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Popular Article 2 */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <img 
-                src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                alt="Energiebesparing door isolatie - TBGS duurzame oplossingen"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="bg-tbgs-green/10 text-tbgs-green px-3 py-1 rounded-full text-xs font-bold">Onderhoud</span>
-                  <span className="text-slate-500 text-xs">7 min leestijd</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Energiebesparing door Isolatie</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Ontdek hoe juiste isolatie uw energierekening kan halveren en uw wooncomfort verhoogt.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500">TOS Expert • Nov 2024</span>
-                  <button className="text-tbgs-green font-bold text-sm hover:underline">
-                    Lees meer →
-                  </button>
+            <Link href="/kennisbank/energiebesparing-door-isolatie">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                  alt="Energiebesparing door isolatie - TBGS duurzame oplossingen"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <span className="bg-tbgs-green/10 text-tbgs-green px-3 py-1 rounded-full text-xs font-bold">Onderhoud</span>
+                    <span className="text-slate-500 text-xs">7 min leestijd</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Energiebesparing door Isolatie</h3>
+                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                    Ontdek hoe juiste isolatie uw energierekening kan halveren en uw wooncomfort verhoogt.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">TOS Expert • Nov 2024</span>
+                    <button className="text-tbgs-green font-bold text-sm hover:underline">
+                      Lees meer →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Popular Article 3 */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-              <img 
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                alt="Schoorsteenonderhoud checklist - TBGS veiligheidsadvies"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="bg-tbgs-blue/10 text-tbgs-blue px-3 py-1 rounded-full text-xs font-bold">Schoorsteen</span>
-                  <span className="text-slate-500 text-xs">4 min leestijd</span>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Jaarlijkse Schoorsteencontrole</h3>
-                <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                  Volledige checklist voor veilige en efficiënte schoorsteenwerking het hele jaar door.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500">TSS Expert • Oct 2024</span>
-                  <button className="text-tbgs-blue font-bold text-sm hover:underline">
-                    Lees meer →
-                  </button>
+            <Link href="/kennisbank/jaarlijkse-schoorsteencontrole">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                  alt="Schoorsteenonderhoud checklist - TBGS veiligheidsadvies"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <span className="bg-tbgs-blue/10 text-tbgs-blue px-3 py-1 rounded-full text-xs font-bold">Schoorsteen</span>
+                    <span className="text-slate-500 text-xs">4 min leestijd</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Jaarlijkse Schoorsteencontrole</h3>
+                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                    Volledige checklist voor veilige en efficiënte schoorsteenwerking het hele jaar door.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">TSS Expert • Oct 2024</span>
+                    <button className="text-tbgs-blue font-bold text-sm hover:underline">
+                      Lees meer →
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className="text-center">
