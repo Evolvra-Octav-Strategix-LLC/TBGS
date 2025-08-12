@@ -92,8 +92,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   <div className="text-sm text-gray-600">Daken per jaar</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-tbgs-red">20+</div>
-                  <div className="text-sm text-gray-600">Jaar ervaring</div>
+                  <div className="text-3xl font-bold text-tbgs-red">80+</div>
+                  <div className="text-sm text-gray-600">Jaar familietraditie</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-tbgs-red">100%</div>
@@ -114,7 +114,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                     <i className="fas fa-shield-alt text-tbgs-red text-xl"></i>
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900">15 Jaar Garantie</div>
+                    <div className="font-bold text-gray-900">Levenslange Garantie</div>
                     <div className="text-sm text-gray-600">Op al onze dakwerken</div>
                   </div>
                 </div>

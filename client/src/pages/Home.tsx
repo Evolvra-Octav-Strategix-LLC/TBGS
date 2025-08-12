@@ -67,7 +67,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <span className="text-4xl lg:text-6xl">(ver)bouwen</span>
                 </h1>
                 <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed font-light">
-                  Premium bouwspecialisten voor <strong>dakwerken</strong>, <strong>schoorsteenwerken</strong> en <strong>onderhoud</strong> in Nederland en België. Gecertificeerd vakmanschap met 20+ jaar ervaring.
+                  Premium bouwspecialisten voor <strong>dakwerken</strong>, <strong>schoorsteenwerken</strong> en <strong>onderhoud</strong> in Nederland en België. Gecertificeerd vakmanschap met <strong>80+ jaar ervaring vanuit de gehele familie</strong>.
                 </p>
               </div>
 
@@ -600,8 +600,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-award text-2xl text-green-600"></i>
                 </div>
-                <div className="font-bold text-slate-900 mb-2">15+ Jaar Ervaring</div>
-                <div className="text-slate-600 text-sm">Proven track record sinds 2010</div>
+                <div className="font-bold text-slate-900 mb-2">80+ Jaar Familietraditie</div>
+                <div className="text-slate-600 text-sm">Generaties vakmanschap gebundeld</div>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">

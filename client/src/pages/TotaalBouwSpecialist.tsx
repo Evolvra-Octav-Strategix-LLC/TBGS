@@ -92,8 +92,8 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                   <div className="text-sm text-gray-600">Projecten per jaar</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-tbgs-orange">20+</div>
-                  <div className="text-sm text-gray-600">Jaar ervaring</div>
+                  <div className="text-3xl font-bold text-tbgs-orange">80+</div>
+                  <div className="text-sm text-gray-600">Jaar familietraditie</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-tbgs-orange">100%</div>
