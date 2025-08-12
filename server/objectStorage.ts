@@ -145,13 +145,40 @@ export class ObjectStorageService {
 
     const { bucketName, objectName } = parseObjectPath(fullPath);
 
-    // Sign URL for PUT method with TTL
+    // Sign URL for PUT method with extended TTL for large uploads
     return signObjectURL({
       bucketName,
       objectName,
       method: "PUT",
-      ttlSec: 900,
+      ttlSec: 1800, // 30 minutes for large file uploads
     });
+  }
+
+  // Get multiple upload URLs for batch processing
+  async getBatchUploadURLs(count: number = 5): Promise<string[]> {
+    const privateObjectDir = this.getPrivateObjectDir();
+    if (!privateObjectDir) {
+      throw new Error(
+        "PRIVATE_OBJECT_DIR not set. Create a bucket in 'Object Storage' " +
+          "tool and set PRIVATE_OBJECT_DIR env var."
+      );
+    }
+
+    const urls: string[] = [];
+    const promises = Array.from({ length: count }, async () => {
+      const objectId = randomUUID();
+      const fullPath = `${privateObjectDir}/uploads/${objectId}`;
+      const { bucketName, objectName } = parseObjectPath(fullPath);
+      
+      return signObjectURL({
+        bucketName,
+        objectName,
+        method: "PUT",
+        ttlSec: 1800,
+      });
+    });
+
+    return Promise.all(promises);
   }
 
   // Gets the object entity file from the object path.

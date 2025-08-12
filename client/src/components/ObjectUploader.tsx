@@ -5,6 +5,7 @@ import { DashboardModal } from "@uppy/react";
 import "@uppy/core/dist/style.min.css";
 import "@uppy/dashboard/dist/style.min.css";
 import AwsS3 from "@uppy/aws-s3";
+import Compressor from "@uppy/compressor";
 import type { UploadResult } from "@uppy/core";
 import { Button } from "@/components/ui/button";
 
@@ -51,8 +52,8 @@ interface ObjectUploaderProps {
  * @param props.children - Content to be rendered inside the button
  */
 export function ObjectUploader({
-  maxNumberOfFiles = 1,
-  maxFileSize = 10485760, // 10MB default
+  maxNumberOfFiles = 5, // Allow multiple files for faster batch uploads
+  maxFileSize = 52428800, // 50MB for larger files
   onGetUploadParameters,
   onComplete,
   buttonClassName,
@@ -64,15 +65,39 @@ export function ObjectUploader({
       restrictions: {
         maxNumberOfFiles,
         maxFileSize,
+        // Allow common file types
+        allowedFileTypes: [
+          'image/*',
+          'application/pdf',
+          '.doc',
+          '.docx',
+          '.txt',
+          '.rtf'
+        ],
       },
       autoProceed: false,
     })
+      // Add image compression for much faster uploads
+      .use(Compressor, {
+        quality: 0.85, // High quality but smaller file size
+        limit: 10, // Process up to 10 files simultaneously
+        mimeType: 'image/jpeg', // Convert to JPEG for better compression
+      })
       .use(AwsS3, {
+        // Disable multipart for simplicity and speed
         shouldUseMultipart: false,
+        limit: 10, // Upload up to 10 files simultaneously
+        retryDelays: [0, 1000, 3000], // Quick retries
         getUploadParameters: onGetUploadParameters,
       })
       .on("complete", (result) => {
         onComplete?.(result);
+      })
+      // Add progress tracking for better UX
+      .on("upload-progress", (file, progress) => {
+        if (file?.name && progress.bytesTotal) {
+          console.log(`${file.name}: ${Math.round(progress.bytesUploaded / progress.bytesTotal * 100)}% uploaded`);
+        }
       })
   );
 

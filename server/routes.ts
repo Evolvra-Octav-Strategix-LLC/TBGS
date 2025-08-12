@@ -175,12 +175,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.status(200).json(serviceAreas);
   });
 
-  // File upload endpoint for offerte form
+  // File upload endpoint for offerte form - optimized for speed
   app.post("/api/objects/upload", async (req, res) => {
     try {
       const objectStorageService = new ObjectStorageService();
-      const uploadURL = await objectStorageService.getObjectEntityUploadURL();
-      res.json({ uploadURL });
+      const { batch = false, count = 1 } = req.body;
+      
+      if (batch && count > 1) {
+        // Batch upload URLs for faster multi-file uploads
+        const uploadURLs = await objectStorageService.getBatchUploadURLs(count);
+        res.json({ uploadURLs, batch: true });
+      } else {
+        // Single upload URL
+        const uploadURL = await objectStorageService.getObjectEntityUploadURL();
+        res.json({ uploadURL });
+      }
     } catch (error) {
       console.error("Error getting upload URL:", error);
       res.status(500).json({ error: "Failed to get upload URL" });
