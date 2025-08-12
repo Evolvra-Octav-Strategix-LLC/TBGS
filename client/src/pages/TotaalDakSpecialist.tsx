@@ -167,7 +167,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-building text-white text-2xl"></i>
+                <img src={flatRoofIcon} alt="Platte Daken" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Platte Daken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
