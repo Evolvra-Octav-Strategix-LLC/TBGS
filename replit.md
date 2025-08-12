@@ -15,7 +15,7 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - **Google Business Profile Integration**: Connected Google Business Profile (https://share.google/egYatvuB3Rli6d2Jz) with complete review syncing, map display, opening hours, and contact information for maximum local SEO ranking.
 - **Local SEO Schema Markup**: Implemented comprehensive LocalBusiness schema.org structured data for enhanced search engine visibility and local search rankings.
 - **Complete Pricing Removal**: Removed ALL pricing information from entire website including costs, investments, subsidies, and budget options as per user requirement.
-- **Fixed Duplicate Headers**: Resolved duplicate header issue on all knowledge base pages by removing redundant Header components from individual pages.
+- **Fixed Duplicate Headers**: Completely resolved duplicate header issue on ALL pages (Gratis Offerte, Daklekkage, Energiebesparing, Schoorsteencontrole) by removing redundant Header components from individual pages.
 
 ## User Preferences
 

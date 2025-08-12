@@ -15,7 +15,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import SEOHead from "@/lib/seo";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ObjectUploader } from "@/components/ObjectUploader";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Upload, Camera, FileImage, FileVideo, X, Eye, Search } from "lucide-react";
@@ -186,7 +185,7 @@ export default function GratisOfferte() {
         keywords="gratis offerte, offerte aanvragen, dakwerk offerte, schoorsteen offerte, bouw offerte, renovatie prijsopgave, gratis inspectie, TBGS offerte, bouwbedrijf Nederland België"
       />
 
-      <Header onOpenContactModal={() => {}} />
+
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}
