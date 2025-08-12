@@ -15,6 +15,13 @@ import {
   CheckCircle,
   Home
 } from "lucide-react";
+import certifiedIcon from "@assets/image (13)_1754999543397.png";
+import cleaningIcon from "@assets/image (19)_1754999543410.png";
+import removalIcon from "@assets/image (16)_1754999543400.png";
+import repairIcon from "@assets/image (17)_1754999543404.png";
+import replacementIcon from "@assets/image (14)_1754999543397.png";
+import renovationIcon from "@assets/image (17)_1754999543404.png";
+import emergencyIcon from "@assets/image (18)_1754999543407.png";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;
@@ -123,8 +130,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10">
-                    <Award className="w-6 h-6 text-white relative z-10 fill-current stroke-current" />
+                  <div className="w-12 h-12 flex items-center justify-center relative z-10">
+                    <img src={certifiedIcon} alt="Gecertificeerd" className="w-12 h-12 object-contain" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerd</div>
@@ -153,8 +160,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Paintbrush2 className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={cleaningIcon} alt="Schoorsteenvegen" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenvegen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -172,8 +179,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <X className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={removalIcon} alt="Schoorsteen Verwijderen" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -191,8 +198,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Wrench className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={repairIcon} alt="Schoorsteenreparatie" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenreparatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -210,8 +217,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Cog className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={replacementIcon} alt="Schoorsteen Vervanging" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -229,8 +236,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <Hammer className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={renovationIcon} alt="Schoorsteen Renovatie" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -248,8 +255,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <AlertTriangle className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
+              <div className="w-16 h-16 mb-4 relative z-10">
+                <img src={emergencyIcon} alt="Spoedservice 24/7" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Spoedservice 24/7</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
