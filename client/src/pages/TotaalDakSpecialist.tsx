@@ -2,6 +2,13 @@ import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import SpecialistHeader from "@/components/SpecialistHeader";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
+import roofRepairIcon from "@assets/image (20)_1755004272803.png";
+import gutterIcon from "@assets/image (21)_1755004272803.png";
+import leakageDetectionIcon from "@assets/image (22)_1755004272803.png";
+import roofInsulationIcon from "@assets/image (23)_1755004272803.png";
+import flatRoofIcon from "@assets/image (24)_1755004272803.png";
+import slopedRoofIcon from "@assets/image (25)_1755004272804.png";
+import roofWarrantyIcon from "@assets/image (26)_1755004272804.png";
 
 interface TotaalDakSpecialistProps {
   onOpenContactModal: () => void;
@@ -110,8 +117,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center">
-                    <i className="fas fa-shield-alt text-tbgs-red text-xl"></i>
+                  <div className="w-12 h-12 bg-tbgs-red rounded-full flex items-center justify-center">
+                    <img src={roofWarrantyIcon} alt="Levenslange Garantie" className="w-10 h-10 object-contain brightness-0 invert" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Levenslange Garantie</div>
@@ -140,8 +147,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-home text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={slopedRoofIcon} alt="Hellende Daken" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Hellende Daken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -159,8 +166,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-layer-group text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={flatRoofIcon} alt="Platte Daken" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Platte Daken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -178,8 +185,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-thermometer-half text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={roofInsulationIcon} alt="Dakisolatie" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakisolatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -197,8 +204,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-tint text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={leakageDetectionIcon} alt="Lekkage Opsporing" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Lekkage Opsporing</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -216,8 +223,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-tools text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={gutterIcon} alt="Dakgoten & Boeidelen" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoten & Boeidelen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -235,8 +242,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-red bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-hammer text-tbgs-red text-2xl"></i>
+              <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mb-4">
+                <img src={roofRepairIcon} alt="Dakreparaties" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakreparaties</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
