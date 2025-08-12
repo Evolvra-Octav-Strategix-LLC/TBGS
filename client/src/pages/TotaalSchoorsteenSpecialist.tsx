@@ -123,8 +123,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center relative z-10">
-                    <Award className="w-6 h-6 text-tbgs-blue relative z-10 fill-current stroke-current" />
+                  <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10">
+                    <Award className="w-6 h-6 text-white relative z-10 fill-current stroke-current" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerd</div>
