@@ -17,6 +17,7 @@ import { apiRequest } from "@/lib/queryClient";
 import SEOHead from "@/lib/seo";
 import Footer from "@/components/Footer";
 import { ObjectUploader } from "@/components/ObjectUploader";
+import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Upload, Camera, FileImage, FileVideo, X, Eye, Search } from "lucide-react";
 import type { UploadResult } from "@uppy/core";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
@@ -513,44 +514,12 @@ export default function GratisOfferte() {
                                 Gedetailleerde Projectbeschrijving *
                               </FormLabel>
                               <FormDescription className="text-base text-gray-600 mb-4">
-                                Beschrijf uw project zo uitgebreid mogelijk. U kunt gebruik maken van formatteringopties zoals <strong>vetgedrukte tekst</strong>, genummerde lijsten (1, 2, 3), bullet points voor opsommingen, en nieuwe regels voor structuur.
+                                Beschrijf uw project zo uitgebreid mogelijk voor een nauwkeurige offerte.
                               </FormDescription>
-                              <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-500">
-                                <div>• <strong>Vetgedrukte tekst</strong> voor belangrijke punten</div>
-                                <div>• Genummerde lijsten voor stappen (1, 2, 3)</div>
-                                <div>• Bullet points voor opsommingen</div>
-                                <div>• Nieuwe regels voor structuur</div>
-                              </div>
                               <FormControl>
                                 <Textarea
-                                  placeholder={`Beschrijf uw project gedetailleerd. Voorbeelden:
-
-**Huidige Situatie:**
-1. Bestaand dak is 15 jaar oud
-2. Lekkage bij de schoorsteen
-3. Isolatie is verouderd
-
-**Gewenste Werkzaamheden:**
-• Volledige dakvervanging
-• Nieuwe isolatie
-• Schoorsteen reparatie
-• Dakgoten vervangen
-
-**Specifieke Wensen:**
-- Gebruik van pannen type X
-- Energielabel verbetering
-- Kleur voorkeur: antraciet
-
-**Bijzonderheden:**
-• Toegankelijkheid via steiger
-• Monument pand (vergunning nodig)
-• Timing: liefst voor winter
-
-**Vragen:**
-1. Welke isolatiewaarde adviseert u?
-2. Is subsidie mogelijk?
-3. Garantie op het werk?`}
-                                  className="min-h-[300px] text-base leading-relaxed"
+                                  placeholder="Beschrijf uw project gedetailleerd..."
+                                  className="min-h-[200px] text-base leading-relaxed placeholder:text-gray-400"
                                   {...field}
                                 />
                               </FormControl>
@@ -606,7 +575,7 @@ export default function GratisOfferte() {
                               <FormItem>
                                 <FormLabel>E-mailadres *</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12" {...field} />
+                                  <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -620,7 +589,7 @@ export default function GratisOfferte() {
                               <FormItem>
                                 <FormLabel>Telefoonnummer *</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="06 12345678" className="h-12" {...field} />
+                                  <Input placeholder="06 12345678" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -637,7 +606,23 @@ export default function GratisOfferte() {
                                 <FormItem>
                                   <FormLabel>Adres *</FormLabel>
                                   <FormControl>
-                                    <Input placeholder="Straat en huisnummer" className="h-12" {...field} />
+                                    <GooglePlacesInput
+                                      value={field.value}
+                                      onChange={(address, details) => {
+                                        field.onChange(address);
+                                        // Auto-fill other fields if details are available
+                                        if (details) {
+                                          if (details.city && !form.getValues("plaats")) {
+                                            form.setValue("plaats", details.city);
+                                          }
+                                          if (details.postalCode && !form.getValues("postcode")) {
+                                            form.setValue("postcode", details.postalCode);
+                                          }
+                                        }
+                                      }}
+                                      placeholder="Begin typing your address..."
+                                      className="h-12"
+                                    />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -652,7 +637,7 @@ export default function GratisOfferte() {
                               <FormItem>
                                 <FormLabel>Postcode *</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="1234 AB" className="h-12" {...field} />
+                                  <Input placeholder="1234 AB" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -667,7 +652,7 @@ export default function GratisOfferte() {
                             <FormItem>
                               <FormLabel>Plaats *</FormLabel>
                               <FormControl>
-                                <Input placeholder="Uw woonplaats" className="h-12" {...field} />
+                                <Input placeholder="Uw woonplaats" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
