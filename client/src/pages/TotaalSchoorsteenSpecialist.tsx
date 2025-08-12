@@ -88,8 +88,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
               <div className="grid grid-cols-3 gap-6 pt-8 border-t">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-tbgs-blue">150+</div>
-                  <div className="text-sm text-gray-600">Schoorstenen per maand</div>
+                  <div className="text-3xl font-bold text-tbgs-blue">20+</div>
+                  <div className="text-sm text-gray-600">Jaar ervaring</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-tbgs-blue">24/7</div>
