@@ -135,12 +135,14 @@ export default function GratisOfferte() {
   };
 
   const handleUploadComplete = (result: UploadResult<Record<string, unknown>, Record<string, unknown>>) => {
-    const newFiles = result.successful.map(file => file.uploadURL || "");
-    setUploadedFiles(prev => [...prev, ...newFiles]);
-    toast({
-      title: "Bestanden geüpload",
-      description: `${result.successful.length} bestand(en) succesvol toegevoegd.`,
-    });
+    if (result.successful && result.successful.length > 0) {
+      const newFiles = result.successful.map(file => file.uploadURL || "");
+      setUploadedFiles(prev => [...prev, ...newFiles]);
+      toast({
+        title: "Bestanden geüpload",
+        description: `${result.successful.length} bestand(en) succesvol toegevoegd.`,
+      });
+    }
   };
 
   const removeFile = (fileToRemove: string) => {
