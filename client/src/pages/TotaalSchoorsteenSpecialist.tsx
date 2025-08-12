@@ -5,16 +5,16 @@ import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import { 
   Calculator, 
   Phone, 
+  Paintbrush2, 
+  X, 
+  Wrench, 
+  Cog, 
+  Hammer, 
+  AlertTriangle,
+  Award,
   CheckCircle,
   Home
 } from "lucide-react";
-import cleaningIcon from "@assets/image (6)_1754999438963.png";
-import removalIcon from "@assets/image (7)_1754999438963.png";
-import repairIcon from "@assets/image (8)_1754999438963.png";
-import replacementIcon from "@assets/image (9)_1754999438963.png";
-import renovationIcon from "@assets/image (10)_1754999438964.png";
-import serviceIcon from "@assets/image (11)_1754999438964.png";
-import certificationIcon from "@assets/image (12)_1754999438964.png";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;
@@ -124,7 +124,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10">
-                    <img src={certificationIcon} alt="Gecertificeerd" className="w-6 h-6 filter brightness-0 invert" />
+                    <Award className="w-6 h-6 text-white relative z-10 fill-current stroke-current" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerd</div>
@@ -154,7 +154,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={cleaningIcon} alt="Schoorsteenvegen" className="w-8 h-8 filter brightness-0 invert" />
+                <Paintbrush2 className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenvegen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -173,7 +173,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={removalIcon} alt="Schoorsteen Verwijderen" className="w-8 h-8 filter brightness-0 invert" />
+                <X className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -192,7 +192,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={repairIcon} alt="Schoorsteenreparatie" className="w-8 h-8 filter brightness-0 invert" />
+                <Wrench className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenreparatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -211,7 +211,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={replacementIcon} alt="Schoorsteen Vervanging" className="w-8 h-8 filter brightness-0 invert" />
+                <Cog className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -230,7 +230,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={renovationIcon} alt="Schoorsteen Renovatie" className="w-8 h-8 filter brightness-0 invert" />
+                <Hammer className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -249,7 +249,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={serviceIcon} alt="Spoedservice 24/7" className="w-8 h-8 filter brightness-0 invert" />
+                <AlertTriangle className="w-8 h-8 text-white relative z-10 fill-current stroke-current" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Spoedservice 24/7</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
