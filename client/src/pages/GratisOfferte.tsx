@@ -272,24 +272,32 @@ export default function GratisOfferte() {
                                       key={service.value}
                                       className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === service.value
-                                          ? 'border-tbgs-navy bg-tbgs-navy bg-opacity-5'
-                                          : 'border-gray-200 hover:border-gray-300'
+                                          ? 'border-tbgs-navy bg-tbgs-navy text-white'
+                                          : 'border-gray-200 hover:border-gray-300 bg-white'
                                       }`}
                                       onClick={() => field.onChange(service.value)}
                                     >
                                       <div className="flex items-start space-x-3">
                                         <div className={`w-5 h-5 rounded-full border-2 mt-1 ${
                                           field.value === service.value
-                                            ? 'border-tbgs-navy bg-tbgs-navy'
+                                            ? 'border-white bg-white'
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === service.value && (
-                                            <div className="w-1 h-1 bg-white rounded-full mx-auto mt-1"></div>
+                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full mx-auto mt-0.5"></div>
                                           )}
                                         </div>
                                         <div className="flex-1">
-                                          <h4 className="font-semibold text-gray-900 mb-1">{service.label}</h4>
-                                          <p className="text-sm text-gray-600">{service.description}</p>
+                                          <h4 className={`font-semibold mb-1 ${
+                                            field.value === service.value ? 'text-white' : 'text-gray-900'
+                                          }`}>
+                                            {service.label}
+                                          </h4>
+                                          <p className={`text-sm ${
+                                            field.value === service.value ? 'text-white text-opacity-90' : 'text-gray-600'
+                                          }`}>
+                                            {service.description}
+                                          </p>
                                         </div>
                                       </div>
                                     </div>
@@ -323,7 +331,7 @@ export default function GratisOfferte() {
                                       key={spec.value}
                                       className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === spec.value
-                                          ? `border-white ${spec.color} text-white`
+                                          ? `${spec.color} text-white border-transparent`
                                           : 'border-gray-200 hover:border-gray-300 bg-white'
                                       }`}
                                       onClick={() => field.onChange(spec.value)}
@@ -349,7 +357,12 @@ export default function GratisOfferte() {
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === spec.value && (
-                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full mx-auto mt-0.5"></div>
+                                            <div className={`w-2 h-2 rounded-full mx-auto mt-0.5 ${
+                                              spec.value === 'tds' ? 'bg-red-500' :
+                                              spec.value === 'tss' ? 'bg-blue-500' :
+                                              spec.value === 'tos' ? 'bg-green-500' :
+                                              spec.value === 'tbs' ? 'bg-orange-500' : 'bg-tbgs-navy'
+                                            }`}></div>
                                           )}
                                         </div>
                                       </div>
