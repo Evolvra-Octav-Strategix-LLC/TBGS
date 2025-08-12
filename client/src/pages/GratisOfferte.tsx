@@ -19,6 +19,10 @@ import Footer from "@/components/Footer";
 import { ObjectUploader } from "@/components/ObjectUploader";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Upload, Camera, FileImage, FileVideo, X, Eye, Search } from "lucide-react";
 import type { UploadResult } from "@uppy/core";
+import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
+import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
+import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
+import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 // Enhanced form schema with file attachments and inspection option
 const offerteFormSchema = z.object({
@@ -160,10 +164,10 @@ export default function GratisOfferte() {
   ];
 
   const specialismen = [
-    { value: "tds", label: "TDS - Totaal Dak Specialist", icon: "🏠", color: "bg-tbgs-red" },
-    { value: "tss", label: "TSS - Totaal Schoorsteen Specialist", icon: "🔥", color: "bg-tbgs-blue" },
-    { value: "tos", label: "TOS - Totaal Onderhoud Specialist", icon: "🔧", color: "bg-tbgs-green" },
-    { value: "tbs", label: "TBS - Totaal Bouw Specialist", icon: "🏗️", color: "bg-tbgs-orange" }
+    { value: "tds", label: "TDS - Totaal Dak Specialist", logo: tdsLogo, color: "bg-tbgs-red" },
+    { value: "tss", label: "TSS - Totaal Schoorsteen Specialist", logo: tssLogo, color: "bg-tbgs-blue" },
+    { value: "tos", label: "TOS - Totaal Onderhoud Specialist", logo: tosLogo, color: "bg-tbgs-green" },
+    { value: "tbs", label: "TBS - Totaal Bouw Specialist", logo: tbsLogo, color: "bg-tbgs-orange" }
   ];
 
   const projectTypes = {
@@ -326,8 +330,12 @@ export default function GratisOfferte() {
                                       onClick={() => field.onChange(spec.value)}
                                     >
                                       <div className="flex items-center space-x-3">
-                                        <div className={`w-12 h-12 rounded-lg ${spec.color} bg-opacity-10 flex items-center justify-center text-2xl`}>
-                                          {spec.icon}
+                                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2">
+                                          <img 
+                                            src={spec.logo} 
+                                            alt={spec.label}
+                                            className="w-full h-full object-contain"
+                                          />
                                         </div>
                                         <div className="flex-1">
                                           <h4 className="font-semibold text-gray-900">{spec.label}</h4>
