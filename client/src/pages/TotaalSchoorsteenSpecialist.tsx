@@ -2,6 +2,19 @@ import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import SpecialistHeader from "@/components/SpecialistHeader";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
+import { 
+  Calculator, 
+  Phone, 
+  Brush, 
+  X, 
+  Wrench, 
+  Settings, 
+  Hammer, 
+  AlertTriangle,
+  Award,
+  Check,
+  Home
+} from "lucide-react";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;
@@ -33,7 +46,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="inline-flex items-center">
                 <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-tbgs-blue">
-                  <i className="fas fa-home mr-2"></i>
+                  <Home className="w-4 h-4 mr-2" />
                   Home
                 </Link>
               </li>
@@ -74,14 +87,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   onClick={onOpenContactModal}
                   className="bg-tbgs-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-calculator mr-3"></i>
+                  <Calculator className="w-5 h-5 mr-3" />
                   Schoorsteen Offerte
                 </button>
                 <a 
                   href="tel:+31402026744"
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-phone mr-3"></i>
+                  <Phone className="w-5 h-5 mr-3" />
                   Spoedservice
                 </a>
               </div>
@@ -111,7 +124,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center">
-                    <i className="fas fa-certificate text-tbgs-blue text-xl"></i>
+                    <Award className="w-6 h-6 text-tbgs-blue" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerd</div>
@@ -141,14 +154,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-broom text-tbgs-blue text-2xl"></i>
+                <Brush className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenvegen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Jaarlijks onderhoud</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Roetverwijdering</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Veiligheidscontrole</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Vegen certificaat</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Jaarlijks onderhoud</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Roetverwijdering</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Veiligheidscontrole</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Vegen certificaat</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -160,14 +173,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-times text-tbgs-blue text-2xl"></i>
+                <X className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Volledige sloop</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Veilige afbraak</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Opruiming materiaal</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Dakwerk herstel</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Volledige sloop</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Veilige afbraak</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Opruiming materiaal</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Dakwerk herstel</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -179,14 +192,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-wrench text-tbgs-blue text-2xl"></i>
+                <Wrench className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenreparatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Voegwerk herstellen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Schoorsteenkap reparatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Binnenwerkherstellingen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Noodreparaties</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Voegwerk herstellen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Schoorsteenkap reparatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Binnenwerkherstellingen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Noodreparaties</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -198,14 +211,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-tools text-tbgs-blue text-2xl"></i>
+                <Settings className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Complete vervanging</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>RVS inliner plaatsing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Moderne systemen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Energie-efficiënt</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Complete vervanging</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />RVS inliner plaatsing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Moderne systemen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Energie-efficiënt</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -217,14 +230,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-hammer text-tbgs-blue text-2xl"></i>
+                <Hammer className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Volledig herstel</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Moderne technieken</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Duurzame materialen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Energie-efficiënt</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Volledig herstel</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Moderne technieken</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Duurzame materialen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Energie-efficiënt</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -236,14 +249,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-exclamation-triangle text-tbgs-blue text-2xl"></i>
+                <AlertTriangle className="w-8 h-8 text-tbgs-blue" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Spoedservice 24/7</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Rookproblemen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>CO-alarm situaties</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Brandveiligheid</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Noodoplossingen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Rookproblemen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />CO-alarm situaties</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Brandveiligheid</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-blue mr-2" />Noodoplossingen</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -273,14 +286,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-blue px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-calculator mr-3"></i>
+                <Calculator className="w-5 h-5 mr-3" />
                 Gratis Schoorsteen Offerte
               </button>
               <a 
                 href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-blue transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-phone mr-3"></i>
+                <Phone className="w-5 h-5 mr-3" />
                 Spoedservice 24/7
               </a>
             </div>
