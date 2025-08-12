@@ -1,5 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
+import { ShieldCheck } from "lucide-react";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
@@ -370,7 +371,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-shield-check text-2xl text-green-600"></i>
+                    <ShieldCheck className="w-8 h-8 text-green-600" />
                   </div>
                   <h5 className="text-lg font-bold text-slate-900 mb-2">Preventief Werken</h5>
                   <p className="text-slate-600 text-sm">Problemen voorkomen in plaats van achteraf oplossen</p>
