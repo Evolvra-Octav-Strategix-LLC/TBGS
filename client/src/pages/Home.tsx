@@ -95,8 +95,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="text-sm text-slate-600 font-medium">Tevreden klanten</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">20+</div>
-                  <div className="text-sm text-slate-600 font-medium">Jaar ervaring</div>
+                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">4e</div>
+                  <div className="text-sm text-slate-600 font-medium">Generatie vakmanschap</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">4.9</div>
