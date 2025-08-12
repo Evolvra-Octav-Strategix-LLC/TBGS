@@ -48,12 +48,11 @@ const offerteFormSchema = z.object({
   budget: z.string().optional(),
   beschrijving: z.string().min(20, "Beschrijf uw project in minimaal 20 karakters"),
   
+  // Detailed Description (replaces inspection option)
+  gedetaileerdeBeschrijving: z.string().min(50, "Geef een gedetailleerde beschrijving van minimaal 50 karakters"),
+  
   // Contact Preferences
   contactVoorkeur: z.string().min(1, "Kies uw contactvoorkeur"),
-  
-  // Inspection Option
-  gratisInspectie: z.boolean().default(false),
-  inspectieOpmerking: z.string().optional(),
   
   // File Attachments
   attachments: z.array(z.string()).optional(),
@@ -91,8 +90,7 @@ export default function GratisOfferte() {
       budget: "",
       beschrijving: "",
       contactVoorkeur: "",
-      gratisInspectie: false,
-      inspectieOpmerking: "",
+      gedetaileerdeBeschrijving: "",
       attachments: [],
       privacyAkkoord: false,
       nieuwsbrief: false,
@@ -500,55 +498,66 @@ export default function GratisOfferte() {
 
                       <Separator />
 
-                      {/* Gratis Inspectie Option */}
+                      {/* Detailed Project Description */}
                       <div className="space-y-6">
                         <FormField
                           control={form.control}
-                          name="gratisInspectie"
+                          name="gedetaileerdeBeschrijving"
                           render={({ field }) => (
-                            <FormItem className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                              <div className="flex items-start space-x-3">
-                                <FormControl>
-                                  <Checkbox
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                    className="mt-1"
-                                  />
-                                </FormControl>
-                                <div className="space-y-2">
-                                  <FormLabel className="text-lg font-semibold text-blue-900 flex items-center">
-                                    <Search className="w-5 h-5 mr-2" />
-                                    Gratis Inspectie ter Plaatse
-                                  </FormLabel>
-                                  <FormDescription className="text-blue-700">
-                                    Voor complexe projecten bezoeken onze experts uw locatie voor een grondige analyse. 
-                                    Dit resulteert in een nauwkeurigere offerte en persoonlijk advies.
-                                  </FormDescription>
-                                </div>
+                            <FormItem>
+                              <FormLabel className="text-xl font-bold text-gray-900 mb-4">
+                                Gedetailleerde Projectbeschrijving *
+                              </FormLabel>
+                              <FormDescription className="text-base text-gray-600 mb-4">
+                                Beschrijf uw project zo uitgebreid mogelijk. U kunt gebruik maken van formatteringopties zoals <strong>vetgedrukte tekst</strong>, genummerde lijsten (1, 2, 3), bullet points voor opsommingen, en nieuwe regels voor structuur.
+                              </FormDescription>
+                              <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-500">
+                                <div>• <strong>Vetgedrukte tekst</strong> voor belangrijke punten</div>
+                                <div>• Genummerde lijsten voor stappen (1, 2, 3)</div>
+                                <div>• Bullet points voor opsommingen</div>
+                                <div>• Nieuwe regels voor structuur</div>
                               </div>
+                              <FormControl>
+                                <Textarea
+                                  placeholder={`Beschrijf uw project gedetailleerd. Voorbeelden:
+
+**Huidige Situatie:**
+1. Bestaand dak is 15 jaar oud
+2. Lekkage bij de schoorsteen
+3. Isolatie is verouderd
+
+**Gewenste Werkzaamheden:**
+• Volledige dakvervanging
+• Nieuwe isolatie
+• Schoorsteen reparatie
+• Dakgoten vervangen
+
+**Specifieke Wensen:**
+- Gebruik van pannen type X
+- Energielabel verbetering
+- Kleur voorkeur: antraciet
+
+**Bijzonderheden:**
+• Toegankelijkheid via steiger
+• Monument pand (vergunning nodig)
+• Timing: liefst voor winter
+
+**Vragen:**
+1. Welke isolatiewaarde adviseert u?
+2. Is subsidie mogelijk?
+3. Garantie op het werk?`}
+                                  className="min-h-[300px] text-base leading-relaxed"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormDescription className="text-sm text-gray-500 mt-2">
+                                Tip: Hoe meer details u geeft (materialen, timing, specifieke wensen, bijzonderheden), 
+                                hoe nauwkeuriger en persoonlijker onze offerte wordt.
+                              </FormDescription>
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
-
-                        {form.watch("gratisInspectie") && (
-                          <FormField
-                            control={form.control}
-                            name="inspectieOpmerking"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Opmerkingen voor de Inspectie</FormLabel>
-                                <FormControl>
-                                  <Textarea
-                                    placeholder="Bijzonderheden over uw project, toegankelijkheid, of specifieke punten voor onze inspecteur..."
-                                    className="min-h-[100px]"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        )}
                       </div>
 
                       <Separator />
