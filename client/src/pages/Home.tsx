@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
+import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
 
 interface HomeProps {
@@ -563,88 +564,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            {/* Premium Testimonial 1 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-6">
-                <div className="flex text-yellow-400 text-lg mr-3">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">Verified</span>
-              </div>
-              <blockquote className="text-slate-800 mb-8 text-lg leading-relaxed font-medium">
-                "Uitstekend werk geleverd aan ons dak. Het team van TBGS was <strong>professioneel, punctueel</strong> en heeft alles perfect achtergelaten. Het resultaat overtreft onze verwachtingen!"
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  MV
-                </div>
-                <div className="ml-4">
-                  <div className="font-bold text-slate-900">Maria van der Berg</div>
-                  <div className="text-sm text-slate-600">Eindhoven • TDS Dakwerken</div>
-                  <div className="text-xs text-slate-500 mt-1">December 2024</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Premium Testimonial 2 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-6">
-                <div className="flex text-yellow-400 text-lg mr-3">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Google</span>
-              </div>
-              <blockquote className="text-slate-800 mb-8 text-lg leading-relaxed font-medium">
-                "Fantastische service voor onze schoorsteenrenovatie. <strong>Vakkundig, netjes en binnen budget</strong>. TBGS denkt echt mee in oplossingen. Absoluut aan te raden!"
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-blue to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  JD
-                </div>
-                <div className="ml-4">
-                  <div className="font-bold text-slate-900">Jan Dekkers</div>
-                  <div className="text-sm text-slate-600">Limburg, BE • TSS Schoorsteenwerken</div>
-                  <div className="text-xs text-slate-500 mt-1">November 2024</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Premium Testimonial 3 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center mb-6">
-                <div className="flex text-yellow-400 text-lg mr-3">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-                <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-bold">Premium</span>
-              </div>
-              <blockquote className="text-slate-800 mb-8 text-lg leading-relaxed font-medium">
-                "Complete renovatie van A tot Z perfect uitgevoerd. <strong>Transparante communicatie</strong>, geen verrassingen en het eindresultaat is werkelijk prachtig. Top bedrijf!"
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-tbgs-orange to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  RS
-                </div>
-                <div className="ml-4">
-                  <div className="font-bold text-slate-900">Robert Smits</div>
-                  <div className="text-sm text-slate-600">Best • TBS Bouwwerken</div>
-                  <div className="text-xs text-slate-500 mt-1">Oktober 2024</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Real Google Reviews Slider */}
+          <GoogleReviewSlider className="mb-12" />
 
           {/* Trust Badges */}
           <div className="bg-slate-50 rounded-3xl p-8 lg:p-12">
