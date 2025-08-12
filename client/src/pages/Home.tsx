@@ -89,18 +89,18 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-200">
+              <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-slate-200">
                 <div className="text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">8800+</div>
-                  <div className="text-sm text-slate-600 font-medium">Voltooide klussen</div>
+                  <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent leading-tight">8800+</div>
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium mt-1">Voltooide klussen</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">4e</div>
-                  <div className="text-sm text-slate-600 font-medium">Generatie vakmanschap</div>
+                  <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent leading-tight">4e</div>
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium mt-1">Generatie vakmanschap</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">4.9</div>
-                  <div className="text-sm text-slate-600 font-medium">★ Google rating</div>
+                  <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent leading-tight">4.9</div>
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium mt-1">★ Google rating</div>
                 </div>
               </div>
             </div>
