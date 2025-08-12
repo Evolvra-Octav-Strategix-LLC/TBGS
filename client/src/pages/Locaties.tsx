@@ -28,53 +28,54 @@ interface Location {
 }
 
 const locations: Location[] = [
+  // Netherlands - Noord-Brabant
   {
     id: "eindhoven",
     name: "TBGS Eindhoven",
     city: "Eindhoven",
     region: "Noord-Brabant",
-    address: "Hoofdstraat 123",
-    postalCode: "5611 AB",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.4416, lng: 5.4697 },
-    services: ["TDS - Totaal Dak Specialist", "TSS - Totaal Schoorsteen Specialist", "TOS - Totaal Onderhoud Specialist", "TBS - Totaal Bouw Specialist"],
+    services: ["TDS", "TSS", "TOS", "TBS"],
     rating: 4.8,
     reviewCount: 127,
     isMainLocation: true,
-    description: "Ons hoofdkantoor in Eindhoven bedient de gehele regio Noord-Brabant met alle specialistische bouwdiensten.",
-    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00", "Zo: Gesloten"],
+    description: "Hoofdkantoor voor alle specialistische bouwdiensten in de regio.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "eindhoven"
   },
   {
     id: "nuenen",
-    name: "TBGS Nuenen",
+    name: "TBGS Nuenen", 
     city: "Nuenen",
-    region: "Noord-Brabant", 
-    address: "Dorpsstraat 45",
-    postalCode: "5671 BC",
+    region: "Noord-Brabant",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.4702, lng: 5.5544 },
-    services: ["TDS - Totaal Dak Specialist", "TSS - Totaal Schoorsteen Specialist", "TOS - Totaal Onderhoud Specialist"],
-    rating: 4.7,
-    reviewCount: 89,
-    description: "Specialistische dienstverlening in Nuenen en omgeving, bekend van Vincent van Gogh.",
-    openingHours: ["Ma-Vr: 07:30-17:00", "Za: 08:00-15:00", "Zo: Gesloten"],
+    services: ["TDS", "TSS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Specialistische dienstverlening in Nuenen en omgeving.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "nuenen"
   },
   {
     id: "veldhoven",
     name: "TBGS Veldhoven",
-    city: "Veldhoven",
+    city: "Veldhoven", 
     region: "Noord-Brabant",
-    address: "Industrieweg 67",
-    postalCode: "5504 AB",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.4194, lng: 5.4056 },
-    services: ["TDS - Totaal Dak Specialist", "TBS - Totaal Bouw Specialist", "TOS - Totaal Onderhoud Specialist"],
-    rating: 4.9,
-    reviewCount: 156,
-    description: "Volledige bouwservice in Veldhoven met focus op nieuwbouw en renovatie projecten.",
-    openingHours: ["Ma-Vr: 07:00-17:30", "Za: 08:00-16:00", "Zo: Gesloten"],
+    services: ["TDS", "TBS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Volledige bouwservice met focus op nieuwbouw en renovatie.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "veldhoven"
   },
   {
@@ -82,15 +83,15 @@ const locations: Location[] = [
     name: "TBGS Best",
     city: "Best",
     region: "Noord-Brabant",
-    address: "Beatrixlaan 89",
-    postalCode: "5684 CD",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.5067, lng: 5.3897 },
-    services: ["TDS - Totaal Dak Specialist", "TSS - Totaal Schoorsteen Specialist"],
-    rating: 4.6,
-    reviewCount: 73,
-    description: "Gespecialiseerd in dak- en schoorsteenwerk in Best en de omliggende gemeenten.",
-    openingHours: ["Ma-Vr: 08:00-17:00", "Za: 09:00-15:00", "Zo: Gesloten"],
+    services: ["TDS", "TSS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Gespecialiseerd in dak- en schoorsteenwerk.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "best"
   },
   {
@@ -98,64 +99,178 @@ const locations: Location[] = [
     name: "TBGS Geldrop",
     city: "Geldrop",
     region: "Noord-Brabant",
-    address: "Hoge Ham 12",
-    postalCode: "5664 EF",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.4208, lng: 5.5653 },
-    services: ["TDS - Totaal Dak Specialist", "TOS - Totaal Onderhoud Specialist"],
-    rating: 4.7,
-    reviewCount: 94,
-    description: "Professionele dakwerken en onderhoudsdiensten in Geldrop-Mierlo regio.",
-    openingHours: ["Ma-Vr: 07:30-17:00", "Za: 08:30-15:30", "Zo: Gesloten"],
+    services: ["TDS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Professionele dakwerken en onderhoudsdiensten.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "geldrop"
   },
   {
     id: "mierlo",
     name: "TBGS Mierlo",
-    city: "Mierlo", 
+    city: "Mierlo",
     region: "Noord-Brabant",
-    address: "Kerkstraat 34",
-    postalCode: "5731 JK",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.4411, lng: 5.6222 },
-    services: ["TDS - Totaal Dak Specialist", "TBS - Totaal Bouw Specialist"],
+    services: ["TDS", "TBS"],
     rating: 4.8,
-    reviewCount: 67,
-    description: "Totaaloplossingen voor dak en bouw in het mooie Mierlo en omstreken.",
-    openingHours: ["Ma-Vr: 07:30-17:00", "Za: 08:00-15:00", "Zo: Gesloten"],
+    reviewCount: 127,
+    description: "Totaaloplossingen voor dak en bouw.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "mierlo"
   },
   {
     id: "waalre",
     name: "TBGS Waalre",
     city: "Waalre",
-    region: "Noord-Brabant", 
-    address: "Wilhelminalaan 56",
-    postalCode: "5582 AB",
+    region: "Noord-Brabant",
+    address: "",
+    postalCode: "",
     phone: "+31 40 202 6744",
     coordinates: { lat: 51.3883, lng: 5.4444 },
-    services: ["TDS - Totaal Dak Specialist", "TSS - Totaal Schoorsteen Specialist", "TOS - Totaal Onderhoud Specialist"],
-    rating: 4.9,
-    reviewCount: 112,
-    description: "Premium bouwdiensten in Waalre met persoonlijke service en vakmanschap.",
-    openingHours: ["Ma-Vr: 07:00-17:30", "Za: 08:00-16:00", "Zo: Gesloten"],
+    services: ["TDS", "TSS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Premium bouwdiensten met persoonlijke service.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "waalre"
+  },
+  // Belgium - Actieve gebieden
+  {
+    id: "retie",
+    name: "TBGS Retie",
+    city: "Retie",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2667, lng: 5.0833 },
+    services: ["TDS", "TBS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Grensoverschrijdende kwaliteit in Retie.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "retie"
+  },
+  {
+    id: "lommel",
+    name: "TBGS Lommel",
+    city: "Lommel",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2297, lng: 5.3136 },
+    services: ["TDS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Professionele bouwdiensten in Lommel.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "lommel"
   },
   {
     id: "hamont-achel",
     name: "TBGS Hamont-Achel",
     city: "Hamont-Achel",
     region: "Limburg, België",
-    address: "Stationsstraat 78",
-    postalCode: "3930",
-    phone: "+32 11 44 55 66",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
     coordinates: { lat: 51.2508, lng: 5.1694 },
-    services: ["TDS - Totaal Dak Specialist", "TBS - Totaal Bouw Specialist"],
-    rating: 4.6,
-    reviewCount: 58,
-    description: "Grensoverschrijdende kwaliteit in Hamont-Achel met Nederlandse precisie en Belgische gastvrijheid.",
-    openingHours: ["Ma-Vr: 08:00-17:00", "Za: 09:00-15:00", "Zo: Gesloten"],
+    services: ["TDS", "TBS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Vakkundige dienstverlening in Hamont-Achel.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "hamont-achel"
+  },
+  {
+    id: "hamont",
+    name: "TBGS Hamont",
+    city: "Hamont",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2500, lng: 5.1600 },
+    services: ["TDS", "TSS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Specialistische bouwdiensten in Hamont.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "hamont"
+  },
+  // Belgium - Aangrenzende gebieden
+  {
+    id: "pelt",
+    name: "TBGS Pelt",
+    city: "Pelt",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2333, lng: 5.4167 },
+    services: ["TDS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Betrouwbare dienstverlening in Pelt.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "pelt"
+  },
+  {
+    id: "sint-huibrechts-lille",
+    name: "TBGS Sint-Huibrechts-Lille",
+    city: "Sint-Huibrechts-Lille",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2167, lng: 5.2667 },
+    services: ["TDS", "TBS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Kwalitatieve bouwoplossingen in Sint-Huibrechts-Lille.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "sint-huibrechts-lille"
+  },
+  {
+    id: "overpelt",
+    name: "TBGS Overpelt",
+    city: "Overpelt",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2167, lng: 5.4167 },
+    services: ["TDS", "TSS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Professionele dienstverlening in Overpelt.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "overpelt"
+  },
+  {
+    id: "neerpelt",
+    name: "TBGS Neerpelt",
+    city: "Neerpelt",
+    region: "Limburg, België",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.2333, lng: 5.4333 },
+    services: ["TDS", "TOS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Specialistische bouwdiensten in Neerpelt.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "neerpelt"
   }
 ];
 
@@ -189,14 +304,22 @@ export default function Locaties() {
               TBGS BV bedient Nederland en België met gespecialiseerde bouwdiensten. 
               Vind de dichtstbijzijnde vestiging en ontdek onze lokale expertise.
             </p>
-            <div className="flex items-center justify-center gap-4 text-blue-200">
+            <div className="flex items-center justify-center gap-6 text-blue-200">
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                <span className="font-medium">{locations.length} Vestigingen</span>
+                <span className="font-medium">{locations.length} Locaties</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                <span className="font-medium">4.7+ Beoordeling</span>
+                <span className="font-medium">4.8 Beoordeling</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-5 h-5 text-center">🇳🇱</span>
+                <span className="font-medium">Nederland</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-5 h-5 text-center">🇧🇪</span>
+                <span className="font-medium">België</span>
               </div>
             </div>
           </div>
@@ -238,93 +361,73 @@ export default function Locaties() {
         </div>
 
         {/* Locations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {filteredLocations.map((location) => (
-            <Card key={location.id} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-0 overflow-hidden bg-white">
-              <CardHeader className="relative pb-4">
-                {location.isMainLocation && (
-                  <Badge className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white border-0 shadow-lg">
-                    Hoofdkantoor
-                  </Badge>
-                )}
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
-                      {location.name}
-                    </CardTitle>
-                    <div className="flex items-center gap-2 mt-2 text-gray-600">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-medium">{location.city}, {location.region}</span>
+            <Card key={location.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-200 overflow-hidden bg-white">
+              <CardContent className="p-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors mb-1">
+                      {location.city}
+                    </h3>
+                    <div className="flex items-center gap-1 text-gray-500 text-sm mb-2">
+                      <MapPin className="w-3 h-3" />
+                      <span>{location.region}</span>
                     </div>
                   </div>
+                  {location.isMainLocation && (
+                    <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white border-0 text-xs px-2 py-1">
+                      Hoofdkantoor
+                    </Badge>
+                  )}
                 </div>
-                
-                <div className="flex items-center gap-3 mt-3">
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-semibold text-gray-800">{location.rating}</span>
-                    <span className="text-gray-500 text-sm">({location.reviewCount} reviews)</span>
-                  </div>
-                </div>
-              </CardHeader>
 
-              <CardContent className="space-y-6">
-                <p className="text-gray-600 leading-relaxed">{location.description}</p>
-
-                {/* Contact Info */}
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-gray-700">
-                    <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                    <div>
-                      <div className="font-medium">{location.address}</div>
-                      <div className="text-sm text-gray-500">{location.postalCode} {location.city}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 text-gray-700">
-                    <Phone className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <a href={`tel:${location.phone}`} className="font-medium hover:text-blue-600 transition-colors">
-                      {location.phone}
-                    </a>
-                  </div>
-
-                  <div className="flex items-start gap-3 text-gray-700">
-                    <Clock className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                    <div className="text-sm">
-                      {location.openingHours.map((hours, index) => (
-                        <div key={index} className={index === 0 ? "font-medium" : ""}>{hours}</div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                  {location.description}
+                </p>
 
                 {/* Services */}
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-3">Beschikbare diensten:</h4>
-                  <div className="flex flex-wrap gap-2">
+                <div className="mb-3">
+                  <div className="flex flex-wrap gap-1">
                     {location.services.map((service) => (
-                      <Badge key={service} variant="secondary" className="text-xs bg-blue-50 text-blue-700 hover:bg-blue-100">
-                        {service.split(' - ')[0]}
+                      <Badge key={service} variant="secondary" className="text-xs bg-blue-50 text-blue-700 px-2 py-1">
+                        {service}
                       </Badge>
                     ))}
                   </div>
                 </div>
 
+                {/* Contact Info */}
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center gap-2 text-gray-600 text-sm">
+                    <Phone className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <a href={`tel:${location.phone}`} className="hover:text-blue-600 transition-colors">
+                      {location.phone}
+                    </a>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-gray-600 text-sm">
+                    <Clock className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                    <span>{location.openingHours[0]}</span>
+                  </div>
+                </div>
+
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <div className="flex gap-2">
                   <Link href={`/locaties/${location.slug}`} className="flex-1">
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg">
-                      <Navigation className="w-4 h-4 mr-2" />
-                      Meer info
+                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs">
+                      <Navigation className="w-3 h-3 mr-1" />
+                      Info
                     </Button>
                   </Link>
                   <Button 
+                    size="sm"
                     variant="outline" 
-                    className="flex-1 border-blue-200 text-blue-700 hover:bg-blue-50"
+                    className="flex-1 border-blue-200 text-blue-700 hover:bg-blue-50 text-xs"
                     onClick={() => window.open(`tel:${location.phone}`, '_self')}
                   >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Bellen
+                    <Phone className="w-3 h-3 mr-1" />
+                    Bel
                   </Button>
                 </div>
               </CardContent>
