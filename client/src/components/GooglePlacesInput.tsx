@@ -38,6 +38,7 @@ export function GooglePlacesInput({
 
     // Check if API key is available
     const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
+    console.log("API Key status:", apiKey ? "Found" : "Not found", "Key:", apiKey ? `${apiKey.substring(0, 10)}...` : "N/A");
     if (!apiKey) {
       console.warn("Google Places API key not found. Please set VITE_GOOGLE_PLACES_API_KEY environment variable.");
       return;
