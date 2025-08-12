@@ -304,60 +304,7 @@ export default function GoogleBusinessIntegration({
         </Card>
       )}
 
-      {/* Reviews Section */}
-      {showReviews && businessData.reviews && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Star className="w-5 h-5 mr-2 text-yellow-400" />
-                Google Reviews
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => window.open('https://share.google/egYatvuB3Rli6d2Jz', '_blank')}
-              >
-                Alle Reviews
-              </Button>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {businessData.reviews.slice(0, 3).map((review, index) => (
-                <div key={index} className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0">
-                  <div className="flex items-start space-x-3">
-                    {review.profile_photo_url ? (
-                      <img 
-                        src={review.profile_photo_url} 
-                        alt={review.author_name}
-                        className="w-10 h-10 rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 bg-tbgs-navy rounded-full flex items-center justify-center text-white font-semibold">
-                        {review.author_name.charAt(0)}
-                      </div>
-                    )}
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-gray-900">{review.author_name}</h4>
-                        <span className="text-sm text-gray-500">{review.relative_time_description}</span>
-                      </div>
-                      <div className="flex items-center mb-2">
-                        {renderStars(review.rating)}
-                      </div>
-                      <p className="text-gray-700 leading-relaxed">
-                        <Quote className="w-4 h-4 inline mr-1 text-gray-400" />
-                        {review.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      )}
+
     </div>
   );
 }
