@@ -64,7 +64,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Van traditionele schoorsteenreiniging tot moderne rookgasafvoersystemen. 
+                  Schoorsteen renovatie, verwijderen, reparatie en reiniging. 
                   Onze gecertificeerde specialisten zorgen voor veilige en efficiënte schoorsteenoplossingen.
                 </p>
               </div>
@@ -160,14 +160,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-search text-tbgs-blue text-2xl"></i>
+                <i className="fas fa-times text-tbgs-blue text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Rookkanaal Inspectie</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Camera inspectie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Lekdetectie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Trekmetingen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Veiligheidsrapport</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Volledige sloop</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Veilige afbraak</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Opruiming materiaal</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Dakwerk herstel</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -217,14 +217,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-fire text-tbgs-blue text-2xl"></i>
+                <i className="fas fa-hammer text-tbgs-blue text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Rookgasafvoer Systemen</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>HR-ketel aansluitingen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Concentrische systemen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Dakdoorvoeren</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Condensafvoer</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Volledig herstel</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Moderne technieken</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Duurzame materialen</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-blue w-4 mr-2"></i>Energie-efficiënt</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
