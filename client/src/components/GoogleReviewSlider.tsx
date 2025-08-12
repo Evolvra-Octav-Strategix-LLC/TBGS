@@ -124,27 +124,29 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
         ) : (
           <div className="relative">
             {/* Mobile: Single card with navigation */}
-            <div className="md:hidden relative">
+            <div className="md:hidden relative px-4">
               {/* Navigation buttons */}
-              <button
-                onClick={previousReview}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
-                disabled={displayReviews.length <= 1}
-              >
-                <ChevronLeft className="w-5 h-5 text-gray-600" />
-              </button>
-              
-              <button
-                onClick={nextReview}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
-                disabled={displayReviews.length <= 1}
-              >
-                <ChevronRight className="w-5 h-5 text-gray-600" />
-              </button>
+              {displayReviews.length > 1 && (
+                <>
+                  <button
+                    onClick={previousReview}
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-gray-600" />
+                  </button>
+                  
+                  <button
+                    onClick={nextReview}
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
+                  >
+                    <ChevronRight className="w-5 h-5 text-gray-600" />
+                  </button>
+                </>
+              )}
 
               <div 
                 ref={sliderRef}
-                className="relative overflow-hidden px-12"
+                className="overflow-hidden mx-8"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -152,12 +154,11 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
                 <div 
                   className="flex transition-transform duration-300 ease-in-out"
                   style={{ 
-                    transform: `translateX(-${currentIndex * 100}%)`,
-                    width: `${displayReviews.length * 100}%`
+                    transform: `translateX(-${currentIndex * 100}%)`
                   }}
                 >
                   {displayReviews.map((review, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-2">
+                    <div key={index} className="w-full flex-shrink-0 flex justify-center">
                       <MobileReviewCard review={review} />
                     </div>
                   ))}
@@ -165,17 +166,19 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
               </div>
               
               {/* Mobile dots indicator */}
-              <div className="flex justify-center mt-6 space-x-2">
-                {displayReviews.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      index === currentIndex ? 'bg-tbgs-navy' : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
+              {displayReviews.length > 1 && (
+                <div className="flex justify-center mt-6 space-x-2">
+                  {displayReviews.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === currentIndex ? 'bg-tbgs-navy' : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Desktop: Three columns */}
@@ -214,7 +217,7 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
   };
 
   return (
-    <Card className="bg-white border border-gray-200 shadow-lg mx-auto max-w-xs">
+    <Card className="bg-white border border-gray-200 shadow-lg w-full max-w-sm">
       <CardContent className="p-4">
         <div className="flex items-start space-x-3 mb-3">
           <div className={`w-10 h-10 ${getAvatarColor(review.author_name)} rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0`}>
