@@ -36,9 +36,16 @@ export function GooglePlacesInput({
       return;
     }
 
+    // Check if API key is available
+    const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
+    if (!apiKey) {
+      console.warn("Google Places API key not found. Please set VITE_GOOGLE_PLACES_API_KEY environment variable.");
+      return;
+    }
+
     // Load Google Maps API
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`;
     script.async = true;
     script.defer = true;
 

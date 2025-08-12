@@ -272,19 +272,19 @@ export default function GratisOfferte() {
                                       key={service.value}
                                       className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === service.value
-                                          ? 'border-tbgs-navy bg-tbgs-navy bg-opacity-5'
-                                          : 'border-gray-200 hover:border-gray-300'
+                                          ? 'border-tbgs-navy bg-blue-50'
+                                          : 'border-gray-200 hover:border-gray-300 bg-white'
                                       }`}
                                       onClick={() => field.onChange(service.value)}
                                     >
                                       <div className="flex items-start space-x-3">
-                                        <div className={`w-5 h-5 rounded-full border-2 mt-1 ${
+                                        <div className={`w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center ${
                                           field.value === service.value
                                             ? 'border-tbgs-navy bg-tbgs-navy'
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === service.value && (
-                                            <div className="w-1 h-1 bg-white rounded-full mx-auto mt-1"></div>
+                                            <div className="w-2 h-2 bg-white rounded-full"></div>
                                           )}
                                         </div>
                                         <div className="flex-1">
@@ -343,13 +343,13 @@ export default function GratisOfferte() {
                                             {spec.label}
                                           </h4>
                                         </div>
-                                        <div className={`w-5 h-5 rounded-full border-2 ${
+                                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                                           field.value === spec.value
                                             ? 'border-white bg-white'
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === spec.value && (
-                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full mx-auto mt-0.5"></div>
+                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full"></div>
                                           )}
                                         </div>
                                       </div>
@@ -547,7 +547,7 @@ export default function GratisOfferte() {
                               <FormItem>
                                 <FormLabel>Voornaam *</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Uw voornaam" className="h-12" {...field} />
+                                  <Input placeholder="Uw voornaam" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -561,7 +561,7 @@ export default function GratisOfferte() {
                               <FormItem>
                                 <FormLabel>Achternaam *</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Uw achternaam" className="h-12" {...field} />
+                                  <Input placeholder="Uw achternaam" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
