@@ -127,7 +127,7 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
             <div className="md:hidden">
               <div 
                 ref={sliderRef}
-                className="relative overflow-hidden rounded-2xl"
+                className="relative overflow-hidden"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -197,8 +197,9 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
   };
 
   return (
-    <Card className="bg-white border border-gray-200 shadow-lg mx-4">
-      <CardContent className="p-6">
+    <div className="flex justify-center px-4">
+      <Card className="bg-white border border-gray-200 shadow-lg max-w-sm w-full">
+        <CardContent className="p-6">
         <div className="flex items-start space-x-4 mb-4">
           <div className={`w-10 h-10 ${getAvatarColor(review.author_name)} rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0`}>
             {getInitials(review.author_name)}
@@ -234,13 +235,14 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
         
         <p className="text-gray-700 leading-relaxed text-sm">{review.text}</p>
         
-        <div className="mt-3">
-          <button className="text-tbgs-navy hover:text-blue-800 text-sm font-medium transition-colors">
-            Lees meer
-          </button>
-        </div>
-      </CardContent>
-    </Card>
+          <div className="mt-3">
+            <button className="text-tbgs-navy hover:text-blue-800 text-sm font-medium transition-colors">
+              Lees meer
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 
