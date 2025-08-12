@@ -131,7 +131,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10">
-                    <img src={certifiedIcon} alt="Gecertificeerd" className="w-8 h-8 object-contain brightness-0 invert" />
+                    <img src={certifiedIcon} alt="Gecertificeerd" className="w-10 h-10 object-contain brightness-0 invert" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerd</div>
@@ -161,7 +161,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={cleaningIcon} alt="Schoorsteenvegen" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={cleaningIcon} alt="Schoorsteenvegen" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenvegen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -180,7 +180,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={removalIcon} alt="Schoorsteen Verwijderen" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={removalIcon} alt="Schoorsteen Verwijderen" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -199,7 +199,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={repairIcon} alt="Schoorsteenreparatie" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={repairIcon} alt="Schoorsteenreparatie" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteenreparatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -218,7 +218,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={replacementIcon} alt="Schoorsteen Vervanging" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={replacementIcon} alt="Schoorsteen Vervanging" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -237,7 +237,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={renovationIcon} alt="Schoorsteen Renovatie" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={renovationIcon} alt="Schoorsteen Renovatie" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
@@ -256,7 +256,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={emergencyIcon} alt="Spoedservice 24/7" className="w-10 h-10 object-contain brightness-0 invert" />
+                <img src={emergencyIcon} alt="Spoedservice 24/7" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Spoedservice 24/7</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
