@@ -322,8 +322,8 @@ export default function GratisOfferte() {
                                       key={spec.value}
                                       className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === spec.value
-                                          ? 'border-tbgs-navy bg-tbgs-navy bg-opacity-5'
-                                          : 'border-gray-200 hover:border-gray-300'
+                                          ? `border-white ${spec.color} text-white`
+                                          : 'border-gray-200 hover:border-gray-300 bg-white'
                                       }`}
                                       onClick={() => field.onChange(spec.value)}
                                     >
@@ -336,15 +336,19 @@ export default function GratisOfferte() {
                                           />
                                         </div>
                                         <div className="flex-1">
-                                          <h4 className="font-semibold text-gray-900">{spec.label}</h4>
+                                          <h4 className={`font-semibold ${
+                                            field.value === spec.value ? 'text-white' : 'text-gray-900'
+                                          }`}>
+                                            {spec.label}
+                                          </h4>
                                         </div>
                                         <div className={`w-5 h-5 rounded-full border-2 ${
                                           field.value === spec.value
-                                            ? 'border-tbgs-navy bg-tbgs-navy'
+                                            ? 'border-white bg-white'
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === spec.value && (
-                                            <div className="w-1 h-1 bg-white rounded-full mx-auto mt-1"></div>
+                                            <div className="w-2 h-2 bg-tbgs-navy rounded-full mx-auto mt-0.5"></div>
                                           )}
                                         </div>
                                       </div>
@@ -683,7 +687,7 @@ export default function GratisOfferte() {
                               <FormLabel className="text-lg font-semibold">Projectbeschrijving *</FormLabel>
                               <FormControl>
                                 <Textarea
-                                  placeholder="Beschrijf uw project zo gedetailleerd mogelijk. Denk aan: gewenste materialen, specifieke wensen, timing, bijzonderheden van het pand, etc."
+                                  placeholder=""
                                   className="min-h-[120px]"
                                   {...field}
                                 />
