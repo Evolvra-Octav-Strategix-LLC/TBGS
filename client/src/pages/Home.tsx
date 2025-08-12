@@ -91,8 +91,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-200">
                 <div className="text-center">
-                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">10.000+</div>
-                  <div className="text-sm text-slate-600 font-medium">Gerealiseerde projecten</div>
+                  <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">8800+</div>
+                  <div className="text-sm text-slate-600 font-medium">Voltooide klussen</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-black bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">4e</div>
@@ -607,8 +607,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-users text-2xl text-blue-600"></i>
                 </div>
-                <div className="font-bold text-slate-900 mb-2">10.000+ Projecten</div>
-                <div className="text-slate-600 text-sm">4 generaties expertise</div>
+                <div className="font-bold text-slate-900 mb-2">8800+ Klussen</div>
+                <div className="text-slate-600 text-sm">Van klein tot groot</div>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
