@@ -24,6 +24,9 @@ import ContactModal from "@/components/ContactModal";
 import { useState } from "react";
 import { useLocation } from "wouter";
 
+// Main Locations Page
+import Locaties from "@/pages/Locaties";
+
 // Location Pages - Netherlands
 import LocationEindhoven from "@/pages/LocationEindhoven";
 import LocationNuenen from "@/pages/LocationNuenen";
@@ -90,12 +93,23 @@ function Router() {
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
+          {/* Main Locations Page */}
+          <Route path="/locaties" component={() => <Locaties />} />
+          
           {/* Location Pages - Netherlands */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nuenen" component={() => <LocationNuenen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/son-en-breugel" component={() => <LocationSonEnBreugel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/nuenen" component={() => <LocationNuenen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/geldrop" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/mierlo" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/waalre" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/locaties/hamont-achel" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Location Pages - Belgium */}
           <Route path="/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />

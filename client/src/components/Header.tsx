@@ -27,6 +27,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <a href="#diensten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Diensten</a>
+            <Link href="/locaties" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Locaties</Link>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Kennisbank</Link>
             <Link href="/over-ons" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Over Ons</Link>
             <Link href="/contact" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Contact</Link>
@@ -95,6 +96,14 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     <i className="fas fa-cogs mr-4 w-5"></i>
                     Diensten
                   </a>
+                  <Link 
+                    href="/locaties" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-map-marker-alt mr-4 w-5"></i>
+                    Locaties
+                  </Link>
                   <Link 
                     href="/kennisbank" 
                     className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
