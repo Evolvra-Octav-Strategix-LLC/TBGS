@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { useGooglePlaces } from "@/hooks/useGooglePlaces";
 
 interface GoogleReview {
   author_name: string;
@@ -21,11 +21,8 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Fetch real Google reviews
-  const { data: businessData, isLoading, error } = useQuery({
-    queryKey: ['/api/google-business', placeId],
-    queryFn: () => fetch(`/api/google-business/${placeId}`).then(res => res.json())
-  });
+  // Fetch real Google reviews using the new hook
+  const { data: businessData, isLoading, error } = useGooglePlaces(placeId);
 
   const reviews: GoogleReview[] = businessData?.reviews || [];
 
