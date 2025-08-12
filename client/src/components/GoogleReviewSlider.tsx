@@ -123,11 +123,28 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
           </div>
         ) : (
           <div className="relative">
-            {/* Mobile: Single card with swipe */}
-            <div className="md:hidden">
+            {/* Mobile: Single card with navigation */}
+            <div className="md:hidden relative">
+              {/* Navigation buttons */}
+              <button
+                onClick={previousReview}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
+                disabled={displayReviews.length <= 1}
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              
+              <button
+                onClick={nextReview}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-all duration-200 z-20"
+                disabled={displayReviews.length <= 1}
+              >
+                <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+
               <div 
                 ref={sliderRef}
-                className="relative overflow-hidden"
+                className="relative overflow-hidden px-12"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -140,7 +157,7 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
                   }}
                 >
                   {displayReviews.map((review, index) => (
-                    <div key={index} className="w-full flex-shrink-0">
+                    <div key={index} className="w-full flex-shrink-0 px-2">
                       <MobileReviewCard review={review} />
                     </div>
                   ))}
@@ -153,7 +170,7 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
                       index === currentIndex ? 'bg-tbgs-navy' : 'bg-gray-300'
                     }`}
                   />
@@ -197,17 +214,16 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
   };
 
   return (
-    <div className="flex justify-center px-4">
-      <Card className="bg-white border border-gray-200 shadow-lg max-w-sm w-full">
-        <CardContent className="p-6">
-        <div className="flex items-start space-x-4 mb-4">
+    <Card className="bg-white border border-gray-200 shadow-lg mx-auto max-w-xs">
+      <CardContent className="p-4">
+        <div className="flex items-start space-x-3 mb-3">
           <div className={`w-10 h-10 ${getAvatarColor(review.author_name)} rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0`}>
             {getInitials(review.author_name)}
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-gray-900 truncate">{review.author_name}</h4>
-              <div className="flex items-center space-x-1 ml-2 flex-shrink-0">
+            <div className="flex items-center justify-between mb-1">
+              <h4 className="font-medium text-gray-900 text-sm truncate">{review.author_name}</h4>
+              <div className="ml-2 flex-shrink-0">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -216,13 +232,13 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
                 </svg>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mb-2">{review.relative_time_description}</p>
+            <p className="text-xs text-gray-500 mb-2">{review.relative_time_description}</p>
             
-            <div className="flex items-center mb-3">
+            <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-4 h-4 ${
+                  className={`w-3 h-3 ${
                     i < review.rating 
                       ? 'text-yellow-400 fill-current' 
                       : 'text-gray-300'
@@ -233,16 +249,15 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
           </div>
         </div>
         
-        <p className="text-gray-700 leading-relaxed text-sm">{review.text}</p>
+        <p className="text-gray-700 leading-relaxed text-sm mb-3">{review.text}</p>
         
-          <div className="mt-3">
-            <button className="text-tbgs-navy hover:text-blue-800 text-sm font-medium transition-colors">
-              Lees meer
-            </button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+        <div>
+          <button className="text-tbgs-navy hover:text-blue-800 text-sm font-medium transition-colors">
+            Lees meer
+          </button>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 
