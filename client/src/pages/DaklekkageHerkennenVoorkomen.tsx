@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import SEOHead from "@/lib/seo";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CheckCircle, AlertTriangle, Eye, Shield, Wrench, Phone, Calendar, Star } from "lucide-react";
 
@@ -94,8 +93,6 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
         url="/kennisbank/daklekkage-herkennen-voorkomen"
         keywords="daklekkage herkennen, daklekkage voorkomen, daklekkage signalen, vochtplekken plafond, waterplekken plafond, lek dak herkennen, daklekkage opsporen, daklekkage symptomen, druppelend water dak, daklekkage tekenen, daklekkage preventie, dak onderhoud, dakinspectie, dakgoot onderhoud, dakdekker spoedservice, lekdetectie specialist, daklekkage reparatie, waterschade voorkomen"
       />
-
-      <Header onOpenContactModal={onOpenContactModal} />
 
       <article className="min-h-screen bg-gray-50">
         {/* Hero Section */}

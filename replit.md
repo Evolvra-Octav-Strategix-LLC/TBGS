@@ -14,6 +14,8 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - Implemented modern offerte form with file upload capabilities using Google Cloud object storage for attachments (images, documents, videos).
 - **Google Business Profile Integration**: Connected Google Business Profile (https://share.google/egYatvuB3Rli6d2Jz) with complete review syncing, map display, opening hours, and contact information for maximum local SEO ranking.
 - **Local SEO Schema Markup**: Implemented comprehensive LocalBusiness schema.org structured data for enhanced search engine visibility and local search rankings.
+- **Complete Pricing Removal**: Removed ALL pricing information from entire website including costs, investments, subsidies, and budget options as per user requirement.
+- **Fixed Duplicate Headers**: Resolved duplicate header issue on all knowledge base pages by removing redundant Header components from individual pages.
 
 ## User Preferences
 

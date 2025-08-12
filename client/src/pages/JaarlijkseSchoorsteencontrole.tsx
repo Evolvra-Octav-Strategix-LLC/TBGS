@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import SEOHead from "@/lib/seo";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Shield, CheckCircle, AlertTriangle, Clock, Flame, Wrench, Phone, Calendar, Star, Award } from "lucide-react";
 
@@ -122,8 +121,6 @@ export default function JaarlijkseSchoorsteencontrole({ onOpenContactModal }: Ja
         url="/kennisbank/jaarlijkse-schoorsteencontrole"
         keywords="schoorsteenveger, schoorsteenvegen, schoorsteen onderhoud, schoorsteencontrole, schoorsteen reinigen, schoorsteenveger Nederland, schoorsteenveger nodig, schoorsteen laten vegen prijs, schoorsteenbrand voorkomen, erkende schoorsteenveger, kosten schoorsteenvegen 2024, creosoot verwijderen, rookgasafvoer controle, schoorsteenveger spoeddienst, schoorsteen inspectie, schoorsteencontrole checklist, veilig stoken, schoorsteenonderhoud wettelijk verplicht"
       />
-
-      <Header onOpenContactModal={onOpenContactModal} />
 
       <article className="min-h-screen bg-gray-50">
         {/* Hero Section */}

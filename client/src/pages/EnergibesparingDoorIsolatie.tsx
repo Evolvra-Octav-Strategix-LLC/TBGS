@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import SEOHead from "@/lib/seo";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { TrendingUp, Home, Zap, Euro, Thermometer, CheckCircle, Calculator, Phone, Calendar, Star, Award } from "lucide-react";
 
@@ -126,8 +125,6 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
         url="/kennisbank/energiebesparing-door-isolatie"
         keywords="energiebesparing woningen, woningisolatie, isolatie subsidie, ISDE subsidie 2025, energiezuinige woning, verduurzaming woning, energierekening verlagen, warmteverlies voorkomen, dakisolatie, vloerisolatie, spouwmuurisolatie, HR++ glas, tripleglas, isolatiemateriaal, biobased isolatie, vezelhennep isolatie, isolatiewaarde Rd, energielabel verbeteren, isolatie kosten, isolatie specialist"
       />
-
-      <Header onOpenContactModal={onOpenContactModal} />
 
       <article className="min-h-screen bg-gray-50">
         {/* Hero Section */}
