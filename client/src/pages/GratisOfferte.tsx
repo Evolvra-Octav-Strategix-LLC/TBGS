@@ -153,8 +153,8 @@ export default function GratisOfferte() {
   };
 
   const serviceTypes = [
-    { value: "offerte", label: "Gratis Offerte", description: "Gedetailleerde prijsopgave voor uw project" },
-    { value: "inspectie", label: "Gratis Inspectie + Offerte", description: "Locatie bezoek met uitgebreide analyse en offerte" },
+    { value: "offerte", label: "Gratis Offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
+    { value: "inspectie", label: "Gratis Inspectie", description: "Locatie bezoek voor analyse en advies" },
     { value: "spoedservice", label: "Spoedservice", description: "Dringende reparatie binnen 24 uur" },
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
   ];
@@ -180,7 +180,7 @@ export default function GratisOfferte() {
     <>
       <SEOHead 
         title="Gratis Offerte Aanvragen - TBGS BV | Professionele Bouwdiensten Nederland & België"
-        description="Vraag nu uw gratis offerte aan bij TBGS BV. Specialist in dakwerk, schoorsteenservice, onderhoud en bouw. Upload foto's en ontvang binnen 24 uur een gedetailleerde prijsopgave."
+        description="Vraag nu uw gratis offerte aan bij TBGS BV. Specialist in dakwerk, schoorsteenservice, onderhoud en bouw. Upload foto's en wij nemen binnen 24 uur contact met u op."
         url="/gratis-offerte"
         keywords="gratis offerte, offerte aanvragen, dakwerk offerte, schoorsteen offerte, bouw offerte, renovatie prijsopgave, gratis inspectie, TBGS offerte, bouwbedrijf Nederland België"
       />
@@ -204,7 +204,7 @@ export default function GratisOfferte() {
               </h1>
               
               <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-                Upload foto's, beschrijf uw project en ontvang binnen 24 uur een gedetailleerde prijsopgave
+                Upload foto's, beschrijf uw project en wij nemen binnen 24 uur contact met u op
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
@@ -226,8 +226,8 @@ export default function GratisOfferte() {
                   <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
                     <FileText className="w-8 h-8" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">Gedetailleerde Offerte</h3>
-                  <p className="text-sm opacity-90">Transparante prijsopgave binnen 24 uur</p>
+                  <h3 className="font-semibold text-lg mb-2">Persoonlijk Contact</h3>
+                  <p className="text-sm opacity-90">Wij nemen binnen 24 uur contact op voor afspraak</p>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function GratisOfferte() {
                 <CardHeader className="text-center pb-8">
                   <CardTitle className="text-3xl text-gray-900 mb-4">Uw Project Details</CardTitle>
                   <CardDescription className="text-lg text-gray-600">
-                    Vul onderstaand formulier in voor uw gratis offerte. Hoe meer details, hoe nauwkeuriger onze prijsopgave.
+                    Vul onderstaand formulier in en wij nemen snel contact op voor een persoonlijk gesprek en inspectie.
                   </CardDescription>
                 </CardHeader>
 
