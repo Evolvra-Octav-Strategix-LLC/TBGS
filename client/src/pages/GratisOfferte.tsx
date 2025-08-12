@@ -677,29 +677,8 @@ export default function GratisOfferte() {
 
                       <Separator />
 
-                      {/* Project Description */}
+                      {/* Contact and Budget Selection */}
                       <div className="space-y-6">
-                        <FormField
-                          control={form.control}
-                          name="beschrijving"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-lg font-semibold">Projectbeschrijving *</FormLabel>
-                              <FormControl>
-                                <Textarea
-                                  placeholder=""
-                                  className="min-h-[120px]"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormDescription>
-                                Hoe meer details u geeft, hoe nauwkeuriger onze offerte wordt.
-                              </FormDescription>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <FormField
                             control={form.control}
