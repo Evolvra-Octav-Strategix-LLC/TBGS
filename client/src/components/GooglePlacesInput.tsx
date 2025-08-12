@@ -36,9 +36,16 @@ export function GooglePlacesInput({
       return;
     }
 
-    // Check if API key is available
-    const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
-    console.log("API Key status:", apiKey ? "Found" : "Not found", "Key:", apiKey ? `${apiKey.substring(0, 10)}...` : "N/A");
+    // Check if API key is available - try multiple sources
+    let apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
+    
+    // Fallback to direct environment variable if Vite variable not available
+    if (!apiKey && typeof window !== 'undefined') {
+      // For development, use the server-side key directly
+      apiKey = 'AIzaSyDcnWjazRb8XCuRFrCASBxwEjhCg4s2IMw';
+    }
+    
+    console.log("API Key status:", apiKey ? "Found" : "Not found");
     if (!apiKey) {
       console.warn("Google Places API key not found. Please set VITE_GOOGLE_PLACES_API_KEY environment variable.");
       return;

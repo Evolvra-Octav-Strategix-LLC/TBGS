@@ -50,7 +50,7 @@ const offerteFormSchema = z.object({
   beschrijving: z.string().min(20, "Beschrijf uw project in minimaal 20 karakters"),
   
   // Detailed Description (replaces inspection option)
-  gedetaileerdeBeschrijving: z.string().min(50, "Geef een gedetailleerde beschrijving van minimaal 50 karakters"),
+  gedetaileerdeBeschrijving: z.string().min(5, "Geef een beschrijving van minimaal 5 karakters"),
   
   // Contact Preferences
   contactVoorkeur: z.string().min(1, "Kies uw contactvoorkeur"),
@@ -693,10 +693,8 @@ export default function GratisOfferte() {
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="telefoon">Telefonisch contact</SelectItem>
                                     <SelectItem value="email">E-mail contact</SelectItem>
                                     <SelectItem value="whatsapp">WhatsApp bericht</SelectItem>
-                                    <SelectItem value="beide">Telefoon en e-mail</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
