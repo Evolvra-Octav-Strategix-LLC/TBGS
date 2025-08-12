@@ -53,7 +53,7 @@ export default function JaarlijkseSchoorsteencontrole({ onOpenContactModal }: Ja
         "Creosoot verwijdering",
         "Technische inspectie rapport"
       ],
-      kosten: "€150-250",
+      voordeel: "Wettelijk verplicht onderhoud",
       wettelijk: true
     },
     {
@@ -107,11 +107,11 @@ export default function JaarlijkseSchoorsteencontrole({ onOpenContactModal }: Ja
     }
   ];
 
-  const kostenvergelijking = [
-    { service: "Jaarlijkse controle & vegen", kosten: "€150-250", voordeel: "Wettelijk verplicht, veiligheid gegarandeerd" },
-    { service: "Spoedservice na problemen", kosten: "€300-500", voordeel: "Direct beschikbaar, 24/7 service" },
-    { service: "Schoorsteenreparatie", kosten: "€500-2.500", voordeel: "Voorkom grote renovatiekosten" },
-    { service: "Onderhoudscontract", kosten: "€200-350/jaar", voordeel: "Alles geregeld, prioriteit service" }
+  const servicevergelijking = [
+    { service: "Jaarlijkse controle & vegen", type: "Standaard service", voordeel: "Wettelijk verplicht, veiligheid gegarandeerd" },
+    { service: "Spoedservice na problemen", type: "Spoed service", voordeel: "Direct beschikbaar, 24/7 service" },
+    { service: "Schoorsteenreparatie", type: "Reparatie service", voordeel: "Voorkom grote renovatiekosten" },
+    { service: "Onderhoudscontract", type: "Jaarcontract", voordeel: "Alles geregeld, prioriteit service" }
   ];
 
   return (
@@ -372,15 +372,15 @@ export default function JaarlijkseSchoorsteencontrole({ onOpenContactModal }: Ja
                   <thead>
                     <tr className="border-b-2">
                       <th className="text-left py-4 px-2 font-semibold text-gray-900">Service</th>
-                      <th className="text-center py-4 px-2 font-semibold text-gray-900">Kosten</th>
+                      <th className="text-center py-4 px-2 font-semibold text-gray-900">Type Service</th>
                       <th className="text-left py-4 px-2 font-semibold text-tbgs-blue">Voordeel</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {kostenvergelijking.map((item, index) => (
+                    {servicevergelijking.map((item, index) => (
                       <tr key={index} className="border-b hover:bg-gray-50">
                         <td className="py-4 px-2 font-medium">{item.service}</td>
-                        <td className="py-4 px-2 text-center font-bold">{item.kosten}</td>
+                        <td className="py-4 px-2 text-center font-bold">{item.type}</td>
                         <td className="py-4 px-2 text-gray-700">{item.voordeel}</td>
                       </tr>
                     ))}
@@ -390,7 +390,7 @@ export default function JaarlijkseSchoorsteencontrole({ onOpenContactModal }: Ja
 
               <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-6">
                 <p className="text-blue-800 font-semibold">
-                  💡 <strong>Expert tip:</strong> Regelmatig onderhoud voorkomt dure reparaties. Een jaarlijkse controle van €200 kan duizenden euro's aan schade voorkomen!
+                  💡 <strong>Expert tip:</strong> Regelmatig onderhoud voorkomt dure reparaties. Een jaarlijkse controle kan aanzienlijke schade voorkomen!
                 </p>
               </div>
             </section>

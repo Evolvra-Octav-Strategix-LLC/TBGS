@@ -21,7 +21,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
       description: 'Complete controle van uw dakbedekking, goten en isolatie',
       includes: ['Visuele beoordeling dakbedekking', 'Controle dakgoten en afvoeren', 'Isolatie en ventilatie check', 'Rapport met aanbevelingen'],
       duration: '45-60 min',
-      value: '€150'
+      waarde: 'Uitgebreide analyse'
     },
     {
       id: 'schoorsteen',
@@ -31,7 +31,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
       description: 'Veiligheidscontrole en functionele beoordeling van uw schoorsteen',
       includes: ['Rookgasafvoer controle', 'Structurele beoordeling', 'Veiligheidscheck ketelkoppeling', 'Adviesrapport met certificaat'],
       duration: '30-45 min',
-      value: '€125'
+      waarde: 'Veiligheidsrapport'
     },
     {
       id: 'onderhoud',
@@ -41,7 +41,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
       description: 'Algemene controle op preventieve onderhoudspunten',
       includes: ['360° gebouwcontrole', 'Preventieve puntenlijst', 'Prioritering werkzaamheden', 'Onderhoudsplanning advies'],
       duration: '60-90 min',
-      value: '€175'
+      waarde: 'Onderhoudsplan'
     },
     {
       id: 'bouw',
@@ -51,7 +51,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
       description: 'Uitgebreide technische beoordeling van uw pand',
       includes: ['Structurele elementen controle', 'Gevelbeoordeling', 'Isolatie en vochtproblematiek', 'Renovatie-adviesrapport'],
       duration: '90-120 min',
-      value: '€200'
+      waarde: 'Bouwkundig rapport'
     }
   ];
 
@@ -59,7 +59,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
     {
       icon: 'fas fa-euro-sign',
       title: 'Kostenbesparing',
-      description: 'Problemen vroegtijdig opsporen bespaart duizenden euro\'s aan noodreparaties'
+      description: 'Problemen vroegtijdig opsporen bespaart aanzienlijke kosten aan noodreparaties'
     },
     {
       icon: 'fas fa-shield-check',
@@ -69,7 +69,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
     {
       icon: 'fas fa-clock',
       title: 'Planbare Onderhoud',
-      description: 'Werk op het juiste moment uitvoeren tegen de beste prijzen'
+      description: 'Werk op het juiste moment uitvoeren voor optimale resultaten'
     },
     {
       icon: 'fas fa-home',
@@ -174,7 +174,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-green-600 mb-1">GRATIS</div>
-                    <div className="text-sm text-slate-500 line-through">Normaal {inspection.value}</div>
+                    <div className="text-sm text-slate-500">Waarde: {inspection.waarde}</div>
                   </div>
                 </div>
                 

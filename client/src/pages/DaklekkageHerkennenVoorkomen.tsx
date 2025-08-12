@@ -80,10 +80,10 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
   ];
 
   const kostenvergelijking = [
-    { type: "Preventieve inspectie", kosten: "€150-300", besparing: "€2.000-15.000" },
-    { type: "Dakgoot reiniging", kosten: "€100-200", besparing: "€1.500-5.000" },
-    { type: "Kleine reparatie op tijd", kosten: "€200-500", besparing: "€3.000-10.000" },
-    { type: "Directe schadereparatie", kosten: "€500-2.000", besparing: "€5.000-25.000" }
+    { type: "Preventieve inspectie", voordeel: "Voorkom grote schade", besparing: "Aanzienlijke besparingen" },
+    { type: "Dakgoot reiniging", voordeel: "Waterafvoer optimaal", besparing: "Voorkom kostbare reparaties" },
+    { type: "Kleine reparatie op tijd", voordeel: "Snel opgelost", besparing: "Voorkom uitbreiding schade" },
+    { type: "Directe schadereparatie", voordeel: "Direct ingrijpen", besparing: "Voorkom verdere escalatie" }
   ];
 
   return (
@@ -277,7 +277,7 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
                   <thead>
                     <tr className="border-b-2">
                       <th className="text-left py-4 px-2 font-semibold text-gray-900">Voorziening</th>
-                      <th className="text-center py-4 px-2 font-semibold text-gray-900">Investering</th>
+                      <th className="text-center py-4 px-2 font-semibold text-gray-900">Voordeel</th>
                       <th className="text-center py-4 px-2 font-semibold text-tbgs-red">Potentiële Besparing</th>
                     </tr>
                   </thead>
@@ -285,7 +285,7 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
                     {kostenvergelijking.map((item, index) => (
                       <tr key={index} className="border-b hover:bg-gray-50">
                         <td className="py-4 px-2 font-medium">{item.type}</td>
-                        <td className="py-4 px-2 text-center">{item.kosten}</td>
+                        <td className="py-4 px-2 text-center">{item.voordeel}</td>
                         <td className="py-4 px-2 text-center font-bold text-green-600">{item.besparing}</td>
                       </tr>
                     ))}
@@ -295,7 +295,7 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
 
               <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-6">
                 <p className="text-blue-800 font-semibold">
-                  💡 <strong>Expert tip:</strong> Een preventieve inspectie van €200 kan duizenden euro's aan reparatiekosten besparen. Investeren in preventie loont altijd!
+                  💡 <strong>Expert tip:</strong> Een preventieve inspectie kan aanzienlijke reparatiekosten besparen. Investeren in preventie loont altijd!
                 </p>
               </div>
             </section>

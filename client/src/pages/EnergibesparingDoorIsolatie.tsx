@@ -17,36 +17,36 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
     {
       type: "Dakisolatie",
       besparing: "25-30%",
-      investering: "€2.500-4.500",
-      terugverdientijd: "4-6 jaar",
-      subsidie: "Tot €2.500",
+      voordeel: "Hoogste energiebesparing",
+      terugverdientijd: "Korte termijn",
+      subsidie: "Subsidies beschikbaar",
       rdWaarde: "R ≥ 6.0 m²K/W",
       icon: <Home className="w-6 h-6 text-tbgs-green" />
     },
     {
       type: "Vloerisolatie",
       besparing: "15-20%",
-      investering: "€1.800-3.200",
-      terugverdientijd: "5-8 jaar",
-      subsidie: "Tot €1.500",
+      voordeel: "Betere vloercomfort",
+      terugverdientijd: "Middellange termijn",
+      subsidie: "Subsidies beschikbaar",
       rdWaarde: "R ≥ 3.5 m²K/W",
       icon: <Home className="w-6 h-6 text-blue-500" />
     },
     {
       type: "Spouwmuurisolatie",
       besparing: "20-25%",
-      investering: "€1.200-2.500",
-      terugverdientijd: "3-5 jaar",
-      subsidie: "Tot €1.800",
+      voordeel: "Snelle installatie",
+      terugverdientijd: "Korte termijn",
+      subsidie: "Subsidies beschikbaar",
       rdWaarde: "R ≥ 2.5 m²K/W",
       icon: <Home className="w-6 h-6 text-orange-500" />
     },
     {
       type: "HR++ / Tripleglas",
       besparing: "10-15%",
-      investering: "€4.000-8.000",
-      terugverdientijd: "8-12 jaar",
-      subsidie: "Tot €3.500",
+      voordeel: "Geluidsisolatie bonus",
+      terugverdientijd: "Lange termijn",
+      subsidie: "Subsidies beschikbaar",
       rdWaarde: "U ≤ 1.1 W/m²K",
       icon: <Home className="w-6 h-6 text-purple-500" />
     }
@@ -55,26 +55,26 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
   const subsidieoverzicht = [
     {
       naam: "ISDE 2025",
-      bedrag: "Tot €4.000",
+      voordeel: "Aanzienlijke subsidie",
       voorwaarde: "Particuliere woningeigenaren",
-      extra: "Biobased isolatie: +25% subsidie"
+      extra: "Biobased isolatie: extra subsidie"
     },
     {
       naam: "Nationaal Warmtefonds",
-      bedrag: "€2.000-8.000",
+      voordeel: "Financiële ondersteuning",
       voorwaarde: "Huishoudens met laag inkomen",
       extra: "Renteloze lening mogelijk"
     },
     {
       naam: "Lokale Subsidies",
-      bedrag: "€500-2.000",
+      voordeel: "Gemeentelijke steun",
       voorwaarde: "Afhankelijk van gemeente",
       extra: "Check uw gemeente website"
     },
     {
       naam: "Energiebespaarlening",
-      bedrag: "Tot €25.000",
-      voorwaarde: "2.5% rente, 20 jaar looptijd",
+      voordeel: "Lage rente financiering",
+      voorwaarde: "Gunstige voorwaarden",
       extra: "Geen onderpand vereist"
     }
   ];
@@ -87,7 +87,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
       brandveiligheid: "Uitstekend",
       vocht: "Goed",
       milieu: "Goed",
-      prijs: "€€"
+      kategorie: "Standaard"
     },
     {
       materiaal: "Glaswol",
@@ -96,7 +96,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
       brandveiligheid: "Goed",
       vocht: "Matig",
       milieu: "Goed",
-      prijs: "€"
+      kategorie: "Basis"
     },
     {
       materiaal: "Vezelhennep",
@@ -105,7 +105,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
       brandveiligheid: "Goed",
       vocht: "Uitstekend",
       milieu: "Uitstekend",
-      prijs: "€€€"
+      kategorie: "Premium"
     },
     {
       materiaal: "Vlas Isolatie",
@@ -114,7 +114,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
       brandveiligheid: "Goed",
       vocht: "Uitstekend",
       milieu: "Uitstekend",
-      prijs: "€€€"
+      kategorie: "Premium"
     }
   ];
 
@@ -222,8 +222,8 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
                     
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Investering:</span>
-                        <span className="font-semibold">{isolatie.investering}</span>
+                        <span className="text-gray-600">Voordeel:</span>
+                        <span className="font-semibold">{isolatie.voordeel}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600">Terugverdientijd:</span>
@@ -272,7 +272,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="font-bold text-lg text-gray-900">{subsidie.naam}</h3>
                       <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                        {subsidie.bedrag}
+                        {subsidie.voordeel}
                       </span>
                     </div>
                     <p className="text-gray-700 mb-2">{subsidie.voorwaarde}</p>
@@ -323,7 +323,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
                       <th className="text-center py-4 px-2 font-semibold">Brandveilig</th>
                       <th className="text-center py-4 px-2 font-semibold">Vocht</th>
                       <th className="text-center py-4 px-2 font-semibold">Milieu</th>
-                      <th className="text-center py-4 px-2 font-semibold">Prijs</th>
+                      <th className="text-center py-4 px-2 font-semibold">Kategorie</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -354,7 +354,7 @@ export default function EnergibesparingDoorIsolatie({ onOpenContactModal }: Ener
                             {materiaal.milieu}
                           </span>
                         </td>
-                        <td className="py-4 px-2 text-center font-bold">{materiaal.prijs}</td>
+                        <td className="py-4 px-2 text-center font-bold">{materiaal.kategorie}</td>
                       </tr>
                     ))}
                   </tbody>

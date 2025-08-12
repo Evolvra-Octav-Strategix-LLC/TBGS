@@ -395,10 +395,10 @@ export default function GratisOfferte() {
                                       </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                      <SelectItem value="klein">Klein (&lt; €5.000)</SelectItem>
-                                      <SelectItem value="middel">Middel (€5.000 - €15.000)</SelectItem>
-                                      <SelectItem value="groot">Groot (€15.000 - €50.000)</SelectItem>
-                                      <SelectItem value="zeer-groot">Zeer Groot (&gt; €50.000)</SelectItem>
+                                      <SelectItem value="klein">Klein project</SelectItem>
+                                      <SelectItem value="middel">Middelgroot project</SelectItem>
+                                      <SelectItem value="groot">Groot project</SelectItem>
+                                      <SelectItem value="zeer-groot">Zeer groot project</SelectItem>
                                     </SelectContent>
                                   </Select>
                                   <FormMessage />
@@ -694,12 +694,12 @@ export default function GratisOfferte() {
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="onder-2500">Onder €2.500</SelectItem>
-                                    <SelectItem value="2500-5000">€2.500 - €5.000</SelectItem>
-                                    <SelectItem value="5000-10000">€5.000 - €10.000</SelectItem>
-                                    <SelectItem value="10000-25000">€10.000 - €25.000</SelectItem>
-                                    <SelectItem value="25000-50000">€25.000 - €50.000</SelectItem>
-                                    <SelectItem value="boven-50000">Boven €50.000</SelectItem>
+                                    <SelectItem value="klein">Klein budget</SelectItem>
+                                    <SelectItem value="middel">Middelgroot budget</SelectItem>
+                                    <SelectItem value="groot">Groot budget</SelectItem>
+                                    <SelectItem value="uitgebreid">Uitgebreid budget</SelectItem>
+                                    <SelectItem value="premium">Premium budget</SelectItem>
+                                    <SelectItem value="geen-limiet">Geen budgetlimiet</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
