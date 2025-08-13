@@ -461,40 +461,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           {/* Real Google Reviews Slider */}
           <GoogleReviewSlider placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs" className="mb-12" />
 
-          {/* Trust Badges */}
-          <div className="bg-slate-50 rounded-3xl p-8 lg:p-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 text-center mb-8">Waarom Klanten TBGS Vertrouwen</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-award text-2xl text-green-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">80+ Jaar Familietraditie</div>
-                <div className="text-slate-600 text-sm">Generaties vakmanschap gebundeld</div>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-users text-2xl text-blue-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">8800+ Klussen</div>
-                <div className="text-slate-600 text-sm">Van klein tot groot</div>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-shield-alt text-2xl text-purple-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">100% Garantie</div>
-                <div className="text-slate-600 text-sm">Op alle werkzaamheden</div>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-certificate text-2xl text-yellow-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">Gecertificeerd</div>
-                <div className="text-slate-600 text-sm">Alle specialisten</div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </section>
       {/* Service Areas - Modern Design */}
