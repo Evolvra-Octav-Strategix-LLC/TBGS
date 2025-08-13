@@ -4,6 +4,10 @@ import { ShieldCheck } from "lucide-react";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
+import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
+import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
+import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
+import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 interface HomeProps {
   onOpenContactModal: () => void;
@@ -161,7 +165,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-blue group-hover:to-blue-600 transition-all duration-500 shadow-lg">
-                      <i className="fas fa-industry text-4xl text-tbgs-blue group-hover:text-white transition-colors duration-500"></i>
+                      <img src={tssLogo} alt="TSS Logo" className="w-16 h-16 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-blue rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <i className="fas fa-arrow-right text-white text-xs"></i>
@@ -186,7 +190,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-red group-hover:to-red-600 transition-all duration-500 shadow-lg">
-                      <i className="fas fa-home text-4xl text-tbgs-red group-hover:text-white transition-colors duration-500"></i>
+                      <img src={tdsLogo} alt="TDS Logo" className="w-16 h-16 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-red rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <i className="fas fa-arrow-right text-white text-xs"></i>
@@ -211,7 +215,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-green group-hover:to-green-600 transition-all duration-500 shadow-lg">
-                      <i className="fas fa-wrench text-4xl text-tbgs-green group-hover:text-white transition-colors duration-500"></i>
+                      <img src={tosLogo} alt="TOS Logo" className="w-16 h-16 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-green rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <i className="fas fa-arrow-right text-white text-xs"></i>
@@ -236,7 +240,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center space-y-6 flex-1 flex flex-col justify-between">
                   <div className="relative">
                     <div className="w-24 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mx-auto group-hover:from-tbgs-orange group-hover:to-orange-600 transition-all duration-500 shadow-lg">
-                      <i className="fas fa-hammer text-4xl text-tbgs-orange group-hover:text-white transition-colors duration-500"></i>
+                      <img src={tbsLogo} alt="TBS Logo" className="w-16 h-16 object-contain opacity-80 group-hover:opacity-100 transition-all duration-500" />
                     </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-orange rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <i className="fas fa-arrow-right text-white text-xs"></i>
