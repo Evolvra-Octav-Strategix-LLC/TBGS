@@ -230,7 +230,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold lg:font-black mb-6 sm:mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">80 jaar ervaring</span>
+              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Vakmanschap</span>
               <br />
               <span className="text-white">aan uw dienst</span>
             </h2>
