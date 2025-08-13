@@ -61,11 +61,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               <div className="space-y-6">
-                <h1 className="text-3xl sm:text-4xl lg:text-7xl font-bold text-slate-900 leading-tight">
+                <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 leading-tight">
                   Samen duurzaam & 
                   <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent"> innovatief</span>
                   <br />
-                  <span className="text-2xl sm:text-3xl lg:text-6xl">(ver)bouwen</span>
+                  <span className="text-4xl lg:text-6xl">(ver)bouwen</span>
                 </h1>
                 <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed font-light">
                   Premium bouwspecialisten voor <strong>dakwerken</strong>, <strong>schoorsteenwerken</strong> en <strong>onderhoud</strong> in Nederland en België. Gecertificeerd vakmanschap met <strong>80+ jaar ervaring vanuit de gehele familie</strong>.

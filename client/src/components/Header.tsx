@@ -15,11 +15,11 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <div className="flex items-center space-x-2 lg:space-x-3 cursor-pointer">
-              <img src={tbgsLogo} alt="TBGS Logo" className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain" />
+            <div className="flex items-center space-x-3 cursor-pointer">
+              <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
-                <h1 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-[10px] sm:text-xs md:text-xs lg:text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
+                <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
+                <p className="text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
               </div>
             </div>
           </Link>
@@ -55,6 +55,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         </div>
 
       </div>
+
       {/* Mobile Navigation Overlay */}
       {isMobileMenuOpen && (
         <>
