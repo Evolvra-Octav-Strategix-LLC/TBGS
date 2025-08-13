@@ -119,23 +119,23 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 />
               </div>
               
-              {/* Floating Cards */}
-              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
-                    <i className="fas fa-shield-alt text-green-600 text-xl"></i>
+              {/* Floating Cards - Mobile Responsive */}
+              <div className="absolute -bottom-4 -left-4 lg:-bottom-8 lg:-left-8 bg-white p-3 lg:p-6 rounded-xl lg:rounded-2xl shadow-xl border border-slate-200">
+                <div className="flex items-center space-x-2 lg:space-x-4">
+                  <div className="w-8 h-8 lg:w-14 lg:h-14 bg-green-100 rounded-full flex items-center justify-center">
+                    <i className="fas fa-shield-alt text-green-600 text-sm lg:text-xl"></i>
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900">100% Garantie</div>
-                    <div className="text-sm text-slate-600">Op alle werkzaamheden</div>
+                    <div className="font-bold text-slate-900 text-xs lg:text-base">100% Garantie</div>
+                    <div className="text-xs lg:text-sm text-slate-600">Op alle werkzaamheden</div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -top-8 -right-8 bg-tbgs-navy text-white p-6 rounded-2xl shadow-xl">
+              <div className="absolute -top-4 -right-4 lg:-top-8 lg:-right-8 bg-tbgs-navy text-white p-3 lg:p-6 rounded-xl lg:rounded-2xl shadow-xl">
                 <div className="text-center">
-                  <div className="text-2xl font-bold">NL & BE</div>
-                  <div className="text-sm opacity-90">Werkgebied</div>
+                  <div className="text-lg lg:text-2xl font-bold">NL & BE</div>
+                  <div className="text-xs lg:text-sm opacity-90">Werkgebied</div>
                 </div>
               </div>
             </div>
