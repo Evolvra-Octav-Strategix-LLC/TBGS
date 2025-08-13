@@ -240,9 +240,9 @@ export default function GratisOfferte() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <Card className="shadow-2xl border-0">
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-3xl text-gray-900 mb-4">Uw Project Details</CardTitle>
-                  <CardDescription className="text-lg text-gray-600">
+                <CardHeader className="text-center pb-6 sm:pb-8">
+                  <CardTitle className="text-2xl sm:text-3xl text-gray-900 mb-3 sm:mb-4">Uw Project Details</CardTitle>
+                  <CardDescription className="text-base sm:text-lg text-gray-600">
                     Vul onderstaand formulier in en wij nemen snel contact op voor een persoonlijk gesprek en inspectie.
                   </CardDescription>
                 </CardHeader>
@@ -252,10 +252,10 @@ export default function GratisOfferte() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                       
                       {/* Service Type Selection */}
-                      <div className="space-y-6">
+                      <div className="space-y-4 sm:space-y-6">
                         <div className="text-center">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Wat heeft u nodig?</h3>
-                          <p className="text-gray-600">Kies de service die het beste bij uw situatie past</p>
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Wat heeft u nodig?</h3>
+                          <p className="text-sm sm:text-base text-gray-600">Kies de service die het beste bij uw situatie past</p>
                         </div>
                         
                         <FormField
@@ -264,11 +264,11 @@ export default function GratisOfferte() {
                           render={({ field }) => (
                             <FormItem>
                               <FormControl>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 gap-3">
                                   {serviceTypes.map((service) => (
                                     <div
                                       key={service.value}
-                                      className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
+                                      className={`p-3 sm:p-4 border-2 rounded-lg sm:rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === service.value
                                           ? 'border-tbgs-navy bg-blue-50'
                                           : 'border-gray-200 hover:border-gray-300 bg-white'
@@ -276,18 +276,18 @@ export default function GratisOfferte() {
                                       onClick={() => field.onChange(service.value)}
                                     >
                                       <div className="flex items-start space-x-3">
-                                        <div className={`w-5 h-5 rounded-full border-2 mt-1 flex items-center justify-center ${
+                                        <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 mt-0.5 sm:mt-1 flex items-center justify-center ${
                                           field.value === service.value
                                             ? 'border-tbgs-navy bg-tbgs-navy'
                                             : 'border-gray-300'
                                         }`}>
                                           {field.value === service.value && (
-                                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
                                           )}
                                         </div>
                                         <div className="flex-1">
-                                          <h4 className="font-semibold text-gray-900 mb-1">{service.label}</h4>
-                                          <p className="text-sm text-gray-600">{service.description}</p>
+                                          <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{service.label}</h4>
+                                          <p className="text-xs sm:text-sm text-gray-600">{service.description}</p>
                                         </div>
                                       </div>
                                     </div>
@@ -303,10 +303,10 @@ export default function GratisOfferte() {
                       <Separator />
 
                       {/* Specialist Selection */}
-                      <div className="space-y-6">
+                      <div className="space-y-4 sm:space-y-6">
                         <div className="text-center">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Welke specialist heeft u nodig?</h3>
-                          <p className="text-gray-600">Selecteer het specialisme dat bij uw project past</p>
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Welke specialist heeft u nodig?</h3>
+                          <p className="text-sm sm:text-base text-gray-600">Selecteer het specialisme dat bij uw project past</p>
                         </div>
 
                         <FormField
@@ -315,11 +315,11 @@ export default function GratisOfferte() {
                           render={({ field }) => (
                             <FormItem>
                               <FormControl>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 gap-3">
                                   {specialismen.map((spec) => (
                                     <div
                                       key={spec.value}
-                                      className={`p-4 border-2 rounded-xl cursor-pointer transition-all hover:shadow-md ${
+                                      className={`p-3 sm:p-4 border-2 rounded-lg sm:rounded-xl cursor-pointer transition-all hover:shadow-md ${
                                         field.value === spec.value
                                           ? `border-white ${spec.color} text-white`
                                           : 'border-gray-200 hover:border-gray-300 bg-white'
@@ -327,15 +327,15 @@ export default function GratisOfferte() {
                                       onClick={() => field.onChange(spec.value)}
                                     >
                                       <div className="flex items-center space-x-3">
-                                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white border flex items-center justify-center p-1.5 sm:p-2 flex-shrink-0">
                                           <img 
                                             src={spec.logo} 
                                             alt={spec.label}
                                             className="w-full h-full object-contain"
                                           />
                                         </div>
-                                        <div className="flex-1">
-                                          <h4 className={`font-semibold ${
+                                        <div className="flex-1 min-w-0">
+                                          <h4 className={`font-semibold text-sm sm:text-base ${
                                             field.value === spec.value ? 'text-white' : 'text-gray-900'
                                           }`}>
                                             {spec.label}
