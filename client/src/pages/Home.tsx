@@ -339,7 +339,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
                   </p>
                   <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
-                    Door jarenlange ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, schoorsteen of bouwproject</strong>.
+                    Door jarenlange ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                   </p>
                   <div className="mt-8">
                     <button 
