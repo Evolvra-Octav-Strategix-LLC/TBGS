@@ -780,7 +780,7 @@ export default function GratisOfferte() {
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">20+ Jaar Ervaring</h3>
-                  <p className="text-gray-600">Ruime expertise in alle specialismen</p>
+                  <p className="text-gray-600">Ruime ervaring in alle specialismen</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">

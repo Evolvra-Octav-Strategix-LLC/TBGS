@@ -12,7 +12,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
     <>
       <SEOHead 
         title="Totaal Bouw Specialist (TBS) - Verbouwingen & Renovaties | TBGS"
-        description="TBS - Totaal Bouw Specialist van TBGS. Expert in verbouwingen, renovaties, aanbouw, badkamer- en keukenrenovaties in Nederland en België."
+        description="TBS - Totaal Bouw Specialist van TBGS. Specialist in verbouwingen, renovaties, aanbouw, badkamer- en keukenrenovaties in Nederland en België."
         url="https://tbgs.nl/totaal-bouw-specialist"
       />
 
@@ -60,7 +60,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                     <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Bouw Specialist
                     </h1>
-                    <p className="text-lg text-tbgs-orange font-semibold">TBS - Uw bouw expert</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-orange font-semibold">TBS - Uw bouw specialist</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">

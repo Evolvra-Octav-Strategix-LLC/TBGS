@@ -67,7 +67,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                     <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Dak Specialist
                     </h1>
-                    <p className="text-lg text-tbgs-red font-semibold">TDS - Uw dakwerken specialist</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-red font-semibold">TDS - Uw dakwerken specialist</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">

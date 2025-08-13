@@ -12,7 +12,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
     <>
       <SEOHead 
         title="Totaal Onderhoud Specialist (TOS) - Gevelonderhoud & Schilderwerk | TBGS"
-        description="TOS - Totaal Onderhoud Specialist van TBGS. Expert in gevelreiniging, schilderwerk, preventief onderhoud en algemene reparaties in Nederland en België."
+        description="TOS - Totaal Onderhoud Specialist van TBGS. Specialist in gevelreiniging, schilderwerk, preventief onderhoud en algemene reparaties in Nederland en België."
         url="https://tbgs.nl/totaal-onderhoud-specialist"
       />
 
@@ -60,7 +60,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Onderhoud Specialist
                     </h1>
-                    <p className="text-lg text-tbgs-green font-semibold">TOS - Uw onderhouds expert</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-green font-semibold">TOS - Uw onderhouds specialist</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">

@@ -148,7 +148,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           <div className="text-center mb-20">
             <div className="inline-flex items-center space-x-2 bg-slate-100 rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
               <i className="fas fa-tools"></i>
-              <span>Onze Expertise</span>
+              <span>Onze Specialiteiten</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
               Premium <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Specialiteiten</span>

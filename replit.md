@@ -17,6 +17,9 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - **Complete Pricing Removal**: Removed ALL pricing information from entire website including costs, investments, subsidies, and budget options as per user requirement.
 - **Fixed Duplicate Headers**: Completely resolved duplicate header issue on ALL pages (Gratis Offerte, Daklekkage, Energiebesparing, Schoorsteencontrole) by removing redundant Header components from individual pages.
 - **Streamlined Homepage**: Removed Recent Projects section entirely and made contact section more compact for better mobile experience and reduced page length.
+- **Real Specialist Logos**: Replaced all FontAwesome icons in service cards with authentic specialist logos (TSS, TDS, TOS, TBS) while maintaining color effects and 88% opacity transitions.
+- **Mobile Text Optimization**: Fixed text size overlapping issues on small phone screens - specialist headers now use 12px text on mobile (text-xs) to prevent Offerte button overlap.
+- **Terminology Consistency**: Changed all instances of "expert" to "specialist" throughout website for consistent branding and terminology.
 
 ## User Preferences
 

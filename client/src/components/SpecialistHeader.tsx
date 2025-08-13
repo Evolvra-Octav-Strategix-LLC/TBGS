@@ -41,8 +41,8 @@ export default function SpecialistHeader({
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
-                <h1 className={`text-sm sm:text-base md:text-lg lg:text-xl font-bold ${primaryColor} whitespace-nowrap`}>{companyName}</h1>
-                <p className="text-xs sm:text-sm text-gray-600">{tagline}</p>
+                <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg font-bold ${primaryColor} whitespace-nowrap`}>{companyName}</h1>
+                <p className="text-xs text-gray-600">{tagline}</p>
               </div>
             </div>
           </Link>

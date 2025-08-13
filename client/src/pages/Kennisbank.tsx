@@ -72,7 +72,7 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEOHead 
         title="Kennisbank TBGS BV - Bouw, Dak & Onderhouds Expertise | Nederland & België"
-        description="Ontdek professionele tips en kennis van TBGS specialisten over dakwerk, schoorsteenonderhoud, preventief onderhoud en bouwprojecten. Gratis expert advies voor particulier en zakelijk."
+        description="Ontdek professionele tips en kennis van TBGS specialisten over dakwerk, schoorsteenonderhoud, preventief onderhoud en bouwprojecten. Gratis specialist advies voor particulier en zakelijk."
         url="/kennisbank"
         keywords="kennisbank bouw, dakwerk tips, schoorsteenonderhoud, preventief onderhoud, renovatie gids, bouw expertise, onderhoudsadvies, daklekkage voorkomen, TBGS kennis"
       />
@@ -84,7 +84,7 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-slate-600 mb-8">
               <i className="fas fa-graduation-cap"></i>
-              <span>Expert Kennis</span>
+              <span>Specialist Kennis</span>
             </div>
             
             <h1 className="text-4xl lg:text-7xl font-bold text-slate-900 mb-8 leading-tight">

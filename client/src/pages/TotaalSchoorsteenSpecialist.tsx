@@ -32,7 +32,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
     <>
       <SEOHead 
         title="Totaal Schoorsteen Specialist (TSS) - Schoorsteenwerken | TBGS"
-        description="TSS - Totaal Schoorsteen Specialist van TBGS. Expert in schoorsteenonderhoud, reparaties, vervangingen en rookkanaal services in Nederland en België."
+        description="TSS - Totaal Schoorsteen Specialist van TBGS. Specialist in schoorsteenonderhoud, reparaties, vervangingen en rookkanaal services in Nederland en België."
         url="https://tbgs.nl/totaal-schoorsteen-specialist"
       />
 
@@ -80,7 +80,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Schoorsteen Specialist
                     </h1>
-                    <p className="text-lg text-tbgs-blue font-semibold">TSS - Uw schoorsteen expert</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-blue font-semibold">TSS - Uw schoorsteen specialist</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
