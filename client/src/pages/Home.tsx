@@ -288,7 +288,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div>
                     <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-full flex items-center justify-center mr-4">
                         <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
                       </div>
                       <div>
