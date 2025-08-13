@@ -281,18 +281,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
         </div>
       </section>
 
-      <div className="fixed bottom-6 right-6 z-50">
-        <a 
-          href="#home"
-          className="group bg-gradient-to-r from-tbgs-navy to-blue-600 text-white p-4 rounded-full shadow-2xl hover:shadow-tbgs-navy/25 transition-all duration-300 hover:-translate-y-1 hover:scale-110 inline-flex items-center"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-        >
-          <i className="fas fa-arrow-up text-xl group-hover:animate-bounce"></i>
-        </a>
-      </div>
+
     </div>
   );
 }
