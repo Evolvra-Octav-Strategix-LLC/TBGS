@@ -464,7 +464,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           {/* Trust Badges */}
           <div className="bg-slate-50 rounded-3xl p-8 lg:p-12">
             <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 text-center mb-8">Waarom Klanten TBGS Vertrouwen</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-award text-2xl text-green-600"></i>
