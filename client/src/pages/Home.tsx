@@ -793,109 +793,101 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         </div>
       </section>
 
-      {/* Contact CTA - Premium Design */}
-      <section id="contact" className="py-24 lg:py-32 bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+      {/* Contact CTA - Compact Design */}
+      <section id="contact" className="py-16 lg:py-20 bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(120,119,198,0.3),transparent_70%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.2),transparent_70%)]"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium mb-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium mb-6">
               <i className="fas fa-rocket"></i>
               <span>Start Uw Project</span>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
               Klaar om te <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Starten?</span>
             </h2>
-            <p className="text-xl lg:text-2xl opacity-90 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="text-lg lg:text-xl opacity-90 max-w-3xl mx-auto font-light leading-relaxed">
               Neem contact met ons op voor een <strong>vrijblijvende offerte</strong>. Wij denken graag mee en adviseren u over de beste oplossing voor uw project.
             </p>
           </div>
 
-          {/* Contact Methods - Modern Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-phone text-2xl"></i>
+          {/* Contact Methods - Compact Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <i className="fas fa-phone text-lg"></i>
               </div>
-              <h4 className="font-bold mb-3 text-lg">Direct Bellen</h4>
-              <p className="opacity-80 text-sm mb-4">Werkdagen 8:00 - 17:00</p>
-              <a href="tel:+31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors text-lg">
+              <h4 className="font-bold mb-2 text-base">Direct Bellen</h4>
+              <a href="tel:+31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors text-sm">
                 040 202 6744
               </a>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-envelope text-2xl"></i>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <i className="fas fa-envelope text-lg"></i>
               </div>
-              <h4 className="font-bold mb-3 text-lg">Email Ons</h4>
-              <p className="opacity-80 text-sm mb-4">Reactie binnen 4 uur</p>
-              <a href="mailto:info@tbgs.nl" className="text-yellow-300 hover:text-white font-bold transition-colors">
+              <h4 className="font-bold mb-2 text-base">Email Ons</h4>
+              <a href="mailto:info@tbgs.nl" className="text-yellow-300 hover:text-white font-bold transition-colors text-sm">
                 info@tbgs.nl
               </a>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-whatsapp text-2xl"></i>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <i className="fas fa-whatsapp text-lg"></i>
               </div>
-              <h4 className="font-bold mb-3 text-lg">WhatsApp</h4>
-              <p className="opacity-80 text-sm mb-4">Snelle communicatie</p>
-              <a href="https://wa.me/31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors">
+              <h4 className="font-bold mb-2 text-base">WhatsApp</h4>
+              <a href="https://wa.me/31402026744" className="text-yellow-300 hover:text-white font-bold transition-colors text-sm">
                 Chat Direct
               </a>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-calendar-plus text-2xl"></i>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 border border-white/20">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <i className="fas fa-calculator text-lg"></i>
               </div>
-              <h4 className="font-bold mb-3 text-lg">Plan Afspraak</h4>
-              <p className="opacity-80 text-sm mb-4">Gratis adviesgesprek</p>
+              <h4 className="font-bold mb-2 text-base">Gratis Offerte</h4>
               <button 
                 onClick={onOpenContactModal}
-                className="text-yellow-300 hover:text-white font-bold transition-colors"
+                className="text-yellow-300 hover:text-white font-bold transition-colors text-sm"
               >
-                Direct Plannen
+                Direct Aanvragen
               </button>
             </div>
           </div>
 
-          {/* Main CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+          {/* Main CTA Button */}
+          <div className="text-center mb-8">
             <button 
               onClick={onOpenContactModal}
-              className="group bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 px-12 py-6 rounded-2xl font-black text-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 flex items-center justify-center"
+              className="group bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 px-10 py-4 rounded-2xl font-black text-lg hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 inline-flex items-center"
             >
-              <i className="fas fa-calculator mr-4 transition-transform group-hover:scale-110"></i>
+              <i className="fas fa-calculator mr-3 transition-transform group-hover:scale-110"></i>
               Gratis Offerte in 24u
-            </button>
-            <button className="group border-3 border-white text-white px-12 py-6 rounded-2xl font-bold text-xl hover:bg-white hover:text-tbgs-navy transition-all duration-300 backdrop-blur-sm bg-white/10 flex items-center justify-center">
-              <i className="fas fa-download mr-4 transition-transform group-hover:scale-110"></i>
-              Download Brochure
             </button>
           </div>
 
-          {/* Trust Footer */}
+          {/* Trust Footer - Compact */}
           <div className="text-center">
-            <div className="inline-flex items-center space-x-8 bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20">
+            <div className="inline-flex flex-wrap items-center justify-center gap-4 lg:gap-6 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
               <div className="flex items-center space-x-2">
-                <i className="fas fa-shield-alt text-green-400"></i>
-                <span className="text-sm">100% Garantie</span>
+                <i className="fas fa-shield-alt text-green-400 text-sm"></i>
+                <span className="text-xs lg:text-sm">100% Garantie</span>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="fas fa-clock text-blue-400"></i>
-                <span className="text-sm">24u Response</span>
+                <i className="fas fa-clock text-blue-400 text-sm"></i>
+                <span className="text-xs lg:text-sm">24u Response</span>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="fas fa-star text-yellow-400"></i>
-                <span className="text-sm">4.9★ Rating</span>
+                <i className="fas fa-star text-yellow-400 text-sm"></i>
+                <span className="text-xs lg:text-sm">4.9★ Rating</span>
               </div>
               <div className="flex items-center space-x-2">
-                <i className="fas fa-users text-purple-400"></i>
-                <span className="text-sm">500+ Klanten</span>
+                <i className="fas fa-users text-purple-400 text-sm"></i>
+                <span className="text-xs lg:text-sm">500+ Klanten</span>
               </div>
             </div>
           </div>
