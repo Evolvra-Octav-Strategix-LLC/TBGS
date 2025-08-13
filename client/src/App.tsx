@@ -39,6 +39,21 @@ import LocationSonEnBreugel from "@/pages/LocationSonEnBreugel";
 import LocationRetie from "@/pages/LocationRetie";
 import LocationLommel from "@/pages/LocationLommel";
 
+// Location-Service Pages - Eindhoven
+import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
+import EindhovenRenovatie from "@/pages/locations/EindhovenRenovatie";
+import EindhovenOnderhoud from "@/pages/locations/EindhovenOnderhoud";
+
+// Location-Service Pages - Nuenen
+import NuenenDaklekkage from "@/pages/locations/NuenenDaklekkage";
+import NuenenRenovatie from "@/pages/locations/NuenenRenovatie";
+
+// Location-Service Pages - Veldhoven  
+import VeldhovenDaklekkage from "@/pages/locations/VeldhovenDaklekkage";
+
+// Location-Service Pages - Best
+import BestDaklekkage from "@/pages/locations/BestDaklekkage";
+
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
@@ -115,6 +130,21 @@ function Router() {
           {/* Location Pages - Belgium */}
           <Route path="/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Eindhoven */}
+          <Route path="/eindhoven/daklekkage" component={() => <EindhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/eindhoven/renovatie" component={() => <EindhovenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/eindhoven/onderhoud" component={() => <EindhovenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Nuenen */}
+          <Route path="/nuenen/daklekkage" component={() => <NuenenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nuenen/renovatie" component={() => <NuenenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Veldhoven */}
+          <Route path="/veldhoven/daklekkage" component={() => <VeldhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Best */}
+          <Route path="/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           <Route component={NotFound} />
         </Switch>

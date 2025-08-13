@@ -386,11 +386,30 @@ export default function Locaties() {
                   {location.description}
                 </p>
 
-                {/* Services */}
+                {/* Service Links */}
                 <div className="mb-3">
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    <Link href={`/${location.slug}/daklekkage`}>
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors cursor-pointer">
+                        Daklekkage
+                      </span>
+                    </Link>
+                    <Link href={`/${location.slug}/renovatie`}>
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors cursor-pointer">
+                        Renovatie
+                      </span>
+                    </Link>
+                    <Link href={`/${location.slug}/onderhoud`}>
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors cursor-pointer">
+                        Onderhoud
+                      </span>
+                    </Link>
+                  </div>
+                  
+                  {/* Specialist Services */}
                   <div className="flex flex-wrap gap-1">
                     {location.services.map((service) => (
-                      <Badge key={service} variant="secondary" className="text-xs bg-blue-50 text-blue-700 px-2 py-1">
+                      <Badge key={service} variant="secondary" className="text-xs bg-gray-100 text-gray-600 px-2 py-1">
                         {service}
                       </Badge>
                     ))}
