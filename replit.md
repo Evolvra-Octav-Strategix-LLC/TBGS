@@ -4,7 +4,7 @@
 
 This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
 
-**Recent Architecture Update (Aug 12, 2025):** 
+**Recent Architecture Update (Aug 13, 2025):** 
 - **Modern Locations Hub**: Created beautiful comprehensive locations page at `/locaties` displaying all 8 TBGS service areas across Netherlands and Belgium with search, filtering, and detailed contact information.
 - **Navigation Enhancement**: Integrated "Locaties" into main navigation menu (desktop and mobile) for easy location discovery and improved user experience.
 - **Google-Style Review Slider**: Redesigned review slider to match modern Google review design with circular colored profile avatars, proper name formatting (First L. style), and authentic Google branding.
@@ -16,6 +16,7 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - **Local SEO Schema Markup**: Implemented comprehensive LocalBusiness schema.org structured data for enhanced search engine visibility and local search rankings.
 - **Complete Pricing Removal**: Removed ALL pricing information from entire website including costs, investments, subsidies, and budget options as per user requirement.
 - **Fixed Duplicate Headers**: Completely resolved duplicate header issue on ALL pages (Gratis Offerte, Daklekkage, Energiebesparing, Schoorsteencontrole) by removing redundant Header components from individual pages.
+- **Streamlined Homepage**: Removed Recent Projects section entirely and made contact section more compact for better mobile experience and reduced page length.
 
 ## User Preferences
 
