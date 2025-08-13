@@ -19,7 +19,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               <img src={tbgsLogo} alt="TBGS Logo" className="w-10 h-10 lg:w-12 lg:h-12 object-contain" />
               <div>
                 <h1 className="text-lg lg:text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-xs lg:text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
+                <p className="lg:text-sm text-gray-600 whitespace-nowrap text-[14px]">Totaal Bouw Groep Specialisten</p>
               </div>
             </div>
           </Link>
@@ -55,7 +55,6 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         </div>
 
       </div>
-
       {/* Mobile Navigation Overlay */}
       {isMobileMenuOpen && (
         <>
