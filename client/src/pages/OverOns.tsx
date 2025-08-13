@@ -77,7 +77,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2">1943 - 1970: De Basis</h3>
-                      <p className="text-slate-600">Grootvader legde de eerste dakpan. Traditioneel vakmanschap en kwaliteit als fundament.</p>
+                      <p className="text-slate-600">De eerste generatie legde de fundamenten. Traditioneel vakmanschap en kwaliteit als uitgangspunt.</p>
                     </div>
                   </div>
 
@@ -87,7 +87,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2">1970 - 1995: Uitbreiding</h3>
-                      <p className="text-slate-600">Vader breidde uit naar schoorsteenservice en specialistische technieken.</p>
+                      <p className="text-slate-600">Uitbreiding naar schoorsteenservice en gespecialiseerde technieken. Groei door kwaliteit en betrouwbaarheid.</p>
                     </div>
                   </div>
 
@@ -97,7 +97,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2">1995 - 2010: Preventie</h3>
-                      <p className="text-slate-600">Zoon introduceerde preventief onderhoud. "Voorkomen is beter dan genezen".</p>
+                      <p className="text-slate-600">Introductie van preventief onderhoud. "Voorkomen is beter dan genezen" werd ons kernprincipe.</p>
                     </div>
                   </div>
 
@@ -107,7 +107,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2">2010 - Heden: Totaalspecialist</h3>
-                      <p className="text-slate-600">Kleinzoon transformeerde TBGS tot complete bouwspecialist met vier teams.</p>
+                      <p className="text-slate-600">Transformatie tot complete bouwspecialist met vier gespecialiseerde teams onder één dak.</p>
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                   />
                   <div className="mt-6 text-center">
                     <div className="text-2xl font-bold text-slate-900 mb-2">80 Jaar Vakmanschap</div>
-                    <p className="text-slate-600">Van grootvader tot kleinzoon - expertise in de genen</p>
+                    <p className="text-slate-600">4 generaties expertise - vakmanschap in de genen</p>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">4 Generaties</h3>
               <p className="text-slate-600 leading-relaxed">
-                <strong>Van overgrootvader tot kleinzoon</strong> - vakmanschap zit in onze genen en wordt continu doorontwikkeld.
+                <strong>80 jaar familiebedrijf</strong> - vakmanschap zit in onze genen en wordt continu doorontwikkeld.
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
             </h2>
 
             <p className="text-2xl text-blue-100 font-light leading-relaxed mb-12 max-w-3xl mx-auto">
-              Van <strong className="text-white">overgrootvader tot kleinzoon</strong> - vier generaties vakmanschap die uw huis beschermen. 
+              <strong className="text-white">Vier generaties vakmanschap</strong> die uw huis beschermen. 
               Preventief werken, zodat u geen dure verrassingen krijgt.
             </p>
 
