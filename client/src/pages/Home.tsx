@@ -459,9 +459,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           {/* Real Google Reviews Slider */}
-          <GoogleReviewSlider placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs" className="mb-12" />
-
-          
+          <GoogleReviewSlider placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs" className="mb-0" />
         </div>
       </section>
       {/* Service Areas - Modern Design */}
