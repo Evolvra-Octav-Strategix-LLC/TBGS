@@ -322,25 +322,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                     </div>
 
-                    {/* Compact Inspection CTA */}
-                    <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-tbgs-red p-4 rounded-xl">
-                      <div className="text-center">
-                        <div className="w-8 h-8 bg-tbgs-red/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <i className="fas fa-exclamation-triangle text-tbgs-red text-sm"></i>
-                        </div>
-                        <h6 className="text-sm font-bold text-slate-900 mb-2">80% problemen zijn te voorkomen!</h6>
-                        <p className="text-xs text-slate-600 mb-3 leading-relaxed">
-                          Bespaar duizenden euro's met <strong>preventieve inspectie</strong>
-                        </p>
-                        <button 
-                          onClick={onOpenContactModal}
-                          className="bg-tbgs-red text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-red-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center w-full justify-center"
-                        >
-                          <i className="fas fa-search mr-2 text-xs"></i>
-                          Gratis Inspectie
-                        </button>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
