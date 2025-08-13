@@ -336,10 +336,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
                   <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze Missie</h4>
                   <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
-                    TBGS is daarom geëvolueerd tot een <strong>totaal ontzorgende organisatie</strong> die de klant overal bij bijstaat. Van preventieve controles tot noodreparaties - niets is ons te gek. Wij nemen uw project volledig in beheer om problemen te voorkomen, niet om ze achteraf op te lossen.
+                    TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
                   </p>
                   <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
-                    Door onze jarenlange ervaring met alle mogelijke bouwproblemen weten wij als geen ander waar u tegenaan kunt lopen. Onze specialistische aanpak zorgt ervoor dat wij altijd een stapje voor zijn, zodat u zich nooit zorgen hoeft te maken over uw dak, schoorsteen of bouwproject.
+                    Door jarenlange ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, schoorsteen of bouwproject</strong>.
                   </p>
                   <div className="mt-8">
                     <button 
