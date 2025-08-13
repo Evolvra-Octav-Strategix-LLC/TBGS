@@ -292,16 +292,16 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                         <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
                       </div>
                       <div>
-                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">Van overgrootvader tot kleinzoon</h4>
-                        <p className="text-tbgs-navy font-medium text-sm sm:text-base">4 generaties vakmanschap sinds 1943</p>
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80 jaar familiebedrijf</h4>
+                        <p className="text-tbgs-navy font-medium text-sm sm:text-base">4 generaties dakspecialisten sinds 1943</p>
                       </div>
                     </div>
                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                      Het begon in 1943 toen de eerste generatie van TBGS hun eerste dakpan legde. Het vakmanschap werd doorgegeven van generatie op generatie, van dak- en bouwwerken tot specialistische technieken. Vier generaties later hebben wij duizenden <strong>kostbare herstelprojecten</strong> uitgevoerd die eigenlijk voorkomen hadden kunnen worden.
+                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties.
                     </p>
 
                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                      <strong>Preventie is onze kracht.</strong> Met 80 jaar ervaring in dak-, schoorsteen-, onderhoud- en bouwwerkzaamheden weten wij precies waar problemen ontstaan. Wij investeren in grondige inspecties en preventieve maatregelen, zodat u nooit voor onaangename verrassingen komt te staan.
+                      <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80 jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
                     </p>
                   </div>
                   <div className="space-y-6">
