@@ -553,11 +553,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="bg-gradient-to-br from-tbgs-navy to-blue-700 text-white rounded-3xl p-10 shadow-xl">
                 <div className="text-center mb-8">
                   <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i className="fas fa-search-location text-3xl"></i>
+                    <i className="fas fa-calendar-check text-3xl"></i>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">Werkgebied Check</h3>
+                  <h3 className="text-3xl font-bold mb-4">Gratis Inspectie in 24u</h3>
                   <p className="text-lg opacity-90 leading-relaxed">
-                    Twijfelt u of wij in uw gebied werkzaam zijn? <strong>Vraag het ons direct</strong> voor een vrijblijvende check en persoonlijk advies.
+                    <strong>Preventieve controle voorkomt kostbare reparaties.</strong> Onze specialisten plannen binnen 24 uur een gratis inspectie en persoonlijk advies.
                   </p>
                 </div>
                 
@@ -566,18 +566,18 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     onClick={onOpenContactModal}
                     className="w-full bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
-                    <i className="fas fa-map-check mr-3"></i>
-                    Check Mijn Locatie
+                    <i className="fas fa-search mr-3"></i>
+                    Plan Gratis Inspectie
                   </button>
                   
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20">
                     <div className="text-center">
                       <div className="text-2xl font-bold">~25km</div>
-                      <div className="text-sm opacity-80">Gemiddelde reisafstand</div>
+                      <div className="text-sm opacity-80">Maximale reisafstand</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold">24/7</div>
-                      <div className="text-sm opacity-80">Service beschikbaar</div>
+                      <div className="text-2xl font-bold">100%</div>
+                      <div className="text-sm opacity-80">Gratis inspectie</div>
                     </div>
                   </div>
                 </div>
