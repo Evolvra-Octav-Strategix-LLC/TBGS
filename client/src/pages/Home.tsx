@@ -350,37 +350,37 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               </div>
 
               {/* Key Differentiators */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <ShieldCheck className="w-8 h-8 text-green-600" />
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-green-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                    <ShieldCheck className="w-6 h-6 lg:w-8 lg:h-8 text-green-600" />
                   </div>
-                  <h5 className="text-lg font-bold text-slate-900 mb-2">Preventief Werken</h5>
-                  <p className="text-slate-600 text-sm">Problemen voorkomen in plaats van achteraf oplossen</p>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Preventief Werken</h5>
+                  <p className="text-slate-600 text-xs lg:text-sm leading-tight">Problemen voorkomen in plaats van achteraf oplossen</p>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-users-cog text-2xl text-blue-600"></i>
+                <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-blue-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                    <i className="fas fa-users-cog text-lg lg:text-2xl text-blue-600"></i>
                   </div>
-                  <h5 className="text-lg font-bold text-slate-900 mb-2">4 Specialisten</h5>
-                  <p className="text-slate-600 text-sm">Dak, schoorsteen, onderhoud én bouw onder één dak</p>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">4 Specialisten</h5>
+                  <p className="text-slate-600 text-xs lg:text-sm leading-tight">Dak, schoorsteen, onderhoud én bouw onder één dak</p>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-handshake text-2xl text-purple-600"></i>
+                <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-purple-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                    <i className="fas fa-handshake text-lg lg:text-2xl text-purple-600"></i>
                   </div>
-                  <h5 className="text-lg font-bold text-slate-900 mb-2">Totale Ontzorging</h5>
-                  <p className="text-slate-600 text-sm">Eén aanspreekpunt van offerte tot nazorg</p>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Totale Ontzorging</h5>
+                  <p className="text-slate-600 text-xs lg:text-sm leading-tight">Eén aanspreekpunt van offerte tot nazorg</p>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-clock text-2xl text-yellow-600"></i>
+                <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-yellow-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
+                    <i className="fas fa-clock text-lg lg:text-2xl text-yellow-600"></i>
                   </div>
-                  <h5 className="text-lg font-bold text-slate-900 mb-2">Altijd Vooruit</h5>
-                  <p className="text-slate-600 text-sm">Door jarenlange ervaring weten wij waar u tegenaan loopt</p>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Altijd Vooruit</h5>
+                  <p className="text-slate-600 text-xs lg:text-sm leading-tight">Door jarenlange ervaring weten wij waar u tegenaan loopt</p>
                 </div>
               </div>
             </div>
