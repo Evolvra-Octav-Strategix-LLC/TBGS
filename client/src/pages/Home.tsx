@@ -683,13 +683,13 @@ export default function Home({ onOpenContactModal }: HomeProps) {
       <section id="contact" className="py-8 lg:py-12 bg-tbgs-navy text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">Start Uw Project</h2>
-          <p className="text-lg mb-6 opacity-90">
-            <a href="https://wa.me/31614595142" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 mr-3">
+          <div className="text-lg mb-6 opacity-90 flex flex-col sm:flex-row items-center justify-center gap-2">
+            <a href="https://wa.me/31614595142" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300">
               <i className="fab fa-whatsapp mr-2"></i>
               WhatsApp
             </a>
-            of vraag een gratis inspectie aan
-          </p>
+            <span>of vraag een gratis inspectie aan</span>
+          </div>
           <button 
             onClick={onOpenContactModal}
             className="bg-yellow-400 text-slate-900 px-8 py-3 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
