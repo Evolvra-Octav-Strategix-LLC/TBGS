@@ -151,10 +151,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <span>Onze Specialiteiten</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Premium <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Specialiteiten</span>
+              Onze <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Specialiteiten</span>
             </h2>
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
-              Van <strong>dak tot fundering</strong>, van <strong>schoorsteen tot gevelbekleding</strong>. TBGS biedt premium totaaloplossingen voor al uw bouwprojecten met gespecialiseerde teams per vakgebied.
+              Van <strong>dak tot fundering</strong>, van <strong>schoorsteen tot gevelbekleding</strong>. TBGS biedt complete totaaloplossingen voor al uw bouwprojecten met gespecialiseerde teams per vakgebied.
             </p>
           </div>
 
