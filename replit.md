@@ -5,6 +5,11 @@
 This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
 
 **Recent Architecture Update (Aug 14, 2025):** 
+- **Headless WordPress Integration**: Successfully implemented Next.js 14+ headless WordPress architecture with ISR (Incremental Static Regeneration) for optimal performance and SEO control. Dynamic content management through WordPress GraphQL API with static fallbacks.
+- **Next.js App Router Structure**: Migrated from React SPA to Next.js 14 App Router with `/nl/` and `/be/` URL patterns, dynamic city routes `/nl/[city]`, specialist-location routes `/nl/[dienst]/[city]`, and knowledge base `/kennisbank/[slug]`.
+- **WordPress Content Types**: Configured ACF (Advanced Custom Fields) for locations, diensten, and kennisbank post types with full GraphQL integration for content management.
+- **ISR Revalidation**: Implemented `/api/revalidate` webhook endpoint for real-time content updates from WordPress with automatic cache invalidation.
+- **SEO Schema Integration**: Dynamic JSON-LD schema markup for LocalBusiness, RoofingContractor, ChimneySweep, and other specialist types with geo-coordinates and local business data.
 - **Complete Belgian Location Expansion**: Successfully expanded to comprehensive Belgian market coverage with new hoofdlocatie pages for Hamont and Pelt, plus detailed location-service pages for Sint-Huibrechts-Lille (Renovatie, Onderhoud) and Overpelt (Daklekkage).
 - **Elite Dutch Location Pages**: Created premium hoofdlocatie pages for Waalre (elite luxury positioning), Geldrop, and Mierlo with high-end SEO optimization, local schema markup, and targeted luxury market messaging.
 - **Advanced Local SEO Schema**: Implemented comprehensive LocalBusiness schema markup with geo-coordinates, Belgian/Dutch locale settings, and region-specific service catalogs for maximum local search rankings.
