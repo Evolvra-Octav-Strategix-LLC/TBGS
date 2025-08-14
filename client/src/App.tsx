@@ -54,6 +54,24 @@ import VeldhovenDaklekkage from "@/pages/locations/VeldhovenDaklekkage";
 // Location-Service Pages - Best
 import BestDaklekkage from "@/pages/locations/BestDaklekkage";
 
+// Location-Service Pages - Geldrop
+import GeldropDaklekkage from "@/pages/locations/GeldropDaklekkage";
+import GeldropRenovatie from "@/pages/locations/GeldropRenovatie";
+import GeldropOnderhoud from "@/pages/locations/GeldropOnderhoud";
+
+// Location-Service Pages - Mierlo
+import MierloDaklekkage from "@/pages/locations/MierloDaklekkage";
+import MierloRenovatie from "@/pages/locations/MierloRenovatie";
+import MierloOnderhoud from "@/pages/locations/MierloOnderhoud";
+
+// Location-Service Pages - Waalre
+import WaalreDaklekkage from "@/pages/locations/WaalreDaklekkage";
+import WaalreRenovatie from "@/pages/locations/WaalreRenovatie";
+import WaalreOnderhoud from "@/pages/locations/WaalreOnderhoud";
+
+// Location-Service Pages - Hamont-Achel
+import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
+
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
