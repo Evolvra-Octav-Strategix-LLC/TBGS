@@ -124,12 +124,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function CityPage({ params }: PageProps) {
+export default async function CityPage({ params }: PageProps) {
   const { city } = params;
   const cityInfo = cityData[city];
 
   if (!cityInfo || !validCities.includes(city)) {
     notFound();
+  }
+
+  // Try to fetch from WordPress first
+  let wordpressData;
+  try {
+    const { getPageContent } = await import('@/lib/wordpress-sync');
+    wordpressData = await getPageContent('location', {
+      country: 'nl',
+      city: city,
+    });
+  } catch (error) {
+    console.log('WordPress not available, using static content');
   }
 
   return (
@@ -181,8 +193,8 @@ export default function CityPage({ params }: PageProps) {
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Complete bouwdienstverlening in {cityInfo.name} door lokale vakmannen. Van dakwerkzaamheden 
-              tot schoorsteenservice, van onderhoud tot verbouwingen - alles onder één dak.
+              {wordpressData?.acf?.intro || 
+               `Complete bouwdienstverlening in ${cityInfo.name} door lokale vakmannen. Van dakwerkzaamheden tot schoorsteenservice, van onderhoud tot verbouwingen - alles onder één dak.`}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -236,6 +248,45 @@ export default function CityPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Content Section */}
+      {wordpressData?.content && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div 
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: wordpressData.content }}
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section */}
+      {wordpressData?.acf?.faq && wordpressData.acf.faq.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                Veelgestelde Vragen
+              </h2>
+              <div className="space-y-4">
+                {wordpressData.acf.faq.map((item: any, index: number) => (
+                  <details key={index} className="border border-gray-200 rounded-lg">
+                    <summary className="cursor-pointer font-medium text-lg p-4 bg-gray-50 hover:bg-gray-100 transition-colors">
+                      {item.question}
+                    </summary>
+                    <div className="p-4 border-l-4 border-tbgs-navy bg-white">
+                      <div dangerouslySetInnerHTML={{ __html: item.answer }} />
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Why TBGS Section */}
       <section className="py-16 bg-gray-50">

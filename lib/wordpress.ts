@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
-const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'https://cms.tbgs.nl/graphql';
+const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'http://localhost:8080/graphql';
 
 export const wpClient = new GraphQLClient(WORDPRESS_API_URL, {
   headers: {
@@ -230,7 +230,7 @@ export interface WordPressPost {
 // Helper functions
 export async function getPageByUri(uri: string): Promise<WordPressPage | null> {
   try {
-    const data = await wpClient.request(GET_CITY_HUB, { uri });
+    const data = await wpClient.request(GET_CITY_HUB, { uri }) as any;
     return data.pageBy;
   } catch (error) {
     console.error('Error fetching page:', error);
@@ -240,7 +240,7 @@ export async function getPageByUri(uri: string): Promise<WordPressPage | null> {
 
 export async function getSpecialistLocation(city: string, country: string, specialist: string): Promise<WordPressPage | null> {
   try {
-    const data = await wpClient.request(GET_SPECIALIST_LOCATION, { city, country, specialist });
+    const data = await wpClient.request(GET_SPECIALIST_LOCATION, { city, country, specialist }) as any;
     return data.locations?.nodes?.[0] || null;
   } catch (error) {
     console.error('Error fetching specialist location:', error);
@@ -250,7 +250,7 @@ export async function getSpecialistLocation(city: string, country: string, speci
 
 export async function getKnowledgeBasePost(slug: string): Promise<WordPressPost | null> {
   try {
-    const data = await wpClient.request(GET_KNOWLEDGE_BASE_POST, { slug });
+    const data = await wpClient.request(GET_KNOWLEDGE_BASE_POST, { slug }) as any;
     return data.postBy;
   } catch (error) {
     console.error('Error fetching knowledge base post:', error);
@@ -260,7 +260,7 @@ export async function getKnowledgeBasePost(slug: string): Promise<WordPressPost 
 
 export async function getAllLocations() {
   try {
-    const data = await wpClient.request(GET_ALL_LOCATIONS);
+    const data = await wpClient.request(GET_ALL_LOCATIONS) as any;
     return data.locations?.nodes || [];
   } catch (error) {
     console.error('Error fetching all locations:', error);
@@ -270,7 +270,7 @@ export async function getAllLocations() {
 
 export async function getAllKnowledgeBasePosts() {
   try {
-    const data = await wpClient.request(GET_ALL_KNOWLEDGE_BASE_POSTS);
+    const data = await wpClient.request(GET_ALL_KNOWLEDGE_BASE_POSTS) as any;
     return data.posts?.nodes || [];
   } catch (error) {
     console.error('Error fetching all knowledge base posts:', error);
