@@ -39,30 +39,6 @@ import LocationGeldrop from "@/pages/nl/locaties/LocationGeldrop";
 import LocationMierlo from "@/pages/nl/locaties/LocationMierlo";
 import LocationWaalre from "@/pages/nl/locaties/LocationWaalre";
 
-// NL - Specialist × Locatie Pages - Dak Specialist
-import EindhovenDakSpecialist from "@/pages/nl/totaal-dak-specialist/EindhovenDakSpecialist";
-import NuenenDakSpecialist from "@/pages/nl/totaal-dak-specialist/NuenenDakSpecialist";
-import VeldhovenDakSpecialist from "@/pages/nl/totaal-dak-specialist/VeldhovenDakSpecialist";
-import BestDakSpecialist from "@/pages/nl/totaal-dak-specialist/BestDakSpecialist";
-
-// NL - Specialist × Locatie Pages - Schoorsteen Specialist
-import EindhovenSchoorsteenSpecialist from "@/pages/nl/totaal-schoorsteen-specialist/EindhovenSchoorsteenSpecialist";
-import NuenenSchoorsteenSpecialist from "@/pages/nl/totaal-schoorsteen-specialist/NuenenSchoorsteenSpecialist";
-import VeldhovenSchoorsteenSpecialist from "@/pages/nl/totaal-schoorsteen-specialist/VeldhovenSchoorsteenSpecialist";
-import BestSchoorsteenSpecialist from "@/pages/nl/totaal-schoorsteen-specialist/BestSchoorsteenSpecialist";
-
-// NL - Specialist × Locatie Pages - Onderhoud Specialist
-import EindhovenOnderhoudSpecialist from "@/pages/nl/totaal-onderhoud-specialist/EindhovenOnderhoudSpecialist";
-import NuenenOnderhoudSpecialist from "@/pages/nl/totaal-onderhoud-specialist/NuenenOnderhoudSpecialist";
-import VeldhovenOnderhoudSpecialist from "@/pages/nl/totaal-onderhoud-specialist/VeldhovenOnderhoudSpecialist";
-import BestOnderhoudSpecialist from "@/pages/nl/totaal-onderhoud-specialist/BestOnderhoudSpecialist";
-
-// NL - Specialist × Locatie Pages - Bouw Specialist
-import EindhovenBouwSpecialist from "@/pages/nl/totaal-bouw-specialist/EindhovenBouwSpecialist";
-import NuenenBouwSpecialist from "@/pages/nl/totaal-bouw-specialist/NuenenBouwSpecialist";
-import VeldhovenBouwSpecialist from "@/pages/nl/totaal-bouw-specialist/VeldhovenBouwSpecialist";
-import BestBouwSpecialist from "@/pages/nl/totaal-bouw-specialist/BestBouwSpecialist";
-
 // BE - Limburg Regio Hub
 import LimburgRegioHub from "@/pages/be/LimburgRegioHub";
 
@@ -216,31 +192,11 @@ function Router() {
           <Route path="/nl/locaties/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
-          {/* NL - Specialist × Locatie Pages - Dak Specialist */}
-          <Route path="/nl/totaal-dak-specialist/eindhoven" component={() => <EindhovenDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-dak-specialist/nuenen" component={() => <NuenenDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-dak-specialist/veldhoven" component={() => <VeldhovenDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-dak-specialist/best" component={() => <BestDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          {/* NL Specialist × Location routes temporarily removed - will be added as pages are created */}
           
-          {/* NL - Specialist × Locatie Pages - Schoorsteen Specialist */}
-          <Route path="/nl/totaal-schoorsteen-specialist/eindhoven" component={() => <EindhovenSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-schoorsteen-specialist/nuenen" component={() => <NuenenSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-schoorsteen-specialist/veldhoven" component={() => <VeldhovenSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-schoorsteen-specialist/best" component={() => <BestSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          
-          {/* NL - Specialist × Locatie Pages - Onderhoud Specialist */}
-          <Route path="/nl/totaal-onderhoud-specialist/eindhoven" component={() => <EindhovenOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-onderhoud-specialist/nuenen" component={() => <NuenenOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-onderhoud-specialist/veldhoven" component={() => <VeldhovenOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-onderhoud-specialist/best" component={() => <BestOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          
-          {/* NL - Specialist × Locatie Pages - Bouw Specialist */}
-          <Route path="/nl/totaal-bouw-specialist/eindhoven" component={() => <EindhovenBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-bouw-specialist/nuenen" component={() => <NuenenBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-bouw-specialist/veldhoven" component={() => <VeldhovenBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nl/totaal-bouw-specialist/best" component={() => <BestBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          
-          {/* BE - Limburg Regio Hub */}
+          {/* BE - Main Landing and Limburg Regio Hub */}
+          <Route path="/be" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/limburg" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE - City Hubs (Locatie Hubs) */}
