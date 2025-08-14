@@ -192,6 +192,15 @@ function Router() {
           <Route path="/nl/locaties/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
+          {/* NL - Direct city routes (for SEO compatibility) */}
+          <Route path="/nl/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen" component={() => <LocationNuenen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/geldrop" component={() => <LocationGeldrop onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
           {/* NL Specialist × Location routes temporarily removed - will be added as pages are created */}
           
           {/* BE - Main Landing and Limburg Regio Hub */}
