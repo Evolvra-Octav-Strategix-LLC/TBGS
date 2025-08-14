@@ -507,9 +507,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <h4 className="font-bold text-slate-900 mb-3">Ook beschikbaar</h4>
                     <ul className="space-y-2 text-slate-600">
                       <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/son-en-breugel" className="hover:text-tbgs-navy font-medium">Son en Breugel</Link></li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Geldrop</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Mierlo</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Waalre</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/geldrop" className="hover:text-tbgs-navy font-medium">Geldrop</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/mierlo" className="hover:text-tbgs-navy font-medium">Mierlo</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/waalre" className="hover:text-tbgs-navy font-medium">Waalre</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -532,17 +532,17 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <ul className="space-y-2 text-slate-600">
                       <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/retie" className="hover:text-tbgs-navy font-medium">Retie</Link></li>
                       <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/lommel" className="hover:text-tbgs-navy font-medium">Lommel</Link></li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Hamont-Achel</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>Hamont</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/hamont-achel" className="hover:text-tbgs-navy font-medium">Hamont-Achel</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-green-500 w-4 mr-2"></i><Link href="/hamont" className="hover:text-tbgs-navy font-medium">Hamont</Link></li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-3">Aangrenzende</h4>
                     <ul className="space-y-2 text-slate-600">
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Pelt</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Sint-Huibrechts-Lille</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Overpelt</li>
-                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>Neerpelt</li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/pelt" className="hover:text-tbgs-navy font-medium">Pelt</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/sint-huibrechts-lille" className="hover:text-tbgs-navy font-medium">Sint-Huibrechts-Lille</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/overpelt" className="hover:text-tbgs-navy font-medium">Overpelt</Link></li>
+                      <li className="flex items-center"><i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i><Link href="/neerpelt" className="hover:text-tbgs-navy font-medium">Neerpelt</Link></li>
                     </ul>
                   </div>
                 </div>

@@ -35,9 +35,18 @@ import LocationVeldhoven from "@/pages/LocationVeldhoven";
 import LocationBest from "@/pages/LocationBest";
 import LocationSonEnBreugel from "@/pages/LocationSonEnBreugel";
 
-// Location Pages - Belgium
+// Location Pages - Belgium  
 import LocationRetie from "@/pages/LocationRetie";
 import LocationLommel from "@/pages/LocationLommel";
+
+// New Main Location Pages - Netherlands
+import LocationGeldrop from "@/pages/LocationGeldrop";
+import LocationMierlo from "@/pages/LocationMierlo";
+import LocationWaalre from "@/pages/LocationWaalre";
+
+// New Main Location Pages - Belgium
+import LocationHamont from "@/pages/LocationHamont";
+import LocationPelt from "@/pages/LocationPelt";
 
 // Location-Service Pages - Eindhoven
 import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
@@ -83,6 +92,13 @@ import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
 import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
 import PeltRenovatie from "@/pages/locations/PeltRenovatie";
 import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
+
+// Location-Service Pages - Sint-Huibrechts-Lille
+import SintHuibrechtsLilleRenovatie from "@/pages/locations/SintHuibrechtsLilleRenovatie";
+import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleOnderhoud";
+
+// Location-Service Pages - Overpelt
+import OverpeltDaklekkage from "@/pages/locations/OverpeltDaklekkage";
 
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -148,14 +164,11 @@ function Router() {
           <Route path="/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/son-en-breugel" component={() => <LocationSonEnBreugel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/nuenen" component={() => <LocationNuenen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/geldrop" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/mierlo" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/waalre" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/locaties/hamont-achel" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop" component={() => <LocationGeldrop onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/hamont" component={() => <LocationHamont onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/pelt" component={() => <LocationPelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Location Pages - Belgium */}
           <Route path="/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -205,6 +218,13 @@ function Router() {
           <Route path="/pelt/daklekkage" component={() => <PeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/pelt/renovatie" component={() => <PeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Sint-Huibrechts-Lille */}
+          <Route path="/sint-huibrechts-lille/renovatie" component={() => <SintHuibrechtsLilleRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/sint-huibrechts-lille/onderhoud" component={() => <SintHuibrechtsLilleOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Overpelt */}
+          <Route path="/overpelt/daklekkage" component={() => <OverpeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           <Route component={NotFound} />
         </Switch>
