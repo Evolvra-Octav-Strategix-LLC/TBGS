@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { HelmetProvider } from "react-helmet-async";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import TotaalDakSpecialist from "@/pages/TotaalDakSpecialist";
@@ -47,6 +48,9 @@ import LocationWaalre from "@/pages/LocationWaalre";
 // New Main Location Pages - Belgium
 import LocationHamont from "@/pages/LocationHamont";
 import LocationPelt from "@/pages/LocationPelt";
+import LocationOverpelt from "@/pages/LocationOverpelt";
+import LocationSintHuibrechtsLille from "@/pages/LocationSintHuibrechtsLille";
+import LocationNeerpelt from "@/pages/LocationNeerpelt";
 
 // Location-Service Pages - Eindhoven
 import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
@@ -169,6 +173,9 @@ function Router() {
           <Route path="/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/hamont" component={() => <LocationHamont onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/pelt" component={() => <LocationPelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/overpelt" component={() => <LocationOverpelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/sint-huibrechts-lille" component={() => <LocationSintHuibrechtsLille onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/neerpelt" component={() => <LocationNeerpelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Location Pages - Belgium */}
           <Route path="/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -242,12 +249,14 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
