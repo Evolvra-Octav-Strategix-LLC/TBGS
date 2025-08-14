@@ -71,6 +71,18 @@ import WaalreOnderhoud from "@/pages/locations/WaalreOnderhoud";
 
 // Location-Service Pages - Hamont-Achel
 import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
+import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
+import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
+
+// Location-Service Pages - Hamont
+import HamontDaklekkage from "@/pages/locations/HamontDaklekkage";
+import HamontRenovatie from "@/pages/locations/HamontRenovatie";
+import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
+
+// Location-Service Pages - Pelt
+import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
+import PeltRenovatie from "@/pages/locations/PeltRenovatie";
+import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
 
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -163,6 +175,36 @@ function Router() {
           
           {/* Location-Service Pages - Best */}
           <Route path="/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Geldrop */}
+          <Route path="/geldrop/daklekkage" component={() => <GeldropDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop/renovatie" component={() => <GeldropRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop/onderhoud" component={() => <GeldropOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Mierlo */}
+          <Route path="/mierlo/daklekkage" component={() => <MierloDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/mierlo/renovatie" component={() => <MierloRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/mierlo/onderhoud" component={() => <MierloOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Waalre */}
+          <Route path="/waalre/daklekkage" component={() => <WaalreDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/waalre/renovatie" component={() => <WaalreRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/waalre/onderhoud" component={() => <WaalreOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Hamont-Achel */}
+          <Route path="/hamont-achel/daklekkage" component={() => <HamontAchelDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/hamont-achel/renovatie" component={() => <HamontAchelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/hamont-achel/onderhoud" component={() => <HamontAchelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Hamont */}
+          <Route path="/hamont/daklekkage" component={() => <HamontDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/hamont/renovatie" component={() => <HamontRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/hamont/onderhoud" component={() => <HamontOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Pages - Pelt */}
+          <Route path="/pelt/daklekkage" component={() => <PeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/pelt/renovatie" component={() => <PeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           <Route component={NotFound} />
         </Switch>
