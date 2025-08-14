@@ -37,6 +37,8 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - **Deep WordPress Integration**: Enhanced all existing pages with automatic WordPress sync capability, intelligent content tagging, and comprehensive migration tools for seamless content management transition.
 - **Local Test Environment**: Created Docker-based local WordPress setup for development and testing with complete plugin configuration and content migration scripts.
 - **Admin Interface**: Built admin sync panel at `/admin/sync` for content migration monitoring and WordPress connection management.
+- **Vercel Deployment Options**: Created comprehensive Vercel deployment guides as alternative to VPS setup, with managed WordPress hosting integration for zero server management.
+- **Revalidation API**: Implemented `/api/revalidate` endpoint for automatic content updates from WordPress to Next.js via webhooks.
 
 ## User Preferences
 
