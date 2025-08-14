@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Header from "@/components/Header";
+
 import Footer from "@/components/Footer";
 import { MapPin, Phone, Clock, Star, ArrowRight, Shield, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,7 +108,6 @@ export default function LocationHamont({ onOpenContactModal }: LocationHamontPro
       />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-        <Header onOpenContactModal={onOpenContactModal} />
         
         {/* Hero Section */}
         <section className="pt-20 pb-16 px-4">

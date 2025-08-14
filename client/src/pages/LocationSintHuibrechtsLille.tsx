@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Header from "@/components/Header";
+
 import Footer from "@/components/Footer";
 import { MapPin, Phone, Clock, Star, ArrowRight, Shield, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -83,7 +83,6 @@ export default function LocationSintHuibrechtsLille({ onOpenContactModal }: Loca
       />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-        <Header onOpenContactModal={onOpenContactModal} />
         
         <section className="pt-20 pb-16 px-4">
           <div className="max-w-7xl mx-auto">
