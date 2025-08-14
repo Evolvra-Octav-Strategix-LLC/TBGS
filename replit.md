@@ -43,19 +43,21 @@ Domain Strategy: User wants separate domain names pointing to each specialist pa
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: React 18 with TypeScript in a Single Page Application (SPA) architecture
-- **Routing**: Wouter for client-side routing with dedicated pages for each specialist service
+- **Framework**: Next.js 14+ with TypeScript using App Router architecture
+- **Rendering**: Static Site Generation (SSG) with Incremental Static Regeneration (ISR) for optimal performance
+- **Routing**: App Router with dynamic routes `/nl/[city]`, `/nl/[dienst]/[city]`, `/be/locaties/[city]`, and `/kennisbank/[slug]`
+- **Content Management**: Headless WordPress integration with GraphQL API and static fallbacks
 - **Styling**: Tailwind CSS with shadcn/ui component library for consistent design
 - **UI Components**: Radix UI primitives for accessibility and interaction patterns
 - **Build Tool**: Vite for fast development and optimized production builds
 - **State Management**: TanStack React Query for server state management and API interactions
 
 ### Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **API Design**: RESTful API with dedicated contact form endpoint (`/api/contact`)
-- **Development Server**: Custom Vite integration with hot module replacement
-- **Error Handling**: Centralized error middleware with structured error responses
+- **CMS**: WordPress (headless) with GraphQL API endpoint
+- **API**: Next.js API routes for revalidation and contact forms
+- **Content Types**: Custom Post Types (locations, diensten) with Advanced Custom Fields (ACF)
+- **Revalidation**: ISR webhook system for real-time content updates from WordPress
+- **Fallback**: Static content rendering when WordPress unavailable
 
 ### Data Storage Solutions
 - **Database**: PostgreSQL configured through Drizzle ORM
