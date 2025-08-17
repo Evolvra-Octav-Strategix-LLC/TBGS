@@ -8,6 +8,7 @@ This project is a modern, SEO-optimized website for Totaal Bouw Groep Specialist
 
 Preferred communication style: Simple, everyday language.
 Domain Strategy: User wants separate domain names pointing to each specialist page for stronger SEO positioning.
+URL Standardization Requirement: All service URLs MUST use mandatory /nl/ and /be/ country prefixes (e.g., /nl/city/service).
 
 ## System Architecture
 

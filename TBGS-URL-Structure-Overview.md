@@ -24,7 +24,6 @@
 | `/over-ons` | Over Ons | About us page |
 | `/locaties` | Locaties | All TBGS service areas overview |
 | `/gratis-offerte` | Gratis Offerte | Quote request form |
-| `/gratis-inspectie` | Gratis Inspectie | Free inspection booking |
 
 ---
 
@@ -139,39 +138,7 @@
 | `/nuenen/plat-dak-specialist` | Nuenen | Flat Roof | Van Gogh dorp plat dak |
 | `/veldhoven/plat-dak-specialist` | Veldhoven | Flat Roof | Nieuwbouw plat dak |
 
----
 
-## 🏢 Location-Specialist Combination Pages
-
-### Belgium - Specialist × Location Pages
-
-#### Dak Specialist (TDS) - Belgium
-| URL | Location | Service Type |
-|-----|----------|--------------|
-| `/be/totaal-dak-specialist/lommel` | Lommel | Roof specialist |
-| `/be/totaal-dak-specialist/hamont-achel` | Hamont-Achel | Roof specialist |
-| `/be/totaal-dak-specialist/pelt` | Pelt | Roof specialist |
-
-#### Schoorsteen Specialist (TSS) - Belgium
-| URL | Location | Service Type |
-|-----|----------|--------------|
-| `/be/totaal-schoorsteen-specialist/lommel` | Lommel | Chimney specialist |
-| `/be/totaal-schoorsteen-specialist/hamont-achel` | Hamont-Achel | Chimney specialist |
-| `/be/totaal-schoorsteen-specialist/pelt` | Pelt | Chimney specialist |
-
-#### Onderhoud Specialist (TOS) - Belgium
-| URL | Location | Service Type |
-|-----|----------|--------------|
-| `/be/totaal-onderhoud-specialist/lommel` | Lommel | Maintenance specialist |
-| `/be/totaal-onderhoud-specialist/hamont-achel` | Hamont-Achel | Maintenance specialist |
-| `/be/totaal-onderhoud-specialist/pelt` | Pelt | Maintenance specialist |
-
-#### Bouw Specialist (TBS) - Belgium
-| URL | Location | Service Type |
-|-----|----------|--------------|
-| `/be/totaal-bouw-specialist/lommel` | Lommel | Construction specialist |
-| `/be/totaal-bouw-specialist/hamont-achel` | Hamont-Achel | Construction specialist |
-| `/be/totaal-bouw-specialist/pelt` | Pelt | Construction specialist |
 
 ---
 
