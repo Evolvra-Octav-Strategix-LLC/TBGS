@@ -433,7 +433,7 @@ export default function Locaties() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2">
-                  <Link href={`/locaties/${location.slug}`} className="flex-1">
+                  <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
                     <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs">
                       <Navigation className="w-3 h-3 mr-1" />
                       Info
