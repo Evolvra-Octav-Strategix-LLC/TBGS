@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { Search } from "lucide-react";
 import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
 
 interface HeaderProps {
@@ -8,6 +9,7 @@ interface HeaderProps {
 
 export default function Header({ onOpenContactModal }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -24,11 +26,27 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             </div>
           </Link>
 
+          {/* Desktop Search */}
+          <div className="hidden xl:flex items-center relative">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Zoeken..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tbgs-navy focus:border-transparent w-64"
+              />
+            </div>
+          </div>
+
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             <a href="#diensten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Diensten</a>
             <Link href="/locaties" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Locaties</Link>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Kennisbank</Link>
+            <Link href="/zorgeloos-wonen" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Zorgeloos wonen</Link>
+            <Link href="/onze-projecten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Onze projecten</Link>
             <Link href="/over-ons" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Over Ons</Link>
             <Link href="/contact" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors">Contact</Link>
           </nav>
@@ -87,6 +105,20 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
               {/* Menu Content */}
               <div className="flex-1 overflow-y-auto">
+                {/* Mobile Search */}
+                <div className="p-6 border-b border-gray-200">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                    <input
+                      type="text"
+                      placeholder="Zoeken..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tbgs-navy focus:border-transparent w-full"
+                    />
+                  </div>
+                </div>
+
                 <nav className="flex flex-col p-6 space-y-6">
                   <a 
                     href="#diensten" 
@@ -111,6 +143,22 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                   >
                     <i className="fas fa-book mr-4 w-5"></i>
                     Kennisbank
+                  </Link>
+                  <Link 
+                    href="/zorgeloos-wonen" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-home mr-4 w-5"></i>
+                    Zorgeloos wonen
+                  </Link>
+                  <Link 
+                    href="/onze-projecten" 
+                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-building mr-4 w-5"></i>
+                    Onze projecten
                   </Link>
                   <Link 
                     href="/over-ons" 
