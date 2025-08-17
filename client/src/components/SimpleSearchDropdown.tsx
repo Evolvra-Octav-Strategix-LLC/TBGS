@@ -20,7 +20,7 @@ interface SimpleSearchDropdownProps {
 
 // Static search data to avoid re-render loops
 const searchData: SearchResult[] = [
-  // Kennisbank articles
+  // Kennisbank articles - Old
   {
     id: 'kb-1',
     title: 'Daklekkage Herkennen en Voorkomen',
@@ -51,6 +51,48 @@ const searchData: SearchResult[] = [
     url: '/kennisbank/dakgoot-onderhoud-reiniging',
     type: 'kennisbank',
     excerpt: 'Complete gids voor dakgoot onderhoud en reiniging door professionals.',
+    category: 'Dak'
+  },
+  
+  // Kennisbank articles - New
+  {
+    id: 'kb-5',
+    title: 'Patio Dak Specialist',
+    url: '/kennisbank/patio-dak',
+    type: 'kennisbank',
+    excerpt: 'Professionele patio dakbedekking voor duurzame bescherming en stijlvolle buitenruimtes.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-6',
+    title: 'Terras Dak Specialist',
+    url: '/kennisbank/terras-dak',
+    type: 'kennisbank',
+    excerpt: 'Professionele terrasoverkappingen voor optimaal buitengenot in alle weersomstandigheden.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-7',
+    title: 'Schuin Dak Specialist',
+    url: '/kennisbank/schuin-dak',
+    type: 'kennisbank',
+    excerpt: 'Professionele schuine dakbedekking voor duurzame bescherming en tijdloze schoonheid.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-8',
+    title: 'Plat Dak Specialist',
+    url: '/kennisbank/plat-dak',
+    type: 'kennisbank',
+    excerpt: 'Professionele platte dakbedekking voor moderne architectuur en optimale waterdichtheid.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-9',
+    title: 'Vlak Dak Specialist',
+    url: '/kennisbank/vlak-dak',
+    type: 'kennisbank',
+    excerpt: 'Moderne vlakke dakoplossingen met geavanceerde materialen en optimale prestaties.',
     category: 'Dak'
   },
 

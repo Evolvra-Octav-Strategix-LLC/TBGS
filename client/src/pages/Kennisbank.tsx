@@ -180,106 +180,334 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
         </div>
       </section>
 
-      {/* Popular Topics */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Kennisbank Grid */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Populaire <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Onderwerpen</span>
-            </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Kennisbank</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Alle begrippen voor u op een rij
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* Popular Article 1 */}
-            <Link href="/kennisbank/daklekkage-herkennen-voorkomen">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Daklekkage Articles */}
+            <Link href="/kennisbank/patio-dak">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Daklekkage herkennen en voorkomen - TBGS expert tips"
-                  className="w-full h-48 object-cover"
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Patio Dak - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-red/10 text-tbgs-red px-3 py-1 rounded-full text-xs font-bold">Dakwerk</span>
-                    <span className="text-slate-500 text-xs">5 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Daklekkage Herkennen en Voorkomen</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Leer de vroege signalen herkennen en voorkom kostbare waterschade met onze expert tips.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TDS Expert • Dec 2024</span>
-                    <button className="text-tbgs-red font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">PATIO DAK</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
                 </div>
               </div>
             </Link>
 
-            {/* Popular Article 2 */}
-            <Link href="/kennisbank/energiebesparing-door-isolatie">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <Link href="/kennisbank/terras-dak">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Energiebesparing door isolatie - TBGS duurzame oplossingen"
-                  className="w-full h-48 object-cover"
+                  src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Terras Dak - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-green/10 text-tbgs-green px-3 py-1 rounded-full text-xs font-bold">Onderhoud</span>
-                    <span className="text-slate-500 text-xs">7 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Energiebesparing door Isolatie</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Ontdek hoe juiste isolatie uw energierekening kan halveren en uw wooncomfort verhoogt.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TOS Expert • Nov 2024</span>
-                    <button className="text-tbgs-green font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">TERRAS DAK</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
                 </div>
               </div>
             </Link>
 
-            {/* Popular Article 3 */}
-            <Link href="/kennisbank/jaarlijkse-schoorsteencontrole">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+            <Link href="/kennisbank/schuin-dak">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
                 <img 
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Schoorsteenonderhoud checklist - TBGS veiligheidsadvies"
-                  className="w-full h-48 object-cover"
+                  src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Schuin Dak - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-blue/10 text-tbgs-blue px-3 py-1 rounded-full text-xs font-bold">Schoorsteen</span>
-                    <span className="text-slate-500 text-xs">4 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Jaarlijkse Schoorsteencontrole</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Volledige checklist voor veilige en efficiënte schoorsteenwerking het hele jaar door.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TSS Expert • Oct 2024</span>
-                    <button className="text-tbgs-blue font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">SCHUIN DAK</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/plat-dak">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Plat Dak - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">PLAT DAK</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/vlak-dak">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Vlak Dak - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">VLAK DAK</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/glasisolatie">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Glasisolatie - TBGS Isolatiespecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">GLASISOLATIE</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/dakkapel-isolatie">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Dakkapel Isolatie - TBGS Isolatiespecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">DAKKAPEL ISOLATIE</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/vloerisolatie">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Vloerisolatie - TBGS Isolatiespecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">VLOERISOLATIE</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/spouwmuurisolatie">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Spouwmuurisolatie - TBGS Isolatiespecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">SPOUWMUURISOLATIE</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/tritoflex-waterdicht">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Tritoflex Waterdicht - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">TRITOFLEX WATERDICHT, BRANDVRIJ EN DUURZAAM</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/epdm-dakbedekking">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1558618047-3c8c76e7d329?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="EPDM Dakbedekking - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">EPDM DAKBEDEKKING</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/kennisbank/bitumen-dakbedekking">
+              <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                <img 
+                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Bitumen Dakbedekking - TBGS Dakspecialisten"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">WAT IS BITUMEN DAKBEDEKKING</h3>
+                  <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                    READ MORE
+                  </button>
                 </div>
               </div>
             </Link>
           </div>
 
-          <div className="text-center">
-            <button 
-              onClick={onOpenContactModal}
-              className="bg-tbgs-navy text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
-            >
-              <i className="fas fa-library mr-3"></i>
-              Bekijk Alle Artikelen
-            </button>
+          {/* Bottom Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-1">
+              <Link href="/kennisbank/regenpijp">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer h-80">
+                  <img 
+                    src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" 
+                    alt="De Regenpijp - TBGS Dakspecialisten"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-xl font-bold mb-4">DE REGENPIJP</h3>
+                    <p className="text-sm mb-4 leading-relaxed">
+                      In Nederland valt er jaarlijks op 130 dagen van het jaar 1mm regen en in [...]
+                    </p>
+                    <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Link href="/kennisbank/dakgoot">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="De Dakgoot - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">DE DAKGOOT</h3>
+                    <p className="text-xs mb-2">
+                      Het is misschien het laatste waar u aan denkt bij uw dak, maar het is [...]
+                    </p>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/kennisbank/gevellekkage">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="Gevellekkage - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">GEVELLEKKAGE</h3>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/kennisbank/dakbedekking-materialen">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="Dakbedekking Materialen - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">DAKBEDEKKING MATERIALEN</h3>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/kennisbank/dakpannen-welke-keus">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="Dakpannen Welke Keus - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">DAKPANNEN: WELKE KEUS IS ER?</h3>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/kennisbank/lekkage-dakkapellen">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="Lekkage Bij Dakkapellen - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">LEKKAGE BIJ DAKKAPELLEN</h3>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/kennisbank/dakkapel-renovatie">
+                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
+                    alt="Dakkapel Renovatie - TBGS Dakspecialisten"
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
+                    <h3 className="text-lg font-bold mb-2">DAKKAPEL RENOVATIE</h3>
+                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
+                      READ MORE
+                    </button>
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

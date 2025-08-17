@@ -124,6 +124,13 @@ import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleO
 // Location-Service Pages - Overpelt
 import OverpeltDaklekkage from "@/pages/locations/OverpeltDaklekkage";
 
+// Kennisbank Articles
+import PatioDak from "@/pages/kennisbank/PatioDak";
+import TerrasDak from "@/pages/kennisbank/TerrasDak";
+import SchuinDak from "@/pages/kennisbank/SchuinDak";
+import PlatDak from "@/pages/kennisbank/PlatDak";
+import VlakDak from "@/pages/kennisbank/VlakDak";
+
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
@@ -178,6 +185,13 @@ function Router() {
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* New Kennisbank Articles */}
+          <Route path="/kennisbank/patio-dak" component={() => <PatioDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/terras-dak" component={() => <TerrasDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/schuin-dak" component={() => <SchuinDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/plat-dak" component={() => <PlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/vlak-dak" component={() => <VlakDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Main Locations Page */}
           <Route path="/locaties" component={() => <Locaties />} />
