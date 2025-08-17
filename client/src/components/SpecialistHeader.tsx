@@ -78,7 +78,7 @@ export default function SpecialistHeader({
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Specialist Logo */}
           <Link href={getSpecialistPath()}>
@@ -121,7 +121,7 @@ export default function SpecialistHeader({
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-8">
             <Link href="/locaties" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Locaties</Link>
             <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Kennisbank</Link>
             <Link href="/zorgeloos-wonen" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Zorgeloos wonen</Link>
