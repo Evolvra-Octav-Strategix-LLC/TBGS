@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import LocationCards from "../../components/LocationCards";
 
 interface PlatDakProps {
   onOpenContactModal: () => void;
@@ -172,48 +173,8 @@ export default function PlatDak({ onOpenContactModal }: PlatDakProps) {
                   </p>
                 </div>
 
-                {/* Location-specific service areas */}
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 mb-12">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Onze Servicegebieden</h2>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Eindhoven</h3>
-                      <p className="text-sm text-gray-600">Hoofdlocatie - Volledige service</p>
-                      <p className="text-xs text-gray-500">Tel: +31 40 202 6744</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Nuenen</h3>
-                      <p className="text-sm text-gray-600">Van Gogh dorp specialist</p>
-                      <p className="text-xs text-gray-500">Postcode: 5670-5674</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Veldhoven</h3>
-                      <p className="text-sm text-gray-600">Nieuwbouw & renovatie focus</p>
-                      <p className="text-xs text-gray-500">Postcode: 5500-5509</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Best</h3>
-                      <p className="text-sm text-gray-600">Familiehuis specialist</p>
-                      <p className="text-xs text-gray-500">Postcode: 5680-5684</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Geldrop</h3>
-                      <p className="text-sm text-gray-600">Dakwerk & onderhoud</p>
-                      <p className="text-xs text-gray-500">Postcode: 5660-5665</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm">
-                      <h3 className="font-bold text-tbgs-navy mb-2">📍 Mierlo & Waalre</h3>
-                      <p className="text-sm text-gray-600">Premium service</p>
-                      <p className="text-xs text-gray-500">Luxe woningen specialist</p>
-                    </div>
-                  </div>
-                  <div className="text-center mt-6">
-                    <p className="text-sm text-gray-600">
-                      <strong>Werkgebied:</strong> 50km rondom Eindhoven | <strong>Responstijd:</strong> Binnen 24 uur | 
-                      <strong>Spoeddienst:</strong> Binnen 2 uur voor lekkages
-                    </p>
-                  </div>
-                </div>
+                {/* Standardized Location Cards */}
+                <LocationCards showCTA={true} className="mb-12" />
 
                 <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">Wat is een plat dak?</h2>
                 <p className="text-lg leading-relaxed mb-6">
@@ -465,84 +426,6 @@ export default function PlatDak({ onOpenContactModal }: PlatDakProps) {
                       <Link href="/kennisbank/dakbedekking-materialen" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
                         → Materialen vergelijken
                       </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* NAP Blocks for Local SEO */}
-                <div className="bg-gray-50 rounded-xl p-8 mb-12">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">📍 TBGS Locaties & Contact</h2>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
-                      <h3 className="font-bold text-tbgs-navy mb-3">🏢 TBGS Eindhoven (Hoofdkantoor)</h3>
-                      <div className="space-y-2 text-sm">
-                        <p className="text-gray-700">📞 <strong>Tel:</strong> +31 40 202 6744</p>
-                        <p className="text-gray-700">📧 <strong>Email:</strong> eindhoven@tbgs.nl</p>
-                        <p className="text-gray-700">🗺️ <strong>Servicegebied:</strong> Eindhoven + 25km</p>
-                        <p className="text-gray-700">🕒 <strong>Openingstijden:</strong> Ma-Vr 07:30-17:30</p>
-                        <p className="text-gray-700">📋 <strong>KvK:</strong> 17276509</p>
-                        <div className="mt-3">
-                          <a href="https://maps.google.com/?q=TBGS+Eindhoven" target="_blank" rel="noopener noreferrer" 
-                             className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            🗺️ Route via Google Maps
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
-                      <h3 className="font-bold text-tbgs-navy mb-3">🏘️ TBGS Nuenen</h3>
-                      <div className="space-y-2 text-sm">
-                        <p className="text-gray-700">📞 <strong>Tel:</strong> +31 40 202 6744</p>
-                        <p className="text-gray-700">📧 <strong>Email:</strong> nuenen@tbgs.nl</p>
-                        <p className="text-gray-700">🗺️ <strong>Servicegebied:</strong> Van Gogh dorp + omgeving</p>
-                        <p className="text-gray-700">🏠 <strong>Specialty:</strong> Historische panden</p>
-                        <div className="mt-3">
-                          <a href="https://maps.google.com/?q=TBGS+Nuenen" target="_blank" rel="noopener noreferrer" 
-                             className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            🗺️ Route via Google Maps
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
-                      <h3 className="font-bold text-tbgs-navy mb-3">🏗️ TBGS Veldhoven</h3>
-                      <div className="space-y-2 text-sm">
-                        <p className="text-gray-700">📞 <strong>Tel:</strong> +31 40 202 6744</p>
-                        <p className="text-gray-700">📧 <strong>Email:</strong> veldhoven@tbgs.nl</p>
-                        <p className="text-gray-700">🗺️ <strong>Servicegebied:</strong> Veldhoven, Oerle, Zeelst</p>
-                        <p className="text-gray-700">🏠 <strong>Specialty:</strong> Nieuwbouw & renovatie</p>
-                        <div className="mt-3">
-                          <a href="https://maps.google.com/?q=TBGS+Veldhoven" target="_blank" rel="noopener noreferrer" 
-                             className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            🗺️ Route via Google Maps
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                    <div className="bg-white rounded-lg p-4 shadow-sm border">
-                      <h4 className="font-bold text-tbgs-navy mb-2">📍 Best</h4>
-                      <p className="text-xs text-gray-600">Dakwerk & schoorsteenservice</p>
-                      <p className="text-xs text-gray-500">Postcode: 5680-5684</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm border">
-                      <h4 className="font-bold text-tbgs-navy mb-2">📍 Geldrop</h4>
-                      <p className="text-xs text-gray-600">Onderhoud & reparaties</p>
-                      <p className="text-xs text-gray-500">Postcode: 5660-5665</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm border">
-                      <h4 className="font-bold text-tbgs-navy mb-2">📍 Mierlo</h4>
-                      <p className="text-xs text-gray-600">Complete renovaties</p>
-                      <p className="text-xs text-gray-500">Postcode: 5731-5735</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4 shadow-sm border">
-                      <h4 className="font-bold text-tbgs-navy mb-2">📍 Waalre</h4>
-                      <p className="text-xs text-gray-600">Premium woningen</p>
-                      <p className="text-xs text-gray-500">Postcode: 5580-5584</p>
                     </div>
                   </div>
                 </div>
