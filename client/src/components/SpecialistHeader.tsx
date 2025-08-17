@@ -79,9 +79,9 @@ export default function SpecialistHeader({
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-8">
           {/* Specialist Logo */}
-          <Link href={getSpecialistPath()}>
+          <Link href={getSpecialistPath()} className="flex-shrink-0">
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
@@ -92,8 +92,8 @@ export default function SpecialistHeader({
           </Link>
 
           {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative">
-            <div className="relative w-80">
+          <div className="hidden xl:flex items-center relative flex-1 max-w-md mx-8">
+            <div className="relative w-full">
               <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
                 isSearchFocused ? primaryColor : 'text-gray-400'
               }`} />
@@ -121,20 +121,20 @@ export default function SpecialistHeader({
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/locaties" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Locaties</Link>
-            <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Kennisbank</Link>
-            <Link href="/zorgeloos-wonen" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Zorgeloos wonen</Link>
-            <Link href="/onze-projecten" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Onze projecten</Link>
-            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Over Ons</Link>
-            <Link href="/contact" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Contact</Link>
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 flex-shrink-0">
+            <Link href="/locaties" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
+            <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
+            <Link href="/zorgeloos-wonen" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Zorgeloos wonen</Link>
+            <Link href="/onze-projecten" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
+            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Contact</Link>
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center flex-shrink-0">
             <button 
               onClick={onOpenContactModal}
-              className={`${primaryColor.replace('text-', 'bg-')} text-white px-6 py-3 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors`}
+              className={`${primaryColor.replace('text-', 'bg-')} text-white px-4 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm whitespace-nowrap`}
             >
               Gratis Offerte
             </button>
