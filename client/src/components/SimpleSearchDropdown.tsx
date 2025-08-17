@@ -89,11 +89,11 @@ const searchData: SearchResult[] = [
   },
   {
     id: 'kb-9',
-    title: 'Vlak Dak Specialist',
-    url: '/kennisbank/vlak-dak',
+    title: 'Schilderwerken Specialist',
+    url: '/kennisbank/schilderwerken',
     type: 'kennisbank',
-    excerpt: 'Moderne vlakke dakoplossingen met geavanceerde materialen en optimale prestaties.',
-    category: 'Dak'
+    excerpt: 'Professionele schilderwerken voor duurzame bescherming en perfecte afwerking.',
+    category: 'Schilderwerk'
   },
 
   // Location pages - Netherlands

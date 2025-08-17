@@ -4,7 +4,15 @@
 
 This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
 
-**Recent Architecture Update (Aug 14, 2025):** 
+**Recent Architecture Update (Aug 17, 2025):** 
+- **Complete Kennisbank Redesign**: Modernized kennisbank section with cleaner card design, featuring "Meest Populair" section highlighting important content and improved grid layout for better user experience.
+- **SEO Knowledge Base Articles**: Created 5 comprehensive SEO-optimized articles: PatioDak, TerrasDak, SchuinDak, PlatDak, and Schilderwerken with high-end technical content designed for top search rankings.
+- **Duplicate Content Removal**: Removed VlakDak article to eliminate overlap with PlatDak, ensuring unique content and better SEO performance.
+- **Onderhoudsabonnement Integration**: Updated all knowledge base articles to emphasize maintenance subscriptions (onderhoudsabonnementen) as preferred service model.
+- **Modern Card Design**: Implemented two-tier card system - featured cards with detailed descriptions and reading time, plus compact overview cards with hover effects and modern styling.
+- **Enhanced Search Functionality**: Updated search dropdown to include all new knowledge base articles with proper categorization and SEO-friendly excerpts.
+
+**Previous Architecture Updates (Aug 14, 2025):** 
 - **Complete Belgian Location Expansion**: Successfully expanded to comprehensive Belgian market coverage with new hoofdlocatie pages for Hamont and Pelt, plus detailed location-service pages for Sint-Huibrechts-Lille (Renovatie, Onderhoud) and Overpelt (Daklekkage).
 - **Elite Dutch Location Pages**: Created premium hoofdlocatie pages for Waalre (elite luxury positioning), Geldrop, and Mierlo with high-end SEO optimization, local schema markup, and targeted luxury market messaging.
 - **Advanced Local SEO Schema**: Implemented comprehensive LocalBusiness schema markup with geo-coordinates, Belgian/Dutch locale settings, and region-specific service catalogs for maximum local search rankings.

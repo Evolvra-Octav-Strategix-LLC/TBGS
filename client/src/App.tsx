@@ -129,7 +129,7 @@ import PatioDak from "@/pages/kennisbank/PatioDak";
 import TerrasDak from "@/pages/kennisbank/TerrasDak";
 import SchuinDak from "@/pages/kennisbank/SchuinDak";
 import PlatDak from "@/pages/kennisbank/PlatDak";
-import VlakDak from "@/pages/kennisbank/VlakDak";
+import Schilderwerken from "@/pages/kennisbank/Schilderwerken";
 
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -191,7 +191,7 @@ function Router() {
           <Route path="/kennisbank/terras-dak" component={() => <TerrasDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/schuin-dak" component={() => <SchuinDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/plat-dak" component={() => <PlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/kennisbank/vlak-dak" component={() => <VlakDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/schilderwerken" component={() => <Schilderwerken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Main Locations Page */}
           <Route path="/locaties" component={() => <Locaties />} />
