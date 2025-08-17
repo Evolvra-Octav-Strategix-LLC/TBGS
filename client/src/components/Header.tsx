@@ -245,7 +245,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
       )}
 
       {/* Floating Search - Desktop Only */}
-      <div className="fixed top-20 right-8 z-40 hidden xl:block">
+      <div className="fixed top-32 right-8 z-40 hidden xl:block">
         <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 w-80">
           <div className="relative">
             <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
