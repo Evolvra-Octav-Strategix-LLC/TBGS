@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import SEOHead from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import UnfoldableTopicsGrid from "@/components/UnfoldableTopicsGrid";
 
 interface KennisbankProps {
   onOpenContactModal: () => void;
@@ -68,6 +69,187 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
     }
   ];
 
+  // Organized topic categories for the unfoldable component
+  const topicCategories = [
+    {
+      id: 'dakwerk-en-bedekking',
+      title: 'Dakwerk & Bedekking',
+      description: 'Alles over dakbedekking, materialen en daktypen',
+      defaultOpen: true,
+      topics: [
+        {
+          id: 'plat-dak',
+          title: 'PLAT DAK',
+          link: '/kennisbank/plat-dak',
+          image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
+          alt: 'Plat Dak - TBGS Dakspecialisten',
+          badge: 'Modern',
+          badgeColor: 'bg-green-500'
+        },
+        {
+          id: 'schuin-dak',
+          title: 'SCHUIN DAK',
+          link: '/kennisbank/schuin-dak',
+          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
+          alt: 'Schuin Dak - TBGS Dakspecialisten',
+          badge: 'Populair',
+          badgeColor: 'bg-blue-500'
+        },
+        {
+          id: 'patio-dak',
+          title: 'PATIO DAK',
+          link: '/kennisbank/patio-dak',
+          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Patio Dak - TBGS Dakspecialisten'
+        },
+        {
+          id: 'terras-dak',
+          title: 'TERRAS DAK',
+          link: '/kennisbank/terras-dak',
+          image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Terras Dak - TBGS Dakspecialisten'
+        },
+        {
+          id: 'dakbedekking-materialen',
+          title: 'DAKBEDEKKING MATERIALEN',
+          link: '/kennisbank/dakbedekking-materialen',
+          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Dakbedekking Materialen - TBGS Specialisten'
+        },
+        {
+          id: 'dakpannen-welke-keus',
+          title: 'DAKPANNEN: WELKE KEUS?',
+          link: '/kennisbank/dakpannen-welke-keus',
+          image: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Dakpannen Welke Keus - TBGS Specialisten'
+        }
+      ]
+    },
+    {
+      id: 'problemen-en-reparaties',
+      title: 'Problemen & Reparaties',
+      description: 'Herkenning en oplossingen voor dakproblemen',
+      topics: [
+        {
+          id: 'daklekkage-herkennen-voorkomen',
+          title: 'DAKLEKKAGE HERKENNEN & VOORKOMEN',
+          link: '/kennisbank/daklekkage-herkennen-voorkomen',
+          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
+          alt: 'Daklekkage Herkennen - TBGS Expert Tips',
+          badge: 'Urgent',
+          badgeColor: 'bg-red-500'
+        },
+        {
+          id: 'gevellekkage',
+          title: 'GEVELLEKKAGE',
+          link: '/kennisbank/gevellekkage',
+          image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Gevellekkage - TBGS Specialisten'
+        },
+        {
+          id: 'lekkage-dakkapellen',
+          title: 'LEKKAGE DAKKAPELLEN',
+          link: '/kennisbank/lekkage-dakkapellen',
+          image: 'https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Lekkage Dakkapellen - TBGS Specialisten'
+        },
+        {
+          id: 'dakkapel-renovatie',
+          title: 'DAKKAPEL RENOVATIE',
+          link: '/kennisbank/dakkapel-renovatie',
+          image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Dakkapel Renovatie - TBGS Specialisten'
+        }
+      ]
+    },
+    {
+      id: 'waterafvoer-en-goten',
+      title: 'Waterafvoer & Goten',
+      description: 'Regenwaterbeheersing en drainage systemen',
+      topics: [
+        {
+          id: 'regenpijp',
+          title: 'REGENPIJP',
+          link: '/kennisbank/regenpijp',
+          image: 'https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Regenpijp - TBGS Specialisten'
+        },
+        {
+          id: 'dakgoot',
+          title: 'DAKGOOT',
+          link: '/kennisbank/dakgoot',
+          image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Dakgoot - TBGS Specialisten'
+        }
+      ]
+    },
+    {
+      id: 'isolatie-en-energiebesparing',
+      title: 'Isolatie & Energiebesparing',
+      description: 'Optimale isolatie voor energiebesparing en comfort',
+      topics: [
+        {
+          id: 'energiebesparing',
+          title: 'ENERGIEBESPARING',
+          link: '/kennisbank/energiebesparing-door-isolatie',
+          image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Energiebesparing Isolatie - TBGS'
+        },
+        {
+          id: 'glasisolatie',
+          title: 'GLASISOLATIE',
+          link: '/kennisbank/glasisolatie',
+          image: 'https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Glasisolatie - TBGS Isolatiespecialisten'
+        },
+        {
+          id: 'dakkapel-isolatie',
+          title: 'DAKKAPEL ISOLATIE',
+          link: '/kennisbank/dakkapel-isolatie',
+          image: 'https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Dakkapel Isolatie - TBGS Isolatiespecialisten'
+        },
+        {
+          id: 'vloerisolatie',
+          title: 'VLOERISOLATIE',
+          link: '/kennisbank/vloerisolatie',
+          image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Vloerisolatie - TBGS Isolatiespecialisten'
+        }
+      ]
+    },
+    {
+      id: 'onderhoud-en-controle',
+      title: 'Onderhoud & Controle',
+      description: 'Preventief onderhoud en veiligheidsinspectie',
+      topics: [
+        {
+          id: 'schoorsteencontrole',
+          title: 'SCHOORSTEENCONTROLE',
+          link: '/kennisbank/jaarlijkse-schoorsteencontrole',
+          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Schoorsteencontrole - TBGS'
+        }
+      ]
+    },
+    {
+      id: 'schilderwerk-en-afwerking',
+      title: 'Schilderwerk & Afwerking',
+      description: 'Professionele schilderwerken en afwerking',
+      topics: [
+        {
+          id: 'schilderwerken',
+          title: 'SCHILDERWERKEN',
+          link: '/kennisbank/schilderwerken',
+          image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Schilderwerken - TBGS Specialisten',
+          badge: 'Nieuw',
+          badgeColor: 'bg-purple-500'
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEOHead 
@@ -76,6 +258,8 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
         url="/kennisbank"
         keywords="kennisbank bouw, dakwerk tips, schoorsteenonderhoud, preventief onderhoud, renovatie gids, bouw expertise, onderhoudsadvies, daklekkage voorkomen, TBGS kennis"
       />
+
+      <Header onOpenContactModal={onOpenContactModal} />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden">
@@ -274,264 +458,12 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
             </div>
           </div>
 
-          {/* All Knowledge Base Articles */}
+          {/* Unfoldable Topics Grid */}
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Alle Onderwerpen</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              {/* Schilderwerken - NEW */}
-              <Link href="/kennisbank/schilderwerken">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Schilderwerken - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">SCHILDERWERKEN</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Patio Dak */}
-              <Link href="/kennisbank/patio-dak">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Patio Dak - TBGS Dakspecialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">PATIO DAK</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Terras Dak */}
-              <Link href="/kennisbank/terras-dak">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Terras Dak - TBGS Dakspecialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">TERRAS DAK</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Energiebesparing */}
-              <Link href="/kennisbank/energiebesparing-door-isolatie">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Energiebesparing Isolatie - TBGS"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">ENERGIEBESPARING</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Schoorsteencontrole */}
-              <Link href="/kennisbank/jaarlijkse-schoorsteencontrole">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Schoorsteencontrole - TBGS"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">SCHOORSTEENCONTROLE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Glasisolatie */}
-              <Link href="/kennisbank/glasisolatie">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Glasisolatie - TBGS Isolatiespecialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">GLASISOLATIE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Dakkapel Isolatie */}
-              <Link href="/kennisbank/dakkapel-isolatie">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Dakkapel Isolatie - TBGS Isolatiespecialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">DAKKAPEL ISOLATIE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Vloerisolatie */}
-              <Link href="/kennisbank/vloerisolatie">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Vloerisolatie - TBGS Isolatiespecialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">VLOERISOLATIE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
+            <UnfoldableTopicsGrid categories={topicCategories} />
           </div>
-
-          {/* Additional cards in the grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/kennisbank/regenpijp">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Regenpijp - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">REGENPIJP</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/dakgoot">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Dakgoot - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">DAKGOOT</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/gevellekkage">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Gevellekkage - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">GEVELLEKKAGE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/dakbedekking-materialen">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Dakbedekking Materialen - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">DAKBEDEKKING MATERIALEN</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/dakpannen-welke-keus">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Dakpannen Welke Keus - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">DAKPANNEN: WELKE KEUS?</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/lekkage-dakkapellen">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Lekkage Dakkapellen - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">LEKKAGE DAKKAPELLEN</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/kennisbank/dakkapel-renovatie">
-                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                      alt="Dakkapel Renovatie - TBGS Specialisten"
-                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 text-white">
-                      <h4 className="text-lg font-bold">DAKKAPEL RENOVATIE</h4>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
+        </div>
       </section>
 
       {/* CTA Section */}
@@ -565,6 +497,8 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
