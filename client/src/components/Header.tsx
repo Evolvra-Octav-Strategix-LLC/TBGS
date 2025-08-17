@@ -74,11 +74,37 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
             <Link href="/locaties" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Locaties</Link>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Kennisbank</Link>
-            <Link href="/zorgeloos-wonen" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Zorgeloos wonen</Link>
             <Link href="/onze-projecten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Onze projecten</Link>
             <Link href="/over-ons" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Over Ons</Link>
             <Link href="/contact" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Contact</Link>
           </nav>
+
+          {/* Desktop Search */}
+          <div className="hidden xl:flex items-center relative flex-1 max-w-sm mx-8">
+            <div className="bg-white rounded-full shadow-lg px-6 py-3 w-full border border-gray-100">
+              <div className="relative">
+                <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors ${
+                  isSearchFocused ? 'text-gray-600' : 'text-gray-400'
+                }`} />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Waar kunnen we u mee helpen?"
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  onFocus={handleSearchFocus}
+                  onBlur={handleSearchBlur}
+                  className={`pl-12 pr-4 py-1 w-full bg-transparent text-gray-800 placeholder-gray-500 font-medium transition-all duration-200 focus:outline-none`}
+                />
+                <SimpleSearchDropdown
+                  isVisible={showSearchDropdown}
+                  onClose={closeSearchDropdown}
+                  searchQuery={searchQuery}
+                  onSearchChange={handleSearchChange}
+                />
+              </div>
+            </div>
+          </div>
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
@@ -244,32 +270,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         </>
       )}
 
-      {/* Floating Search - Desktop Only */}
-      <div className="fixed top-32 right-8 z-40 hidden xl:block">
-        <div className="bg-white rounded-full shadow-lg px-6 py-4 w-96 border border-gray-100">
-          <div className="relative">
-            <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors ${
-              isSearchFocused ? 'text-gray-600' : 'text-gray-400'
-            }`} />
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="Waar kunnen we u mee helpen?"
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              onFocus={handleSearchFocus}
-              onBlur={handleSearchBlur}
-              className={`pl-12 pr-4 py-2 w-full bg-transparent text-gray-800 placeholder-gray-500 font-medium transition-all duration-200 focus:outline-none`}
-            />
-            <SimpleSearchDropdown
-              isVisible={showSearchDropdown}
-              onClose={closeSearchDropdown}
-              searchQuery={searchQuery}
-              onSearchChange={handleSearchChange}
-            />
-          </div>
-        </div>
-      </div>
+
     </header>
   );
 }
