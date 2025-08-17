@@ -68,34 +68,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative flex-1 max-w-lg mx-12">
-            <div className="relative w-full">
-              <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
-                isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
-              }`} />
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Zoek in kennisbank, locaties, diensten..."
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                onFocus={handleSearchFocus}
-                onBlur={handleSearchBlur}
-                className={`pl-10 pr-4 py-2 w-full border rounded-lg transition-all duration-200 ${
-                  isSearchFocused 
-                    ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20 shadow-lg' 
-                    : 'border-gray-300 hover:border-gray-400'
-                } focus:outline-none`}
-              />
-              <SimpleSearchDropdown
-                isVisible={showSearchDropdown}
-                onClose={closeSearchDropdown}
-                searchQuery={searchQuery}
-                onSearchChange={handleSearchChange}
-              />
-            </div>
-          </div>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
@@ -270,6 +243,37 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </div>
         </>
       )}
+
+      {/* Floating Search - Desktop Only */}
+      <div className="fixed top-20 right-8 z-40 hidden xl:block">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 w-80">
+          <div className="relative">
+            <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+              isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
+            }`} />
+            <input
+              ref={searchInputRef}
+              type="text"
+              placeholder="Zoek in kennisbank, locaties, diensten..."
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              onFocus={handleSearchFocus}
+              onBlur={handleSearchBlur}
+              className={`pl-10 pr-4 py-2 w-full border rounded-lg transition-all duration-200 ${
+                isSearchFocused 
+                  ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20 shadow-lg' 
+                  : 'border-gray-300 hover:border-gray-400'
+              } focus:outline-none`}
+            />
+            <SimpleSearchDropdown
+              isVisible={showSearchDropdown}
+              onClose={closeSearchDropdown}
+              searchQuery={searchQuery}
+              onSearchChange={handleSearchChange}
+            />
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
