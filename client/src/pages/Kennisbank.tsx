@@ -417,130 +417,119 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
             </div>
           </div>
 
-          {/* Bottom Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
+              {/* Additional cards in the grid */}
               <Link href="/kennisbank/regenpijp">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer h-80">
-                  <img 
-                    src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" 
-                    alt="De Regenpijp - TBGS Dakspecialisten"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-xl font-bold mb-4">DE REGENPIJP</h3>
-                    <p className="text-sm mb-4 leading-relaxed">
-                      In Nederland valt er jaarlijks op 130 dagen van het jaar 1mm regen en in [...]
-                    </p>
-                    <button className="w-fit border border-white px-4 py-2 text-sm font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Regenpijp - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">REGENPIJP</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
-            </div>
 
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link href="/kennisbank/dakgoot">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="De Dakgoot - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">DE DAKGOOT</h3>
-                    <p className="text-xs mb-2">
-                      Het is misschien het laatste waar u aan denkt bij uw dak, maar het is [...]
-                    </p>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Dakgoot - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">DAKGOOT</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
 
               <Link href="/kennisbank/gevellekkage">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="Gevellekkage - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">GEVELLEKKAGE</h3>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Gevellekkage - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">GEVELLEKKAGE</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
 
               <Link href="/kennisbank/dakbedekking-materialen">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="Dakbedekking Materialen - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">DAKBEDEKKING MATERIALEN</h3>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Dakbedekking Materialen - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">DAKBEDEKKING MATERIALEN</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
 
               <Link href="/kennisbank/dakpannen-welke-keus">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="Dakpannen Welke Keus - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">DAKPANNEN: WELKE KEUS IS ER?</h3>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Dakpannen Welke Keus - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">DAKPANNEN: WELKE KEUS?</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
 
               <Link href="/kennisbank/lekkage-dakkapellen">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="Lekkage Bij Dakkapellen - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">LEKKAGE BIJ DAKKAPELLEN</h3>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Lekkage Dakkapellen - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">LEKKAGE DAKKAPELLEN</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
 
               <Link href="/kennisbank/dakkapel-renovatie">
-                <div className="relative group overflow-hidden rounded-lg cursor-pointer">
-                  <img 
-                    src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=240" 
-                    alt="Dakkapel Renovatie - TBGS Dakspecialisten"
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6 text-white">
-                    <h3 className="text-lg font-bold mb-2">DAKKAPEL RENOVATIE</h3>
-                    <button className="w-fit border border-white px-3 py-1 text-xs font-medium hover:bg-white hover:text-black transition-colors">
-                      READ MORE
-                    </button>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                      alt="Dakkapel Renovatie - TBGS Specialisten"
+                      className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h4 className="text-lg font-bold">DAKKAPEL RENOVATIE</h4>
+                    </div>
                   </div>
                 </div>
               </Link>
             </div>
-          </div>
         </div>
       </section>
 

@@ -95,6 +95,62 @@ const searchData: SearchResult[] = [
     excerpt: 'Professionele schilderwerken voor duurzame bescherming en perfecte afwerking.',
     category: 'Schilderwerk'
   },
+  {
+    id: 'kb-10',
+    title: 'Regenpijp Specialist',
+    url: '/kennisbank/regenpijp',
+    type: 'kennisbank',
+    excerpt: 'Expert regenpijp installatie voor optimale hemelwaterafvoer en dakbescherming.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-11',
+    title: 'Dakgoot Specialist', 
+    url: '/kennisbank/dakgoot',
+    type: 'kennisbank',
+    excerpt: 'Professionele dakgoot installatie voor optimale hemelwaterafvoer en dakbescherming.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-12',
+    title: 'Gevellekkage Specialist',
+    url: '/kennisbank/gevellekkage', 
+    type: 'kennisbank',
+    excerpt: 'Professionele gevellekkage opsporing en reparatie voor een droge en gezonde woning.',
+    category: 'Gevel'
+  },
+  {
+    id: 'kb-13',
+    title: 'Dakbedekking Materialen',
+    url: '/kennisbank/dakbedekking-materialen',
+    type: 'kennisbank', 
+    excerpt: 'Expert gids voor het kiezen van de juiste dakbedekking voor uw woning.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-14',
+    title: 'Dakpannen: Welke Keus?',
+    url: '/kennisbank/dakpannen-welke-keus',
+    type: 'kennisbank',
+    excerpt: 'Expert gids voor het kiezen van de juiste dakpannen voor uw woning.',
+    category: 'Dak'
+  },
+  {
+    id: 'kb-15',
+    title: 'Lekkage bij Dakkapellen',
+    url: '/kennisbank/lekkage-dakkapellen',
+    type: 'kennisbank',
+    excerpt: 'Professionele dakkapel lekkage opsporing en reparatie voor een droge zolder.',
+    category: 'Dakkapel'
+  },
+  {
+    id: 'kb-16',
+    title: 'Dakkapel Renovatie',
+    url: '/kennisbank/dakkapel-renovatie',
+    type: 'kennisbank',
+    excerpt: 'Professionele dakkapel renovatie voor meer ruimte, licht en comfort op zolder.',
+    category: 'Dakkapel'
+  },
 
   // Location pages - Netherlands
   {

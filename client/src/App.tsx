@@ -130,6 +130,13 @@ import TerrasDak from "@/pages/kennisbank/TerrasDak";
 import SchuinDak from "@/pages/kennisbank/SchuinDak";
 import PlatDak from "@/pages/kennisbank/PlatDak";
 import Schilderwerken from "@/pages/kennisbank/Schilderwerken";
+import Regenpijp from "@/pages/kennisbank/Regenpijp";
+import Dakgoot from "@/pages/kennisbank/Dakgoot";
+import Gevellekkage from "@/pages/kennisbank/Gevellekkage";
+import DakbedekkingMaterialen from "@/pages/kennisbank/DakbedekkingMaterialen";
+import DakpannenWelkeKeus from "@/pages/kennisbank/DakpannenWelkeKeus";
+import LekkageDakkapellen from "@/pages/kennisbank/LekkageDakkapellen";
+import DakkapelRenovatie from "@/pages/kennisbank/DakkapelRenovatie";
 
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -192,6 +199,13 @@ function Router() {
           <Route path="/kennisbank/schuin-dak" component={() => <SchuinDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/plat-dak" component={() => <PlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/schilderwerken" component={() => <Schilderwerken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/regenpijp" component={() => <Regenpijp onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/dakgoot" component={() => <Dakgoot onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/gevellekkage" component={() => <Gevellekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/dakbedekking-materialen" component={() => <DakbedekkingMaterialen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/dakpannen-welke-keus" component={() => <DakpannenWelkeKeus onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/lekkage-dakkapellen" component={() => <LekkageDakkapellen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/dakkapel-renovatie" component={() => <DakkapelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Main Locations Page */}
           <Route path="/locaties" component={() => <Locaties />} />
