@@ -72,57 +72,17 @@ import LommelBouwSpecialist from "@/pages/be/totaal-bouw-specialist/LommelBouwSp
 import HamontAchelBouwSpecialist from "@/pages/be/totaal-bouw-specialist/HamontAchelBouwSpecialist";
 import PeltBouwSpecialist from "@/pages/be/totaal-bouw-specialist/PeltBouwSpecialist";
 
-// Location-Service Pages - Eindhoven
+// Location-Service Pages - Only existing files
 import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
 import EindhovenRenovatie from "@/pages/locations/EindhovenRenovatie";
 import EindhovenOnderhoud from "@/pages/locations/EindhovenOnderhoud";
-
-// Location-Service Pages - Nuenen
 import NuenenDaklekkage from "@/pages/locations/NuenenDaklekkage";
 import NuenenRenovatie from "@/pages/locations/NuenenRenovatie";
-
-// Location-Service Pages - Veldhoven  
 import VeldhovenDaklekkage from "@/pages/locations/VeldhovenDaklekkage";
-
-// Location-Service Pages - Best
 import BestDaklekkage from "@/pages/locations/BestDaklekkage";
-
-// Location-Service Pages - Geldrop
 import GeldropDaklekkage from "@/pages/locations/GeldropDaklekkage";
 import GeldropRenovatie from "@/pages/locations/GeldropRenovatie";
 import GeldropOnderhoud from "@/pages/locations/GeldropOnderhoud";
-
-// Location-Service Pages - Mierlo
-import MierloDaklekkage from "@/pages/locations/MierloDaklekkage";
-import MierloRenovatie from "@/pages/locations/MierloRenovatie";
-import MierloOnderhoud from "@/pages/locations/MierloOnderhoud";
-
-// Location-Service Pages - Waalre
-import WaalreDaklekkage from "@/pages/locations/WaalreDaklekkage";
-import WaalreRenovatie from "@/pages/locations/WaalreRenovatie";
-import WaalreOnderhoud from "@/pages/locations/WaalreOnderhoud";
-
-// Location-Service Pages - Hamont-Achel
-import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
-import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
-import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
-
-// Location-Service Pages - Hamont
-import HamontDaklekkage from "@/pages/locations/HamontDaklekkage";
-import HamontRenovatie from "@/pages/locations/HamontRenovatie";
-import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
-
-// Location-Service Pages - Pelt
-import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
-import PeltRenovatie from "@/pages/locations/PeltRenovatie";
-import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
-
-// Location-Service Pages - Sint-Huibrechts-Lille
-import SintHuibrechtsLilleRenovatie from "@/pages/locations/SintHuibrechtsLilleRenovatie";
-import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleOnderhoud";
-
-// Location-Service Pages - Overpelt
-import OverpeltDaklekkage from "@/pages/locations/OverpeltDaklekkage";
 
 // Location-Specific Plat Dak Specialist Pages
 import EindhovenPlatDak from "@/pages/locaties/EindhovenPlatDak";
@@ -275,6 +235,18 @@ function Router() {
           <Route path="/eindhoven/plat-dak-specialist" component={() => <EindhovenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nuenen/plat-dak-specialist" component={() => <NuenenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/veldhoven/plat-dak-specialist" component={() => <VeldhovenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Service Routes */}
+          <Route path="/eindhoven/daklekkage" component={() => <EindhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/eindhoven/renovatie" component={() => <EindhovenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/eindhoven/onderhoud" component={() => <EindhovenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nuenen/daklekkage" component={() => <NuenenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nuenen/renovatie" component={() => <NuenenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/veldhoven/daklekkage" component={() => <VeldhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop/daklekkage" component={() => <GeldropDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop/renovatie" component={() => <GeldropRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/geldrop/onderhoud" component={() => <GeldropOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
