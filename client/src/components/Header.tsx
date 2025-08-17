@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "wouter";
 import { Search } from "lucide-react";
 import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
+import SearchDropdown from "./SearchDropdown";
 
 interface HeaderProps {
   onOpenContactModal: () => void;
@@ -10,6 +11,37 @@ interface HeaderProps {
 export default function Header({ onOpenContactModal }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchFocus = () => {
+    setIsSearchFocused(true);
+    setShowSearchDropdown(true);
+  };
+
+  const handleSearchBlur = () => {
+    // Delay hiding dropdown to allow for clicks
+    setTimeout(() => {
+      setIsSearchFocused(false);
+      setShowSearchDropdown(false);
+    }, 200);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    if (value.trim().length > 0) {
+      setShowSearchDropdown(true);
+    }
+  };
+
+  const closeSearchDropdown = () => {
+    setShowSearchDropdown(false);
+    setSearchQuery("");
+    if (searchInputRef.current) searchInputRef.current.blur();
+    if (mobileSearchInputRef.current) mobileSearchInputRef.current.blur();
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -28,14 +60,29 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
           {/* Desktop Search */}
           <div className="hidden xl:flex items-center relative">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <div className="relative w-80">
+              <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+                isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
+              }`} />
               <input
+                ref={searchInputRef}
                 type="text"
-                placeholder="Zoeken..."
+                placeholder="Zoek in kennisbank, locaties, diensten..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tbgs-navy focus:border-transparent w-64"
+                onChange={(e) => handleSearchChange(e.target.value)}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
+                className={`pl-10 pr-4 py-2 w-full border rounded-lg transition-all duration-200 ${
+                  isSearchFocused 
+                    ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20 shadow-lg' 
+                    : 'border-gray-300 hover:border-gray-400'
+                } focus:outline-none`}
+              />
+              <SearchDropdown
+                isVisible={showSearchDropdown}
+                onClose={closeSearchDropdown}
+                searchQuery={searchQuery}
+                onSearchChange={handleSearchChange}
               />
             </div>
           </div>
@@ -107,13 +154,28 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                 {/* Mobile Search */}
                 <div className="p-6 border-b border-gray-200">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                    <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+                      isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
+                    }`} />
                     <input
+                      ref={mobileSearchInputRef}
                       type="text"
-                      placeholder="Zoeken..."
+                      placeholder="Zoek in kennisbank, locaties..."
                       value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tbgs-navy focus:border-transparent w-full"
+                      onChange={(e) => handleSearchChange(e.target.value)}
+                      onFocus={handleSearchFocus}
+                      onBlur={handleSearchBlur}
+                      className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 ${
+                        isSearchFocused 
+                          ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20' 
+                          : 'border-gray-300'
+                      } focus:outline-none`}
+                    />
+                    <SearchDropdown
+                      isVisible={showSearchDropdown}
+                      onClose={closeSearchDropdown}
+                      searchQuery={searchQuery}
+                      onSearchChange={handleSearchChange}
                     />
                   </div>
                 </div>
