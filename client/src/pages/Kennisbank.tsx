@@ -1,320 +1,235 @@
-import { useEffect } from "react";
 import { Link } from "wouter";
-import SEOHead from "@/lib/seo";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { ArrowRight } from "lucide-react";
 
-interface KennisbankProps {
-  onOpenContactModal: () => void;
+interface KennisbankItem {
+  id: string;
+  title: string;
+  excerpt: string;
+  url: string;
+  image: string;
+  category: string;
 }
 
-export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const kennisbankItems: KennisbankItem[] = [
+  {
+    id: "regenpijp",
+    title: "DE REGENPIJP",
+    excerpt: "In Nederland valt er jaarlijks op 130 dagen van het jaar 1mm regen en in [...]",
+    url: "/kennisbank/regenpijp-onderhoud-reparatie",
+    image: "bg-gradient-to-br from-gray-600 to-gray-800",
+    category: "Dakgoten"
+  },
+  {
+    id: "dakgoot",
+    title: "DE DAKGOOT",
+    excerpt: "Het is misschien het laatste waar u aan denkt bij uw dak, maar het is [...]",
+    url: "/kennisbank/dakgoot-onderhoud-reiniging",
+    image: "bg-gradient-to-br from-slate-700 to-slate-900",
+    category: "Dakgoten"
+  },
+  {
+    id: "gevellekkage",
+    title: "GEVELLEKKAGE",
+    excerpt: "Gevellekkage is een veelvoorkomend probleem dat ernstige schade kan [...]",
+    url: "/kennisbank/gevellekkage-oorzaken-oplossingen",
+    image: "bg-gradient-to-br from-red-700 to-red-900",
+    category: "Gevel"
+  },
+  {
+    id: "dakbedekking-materialen",
+    title: "DAKBEDEKKING MATERIALEN",
+    excerpt: "De keuze van dakbedekking materialen bepaalt de levensduur en prestaties [...]",
+    url: "/kennisbank/dakbedekking-materialen-kiezen",
+    image: "bg-gradient-to-br from-blue-700 to-blue-900",
+    category: "Dakwerken"
+  },
+  {
+    id: "dakpannen-keus",
+    title: "DAKPANNEN: WELKE KEUS IS ER?",
+    excerpt: "Het kiezen van de juiste dakpannen is cruciaal voor de duurzaamheid [...]",
+    url: "/kennisbank/dakpannen-soorten-kiezen",
+    image: "bg-gradient-to-br from-amber-800 to-amber-900",
+    category: "Dakwerken"
+  },
+  {
+    id: "nokvorsten",
+    title: "WAT ZIJN NOKVORSTEN",
+    excerpt: "Nokvorsten zijn een essentieel onderdeel van uw dakconstructie en [...]",
+    url: "/kennisbank/nokvorsten-functie-onderhoud",
+    image: "bg-gradient-to-br from-sky-700 to-sky-900",
+    category: "Dakwerken"
+  },
+  {
+    id: "dakkapel-lekkage",
+    title: "LEKKAGE BIJ DAKKAPELLEN",
+    excerpt: "Dakkapellen zijn gevoelige punten waar lekkage vaak voorkomt [...]",
+    url: "/kennisbank/dakkapel-lekkage-voorkomen",
+    image: "bg-gradient-to-br from-orange-700 to-orange-900",
+    category: "Dakkapellen"
+  },
+  {
+    id: "dakkapel-renovatie",
+    title: "DAKKAPEL RENOVATIE",
+    excerpt: "Een dakkapel renovatie verhoogt niet alleen de waarde van uw woning [...]",
+    url: "/kennisbank/dakkapel-renovatie-tips",
+    image: "bg-gradient-to-br from-green-700 to-green-900",
+    category: "Dakkapellen"
+  },
+  {
+    id: "patio-dak",
+    title: "PATIO DAK",
+    excerpt: "Een patio dak biedt bescherming en comfort voor uw buitenruimte [...]",
+    url: "/kennisbank/patio-dak-mogelijkheden",
+    image: "bg-gradient-to-br from-teal-700 to-teal-900",
+    category: "Overkappingen"
+  },
+  {
+    id: "terras-dak",
+    title: "TERRAS DAK",
+    excerpt: "Met een terras dak geniet u het hele jaar door van uw terras [...]",
+    url: "/kennisbank/terras-dak-voordelen",
+    image: "bg-gradient-to-br from-indigo-700 to-indigo-900",
+    category: "Overkappingen"
+  },
+  {
+    id: "schuindak",
+    title: "SCHUIN DAK",
+    excerpt: "Schuine daken zijn de meest voorkomende dakvorm in Nederland [...]",
+    url: "/kennisbank/schuindak-onderhoud-renovatie",
+    image: "bg-gradient-to-br from-red-800 to-red-900",
+    category: "Dakvormen"
+  },
+  {
+    id: "plat-dak",
+    title: "PLAT DAK",
+    excerpt: "Platte daken vereisen specifieke expertise en onderhoud [...]",
+    url: "/kennisbank/plat-dak-onderhoud-tips",
+    image: "bg-gradient-to-br from-gray-700 to-gray-900",
+    category: "Dakvormen"
+  },
+  {
+    id: "vlak-dak",
+    title: "VLAK DAK",
+    excerpt: "Vlakke daken bieden unieke mogelijkheden maar vereisen specialistische kennis [...]",
+    url: "/kennisbank/vlak-dak-systemen",
+    image: "bg-gradient-to-br from-slate-800 to-slate-900",
+    category: "Dakvormen"
+  },
+  {
+    id: "glasisolatie",
+    title: "GLASISOLATIE",
+    excerpt: "Glasisolatie is een moderne oplossing voor energie-efficiëntie [...]",
+    url: "/kennisbank/glasisolatie-voordelen",
+    image: "bg-gradient-to-br from-emerald-700 to-emerald-900",
+    category: "Isolatie"
+  },
+  {
+    id: "dakkapel-isolatie",
+    title: "DAKKAPEL ISOLATIE",
+    excerpt: "Dakkapel isolatie voorkomt warmteverlies en verhoogt het comfort [...]",
+    url: "/kennisbank/dakkapel-isolatie-tips",
+    image: "bg-gradient-to-br from-yellow-800 to-yellow-900",
+    category: "Isolatie"
+  },
+  {
+    id: "vloerisolatie",
+    title: "VLOERISOLATIE",
+    excerpt: "Vloerisolatie is essentieel voor een energiezuinige woning [...]",
+    url: "/kennisbank/vloerisolatie-methoden",
+    image: "bg-gradient-to-br from-purple-700 to-purple-900",
+    category: "Isolatie"
+  },
+  {
+    id: "spouwmuurisolatie",
+    title: "SPOUWMUURISOLATIE",
+    excerpt: "Spouwmuurisolatie is een van de meest effectieve isolatiemethoden [...]",
+    url: "/kennisbank/spouwmuurisolatie-voordelen",
+    image: "bg-gradient-to-br from-stone-700 to-stone-900",
+    category: "Isolatie"
+  },
+  {
+    id: "tritoflex",
+    title: "TRITOFLEX WATERDICHT, BRANDVRIJ EN DUURZAAM",
+    excerpt: "Tritoflex is een innovatief systeem voor waterdichte en duurzame oplossingen [...]",
+    url: "/kennisbank/tritoflex-systeem-voordelen",
+    image: "bg-gradient-to-br from-cyan-700 to-cyan-900",
+    category: "Materialen"
+  },
+  {
+    id: "epdm-dakbedekking",
+    title: "EPDM DAKBEDEKKING",
+    excerpt: "EPDM dakbedekking staat bekend om zijn duurzaamheid en flexibiliteit [...]",
+    url: "/kennisbank/epdm-dakbedekking-eigenschappen",
+    image: "bg-gradient-to-br from-zinc-700 to-zinc-900",
+    category: "Materialen"
+  },
+  {
+    id: "bitumen-dakbedekking",
+    title: "WAT IS BITUMEN DAKBEDEKKING",
+    excerpt: "Bitumen dakbedekking is een veelgebruikte oplossing voor platte daken [...]",
+    url: "/kennisbank/bitumen-dakbedekking-info",
+    image: "bg-gradient-to-br from-neutral-700 to-neutral-900",
+    category: "Materialen"
+  }
+];
 
-  const knowledgeCategories = [
-    {
-      id: 'dakwerk',
-      title: 'Dakwerk & Renovatie',
-      icon: 'fas fa-home',
-      color: 'tbgs-red',
-      description: 'Complete gids voor dakonderoud, renovatie en preventieve zorg',
-      articles: [
-        { title: 'Wanneer moet uw dak vervangen worden?', link: null },
-        { title: 'Daklekkage herkennen en voorkomen', link: '/kennisbank/daklekkage-herkennen-voorkomen' },
-        { title: 'Isolatiewaarden en energiebesparing', link: null },
-        { title: 'Zonnepanelen op uw dak plaatsen', link: null }
-      ]
-    },
-    {
-      id: 'schoorsteen',
-      title: 'Schoorsteenservice',
-      icon: 'fas fa-industry', 
-      color: 'tbgs-blue',
-      description: 'Alles over schoorsteenonderhoud, veiligheid en moderne systemen',
-      articles: [
-        { title: 'Jaarlijkse schoorsteencontrole checklist', link: '/kennisbank/jaarlijkse-schoorsteencontrole' },
-        { title: 'Rookgasafvoer en veiligheidsvoorschriften', link: null },
-        { title: 'HR-ketel aansluiting op schoorsteen', link: null },
-        { title: 'Historische schoorstenen renoveren', link: null }
-      ]
-    },
-    {
-      id: 'onderhoud',
-      title: 'Preventief Onderhoud',
-      icon: 'fas fa-tools',
-      color: 'tbgs-green',
-      description: 'Preventieve maatregelen om kostbare reparaties te voorkomen',
-      articles: [
-        { title: 'Seizoensgebonden onderhoudstaken', link: null },
-        { title: 'Energiebesparing door isolatie', link: '/kennisbank/energiebesparing-door-isolatie' },
-        { title: 'Signalen die duiden op problemen', link: null },
-        { title: 'Onderhoudscontract of losse service?', link: null }
-      ]
-    },
-    {
-      id: 'bouw',
-      title: 'Bouw & Renovatie',
-      icon: 'fas fa-hammer',
-      color: 'tbgs-orange', 
-      description: 'Van aanbouw tot complete renovatie - alles wat u moet weten',
-      articles: [
-        { title: 'Vergunningen voor aan- en verbouw', link: null },
-        { title: 'Keuken- en badkamerrenovatie', link: null },
-        { title: 'Gevelbekleding en isolatie', link: null },
-        { title: 'Duurzame materialen kiezen', link: null }
-      ]
-    }
-  ];
-
+export default function Kennisbank() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <SEOHead 
-        title="Kennisbank TBGS BV - Bouw, Dak & Onderhouds Expertise | Nederland & België"
-        description="Ontdek professionele tips en kennis van TBGS specialisten over dakwerk, schoorsteenonderhoud, preventief onderhoud en bouwprojecten. Gratis specialist advies voor particulier en zakelijk."
-        url="/kennisbank"
-        keywords="kennisbank bouw, dakwerk tips, schoorsteenonderhoud, preventief onderhoud, renovatie gids, bouw expertise, onderhoudsadvies, daklekkage voorkomen, TBGS kennis"
-      />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-tbgs-navy/5 to-blue-600/5"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-slate-600 mb-8">
-              <i className="fas fa-graduation-cap"></i>
-              <span>Specialist Kennis</span>
-            </div>
-            
-            <h1 className="text-4xl lg:text-7xl font-bold text-slate-900 mb-8 leading-tight">
-              Kennisbank <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS</span>
-            </h1>
-            
-            <p className="text-xl lg:text-2xl text-slate-600 font-light leading-relaxed mb-12 max-w-3xl mx-auto">
-              <strong>80+ jaar familietraditie</strong> gebundeld in praktische tips, uitgebreide gidsen en professioneel advies. Van <strong>dakonderhoud</strong> tot <strong>complete renovaties</strong>.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-book-open text-2xl text-blue-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">50+ Artikelen</div>
-                <div className="text-slate-600 text-sm">Uitgebreide kennisbase</div>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-user-graduate text-2xl text-green-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">Expert Advies</div>
-                <div className="text-slate-600 text-sm">Van onze specialisten</div>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-download text-2xl text-purple-600"></i>
-                </div>
-                <div className="font-bold text-slate-900 mb-2">Gratis Downloads</div>
-                <div className="text-slate-600 text-sm">Checklists en gidsen</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Knowledge Categories */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Expert <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Kennis</span>
-            </h2>
-            <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
-              Onze specialisten delen hun kennis en ervaring om u te helpen bij uw <strong>bouw- en onderhoudsprojecten</strong>.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {knowledgeCategories.map((category) => (
-              <div key={category.id} className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mr-6">
-                    <i className={`${category.icon} text-2xl text-tbgs-${category.color.split('-')[1]}`}></i>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-900">{category.title}</h3>
-                    <p className="text-slate-600">{category.description}</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3 mb-8">
-                  {category.articles.map((article, index) => (
-                    article.link ? (
-                      <Link key={index} href={article.link}>
-                        <div className="flex items-center p-3 bg-white rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer">
-                          <div className={`w-2 h-2 bg-${category.color} rounded-full mr-4 flex-shrink-0`}></div>
-                          <span className="text-slate-700 font-medium">{article.title}</span>
-                          <i className="fas fa-chevron-right text-slate-400 ml-auto"></i>
-                        </div>
-                      </Link>
-                    ) : (
-                      <div key={index} className="flex items-center p-3 bg-gray-100 rounded-xl border border-slate-100 opacity-60">
-                        <div className={`w-2 h-2 bg-${category.color} rounded-full mr-4 flex-shrink-0`}></div>
-                        <span className="text-slate-700 font-medium">{article.title}</span>
-                        <span className="text-xs text-gray-500 ml-auto">Binnenkort beschikbaar</span>
-                      </div>
-                    )
-                  ))}
-                </div>
-                
-                <button 
-                  onClick={onOpenContactModal}
-                  className="w-full bg-tbgs-red text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <i className="fas fa-book-open mr-3"></i>
-                  Bekijk Alle Artikelen
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Topics */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Populaire <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Onderwerpen</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* Popular Article 1 */}
-            <Link href="/kennisbank/daklekkage-herkennen-voorkomen">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <img 
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Daklekkage herkennen en voorkomen - TBGS expert tips"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-red/10 text-tbgs-red px-3 py-1 rounded-full text-xs font-bold">Dakwerk</span>
-                    <span className="text-slate-500 text-xs">5 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Daklekkage Herkennen en Voorkomen</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Leer de vroege signalen herkennen en voorkom kostbare waterschade met onze expert tips.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TDS Expert • Dec 2024</span>
-                    <button className="text-tbgs-red font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Popular Article 2 */}
-            <Link href="/kennisbank/energiebesparing-door-isolatie">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <img 
-                  src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Energiebesparing door isolatie - TBGS duurzame oplossingen"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-green/10 text-tbgs-green px-3 py-1 rounded-full text-xs font-bold">Onderhoud</span>
-                    <span className="text-slate-500 text-xs">7 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Energiebesparing door Isolatie</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Ontdek hoe juiste isolatie uw energierekening kan halveren en uw wooncomfort verhoogt.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TOS Expert • Nov 2024</span>
-                    <button className="text-tbgs-green font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Popular Article 3 */}
-            <Link href="/kennisbank/jaarlijkse-schoorsteencontrole">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <img 
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                  alt="Schoorsteenonderhoud checklist - TBGS veiligheidsadvies"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="bg-tbgs-blue/10 text-tbgs-blue px-3 py-1 rounded-full text-xs font-bold">Schoorsteen</span>
-                    <span className="text-slate-500 text-xs">4 min leestijd</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Jaarlijkse Schoorsteencontrole</h3>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    Volledige checklist voor veilige en efficiënte schoorsteenwerking het hele jaar door.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">TSS Expert • Oct 2024</span>
-                    <button className="text-tbgs-blue font-bold text-sm hover:underline">
-                      Lees meer →
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <button 
-              onClick={onOpenContactModal}
-              className="bg-tbgs-navy text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
-            >
-              <i className="fas fa-library mr-3"></i>
-              Bekijk Alle Artikelen
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Kennisbank</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Alle begrippen voor u op een rij. Ontdek alles wat u moet weten over dakwerken, 
+              isolatie, onderhoud en meer in onze uitgebreide kennisbank.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Knowledge Base Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {kennisbankItems.map((item) => (
+            <Link key={item.id} href={item.url}>
+              <div className="group cursor-pointer">
+                <div className={`relative h-64 rounded-lg overflow-hidden ${item.image} flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105`}>
+                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                  <div className="relative z-10 text-center p-6">
+                    <h3 className="text-lg font-bold mb-2 uppercase tracking-wide">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-200 mb-4 leading-relaxed">
+                      {item.excerpt}
+                    </p>
+                    <button className="inline-flex items-center px-4 py-2 border border-white text-sm font-medium rounded-md text-white hover:bg-white hover:text-gray-900 transition-all duration-300">
+                      READ MORE
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="bg-tbgs-navy text-white py-16">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-4">Heeft u nog vragen?</h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Onze specialisten staan klaar om u te helpen met vakkundig advies en persoonlijke begeleiding.
+          </p>
+          <Link href="/contact">
+            <button className="bg-white text-tbgs-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+              Neem Contact Op
             </button>
-          </div>
+          </Link>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
-              Persoonlijk <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Advies</span> Nodig?
-            </h2>
-            <p className="text-xl lg:text-2xl font-light leading-relaxed mb-12 max-w-3xl mx-auto opacity-90">
-              Onze kennisbank geeft u een goede basis, maar <strong>elke situatie is uniek</strong>. Vraag persoonlijk advies van onze specialisten.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button 
-                onClick={onOpenContactModal}
-                className="bg-white text-tbgs-navy px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center"
-              >
-                <i className="fas fa-user-tie mr-3"></i>
-                Persoonlijk Advies Gesprek
-              </button>
-              
-              <button 
-                onClick={onOpenContactModal}
-                className="bg-transparent border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-tbgs-navy transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center"
-              >
-                <i className="fas fa-search mr-3"></i>
-                Gratis Inspectie
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
