@@ -297,6 +297,35 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           badgeColor: 'bg-purple-500'
         }
       ]
+    },
+    {
+      id: 'duurzaam-bouwen',
+      title: 'Duurzaam Bouwen & Energie',
+      description: 'Milieuvriendelijke oplossingen voor een groene toekomst',
+      topics: [
+        {
+          id: 'groendaken',
+          title: 'GROENDAKEN',
+          link: '/kennisbank/groendaken',
+          image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Groendaken Expert - TBGS Specialisten',
+          readTime: '15 min',
+          description: 'Complete gids voor groendaken: extensief, intensief, sedum en onderhoud',
+          badge: 'Expert Gids',
+          badgeColor: 'bg-emerald-600'
+        },
+        {
+          id: 'zonnepanelen',
+          title: 'ZONNEPANELEN',
+          link: '/kennisbank/zonnepanelen',
+          image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
+          alt: 'Zonnepanelen Specialist - TBGS',
+          readTime: '12 min',
+          description: 'Rendement berekening, installatie en subsidies 2025 voor zonnepanelen',
+          badge: '2025 Gids',
+          badgeColor: 'bg-amber-600'
+        }
+      ]
     }
   ];
 

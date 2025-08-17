@@ -65,9 +65,15 @@ import BestDaklekkage from "@/pages/locations/BestDaklekkage";
 import GeldropDaklekkage from "@/pages/locations/GeldropDaklekkage";
 import GeldropRenovatie from "@/pages/locations/GeldropRenovatie";
 import GeldropOnderhoud from "@/pages/locations/GeldropOnderhoud";
+import MierloDaklekkage from "@/pages/locations/MierloDaklekkage";
+import WaalreRenovatie from "@/pages/locations/WaalreRenovatie";
+import SonEnBreugelOnderhoud from "@/pages/locations/SonEnBreugelOnderhoud";
 
 // BE Location-Service Pages
 import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
+import RetieDaklekkage from "@/pages/locations/RetieDaklekkage";
+import LommelRenovatie from "@/pages/locations/LommelRenovatie";
+import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
 import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
 import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
 import HamontDaklekkage from "@/pages/locations/HamontDaklekkage";
@@ -75,7 +81,6 @@ import HamontRenovatie from "@/pages/locations/HamontRenovatie";
 import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
 import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
 import PeltRenovatie from "@/pages/locations/PeltRenovatie";
-import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
 import SintHuibrechtsLilleDaklekkage from "@/pages/locations/SintHuibrechtsLilleDaklekkage";
 import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleOnderhoud";
 
@@ -87,6 +92,8 @@ import VeldhovenPlatDak from "@/pages/locaties/VeldhovenPlatDak";
 // Kennisbank Articles
 import PatioDak from "@/pages/kennisbank/PatioDak";
 import TerrasDak from "@/pages/kennisbank/TerrasDak";
+import Groendaken from "@/pages/kennisbank/Groendaken";
+import Zonnepanelen from "@/pages/kennisbank/Zonnepanelen";
 import SchuinDak from "@/pages/kennisbank/SchuinDak";
 import PlatDak from "@/pages/kennisbank/PlatDak";
 import Schilderwerken from "@/pages/kennisbank/Schilderwerken";
@@ -166,6 +173,8 @@ function Router() {
           <Route path="/kennisbank/dakpannen-welke-keus" component={() => <DakpannenWelkeKeus onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/lekkage-dakkapellen" component={() => <LekkageDakkapellen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/dakkapel-renovatie" component={() => <DakkapelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/groendaken" component={() => <Groendaken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/kennisbank/zonnepanelen" component={() => <Zonnepanelen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Main Locations Page */}
           <Route path="/locaties" component={() => <Locaties />} />
@@ -224,9 +233,15 @@ function Router() {
           <Route path="/nl/geldrop/daklekkage" component={() => <GeldropDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/geldrop/renovatie" component={() => <GeldropRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/geldrop/onderhoud" component={() => <GeldropOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/mierlo/daklekkage" component={() => <MierloDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/waalre/renovatie" component={() => <WaalreRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/son-en-breugel/onderhoud" component={() => <SonEnBreugelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE Location-Service Routes (Fixed TypeScript issues) */}
           <Route path="/be/hamont-achel/daklekkage" component={HamontAchelDaklekkage} />
+          <Route path="/be/retie/daklekkage" component={() => <RetieDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/lommel/renovatie" component={() => <LommelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/renovatie" component={HamontAchelRenovatie} />
           <Route path="/be/hamont-achel/onderhoud" component={HamontAchelOnderhoud} />
           <Route path="/be/hamont/daklekkage" component={HamontDaklekkage} />

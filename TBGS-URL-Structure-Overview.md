@@ -62,6 +62,8 @@
 | `/kennisbank/schuin-dak` | Schuin Dak | Dakpannen, hellend dak | Aug 2025 |
 | `/kennisbank/schilderwerken` | Schilderwerken | Verfwerk, gevelbehandeling | Aug 2025 |
 | `/kennisbank/dakbedekking-materialen` | Dakbedekking | Materialen vergelijking | Aug 2025 |
+| `/kennisbank/groendaken` | Groendaken Expert | Extensief, intensief, sedum, biodiversiteit | Aug 2025 |
+| `/kennisbank/zonnepanelen` | Zonnepanelen Gids | Rendement, installatie, subsidies 2025 | Aug 2025 |
 | `/kennisbank/dakgoot` | Dakgoot | Gootonderhoud, reparatie | Aug 2025 |
 | `/kennisbank/dakkapel-renovatie` | Dakkapel | Dakkapel renovatie | Aug 2025 |
 | `/kennisbank/dakpannen-welke-keus` | Dakpannen | Dakpannen types | Aug 2025 |
@@ -185,11 +187,24 @@
 3. **Technical SEO**: Implement hreflang for NL/BE versions
 4. **Content Refresh**: Update older kennisbank articles with current SEO practices
 
-### Missing URL Opportunities
-- `/mierlo/daklekkage`
-- `/waalre/renovatie` 
-- `/son-en-breugel/onderhoud`
-- Additional kennisbank topics (groendaken, zonnepanelen, etc.)
+### Recently Added URL Opportunities (Phase 2 Complete)
+- `/nl/mierlo/daklekkage` ✅ Added
+- `/nl/waalre/renovatie` ✅ Added  
+- `/nl/son-en-breugel/onderhoud` ✅ Added
+- `/kennisbank/groendaken` ✅ High-end SEO content
+- `/kennisbank/zonnepanelen` ✅ High-end SEO content
+- `/be/retie/daklekkage` ✅ Belgian market coverage
+- `/be/lommel/renovatie` ✅ Belgian market coverage  
+- `/be/pelt/onderhoud` ✅ Belgian market coverage
+
+### Comprehensive Service-Location Matrix Status
+**Netherlands (100% Complete)**: 64 service-location combinations implemented
+**Belgium (Partial Coverage)**: Core Belgian pages implemented, ready for domain-specific targeting
+
+### Future Belgian Market Expansion  
+- Complete remaining Belgian location-service combinations (21+ additional pages)
+- Specialized technical topics (warmtepompen, vloerverwarming, domotica)
+- Advanced SEO schema implementation for multi-country targeting
 
 ---
 
