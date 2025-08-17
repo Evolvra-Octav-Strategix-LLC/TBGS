@@ -5,11 +5,6 @@
 This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
 
 **Recent Architecture Update (Aug 14, 2025):** 
-- **Headless WordPress Integration**: Successfully implemented Next.js 14+ headless WordPress architecture with ISR (Incremental Static Regeneration) for optimal performance and SEO control. Dynamic content management through WordPress GraphQL API with static fallbacks.
-- **Next.js App Router Structure**: Migrated from React SPA to Next.js 14 App Router with `/nl/` and `/be/` URL patterns, dynamic city routes `/nl/[city]`, specialist-location routes `/nl/[dienst]/[city]`, and knowledge base `/kennisbank/[slug]`.
-- **WordPress Content Types**: Configured ACF (Advanced Custom Fields) for locations, diensten, and kennisbank post types with full GraphQL integration for content management.
-- **ISR Revalidation**: Implemented `/api/revalidate` webhook endpoint for real-time content updates from WordPress with automatic cache invalidation.
-- **SEO Schema Integration**: Dynamic JSON-LD schema markup for LocalBusiness, RoofingContractor, ChimneySweep, and other specialist types with geo-coordinates and local business data.
 - **Complete Belgian Location Expansion**: Successfully expanded to comprehensive Belgian market coverage with new hoofdlocatie pages for Hamont and Pelt, plus detailed location-service pages for Sint-Huibrechts-Lille (Renovatie, Onderhoud) and Overpelt (Daklekkage).
 - **Elite Dutch Location Pages**: Created premium hoofdlocatie pages for Waalre (elite luxury positioning), Geldrop, and Mierlo with high-end SEO optimization, local schema markup, and targeted luxury market messaging.
 - **Advanced Local SEO Schema**: Implemented comprehensive LocalBusiness schema markup with geo-coordinates, Belgian/Dutch locale settings, and region-specific service catalogs for maximum local search rankings.
@@ -34,9 +29,6 @@ This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (T
 - **Real Specialist Logos**: Replaced all FontAwesome icons in service cards with authentic specialist logos (TSS, TDS, TOS, TBS) while maintaining color effects and 88% opacity transitions.
 - **Mobile Text Optimization**: Fixed text size overlapping issues on small phone screens - specialist headers now use 12px text on mobile (text-xs) to prevent Offerte button overlap.
 - **Terminology Consistency**: Changed all instances of "expert" to "specialist" throughout website for consistent branding and terminology.
-- **Deep WordPress Integration**: Enhanced all existing pages with automatic WordPress sync capability, intelligent content tagging, and comprehensive migration tools for seamless content management transition.
-- **Local Test Environment**: Created Docker-based local WordPress setup for development and testing with complete plugin configuration and content migration scripts.
-- **Admin Interface**: Built admin sync panel at `/admin/sync` for content migration monitoring and WordPress connection management.
 
 ## User Preferences
 
@@ -46,21 +38,19 @@ Domain Strategy: User wants separate domain names pointing to each specialist pa
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: Next.js 14+ with TypeScript using App Router architecture
-- **Rendering**: Static Site Generation (SSG) with Incremental Static Regeneration (ISR) for optimal performance
-- **Routing**: App Router with dynamic routes `/nl/[city]`, `/nl/[dienst]/[city]`, `/be/locaties/[city]`, and `/kennisbank/[slug]`
-- **Content Management**: Headless WordPress integration with GraphQL API and static fallbacks
+- **Framework**: React 18 with TypeScript in a Single Page Application (SPA) architecture
+- **Routing**: Wouter for client-side routing with dedicated pages for each specialist service
 - **Styling**: Tailwind CSS with shadcn/ui component library for consistent design
 - **UI Components**: Radix UI primitives for accessibility and interaction patterns
 - **Build Tool**: Vite for fast development and optimized production builds
 - **State Management**: TanStack React Query for server state management and API interactions
 
 ### Backend Architecture
-- **CMS**: WordPress (headless) with GraphQL API endpoint
-- **API**: Next.js API routes for revalidation and contact forms
-- **Content Types**: Custom Post Types (locations, diensten) with Advanced Custom Fields (ACF)
-- **Revalidation**: ISR webhook system for real-time content updates from WordPress
-- **Fallback**: Static content rendering when WordPress unavailable
+- **Runtime**: Node.js with Express.js framework
+- **Language**: TypeScript with ES modules
+- **API Design**: RESTful API with dedicated contact form endpoint (`/api/contact`)
+- **Development Server**: Custom Vite integration with hot module replacement
+- **Error Handling**: Centralized error middleware with structured error responses
 
 ### Data Storage Solutions
 - **Database**: PostgreSQL configured through Drizzle ORM
