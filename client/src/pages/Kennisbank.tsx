@@ -532,7 +532,6 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
               </Link>
             </div>
           </div>
-        </div>
       </section>
 
       {/* CTA Section */}

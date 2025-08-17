@@ -178,8 +178,8 @@ export default function DakbedekkingMaterialen({ onOpenContactModal }: Dakbedekk
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Daktype en helling</h3>
                 <p className="text-lg leading-relaxed mb-4">
                   De helling van het dak bepaalt grotendeels welke materialen 
-                  geschikt zijn. Hellende daken (>15°) kunnen dakpannen of leien 
-                  gebruiken, terwijl platte daken (<5°) membraansystemen vereisen.
+                  geschikt zijn. Hellende daken (&gt;15°) kunnen dakpannen of leien 
+                  gebruiken, terwijl platte daken (&lt;5°) membraansystemen vereisen.
                 </p>
 
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Klimaat en locatie</h3>
