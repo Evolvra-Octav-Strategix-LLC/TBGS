@@ -314,7 +314,7 @@ export default function SimpleSearchDropdown({ isVisible, onClose, searchQuery, 
     return (
       <>
         <div className="fixed inset-0 z-40" onClick={onClose} />
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+        <div className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 w-96">
           <div className="p-4 text-center text-gray-500">
             <Search className="w-8 h-8 mx-auto mb-2 text-gray-300" />
             <p className="text-sm">Geen resultaten gevonden voor "{searchQuery}"</p>
@@ -341,7 +341,7 @@ export default function SimpleSearchDropdown({ isVisible, onClose, searchQuery, 
       {/* Dropdown */}
       <div 
         ref={dropdownRef}
-        className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto"
+        className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto w-96"
       >
         <div className="p-3 border-b border-gray-100">
           <div className="flex items-center justify-between text-sm text-gray-500">
