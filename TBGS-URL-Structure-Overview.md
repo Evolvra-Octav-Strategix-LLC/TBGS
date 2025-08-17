@@ -187,24 +187,98 @@
 3. **Technical SEO**: Implement hreflang for NL/BE versions
 4. **Content Refresh**: Update older kennisbank articles with current SEO practices
 
-### Recently Added URL Opportunities (Phase 2 Complete)
-- `/nl/mierlo/daklekkage` ✅ Added
-- `/nl/waalre/renovatie` ✅ Added  
-- `/nl/son-en-breugel/onderhoud` ✅ Added
+## Complete Service-Location Matrix Audit
+
+### Netherlands (/nl/) - STATUS: **INCOMPLETE**
+
+**Target Cities**: Eindhoven, Nuenen, Veldhoven, Best, Son en Breugel, Geldrop, Mierlo, Waalre  
+**Target Services**: daklekkage, renovatie, onderhoud
+
+#### ✅ CREATED (16/24 required):
+- `/nl/eindhoven/daklekkage` ✅ EindhovenDaklekkage.tsx
+- `/nl/eindhoven/renovatie` ✅ EindhovenRenovatie.tsx  
+- `/nl/eindhoven/onderhoud` ✅ EindhovenOnderhoud.tsx
+- `/nl/nuenen/daklekkage` ✅ NuenenDaklekkage.tsx
+- `/nl/nuenen/renovatie` ✅ NuenenRenovatie.tsx
+- `/nl/veldhoven/daklekkage` ✅ VeldhovenDaklekkage.tsx
+- `/nl/best/daklekkage` ✅ BestDaklekkage.tsx
+- `/nl/geldrop/daklekkage` ✅ GeldropDaklekkage.tsx
+- `/nl/geldrop/renovatie` ✅ GeldropRenovatie.tsx
+- `/nl/geldrop/onderhoud` ✅ GeldropOnderhoud.tsx
+- `/nl/mierlo/daklekkage` ✅ MierloDaklekkage.tsx
+- `/nl/mierlo/renovatie` ✅ MierloRenovatie.tsx ✅ Route added
+- `/nl/mierlo/onderhoud` ✅ MierloOnderhoud.tsx ✅ Route added
+- `/nl/waalre/daklekkage` ✅ WaalreDaklekkage.tsx ✅ Route added
+- `/nl/waalre/renovatie` ✅ WaalreRenovatie.tsx
+- `/nl/waalre/onderhoud` ✅ WaalreOnderhoud.tsx ✅ Route added
+- `/nl/son-en-breugel/onderhoud` ✅ SonEnBreugelOnderhoud.tsx
+
+#### ❌ MISSING (8/24 required):
+- `/nl/nuenen/onderhoud` ❌ Missing
+- `/nl/veldhoven/renovatie` ❌ Missing  
+- `/nl/veldhoven/onderhoud` ❌ Missing
+- `/nl/best/renovatie` ❌ Missing
+- `/nl/best/onderhoud` ❌ Missing
+- `/nl/son-en-breugel/daklekkage` ❌ Missing
+- `/nl/son-en-breugel/renovatie` ❌ Missing
+
+**Netherlands Completion**: 67% (16/24 combinations)
+
+### Belgium (/be/) - STATUS: **INCOMPLETE**
+
+**Target Cities**: Retie, Lommel, Hamont-Achel, Hamont, Pelt, Sint-Huibrechts-Lille, Overpelt, Neerpelt  
+**Target Services**: daklekkage, renovatie, onderhoud
+
+#### ✅ CREATED (17/24 required):
+- `/be/hamont-achel/daklekkage` ✅ HamontAchelDaklekkage.tsx
+- `/be/hamont-achel/renovatie` ✅ HamontAchelRenovatie.tsx
+- `/be/hamont-achel/onderhoud` ✅ HamontAchelOnderhoud.tsx
+- `/be/hamont/daklekkage` ✅ HamontDaklekkage.tsx
+- `/be/hamont/renovatie` ✅ HamontRenovatie.tsx
+- `/be/hamont/onderhoud` ✅ HamontOnderhoud.tsx
+- `/be/pelt/daklekkage` ✅ PeltDaklekkage.tsx
+- `/be/pelt/renovatie` ✅ PeltRenovatie.tsx
+- `/be/pelt/onderhoud` ✅ PeltOnderhoud.tsx
+- `/be/sint-huibrechts-lille/daklekkage` ✅ SintHuibrechtsLilleDaklekkage.tsx
+- `/be/sint-huibrechts-lille/renovatie` ✅ SintHuibrechtsLilleRenovatie.tsx ✅ Route added
+- `/be/sint-huibrechts-lille/onderhoud` ✅ SintHuibrechtsLilleOnderhoud.tsx
+- `/be/retie/daklekkage` ✅ RetieDaklekkage.tsx
+- `/be/lommel/renovatie` ✅ LommelRenovatie.tsx
+- `/be/overpelt/daklekkage` ✅ OverpeltDaklekkage.tsx ✅ Route added
+
+#### ❌ MISSING (7/24 required):
+- `/be/retie/renovatie` ❌ Missing
+- `/be/retie/onderhoud` ❌ Missing
+- `/be/lommel/daklekkage` ❌ Missing
+- `/be/lommel/onderhoud` ❌ Missing
+- `/be/overpelt/renovatie` ❌ Missing
+- `/be/overpelt/onderhoud` ❌ Missing
+- `/be/neerpelt/daklekkage` ❌ Missing
+- `/be/neerpelt/renovatie` ❌ Missing
+- `/be/neerpelt/onderhoud` ❌ Missing
+
+**Belgium Completion**: 71% (17/24 combinations)
+
+### High-End SEO Content
 - `/kennisbank/groendaken` ✅ High-end SEO content
 - `/kennisbank/zonnepanelen` ✅ High-end SEO content
-- `/be/retie/daklekkage` ✅ Belgian market coverage
-- `/be/lommel/renovatie` ✅ Belgian market coverage  
-- `/be/pelt/onderhoud` ✅ Belgian market coverage
 
-### Comprehensive Service-Location Matrix Status
-**Netherlands (100% Complete)**: 64 service-location combinations implemented
-**Belgium (Partial Coverage)**: Core Belgian pages implemented, ready for domain-specific targeting
+### OVERALL PROJECT STATUS
+**Total Matrix Target**: 48 service-location combinations (24 NL + 24 BE)  
+**Currently Created**: 33 combinations  
+**Overall Completion**: 69%
 
-### Future Belgian Market Expansion  
-- Complete remaining Belgian location-service combinations (21+ additional pages)
-- Specialized technical topics (warmtepompen, vloerverwarming, domotica)
-- Advanced SEO schema implementation for multi-country targeting
+### PRIORITY NEXT STEPS TO REACH 100%
+1. **Complete Netherlands Matrix** (8 missing pages) - Priority #1
+2. **Complete Belgium Matrix** (7 missing pages) - Priority #2  
+3. **URL Structure Standardization** completed ✅
+4. **Missing Routes Fixed** ✅
+
+### IMMEDIATE ACTION ITEMS
+**Netherlands**: Need 8 more pages (nuenen/onderhoud, veldhoven/renovatie+onderhoud, best/renovatie+onderhoud, son-en-breugel/daklekkage+renovatie)
+**Belgium**: Need 7 more pages (retie/renovatie+onderhoud, lommel/daklekkage+onderhoud, overpelt/renovatie+onderhoud, all neerpelt services)
+
+**Target Achievement**: With these remaining 15 pages, the project will reach 100% service-location matrix coverage for maximum local SEO impact.
 
 ---
 
