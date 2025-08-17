@@ -106,28 +106,42 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
           alt: 'Patio Dak - TBGS Dakspecialisten',
           readTime: '6 min',
-          description: 'Professionele patio dakbedekking voor duurzame bescherming en stijlvolle buitenruimtes'
+          description: 'Professionele patio dakbedekking voor duurzame bescherming en stijlvolle buitenruimtes',
+          badge: 'Trending',
+          badgeColor: 'bg-orange-500'
         },
         {
           id: 'terras-dak',
           title: 'TERRAS DAK',
           link: '/kennisbank/terras-dak',
           image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Terras Dak - TBGS Dakspecialisten'
+          alt: 'Terras Dak - TBGS Dakspecialisten',
+          readTime: '7 min',
+          description: 'Terrasafwerking met hoogwaardige dakbedekking voor duurzame buitenruimtes',
+          badge: 'Expert',
+          badgeColor: 'bg-purple-500'
         },
         {
           id: 'dakbedekking-materialen',
           title: 'DAKBEDEKKING MATERIALEN',
           link: '/kennisbank/dakbedekking-materialen',
           image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Dakbedekking Materialen - TBGS Specialisten'
+          alt: 'Dakbedekking Materialen - TBGS Specialisten',
+          readTime: '12 min',
+          description: 'Volledig overzicht van dakbedekkingsmaterialen en hun eigenschappen',
+          badge: 'Complete Gids',
+          badgeColor: 'bg-indigo-500'
         },
         {
           id: 'dakpannen-welke-keus',
           title: 'DAKPANNEN: WELKE KEUS?',
           link: '/kennisbank/dakpannen-welke-keus',
           image: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Dakpannen Welke Keus - TBGS Specialisten'
+          alt: 'Dakpannen Welke Keus - TBGS Specialisten',
+          readTime: '9 min',
+          description: 'Praktische keuzehandleiding voor het juiste dakpannentype',
+          badge: 'Keuzehelper',
+          badgeColor: 'bg-teal-500'
         }
       ]
     },
@@ -154,21 +168,31 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
           alt: 'Gevellekkage - TBGS Specialisten',
           readTime: '7 min',
-          description: 'Herkenning, oorzaken en professionele oplossingen voor gevellekkage'
+          description: 'Herkenning, oorzaken en professionele oplossingen voor gevellekkage',
+          badge: 'Expert Tip',
+          badgeColor: 'bg-yellow-500'
         },
         {
           id: 'lekkage-dakkapellen',
           title: 'LEKKAGE DAKKAPELLEN',
           link: '/kennisbank/lekkage-dakkapellen',
           image: 'https://images.unsplash.com/photo-1502005229762-cf1b2da35293?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Lekkage Dakkapellen - TBGS Specialisten'
+          alt: 'Lekkage Dakkapellen - TBGS Specialisten',
+          readTime: '6 min',
+          description: 'Specifieke problematiek en oplossingen voor dakkapellekkages',
+          badge: 'Specialist',
+          badgeColor: 'bg-pink-500'
         },
         {
           id: 'dakkapel-renovatie',
           title: 'DAKKAPEL RENOVATIE',
           link: '/kennisbank/dakkapel-renovatie',
           image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Dakkapel Renovatie - TBGS Specialisten'
+          alt: 'Dakkapel Renovatie - TBGS Specialisten',
+          readTime: '11 min',
+          description: 'Complete renovatiegids voor dakkapellen en hun onderhoud',
+          badge: 'Renovatie',
+          badgeColor: 'bg-cyan-500'
         }
       ]
     },
@@ -182,14 +206,22 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           title: 'REGENPIJP',
           link: '/kennisbank/regenpijp',
           image: 'https://images.unsplash.com/photo-1558618047-6c8b00b0c263?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Regenpijp - TBGS Specialisten'
+          alt: 'Regenpijp - TBGS Specialisten',
+          readTime: '5 min',
+          description: 'Onderhoud en reparatie van regenpijpen voor optimale afwatering',
+          badge: 'Onderhoud',
+          badgeColor: 'bg-blue-500'
         },
         {
           id: 'dakgoot',
           title: 'DAKGOOT',
           link: '/kennisbank/dakgoot',
           image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Dakgoot - TBGS Specialisten'
+          alt: 'Dakgoot - TBGS Specialisten',
+          readTime: '8 min',
+          description: 'Professionele dakgootonderhoud en reparatietechnieken',
+          badge: 'Essentieel',
+          badgeColor: 'bg-green-500'
         }
       ]
     },
@@ -203,7 +235,11 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           title: 'ENERGIEBESPARING',
           link: '/kennisbank/energiebesparing-door-isolatie',
           image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Energiebesparing Isolatie - TBGS'
+          alt: 'Energiebesparing Isolatie - TBGS',
+          readTime: '10 min',
+          description: 'Maximale energiebesparing door professionele isolatietechnieken',
+          badge: 'Besparing',
+          badgeColor: 'bg-emerald-500'
         },
         {
           id: 'glasisolatie',
@@ -238,7 +274,11 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           title: 'SCHOORSTEENCONTROLE',
           link: '/kennisbank/jaarlijkse-schoorsteencontrole',
           image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Schoorsteencontrole - TBGS'
+          alt: 'Schoorsteencontrole - TBGS',
+          readTime: '6 min',
+          description: 'Verplichte jaarlijkse controle voor veilige schoorsteengebruik',
+          badge: 'Verplicht',
+          badgeColor: 'bg-red-600'
         }
       ]
     },
