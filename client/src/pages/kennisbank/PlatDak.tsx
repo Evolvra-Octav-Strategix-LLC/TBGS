@@ -144,8 +144,9 @@ export default function PlatDak({ onOpenContactModal }: PlatDakProps) {
                 </p>
 
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                  <p className="text-yellow-800"><strong>TBGS Tip:</strong> Plan minimaal één hemelwaterafvoer 
-                  per 100m² dakvlak en plaats noodoverlopen 10cm hoger dan de hoofdafvoeren.</p>
+                  <p className="text-yellow-800"><strong>Onderhoudsabonnement Tip:</strong> Met een TBGS onderhoudsabonnement 
+                  worden uw hemelwaterafvoeren regelmatig gecontroleerd en gereinigd, waardoor verstoppingen 
+                  en wateroverlast voorkomen worden.</p>
                 </div>
 
                 <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-12">Plat dak isolatie</h2>
