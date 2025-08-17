@@ -55,7 +55,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="w-full max-w-none mx-auto px-8 py-4">
         <div className="flex items-center justify-between gap-8">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
@@ -69,7 +69,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </Link>
 
           {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative flex-1 max-w-md mx-8">
+          <div className="hidden xl:flex items-center relative flex-1 max-w-lg mx-12">
             <div className="relative w-full">
               <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
                 isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
@@ -98,7 +98,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 flex-shrink-0">
+          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
             <Link href="/locaties" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Locaties</Link>
             <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Kennisbank</Link>
             <Link href="/zorgeloos-wonen" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Zorgeloos wonen</Link>
