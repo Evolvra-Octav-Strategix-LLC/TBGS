@@ -124,6 +124,11 @@ import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleO
 // Location-Service Pages - Overpelt
 import OverpeltDaklekkage from "@/pages/locations/OverpeltDaklekkage";
 
+// Location-Specific Plat Dak Specialist Pages
+import EindhovenPlatDak from "@/pages/locaties/EindhovenPlatDak";
+import NuenenPlatDak from "@/pages/locaties/NuenenPlatDak";
+import VeldhovenPlatDak from "@/pages/locaties/VeldhovenPlatDak";
+
 // Kennisbank Articles
 import PatioDak from "@/pages/kennisbank/PatioDak";
 import TerrasDak from "@/pages/kennisbank/TerrasDak";
@@ -265,6 +270,11 @@ function Router() {
           <Route path="/be/totaal-bouw-specialist/lommel" component={() => <LommelBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/totaal-bouw-specialist/hamont-achel" component={() => <HamontAchelBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/totaal-bouw-specialist/pelt" component={() => <PeltBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Location-Specific Plat Dak Specialist Routes */}
+          <Route path="/eindhoven/plat-dak-specialist" component={() => <EindhovenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nuenen/plat-dak-specialist" component={() => <NuenenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/veldhoven/plat-dak-specialist" component={() => <VeldhovenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
