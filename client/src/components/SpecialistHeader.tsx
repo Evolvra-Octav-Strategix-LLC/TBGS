@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
+import { Search } from "lucide-react";
+import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
 interface SpecialistHeaderProps {
   specialist: "TDS" | "TSS" | "TOS" | "TBS";
@@ -21,6 +23,48 @@ export default function SpecialistHeader({
   onOpenContactModal 
 }: SpecialistHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchFocus = () => {
+    setIsSearchFocused(true);
+    setShowSearchDropdown(true);
+  };
+
+  const handleSearchBlur = () => {
+    // Delay hiding dropdown to allow for clicks
+    setTimeout(() => {
+      setIsSearchFocused(false);
+      setShowSearchDropdown(false);
+    }, 200);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    if (value.trim().length > 0) {
+      setShowSearchDropdown(true);
+    }
+  };
+
+  const closeSearchDropdown = () => {
+    setShowSearchDropdown(false);
+    setSearchQuery("");
+    if (searchInputRef.current) searchInputRef.current.blur();
+    if (mobileSearchInputRef.current) mobileSearchInputRef.current.blur();
+  };
+
+  // Listen for close mobile menu events from search results
+  useEffect(() => {
+    const handleCloseMobileMenu = () => {
+      setIsMobileMenuOpen(false);
+    };
+
+    window.addEventListener('closeMobileMenu', handleCloseMobileMenu);
+    return () => window.removeEventListener('closeMobileMenu', handleCloseMobileMenu);
+  }, []);
 
   const getSpecialistPath = () => {
     switch(specialist) {
@@ -47,12 +91,43 @@ export default function SpecialistHeader({
             </div>
           </Link>
 
+          {/* Desktop Search */}
+          <div className="hidden xl:flex items-center relative">
+            <div className="relative w-80">
+              <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+                isSearchFocused ? primaryColor : 'text-gray-400'
+              }`} />
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Zoek in kennisbank, locaties, diensten..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchBlur}
+                className={`pl-10 pr-4 py-2 w-full border rounded-lg transition-all duration-200 focus:outline-none ${
+                  isSearchFocused 
+                    ? `border-tbgs-navy ring-2 ring-tbgs-navy/20 shadow-lg`
+                    : 'border-gray-300 hover:border-gray-400'
+                }`}
+              />
+              <SimpleSearchDropdown
+                isVisible={showSearchDropdown}
+                onClose={closeSearchDropdown}
+                searchQuery={searchQuery}
+                onSearchChange={handleSearchChange}
+              />
+            </div>
+          </div>
+
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="/#diensten" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Diensten</a>
-            <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Kennisbank</Link>
-            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Over Ons</Link>
-            <Link href="/contact" className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors`}>Contact</Link>
+          <nav className="hidden lg:flex items-center space-x-6">
+            <Link href="/locaties" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Locaties</Link>
+            <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Kennisbank</Link>
+            <Link href="/zorgeloos-wonen" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Zorgeloos wonen</Link>
+            <Link href="/onze-projecten" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Onze projecten</Link>
+            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors`}>Contact</Link>
           </nav>
 
           {/* Desktop CTA Button */}
@@ -114,26 +189,71 @@ export default function SpecialistHeader({
 
               {/* Menu Content */}
               <div className="flex-1 overflow-y-auto">
+                {/* Mobile Search */}
+                <div className="p-6 border-b border-gray-200">
+                  <div className="relative">
+                    <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+                      isSearchFocused ? primaryColor : 'text-gray-400'
+                    }`} />
+                    <input
+                      ref={mobileSearchInputRef}
+                      type="text"
+                      placeholder="Zoek in kennisbank, locaties..."
+                      value={searchQuery}
+                      onChange={(e) => handleSearchChange(e.target.value)}
+                      onFocus={handleSearchFocus}
+                      onBlur={handleSearchBlur}
+                      className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 focus:outline-none ${
+                        isSearchFocused 
+                          ? `border-tbgs-navy ring-2 ring-tbgs-navy/20`
+                          : 'border-gray-300'
+                      }`}
+                    />
+                    <SimpleSearchDropdown
+                      isVisible={showSearchDropdown}
+                      onClose={closeSearchDropdown}
+                      searchQuery={searchQuery}
+                      onSearchChange={handleSearchChange}
+                    />
+                  </div>
+                </div>
+
                 <nav className="flex flex-col p-6 space-y-6">
-                  <a 
-                    href="/#diensten" 
-                    className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                  <Link 
+                    href="/locaties" 
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-cogs mr-4 w-5"></i>
-                    Diensten
-                  </a>
+                    <i className="fas fa-map-marker-alt mr-4 w-5"></i>
+                    Locaties
+                  </Link>
                   <Link 
                     href="/kennisbank" 
-                    className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-book mr-4 w-5"></i>
                     Kennisbank
                   </Link>
                   <Link 
+                    href="/zorgeloos-wonen" 
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-home mr-4 w-5"></i>
+                    Zorgeloos wonen
+                  </Link>
+                  <Link 
+                    href="/onze-projecten" 
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <i className="fas fa-building mr-4 w-5"></i>
+                    Onze projecten
+                  </Link>
+                  <Link 
                     href="/over-ons" 
-                    className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-users mr-4 w-5"></i>
@@ -141,7 +261,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/contact" 
-                    className={`text-gray-700 hover:${primaryColor.replace('text-', 'text-')} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-envelope mr-4 w-5"></i>
