@@ -129,7 +129,12 @@ export default function SearchDropdown({ isVisible, onClose, searchQuery, onSear
             <Link
               key={result.id}
               href={result.url}
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                // Close mobile menu if it's open
+                const closeEvent = new CustomEvent('closeMobileMenu');
+                window.dispatchEvent(closeEvent);
+              }}
               className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${
                 index === highlightedIndex ? 'bg-blue-50 border-r-2 border-blue-500' : ''
               }`}

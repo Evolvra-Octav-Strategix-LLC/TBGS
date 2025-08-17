@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { Search } from "lucide-react";
 import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
-import SearchDropdown from "./SearchDropdown";
+import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
 interface HeaderProps {
   onOpenContactModal: () => void;
@@ -43,6 +43,16 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
     if (mobileSearchInputRef.current) mobileSearchInputRef.current.blur();
   };
 
+  // Listen for close mobile menu events from search results
+  useEffect(() => {
+    const handleCloseMobileMenu = () => {
+      setIsMobileMenuOpen(false);
+    };
+
+    window.addEventListener('closeMobileMenu', handleCloseMobileMenu);
+    return () => window.removeEventListener('closeMobileMenu', handleCloseMobileMenu);
+  }, []);
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
@@ -78,7 +88,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     : 'border-gray-300 hover:border-gray-400'
                 } focus:outline-none`}
               />
-              <SearchDropdown
+              <SimpleSearchDropdown
                 isVisible={showSearchDropdown}
                 onClose={closeSearchDropdown}
                 searchQuery={searchQuery}
@@ -171,7 +181,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                           : 'border-gray-300'
                       } focus:outline-none`}
                     />
-                    <SearchDropdown
+                    <SimpleSearchDropdown
                       isVisible={showSearchDropdown}
                       onClose={closeSearchDropdown}
                       searchQuery={searchQuery}
