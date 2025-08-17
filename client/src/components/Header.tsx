@@ -246,24 +246,20 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
       {/* Floating Search - Desktop Only */}
       <div className="fixed top-32 right-8 z-40 hidden xl:block">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 w-80">
+        <div className="bg-white rounded-full shadow-lg px-6 py-4 w-96 border border-gray-100">
           <div className="relative">
-            <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
-              isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
+            <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors ${
+              isSearchFocused ? 'text-gray-600' : 'text-gray-400'
             }`} />
             <input
               ref={searchInputRef}
               type="text"
-              placeholder="Zoek in kennisbank, locaties, diensten..."
+              placeholder="Waar kunnen we u mee helpen?"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               onFocus={handleSearchFocus}
               onBlur={handleSearchBlur}
-              className={`pl-10 pr-4 py-2 w-full border rounded-lg transition-all duration-200 ${
-                isSearchFocused 
-                  ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20 shadow-lg' 
-                  : 'border-gray-300 hover:border-gray-400'
-              } focus:outline-none`}
+              className={`pl-12 pr-4 py-2 w-full bg-transparent text-gray-800 placeholder-gray-500 font-medium transition-all duration-200 focus:outline-none`}
             />
             <SimpleSearchDropdown
               isVisible={showSearchDropdown}
