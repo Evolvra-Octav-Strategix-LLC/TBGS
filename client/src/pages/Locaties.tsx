@@ -390,17 +390,17 @@ export default function Locaties() {
                 {/* Service Links */}
                 <div className="mb-3">
                   <div className="flex flex-wrap gap-1 mb-2">
-                    <Link href={`/${location.slug}/daklekkage`}>
+                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/daklekkage` : `/nl/${location.slug}/daklekkage`}>
                       <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors cursor-pointer">
                         Daklekkage
                       </span>
                     </Link>
-                    <Link href={`/${location.slug}/renovatie`}>
+                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/renovatie` : `/nl/${location.slug}/renovatie`}>
                       <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors cursor-pointer">
                         Renovatie
                       </span>
                     </Link>
-                    <Link href={`/${location.slug}/onderhoud`}>
+                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/onderhoud` : `/nl/${location.slug}/onderhoud`}>
                       <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors cursor-pointer">
                         Onderhoud
                       </span>

@@ -103,19 +103,34 @@
 
 ## 🎯 Location-Service Combination Pages
 
-### Netherlands - City × Service Pages
+### Netherlands - City × Service Pages (Updated with /nl/ prefix)
 | URL Pattern | City | Service | SEO Target | Status |
 |-------------|------|---------|------------|--------|
-| `/eindhoven/daklekkage` | Eindhoven | Roof Leaks | "daklekkage eindhoven" | ✅ Active |
-| `/eindhoven/renovatie` | Eindhoven | Renovation | "renovatie eindhoven" | ✅ Active |
-| `/eindhoven/onderhoud` | Eindhoven | Maintenance | "onderhoud eindhoven" | ✅ Active |
-| `/nuenen/daklekkage` | Nuenen | Roof Leaks | "daklekkage nuenen" | ✅ Active |
-| `/nuenen/renovatie` | Nuenen | Renovation | "renovatie nuenen" | ✅ Active |
-| `/veldhoven/daklekkage` | Veldhoven | Roof Leaks | "daklekkage veldhoven" | ✅ Active |
-| `/best/daklekkage` | Best | Roof Leaks | "daklekkage best" | ✅ Active |
-| `/geldrop/daklekkage` | Geldrop | Roof Leaks | "daklekkage geldrop" | ✅ Active |
-| `/geldrop/renovatie` | Geldrop | Renovation | "renovatie geldrop" | ✅ Active |
-| `/geldrop/onderhoud` | Geldrop | Maintenance | "onderhoud geldrop" | ✅ Active |
+| `/nl/eindhoven/daklekkage` | Eindhoven | Roof Leaks | "daklekkage eindhoven" | ✅ Active |
+| `/nl/eindhoven/renovatie` | Eindhoven | Renovation | "renovatie eindhoven" | ✅ Active |
+| `/nl/eindhoven/onderhoud` | Eindhoven | Maintenance | "onderhoud eindhoven" | ✅ Active |
+| `/nl/nuenen/daklekkage` | Nuenen | Roof Leaks | "daklekkage nuenen" | ✅ Active |
+| `/nl/nuenen/renovatie` | Nuenen | Renovation | "renovatie nuenen" | ✅ Active |
+| `/nl/veldhoven/daklekkage` | Veldhoven | Roof Leaks | "daklekkage veldhoven" | ✅ Active |
+| `/nl/best/daklekkage` | Best | Roof Leaks | "daklekkage best" | ✅ Active |
+| `/nl/geldrop/daklekkage` | Geldrop | Roof Leaks | "daklekkage geldrop" | ✅ Active |
+| `/nl/geldrop/renovatie` | Geldrop | Renovation | "renovatie geldrop" | ✅ Active |
+| `/nl/geldrop/onderhoud` | Geldrop | Maintenance | "onderhoud geldrop" | ✅ Active |
+
+### Belgium - City × Service Pages (Updated with /be/ prefix)
+| URL Pattern | City | Service | SEO Target | Status |
+|-------------|------|---------|------------|--------|
+| `/be/hamont-achel/daklekkage` | Hamont-Achel | Roof Leaks | "daklekkage hamont-achel" | ✅ Active |
+| `/be/hamont-achel/renovatie` | Hamont-Achel | Renovation | "renovatie hamont-achel" | ✅ Active |
+| `/be/hamont-achel/onderhoud` | Hamont-Achel | Maintenance | "onderhoud hamont-achel" | ✅ Active |
+| `/be/hamont/daklekkage` | Hamont | Roof Leaks | "daklekkage hamont" | ✅ Active |
+| `/be/hamont/renovatie` | Hamont | Renovation | "renovatie hamont" | ✅ Active |
+| `/be/hamont/onderhoud` | Hamont | Maintenance | "onderhoud hamont" | ✅ Active |
+| `/be/pelt/daklekkage` | Pelt | Roof Leaks | "daklekkage pelt" | ✅ Active |
+| `/be/pelt/renovatie` | Pelt | Renovation | "renovatie pelt" | ✅ Active |
+| `/be/pelt/onderhoud` | Pelt | Maintenance | "onderhoud pelt" | ✅ Active |
+| `/be/sint-huibrechts-lille/daklekkage` | Sint-Huibrechts-Lille | Roof Leaks | "daklekkage sint-huibrechts-lille" | ✅ Active |
+| `/be/sint-huibrechts-lille/onderhoud` | Sint-Huibrechts-Lille | Maintenance | "onderhoud sint-huibrechts-lille" | ✅ Active |
 
 ### Specialty Location-Service Pages
 | URL | City | Service | Specialty Focus |

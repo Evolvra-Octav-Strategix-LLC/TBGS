@@ -84,6 +84,19 @@ import GeldropDaklekkage from "@/pages/locations/GeldropDaklekkage";
 import GeldropRenovatie from "@/pages/locations/GeldropRenovatie";
 import GeldropOnderhoud from "@/pages/locations/GeldropOnderhoud";
 
+// BE Location-Service Pages
+import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
+import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
+import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
+import HamontDaklekkage from "@/pages/locations/HamontDaklekkage";
+import HamontRenovatie from "@/pages/locations/HamontRenovatie";
+import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
+import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
+import PeltRenovatie from "@/pages/locations/PeltRenovatie";
+import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
+import SintHuibrechtsLilleDaklekkage from "@/pages/locations/SintHuibrechtsLilleDaklekkage";
+import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleOnderhoud";
+
 // Location-Specific Plat Dak Specialist Pages
 import EindhovenPlatDak from "@/pages/locaties/EindhovenPlatDak";
 import NuenenPlatDak from "@/pages/locaties/NuenenPlatDak";
@@ -236,17 +249,30 @@ function Router() {
           <Route path="/nuenen/plat-dak-specialist" component={() => <NuenenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/veldhoven/plat-dak-specialist" component={() => <VeldhovenPlatDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
-          {/* Location-Service Routes */}
-          <Route path="/eindhoven/daklekkage" component={() => <EindhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/eindhoven/renovatie" component={() => <EindhovenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/eindhoven/onderhoud" component={() => <EindhovenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nuenen/daklekkage" component={() => <NuenenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/nuenen/renovatie" component={() => <NuenenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/veldhoven/daklekkage" component={() => <VeldhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/geldrop/daklekkage" component={() => <GeldropDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/geldrop/renovatie" component={() => <GeldropRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/geldrop/onderhoud" component={() => <GeldropOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          {/* NL Location-Service Routes */}
+          <Route path="/nl/eindhoven/daklekkage" component={() => <EindhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/eindhoven/renovatie" component={() => <EindhovenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/eindhoven/onderhoud" component={() => <EindhovenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen/daklekkage" component={() => <NuenenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen/renovatie" component={() => <NuenenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/veldhoven/daklekkage" component={() => <VeldhovenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/geldrop/daklekkage" component={() => <GeldropDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/geldrop/renovatie" component={() => <GeldropRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/geldrop/onderhoud" component={() => <GeldropOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* BE Location-Service Routes */}
+          <Route path="/be/hamont-achel/daklekkage" component={() => <HamontAchelDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont-achel/renovatie" component={() => <HamontAchelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont-achel/onderhoud" component={() => <HamontAchelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/daklekkage" component={() => <HamontDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/renovatie" component={() => <HamontRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/onderhoud" component={() => <HamontOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/daklekkage" component={() => <PeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/renovatie" component={() => <PeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/daklekkage" component={() => <SintHuibrechtsLilleDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/onderhoud" component={() => <SintHuibrechtsLilleOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />

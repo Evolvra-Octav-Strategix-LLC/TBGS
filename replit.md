@@ -2,59 +2,7 @@
 
 ## Overview
 
-This is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company based in the Netherlands and Belgium. The website serves as a digital showcase for their four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). The site is built with a focus on lead generation through contact forms and conversion optimization.
-
-**Latest Architecture Update (Aug 17, 2025 - LocationCards Standardization Complete):** 
-- **Standardized LocationCards Component**: Created reusable LocationCards component used consistently across all pages displaying location information (Home, Locaties, Contact) for better maintainability and user experience consistency.
-- **Consistent Location URL Structure**: Fixed all location URLs to use proper `/nl/locaties/` and `/be/locaties/` patterns for Dutch and Belgian locations respectively, ensuring SEO-friendly URL structure.
-- **Component Flexibility**: LocationCards component supports conditional CTA display (showCTA prop) and custom styling (className prop) for different page contexts.
-- **Proper Link Structure**: All location links now correctly route to dedicated location hub pages with proper Netherlands/Belgium geographic targeting.
-
-**Previous SEO Phase 1 Updates (Aug 17, 2025):** 
-- **Comprehensive SEO Enhancement Phase 1**: Implemented complete 5-phase SEO optimization plan with location-specific content targeting and technical SEO improvements.
-- **Location-Specific Knowledge Base**: Enhanced PlatDak article with Eindhoven-focused H1, location-specific content blocks, service areas mapping, and regional expertise positioning.
-- **Advanced Schema Markup**: Added comprehensive Service + LocalBusiness schema, FAQ schema markup, and enhanced structured data for better AI Overview appearances and Local Pack rankings.
-- **FAQ Section with Schema**: Implemented 6 SEO-optimized FAQ questions with location-specific answers and proper FAQ schema markup for enhanced SERP features.
-- **Internal Linking Architecture**: Created strategic internal linking system connecting knowledge base articles (daklekkage, onderhoud, materialen) for stronger SEO authority.
-- **NAP Consistency Blocks**: Added consistent Name, Address, Phone information blocks with Google Maps integration across all location pages for local SEO optimization.
-- **Location-Specific Landing Pages**: Created dedicated plat dak specialist pages for Eindhoven (/eindhoven/plat-dak-specialist), Nuenen (/nuenen/plat-dak-specialist), and Veldhoven (/veldhoven/plat-dak-specialist) with unique local content.
-- **Technical SEO Optimization**: Enhanced meta titles (60 chars max), descriptions with CTAs, location-specific keywords, and canonical URLs for maximum search visibility.
-- **Complete Routing Integration**: Updated App.tsx with proper routing for all new location-specific specialist pages and SEO-friendly URL structures.
-
-**Previous Kennisbank Updates (Aug 17, 2025):** 
-- **Complete Kennisbank Redesign**: Modernized kennisbank section with cleaner card design, featuring "Meest Populair" section highlighting important content and improved grid layout for better user experience.
-- **SEO Knowledge Base Articles**: Created 5 comprehensive SEO-optimized articles: PatioDak, TerrasDak, SchuinDak, PlatDak, and Schilderwerken with high-end technical content designed for top search rankings.
-- **Colorful Badge Enhancement**: Added engaging visual badges to all kennisbank topics (Urgent, Populair, Modern, Trending, Expert, Specialist, etc.) for better user engagement and content categorization.
-- **Duplicate Content Removal**: Removed VlakDak article to eliminate overlap with PlatDak, ensuring unique content and better SEO performance.
-- **Onderhoudsabonnement Integration**: Updated all knowledge base articles to emphasize maintenance subscriptions (onderhoudsabonnementen) as preferred service model.
-- **Modern Card Design**: Implemented two-tier card system - featured cards with detailed descriptions and reading time, plus compact overview cards with hover effects and modern styling.
-- **Enhanced Search Functionality**: Updated search dropdown to include all new knowledge base articles with proper categorization and SEO-friendly excerpts.
-
-**Previous Architecture Updates (Aug 14, 2025):** 
-- **Complete Belgian Location Expansion**: Successfully expanded to comprehensive Belgian market coverage with new hoofdlocatie pages for Hamont and Pelt, plus detailed location-service pages for Sint-Huibrechts-Lille (Renovatie, Onderhoud) and Overpelt (Daklekkage).
-- **Elite Dutch Location Pages**: Created premium hoofdlocatie pages for Waalre (elite luxury positioning), Geldrop, and Mierlo with high-end SEO optimization, local schema markup, and targeted luxury market messaging.
-- **Advanced Local SEO Schema**: Implemented comprehensive LocalBusiness schema markup with geo-coordinates, Belgian/Dutch locale settings, and region-specific service catalogs for maximum local search rankings.
-- **Multilingual Belgian Support**: Added proper Dutch-Belgian locale settings (nl_BE) and Belgian geographic targeting (BE-LI) for Limburg region optimization.
-- **Complete Routing Architecture**: Updated App.tsx with full routing coverage for all 20+ hoofdlocatie pages and 50+ location-service pages across Netherlands and Belgium with proper TypeScript integration.
-- **Location-Service SEO Pages**: Created comprehensive location-based service pages for daklekkage, renovatie, and onderhoud across all TBGS service areas with location-specific SEO optimization and unique content targeting local search queries.
-- **Clean URL Structure**: Implemented clean URL patterns like `/eindhoven/daklekkage`, `/nuenen/renovatie`, `/best/onderhoud` for maximum SEO benefit and user experience.
-- **Service Integration on Locaties**: Added service links (Daklekkage, Renovatie, Onderhoud) as clickable badges on location cards for easy navigation from locations overview to specific services.
-- **Mobile-First Design**: Optimized all location-service pages for mobile with responsive text sizing, proper spacing, and touch-friendly buttons to prevent overlap issues on small screens.
-- **Modern Locations Hub**: Created beautiful comprehensive locations page at `/locaties` displaying all 16 TBGS service areas across Netherlands and Belgium with search, filtering, and detailed contact information.
-- **Navigation Enhancement**: Integrated "Locaties" into main navigation menu (desktop and mobile) for easy location discovery and improved user experience.
-- **Google-Style Review Slider**: Redesigned review slider to match modern Google review design with circular colored profile avatars, proper name formatting (First L. style), and authentic Google branding.
-- **Enhanced Location Coverage**: Added Geldrop, Mierlo, Waalre, and Hamont-Achel to service area coverage with complete location profiles including ratings, services, and contact details.
-- The site now supports independent specialist mini-websites with unique headers and branding for each service, enabling separate domain pointing and improved SEO domain authority per specialist.
-- Completely removed "Gratis Inspectie" from navigation menu and integrated inspection functionality into the modern offerte form.
-- Implemented modern offerte form with file upload capabilities using Google Cloud object storage for attachments (images, documents, videos).
-- **Google Business Profile Integration**: Connected Google Business Profile (https://share.google/egYatvuB3Rli6d2Jz) with complete review syncing, map display, opening hours, and contact information for maximum local SEO ranking.
-- **Local SEO Schema Markup**: Implemented comprehensive LocalBusiness schema.org structured data for enhanced search engine visibility and local search rankings.
-- **Complete Pricing Removal**: Removed ALL pricing information from entire website including costs, investments, subsidies, and budget options as per user requirement.
-- **Fixed Duplicate Headers**: Completely resolved duplicate header issue on ALL pages (Gratis Offerte, Daklekkage, Energiebesparing, Schoorsteencontrole) by removing redundant Header components from individual pages.
-- **Streamlined Homepage**: Removed Recent Projects section entirely and made contact section more compact for better mobile experience and reduced page length.
-- **Real Specialist Logos**: Replaced all FontAwesome icons in service cards with authentic specialist logos (TSS, TDS, TOS, TBS) while maintaining color effects and 88% opacity transitions.
-- **Mobile Text Optimization**: Fixed text size overlapping issues on small phone screens - specialist headers now use 12px text on mobile (text-xs) to prevent Offerte button overlap.
-- **Terminology Consistency**: Changed all instances of "expert" to "specialist" throughout website for consistent branding and terminology.
+This project is a modern, SEO-optimized website for Totaal Bouw Groep Specialisten BV (TBGS BV), a construction company operating in the Netherlands and Belgium. The website showcases four specialized services: roof work (TDS), chimney services (TSS), maintenance (TOS), and general construction (TBS). Its primary purpose is lead generation through contact forms and conversion optimization. The business vision is to provide a robust digital presence that supports geographical targeting and enhances brand authority for each specialist service.
 
 ## User Preferences
 
@@ -64,76 +12,71 @@ Domain Strategy: User wants separate domain names pointing to each specialist pa
 ## System Architecture
 
 ### Frontend Architecture
-- **Framework**: React 18 with TypeScript in a Single Page Application (SPA) architecture
-- **Routing**: Wouter for client-side routing with dedicated pages for each specialist service
-- **Styling**: Tailwind CSS with shadcn/ui component library for consistent design
-- **UI Components**: Radix UI primitives for accessibility and interaction patterns
-- **Build Tool**: Vite for fast development and optimized production builds
-- **State Management**: TanStack React Query for server state management and API interactions
+- **Framework**: React 18 with TypeScript (SPA)
+- **Routing**: Wouter for client-side routing
+- **Styling**: Tailwind CSS with shadcn/ui and Radix UI
+- **Build Tool**: Vite
+- **State Management**: TanStack React Query
 
 ### Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **API Design**: RESTful API with dedicated contact form endpoint (`/api/contact`)
-- **Development Server**: Custom Vite integration with hot module replacement
-- **Error Handling**: Centralized error middleware with structured error responses
+- **Runtime**: Node.js with Express.js
+- **Language**: TypeScript (ES modules)
+- **API Design**: RESTful API (`/api/contact` endpoint)
+- **Development Server**: Custom Vite integration with HMR
+- **Error Handling**: Centralized error middleware
 
 ### Data Storage Solutions
-- **Database**: PostgreSQL configured through Drizzle ORM
-- **ORM**: Drizzle ORM with type-safe schema definitions
-- **Connection**: Neon Database serverless driver for PostgreSQL
-- **Migrations**: Drizzle Kit for database schema management
+- **Database**: PostgreSQL via Drizzle ORM
+- **ORM**: Drizzle ORM (type-safe)
+- **Connection**: Neon Database serverless driver
+- **Migrations**: Drizzle Kit
 - **Session Storage**: PostgreSQL-backed sessions using connect-pg-simple
-- **Development Storage**: In-memory storage implementation for development/testing
+- **Development Storage**: In-memory storage for testing
 
-### Component Structure
-- **Brand Colors**: Four distinct color themes for each specialist service (Red for TDS, Blue for TSS, Green for TOS, Orange for TBS)
-- **Dual Header System**: 
-  - Main site header with specialist navigation bar for homepage and general pages
-  - Individual specialist headers with branded logos and specialist-specific navigation for each service page
-- **Specialist Headers**: Each specialist page now has its own dedicated header component with:
-  - Specialist-specific logo and branding
-  - Color-coordinated navigation matching specialist theme
-  - Independent routing suitable for separate domain pointing
-- **Layout Components**: Conditional header rendering, specialist navigation bar, and comprehensive footer
-- **Modal System**: Contact form modal for lead generation across all pages
-- **Responsive Design**: Mobile-first approach with grid layouts and responsive navigation
+### UI/UX Decisions and Features
+- **Brand Colors**: Four distinct color themes per specialist service (Red for TDS, Blue for TSS, Green for TOS, Orange for TBS).
+- **Dual Header System**: Main site header and individual specialist headers with branded logos and color-coordinated navigation. Specialist headers are independent for separate domain pointing.
+- **Layout Components**: Conditional header rendering, specialist navigation bar, and comprehensive footer.
+- **Modal System**: Contact form modal for lead generation.
+- **Responsive Design**: Mobile-first approach with grid layouts and responsive navigation.
+- **Review Slider**: Redesigned to match Google review style.
+- **Modern Offerte Form**: Includes file upload capabilities.
+- **Kennisbank Redesign**: Modernized with clean card design, "Meest Populair" section, colorful badges, and enhanced search functionality.
+- **Pricing**: All pricing information is explicitly removed from the website.
+- **Terminology**: "Expert" is consistently changed to "specialist" throughout.
 
-### SEO and Performance
-- **Meta Management**: Dynamic SEO head component for title, description, and Open Graph tags
-- **Structured Data**: Schema.org LocalBusiness markup for search engine optimization
-- **Google Business Integration**: Complete Google Business Profile integration with review sync, map display, and local SEO optimization
-- **Local SEO Schema**: Comprehensive LocalBusiness schema markup with geo-coordinates, opening hours, and service catalog
-- **Location-Specific Pages**: Dedicated landing pages for all service cities with unique content, local keywords, geo-targeted schema markup, and city-specific contact information for maximum local search rankings
-- **Internationalization**: Dutch language content with proper locale settings for Netherlands and Belgium markets
-- **Performance**: Code splitting and lazy loading for optimal performance
+### System Design Choices
+- **SEO Optimization**: Dynamic SEO head component, Schema.org LocalBusiness markup, Google Business Profile integration, and comprehensive local SEO schema (geo-coordinates, opening hours, service catalog).
+- **Location-Specific Pages**: Dedicated landing pages for service cities with unique content, local keywords, geo-targeted schema, and city-specific contact information. URL structure uses mandatory `/nl/` and `/be/` country prefixes (e.g., `/nl/city/service`, `/be/city/service`).
+- **Internationalization**: Dutch language content with proper locale settings for Netherlands and Belgium.
+- **Performance**: Code splitting and lazy loading.
+- **Internal Linking**: Strategic system connecting knowledge base articles.
+- **NAP Consistency**: Consistent Name, Address, Phone blocks with Google Maps integration.
 
 ## External Dependencies
 
 ### Database and Backend Services
-- **@neondatabase/serverless**: Serverless PostgreSQL connection driver
-- **drizzle-orm**: Type-safe ORM for database operations
-- **connect-pg-simple**: PostgreSQL session store for Express sessions
+- `@neondatabase/serverless`
+- `drizzle-orm`
+- `connect-pg-simple`
 
 ### UI and Styling
-- **@radix-ui/***: Comprehensive set of accessible UI primitives (accordion, dialog, dropdown, etc.)
-- **tailwindcss**: Utility-first CSS framework
-- **class-variance-authority**: Utility for creating variant-based component APIs
-- **cmdk**: Command palette component for search functionality
+- `@radix-ui/*`
+- `tailwindcss`
+- `class-variance-authority`
+- `cmdk`
 
 ### Form Handling and Validation
-- **@hookform/resolvers**: Form validation resolvers for React Hook Form
-- **zod**: TypeScript-first schema validation library
-- **drizzle-zod**: Integration between Drizzle ORM and Zod for type-safe validation
+- `@hookform/resolvers`
+- `zod`
+- `drizzle-zod`
 
-### Development and Build Tools
-- **@tanstack/react-query**: Powerful data synchronization for React applications
-- **wouter**: Minimalist routing library for React
-- **date-fns**: Modern JavaScript date utility library
-- **embla-carousel-react**: Lightweight carousel library for React
+### Development and Utility Libraries
+- `@tanstack/react-query`
+- `wouter`
+- `date-fns`
+- `embla-carousel-react`
 
 ### Replit-Specific Integrations
-- **@replit/vite-plugin-runtime-error-modal**: Development error overlay for Replit environment
-- **@replit/vite-plugin-cartographer**: Development tool integration for Replit IDE
-
-The application uses a modern tech stack optimized for performance, maintainability, and developer experience, with strong emphasis on type safety through TypeScript and comprehensive UI component coverage through shadcn/ui and Radix UI.
+- `@replit/vite-plugin-runtime-error-modal`
+- `@replit/vite-plugin-cartographer`
