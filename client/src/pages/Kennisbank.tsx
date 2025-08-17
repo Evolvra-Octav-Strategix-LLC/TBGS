@@ -84,7 +84,9 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
           alt: 'Plat Dak - TBGS Dakspecialisten',
           badge: 'Modern',
-          badgeColor: 'bg-green-500'
+          badgeColor: 'bg-green-500',
+          readTime: '8 min',
+          description: 'Moderne platte dakbedekking voor optimale waterdichtheid en functionaliteit'
         },
         {
           id: 'schuin-dak',
@@ -93,14 +95,18 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
           alt: 'Schuin Dak - TBGS Dakspecialisten',
           badge: 'Populair',
-          badgeColor: 'bg-blue-500'
+          badgeColor: 'bg-blue-500',
+          readTime: '10 min',
+          description: 'Traditionele dakbedekking voor duurzame bescherming en tijdloze schoonheid'
         },
         {
           id: 'patio-dak',
           title: 'PATIO DAK',
           link: '/kennisbank/patio-dak',
           image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Patio Dak - TBGS Dakspecialisten'
+          alt: 'Patio Dak - TBGS Dakspecialisten',
+          readTime: '6 min',
+          description: 'Professionele patio dakbedekking voor duurzame bescherming en stijlvolle buitenruimtes'
         },
         {
           id: 'terras-dak',
@@ -137,14 +143,18 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=250',
           alt: 'Daklekkage Herkennen - TBGS Expert Tips',
           badge: 'Urgent',
-          badgeColor: 'bg-red-500'
+          badgeColor: 'bg-red-500',
+          readTime: '5 min',
+          description: 'Vroege signalen herkennen en kostbare waterschade voorkomen met expert tips'
         },
         {
           id: 'gevellekkage',
           title: 'GEVELLEKKAGE',
           link: '/kennisbank/gevellekkage',
           image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200',
-          alt: 'Gevellekkage - TBGS Specialisten'
+          alt: 'Gevellekkage - TBGS Specialisten',
+          readTime: '7 min',
+          description: 'Herkenning, oorzaken en professionele oplossingen voor gevellekkage'
         },
         {
           id: 'lekkage-dakkapellen',

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { ChevronDownIcon, ChevronUpIcon, SearchIcon, ClockIcon } from "lucide-react";
 
 interface Topic {
   id: string;
@@ -10,6 +10,8 @@ interface Topic {
   alt: string;
   badge?: string;
   badgeColor?: string;
+  readTime?: string;
+  description?: string;
 }
 
 interface TopicCategory {
@@ -32,6 +34,17 @@ export default function UnfoldableTopicsGrid({
   const [expandedCategories, setExpandedCategories] = useState<string[]>(
     categories.filter(cat => cat.defaultOpen).map(cat => cat.id)
   );
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  // Filter categories and topics based on search
+  const filteredCategories = categories.map(category => ({
+    ...category,
+    topics: category.topics.filter(topic => 
+      topic.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      topic.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      category.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  })).filter(category => category.topics.length > 0);
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories(prev => 
@@ -45,7 +58,35 @@ export default function UnfoldableTopicsGrid({
 
   return (
     <div className="space-y-8">
-      {categories.map((category) => (
+      {/* Search Bar */}
+      <div className="relative mb-8">
+        <div className="relative">
+          <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Zoek onderwerpen..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
+          />
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm("")}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        {searchTerm && (
+          <div className="mt-2 text-sm text-gray-600">
+            {filteredCategories.reduce((total, cat) => total + cat.topics.length, 0)} resultaten gevonden
+          </div>
+        )}
+      </div>
+
+      {/* Categories */}
+      {filteredCategories.map((category) => (
         <div key={category.id} className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
           {/* Category Header */}
           <button
@@ -85,16 +126,29 @@ export default function UnfoldableTopicsGrid({
                           alt={topic.alt}
                           className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        {topic.badge && (
-                          <div className="absolute top-3 left-3">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        
+                        {/* Badges */}
+                        <div className="absolute top-3 left-3 flex gap-2">
+                          {topic.badge && (
                             <span className={`${topic.badgeColor || 'bg-blue-500'} text-white px-3 py-1 rounded-full text-xs font-bold`}>
                               {topic.badge}
                             </span>
-                          </div>
-                        )}
-                        <div className="absolute bottom-3 left-3 text-white">
-                          <h4 className="text-lg font-bold">{topic.title}</h4>
+                          )}
+                          {topic.readTime && (
+                            <span className="bg-black/50 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                              <ClockIcon className="w-3 h-3" />
+                              {topic.readTime}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Title and Description */}
+                        <div className="absolute bottom-3 left-3 right-3 text-white">
+                          <h4 className="text-lg font-bold mb-1 leading-tight">{topic.title}</h4>
+                          {topic.description && (
+                            <p className="text-xs opacity-90 line-clamp-2">{topic.description}</p>
+                          )}
                         </div>
                       </div>
                     </div>
