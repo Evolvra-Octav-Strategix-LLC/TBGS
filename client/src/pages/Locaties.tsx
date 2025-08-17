@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock, Star, Search, Navigation } from "lucide-react";
 import { Link } from "wouter";
+import LocationCards from "@/components/LocationCards";
 
 interface Location {
   id: string;
@@ -466,6 +467,19 @@ export default function Locaties() {
             </Button>
           </div>
         )}
+
+        {/* Location Cards Section */}
+        <div className="mt-20 mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Onze Service <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Gebieden</span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              TBGS bedient Nederland en België met lokale expertise en gecertificeerde specialisten in elke regio.
+            </p>
+          </div>
+          <LocationCards showCTA={false} />
+        </div>
 
         {/* Contact CTA */}
         <div className="mt-16 text-center">

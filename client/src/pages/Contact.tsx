@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SEOHead from "@/lib/seo";
+import LocationCards from "@/components/LocationCards";
 
 interface ContactProps {
   onOpenContactModal: () => void;
@@ -307,74 +308,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Nederland */}
-                <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-8 border-l-4 border-orange-500">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center mr-4">
-                      <i className="fas fa-map-marker-alt text-2xl text-white"></i>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">Nederland</h3>
-                      <p className="text-slate-600">Noord-Brabant</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2 text-slate-700">
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Eindhoven</li>
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Nuenen</li>
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Veldhoven</li>
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Best</li>
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Son en Breugel</li>
-                    <li className="flex items-center"><i className="fas fa-check text-orange-500 w-4 mr-2"></i>Geldrop-Mierlo</li>
-                  </ul>
-                </div>
-
-                {/* België */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border-l-4 border-blue-500">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mr-4">
-                      <i className="fas fa-map-marker-alt text-2xl text-white"></i>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">België</h3>
-                      <p className="text-slate-600">Provincie Limburg</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2 text-slate-700">
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Hasselt</li>
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Genk</li>
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Bilzen</li>
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Tongeren</li>
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Maaseik</li>
-                    <li className="flex items-center"><i className="fas fa-check text-blue-500 w-4 mr-2"></i>Sint-Truiden</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact CTA */}
-            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-8 text-white">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-question-circle text-2xl"></i>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Vragen over uw locatie?</h3>
-                <p className="opacity-90 leading-relaxed">
-                  Niet zeker of wij in uw gebied werken? <strong>Vraag het ons direct!</strong>
-                </p>
-              </div>
-              
-              <button 
-                onClick={onOpenContactModal}
-                className="w-full bg-white text-slate-900 px-6 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                <i className="fas fa-map-check mr-3"></i>
-                Check Mijn Locatie
-              </button>
-            </div>
-          </div>
+          <LocationCards onOpenContactModal={onOpenContactModal} />
         </div>
       </section>
     </div>
