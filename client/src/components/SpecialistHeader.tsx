@@ -103,10 +103,10 @@ export default function SpecialistHeader({
           </nav>
 
           {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative flex-1 max-w-sm mx-8">
-            <div className="bg-white rounded-full shadow-lg px-6 py-3 w-full border border-gray-100">
+          <div className="hidden xl:flex items-center relative flex-1 max-w-sm mx-6">
+            <div className="bg-white rounded-full shadow-md px-4 py-2 w-full border border-gray-100">
               <div className="relative">
-                <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors ${
+                <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
                   isSearchFocused ? 'text-gray-600' : 'text-gray-400'
                 }`} />
                 <input
@@ -117,7 +117,7 @@ export default function SpecialistHeader({
                   onChange={(e) => handleSearchChange(e.target.value)}
                   onFocus={handleSearchFocus}
                   onBlur={handleSearchBlur}
-                  className={`pl-12 pr-4 py-1 w-full bg-transparent text-gray-800 placeholder-gray-500 font-medium transition-all duration-200 focus:outline-none`}
+                  className={`pl-10 pr-3 py-1 w-full bg-transparent text-gray-800 placeholder-gray-500 text-sm transition-all duration-200 focus:outline-none`}
                 />
                 <SimpleSearchDropdown
                   isVisible={showSearchDropdown}
