@@ -94,10 +94,10 @@ export default function PlatDak({ onOpenContactModal }: PlatDakProps) {
               },
               {
                 "@type": "Question", 
-                "name": "Wat kost EPDM dakbedekking per m² in Eindhoven?",
+                "name": "Welk plat dak materiaal is het beste voor het Nederlandse klimaat?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "EPDM dakbedekking kost gemiddeld €80-120 per m² inclusief montage en garantie. De exacte kostprijs hangt af van dakgrootte, complexiteit, isolatie en toegankelijkheid."
+                  "text": "EPDM is ideaal voor Nederland vanwege uitstekende weerbestendigheid tegen regen, UV-straling en temperatuurwisselingen. Het materiaal blijft flexibel van -40°C tot +120°C en heeft bewezen prestaties in ons gematigde zeeklimaat."
                 }
               },
               {
@@ -396,11 +396,11 @@ export default function PlatDak({ onOpenContactModal }: PlatDakProps) {
                   </div>
                   
                   <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-tbgs-navy">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Wat kost EPDM dakbedekking per m² in Eindhoven?</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Welk plat dak materiaal is het beste voor het Nederlandse klimaat?</h3>
                     <p className="text-gray-700">
-                      EPDM dakbedekking kost gemiddeld €80-120 per m² inclusief montage en garantie. De exacte 
-                      kostprijs hangt af van dakgrootte, complexiteit, isolatie en toegankelijkheid. TBGS biedt 
-                      altijd een gratis offerte met transparante prijzen voor de regio Eindhoven.
+                      EPDM is ideaal voor Nederland vanwege uitstekende weerbestendigheid tegen regen, UV-straling 
+                      en temperatuurwisselingen. Het materiaal blijft flexibel van -40°C tot +120°C en heeft bewezen 
+                      prestaties in ons gematigde zeeklimaat. TBGS adviseert EPDM voor optimale duurzaamheid.
                     </p>
                   </div>
 
