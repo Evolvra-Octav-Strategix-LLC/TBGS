@@ -417,8 +417,9 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
             </div>
           </div>
 
-              {/* Additional cards in the grid */}
-              <Link href="/kennisbank/regenpijp">
+          {/* Additional cards in the grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Link href="/kennisbank/regenpijp">
                 <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
                   <div className="relative overflow-hidden">
                     <img 
@@ -530,6 +531,7 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
                 </div>
               </Link>
             </div>
+          </div>
         </div>
       </section>
 
