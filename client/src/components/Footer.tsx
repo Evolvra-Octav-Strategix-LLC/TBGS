@@ -167,10 +167,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       <li><a href="/be/locaties/hamont-achel" className="hover:text-white transition-colors">Hamont-Achel</a></li>
                       <li><a href="/be/locaties/lommel" className="hover:text-white transition-colors">Lommel</a></li>
                       <li><a href="/be/locaties/pelt" className="hover:text-white transition-colors">Pelt</a></li>
-                      <li><a href="/be/locaties/retie" className="hover:text-white transition-colors">Retie</a></li>
-                      <li><a href="/be/locaties/overpelt" className="hover:text-white transition-colors">Overpelt</a></li>
-                      <li><a href="/be/locaties/neerpelt" className="hover:text-white transition-colors">Neerpelt</a></li>
-                      <li><a href="/locaties" className="hover:text-white transition-colors">+ andere steden</a></li>
+                      <li><a href="/locaties" className="hover:text-white transition-colors">+ 5 anderen</a></li>
                     </ul>
                   </div>
                 </div>
