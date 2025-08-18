@@ -4,6 +4,7 @@ import LocalSEOSchema from "@/components/LocalSEOSchema";
 import { Link } from "wouter";
 import { MapPin, Phone, Mail, Clock, Shield, Award, Zap, CheckCircle, AlertTriangle, Droplets } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import DefinitievereparatiesCard from "@/components/DefinitievereparatiesCard";
 
 interface NuenenDaklekkageProps {
   onOpenContactModal: () => void;
@@ -17,8 +18,8 @@ export default function NuenenDaklekkage({ onOpenContactModal }: NuenenDaklekkag
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Nuenen | Binnen 2 Uur | Van Gogh Dorp Specialist"
-        description="🚨 SPOED DAKLEKKAGE NUENEN? ✓ Binnen 2 uur ter plaatse ✓ Van Gogh dorp specialist ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Historische panden ervaring ✓ 100+ tevreden klanten"
+        title="Daklekkage Reparatie Nuenen | Direct Service | Van Gogh Dorp Specialist"
+        description="🚨 SPOED DAKLEKKAGE NUENEN? ✓ Direct ter plaatse ✓ Van Gogh dorp specialist ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Historische panden ervaring ✓ 100+ tevreden klanten"
         url="https://tbgs.nl/nl/nuenen/daklekkage"
         keywords="daklekkage Nuenen, spoed daklekkage reparatie Nuenen, dakdekker Nuenen Van Gogh dorp, daklek Nuenen binnen 2 uur, nooddienst dak Nuenen, historische panden dakdekker"
       />
@@ -143,6 +144,9 @@ export default function NuenenDaklekkage({ onOpenContactModal }: NuenenDaklekkag
           </div>
         </div>
       </section>
+
+      {/* Definitieve Reparaties Section */}
+      <DefinitievereparatiesCard onOpenContactModal={onOpenContactModal} />
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-red-600 to-red-700 text-white">

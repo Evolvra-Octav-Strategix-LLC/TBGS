@@ -37,7 +37,7 @@ export default function SonEnBreugelDaklekkage({ onOpenContactModal }: SonEnBreu
         <meta name="geo.position" content="51.5078;5.4919" />
         <meta name="ICBM" content="51.5078, 5.4919" />
         <link rel="canonical" href="https://tbgs.nl/nl/son-en-breugel/daklekkage" />
-        <link rel="alternate" hreflang="nl-be" href="https://tbgs.nl/be/son-en-breugel/daklekkage" />
+        <link rel="alternate" hrefLang="nl-be" href="https://tbgs.nl/be/son-en-breugel/daklekkage" />
         <meta name="author" content="TBGS" />
         <meta name="copyright" content="TBGS 2024" />
         <meta name="language" content="Dutch" />

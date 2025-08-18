@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { MapPin, Phone, Mail, Clock, Shield, Award, Zap, CheckCircle, AlertTriangle, Droplets } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import DefinitievereparatiesCard from "@/components/DefinitievereparatiesCard";
 
 interface EindhovenDaklekkageProps {
   onOpenContactModal: () => void;
@@ -18,10 +19,10 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Eindhoven | Binnen 2 Uur Ter Plaatse | 24u Spoed"
-        description="🚨 SPOED DAKLEKKAGE EINDHOVEN? ✓ Binnen 2 uur ter plaatse ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Gratis inspectie ✓ Lokale daklekkage specialist ✓ 500+ tevreden klanten"
+        title="Daklekkage Reparatie Eindhoven | Direct Ter Plaatse | 24u Spoeddienst"
+        description="🚨 SPOED DAKLEKKAGE EINDHOVEN? ✓ Direct ter plaatse ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Gratis inspectie ✓ Woensel/Stratum/Acht specialist ✓ 500+ tevreden klanten"
         url="https://tbgs.nl/nl/eindhoven/daklekkage"
-        keywords="daklekkage Eindhoven, spoed daklekkage reparatie Eindhoven, dakdekker Eindhoven 24 uur, lekkend dak Eindhoven, daklek Eindhoven binnen 2 uur, nooddienst dak Eindhoven, daklekkage specialist Eindhoven"
+        keywords="daklekkage Eindhoven, spoed daklekkage reparatie Eindhoven, dakdekker Eindhoven 24 uur, lekkend dak Eindhoven, daklek Eindhoven direct service, nooddienst dak Eindhoven, daklekkage specialist Eindhoven"
       />
       <LocalSEOSchema businessData={{
         name: "TBGS Eindhoven - Daklekkage Specialist",
@@ -36,7 +37,7 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
         email: "eindhoven@tbgs.nl",
         website: "https://tbgs-bv.nl/eindhoven/daklekkage",
         geo: { latitude: 51.4416, longitude: 5.4697 },
-        areaServed: ["Eindhoven", "Woensel", "Stratum", "Gestel", "Strijp", "Tongelre"],
+        areaServed: ["Eindhoven", "Woensel", "Stratum", "Gestel", "Strijp", "Tongelre", "Acht"],
         rating: { ratingValue: 4.9, reviewCount: 87 },
         openingHours: ["Mo-Su 00:00-24:00"]
       }} />
@@ -340,6 +341,9 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
           </div>
         </div>
       </section>
+
+      {/* Definitieve Reparaties Section */}
+      <DefinitievereparatiesCard onOpenContactModal={onOpenContactModal} />
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-red-600 to-red-700 text-white">

@@ -4,6 +4,7 @@ import LocalSEOSchema from "@/components/LocalSEOSchema";
 import { Link } from "wouter";
 import { MapPin, Phone, Mail, Clock, Shield, Award, Zap, CheckCircle, AlertTriangle, Droplets } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import DefinitievereparatiesCard from "@/components/DefinitievereparatiesCard";
 
 interface VeldhovenDaklekkageProps {
   onOpenContactModal: () => void;
@@ -17,8 +18,8 @@ export default function VeldhovenDaklekkage({ onOpenContactModal }: VeldhovenDak
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Veldhoven | Binnen 2 Uur | ASML Buurt Specialist"
-        description="🚨 SPOED DAKLEKKAGE VELDHOVEN? ✓ Binnen 2 uur ter plaatse ✓ ASML buurt specialist ✓ Moderne nieuwbouw ervaring ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ 150+ tevreden klanten"
+        title="Daklekkage Reparatie Veldhoven | Direct Service | ASML Buurt Specialist"
+        description="🚨 SPOED DAKLEKKAGE VELDHOVEN? ✓ Direct ter plaatse ✓ ASML buurt specialist ✓ Moderne nieuwbouw ervaring ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ 150+ tevreden klanten"
         url="https://tbgs.nl/nl/veldhoven/daklekkage"
         keywords="daklekkage Veldhoven, spoed daklekkage Veldhoven, dakdekker Veldhoven ASML buurt, daklek Veldhoven binnen 2 uur, nieuwbouw daklekkage specialist Veldhoven"
       />
