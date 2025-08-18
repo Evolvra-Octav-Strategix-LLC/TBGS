@@ -18,10 +18,10 @@ export default function EindhovenOnderhoud({ onOpenContactModal }: EindhovenOnde
   return (
     <>
       <SEOHead 
-        title="Onderhoud Eindhoven - Dakonderhoud & Preventief Onderhoud | TBGS Eindhoven"
-        description="🔧 Onderhoud Eindhoven ✓ Dakonderhoud specialist ✓ Preventief onderhoudscontract ✓ Jaarlijkse inspectie ✓ Dakgoten reiniging ✓ TBGS onderhoudsservice ✓ Gratis advies"
-        url="https://tbgs.nl/eindhoven/onderhoud"
-        keywords="onderhoud Eindhoven, dakonderhoud Eindhoven, preventief onderhoud Eindhoven, onderhoudscontract Eindhoven, dakgoten reiniging Eindhoven, jaarlijkse controle Eindhoven"
+        title="Dakonderhoud Eindhoven | Voorkom 75% Dakschade | Onderhoudscontract"
+        description="🔧 VOORKOM DURE DAKLEKKAGES! ✓ Jaarlijks onderhoudscontract Eindhoven ✓ 75% minder dakschade ✓ Gratis inspectie & advies ✓ 15+ jaar ervaring ✓ Preventief dakonderhoud specialist"
+        url="https://tbgs.nl/nl/eindhoven/onderhoud"
+        keywords="dakonderhoud Eindhoven, preventief onderhoud Eindhoven, onderhoudscontract Eindhoven, dakonderhoud specialist Eindhoven, jaarlijkse dakinspectie Eindhoven, dakgoten onderhoud Eindhoven"
       />
       <LocalSEOSchema businessData={{
         name: "TBGS Eindhoven - Onderhoud Specialist",
@@ -56,8 +56,18 @@ export default function EindhovenOnderhoud({ onOpenContactModal }: EindhovenOnde
               <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">Service Eindhoven</span>
             </h1>
 
+            {/* Cost Savings Alert */}
+            <div className="bg-green-100 border-l-4 border-green-500 p-4 mb-6 mx-auto max-w-2xl rounded-lg">
+              <div className="flex items-center">
+                <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                <p className="text-green-700 font-semibold">
+                  💡 Onderhoudscontract = Bespaar €2.500+ per jaar op noodreparaties!
+                </p>
+              </div>
+            </div>
+
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto">
-              <strong className="text-green-600">Preventief onderhoud voorkomt dure reparaties!</strong> Professionele onderhoudsservice in Eindhoven met <strong>jaarlijkse controles</strong> en onderhoudscontracten.
+              <strong className="text-green-600">Preventief onderhoud voorkomt dure reparaties!</strong> Professionele onderhoudsservice in Eindhoven met <strong>jaarlijkse controles</strong> en onderhoudscontracten. <strong>300+ Eindhoven eigenaren</strong> besparen jaarlijks duizenden euro's.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">

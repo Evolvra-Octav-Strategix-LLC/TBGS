@@ -17,10 +17,10 @@ export default function BestDaklekkage({ onOpenContactModal }: BestDaklekkagePro
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Best - 24u Spoeddienst | TBGS Familiedorp Specialist"
-        description="🚨 Daklek in Best? ✓ 24u Spoeddienst familiedorp ✓ TBGS dakdekker Best ✓ Directe daklekkage reparatie ✓ Gezinswoningen specialist ✓ Garantie Best"
-        url="https://tbgs.nl/best/daklekkage"
-        keywords="daklekkage Best, daklek reparatie Best, dakdekker spoeddienst Best, familiedorp Best dakdekker, gezinswoningen dak Best, noodreparatie dak Best"
+        title="Daklekkage Reparatie Best | Binnen 2 Uur | Familiedorp Specialist"
+        description="🚨 SPOED DAKLEKKAGE BEST? ✓ Binnen 2 uur ter plaatse ✓ Familiedorp specialist ✓ Gezinswoningen ervaring ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ 75+ tevreden gezinnen"
+        url="https://tbgs.nl/nl/best/daklekkage"
+        keywords="daklekkage Best, spoed daklekkage Best, dakdekker Best familiedorp, daklek Best binnen 2 uur, gezinswoningen daklekkage specialist Best"
       />
       <LocalSEOSchema businessData={{
         name: "TBGS Best - Daklekkage Familiedorp Specialist",

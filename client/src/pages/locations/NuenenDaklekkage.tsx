@@ -17,10 +17,10 @@ export default function NuenenDaklekkage({ onOpenContactModal }: NuenenDaklekkag
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Nuenen - 24u Spoeddienst | TBGS Van Gogh Dorp"
-        description="🚨 Daklek in Nuenen? ✓ 24u Spoeddienst Van Gogh dorp ✓ Lokale dakdekker TBGS ✓ Directe daklekkage reparatie Nuenen ✓ Gratis inspectie ✓ Historische panden ervaring"
-        url="https://tbgs.nl/nuenen/daklekkage"
-        keywords="daklekkage Nuenen, daklek reparatie Nuenen, dakdekker spoeddienst Nuenen, Van Gogh dorp dakdekker, lekkend dak Nuenen, noodreparatie dak Nuenen, dakgoot lek Nuenen"
+        title="Daklekkage Reparatie Nuenen | Binnen 2 Uur | Van Gogh Dorp Specialist"
+        description="🚨 SPOED DAKLEKKAGE NUENEN? ✓ Binnen 2 uur ter plaatse ✓ Van Gogh dorp specialist ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Historische panden ervaring ✓ 100+ tevreden klanten"
+        url="https://tbgs.nl/nl/nuenen/daklekkage"
+        keywords="daklekkage Nuenen, spoed daklekkage reparatie Nuenen, dakdekker Nuenen Van Gogh dorp, daklek Nuenen binnen 2 uur, nooddienst dak Nuenen, historische panden dakdekker"
       />
       <LocalSEOSchema businessData={{
         name: "TBGS Nuenen - Daklekkage Specialist Van Gogh Dorp",

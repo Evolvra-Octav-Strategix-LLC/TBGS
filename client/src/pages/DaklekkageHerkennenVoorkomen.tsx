@@ -88,10 +88,10 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
   return (
     <>
       <SEOHead
-        title="Daklekkage Herkennen en Voorkomen - Expert Gids 2024 | TBGS"
-        description="🏠 Leer daklekkage vroeg herkennen en voorkom kostbare waterschade. ✓ Vroege signalen ✓ Preventietips ✓ 24/7 Spoedservice ✓ Gratis inspectie. Expert advies van TDS dakspecialisten."
+        title="Daklekkage Herkennen: 6 Vroege Signalen die €5000+ Schade Voorkomen | 2025"
+        description="🚨 DAKLEKKAGE SIGNALEN? ✓ 6 vroege waarschuwingstekenen ✓ Voorkom €5000+ waterschade ✓ Expert dakinspectie tips ✓ 24/7 spoeddienst ✓ Gratis dakcontrole ✓ 15+ jaar ervaring"
         url="/kennisbank/daklekkage-herkennen-voorkomen"
-        keywords="daklekkage herkennen, daklekkage voorkomen, daklekkage signalen, vochtplekken plafond, waterplekken plafond, lek dak herkennen, daklekkage opsporen, daklekkage symptomen, druppelend water dak, daklekkage tekenen, daklekkage preventie, dak onderhoud, dakinspectie, dakgoot onderhoud, dakdekker spoedservice, lekdetectie specialist, daklekkage reparatie, waterschade voorkomen"
+        keywords="daklekkage herkennen 2025, vochtplekken plafond, daklek signalen, waterschade voorkomen, daklekkage vroege tekenen, druppelend water dak, daklekkage preventie tips, dakdekker spoedservice, gratis dakinspectie"
       />
 
       <article className="min-h-screen bg-gray-50">

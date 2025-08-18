@@ -18,10 +18,10 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
   return (
     <>
       <SEOHead 
-        title="Daklekkage Reparatie Eindhoven - 24u Spoeddienst | TBGS Dakdekker Eindhoven"
-        description="🚨 Daklek in Eindhoven? ✓ 24u Spoeddienst ✓ Lokale dakdekker TBGS ✓ Directe reparatie daklekkage Eindhoven ✓ Gratis inspectie ✓ Garantie ✓ Erkend & verzekerd"
-        url="https://tbgs.nl/eindhoven/daklekkage"
-        keywords="daklekkage Eindhoven, daklek reparatie Eindhoven, dakdekker spoeddienst Eindhoven, lekkend dak Eindhoven, dakgoot lek Eindhoven, noodreparatie dak Eindhoven, 24 uur dakdekker Eindhoven"
+        title="Daklekkage Reparatie Eindhoven | Binnen 2 Uur Ter Plaatse | 24u Spoed"
+        description="🚨 SPOED DAKLEKKAGE EINDHOVEN? ✓ Binnen 2 uur ter plaatse ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ Gratis inspectie ✓ Lokale daklekkage specialist ✓ 500+ tevreden klanten"
+        url="https://tbgs.nl/nl/eindhoven/daklekkage"
+        keywords="daklekkage Eindhoven, spoed daklekkage reparatie Eindhoven, dakdekker Eindhoven 24 uur, lekkend dak Eindhoven, daklek Eindhoven binnen 2 uur, nooddienst dak Eindhoven, daklekkage specialist Eindhoven"
       />
       <LocalSEOSchema businessData={{
         name: "TBGS Eindhoven - Daklekkage Specialist",
@@ -56,8 +56,18 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
               <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">Reparatie Eindhoven</span>
             </h1>
 
+            {/* Urgency Alert */}
+            <div className="bg-red-100 border-l-4 border-red-500 p-4 mb-6 mx-auto max-w-2xl rounded-lg">
+              <div className="flex items-center">
+                <AlertTriangle className="w-5 h-5 text-red-500 mr-2" />
+                <p className="text-red-700 font-semibold">
+                  ⚠️ Elk uur wachten = €150+ extra waterschade! Winter/herfstweer verhoogt urgentie.
+                </p>
+              </div>
+            </div>
+
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto">
-              <strong className="text-red-600">Daklek? Wij zijn er binnen 2 uur!</strong> Professionele daklekkage reparatie in Eindhoven met <strong>24u spoeddienst</strong> en directe oplossingen.
+              <strong className="text-red-600">Daklek? Wij zijn er binnen 2 uur!</strong> Professionele daklekkage reparatie in Eindhoven met <strong>24u spoeddienst</strong> en directe oplossingen. <strong>500+ Eindhoven eigenaren</strong> kozen al voor onze bewezen aanpak.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">
