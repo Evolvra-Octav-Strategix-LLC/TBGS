@@ -15,7 +15,7 @@ import { useMutation } from "@tanstack/react-query";
 import { ObjectUploader } from "@/components/ObjectUploader";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import type { UploadResult } from "@uppy/core";
-import { Upload, X, FileText, Camera } from "lucide-react";
+import { Upload, X, FileText, Camera, FileImage } from "lucide-react";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
@@ -142,8 +142,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     });
   };
 
-  const removeUploadedFile = (index: number) => {
-    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  const removeFile = (fileToRemove: string) => {
+    setUploadedFiles(prev => prev.filter(file => file !== fileToRemove));
   };
 
   const handleLocationChange = (address: string, details?: {
@@ -435,55 +435,58 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               <Separator />
 
-              {/* File Upload Section */}
-              <div className="space-y-4">
-                <h4 className="text-lg font-bold text-gray-900">Bijlagen (Optioneel)</h4>
-                <p className="text-sm text-gray-600 mb-4">
-                  Upload foto's, documenten of tekeningen om uw project beter te beschrijven
-                </p>
-                
-                <div className="flex flex-col space-y-4">
-                  <ObjectUploader
-                    maxNumberOfFiles={3}
-                    maxFileSize={10485760} // 10MB
-                    onGetUploadParameters={handleGetUploadParameters}
-                    onComplete={handleUploadComplete}
-                    buttonClassName="w-full sm:w-auto"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Upload className="w-4 h-4" />
-                      <span>Bestanden Uploaden</span>
-                    </div>
-                  </ObjectUploader>
-                  
+              {/* File Upload Section - Exact copy from GratisOfferte */}
+              <div className="space-y-6">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Upload Foto's en Documenten</h3>
+                  <p className="text-gray-600">Upload foto's van uw project voor een nauwkeurigere offerte</p>
+                </div>
+
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8">
+                  <div className="text-center mb-6">
+                    <ObjectUploader
+                      maxNumberOfFiles={10}
+                      maxFileSize={50 * 1024 * 1024} // 50MB
+                      onGetUploadParameters={handleGetUploadParameters}
+                      onComplete={handleUploadComplete}
+                      buttonClassName="bg-tbgs-navy hover:bg-blue-800 text-white px-8 py-4"
+                    >
+                      <div className="flex items-center">
+                        <Upload className="w-5 h-5 mr-2" />
+                        Selecteer Bestanden
+                      </div>
+                    </ObjectUploader>
+                    <p className="text-sm text-gray-500 mt-4">
+                      Ondersteunde formaten: PNG, JPG, PDF, DOCX, MP4. Max 50MB per bestand.
+                    </p>
+                  </div>
+
                   {uploadedFiles.length > 0 && (
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-700">Geüploade bestanden:</p>
-                      <div className="space-y-2">
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-gray-900">Geüploade Bestanden:</h4>
+                      <div className="grid grid-cols-1 gap-2">
                         {uploadedFiles.map((file, index) => (
-                          <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border">
-                            <div className="flex items-center space-x-2">
-                              <FileText className="w-4 h-4 text-gray-500" />
-                              <span className="text-sm text-gray-700">Bijlage {index + 1}</span>
+                          <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                            <div className="flex items-center space-x-3">
+                              <FileImage className="w-5 h-5 text-tbgs-navy" />
+                              <span className="text-sm font-medium text-gray-700">
+                                Bestand {index + 1}
+                              </span>
                             </div>
-                            <button
+                            <Button
                               type="button"
-                              onClick={() => removeUploadedFile(index)}
-                              className="text-red-500 hover:text-red-700 p-1"
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => removeFile(file)}
+                              className="text-red-500 hover:text-red-700"
                             >
                               <X className="w-4 h-4" />
-                            </button>
+                            </Button>
                           </div>
                         ))}
                       </div>
                     </div>
                   )}
-                  
-                  <div className="text-xs text-gray-500 space-y-1">
-                    <p>• Toegestane bestandstypen: JPG, PNG, PDF, DOC, DOCX, TXT</p>
-                    <p>• Maximaal 3 bestanden, elk max. 10MB</p>
-                    <p>• Bestanden helpen ons uw project beter te begrijpen</p>
-                  </div>
                 </div>
               </div>
 
