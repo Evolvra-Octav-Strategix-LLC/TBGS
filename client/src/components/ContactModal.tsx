@@ -11,10 +11,11 @@ import { apiRequest } from "@/lib/queryClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Dashboard } from "@uppy/react";
 import { useMutation } from "@tanstack/react-query";
-import "@uppy/core/dist/style.min.css";
-import "@uppy/dashboard/dist/style.min.css";
+import { ObjectUploader } from "@/components/ObjectUploader";
+import { GooglePlacesInput } from "@/components/GooglePlacesInput";
+import type { UploadResult } from "@uppy/core";
+import { Upload, X, FileText, Camera } from "lucide-react";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
@@ -30,6 +31,7 @@ const formSchema = z.object({
   phone: z.string().min(10, "Telefoonnummer is verplicht"),
   location: z.string().min(1, "Locatie is verplicht"),
   description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
+  attachments: z.array(z.string()).optional(),
   urgent: z.boolean().default(false),
   privacy: z.boolean().refine((val) => val === true, "U moet akkoord gaan met de privacyverklaring"),
 });
@@ -57,6 +59,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       phone: "",
       location: "",
       description: "",
+      attachments: [],
       urgent: false,
       privacy: false,
     },
@@ -115,6 +118,42 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const selectedSpecialisme = form.watch("specialisme");
   const currentProjectTypes = selectedSpecialisme ? projectTypes[selectedSpecialisme as keyof typeof projectTypes] || [] : [];
+
+  const handleGetUploadParameters = async () => {
+    try {
+      const response = await apiRequest("POST", "/api/objects/upload");
+      return {
+        method: "PUT" as const,
+        url: response.uploadURL,
+      };
+    } catch (error) {
+      console.error("Error getting upload parameters:", error);
+      throw error;
+    }
+  };
+
+  const handleUploadComplete = (result: UploadResult<Record<string, unknown>, Record<string, unknown>>) => {
+    const uploadedUrls = result.successful.map(file => file.uploadURL);
+    setUploadedFiles(prev => [...prev, ...uploadedUrls]);
+    
+    toast({
+      title: "Bestanden geüpload",
+      description: `${result.successful.length} bestand(en) succesvol geüpload.`,
+    });
+  };
+
+  const removeUploadedFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleLocationChange = (address: string, details?: {
+    street: string;
+    city: string;
+    postalCode: string;
+    country: string;
+  }) => {
+    form.setValue("location", address);
+  };
 
   if (!isOpen) return null;
 
@@ -339,7 +378,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <FormItem>
                       <FormLabel>Locatie *</FormLabel>
                       <FormControl>
-                        <Input placeholder="Stad, postcode" {...field} />
+                        <GooglePlacesInput
+                          value={field.value}
+                          onChange={handleLocationChange}
+                          placeholder="Begin met typen van uw adres..."
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -388,6 +431,60 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </FormItem>
                   )}
                 />
+              </div>
+
+              <Separator />
+
+              {/* File Upload Section */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-bold text-gray-900">Bijlagen (Optioneel)</h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  Upload foto's, documenten of tekeningen om uw project beter te beschrijven
+                </p>
+                
+                <div className="flex flex-col space-y-4">
+                  <ObjectUploader
+                    maxNumberOfFiles={3}
+                    maxFileSize={10485760} // 10MB
+                    onGetUploadParameters={handleGetUploadParameters}
+                    onComplete={handleUploadComplete}
+                    buttonClassName="w-full sm:w-auto"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Upload className="w-4 h-4" />
+                      <span>Bestanden Uploaden</span>
+                    </div>
+                  </ObjectUploader>
+                  
+                  {uploadedFiles.length > 0 && (
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-700">Geüploade bestanden:</p>
+                      <div className="space-y-2">
+                        {uploadedFiles.map((file, index) => (
+                          <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border">
+                            <div className="flex items-center space-x-2">
+                              <FileText className="w-4 h-4 text-gray-500" />
+                              <span className="text-sm text-gray-700">Bijlage {index + 1}</span>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeUploadedFile(index)}
+                              className="text-red-500 hover:text-red-700 p-1"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="text-xs text-gray-500 space-y-1">
+                    <p>• Toegestane bestandstypen: JPG, PNG, PDF, DOC, DOCX, TXT</p>
+                    <p>• Maximaal 3 bestanden, elk max. 10MB</p>
+                    <p>• Bestanden helpen ons uw project beter te begrijpen</p>
+                  </div>
+                </div>
               </div>
 
               <Separator />
