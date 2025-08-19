@@ -15,7 +15,7 @@ import { Dashboard } from "@uppy/react";
 import { useMutation } from "@tanstack/react-query";
 import "@uppy/core/dist/style.min.css";
 import "@uppy/dashboard/dist/style.min.css";
-import tdsLogo from "@assets/TBGS 545x642_1754935666047.png";
+import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
 import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
