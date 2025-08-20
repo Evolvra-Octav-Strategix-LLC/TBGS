@@ -54,8 +54,8 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
   }, []);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="w-full max-w-screen-2xl mx-auto px-8 py-4 rounded-b-3xl bg-white">
+    <header className="bg-white shadow-sm sticky top-0 z-50 rounded-b-3xl">
+      <div className="w-full max-w-screen-2xl mx-auto px-8 py-4">
         <div className="flex items-center justify-between gap-8">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
