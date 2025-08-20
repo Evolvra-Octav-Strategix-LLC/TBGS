@@ -95,7 +95,7 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 5s linear infinite;
+  animation: partners-scroll 8s linear infinite;
   will-change: transform;
 }
 

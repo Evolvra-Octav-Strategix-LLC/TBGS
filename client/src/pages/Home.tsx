@@ -557,155 +557,163 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Beautiful Horizontal Sliding Partners - Unselectable & Fast */}
+          {/* Beautiful Horizontal Sliding Partners with Drag Support */}
           <div className="overflow-hidden py-8" ref={sliderRef}>
             <div 
-              className={`flex animate-partners-scroll items-center space-x-8 lg:space-x-10 select-none pointer-events-none ${
-                isDragging ? 'cursor-grabbing' : 'cursor-default'
+              className={`flex animate-partners-scroll items-center space-x-8 lg:space-x-10 select-none ${
+                isDragging ? 'cursor-grabbing' : 'cursor-grab'
               } ${isPaused ? 'paused' : ''}`}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onClick={handleClick}
             >
               {/* First set of logos */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
               </div>
               {/* Duplicate set for seamless infinite scroll */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
               </div>
               {/* Third set for extra smooth infinite effect */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
               </div>
               {/* Fourth set for ultra-smooth infinite effect */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
               </div>
               {/* Fifth set for ultra-smooth infinite effect */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 select-none pointer-events-none" draggable="false" />
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Custom Description */}
-          <div className="text-center mt-8 max-w-3xl mx-auto">
+          {/* Simple Description */}
+          <div className="text-center mt-8 max-w-2xl mx-auto">
             <p className="text-slate-600 text-base lg:text-lg leading-relaxed">
-              <strong>TBGS werkt exclusief met premium A-merken</strong> zoals Velux, BMI Monier, Ubbink en Recticel. Deze jarenlange partnerships garanderen de hoogste kwaliteit materialen én <strong>fabrieksgarantie tot 30 jaar</strong> op uw dak-, schoorsteen- en bouwprojecten.
+              Wij werken uitsluitend met materialen van de hoogste kwaliteit, zodat we altijd duurzame en betrouwbare resultaten kunnen leveren voor uw dakrenovatie.
             </p>
           </div>
         </div>
