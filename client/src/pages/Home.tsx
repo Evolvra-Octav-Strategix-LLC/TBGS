@@ -397,9 +397,19 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties.
                     </p>
 
-                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
                       <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80 jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
                     </p>
+                    
+                    {/* Meer Lezen Button */}
+                    <div className="mt-6">
+                      <Link href="/over-ons">
+                        <button className="inline-flex items-center bg-tbgs-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                          <i className="fas fa-book-open mr-2"></i>
+                          Meer lezen over ons verhaal
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                   <div className="space-y-6">
                     <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-8 text-white">
