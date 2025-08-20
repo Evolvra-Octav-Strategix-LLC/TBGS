@@ -143,25 +143,51 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex items-center p-6 pt-16">
-                <div className="flex items-center space-x-3">
+                <Link 
+                  href="/" 
+                  className="flex items-center space-x-3"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
                   <div>
                     <h3 className="font-bold text-white text-lg">TBGS BV</h3>
                     <div className="w-16 h-0.5 bg-white mt-1"></div>
                   </div>
+                </Link>
+              </div>
+
+              {/* Mobile Search */}
+              <div className="px-6 pb-6">
+                <div className="relative">
+                  <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
+                    isSearchFocused ? 'text-blue-600' : 'text-gray-400'
+                  }`} />
+                  <input
+                    ref={mobileSearchInputRef}
+                    type="text"
+                    placeholder="Zoek in kennisbank, locaties..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    onFocus={handleSearchFocus}
+                    onBlur={handleSearchBlur}
+                    className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 ${
+                      isSearchFocused 
+                        ? 'border-blue-600 ring-2 ring-blue-600/20' 
+                        : 'border-gray-300'
+                    } focus:outline-none bg-white`}
+                  />
+                  <SimpleSearchDropdown
+                    isVisible={showSearchDropdown}
+                    onClose={closeSearchDropdown}
+                    searchQuery={searchQuery}
+                    onSearchChange={handleSearchChange}
+                  />
                 </div>
               </div>
 
               {/* Menu Content */}
-              <div className="flex-1 px-6 pt-8">
+              <div className="flex-1 px-6">
                 <nav className="flex flex-col space-y-2">
-                  <Link 
-                    href="/" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
                   <Link 
                     href="/locaties" 
                     className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
