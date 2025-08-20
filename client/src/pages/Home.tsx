@@ -443,14 +443,64 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Clean Partner Grid */}
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 max-w-4xl mx-auto">
-            <div className="text-gray-600 font-semibold text-lg">Velux</div>
-            <div className="text-gray-600 font-semibold text-lg">Braas</div>
-            <div className="text-gray-600 font-semibold text-lg">Eternit</div>
-            <div className="text-gray-600 font-semibold text-lg">Fakro</div>
-            <div className="text-gray-600 font-semibold text-lg">Creaton</div>
-            <div className="text-gray-600 font-semibold text-lg">Rockwool</div>
+          {/* Horizontal Sliding Partners */}
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-infinite space-x-12 lg:space-x-16">
+              {/* First set of logos */}
+              <div className="flex space-x-12 lg:space-x-16 flex-shrink-0">
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+              </div>
+              {/* Duplicate set for seamless infinite scroll */}
+              <div className="flex space-x-12 lg:space-x-16 flex-shrink-0">
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+                <div className="flex items-center justify-center h-16 lg:h-20 min-w-[120px] lg:min-w-[140px]">
+                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-8 lg:h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Simple Description */}
