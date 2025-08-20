@@ -121,7 +121,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
       {/* Service Form Modal - Lower with matching padding */}
       {isOpen && (
-        <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
+        <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] h-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
             {/* Step Indicators and Close Button */}
