@@ -175,9 +175,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">
                     <Link href="/totaal-schoorsteen-specialist" className="hover:underline">Totaal Schoorsteen Specialist</Link>
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <div className="text-slate-600 leading-relaxed text-left">
                     <Link href="/nl/eindhoven/schoorsteenrenovatie" className="text-tbgs-blue hover:underline font-medium">Schoorsteenrenovatie</Link>, <Link href="/nl/eindhoven/schoorsteenreparatie" className="text-tbgs-blue hover:underline font-medium">reparatie</Link>, <Link href="/nl/eindhoven/schoorsteenreiniging" className="text-tbgs-blue hover:underline font-medium">reiniging</Link> en <Link href="/nl/eindhoven/schoorsteenonderhoud" className="text-tbgs-blue hover:underline font-medium">onderhoud</Link> door <strong>ervaren schoorsteen specialisten</strong> met moderne technieken.
-                  </p>
+                  </div>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/totaal-schoorsteen-specialist" className="text-tbgs-blue font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
@@ -202,9 +202,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors">
                     <Link href="/totaal-dak-specialist" className="hover:underline">Totaal Dak Specialist</Link>
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <div className="text-slate-600 leading-relaxed text-left">
                     <Link href="/nl/eindhoven/daklekkage" className="text-tbgs-red hover:underline font-medium">Daklekkage</Link>, <Link href="/nl/eindhoven/dakisolatie" className="text-tbgs-red hover:underline font-medium">dakisolatie</Link>, <Link href="/nl/eindhoven/dakgoten" className="text-tbgs-red hover:underline font-medium">dakgoten</Link> en <Link href="/nl/eindhoven/dakreparatie" className="text-tbgs-red hover:underline font-medium">dakreparatie</Link> door <strong>gecertificeerde dakspecialisten</strong>.
-                  </p>
+                  </div>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/totaal-dak-specialist" className="text-tbgs-red font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
@@ -229,9 +229,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors">
                     <Link href="/totaal-onderhoud-specialist" className="hover:underline">Totaal Onderhoud Specialist</Link>
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <div className="text-slate-600 leading-relaxed text-left">
                     <Link href="/nl/eindhoven/onderhoud" className="text-tbgs-green hover:underline font-medium">Onderhoud</Link>, <Link href="/nl/eindhoven/herstelwerkzaamheden" className="text-tbgs-green hover:underline font-medium">herstelwerk</Link>, <Link href="/nl/eindhoven/renovatie" className="text-tbgs-green hover:underline font-medium">renovatie</Link> en <Link href="/nl/eindhoven/schilderwerk" className="text-tbgs-green hover:underline font-medium">schilderwerk</Link> aan <strong>woningen en bedrijfspanden</strong>.
-                  </p>
+                  </div>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/totaal-onderhoud-specialist" className="text-tbgs-green font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
@@ -256,9 +256,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors">
                     <Link href="/totaal-bouw-specialist" className="hover:underline">Totaal Bouw Specialist</Link>
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <div className="text-slate-600 leading-relaxed text-left">
                     <Link href="/nl/eindhoven/bouwwerkzaamheden" className="text-tbgs-orange hover:underline font-medium">Bouwwerkzaamheden</Link>, <Link href="/nl/eindhoven/renovatie" className="text-tbgs-orange hover:underline font-medium">renovaties</Link>, <Link href="/nl/eindhoven/uitbreidingen" className="text-tbgs-orange hover:underline font-medium">uitbreidingen</Link> en <Link href="/nl/eindhoven/verbouwing" className="text-tbgs-orange hover:underline font-medium">verbouwing</Link>. Van concept tot oplevering met één aanspreekpunt.
-                  </p>
+                  </div>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/totaal-bouw-specialist" className="text-tbgs-orange font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
