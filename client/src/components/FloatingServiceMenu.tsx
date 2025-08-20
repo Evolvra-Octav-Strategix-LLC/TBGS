@@ -126,14 +126,32 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
       {/* Menu Modal - Lower with matching padding */}
       {isOpen && (
         <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
-          {/* Header */}
+          {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
-            <button
-              onClick={toggleMenu}
-              className="absolute top-4 right-4 w-8 h-8 text-gray-500 hover:text-gray-700 flex items-center justify-center transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            {/* Step Indicators */}
+            <div className="flex items-center justify-center space-x-4 mb-4">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                step === 'services' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+              }`}>
+                1
+              </div>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+              }`}>
+                2
+              </div>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 text-gray-600">
+                3
+              </div>
+              
+              {/* Close Button */}
+              <button
+                onClick={toggleMenu}
+                className="w-8 h-8 text-gray-500 hover:text-gray-700 flex items-center justify-center transition-colors ml-2"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
             
             {step === 'services' ? (
               <div className="text-center">
