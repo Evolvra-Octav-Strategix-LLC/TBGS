@@ -534,7 +534,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
+                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
                   <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
@@ -561,7 +561,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
+                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
                   <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
@@ -588,7 +588,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
+                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
                   <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
@@ -615,7 +615,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
+                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
                   <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
@@ -642,7 +642,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
+                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
                   <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
