@@ -328,7 +328,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="border-2 border-dashed border-gray-300 rounded-xl p-6">
           <div className="text-center mb-4">
             <h4 className="text-base font-semibold text-gray-900 mb-2">Upload Foto's (Optioneel)</h4>
-            <p className="text-sm text-gray-600 mb-4">Upload foto's van uw project voor een nauwkeurigere offerte</p>
+            
             
             <ObjectUploader
               maxNumberOfFiles={5}
