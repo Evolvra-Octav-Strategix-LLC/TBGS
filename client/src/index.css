@@ -86,7 +86,7 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 45s linear infinite;
+  animation: partners-scroll 20s linear infinite;
 }
 
 .animate-partners-scroll:hover {
