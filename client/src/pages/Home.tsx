@@ -434,6 +434,104 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="py-12 lg:py-16 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8 lg:mb-12">
+            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-slate-600 mb-4">
+              <i className="fas fa-handshake"></i>
+              <span>Onze Partners</span>
+            </div>
+            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+              Samen <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Bouwen</span>
+            </h2>
+            <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto font-light">
+              Wij werken samen met <strong>premium leveranciers</strong> en <strong>gecertificeerde partners</strong> voor de beste kwaliteit en service.
+            </p>
+          </div>
+
+          {/* Partners Slider */}
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div className="flex animate-scroll-infinite space-x-8 lg:space-x-12">
+                {/* First set of logos */}
+                <div className="flex space-x-8 lg:space-x-12 flex-shrink-0">
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Velux</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Braas</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Eternit</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Fakro</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Creaton</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Rockwool</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Isover</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Knauf</span>
+                  </div>
+                </div>
+                {/* Duplicate set for seamless infinite scroll */}
+                <div className="flex space-x-8 lg:space-x-12 flex-shrink-0">
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Velux</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Braas</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Eternit</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Fakro</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Creaton</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Rockwool</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Isover</span>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 lg:p-8 flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-24">
+                    <span className="text-gray-600 font-semibold text-sm lg:text-base">Knauf</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-8 lg:mt-12 text-center">
+            <div className="flex flex-wrap justify-center items-center gap-4 lg:gap-8">
+              <div className="flex items-center space-x-2 text-slate-600">
+                <i className="fas fa-certificate text-tbgs-navy"></i>
+                <span className="text-sm lg:text-base font-medium">Gecertificeerde Partners</span>
+              </div>
+              <div className="flex items-center space-x-2 text-slate-600">
+                <i className="fas fa-award text-tbgs-navy"></i>
+                <span className="text-sm lg:text-base font-medium">Premium Kwaliteit</span>
+              </div>
+              <div className="flex items-center space-x-2 text-slate-600">
+                <i className="fas fa-shield-alt text-tbgs-navy"></i>
+                <span className="text-sm lg:text-base font-medium">Garantie & Service</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Customer Testimonials - Premium Design */}
       <section className="py-8 lg:py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/30"></div>
