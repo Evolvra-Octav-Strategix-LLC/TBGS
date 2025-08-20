@@ -138,8 +138,8 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           
-          {/* Mobile Menu Panel - Full Width Clean Design */}
-          <div className="fixed top-0 right-0 w-full h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
+          {/* Mobile Menu Panel - 40% Width Clean Design */}
+          <div className="fixed top-0 right-0 w-2/5 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden transform transition-transform duration-300 ease-in-out shadow-2xl">
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 pt-16">
