@@ -23,7 +23,7 @@ import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
 import BackToTopButton from "@/components/BackToTopButton";
-import { FloatingServiceMenu } from "@/components/FloatingServiceMenu";
+
 import { useState } from "react";
 import { useLocation } from "wouter";
 
@@ -283,7 +283,6 @@ function Router() {
         onClose={() => setIsContactModalOpen(false)} 
       />
       <BackToTopButton />
-      <FloatingServiceMenu />
     </div>
   );
 }
