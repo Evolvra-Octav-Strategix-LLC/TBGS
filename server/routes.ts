@@ -27,7 +27,7 @@ const offerteFormSchema = z.object({
   plaats: z.string().min(2, "Voer uw woonplaats in"),
   specialisme: z.string().min(1, "Kies een specialisme"),
   projectType: z.string().min(1, "Kies een projecttype"),
-  projectOmvang: z.string().min(1, "Kies de projectomvang"),
+
   tijdlijn: z.string().min(1, "Kies de gewenste tijdlijn"),
   budget: z.string().optional(),
   beschrijving: z.string().min(20, "Beschrijf uw project in minimaal 20 karakters"),
@@ -102,7 +102,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         adres: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
         specialisme: validatedData.specialisme,
         projectType: validatedData.projectType,
-        projectOmvang: validatedData.projectOmvang,
+
         tijdlijn: validatedData.tijdlijn,
         budget: validatedData.budget || "Niet opgegeven",
         beschrijving: validatedData.beschrijving,

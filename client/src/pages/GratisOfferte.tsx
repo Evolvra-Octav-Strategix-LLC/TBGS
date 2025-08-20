@@ -87,12 +87,12 @@ export default function GratisOfferte() {
       specialisme: "",
       serviceType: "",
       projectType: "",
-      projectOmvang: "",
+
       tijdlijn: "",
       budget: "",
       beschrijving: "",
       contactVoorkeur: "",
-      gedetaileerdeBeschrijving: "",
+
       attachments: [],
       privacyAkkoord: false,
       nieuwsbrief: false,
@@ -266,15 +266,9 @@ export default function GratisOfferte() {
           )}
         />
       </div>
-    </div>
-  );
 
-  // Step 2: Project Details
-  const step2Content = (
-    <div className="space-y-6">
-      
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Project Type Selection */}
+      <div className="space-y-4">
         <FormField
           control={form.control}
           name="projectType"
@@ -297,31 +291,16 @@ export default function GratisOfferte() {
             </FormItem>
           )}
         />
+      </div>
+    </div>
+  );
 
-        <FormField
-          control={form.control}
-          name="projectOmvang"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Projectomvang *</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Kies omvang" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="klein">Klein (tot €2.500)</SelectItem>
-                    <SelectItem value="middel">Middel (€2.500 - €10.000)</SelectItem>
-                    <SelectItem value="groot">Groot (€10.000 - €25.000)</SelectItem>
-                    <SelectItem value="zeer-groot">Zeer groot (€25.000+)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+  // Step 2: Project Details
+  const step2Content = (
+    <div className="space-y-6">
+      
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
           name="tijdlijn"
@@ -382,24 +361,6 @@ export default function GratisOfferte() {
                 {...field}
                 placeholder="Beschrijf uw project zo gedetailleerd mogelijk..."
                 className="min-h-[100px]"
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={form.control}
-        name="gedetaileerdeBeschrijving"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Extra details</FormLabel>
-            <FormControl>
-              <Textarea
-                {...field}
-                placeholder="Aanvullende informatie, speciale wensen, etc."
-                className="min-h-[80px]"
               />
             </FormControl>
             <FormMessage />
