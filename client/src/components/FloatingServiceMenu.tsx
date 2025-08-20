@@ -81,11 +81,18 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [showFileOptions, setShowFileOptions] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Close form when clicking outside
+  // Detect device type and close form when clicking outside
   useEffect(() => {
+    // Detect device type
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                     ('ontouchstart' in window) || 
+                     (window.innerWidth <= 768);
+    setDeviceType(isMobile ? 'mobile' : 'desktop');
+
     function handleClickOutside(event: MouseEvent) {
       if (formRef.current && !formRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -319,51 +326,102 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                           </div>
                         </div>
                         
-                        {/* Options */}
+                        {/* Device-Specific Options */}
                         <div className="py-2">
-                          <button
-                            onClick={openGallery}
-                            className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
-                          >
-                            <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                              </svg>
-                            </div>
-                            <span className="text-lg text-gray-900">Photo Library</span>
-                          </button>
-                          
-                          <button
-                            onClick={openCamera}
-                            className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
-                          >
-                            <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                              </svg>
-                            </div>
-                            <span className="text-lg text-gray-900">Take Photo</span>
-                          </button>
-                          
-                          <button
-                            onClick={() => {
-                              if (fileInputRef.current) {
-                                fileInputRef.current.removeAttribute('capture');
-                                fileInputRef.current.setAttribute('accept', '*/*');
-                                fileInputRef.current.click();
-                              }
-                              setShowFileOptions(false);
-                            }}
-                            className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
-                          >
-                            <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                              </svg>
-                            </div>
-                            <span className="text-lg text-gray-900">Choose Files</span>
-                          </button>
+                          {deviceType === 'mobile' ? (
+                            <>
+                              {/* Mobile Options */}
+                              <button
+                                onClick={openGallery}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Foto's</span>
+                              </button>
+                              
+                              <button
+                                onClick={openCamera}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Camera</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => {
+                                  if (fileInputRef.current) {
+                                    fileInputRef.current.removeAttribute('capture');
+                                    fileInputRef.current.setAttribute('accept', '*/*');
+                                    fileInputRef.current.click();
+                                  }
+                                  setShowFileOptions(false);
+                                }}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Bestanden</span>
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              {/* Desktop Options */}
+                              <button
+                                onClick={openGallery}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Computer bestanden</span>
+                              </button>
+                              
+                              <button
+                                onClick={openCamera}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Webcam</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => {
+                                  if (fileInputRef.current) {
+                                    fileInputRef.current.removeAttribute('capture');
+                                    fileInputRef.current.setAttribute('accept', '*/*');
+                                    fileInputRef.current.click();
+                                  }
+                                  setShowFileOptions(false);
+                                }}
+                                className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13l3 3 7-7" />
+                                  </svg>
+                                </div>
+                                <span className="text-lg text-gray-900">Bestandsverkenner</span>
+                              </button>
+                            </>
+                          )}
                         </div>
                         
                         {/* Action Buttons */}
