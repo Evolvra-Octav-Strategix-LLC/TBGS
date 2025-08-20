@@ -539,9 +539,9 @@ export default function GratisOfferte() {
             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
               <FormControl>
                 <Checkbox
-                  checked={!!field.value}
+                  checked={field.value === true}
                   onCheckedChange={(checked) => {
-                    field.onChange(checked);
+                    field.onChange(checked === true);
                   }}
                 />
               </FormControl>
@@ -549,8 +549,7 @@ export default function GratisOfferte() {
                 <FormLabel 
                   className="text-sm text-gray-600 cursor-pointer" 
                   onClick={() => {
-                    const newValue = !field.value;
-                    field.onChange(newValue);
+                    field.onChange(!field.value);
                   }}
                 >
                   Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
@@ -568,9 +567,9 @@ export default function GratisOfferte() {
             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
               <FormControl>
                 <Checkbox
-                  checked={!!field.value}
+                  checked={field.value === true}
                   onCheckedChange={(checked) => {
-                    field.onChange(checked);
+                    field.onChange(checked === true);
                   }}
                 />
               </FormControl>
@@ -578,8 +577,7 @@ export default function GratisOfferte() {
                 <FormLabel 
                   className="text-sm text-gray-600 cursor-pointer" 
                   onClick={() => {
-                    const newValue = !field.value;
-                    field.onChange(newValue);
+                    field.onChange(!field.value);
                   }}
                 >
                   Ja, houd mij op de hoogte van tips en aanbiedingen

@@ -470,21 +470,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <FormItem className="flex flex-row items-start space-x-3 space-y-0">
             <FormControl>
               <Checkbox 
-                checked={!!field.value} 
+                checked={field.value === true} 
                 onCheckedChange={(checked) => {
-                  console.log('Checkbox clicked:', checked, 'Current value:', field.value);
-                  field.onChange(checked);
+                  field.onChange(checked === true);
                 }}
-                className="h-5 w-5 border-2 border-gray-400 rounded data-[state=checked]:bg-tbgs-navy data-[state=checked]:border-tbgs-navy data-[state=checked]:text-white"
               />
             </FormControl>
             <div className="space-y-1 leading-none">
               <FormLabel 
-                className="cursor-pointer text-sm" 
+                className="cursor-pointer" 
                 onClick={() => {
-                  const newValue = !field.value;
-                  console.log('Label clicked. Current:', field.value, 'New:', newValue);
-                  field.onChange(newValue);
+                  field.onChange(!field.value);
                 }}
               >
                 Ik ga akkoord met de privacyverklaring *
