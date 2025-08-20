@@ -138,132 +138,109 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           
-          {/* Mobile Menu Panel */}
-          <div className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
+          {/* Mobile Menu Panel - Full Width Clean Design */}
+          <div className="fixed top-0 right-0 w-full h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
             <div className="flex flex-col h-full">
               {/* Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between p-6 pt-16">
                 <div className="flex items-center space-x-3">
-                  <img src={tbgsLogo} alt="TBGS Logo" className="w-10 h-10 object-contain" />
+                  <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
                   <div>
-                    <h3 className="font-bold text-tbgs-navy">TBGS BV</h3>
-                    <p className="text-xs text-gray-600">Menu</p>
+                    <h3 className="font-bold text-white text-lg">TBGS BV</h3>
+                    <div className="w-16 h-0.5 bg-white mt-1"></div>
                   </div>
                 </div>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-gray-700 hover:text-tbgs-navy transition-colors"
+                  className="p-2 text-white hover:text-gray-200 transition-colors"
                 >
-                  <i className="fas fa-times text-xl"></i>
+                  <i className="fas fa-times text-2xl"></i>
                 </button>
               </div>
 
               {/* Menu Content */}
-              <div className="flex-1 overflow-y-auto">
-                {/* Mobile Search */}
-                <div className="p-6 border-b border-gray-200">
-                  <div className="relative">
-                    <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
-                      isSearchFocused ? 'text-tbgs-navy' : 'text-gray-400'
-                    }`} />
-                    <input
-                      ref={mobileSearchInputRef}
-                      type="text"
-                      placeholder="Zoek in kennisbank, locaties..."
-                      value={searchQuery}
-                      onChange={(e) => handleSearchChange(e.target.value)}
-                      onFocus={handleSearchFocus}
-                      onBlur={handleSearchBlur}
-                      className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 ${
-                        isSearchFocused 
-                          ? 'border-tbgs-navy ring-2 ring-tbgs-navy/20' 
-                          : 'border-gray-300'
-                      } focus:outline-none`}
-                    />
-                    <SimpleSearchDropdown
-                      isVisible={showSearchDropdown}
-                      onClose={closeSearchDropdown}
-                      searchQuery={searchQuery}
-                      onSearchChange={handleSearchChange}
-                    />
-                  </div>
-                </div>
-
-                <nav className="flex flex-col p-6 space-y-6">
+              <div className="flex-1 px-6 pt-8">
+                <nav className="flex flex-col space-y-2">
                   <Link 
-                    href="/locaties" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    href="/" 
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-map-marker-alt mr-4 w-5"></i>
-                    Locaties
+                    Home
+                  </Link>
+                  <Link 
+                    href="/diensten" 
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl flex items-center"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Diensten <i className="fas fa-chevron-down ml-2 text-sm"></i>
                   </Link>
                   <Link 
                     href="/kennisbank" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-book mr-4 w-5"></i>
                     Kennisbank
                   </Link>
                   <Link 
-                    href="/zorgeloos-wonen" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    href="/over-ons" 
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-home mr-4 w-5"></i>
-                    Zorgeloos wonen
+                    Over ons
                   </Link>
                   <Link 
                     href="/onze-projecten" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-building mr-4 w-5"></i>
-                    Onze projecten
+                    Projecten
                   </Link>
                   <Link 
-                    href="/over-ons" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    href="/subsidies" 
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-users mr-4 w-5"></i>
-                    Over Ons
+                    Subsidies
                   </Link>
                   <Link 
                     href="/contact" 
-                    className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors py-3 border-b border-gray-100 flex items-center"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <i className="fas fa-envelope mr-4 w-5"></i>
                     Contact
                   </Link>
                 </nav>
               </div>
 
               {/* Menu Footer */}
-              <div className="p-6 border-t border-gray-200 bg-gray-50">
-                {/* Phone Link */}
-                <a 
-                  href="tel:+31402026744" 
-                  className="flex items-center text-tbgs-navy font-medium py-3 mb-4 hover:bg-gray-100 rounded-lg px-3 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <i className="fas fa-phone mr-4 w-5"></i>
-                  <span>040 202 6744</span>
-                </a>
-                
+              <div className="p-6 pb-12">
                 {/* CTA Button */}
                 <button 
                   onClick={() => {
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-tbgs-navy text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full shadow-lg"
+                  className="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors w-full text-lg shadow-lg flex items-center justify-center"
                 >
-                  <i className="fas fa-calculator mr-2"></i>
-                  Gratis Offerte
+                  Gratis adviesgesprek <i className="fas fa-arrow-right ml-2"></i>
                 </button>
+                
+                {/* Social Icons */}
+                <div className="flex justify-center space-x-6 mt-8">
+                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
+                    <i className="fab fa-facebook text-2xl"></i>
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
+                    <i className="fab fa-instagram text-2xl"></i>
+                  </a>
+                </div>
+                
+                {/* Language Flags */}
+                <div className="flex justify-center space-x-4 mt-6">
+                  <span className="text-2xl">🇳🇱</span>
+                  <span className="text-2xl">🇬🇧</span>
+                </div>
               </div>
             </div>
           </div>
