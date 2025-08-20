@@ -79,7 +79,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'services' | 'photo' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [showFileOptions, setShowFileOptions] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const formRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Close form when clicking outside
   useEffect(() => {
@@ -111,6 +114,32 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const handleCustomRequest = () => {
     setSelectedService('Iets anders');
     setStep('photo');
+  };
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    setSelectedFiles(files);
+    setShowFileOptions(false);
+  };
+
+  const openFileOptions = () => {
+    setShowFileOptions(true);
+  };
+
+  const openCamera = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.setAttribute('capture', 'environment');
+      fileInputRef.current.click();
+    }
+    setShowFileOptions(false);
+  };
+
+  const openGallery = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.removeAttribute('capture');
+      fileInputRef.current.click();
+    }
+    setShowFileOptions(false);
   };
 
   return (
@@ -243,15 +272,82 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             ) : step === 'photo' ? (
               <>
                 {/* Photo Upload Section */}
-                <div className="flex flex-col items-center justify-center py-4">
+                <div className="flex flex-col items-center justify-center py-4 relative">
                   {/* Camera Interface Image */}
-                  <div className="w-32 h-56 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="w-32 h-56 rounded-2xl overflow-hidden shadow-lg mb-6">
                     <img 
                       src={cameraImage} 
                       alt="Camera interface" 
                       className="w-full h-full object-cover"
                     />
                   </div>
+
+                  {/* Hidden File Input */}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+
+                  {/* Selected Files Display */}
+                  {selectedFiles.length > 0 && (
+                    <div className="w-full mb-4">
+                      <div className="text-sm font-medium text-gray-700 mb-2">
+                        Geselecteerde foto's ({selectedFiles.length})
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        {selectedFiles.slice(0, 6).map((file, index) => (
+                          <div key={index} className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center text-xs text-gray-500 p-2">
+                            {file.name.substring(0, 10)}...
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* File Options Popup */}
+                  {showFileOptions && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50 rounded-2xl">
+                      <div className="bg-white rounded-2xl p-6 w-80 max-w-[90%] shadow-2xl">
+                        <div className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                          Foto's toevoegen
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <button
+                            onClick={openCamera}
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 px-4 font-medium transition-colors flex items-center justify-center space-x-3"
+                          >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Camera</span>
+                          </button>
+                          
+                          <button
+                            onClick={openGallery}
+                            className="w-full bg-green-600 hover:bg-green-700 text-white rounded-xl py-3 px-4 font-medium transition-colors flex items-center justify-center space-x-3"
+                          >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span>Galerij</span>
+                          </button>
+                          
+                          <button
+                            onClick={() => setShowFileOptions(false)}
+                            className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-xl py-3 px-4 font-medium transition-colors"
+                          >
+                            Annuleren
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
@@ -288,7 +384,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           {step === 'photo' && (
             <div className="p-4 border-t border-gray-200 space-y-3">
               <button
-                onClick={() => setStep('custom')}
+                onClick={openFileOptions}
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
