@@ -118,14 +118,14 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
 
   return (
     <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={menuRef}>
-      {/* Overlay */}
+      {/* Overlay - Much less fade */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10" />
+        <div className="fixed inset-0 bg-black/5 -z-10" />
       )}
 
-      {/* Menu Modal - Bottom right corner positioning */}
+      {/* Menu Modal - Lower and more to the right */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
+        <div className="absolute bottom-4 -right-4 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header */}
           <div className="relative p-4 border-b border-gray-200">
             <button
