@@ -272,10 +272,7 @@ export default function GratisOfferte() {
   // Step 2: Project Details
   const step2Content = (
     <div className="space-y-6">
-      <div className="text-center">
-        <h4 className="text-lg font-bold text-gray-900 mb-2">Project Details</h4>
-        <p className="text-sm text-gray-600">Vertel ons meer over uw project</p>
-      </div>
+      
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
