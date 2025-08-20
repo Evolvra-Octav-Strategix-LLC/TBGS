@@ -394,7 +394,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                     </div>
                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80 jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
+                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels.
+                    </p>
+                    
+                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
+                      <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                     </p>
                     
                     {/* Meer Lezen Button */}
