@@ -255,9 +255,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     <div className="absolute top-4 right-4 w-2 h-2 bg-red-400 rounded-full"></div>
                   </div>
 
-                  <p className="text-center text-sm text-gray-600 max-w-xs">
-                    Voeg voor de volledigheid van je aanvraag een foto toe
-                  </p>
+                  
                 </div>
               </>
             ) : (
