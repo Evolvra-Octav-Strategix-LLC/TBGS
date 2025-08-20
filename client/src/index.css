@@ -86,7 +86,7 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 12s linear infinite;
+  animation: partners-scroll 8s linear infinite;
 }
 
 .animate-partners-scroll.paused {
