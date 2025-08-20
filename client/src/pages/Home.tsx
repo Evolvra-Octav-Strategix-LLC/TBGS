@@ -502,7 +502,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           {/* Beautiful Horizontal Sliding Partners with Drag Support */}
           <div className="overflow-hidden py-8" ref={sliderRef}>
             <div 
-              className={`flex animate-partners-scroll items-center space-x-16 lg:space-x-20 select-none ${
+              className={`flex animate-partners-scroll items-center space-x-8 lg:space-x-10 select-none ${
                 isDragging ? 'cursor-grabbing' : 'cursor-grab'
               } ${isPaused ? 'paused' : ''}`}
               onMouseDown={handleMouseDown}
@@ -515,7 +515,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               onClick={handleClick}
             >
               {/* First set of logos */}
-              <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
+              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
@@ -542,7 +542,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
               </div>
               {/* Duplicate set for seamless infinite scroll */}
-              <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
+              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
@@ -569,7 +569,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
               </div>
               {/* Third set for extra smooth infinite effect */}
-              <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
+              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
@@ -596,7 +596,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
               </div>
               {/* Fourth set for ultra-smooth infinite effect */}
-              <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
+              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
@@ -623,7 +623,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
               </div>
               {/* Fifth set for ultra-smooth infinite effect */}
-              <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
+              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
