@@ -101,7 +101,6 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
   }, [isOpen]);
 
   const toggleMenu = () => {
-    console.log('FloatingServiceMenu button clicked, isOpen:', isOpen);
     setIsOpen(!isOpen);
     if (!isOpen) {
       setStep('services');
@@ -124,9 +123,9 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
         <div className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10" />
       )}
 
-      {/* Menu Modal */}
+      {/* Menu Modal - Full height from top to 60% */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-80 max-w-[90vw] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed top-0 left-0 right-0 h-[60vh] bg-white rounded-b-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 z-50 flex flex-col">
           {/* Header */}
           <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 text-white p-6 relative">
             <button
@@ -173,7 +172,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
           </div>
 
           {/* Content */}
-          <div className="p-4 max-h-96 overflow-y-auto">
+          <div className="p-4 flex-1 overflow-y-auto">
             {step === 'services' ? (
               <>
                 {/* Service Grid */}
@@ -241,32 +240,21 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
         </div>
       )}
 
-      {/* Floating Action Button - Styled like "Offerte aanvragen" */}
-      <button
-        onClick={toggleMenu}
-        type="button"
-        className={`bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none ${
-          isOpen ? 'opacity-75' : ''
-        }`}
-        style={{ zIndex: 9999 }}
-      >
-        {isOpen ? (
-          <X className="w-5 h-5" />
-        ) : (
-          <>
-            {/* Avatar Icon */}
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <MessageCircle className="w-4 h-4" />
-            </div>
-            {/* Text */}
-            <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
-          </>
-        )}
-      </button>
-
-      {/* Pulse Animation Ring */}
+      {/* Floating Action Button - Only show when closed */}
       {!isOpen && (
-        <div className="absolute inset-0 rounded-2xl bg-blue-600/30 animate-ping pointer-events-none" />
+        <button
+          onClick={toggleMenu}
+          type="button"
+          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none"
+          style={{ zIndex: 9999 }}
+        >
+          {/* Avatar Icon */}
+          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <MessageCircle className="w-4 h-4" />
+          </div>
+          {/* Text */}
+          <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
+        </button>
       )}
     </div>
   );
