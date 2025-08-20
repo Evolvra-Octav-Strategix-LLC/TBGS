@@ -244,9 +244,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 {/* Photo Upload Section */}
                 <div className="flex flex-col items-center justify-center space-y-6 py-8">
                   {/* Camera Interface Image */}
-                  <div className="w-48 h-80 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="w-40 h-72 rounded-2xl overflow-hidden shadow-lg">
                     <img 
-                      src="/attached_assets/IMG_2694_1755733684734.png" 
+                      src="@assets/IMG_2694_1755733684734.png" 
                       alt="Camera interface" 
                       className="w-full h-full object-cover"
                     />
