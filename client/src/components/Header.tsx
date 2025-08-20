@@ -163,11 +163,11 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     Home
                   </Link>
                   <Link 
-                    href="/diensten" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl flex items-center"
+                    href="/locaties" 
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Diensten <i className="fas fa-chevron-down ml-2 text-sm"></i>
+                    Locaties
                   </Link>
                   <Link 
                     href="/kennisbank" 
@@ -177,25 +177,25 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     Kennisbank
                   </Link>
                   <Link 
-                    href="/over-ons" 
+                    href="/zorgeloos-wonen" 
                     className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Over ons
+                    Zorgeloos wonen
                   </Link>
                   <Link 
                     href="/onze-projecten" 
                     className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Projecten
+                    Onze projecten
                   </Link>
                   <Link 
-                    href="/subsidies" 
+                    href="/over-ons" 
                     className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Subsidies
+                    Over ons
                   </Link>
                   <Link 
                     href="/contact" 
@@ -209,31 +209,41 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
               {/* Menu Footer */}
               <div className="p-6 pb-12">
-                {/* CTA Button */}
+                {/* Phone Link */}
+                <a 
+                  href="tel:+31402026744" 
+                  className="flex items-center text-white font-medium py-3 mb-4 hover:text-gray-200 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <i className="fas fa-phone mr-3 text-lg"></i>
+                  <span className="text-lg">040 202 6744</span>
+                </a>
+                
+                {/* CTA Button - Smaller and Cleaner */}
                 <button 
                   onClick={() => {
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors w-full text-lg shadow-lg flex items-center justify-center"
+                  className="bg-green-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition-colors w-full text-base shadow-md flex items-center justify-center"
                 >
-                  Gratis adviesgesprek <i className="fas fa-arrow-right ml-2"></i>
+                  Gratis offerte <i className="fas fa-arrow-right ml-2 text-sm"></i>
                 </button>
                 
                 {/* Social Icons */}
-                <div className="flex justify-center space-x-6 mt-8">
+                <div className="flex justify-center space-x-6 mt-6">
                   <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-facebook text-2xl"></i>
+                    <i className="fab fa-facebook text-xl"></i>
                   </a>
                   <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-instagram text-2xl"></i>
+                    <i className="fab fa-instagram text-xl"></i>
                   </a>
                 </div>
                 
                 {/* Language Flags */}
-                <div className="flex justify-center space-x-4 mt-6">
-                  <span className="text-2xl">🇳🇱</span>
-                  <span className="text-2xl">🇬🇧</span>
+                <div className="flex justify-center space-x-4 mt-4">
+                  <span className="text-xl">🇳🇱</span>
+                  <span className="text-xl">🇬🇧</span>
                 </div>
               </div>
             </div>
