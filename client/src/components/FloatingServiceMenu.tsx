@@ -243,17 +243,15 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             ) : step === 'photo' ? (
               <>
                 {/* Photo Upload Section */}
-                <div className="flex flex-col items-center justify-center space-y-6 py-8">
+                <div className="flex flex-col items-center justify-center py-4">
                   {/* Camera Interface Image */}
-                  <div className="w-40 h-72 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="w-32 h-56 rounded-2xl overflow-hidden shadow-lg">
                     <img 
                       src={cameraImage} 
                       alt="Camera interface" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-
-                  
                 </div>
               </>
             ) : (
