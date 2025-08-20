@@ -179,7 +179,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <div>Specialist</div>
                     </Link>
                   </h3>
-                  <div className="text-slate-600 text-left space-y-1">
+                  <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/nl/eindhoven/schoorsteenrenovatie" className="text-tbgs-blue hover:underline font-medium">Schoorsteenrenovatie</Link></div>
                     <div><Link href="/nl/eindhoven/schoorsteenreparatie" className="text-tbgs-blue hover:underline font-medium">Schoorsteenreparatie</Link></div>
                     <div><Link href="/nl/eindhoven/schoorsteenreiniging" className="text-tbgs-blue hover:underline font-medium">Schoorsteenreiniging</Link></div>
@@ -214,12 +214,12 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <div>Specialist</div>
                     </Link>
                   </h3>
-                  <div className="text-slate-600 text-left space-y-1">
+                  <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/nl/eindhoven/daklekkage" className="text-tbgs-red hover:underline font-medium">Daklekkage</Link></div>
                     <div><Link href="/nl/eindhoven/dakisolatie" className="text-tbgs-red hover:underline font-medium">Dakisolatie</Link></div>
                     <div><Link href="/nl/eindhoven/dakgoten" className="text-tbgs-red hover:underline font-medium">Dakgoten</Link></div>
                     <div><Link href="/nl/eindhoven/dakreparatie" className="text-tbgs-red hover:underline font-medium">Dakreparatie</Link></div>
-                    <div className="text-sm text-slate-500 mt-2">Door <strong>gecertificeerde specialisten</strong>.</div>
+                    <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -249,7 +249,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <div>Specialist</div>
                     </Link>
                   </h3>
-                  <div className="text-slate-600 text-left space-y-1">
+                  <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/nl/eindhoven/onderhoud" className="text-tbgs-green hover:underline font-medium">Onderhoud</Link></div>
                     <div><Link href="/nl/eindhoven/herstelwerkzaamheden" className="text-tbgs-green hover:underline font-medium">Herstelwerkzaamheden</Link></div>
                     <div><Link href="/nl/eindhoven/renovatie" className="text-tbgs-green hover:underline font-medium">Renovatie</Link></div>
@@ -284,7 +284,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <div>Specialist</div>
                     </Link>
                   </h3>
-                  <div className="text-slate-600 text-left space-y-1">
+                  <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/nl/eindhoven/bouwwerkzaamheden" className="text-tbgs-orange hover:underline font-medium">Bouwwerkzaamheden</Link></div>
                     <div><Link href="/nl/eindhoven/renovatie" className="text-tbgs-orange hover:underline font-medium">Renovaties</Link></div>
                     <div><Link href="/nl/eindhoven/uitbreidingen" className="text-tbgs-orange hover:underline font-medium">Uitbreidingen</Link></div>
