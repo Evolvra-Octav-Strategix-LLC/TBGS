@@ -219,28 +219,25 @@ export default function GratisOfferte() {
                       key={specialist.value}
                       className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
                         field.value === specialist.value
-                          ? 'border-tbgs-navy bg-blue-50'
+                          ? `border-white ${specialist.color} text-white`
                           : 'border-gray-200 hover:border-gray-300 bg-white'
                       }`}
                       onClick={() => field.onChange(specialist.value)}
                     >
                       <div className="flex items-center space-x-3">
-                        <img 
-                          src={specialist.logo} 
-                          alt={specialist.label}
-                          className="w-12 h-12 object-contain"
-                        />
-                        <div className="flex-1">
-                          <h5 className="font-semibold text-gray-900 text-sm">{specialist.label}</h5>
+                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
+                          <img 
+                            src={specialist.logo} 
+                            alt={specialist.label}
+                            className="w-full h-full object-contain"
+                          />
                         </div>
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                          field.value === specialist.value
-                            ? 'border-tbgs-navy bg-tbgs-navy'
-                            : 'border-gray-300'
-                        }`}>
-                          {field.value === specialist.value && (
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                          )}
+                        <div className="flex-1 min-w-0">
+                          <h5 className={`font-semibold text-sm ${
+                            field.value === specialist.value ? 'text-white' : 'text-gray-900'
+                          }`}>
+                            {specialist.label}
+                          </h5>
                         </div>
                       </div>
                     </div>
