@@ -75,21 +75,21 @@
   }
 }
 
-/* Partners Slider Animation */
-@keyframes scroll-infinite {
+/* Beautiful Partners Slider Animation */
+@keyframes partners-scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.333%);
   }
 }
 
-.animate-scroll-infinite {
-  animation: scroll-infinite 30s linear infinite;
+.animate-partners-scroll {
+  animation: partners-scroll 45s linear infinite;
 }
 
-.animate-scroll-infinite:hover {
+.animate-partners-scroll:hover {
   animation-play-state: paused;
 }
 
