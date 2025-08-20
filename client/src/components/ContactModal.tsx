@@ -469,10 +469,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         render={({ field }) => (
           <FormItem className="flex flex-row items-start space-x-3 space-y-0">
             <FormControl>
-              <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              <Checkbox 
+                checked={field.value || false} 
+                onCheckedChange={(checked) => field.onChange(checked === true)}
+              />
             </FormControl>
             <div className="space-y-1 leading-none">
-              <FormLabel>
+              <FormLabel className="cursor-pointer" onClick={() => field.onChange(!field.value)}>
                 Ik ga akkoord met de privacyverklaring *
               </FormLabel>
               <p className="text-sm text-gray-500">
@@ -506,26 +509,38 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl max-w-4xl w-full max-h-screen overflow-y-auto">
-        <div className="p-6 sm:p-8">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">Gratis Offerte Aanvragen</h3>
-            <Button variant="ghost" size="sm" onClick={onClose}>
-              <X className="w-5 h-5" />
-            </Button>
-          </div>
+    <>
+      {/* Overlay to prevent background interaction */}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-50" 
+        onClick={onClose}
+      />
+      
+      {/* Modal content */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+        <div 
+          className="bg-white rounded-xl max-w-4xl w-full max-h-screen overflow-y-auto pointer-events-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="p-6 sm:p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Gratis Offerte Aanvragen</h3>
+              <Button variant="ghost" size="sm" onClick={onClose}>
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
 
-          <Form {...form}>
-            <MultiStepForm
-              steps={steps}
-              onSubmit={onSubmit}
-              onBack={onClose}
-              isSubmitting={submitMutation.isPending}
-            />
-          </Form>
+            <Form {...form}>
+              <MultiStepForm
+                steps={steps}
+                onSubmit={onSubmit}
+                onBack={onClose}
+                isSubmitting={submitMutation.isPending}
+              />
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
