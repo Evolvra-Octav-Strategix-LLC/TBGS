@@ -173,7 +173,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">
-                    <Link href="/totaal-schoorsteen-specialist" className="hover:underline">Totaal Schoorsteen Specialist</Link>
+                    <Link href="/totaal-schoorsteen-specialist" className="hover:underline">
+                      <div>Totaal</div>
+                      <div>Schoorsteen</div>
+                      <div>Specialist</div>
+                    </Link>
                   </h3>
                   <div className="text-slate-600 text-left space-y-1">
                     <div><Link href="/nl/eindhoven/schoorsteenrenovatie" className="text-tbgs-blue hover:underline font-medium">Schoorsteenrenovatie</Link></div>
@@ -204,7 +208,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors">
-                    <Link href="/totaal-dak-specialist" className="hover:underline">Totaal Dak Specialist</Link>
+                    <Link href="/totaal-dak-specialist" className="hover:underline">
+                      <div>Totaal</div>
+                      <div>Dak</div>
+                      <div>Specialist</div>
+                    </Link>
                   </h3>
                   <div className="text-slate-600 text-left space-y-1">
                     <div><Link href="/nl/eindhoven/daklekkage" className="text-tbgs-red hover:underline font-medium">Daklekkage</Link></div>
@@ -235,7 +243,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors">
-                    <Link href="/totaal-onderhoud-specialist" className="hover:underline">Totaal Onderhoud Specialist</Link>
+                    <Link href="/totaal-onderhoud-specialist" className="hover:underline">
+                      <div>Totaal</div>
+                      <div>Onderhoud</div>
+                      <div>Specialist</div>
+                    </Link>
                   </h3>
                   <div className="text-slate-600 text-left space-y-1">
                     <div><Link href="/nl/eindhoven/onderhoud" className="text-tbgs-green hover:underline font-medium">Onderhoud</Link></div>
@@ -266,7 +278,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors">
-                    <Link href="/totaal-bouw-specialist" className="hover:underline">Totaal Bouw Specialist</Link>
+                    <Link href="/totaal-bouw-specialist" className="hover:underline">
+                      <div>Totaal</div>
+                      <div>Bouw</div>
+                      <div>Specialist</div>
+                    </Link>
                   </h3>
                   <div className="text-slate-600 text-left space-y-1">
                     <div><Link href="/nl/eindhoven/bouwwerkzaamheden" className="text-tbgs-orange hover:underline font-medium">Bouwwerkzaamheden</Link></div>
