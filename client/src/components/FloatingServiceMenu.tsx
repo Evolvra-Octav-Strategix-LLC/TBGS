@@ -123,48 +123,51 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
         <div className="fixed inset-0 bg-black/20 backdrop-blur-sm -z-10" />
       )}
 
-      {/* Menu Modal - Full height from top to 60% */}
+      {/* Menu Modal - Bottom right corner positioning */}
       {isOpen && (
-        <div className="fixed top-0 left-0 right-0 h-[60vh] bg-white rounded-b-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 z-50 flex flex-col">
+        <div className="absolute bottom-16 right-0 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header */}
-          <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 text-white p-6 relative">
+          <div className="relative p-4 border-b border-gray-200">
             <button
               onClick={toggleMenu}
-              className="absolute top-4 right-4 w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 text-gray-500 hover:text-gray-700 flex items-center justify-center transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
             
             {step === 'services' ? (
-              <>
-                <h3 className="text-lg font-bold mb-2">
-                  Waar kunnen wij je mee helpen?
+              <div className="text-center">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Waar kunnen wij je mee
                 </h3>
-                <div className="flex items-center space-x-2">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <h3 className="text-lg font-bold text-blue-600 mb-4">
+                  helpen?
+                </h3>
+                <div className="flex items-center justify-center space-x-3 bg-blue-600 text-white rounded-2xl py-3 px-4 mx-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <MessageCircle className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="text-left">
                     <div className="text-sm font-medium">Expert op locatie</div>
                     <div className="text-xs opacity-90">Gratis inspectie binnen 24u</div>
                   </div>
                 </div>
-              </>
+              </div>
             ) : (
               <>
                 <button
                   onClick={() => setStep('services')}
-                  className="flex items-center space-x-2 text-white/90 hover:text-white mb-3"
+                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                   <span className="text-sm">Terug</span>
                 </button>
-                <h3 className="text-lg font-bold">
+                <h3 className="text-lg font-bold text-gray-900">
                   Vertel ons meer
                 </h3>
-                <p className="text-sm opacity-90 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   Beschrijf de klus zo duidelijk mogelijk
                 </p>
               </>
@@ -175,8 +178,8 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
           <div className="p-4 flex-1 overflow-y-auto">
             {step === 'services' ? (
               <>
-                {/* Service Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                {/* Service Grid - 2 columns with proper spacing */}
+                <div className="grid grid-cols-2 gap-4 mb-4">
                   {serviceOptions.map((service) => (
                     <Link
                       key={service.id}
@@ -184,11 +187,11 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
                       onClick={() => handleServiceSelect(service)}
                       className="group"
                     >
-                      <div className="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl p-4 text-center transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 cursor-pointer">
-                        <div className="w-12 h-12 mx-auto mb-3 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
-                          <service.icon className="w-6 h-6 text-slate-700" />
+                      <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-3xl p-4 text-center transition-all duration-200 hover:shadow-md cursor-pointer h-28 flex flex-col items-center justify-center">
+                        <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
+                          <service.icon className="w-8 h-8 text-gray-700" />
                         </div>
-                        <div className="text-sm font-medium text-slate-900 leading-tight">
+                        <div className="text-sm font-medium text-gray-900 leading-tight">
                           {service.title}
                         </div>
                       </div>
@@ -196,15 +199,15 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
                   ))}
                 </div>
 
-                {/* Custom Option */}
+                {/* Custom Option - Full width button */}
                 <button
                   onClick={handleCustomRequest}
-                  className="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl p-4 text-center transition-all duration-200 hover:shadow-md flex items-center justify-center space-x-2"
+                  className="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-3xl p-4 text-center transition-all duration-200 hover:shadow-md flex items-center justify-center space-x-2 h-14"
                 >
-                  <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 11l3 3L22 4M6 21h-6v-6l15-15" />
                   </svg>
-                  <span className="text-sm font-medium text-slate-900">Iets anders</span>
+                  <span className="text-sm font-medium text-gray-900">Iets anders</span>
                 </button>
               </>
             ) : (
@@ -212,15 +215,15 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
                 {/* Custom Request Form */}
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Beschrijf je probleem
                     </label>
                     <textarea
-                      className="w-full p-3 border border-slate-200 rounded-xl text-sm resize-none h-24 focus:outline-none focus:ring-2 focus:ring-tbgs-navy/20 focus:border-tbgs-navy"
+                      className="w-full p-3 border border-gray-200 rounded-xl text-sm resize-none h-24 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. Ik wil graag..."
                       maxLength={250}
                     />
-                    <div className="text-xs text-slate-500 mt-1 text-right">
+                    <div className="text-xs text-gray-500 mt-1 text-right">
                       Maximaal 250 tekens
                     </div>
                   </div>
