@@ -18,6 +18,7 @@ import SEOHead from "@/lib/seo";
 import Footer from "@/components/Footer";
 import { ObjectUploader } from "@/components/ObjectUploader";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
+import { MultiStepForm } from "@/components/MultiStepForm";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Upload, Camera, FileImage, FileVideo, X, Eye, Search } from "lucide-react";
 import type { UploadResult } from "@uppy/core";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
@@ -153,11 +154,484 @@ export default function GratisOfferte() {
     submitMutation.mutate(data);
   };
 
+  // Multi-step form configuration
   const serviceTypes = [
     { value: "offerte", label: "Gratis Offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
     { value: "inspectie", label: "Gratis Inspectie", description: "Locatie bezoek voor analyse en advies" },
     { value: "spoedservice", label: "Spoedservice", description: "Dringende reparatie binnen 24 uur" },
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
+  ];
+
+  // Step 1: Service & Specialist Selection
+  const step1Content = (
+    <div className="space-y-8">
+      {/* Service Type Selection */}
+      <div className="space-y-4">
+        <div className="text-center">
+          <h4 className="text-lg font-bold text-gray-900 mb-2">Wat heeft u nodig?</h4>
+          <p className="text-sm text-gray-600">Kies de service die het beste bij uw situatie past</p>
+        </div>
+        
+        <FormField
+          control={form.control}
+          name="serviceType"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {serviceTypes.map((service) => (
+                    <div
+                      key={service.value}
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
+                        field.value === service.value
+                          ? 'border-tbgs-navy bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                      }`}
+                      onClick={() => field.onChange(service.value)}
+                    >
+                      <div className="flex items-start space-x-3">
+                        <div className={`w-4 h-4 rounded-full border-2 mt-1 flex items-center justify-center ${
+                          field.value === service.value
+                            ? 'border-tbgs-navy bg-tbgs-navy'
+                            : 'border-gray-300'
+                        }`}>
+                          {field.value === service.value && (
+                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-gray-900 mb-1 text-sm">{service.label}</h5>
+                          <p className="text-xs text-gray-600">{service.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      {/* Specialist Selection */}
+      <div className="space-y-4">
+        <div className="text-center">
+          <h4 className="text-lg font-bold text-gray-900 mb-2">Kies uw specialist</h4>
+          <p className="text-sm text-gray-600">Elk specialisme heeft unieke expertise</p>
+        </div>
+        
+        <FormField
+          control={form.control}
+          name="specialisme"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {specialismen.map((specialist) => (
+                    <div
+                      key={specialist.value}
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
+                        field.value === specialist.value
+                          ? 'border-tbgs-navy bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                      }`}
+                      onClick={() => field.onChange(specialist.value)}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <img 
+                          src={specialist.logo} 
+                          alt={specialist.label}
+                          className="w-12 h-12 object-contain"
+                        />
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-gray-900 text-sm">{specialist.label}</h5>
+                        </div>
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                          field.value === specialist.value
+                            ? 'border-tbgs-navy bg-tbgs-navy'
+                            : 'border-gray-300'
+                        }`}>
+                          {field.value === specialist.value && (
+                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+    </div>
+  );
+
+  // Step 2: Project Details
+  const step2Content = (
+    <div className="space-y-6">
+      <div className="text-center">
+        <h4 className="text-lg font-bold text-gray-900 mb-2">Project Details</h4>
+        <p className="text-sm text-gray-600">Vertel ons meer over uw project</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="projectType"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Type Project *</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Kies projecttype" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {(projectTypes[form.watch("specialisme") as keyof typeof projectTypes] || []).map((type) => (
+                      <SelectItem key={type} value={type}>{type}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="projectOmvang"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Projectomvang *</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Kies omvang" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="klein">Klein (tot €2.500)</SelectItem>
+                    <SelectItem value="middel">Middel (€2.500 - €10.000)</SelectItem>
+                    <SelectItem value="groot">Groot (€10.000 - €25.000)</SelectItem>
+                    <SelectItem value="zeer-groot">Zeer groot (€25.000+)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="tijdlijn"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tijdlijn *</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Wanneer wilt u starten?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="direct">Direct / Spoedgeval</SelectItem>
+                    <SelectItem value="week">Binnen een week</SelectItem>
+                    <SelectItem value="maand">Binnen een maand</SelectItem>
+                    <SelectItem value="kwartaal">Binnen 3 maanden</SelectItem>
+                    <SelectItem value="flexibel">Flexibel / Later</SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="contactVoorkeur"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contact voorkeur *</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Hoe wilt u contact?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="telefoon">Telefonisch</SelectItem>
+                    <SelectItem value="email">E-mail</SelectItem>
+                    <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <FormField
+        control={form.control}
+        name="beschrijving"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Projectbeschrijving *</FormLabel>
+            <FormControl>
+              <Textarea
+                {...field}
+                placeholder="Beschrijf uw project zo gedetailleerd mogelijk..."
+                className="min-h-[100px]"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="gedetaileerdeBeschrijving"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Extra details</FormLabel>
+            <FormControl>
+              <Textarea
+                {...field}
+                placeholder="Aanvullende informatie, speciale wensen, etc."
+                className="min-h-[80px]"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      {/* File Upload Section */}
+      <div className="space-y-4">
+        <FormLabel>Foto's uploaden (optioneel)</FormLabel>
+        <div className="border-2 border-dashed border-gray-200 rounded-lg p-6">
+          <ObjectUploader
+            maxNumberOfFiles={5}
+            maxFileSize={10485760}
+            onGetUploadParameters={handleGetUploadParameters}
+            onComplete={handleUploadComplete}
+          >
+            <div className="flex items-center gap-2">
+              <Camera className="w-4 h-4" />
+              <span>Upload Foto's</span>
+            </div>
+          </ObjectUploader>
+          
+          {uploadedFiles.length > 0 && (
+            <div className="mt-4">
+              <p className="text-sm font-medium text-gray-700 mb-2">Geüploade bestanden:</p>
+              <div className="space-y-2">
+                {uploadedFiles.map((file, index) => (
+                  <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded">
+                    <div className="flex items-center gap-2">
+                      <FileImage className="w-4 h-4 text-gray-500" />
+                      <span className="text-sm text-gray-700">Bestand {index + 1}</span>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => removeFile(file)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  // Step 3: Contact Information
+  const step3Content = (
+    <div className="space-y-6">
+      <div className="text-center">
+        <h4 className="text-lg font-bold text-gray-900 mb-2">Contact Gegevens</h4>
+        <p className="text-sm text-gray-600">Hoe kunnen we u bereiken?</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="voornaam"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Voornaam *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Uw voornaam" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="achternaam"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Achternaam *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Uw achternaam" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>E-mailadres *</FormLabel>
+              <FormControl>
+                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="telefoon"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefoonnummer *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="+31 6 12345678" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <FormField
+        control={form.control}
+        name="adres"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Adres *</FormLabel>
+            <FormControl>
+              <GooglePlacesInput
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Straat en huisnummer"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="postcode"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Postcode *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="1234 AB" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="plaats"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Plaats *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Uw woonplaats" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <Separator />
+
+      <div className="space-y-4">
+        <FormField
+          control={form.control}
+          name="privacyAkkoord"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-sm text-gray-600">
+                  Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
+                </FormLabel>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="nieuwsbrief"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-sm text-gray-600">
+                  Ja, houd mij op de hoogte van tips en aanbiedingen
+                </FormLabel>
+              </div>
+            </FormItem>
+          )}
+        />
+      </div>
+    </div>
+  );
+
+  const steps = [
+    {
+      title: "Service & Specialist",
+      description: "Kies uw service en specialist",
+      content: step1Content
+    },
+    {
+      title: "Project Details",
+      description: "Vertel over uw project",
+      content: step2Content
+    },
+    {
+      title: "Contact Informatie",
+      description: "Hoe kunnen we u bereiken?",
+      content: step3Content
+    }
   ];
 
   const specialismen = [
@@ -249,560 +723,22 @@ export default function GratisOfferte() {
 
                 <CardContent className="space-y-8">
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                      
-                      {/* Service Type Selection */}
-                      <div className="space-y-4 sm:space-y-6">
-                        <div className="text-center">
-                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Wat heeft u nodig?</h3>
-                          <p className="text-sm sm:text-base text-gray-600">Kies de service die het beste bij uw situatie past</p>
-                        </div>
-                        
-                        <FormField
-                          control={form.control}
-                          name="serviceType"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                  {serviceTypes.map((service) => (
-                                    <div
-                                      key={service.value}
-                                      className={`p-3 sm:p-4 border-2 rounded-lg sm:rounded-xl cursor-pointer transition-all hover:shadow-md ${
-                                        field.value === service.value
-                                          ? 'border-tbgs-navy bg-blue-50'
-                                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                                      }`}
-                                      onClick={() => field.onChange(service.value)}
-                                    >
-                                      <div className="flex items-start space-x-3">
-                                        <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 mt-0.5 sm:mt-1 flex items-center justify-center ${
-                                          field.value === service.value
-                                            ? 'border-tbgs-navy bg-tbgs-navy'
-                                            : 'border-gray-300'
-                                        }`}>
-                                          {field.value === service.value && (
-                                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
-                                          )}
-                                        </div>
-                                        <div className="flex-1">
-                                          <h4 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{service.label}</h4>
-                                          <p className="text-xs sm:text-sm text-gray-600">{service.description}</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <Separator />
-
-                      {/* Specialist Selection */}
-                      <div className="space-y-4 sm:space-y-6">
-                        <div className="text-center">
-                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Welke specialist heeft u nodig?</h3>
-                          <p className="text-sm sm:text-base text-gray-600">Selecteer het specialisme dat bij uw project past</p>
-                        </div>
-
-                        <FormField
-                          control={form.control}
-                          name="specialisme"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                  {specialismen.map((spec) => (
-                                    <div
-                                      key={spec.value}
-                                      className={`p-3 sm:p-4 border-2 rounded-lg sm:rounded-xl cursor-pointer transition-all hover:shadow-md ${
-                                        field.value === spec.value
-                                          ? `border-white ${spec.color} text-white`
-                                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                                      }`}
-                                      onClick={() => field.onChange(spec.value)}
-                                    >
-                                      <div className="flex items-center space-x-3">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white border flex items-center justify-center p-1.5 sm:p-2 flex-shrink-0">
-                                          <img 
-                                            src={spec.logo} 
-                                            alt={spec.label}
-                                            className="w-full h-full object-contain"
-                                          />
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                          <h4 className={`font-semibold text-sm sm:text-base ${
-                                            field.value === spec.value ? 'text-white' : 'text-gray-900'
-                                          }`}>
-                                            {spec.label}
-                                          </h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <Separator />
-
-                      {/* Project Type Selection */}
-                      {selectedSpecialisme && (
-                        <div className="space-y-6">
-                          <FormField
-                            control={form.control}
-                            name="projectType"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-lg font-semibold">Type Werkzaamheden</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger className="h-12">
-                                      <SelectValue placeholder="Selecteer het type project" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    {currentProjectTypes.map((type) => (
-                                      <SelectItem key={type} value={type}>{type}</SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <FormField
-                              control={form.control}
-                              name="projectOmvang"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-lg font-semibold">Projectomvang</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger className="h-12">
-                                        <SelectValue placeholder="Kies omvang" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      <SelectItem value="klein">Klein project</SelectItem>
-                                      <SelectItem value="middel">Middelgroot project</SelectItem>
-                                      <SelectItem value="groot">Groot project</SelectItem>
-                                      <SelectItem value="zeer-groot">Zeer groot project</SelectItem>
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-
-                            <FormField
-                              control={form.control}
-                              name="tijdlijn"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-lg font-semibold">Gewenste Tijdlijn</FormLabel>
-                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                      <SelectTrigger className="h-12">
-                                        <SelectValue placeholder="Wanneer starten?" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                      <SelectItem value="spoedig">Zo spoedig mogelijk</SelectItem>
-                                      <SelectItem value="1-maand">Binnen 1 maand</SelectItem>
-                                      <SelectItem value="3-maanden">Binnen 3 maanden</SelectItem>
-                                      <SelectItem value="6-maanden">Binnen 6 maanden</SelectItem>
-                                      <SelectItem value="volgend-jaar">Volgend jaar</SelectItem>
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      <Separator />
-
-                      {/* File Upload Section */}
-                      <div className="space-y-6">
-                        <div className="text-center">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">Upload Foto's en Documenten</h3>
-                          <p className="text-gray-600">Upload foto's van uw project voor een nauwkeurigere offerte</p>
-                        </div>
-
-                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-8">
-                          <div className="text-center mb-6">
-                            <ObjectUploader
-                              maxNumberOfFiles={10}
-                              maxFileSize={50 * 1024 * 1024} // 50MB
-                              onGetUploadParameters={handleGetUploadParameters}
-                              onComplete={handleUploadComplete}
-                              buttonClassName="bg-tbgs-navy hover:bg-blue-800 text-white px-8 py-4"
-                            >
-                              <div className="flex items-center">
-                                <Upload className="w-5 h-5 mr-2" />
-                                Selecteer Bestanden
-                              </div>
-                            </ObjectUploader>
-                            <p className="text-sm text-gray-500 mt-4">
-                              Ondersteunde formaten: PNG, JPG, PDF, DOCX, MP4. Max 50MB per bestand.
-                            </p>
-                          </div>
-
-                          {uploadedFiles.length > 0 && (
-                            <div className="space-y-3">
-                              <h4 className="font-semibold text-gray-900">Geüploade Bestanden:</h4>
-                              <div className="grid grid-cols-1 gap-2">
-                                {uploadedFiles.map((file, index) => (
-                                  <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
-                                    <div className="flex items-center space-x-3">
-                                      <FileImage className="w-5 h-5 text-tbgs-navy" />
-                                      <span className="text-sm font-medium text-gray-700">
-                                        Bestand {index + 1}
-                                      </span>
-                                    </div>
-                                    <Button
-                                      type="button"
-                                      variant="ghost"
-                                      size="sm"
-                                      onClick={() => removeFile(file)}
-                                      className="text-red-500 hover:text-red-700"
-                                    >
-                                      <X className="w-4 h-4" />
-                                    </Button>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      <Separator />
-
-                      {/* Detailed Project Description */}
-                      <div className="space-y-6">
-                        <FormField
-                          control={form.control}
-                          name="gedetaileerdeBeschrijving"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-xl font-bold text-gray-900 mb-4">
-                                Gedetailleerde Projectbeschrijving *
-                              </FormLabel>
-                              <FormDescription className="text-base text-gray-600 mb-4">
-                                Beschrijf uw project zo uitgebreid mogelijk voor een nauwkeurige offerte.
-                              </FormDescription>
-                              <FormControl>
-                                <Textarea
-                                  placeholder="Beschrijf uw project gedetailleerd..."
-                                  className="min-h-[200px] text-base leading-relaxed placeholder:text-gray-400"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormDescription className="text-sm text-gray-500 mt-2">
-                                Tip: Hoe meer details u geeft (materialen, timing, specifieke wensen, bijzonderheden), 
-                                hoe nauwkeuriger en persoonlijker onze offerte wordt.
-                              </FormDescription>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <Separator />
-
-                      {/* Personal Information */}
-                      <div className="space-y-6">
-                        <h3 className="text-xl font-bold text-gray-900">Contactgegevens</h3>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <FormField
-                            control={form.control}
-                            name="voornaam"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Voornaam *</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Uw voornaam" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
-                            name="achternaam"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Achternaam *</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Uw achternaam" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>E-mailadres *</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
-                            name="telefoon"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Telefoonnummer *</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="06 12345678" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <div className="md:col-span-2">
-                            <FormField
-                              control={form.control}
-                              name="adres"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Adres *</FormLabel>
-                                  <FormControl>
-                                    <GooglePlacesInput
-                                      value={field.value}
-                                      onChange={(address, details) => {
-                                        field.onChange(address);
-                                        // Auto-fill other fields if details are available
-                                        if (details) {
-                                          if (details.city && !form.getValues("plaats")) {
-                                            form.setValue("plaats", details.city);
-                                          }
-                                          if (details.postalCode && !form.getValues("postcode")) {
-                                            form.setValue("postcode", details.postalCode);
-                                          }
-                                        }
-                                      }}
-                                      placeholder="Begin typing your address..."
-                                      className="h-12"
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                          </div>
-
-                          <FormField
-                            control={form.control}
-                            name="postcode"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Postcode *</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="1234 AB" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
-                        <FormField
-                          control={form.control}
-                          name="plaats"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Plaats *</FormLabel>
-                              <FormControl>
-                                <Input placeholder="Uw woonplaats" className="h-12 text-gray-900 placeholder:text-gray-400" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <Separator />
-
-                      {/* Contact and Budget Selection */}
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <FormField
-                            control={form.control}
-                            name="budget"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Indicatief Budget (optioneel)</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger className="h-12">
-                                      <SelectValue placeholder="Selecteer budget range" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="klein">Klein budget</SelectItem>
-                                    <SelectItem value="middel">Middelgroot budget</SelectItem>
-                                    <SelectItem value="groot">Groot budget</SelectItem>
-                                    <SelectItem value="uitgebreid">Uitgebreid budget</SelectItem>
-                                    <SelectItem value="premium">Premium budget</SelectItem>
-                                    <SelectItem value="geen-limiet">Geen budgetlimiet</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
-                            name="contactVoorkeur"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Contactvoorkeur *</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger className="h-12">
-                                      <SelectValue placeholder="Hoe kunnen we contact opnemen?" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="email">E-mail contact</SelectItem>
-                                    <SelectItem value="whatsapp">WhatsApp bericht</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      </div>
-
-                      <Separator />
-
-                      {/* Legal and Submit */}
-                      <div className="space-y-6">
-                        <FormField
-                          control={form.control}
-                          name="privacyAkkoord"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                  Ik ga akkoord met de privacyverklaring *
-                                </FormLabel>
-                                <FormDescription>
-                                  Uw gegevens worden vertrouwelijk behandeld en alleen gebruikt voor het opstellen van uw offerte.
-                                </FormDescription>
-                              </div>
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="nieuwsbrief"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                              <FormControl>
-                                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                              </FormControl>
-                              <div className="space-y-1 leading-none">
-                                <FormLabel>
-                                  Houd mij op de hoogte van tips en aanbiedingen
-                                </FormLabel>
-                                <FormDescription>
-                                  Ontvang nuttige onderhoudstips en exclusieve aanbiedingen (optioneel).
-                                </FormDescription>
-                              </div>
-                            </FormItem>
-                          )}
-                        />
-
-                        <div className="pt-6">
-                          <Button 
-                            type="submit" 
-                            className="w-full h-14 text-lg font-semibold bg-tbgs-navy hover:bg-blue-800"
-                            disabled={submitMutation.isPending}
-                          >
-                            {submitMutation.isPending ? (
-                              <div className="flex items-center">
-                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                                Bezig met verzenden...
-                              </div>
-                            ) : (
-                              <div className="flex items-center">
-                                <FileText className="w-5 h-5 mr-2" />
-                                Verstuur Offerte Aanvraag
-                              </div>
-                            )}
-                          </Button>
-                        </div>
-                      </div>
-                    </form>
+                    <MultiStepForm
+                      steps={steps}
+                      onSubmit={onSubmit}
+                      onBack={() => window.history.back()}
+                      isSubmitting={submitMutation.isPending}
+                      isValid={form.formState.isValid}
+                    />
                   </Form>
                 </CardContent>
               </Card>
-
-              {/* Trust Indicators */}
-              <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">20+ Jaar Ervaring</h3>
-                  <p className="text-gray-600">Ruime ervaring in alle specialismen</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <Award className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Gecertificeerd</h3>
-                  <p className="text-gray-600">Alle benodigde certificeringen en verzekeringen</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                    <Star className="w-8 h-8 text-orange-600" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Klantbeoordeling 9.2</h3>
-                  <p className="text-gray-600">Hoge klanttevredenheid door kwaliteit</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
-      </div>
 
-      <Footer backgroundColor="bg-gray-900" accentColor="text-tbgs-navy" />
+        <Footer />
+      </div>
     </>
   );
 }
