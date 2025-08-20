@@ -380,8 +380,62 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </p>
               </div>
 
-              {/* Heritage Story */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
+              {/* Mobile: Combined Heritage & Mission */}
+              <div className="lg:hidden bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200 mb-12">
+                <div className="text-center mb-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                      <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <div>
+                      <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80+ jaar familiebedrijf</h4>
+                      <p className="text-tbgs-navy font-medium text-sm sm:text-base">4 generaties dakspecialisten sinds 1943</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
+                  Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels.
+                </p>
+                
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
+                  <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                </p>
+                
+                <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-6 text-white mb-6">
+                  <div className="text-center mb-4">
+                    <div className="text-3xl font-bold">1943 - 2025</div>
+                    <div className="text-base opacity-90">80+ jaar vakmanschap</div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-check-circle text-green-300"></i>
+                      <span>4 Generaties Ervaring</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-check-circle text-green-300"></i>
+                      <span>Duizenden Problemen Opgelost</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-check-circle text-green-300"></i>
+                      <span>4 Gespecialiseerde Teams</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Meer Lezen Button */}
+                <div className="text-center">
+                  <Link href="/over-ons">
+                    <button className="inline-flex items-center bg-tbgs-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                      <i className="fas fa-book-open mr-2"></i>
+                      Meer lezen over ons verhaal
+                    </button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Desktop: Separate Heritage Story */}
+              <div className="hidden lg:block bg-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-lg border border-slate-200 mb-12">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   <div>
                     <div className="flex items-center mb-6">
@@ -389,16 +443,12 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                         <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
                       </div>
                       <div>
-                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80 jaar familiebedrijf</h4>
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80+ jaar familiebedrijf</h4>
                         <p className="text-tbgs-navy font-medium text-sm sm:text-base">4 generaties dakspecialisten sinds 1943</p>
                       </div>
                     </div>
                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels.
-                    </p>
-                    
-                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                      <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
                     </p>
                     
                     {/* Meer Lezen Button */}
@@ -432,21 +482,19 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                         </div>
                       </div>
                     </div>
-
-                    
                   </div>
                 </div>
               </div>
 
-              {/* Mission Statement */}
-              <div className="text-center mb-12">
+              {/* Desktop: Separate Mission Statement */}
+              <div className="hidden lg:block text-center mb-12">
                 <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
                   <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze Missie</h4>
                   <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
                     TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
                   </p>
                   <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
-                    Door jarenlange ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                    Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                   </p>
                   <div className="mt-8">
                     <Link href="/over-ons">
