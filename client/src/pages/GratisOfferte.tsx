@@ -412,19 +412,27 @@ export default function GratisOfferte() {
 
       {/* File Upload Section */}
       <div className="space-y-4">
-        <FormLabel>Foto's uploaden (optioneel)</FormLabel>
         <div className="border-2 border-dashed border-gray-200 rounded-lg p-6">
-          <ObjectUploader
-            maxNumberOfFiles={5}
-            maxFileSize={10485760}
-            onGetUploadParameters={handleGetUploadParameters}
-            onComplete={handleUploadComplete}
-          >
-            <div className="flex items-center gap-2">
-              <Camera className="w-4 h-4" />
-              <span>Upload Foto's</span>
-            </div>
-          </ObjectUploader>
+          <div className="text-center mb-4">
+            <h4 className="text-base font-semibold text-gray-900 mb-2">Upload Foto's (Optioneel)</h4>
+            <p className="text-sm text-gray-600 mb-4">Upload foto's van uw project voor een nauwkeurigere offerte</p>
+            
+            <ObjectUploader
+              maxNumberOfFiles={5}
+              maxFileSize={10485760}
+              onGetUploadParameters={handleGetUploadParameters}
+              onComplete={handleUploadComplete}
+              buttonClassName="bg-tbgs-navy hover:bg-blue-800 text-white px-6 py-3"
+            >
+              <div className="flex items-center gap-2">
+                <Camera className="w-4 h-4" />
+                <span>Selecteer Bestanden</span>
+              </div>
+            </ObjectUploader>
+            <p className="text-xs text-gray-500 mt-3">
+              Ondersteunde formaten: PNG, JPG, PDF. Max 10MB per bestand.
+            </p>
+          </div>
           
           {uploadedFiles.length > 0 && (
             <div className="mt-4">
