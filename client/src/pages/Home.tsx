@@ -435,44 +435,44 @@ export default function Home({ onOpenContactModal }: HomeProps) {
       </section>
 
       {/* Customer Testimonials - Premium Design */}
-      <section className="py-12 lg:py-24 bg-white relative overflow-hidden">
+      <section className="py-8 lg:py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/30"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12 lg:mb-20">
-            <div className="inline-flex items-center space-x-2 bg-slate-100 rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
+          <div className="text-center mb-8 lg:mb-20">
+            <div className="inline-flex items-center space-x-2 bg-slate-100 rounded-full px-4 py-2 text-sm font-medium text-slate-600 mb-4">
               <i className="fas fa-heart"></i>
               <span>Klantbeoordelingen</span>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+            <h2 className="text-3xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Wat <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Klanten</span> Zeggen
             </h2>
-            <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="text-lg lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Onze klanten waarderen ons <strong>vakmanschap</strong>, <strong>betrouwbaarheid</strong> en persoonlijke aanpak. Ontdek waarom zij ons aanbevelen.
             </p>
           </div>
 
           {/* Trust Score - Mobile Responsive */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 lg:mb-16">
             <div className="bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl shadow-lg mx-auto max-w-md md:max-w-none">
               {/* Mobile Layout */}
-              <div className="md:hidden px-6 py-6 space-y-4">
+              <div className="md:hidden px-4 py-4 space-y-3">
                 <div className="flex items-center justify-center space-x-3">
-                  <div className="flex text-yellow-400 text-xl">
+                  <div className="flex text-yellow-400 text-lg">
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
                   </div>
-                  <span className="text-2xl font-black text-slate-900">4.9</span>
+                  <span className="text-xl font-black text-slate-900">4.9</span>
                 </div>
-                <div className="text-center border-t border-slate-200 pt-4">
-                  <div className="font-bold text-slate-900">Google Reviews</div>
-                  <div className="text-sm text-slate-600">127+ verified reviews</div>
+                <div className="text-center border-t border-slate-200 pt-3">
+                  <div className="font-bold text-slate-900 text-sm">Google Reviews</div>
+                  <div className="text-xs text-slate-600">127+ verified reviews</div>
                 </div>
-                <div className="text-center border-t border-slate-200 pt-4">
-                  <div className="font-bold text-slate-900">97%</div>
-                  <div className="text-sm text-slate-600">Recommend us</div>
+                <div className="text-center border-t border-slate-200 pt-3">
+                  <div className="font-bold text-slate-900 text-sm">97%</div>
+                  <div className="text-xs text-slate-600">Recommend us</div>
                 </div>
               </div>
               
