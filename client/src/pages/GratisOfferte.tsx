@@ -45,13 +45,9 @@ const offerteFormSchema = z.object({
   
   // Project Details
   projectType: z.string().min(1, "Kies een projecttype"),
-  projectOmvang: z.string().min(1, "Kies de projectomvang"),
   tijdlijn: z.string().min(1, "Kies de gewenste tijdlijn"),
   budget: z.string().optional(),
   beschrijving: z.string().min(20, "Beschrijf uw project in minimaal 20 karakters"),
-  
-  // Detailed Description (replaces inspection option)
-  gedetaileerdeBeschrijving: z.string().min(5, "Geef een beschrijving van minimaal 5 karakters"),
   
   // Contact Preferences
   contactVoorkeur: z.string().min(1, "Kies uw contactvoorkeur"),
@@ -87,12 +83,10 @@ export default function GratisOfferte() {
       specialisme: "",
       serviceType: "",
       projectType: "",
-
       tijdlijn: "",
       budget: "",
       beschrijving: "",
       contactVoorkeur: "",
-
       attachments: [],
       privacyAkkoord: false,
       nieuwsbrief: false,
@@ -269,7 +263,7 @@ export default function GratisOfferte() {
               <FormLabel>Type Project *</FormLabel>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
+                  <SelectTrigger className="border border-gray-300">
                     <SelectValue placeholder="Kies projecttype" />
                   </SelectTrigger>
                   <SelectContent>
@@ -301,7 +295,7 @@ export default function GratisOfferte() {
               <FormLabel>Tijdlijn *</FormLabel>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
+                  <SelectTrigger className="border border-gray-300">
                     <SelectValue placeholder="Wanneer wilt u starten?" />
                   </SelectTrigger>
                   <SelectContent>
@@ -326,7 +320,7 @@ export default function GratisOfferte() {
               <FormLabel>Contact voorkeur *</FormLabel>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
+                  <SelectTrigger className="border border-gray-300">
                     <SelectValue placeholder="Hoe wilt u contact?" />
                   </SelectTrigger>
                   <SelectContent>
@@ -352,7 +346,7 @@ export default function GratisOfferte() {
               <Textarea
                 {...field}
                 placeholder="Beschrijf uw project zo gedetailleerd mogelijk..."
-                className="min-h-[100px]"
+                className="min-h-[100px] border border-gray-300"
               />
             </FormControl>
             <FormMessage />
@@ -439,7 +433,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>Voornaam *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw voornaam" />
+                <Input {...field} placeholder="Uw voornaam" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -453,7 +447,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>Achternaam *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw achternaam" />
+                <Input {...field} placeholder="Uw achternaam" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -467,7 +461,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" />
+                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -481,7 +475,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="+31 6 12345678" />
+                <Input {...field} placeholder="+31 6 12345678" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -500,6 +494,7 @@ export default function GratisOfferte() {
                 value={field.value}
                 onChange={field.onChange}
                 placeholder="Straat en huisnummer"
+                className="border border-gray-300"
               />
             </FormControl>
             <FormMessage />
@@ -515,7 +510,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>Postcode *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="1234 AB" />
+                <Input {...field} placeholder="1234 AB" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -529,7 +524,7 @@ export default function GratisOfferte() {
             <FormItem>
               <FormLabel>Plaats *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw woonplaats" />
+                <Input {...field} placeholder="Uw woonplaats" className="border border-gray-300" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -693,7 +688,7 @@ export default function GratisOfferte() {
                   <Form {...form}>
                     <MultiStepForm
                       steps={steps}
-                      onSubmit={onSubmit}
+                      onSubmit={() => form.handleSubmit(onSubmit)()}
                       onBack={() => window.history.back()}
                       isSubmitting={submitMutation.isPending}
                     />

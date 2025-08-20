@@ -123,7 +123,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleGetUploadParameters = async () => {
     try {
-      const response = await apiRequest("POST", "/api/objects/upload");
+      const response = await apiRequest("POST", "/api/objects/upload") as unknown as { uploadURL: string };
       return {
         method: "PUT" as const,
         url: response.uploadURL,
@@ -135,13 +135,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const handleUploadComplete = (result: UploadResult<Record<string, unknown>, Record<string, unknown>>) => {
-    const uploadedUrls = result.successful.map(file => file.uploadURL);
-    setUploadedFiles(prev => [...prev, ...uploadedUrls]);
-    
-    toast({
-      title: "Bestanden geüpload",
-      description: `${result.successful.length} bestand(en) succesvol geüpload.`,
-    });
+    if (result.successful) {
+      const uploadedUrls = result.successful
+        .map(file => file.uploadURL)
+        .filter((url): url is string => typeof url === 'string');
+      setUploadedFiles(prev => [...prev, ...uploadedUrls]);
+      
+      toast({
+        title: "Bestanden geüpload",
+        description: `${result.successful.length} bestand(en) succesvol geüpload.`,
+      });
+    }
   };
 
   const removeFile = (fileToRemove: string) => {
@@ -262,7 +266,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <FormLabel className="text-base font-semibold">Type Werkzaamheden</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger className="h-12">
+                    <SelectTrigger className="h-12 border border-gray-300">
                       <SelectValue placeholder="Selecteer het type project" />
                     </SelectTrigger>
                   </FormControl>
@@ -294,7 +298,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormControl>
               <Textarea
                 placeholder="Beschrijf uw project zo uitgebreid mogelijk voor een nauwkeurige offerte..."
-                className="min-h-[120px] text-base leading-relaxed placeholder:text-gray-400"
+                className="min-h-[120px] text-base leading-relaxed placeholder:text-gray-400 border border-gray-300"
                 {...field}
               />
             </FormControl>
@@ -315,7 +319,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={field.value}
                 onChange={handleLocationChange}
                 placeholder="Begin met typen van uw adres..."
-                className="h-12"
+                className="h-12 border border-gray-300"
               />
             </FormControl>
             <FormMessage />
@@ -408,7 +412,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Voornaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw voornaam" className="h-12" {...field} />
+                <Input placeholder="Uw voornaam" className="h-12 border border-gray-300" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -422,7 +426,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Achternaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw achternaam" className="h-12" {...field} />
+                <Input placeholder="Uw achternaam" className="h-12 border border-gray-300" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -436,7 +440,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12" {...field} />
+                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 border border-gray-300" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -450,7 +454,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
-                <Input placeholder="06 12345678" className="h-12" {...field} />
+                <Input placeholder="06 12345678" className="h-12 border border-gray-300" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
