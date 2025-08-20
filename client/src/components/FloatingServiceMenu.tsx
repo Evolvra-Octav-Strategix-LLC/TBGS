@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import { X, MessageCircle, Home, Wrench, Hammer, Building2, Shield, Sun, AlertTriangle, Droplets } from 'lucide-react';
+import cameraImage from '@assets/IMG_2694_1755733684734.png';
 
 interface ServiceOption {
   id: string;
@@ -246,7 +247,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   {/* Camera Interface Image */}
                   <div className="w-40 h-72 rounded-2xl overflow-hidden shadow-lg">
                     <img 
-                      src="@assets/IMG_2694_1755733684734.png" 
+                      src={cameraImage} 
                       alt="Camera interface" 
                       className="w-full h-full object-cover"
                     />
