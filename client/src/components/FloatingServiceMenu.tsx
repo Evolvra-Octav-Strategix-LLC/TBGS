@@ -240,23 +240,30 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
         </div>
       )}
 
-      {/* Floating Action Button */}
+      {/* Floating Action Button - Styled like "Expert op locatie" */}
       <button
         onClick={toggleMenu}
-        className={`w-14 h-14 bg-gradient-to-r from-tbgs-navy to-blue-600 hover:from-blue-700 hover:to-blue-800 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center group ${
-          isOpen ? 'rotate-45' : ''
+        className={`bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group ${
+          isOpen ? 'opacity-75' : ''
         }`}
       >
         {isOpen ? (
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         ) : (
-          <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          <>
+            {/* Avatar Icon */}
+            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <MessageCircle className="w-4 h-4" />
+            </div>
+            {/* Text */}
+            <span className="text-sm font-medium whitespace-nowrap">Expert op locatie</span>
+          </>
         )}
       </button>
 
       {/* Pulse Animation Ring */}
       {!isOpen && (
-        <div className="absolute inset-0 w-14 h-14 rounded-full bg-tbgs-navy/30 animate-ping" />
+        <div className="absolute inset-0 rounded-2xl bg-blue-600/30 animate-ping" />
       )}
     </div>
   );
