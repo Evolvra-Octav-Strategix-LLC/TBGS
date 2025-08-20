@@ -101,6 +101,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
   }, [isOpen]);
 
   const toggleMenu = () => {
+    console.log('FloatingServiceMenu button clicked, isOpen:', isOpen);
     setIsOpen(!isOpen);
     if (!isOpen) {
       setStep('services');
@@ -240,12 +241,14 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
         </div>
       )}
 
-      {/* Floating Action Button - Styled like "Expert op locatie" */}
+      {/* Floating Action Button - Styled like "Offerte aanvragen" */}
       <button
         onClick={toggleMenu}
-        className={`bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group ${
+        type="button"
+        className={`bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none ${
           isOpen ? 'opacity-75' : ''
         }`}
+        style={{ zIndex: 9999 }}
       >
         {isOpen ? (
           <X className="w-5 h-5" />
@@ -256,14 +259,14 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
               <MessageCircle className="w-4 h-4" />
             </div>
             {/* Text */}
-            <span className="text-sm font-medium whitespace-nowrap">Expert op locatie</span>
+            <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
           </>
         )}
       </button>
 
       {/* Pulse Animation Ring */}
       {!isOpen && (
-        <div className="absolute inset-0 rounded-2xl bg-blue-600/30 animate-ping" />
+        <div className="absolute inset-0 rounded-2xl bg-blue-600/30 animate-ping pointer-events-none" />
       )}
     </div>
   );
