@@ -76,20 +76,20 @@ const serviceOptions: ServiceOption[] = [
   }
 ];
 
-interface FloatingServiceMenuProps {
+interface FloatingServiceFormProps {
   className?: string;
 }
 
-export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps) {
+export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'services' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
-  // Close menu when clicking outside
+  // Close form when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
         setIsOpen(false);
         setStep('services');
       }
@@ -101,7 +101,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
     }
   }, [isOpen]);
 
-  const toggleMenu = () => {
+  const toggleForm = () => {
     setIsOpen(!isOpen);
     if (!isOpen) {
       setStep('services');
@@ -119,13 +119,13 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
   };
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={menuRef}>
+    <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={formRef}>
       {/* Overlay - Much less fade */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/5 -z-10" />
       )}
 
-      {/* Menu Modal - Lower with matching padding */}
+      {/* Service Form Modal - Lower with matching padding */}
       {isOpen && (
         <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header with Step Indicator */}
@@ -148,7 +148,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
               
               {/* Close Button */}
               <button
-                onClick={toggleMenu}
+                onClick={toggleForm}
                 className="w-8 h-8 text-gray-500 hover:text-gray-700 flex items-center justify-center transition-colors ml-2"
               >
                 <X className="w-5 h-5" />
@@ -273,7 +273,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
       {/* Floating Action Button - Only show when closed */}
       {!isOpen && (
         <button
-          onClick={toggleMenu}
+          onClick={toggleForm}
           type="button"
           className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none"
           style={{ zIndex: 9999 }}
