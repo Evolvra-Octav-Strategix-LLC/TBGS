@@ -387,13 +387,23 @@ export default function GratisOfferte() {
             <div className="mt-4">
               <p className="text-sm font-medium text-gray-700 mb-2">Geüploade bestanden:</p>
               <div className="space-y-2">
-                {uploadedFiles.map((file, index) => (
-                  <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded">
-                    <div className="flex items-center gap-2">
-                      <FileImage className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm text-gray-700">Bestand {index + 1}</span>
-                    </div>
-                    <Button
+                {uploadedFiles.map((file, index) => {
+                  // Extract filename from URL
+                  const fileName = file.split('/').pop() || `bestand-${index + 1}`;
+                  // Get file extension
+                  const extension = fileName.split('.').pop()?.toLowerCase() || '';
+                  // Create display name
+                  const displayName = fileName.length > 30 ? 
+                    `${fileName.substring(0, 20)}...${extension ? `.${extension}` : ''}` : 
+                    fileName;
+                  
+                  return (
+                    <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded">
+                      <div className="flex items-center gap-2">
+                        <FileImage className="w-4 h-4 text-gray-500" />
+                        <span className="text-sm text-gray-700" title={fileName}>{displayName}</span>
+                      </div>
+                      <Button
                       type="button"
                       variant="ghost"
                       size="sm"
@@ -401,9 +411,10 @@ export default function GratisOfferte() {
                       className="text-red-500 hover:text-red-700"
                     >
                       <X className="w-4 h-4" />
-                    </Button>
-                  </div>
-                ))}
+                      </Button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
