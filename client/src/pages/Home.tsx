@@ -445,7 +445,13 @@ export default function Home({ onOpenContactModal }: HomeProps) {
 
           {/* Beautiful Horizontal Sliding Partners */}
           <div className="overflow-hidden py-8">
-            <div className="flex animate-partners-scroll items-center space-x-16 lg:space-x-20">
+            <div 
+              className="flex animate-partners-scroll items-center space-x-16 lg:space-x-20 cursor-pointer"
+              onClick={(e) => {
+                const element = e.currentTarget;
+                element.classList.toggle('paused');
+              }}
+            >
               {/* First set of logos */}
               <div className="flex items-center space-x-16 lg:space-x-20 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">

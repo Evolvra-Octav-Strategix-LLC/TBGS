@@ -86,10 +86,10 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 20s linear infinite;
+  animation: partners-scroll 12s linear infinite;
 }
 
-.animate-partners-scroll:hover {
+.animate-partners-scroll.paused {
   animation-play-state: paused;
 }
 
