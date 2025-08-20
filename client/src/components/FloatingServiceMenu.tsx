@@ -247,19 +247,24 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       Maximaal 250 tekens
                     </div>
                   </div>
-
-                  <Link href="/gratis-offerte">
-                    <button
-                      onClick={() => setIsOpen(false)}
-                      className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
-                    >
-                      Volgende
-                    </button>
-                  </Link>
                 </div>
               </>
             )}
           </div>
+          
+          {/* Bottom Button - Only show on step 2 */}
+          {step === 'custom' && (
+            <div className="p-4 border-t border-gray-200">
+              <Link href="/gratis-offerte">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Volgende
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       )}
 
