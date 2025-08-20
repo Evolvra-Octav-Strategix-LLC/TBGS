@@ -282,27 +282,7 @@ export default function GoogleBusinessIntegration({
         </Card>
       )}
 
-      {/* Opening Hours */}
-      {showHours && businessData.opening_hours && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Clock className="w-5 h-5 mr-2" />
-              Openingstijden
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              {businessData.opening_hours.weekday_text.map((hours, index) => (
-                <div key={index} className="flex justify-between items-center py-1">
-                  <span className="font-medium">{hours.split(': ')[0]}</span>
-                  <span className="text-gray-600">{hours.split(': ')[1]}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      )}
+      
 
 
     </div>
