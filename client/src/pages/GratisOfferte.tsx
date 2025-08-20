@@ -539,12 +539,20 @@ export default function GratisOfferte() {
             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
               <FormControl>
                 <Checkbox
-                  checked={field.value || false}
-                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  checked={!!field.value}
+                  onCheckedChange={(checked) => {
+                    field.onChange(checked);
+                  }}
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm text-gray-600 cursor-pointer" onClick={() => field.onChange(!field.value)}>
+                <FormLabel 
+                  className="text-sm text-gray-600 cursor-pointer" 
+                  onClick={() => {
+                    const newValue = !field.value;
+                    field.onChange(newValue);
+                  }}
+                >
                   Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
                 </FormLabel>
                 <FormMessage />
@@ -560,12 +568,20 @@ export default function GratisOfferte() {
             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
               <FormControl>
                 <Checkbox
-                  checked={field.value || false}
-                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  checked={!!field.value}
+                  onCheckedChange={(checked) => {
+                    field.onChange(checked);
+                  }}
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm text-gray-600 cursor-pointer" onClick={() => field.onChange(!field.value)}>
+                <FormLabel 
+                  className="text-sm text-gray-600 cursor-pointer" 
+                  onClick={() => {
+                    const newValue = !field.value;
+                    field.onChange(newValue);
+                  }}
+                >
                   Ja, houd mij op de hoogte van tips en aanbiedingen
                 </FormLabel>
               </div>
