@@ -167,16 +167,12 @@ export default function GratisOfferte() {
     <div className="space-y-8">
       {/* Service Type Selection */}
       <div className="space-y-4">
-        <div className="text-center">
-          <h4 className="text-lg font-bold text-gray-900 mb-2">Wat heeft u nodig?</h4>
-          <p className="text-sm text-gray-600">Kies de service die het beste bij uw situatie past</p>
-        </div>
-        
         <FormField
           control={form.control}
           name="serviceType"
           render={({ field }) => (
             <FormItem>
+              <FormLabel className="text-base font-semibold">Wat heeft u nodig?</FormLabel>
               <FormControl>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {serviceTypes.map((service) => (
@@ -216,16 +212,12 @@ export default function GratisOfferte() {
 
       {/* Specialist Selection */}
       <div className="space-y-4">
-        <div className="text-center">
-          <h4 className="text-lg font-bold text-gray-900 mb-2">Kies uw specialist</h4>
-          <p className="text-sm text-gray-600">Elk specialisme heeft unieke expertise</p>
-        </div>
-        
         <FormField
           control={form.control}
           name="specialisme"
           render={({ field }) => (
             <FormItem>
+              <FormLabel className="text-base font-semibold">Welke specialist heeft u nodig?</FormLabel>
               <FormControl>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {specialismen.map((specialist) => (
