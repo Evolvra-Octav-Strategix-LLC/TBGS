@@ -184,7 +184,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <div><Link href="/nl/eindhoven/schoorsteenreparatie" className="text-tbgs-blue hover:underline font-medium">Schoorsteenreparatie</Link></div>
                     <div><Link href="/nl/eindhoven/schoorsteenreiniging" className="text-tbgs-blue hover:underline font-medium">Schoorsteenreiniging</Link></div>
                     <div><Link href="/nl/eindhoven/schoorsteenonderhoud" className="text-tbgs-blue hover:underline font-medium">Schoorsteenonderhoud</Link></div>
-                    <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong> met moderne technieken.</div>
+                    <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -254,7 +254,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <div><Link href="/nl/eindhoven/herstelwerkzaamheden" className="text-tbgs-green hover:underline font-medium">Herstelwerkzaamheden</Link></div>
                     <div><Link href="/nl/eindhoven/renovatie" className="text-tbgs-green hover:underline font-medium">Renovatie</Link></div>
                     <div><Link href="/nl/eindhoven/schilderwerk" className="text-tbgs-green hover:underline font-medium">Schilderwerk</Link></div>
-                    <div className="text-sm text-slate-500 mt-2">Voor <strong>woningen en bedrijfspanden</strong>.</div>
+                    <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -289,7 +289,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <div><Link href="/nl/eindhoven/renovatie" className="text-tbgs-orange hover:underline font-medium">Renovaties</Link></div>
                     <div><Link href="/nl/eindhoven/uitbreidingen" className="text-tbgs-orange hover:underline font-medium">Uitbreidingen</Link></div>
                     <div><Link href="/nl/eindhoven/verbouwing" className="text-tbgs-orange hover:underline font-medium">Verbouwing</Link></div>
-                    <div className="text-sm text-slate-500 mt-2">Van concept tot oplevering met <strong>één aanspreekpunt</strong>.</div>
+                    <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
