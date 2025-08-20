@@ -217,19 +217,15 @@ export default function GratisOfferte() {
                   {specialismen.map((specialist) => (
                     <div
                       key={specialist.value}
-                      className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] ${
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
                         field.value === specialist.value
-                          ? `border-2 ${specialist.color} shadow-lg scale-[1.02]`
-                          : 'border-gray-200 hover:border-gray-300 bg-white shadow-sm'
+                          ? `border-white ${specialist.color} text-white`
+                          : 'border-gray-200 hover:border-gray-300 bg-white'
                       }`}
                       onClick={() => field.onChange(specialist.value)}
                     >
-                      <div className="flex items-center space-x-4">
-                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center p-3 flex-shrink-0 transition-colors ${
-                          field.value === specialist.value 
-                            ? 'bg-white shadow-md' 
-                            : 'bg-gray-50 border border-gray-200'
-                        }`}>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
                           <img 
                             src={specialist.logo} 
                             alt={specialist.label}
@@ -242,15 +238,6 @@ export default function GratisOfferte() {
                           }`}>
                             {specialist.label}
                           </h5>
-                        </div>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-                          field.value === specialist.value
-                            ? 'border-white bg-white'
-                            : 'border-gray-300'
-                        }`}>
-                          {field.value === specialist.value && (
-                            <div className={`w-2 h-2 rounded-full ${specialist.color.replace('bg-', 'bg-')}`}></div>
-                          )}
                         </div>
                       </div>
                     </div>
