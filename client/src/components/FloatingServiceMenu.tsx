@@ -76,7 +76,7 @@ interface FloatingServiceFormProps {
 
 export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState<'services' | 'custom'>('services');
+  const [step, setStep] = useState<'services' | 'photo' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -104,12 +104,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
   const handleServiceSelect = (service: ServiceOption) => {
     setSelectedService(service.title);
-    setStep('custom');
+    setStep('photo');
   };
 
   const handleCustomRequest = () => {
     setSelectedService('Iets anders');
-    setStep('custom');
+    setStep('photo');
   };
 
   return (
@@ -133,11 +133,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   1
                 </div>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'photo' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
                 }`}>
                   2
                 </div>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 text-gray-600">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                }`}>
                   3
                 </div>
               </div>
@@ -166,7 +168,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   Gratis inspectie in 24u
                 </div>
               </div>
-            ) : (
+            ) : step === 'photo' ? (
               <>
                 <button
                   onClick={() => setStep('services')}
@@ -178,10 +180,28 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <span className="text-sm">Terug</span>
                 </button>
                 <h3 className="text-lg font-bold text-gray-900">
-                  Vertel ons meer
+                  Voeg een foto toe
                 </h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Beschrijf de klus zo duidelijk mogelijk
+                  Voeg voor de volledigheid van je aanvraag een foto toe
+                </p>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setStep('photo')}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span className="text-sm">Terug</span>
+                </button>
+                <h3 className="text-lg font-bold text-gray-900">
+                  Details
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Beschrijf de klus zo duidelijk mogelijk. Hoe meer informatie je geeft, hoe beter wij je kunnen helpen.
                 </p>
               </>
             )}
@@ -222,6 +242,35 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <span className="text-sm font-medium text-gray-900">Iets anders</span>
                 </button>
               </>
+            ) : step === 'photo' ? (
+              <>
+                {/* Selected Service Display */}
+                {selectedService && (
+                  <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                    <div className="text-sm font-medium text-blue-900">Geselecteerde service:</div>
+                    <div className="text-sm text-blue-700">{selectedService}</div>
+                  </div>
+                )}
+
+                {/* Photo Upload Section */}
+                <div className="flex flex-col items-center justify-center space-y-6 py-8">
+                  {/* Phone Mockup */}
+                  <div className="w-32 h-56 bg-gray-900 rounded-3xl flex items-end justify-center p-4 relative">
+                    <div className="w-full h-8 bg-gray-800 rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 border-2 border-gray-400 rounded-full"></div>
+                      </div>
+                    </div>
+                    {/* Camera indicators */}
+                    <div className="absolute top-4 left-4 w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div className="absolute top-4 right-4 w-2 h-2 bg-red-400 rounded-full"></div>
+                  </div>
+
+                  <p className="text-center text-sm text-gray-600 max-w-xs">
+                    Voeg voor de volledigheid van je aanvraag een foto toe
+                  </p>
+                </div>
+              </>
             ) : (
               <>
                 {/* Selected Service Display */}
@@ -252,7 +301,27 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             )}
           </div>
           
-          {/* Bottom Button - Only show on step 2 */}
+          {/* Bottom Buttons */}
+          {step === 'photo' && (
+            <div className="p-4 border-t border-gray-200 space-y-3">
+              <button
+                onClick={() => setStep('custom')}
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13l3 3 7-7" />
+                </svg>
+                <span>Foto's selecteren</span>
+              </button>
+              <button
+                onClick={() => setStep('custom')}
+                className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+              >
+                Overslaan
+              </button>
+            </div>
+          )}
+          
           {step === 'custom' && (
             <div className="p-4 border-t border-gray-200">
               <Link href="/gratis-offerte">
