@@ -130,16 +130,21 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          
-          {/* Mobile Menu Panel - 50% Width Clean Design */}
-          <div className="fixed top-0 right-0 w-1/2 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden transform transition-transform duration-300 ease-in-out shadow-2xl rounded-l-3xl">
+      <>
+        {/* Backdrop */}
+        <div 
+          className={`fixed inset-0 bg-black z-40 lg:hidden transition-opacity duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'bg-opacity-20 pointer-events-auto' : 'bg-opacity-0 pointer-events-none'
+          }`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        
+        {/* Mobile Menu Panel - 50% Width Clean Design */}
+        <div className={`fixed top-0 right-0 w-1/2 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden shadow-2xl rounded-l-3xl transition-all duration-500 ease-out ${
+          isMobileMenuOpen 
+            ? 'transform translate-x-0 opacity-100 scale-100' 
+            : 'transform translate-x-full opacity-0 scale-95'
+        }`}>
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex items-center p-6 pt-16">
@@ -275,7 +280,6 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
             </div>
           </div>
         </>
-      )}
 
 
     </header>
