@@ -244,14 +244,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               </>
             ) : step === 'photo' ? (
               <>
-                {/* Selected Service Display */}
-                {selectedService && (
-                  <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl">
-                    <div className="text-sm font-medium text-blue-900">Geselecteerde service:</div>
-                    <div className="text-sm text-blue-700">{selectedService}</div>
-                  </div>
-                )}
-
                 {/* Photo Upload Section */}
                 <div className="flex flex-col items-center justify-center space-y-6 py-8">
                   {/* Phone Mockup */}
