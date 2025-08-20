@@ -8,12 +8,14 @@ interface MultiStepFormProps {
     title: string;
     description: string;
     content: React.ReactNode;
+    requiredFields?: string[];
   }[];
   onSubmit: () => void;
   onBack?: () => void;
   isSubmitting?: boolean;
   isValid?: boolean;
   className?: string;
+  validateStep?: (stepIndex: number) => boolean;
 }
 
 export function MultiStepForm({ 
@@ -22,7 +24,8 @@ export function MultiStepForm({
   onBack, 
   isSubmitting = false, 
   isValid = true,
-  className = ""
+  className = "",
+  validateStep
 }: MultiStepFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   
@@ -32,6 +35,15 @@ export function MultiStepForm({
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
+  };
+
+  const canGoToNextStep = () => {
+    // If step validation function is provided, use it
+    if (validateStep) {
+      return validateStep(currentStep);
+    }
+    // Otherwise, always allow progression (step validation will be handled by parent form)
+    return true;
   };
   
   const goToPreviousStep = () => {
@@ -105,7 +117,7 @@ export function MultiStepForm({
             <Button
               type="button"
               onClick={goToNextStep}
-              disabled={!isValid}
+              disabled={!canGoToNextStep()}
               className="bg-tbgs-navy hover:bg-blue-800 flex items-center space-x-2"
             >
               <span>Volgende</span>

@@ -520,7 +520,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               onSubmit={onSubmit}
               onBack={onClose}
               isSubmitting={submitMutation.isPending}
-              isValid={form.formState.isValid}
             />
           </Form>
         </div>

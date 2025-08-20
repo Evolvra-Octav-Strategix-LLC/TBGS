@@ -728,7 +728,6 @@ export default function GratisOfferte() {
                       onSubmit={onSubmit}
                       onBack={() => window.history.back()}
                       isSubmitting={submitMutation.isPending}
-                      isValid={form.formState.isValid}
                     />
                   </Form>
                 </CardContent>
