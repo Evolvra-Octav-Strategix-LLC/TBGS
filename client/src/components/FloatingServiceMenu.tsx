@@ -53,13 +53,7 @@ const serviceOptions: ServiceOption[] = [
     href: '/diensten/dakkapel',
     description: 'Plaatsing van dakkapellen'
   },
-  {
-    id: 'asbestsanering',
-    title: 'Asbestsanering',
-    icon: AlertTriangle,
-    href: '/diensten/asbestsanering',
-    description: 'Veilige verwijdering van asbest'
-  },
+
   {
     id: 'dakgoten',
     title: 'Dakgoten en regenpijpen',
