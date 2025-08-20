@@ -83,6 +83,7 @@ interface FloatingServiceMenuProps {
 export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'services' | 'custom'>('services');
+  const [selectedService, setSelectedService] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close menu when clicking outside
@@ -108,11 +109,12 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
   };
 
   const handleServiceSelect = (service: ServiceOption) => {
-    setIsOpen(false);
-    setStep('services');
+    setSelectedService(service.title);
+    setStep('custom');
   };
 
   const handleCustomRequest = () => {
+    setSelectedService('Iets anders');
     setStep('custom');
   };
 
@@ -199,9 +201,8 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
                 {/* Service Grid - 2 columns with proper spacing */}
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   {serviceOptions.map((service) => (
-                    <Link
+                    <button
                       key={service.id}
-                      href={service.href}
                       onClick={() => handleServiceSelect(service)}
                       className="group"
                     >
@@ -213,7 +214,7 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
                           {service.title}
                         </div>
                       </div>
-                    </Link>
+                    </button>
                   ))}
                 </div>
 
@@ -230,6 +231,14 @@ export function FloatingServiceMenu({ className = '' }: FloatingServiceMenuProps
               </>
             ) : (
               <>
+                {/* Selected Service Display */}
+                {selectedService && (
+                  <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                    <div className="text-sm font-medium text-blue-900">Geselecteerde service:</div>
+                    <div className="text-sm text-blue-700">{selectedService}</div>
+                  </div>
+                )}
+
                 {/* Custom Request Form */}
                 <div className="space-y-4">
                   <div>
