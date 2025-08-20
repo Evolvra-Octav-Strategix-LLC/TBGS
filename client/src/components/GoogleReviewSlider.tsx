@@ -107,14 +107,7 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
   return (
     <div className={`bg-gray-50 py-16 ${className}`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Wat onze klanten zeggen
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ontdek waarom duizenden tevreden klanten TBGS vertrouwen voor hun bouwprojecten
-          </p>
-        </div>
+        
 
         {isLoading ? (
           <div className="flex justify-center items-center py-12">
