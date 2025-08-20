@@ -243,16 +243,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               <>
                 {/* Photo Upload Section */}
                 <div className="flex flex-col items-center justify-center space-y-6 py-8">
-                  {/* Phone Mockup */}
-                  <div className="w-32 h-56 bg-gray-900 rounded-3xl flex items-end justify-center p-4 relative">
-                    <div className="w-full h-8 bg-gray-800 rounded-lg flex items-center justify-center">
-                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                        <div className="w-8 h-8 border-2 border-gray-400 rounded-full"></div>
-                      </div>
-                    </div>
-                    {/* Camera indicators */}
-                    <div className="absolute top-4 left-4 w-2 h-2 bg-green-400 rounded-full"></div>
-                    <div className="absolute top-4 right-4 w-2 h-2 bg-red-400 rounded-full"></div>
+                  {/* Camera Interface Image */}
+                  <div className="w-48 h-80 rounded-2xl overflow-hidden shadow-lg">
+                    <img 
+                      src="/attached_assets/IMG_2694_1755733684734.png" 
+                      alt="Camera interface" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
                   
