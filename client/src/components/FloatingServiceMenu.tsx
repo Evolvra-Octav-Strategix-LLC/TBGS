@@ -124,28 +124,30 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
-            {/* Step Indicators */}
-            <div className="flex items-center justify-center space-x-4 mb-4">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                step === 'services' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
-              }`}>
-                1
-              </div>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
-              }`}>
-                2
-              </div>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 text-gray-600">
-                3
+            {/* Step Indicators and Close Button */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-center space-x-4">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step === 'services' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                }`}>
+                  1
+                </div>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                }`}>
+                  2
+                </div>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium bg-gray-300 text-gray-600">
+                  3
+                </div>
               </div>
               
-              {/* Close Button */}
+              {/* Close Button - Smaller and to the right */}
               <button
                 onClick={toggleForm}
-                className="w-8 h-8 text-gray-500 hover:text-gray-700 flex items-center justify-center transition-colors ml-2"
+                className="w-6 h-6 text-gray-400 hover:text-gray-600 flex items-center justify-center transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
             
@@ -157,15 +159,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 <h3 className="text-lg font-bold text-blue-600 mb-4">
                   helpen?
                 </h3>
-                <div className="flex items-center justify-center space-x-3 bg-blue-600 text-white rounded-2xl py-3 px-4 mx-4">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-sm font-medium">Expert op locatie</div>
-                    <div className="text-xs opacity-90">Gratis inspectie binnen 24u</div>
-                  </div>
-                </div>
               </div>
             ) : (
               <>
