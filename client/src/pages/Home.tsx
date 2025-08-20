@@ -172,10 +172,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors">
-                    <Link href="/totaal-schoorsteen-specialist" className="hover:underline">
-                      <div>Totaal</div>
-                      <div>Schoorsteen</div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors leading-tight">
+                    <Link href="/totaal-schoorsteen-specialist" className="hover:underline block">
+                      <div className="mb-1">Totaal</div>
+                      <div className="mb-1">Schoorsteen</div>
                       <div>Specialist</div>
                     </Link>
                   </h3>
@@ -207,10 +207,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors">
-                    <Link href="/totaal-dak-specialist" className="hover:underline">
-                      <div>Totaal</div>
-                      <div>Dak</div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors leading-tight">
+                    <Link href="/totaal-dak-specialist" className="hover:underline block">
+                      <div className="mb-1">Totaal</div>
+                      <div className="mb-1">Dak</div>
                       <div>Specialist</div>
                     </Link>
                   </h3>
@@ -242,10 +242,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors">
-                    <Link href="/totaal-onderhoud-specialist" className="hover:underline">
-                      <div>Totaal</div>
-                      <div>Onderhoud</div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors leading-tight">
+                    <Link href="/totaal-onderhoud-specialist" className="hover:underline block">
+                      <div className="mb-1">Totaal</div>
+                      <div className="mb-1">Onderhoud</div>
                       <div>Specialist</div>
                     </Link>
                   </h3>
@@ -277,10 +277,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors">
-                    <Link href="/totaal-bouw-specialist" className="hover:underline">
-                      <div>Totaal</div>
-                      <div>Bouw</div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors leading-tight">
+                    <Link href="/totaal-bouw-specialist" className="hover:underline block">
+                      <div className="mb-1">Totaal</div>
+                      <div className="mb-1">Bouw</div>
                       <div>Specialist</div>
                     </Link>
                   </h3>
