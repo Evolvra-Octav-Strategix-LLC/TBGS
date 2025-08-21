@@ -277,20 +277,6 @@ class EmailService {
                 </table>
               </div>
               
-              ${data.photos.length > 0 ? `
-              <div style="margin-bottom: 25px;">
-                <h3 style="color: #333; margin-bottom: 15px;">Bijgevoegde Foto's</h3>
-                <p style="color: #666; padding: 10px; background: #f9f9f9; border-radius: 4px;">
-                  ${data.photos.length} foto${data.photos.length > 1 ? "'s" : ''} bijgevoegd (zie bijlagen)
-                </p>
-              </div>
-              ` : ''}
-              
-              <div style="margin-top: 30px; padding: 15px; background: #f0f8ff; border-left: 4px solid #0066cc; border-radius: 4px;">
-                <p style="margin: 0; color: #333; font-weight: bold;">Actie vereist:</p>
-                <p style="margin: 5px 0 0 0; color: #666;">Neem binnen 2 uur contact op met de klant.</p>
-              </div>
-              
               <div style="margin-top: 30px; text-align: center; color: #666; font-size: 14px; border-top: 1px solid #eee; padding-top: 20px;">
                 <strong>TBGS B.V.</strong><br>
                 Totaal Bouw Groep Specialisten
