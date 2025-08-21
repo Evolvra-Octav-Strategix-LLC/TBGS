@@ -107,6 +107,10 @@ export function createVCard(c: VCardInput) {
   const country = esc(c.country || "Nederland");
   const adr = `;;${street};${city};${region};${postcode};${country}`;
 
+  // Create Google Maps URL for address
+  const addressForMaps = [street, city, region, postcode, country].filter(Boolean).join(', ');
+  const mapsUrl = addressForMaps ? `https://maps.google.com/maps?q=${encodeURIComponent(addressForMaps)}` : "";
+
   const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -121,6 +125,7 @@ export function createVCard(c: VCardInput) {
       ? fold(`ADR;TYPE=WORK:${adr}`)
       : "",
     fold(`URL:${url}`),
+    mapsUrl ? fold(`URL;TYPE=MAPS:${mapsUrl}`) : "", // Google Maps link
     notes ? fold(`NOTE:${notes}`) : "",
     `REV:${now}`,
     `UID:${uid}`,
@@ -154,11 +159,21 @@ export function createTBGSVCard(formData: {
   let street = "";
   let city = "";
   let postcode = "";
+  let houseNumber = "";
   
   if (formData.address) {
     const addressParts = formData.address.split(',').map(p => p.trim());
     if (addressParts.length >= 2) {
-      street = addressParts[0];
+      // Extract street and house number from first part
+      const streetPart = addressParts[0];
+      const streetMatch = streetPart.match(/^(.+?)\s+(\d+.*?)$/);
+      if (streetMatch) {
+        street = streetMatch[1];
+        houseNumber = streetMatch[2];
+      } else {
+        street = streetPart;
+      }
+      
       const lastPart = addressParts[addressParts.length - 1];
       const postcodeMatch = lastPart.match(/(\d{4}\s*[A-Za-z]{2})/);
       if (postcodeMatch) {
@@ -168,25 +183,51 @@ export function createTBGSVCard(formData: {
         city = lastPart;
       }
     } else {
-      street = formData.address;
+      // Single address string - try to parse
+      const singleMatch = formData.address.match(/^(.+?)\s+(\d+.*?),?\s*(\d{4}\s*[A-Za-z]{2})?\s*(.*)$/);
+      if (singleMatch) {
+        street = singleMatch[1];
+        houseNumber = singleMatch[2];
+        if (singleMatch[3]) postcode = singleMatch[3];
+        if (singleMatch[4]) city = singleMatch[4];
+      } else {
+        street = formData.address;
+      }
     }
   }
 
+  // Create comprehensive notes with all client info
+  let notes = "TBGS B.V. - Uw betrouwbare partner voor alle bouw- en onderhoudswerkzaamheden.\n\n";
+  
+  if (formData.selectedService) {
+    notes += `Service: ${formData.selectedService}\n`;
+  }
+  
+  if (formData.projectDescription) {
+    notes += `Beschrijving: ${formData.projectDescription}\n`;
+  }
+  
+  notes += `\nKlant aangemaakt via TBGS website`;
+
+  // Create comprehensive display name for easy WhatsApp recognition
+  const addressParts = [street, houseNumber, postcode, city].filter(Boolean);
+  const fullDisplayName = [formData.firstName, formData.lastName, ...addressParts].filter(Boolean).join(' ');
+
   return createVCard({
-    givenName: formData.firstName,
-    familyName: formData.lastName,
+    givenName: fullDisplayName, // Full info in firstname for WhatsApp
+    familyName: "", // Keep lastname empty to avoid duplication
+    fullName: fullDisplayName,
     email: formData.email,
-    mobile: formData.phone, // Usually mobile from forms
-    street,
+    mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
+    phone: undefined, // No work number unless provided
+    street: `${street} ${houseNumber}`.trim(),
     city,
     postcode,
     country: "Nederland",
     region: "Noord-Brabant",
-    org: "TBGS B.V. - Totaal Bouw Groep Specialisten",
-    title: `${formData.selectedService || 'Bouw'} Specialist`,
+    org: "TBGS B.V.",
+    title: `${street} ${houseNumber} ${postcode} ${city}`.trim(), // Address in title for quick reference
     url: "https://www.tbgs.nl",
-    notes: formData.projectDescription 
-      ? `Project: ${formData.projectDescription}\n\nTBGS - Uw betrouwbare partner voor alle bouw- en onderhoudswerkzaamheden.`
-      : "TBGS - Uw betrouwbare partner voor alle bouw- en onderhoudswerkzaamheden in Nederland en België."
+    notes
   });
 }
