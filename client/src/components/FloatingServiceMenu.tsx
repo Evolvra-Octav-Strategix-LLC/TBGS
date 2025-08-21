@@ -225,11 +225,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <span className="text-sm">Terug</span>
                 </button>
                 <h3 className="text-lg font-bold text-gray-900">
-                  Details
+                  Vul je gegevens in
                 </h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Beschrijf de klus zo duidelijk mogelijk. Hoe meer informatie je geeft, hoe beter wij je kunnen helpen.
-                </p>
               </>
             )}
           </div>
@@ -369,20 +366,62 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   </div>
                 )}
 
-                {/* Custom Request Form */}
+                {/* Contact Form */}
                 <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Naam
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      placeholder="Naam"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      E-mailadres
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      placeholder="Bijv. email@example.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Telefoonnummer
+                    </label>
+                    <div className="flex">
+                      <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl">
+                        <span className="text-lg">🇳🇱</span>
+                        <span className="ml-1 text-sm text-gray-600">+31</span>
+                      </div>
+                      <input
+                        type="tel"
+                        className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                        placeholder="545 454 548"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Beschrijf je probleem
                     </label>
                     <textarea
-                      className="w-full p-3 border border-gray-200 rounded-xl text-sm resize-none h-24 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      className="w-full p-3 border border-gray-300 rounded-xl text-sm resize-none h-20 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. Ik wil graag..."
                       maxLength={250}
                     />
-                    <div className="text-xs text-gray-500 mt-1 text-right">
-                      Maximaal 250 tekens
-                    </div>
+                  </div>
+
+                  <div className="text-xs text-gray-500 text-center">
+                    Door middel van je inschrijving ga je akkoord met onze{' '}
+                    <span className="text-blue-500 underline">algemene voorwaarden</span> en ons{' '}
+                    <span className="text-blue-500 underline">privacybeleid</span>.
                   </div>
                 </div>
               </>
@@ -427,14 +466,15 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           
           {step === 'custom' && (
             <div className="p-4 border-t border-gray-200">
-              <Link href="/gratis-offerte">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
-                >
-                  Volgende
-                </button>
-              </Link>
+              <button
+                onClick={() => {
+                  // Here you would normally submit the form data
+                  setIsOpen(false);
+                }}
+                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+              >
+                Volgende
+              </button>
             </div>
           )}
         </div>
