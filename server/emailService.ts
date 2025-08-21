@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import { ObjectStorageService } from './objectStorage';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -62,67 +61,25 @@ class EmailService {
       // Prepare attachments for photos
       const attachments: any[] = [];
       
-      // Process photo attachments from object storage URLs
-      if (data.photos && data.photos.length > 0) {
-        for (let i = 0; i < data.photos.length; i++) {
-          const photoUrl = data.photos[i];
-          try {
-            // Convert object storage URL to server-accessible URL
-            let serverUrl = photoUrl;
-            console.log(`Processing photo URL: ${photoUrl}`);
-            
-            if (photoUrl.startsWith('https://storage.googleapis.com/')) {
-              // Use ObjectStorageService to normalize the path
-              const objectStorageService = new ObjectStorageService();
-              const normalizedPath = objectStorageService.normalizeObjectEntityPath(photoUrl);
-              if (normalizedPath.startsWith('/objects/')) {
-                serverUrl = `http://localhost:5000${normalizedPath}`;
-              } else {
-                console.error(`Failed to normalize path for URL: ${photoUrl}, got: ${normalizedPath}`);
-                // Fallback: Extract the object path manually
-                const urlParts = photoUrl.split('/');
-                const bucketIndex = urlParts.findIndex(part => part.includes('repl-default-bucket'));
-                if (bucketIndex !== -1 && bucketIndex < urlParts.length - 1) {
-                  const objectPath = urlParts.slice(bucketIndex + 1).join('/');
-                  serverUrl = `http://localhost:5000/objects/${objectPath}`;
-                }
-              }
-            } else if (!photoUrl.startsWith('http')) {
-              // If it's just a filename, construct the proper object storage path
-              serverUrl = `http://localhost:5000/objects/uploads/${photoUrl}`;
-            }
-
-            console.log(`Downloading image ${i + 1} from:`, serverUrl);
-            
-            // Fetch the image from our server endpoint
-            const response = await fetch(serverUrl);
-            if (response.ok) {
-              const imageBuffer = await response.arrayBuffer();
-              const buffer = Buffer.from(imageBuffer);
-              
-              // Determine content type based on URL or use default
-              let contentType = 'image/jpeg';
-              if (photoUrl.toLowerCase().includes('.png')) {
-                contentType = 'image/png';
-              } else if (photoUrl.toLowerCase().includes('.pdf')) {
-                contentType = 'application/pdf';
-              }
-              
-              attachments.push({
-                filename: `foto_${i + 1}.${contentType === 'image/png' ? 'png' : contentType === 'application/pdf' ? 'pdf' : 'jpg'}`,
-                content: buffer,
-                contentType: contentType
-              });
-              
-              console.log(`Successfully attached image ${i + 1} (${buffer.length} bytes)`);
-            } else {
-              console.error(`Failed to fetch image ${i + 1}:`, response.status, response.statusText);
-            }
-          } catch (error) {
-            console.error(`Error processing photo ${i + 1} (${photoUrl}):`, error);
-          }
-        }
-      }
+      // TODO: Implement actual photo attachments when file upload infrastructure is added
+      // This would require:
+      // 1. Storing uploaded files in a directory or cloud storage
+      // 2. Reading the files as buffers
+      // 3. Adding them to attachments array:
+      // if (data.photos.length > 0) {
+      //   for (const photoPath of data.photos) {
+      //     try {
+      //       const photoBuffer = await fs.readFile(photoPath);
+      //       attachments.push({
+      //         filename: path.basename(photoPath),
+      //         content: photoBuffer,
+      //         contentType: 'image/jpeg'
+      //       });
+      //     } catch (error) {
+      //       console.error(`Error reading photo ${photoPath}:`, error);
+      //     }
+      //   }
+      // }
       
       const mailOptions = {
         from: process.env.GMAIL_USER,
@@ -149,27 +106,27 @@ class EmailService {
               </p>
               
               <div style="margin-bottom: 25px;">
-                <h3 style="color: #333; margin-bottom: 15px;">📋 Klantgegevens</h3>
-                <table style="width: 100%; border-collapse: collapse; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden;">
-                  <tr style="background-color: #f8fafc;">
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: bold; width: 130px; background-color: #f1f5f9;">Naam:</td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #1e293b; font-weight: 600;">${data.firstName} ${data.lastName}</td>
+                <h3 style="color: #333; margin-bottom: 15px;">Klantgegevens</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Naam:</td>
+                    <td style="padding: 8px 0;">${data.firstName} ${data.lastName}</td>
                   </tr>
                   <tr>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: bold; background-color: #f1f5f9;">E-mail:</td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #1e293b;"><a href="mailto:${data.email}" style="color: #0f766e; text-decoration: none; font-weight: 500;">${data.email}</a></td>
-                  </tr>
-                  <tr style="background-color: #f8fafc;">
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: bold; background-color: #f1f5f9;">Telefoon:</td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #1e293b;"><a href="tel:${data.phone}" style="color: #0f766e; text-decoration: none; font-weight: 500;">${data.phone}</a></td>
+                    <td style="padding: 8px 0; font-weight: bold;">Adres:</td>
+                    <td style="padding: 8px 0;"><a href="https://maps.google.com/maps?q=${encodeURIComponent(data.address)}" target="_blank" style="color: #0066cc; text-decoration: none;">${data.address}</a></td>
                   </tr>
                   <tr>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; font-weight: bold; background-color: #f1f5f9;">Adres:</td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${this.createAddressLink(data.address)}</td>
+                    <td style="padding: 8px 0; font-weight: bold;">Email:</td>
+                    <td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #0066cc; text-decoration: none;">${data.email}</a></td>
                   </tr>
-                  <tr style="background-color: #f8fafc;">
-                    <td style="padding: 12px; color: #475569; font-weight: bold; background-color: #f1f5f9;">Contact voorkeur:</td>
-                    <td style="padding: 12px; color: #1e293b; font-weight: 500;">${data.contactPreference}</td>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Telefoon:</td>
+                    <td style="padding: 8px 0;"><a href="tel:${data.phone}" style="color: #0066cc; text-decoration: none;">${data.phone}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Contact voorkeur:</td>
+                    <td style="padding: 8px 0;">${data.contactPreference}</td>
                   </tr>
                 </table>
               </div>
