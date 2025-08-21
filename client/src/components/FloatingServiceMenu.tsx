@@ -729,7 +729,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <button
           onClick={toggleForm}
           type="button"
-          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
+          className="bg-tbgs-navy hover:bg-tbgs-blue active:bg-blue-800 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
           style={{ zIndex: 9999 }}
         >
           {/* Avatar Icon */}
