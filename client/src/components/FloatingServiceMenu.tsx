@@ -255,7 +255,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
       {/* Service Form Modal - More compact */}
       {isOpen && (
-        <div className="floating-service-form absolute bottom-0 right-0 w-80 md:w-96 lg:w-[420px] max-w-[85vw] h-[75vh] max-h-[500px] md:max-h-[600px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col relative z-[110]">
+        <div className="floating-service-form absolute bottom-0 right-0 w-80 md:w-96 lg:w-[420px] max-w-[85vw] h-[85vh] max-h-[650px] md:max-h-[600px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col relative z-[110]">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
             {/* Step Indicators and Close Button */}
