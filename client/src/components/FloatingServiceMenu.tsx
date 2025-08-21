@@ -211,6 +211,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     if (step === 'description' && addressInputRef.current) {
       loadGoogleMapsAPI().then(() => {
         if (addressInputRef.current && window.google?.maps?.places) {
+          // Clear any existing autocomplete instances on other inputs
+          document.querySelectorAll('input[data-no-places="true"]').forEach((input) => {
+            if (input.getAttribute('autocomplete') === 'off') {
+              input.setAttribute('autocomplete', 'off');
+            }
+          });
+
           const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
             types: ['address'],
             componentRestrictions: { country: ['nl', 'be'] },
@@ -487,6 +494,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setAddress(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Bijv. Hoofdstraat 123, Amsterdam"
+                        autoComplete="street-address"
+                        data-places-enabled="true"
                       />
                     </div>
                     
@@ -529,6 +538,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jan"
+                        autoComplete="off"
+                        data-no-places="true"
                       />
                     </div>
                     <div>
@@ -541,6 +552,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jansen"
+                        autoComplete="off"
+                        data-no-places="true"
                       />
                     </div>
                   </div>
@@ -555,6 +568,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
+                      autoComplete="off"
+                      data-no-places="true"
                     />
                   </div>
 
@@ -577,6 +592,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
+                        autoComplete="off"
+                        data-no-places="true"
                       />
                     </div>
                   </div>
