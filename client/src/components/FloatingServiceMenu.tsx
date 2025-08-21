@@ -525,37 +525,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Voorkeur contact
-                      </label>
-                      <select
-                        value={contactPreference}
-                        onChange={(e) => setContactPreference(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      >
-                        <option value="email">E-mail</option>
-                        <option value="whatsapp">WhatsApp</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Prioriteit
-                      </label>
-                      <select
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      >
-                        <option value="low">Laag</option>
-                        <option value="normal">Normaal</option>
-                        <option value="high">Hoog</option>
-                        <option value="urgent">Urgent</option>
-                      </select>
-                    </div>
-                  </div>
-
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       E-mailadres
@@ -589,6 +558,37 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
                       />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Voorkeur contact
+                      </label>
+                      <select
+                        value={contactPreference}
+                        onChange={(e) => setContactPreference(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      >
+                        <option value="email">E-mail</option>
+                        <option value="whatsapp">WhatsApp</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Prioriteit
+                      </label>
+                      <select
+                        value={priority}
+                        onChange={(e) => setPriority(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      >
+                        <option value="low">Laag</option>
+                        <option value="normal">Normaal</option>
+                        <option value="high">Hoog</option>
+                        <option value="urgent">Urgent</option>
+                      </select>
                     </div>
                   </div>
 
