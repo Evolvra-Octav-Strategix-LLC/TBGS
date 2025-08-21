@@ -93,7 +93,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [projectDescription, setProjectDescription] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [contactPreference, setContactPreference] = useState('email');
+  const [contactPreference, setContactPreference] = useState('whatsapp');
   const [priority, setPriority] = useState('normal');
   const [phoneCountry, setPhoneCountry] = useState('nl');
   const [email, setEmail] = useState('');
@@ -659,10 +659,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
-                        autoComplete="off"
+                        autoComplete="nope"
                         id="phone-input"
                         name="phone"
                         data-form-type="tel"
+                        role="textbox"
+                        aria-autocomplete="none"
                       />
                     </div>
                   </div>

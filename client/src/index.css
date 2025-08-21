@@ -94,19 +94,23 @@
     box-shadow: inset 0 0 0 2px rgb(59 130 246 / 0.2) !important;
   }
 
-  /* Completely hide Google Places suggestions globally by default */
+  /* Hide Google Places suggestions by default, but allow them when needed */
   .pac-container {
+    z-index: 9999 !important;
+  }
+
+  /* Hide Google Places when NOT on description step */
+  body:not([data-step="description"]) .pac-container {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
   }
 
-  /* Only show Google Places when on description step with address field */
+  /* Show Google Places ONLY when on description step */
   body[data-step="description"] .pac-container {
     display: block !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    z-index: 9999 !important;
   }
 
   /* Hide Google branding and "powered by Google" text */
