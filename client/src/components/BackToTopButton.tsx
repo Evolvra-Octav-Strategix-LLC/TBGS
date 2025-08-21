@@ -36,17 +36,11 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-3 left-3 z-40 bg-gray-600 hover:bg-gray-700 active:bg-gray-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none ${className}`}
+      className={`fixed bottom-3 left-3 z-40 bg-gradient-to-br from-tbgs-navy to-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center group ${className}`}
       aria-label="Terug naar boven"
       title="Terug naar boven"
-      style={{ zIndex: 9999 }}
     >
-      {/* Icon Container */}
-      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-        <ChevronUp className="w-4 h-4" />
-      </div>
-      {/* Text */}
-      <span className="text-sm font-medium whitespace-nowrap">Terug naar boven</span>
+      <ChevronUp className="w-5 h-5 group-hover:animate-bounce" />
     </button>
   );
 }
