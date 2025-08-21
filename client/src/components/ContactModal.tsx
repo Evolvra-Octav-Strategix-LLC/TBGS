@@ -67,6 +67,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
+      console.log("Submitting contact form with uploadedFiles:", uploadedFiles);
       const response = await apiRequest("POST", "/api/contact", {
         ...data,
         uploadedFiles,
@@ -359,7 +360,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <FileImage className="w-5 h-5 text-tbgs-navy" />
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700" title={file}>
                         Bestand {index + 1}
                       </span>
                     </div>

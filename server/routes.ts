@@ -118,6 +118,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Convert uploadedFiles to photos array
       const photosArray: string[] = Array.isArray(uploadedFiles) ? uploadedFiles.map(String) : [];
       
+      console.log('Contact form uploadedFiles received:', uploadedFiles);
+      console.log('Processed photosArray:', photosArray);
+      
       // Transform contact data to email format
       const emailData = {
         firstName: validatedData.firstName,
