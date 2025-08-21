@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 
 interface EmailData {
   selectedService: string;
@@ -14,12 +15,80 @@ interface EmailData {
   contactPreference: string;
   submittedAt: Date;
   formType?: 'popup' | 'offerte';
+  files?: FileUpload[]; // Voor multer uploads
 }
 
-interface Attachment {
-  filename: string;
-  content: Buffer;
-  contentType: string;
+interface FileUpload {
+  path?: string;
+  buffer?: Buffer;
+  originalname?: string;
+  filename?: string;
+  mimetype?: string;
+  size?: number;
+}
+
+// ---- Config via ENV ----
+const {
+  SMTP_HOST = 'smtp.gmail.com',
+  SMTP_PORT = '587',
+  SMTP_USER = process.env.GMAIL_USER,
+  SMTP_PASS = process.env.GMAIL_APP_PASSWORD,
+  SMTP_SECURE = 'false', // 'true' voor 465
+  MAIL_FROM = process.env.GMAIL_USER,
+  MAIL_TO = process.env.GMAIL_USER, // admin ontvangst
+  MAX_TOTAL_SIZE_MB = '20', // totale attachmentslimiet
+  MAX_PER_FILE_MB = '12',   // per bestand limiet
+} = process.env;
+
+// ---- Mime/Ext whitelist ----
+const ALLOWED_MIME = new Set([
+  'image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif',
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx
+  'application/msword', // .doc
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // .xlsx
+  'application/vnd.ms-excel', // .xls
+  'text/plain'
+]);
+
+const BLOCKED_EXT = new Set([
+  '.exe','.bat','.cmd','.sh','.ps1','.js','.mjs','.cjs','.scr','.jar','.dll','.msi','.apk'
+]);
+
+// ---- Helpers ----
+const toBytes = (mb: string) => Number(mb) * 1024 * 1024;
+
+function isAllowedFile(filePathOrName: string, mimetype?: string): boolean {
+  const ext = path.extname(filePathOrName || '').toLowerCase();
+  if (BLOCKED_EXT.has(ext)) return false;
+  if (mimetype && ALLOWED_MIME.has(mimetype)) return true;
+  // fallback voor onbekende mimetype: alleen veilig als extensie duidelijk is
+  const SAFE_EXT = new Set(['.jpg','.jpeg','.png','.webp','.gif','.pdf','.doc','.docx','.xls','.xlsx','.txt']);
+  return SAFE_EXT.has(ext);
+}
+
+function hashName(name: string): string {
+  const base = `${Date.now()}-${name}`;
+  return base.replace(/[^a-z0-9.\-]+/gi, '_');
+}
+
+// ---- Retry met exponential backoff ----
+async function withRetries<T>(fn: () => Promise<T>, { retries = 3, baseDelayMs = 600 } = {}): Promise<T> {
+  let attempt = 0;
+  let lastErr: any;
+  while (attempt <= retries) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      if (attempt === retries) break;
+      const jitter = Math.floor(Math.random() * 200);
+      const delay = baseDelayMs * Math.pow(2, attempt) + jitter;
+      await new Promise(r => setTimeout(r, delay));
+      attempt++;
+    }
+  }
+  throw lastErr;
 }
 
 class EmailService {
@@ -28,11 +97,13 @@ class EmailService {
   private async getTransporter() {
     if (!this.transporter) {
       this.transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password
-        },
+        host: SMTP_HOST,
+        port: Number(SMTP_PORT),
+        secure: SMTP_SECURE === 'true',
+        auth: SMTP_USER && SMTP_PASS ? { 
+          user: SMTP_USER, 
+          pass: SMTP_PASS 
+        } : undefined,
       });
     }
     return this.transporter;
@@ -52,41 +123,109 @@ class EmailService {
     return formType === 'offerte' ? 'Offerte Aanvraag' : 'Service Aanvraag';
   }
 
+  /**
+   * Stuur e-mail met attachments (uploads).
+   */
+  async sendEmailWithAttachments(opts: {
+    subject: string;
+    html: string;
+    text?: string;
+    files?: FileUpload[];
+    to?: string;
+    from?: string;
+    meta?: Record<string, any>;
+  }) {
+    const {
+      subject,
+      html,
+      text,
+      files = [],
+      to = MAIL_TO,
+      from = MAIL_FROM,
+      meta = {}
+    } = opts;
+
+    if (!subject || !html) {
+      throw new Error('emailservice: subject en html zijn verplicht.');
+    }
+    if (!to) throw new Error('emailservice: MAIL_TO ontbreekt (env of opts).');
+    if (!from) throw new Error('emailservice: MAIL_FROM ontbreekt (env of opts).');
+
+    // Filter & validatie attachments
+    const perFileLimit = toBytes(MAX_PER_FILE_MB);
+    const totalLimit = toBytes(MAX_TOTAL_SIZE_MB);
+    let total = 0;
+
+    const attachments: any[] = [];
+
+    for (const f of files) {
+      const name = hashName(f.originalname || f.filename || 'upload.bin');
+      const mimetype = f.mimetype || 'application/octet-stream';
+      const size = typeof f.size === 'number'
+        ? f.size
+        : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
+
+      if (!isAllowedFile(f.originalname || f.path || name, mimetype)) {
+        console.warn(`emailservice: blocked/unknown file type: ${f.originalname || f.path}`);
+        continue;
+      }
+
+      if (size > perFileLimit) {
+        console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
+        continue;
+      }
+      if (total + size > totalLimit) {
+        console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
+        continue;
+      }
+
+      // Attachment via stream indien mogelijk
+      if (f.path && fs.existsSync(f.path)) {
+        attachments.push({
+          filename: name,
+          contentType: mimetype,
+          content: fs.createReadStream(f.path),
+        });
+      } else if (f.buffer) {
+        attachments.push({
+          filename: name,
+          contentType: mimetype,
+          content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
+        });
+      } else {
+        console.warn(`emailservice: onbekend file input, skip: ${f.originalname || 'unnamed'}`);
+        continue;
+      }
+
+      total += size;
+    }
+
+    // Verrijk HTML met metadata (optioneel)
+    const metaBlock = Object.keys(meta).length
+      ? `<hr /><p><strong>Metadata</strong></p><ul>${Object.entries(meta).map(([k,v]) => `<li><b>${k}:</b> ${String(v ?? '')}</li>`).join('')}</ul>`
+      : '';
+
+    const transporter = await this.getTransporter();
+
+    const mailOptions = {
+      from,
+      to,
+      subject,
+      text: text || html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 1000),
+      html: `${html}${metaBlock}`,
+      attachments,
+    };
+
+    const info = await withRetries(() => transporter.sendMail(mailOptions), { retries: 3, baseDelayMs: 750 });
+    return info;
+  }
+
   async sendNotificationEmail(data: EmailData) {
     try {
-      const transporter = await this.getTransporter();
       const formIcon = this.getFormTypeIcon(data.formType);
       const formTypeName = this.getFormTypeName(data.formType);
       
-      // Prepare attachments for photos
-      const attachments: any[] = [];
-      
-      // TODO: Implement actual photo attachments when file upload infrastructure is added
-      // This would require:
-      // 1. Storing uploaded files in a directory or cloud storage
-      // 2. Reading the files as buffers
-      // 3. Adding them to attachments array:
-      // if (data.photos.length > 0) {
-      //   for (const photoPath of data.photos) {
-      //     try {
-      //       const photoBuffer = await fs.readFile(photoPath);
-      //       attachments.push({
-      //         filename: path.basename(photoPath),
-      //         content: photoBuffer,
-      //         contentType: 'image/jpeg'
-      //       });
-      //     } catch (error) {
-      //       console.error(`Error reading photo ${photoPath}:`, error);
-      //     }
-      //   }
-      // }
-      
-      const mailOptions = {
-        from: process.env.GMAIL_USER,
-        to: process.env.NOTIFICATION_EMAIL || process.env.GMAIL_USER,
-        subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
-        attachments: attachments,
-        html: `
+      const html = `
           <!DOCTYPE html>
           <html>
           <head>
@@ -166,10 +305,19 @@ class EmailService {
             </div>
           </body>
           </html>
-        `,
-      };
+      `;
 
-      await transporter.sendMail(mailOptions);
+      // Gebruik nieuwe attachment functionaliteit
+      await this.sendEmailWithAttachments({
+        subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
+        html,
+        files: data.files || [],
+        meta: { 
+          ip: 'server', 
+          formType: data.formType 
+        }
+      });
+
       console.log('Notification email sent successfully');
     } catch (error) {
       console.error('Error sending notification email:', error);

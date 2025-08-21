@@ -6,6 +6,8 @@ import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 import { db } from "./db";
 import { serviceRequests, insertServiceRequestSchema } from "@shared/schema";
 import { emailService } from "./emailService";
+import multer from 'multer';
+import fs from 'fs';
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -39,14 +41,28 @@ const offerteFormSchema = z.object({
   nieuwsbrief: z.boolean().optional(),
 });
 
+// Multer setup voor file uploads
+const upload = multer({
+  dest: 'tmp/uploads',
+  limits: {
+    fileSize: 12 * 1024 * 1024, // 12MB per file
+    files: 8
+  },
+  fileFilter: (req, file, cb) => {
+    // Voorfilter (extra veilig, echte check zit ook in emailservice)
+    const ok = /^(image\/(jpe?g|png|gif|webp)|application\/pdf|text\/plain|application\/(msword|vnd.openxmlformats-officedocument\.(wordprocessingml\.document|spreadsheetml\.sheet)))/i.test(file.mimetype);
+    cb(null, ok);
+  }
+});
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Google Maps API key endpoint
   app.get("/api/google-maps-key", (req, res) => {
     res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY || '' });
   });
 
-  // Service request submission endpoint
-  app.post("/api/service-request", async (req, res) => {
+  // Service request submission endpoint met file upload support
+  app.post("/api/service-request", upload.array('files', 8), async (req, res) => {
     try {
       // Validate request body
       const validatedData = insertServiceRequestSchema.parse(req.body);
@@ -60,13 +76,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         photos: photosArray
       }).returning();
       
-      // Send notification email to admin
+      // Send notification email to admin met attachments
       try {
         await emailService.sendNotificationEmail({
           ...validatedData,
           photos: photosArray,
           submittedAt: savedRequest.submittedAt || new Date(),
-          formType: 'popup' as const
+          formType: 'popup' as const,
+          files: req.files as any[] || []
         });
       } catch (emailError) {
         console.error('Failed to send notification email:', emailError);
@@ -105,31 +122,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false, 
         message: "Er is een fout opgetreden. Probeer het later opnieuw." 
       });
+    } finally {
+      // tmp bestanden opruimen
+      for (const f of (req.files as any[] || [])) {
+        try { fs.unlinkSync(f.path); } catch {}
+      }
     }
   });
 
-  // Contact form submission endpoint
-  app.post("/api/contact", async (req, res) => {
+  // Contact form submission endpoint met file upload support
+  app.post("/api/contact", upload.array('files', 8), async (req, res) => {
     try {
       // Validate request body
       const validatedData = contactFormSchema.parse(req.body);
       
-      // Log the contact form submission (in production, you'd save to database or send email)
-      console.log("Contact form submission:", {
-        timestamp: new Date().toISOString(),
-        name: `${validatedData.firstName} ${validatedData.lastName}`,
+      // Transform contact data to email format
+      const emailData = {
+        firstName: validatedData.firstName,
+        lastName: validatedData.lastName,
         email: validatedData.email,
         phone: validatedData.phone,
-        location: validatedData.location,
-        serviceType: validatedData.serviceType,
-        description: validatedData.description || "Geen beschrijving opgegeven"
-      });
+        selectedService: validatedData.serviceType,
+        address: validatedData.location,
+        projectDescription: validatedData.description || "Geen beschrijving opgegeven",
+        contactPreference: 'E-mail', // default for contact form
+        photos: [] as string[],
+        submittedAt: new Date(),
+        formType: 'popup' as const,
+        files: req.files as any[] || []
+      };
 
-      // In a production environment, you would:
-      // 1. Save to database
-      // 2. Send email notification to company
-      // 3. Send confirmation email to customer
-      // 4. Integrate with CRM system
+      // Send notification email to admin met attachments
+      try {
+        await emailService.sendNotificationEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send notification email:', emailError);
+      }
+
+      // Send thank you email to client
+      try {
+        await emailService.sendThankYouEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send thank you email:', emailError);
+      }
 
       res.status(200).json({ 
         success: true, 
@@ -155,11 +190,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Er is een fout opgetreden bij het versturen van uw bericht. Probeer het opnieuw of neem telefonisch contact op."
         });
       }
+    } finally {
+      // tmp bestanden opruimen
+      for (const f of (req.files as any[] || [])) {
+        try { fs.unlinkSync(f.path); } catch {}
+      }
     }
   });
 
-  // Offerte form submission endpoint
-  app.post("/api/offerte", async (req, res) => {
+  // Offerte form submission endpoint met file upload support
+  app.post("/api/offerte", upload.array('files', 8), async (req, res) => {
     try {
       // Validate request body
       const validatedData = offerteFormSchema.parse(req.body);
@@ -176,7 +216,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         contactPreference: validatedData.contactVoorkeur,
         photos: [] as string[],
         submittedAt: new Date(),
-        formType: 'offerte' as const
+        formType: 'offerte' as const,
+        files: req.files as any[] || []
       };
 
       // Send notification email to admin
@@ -216,6 +257,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           success: false,
           message: "Er is een fout opgetreden bij het versturen van uw offerte aanvraag. Probeer het opnieuw of neem telefonisch contact op."
         });
+      }
+    } finally {
+      // tmp bestanden opruimen
+      for (const f of (req.files as any[] || [])) {
+        try { fs.unlinkSync(f.path); } catch {}
       }
     }
   });
