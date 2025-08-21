@@ -252,7 +252,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
 
   return (
-    <div className={`fixed bottom-3 right-3 z-40 ${className}`} ref={formRef}>
+    <div className={`fixed bottom-3 right-3 ${isOpen ? 'z-[100]' : 'z-40'} ${className}`} ref={formRef}>
       {/* Overlay - Much less fade */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/5 -z-10" />
@@ -260,7 +260,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
       {/* Service Form Modal - More compact */}
       {isOpen && (
-        <div className="floating-service-form absolute -bottom-4 -right-4 w-80 max-w-[85vw] h-[75vh] max-h-[500px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col relative z-[60]">
+        <div className="floating-service-form absolute -bottom-4 -right-4 w-80 max-w-[85vw] h-[75vh] max-h-[500px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col relative z-[110]">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
             {/* Step Indicators and Close Button */}
