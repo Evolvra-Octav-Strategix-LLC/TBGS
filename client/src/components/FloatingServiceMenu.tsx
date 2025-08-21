@@ -2,14 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import { X, MessageCircle, Home, Wrench, Hammer, Building2, Shield, Sun, AlertTriangle, Droplets } from 'lucide-react';
 import cameraImage from '@assets/IMG_2694_1755733684734.png';
+import { GooglePlacesInput } from './GooglePlacesInput';
 
-// Google Maps API type declarations
-declare global {
-  interface Window {
-    google: any;
-    initGoogleMaps: () => void;
-  }
-}
+
 
 interface ServiceOption {
   id: string;
@@ -101,7 +96,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [phone, setPhone] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const addressInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async () => {
     if (!firstName || !lastName || !email || !phone || !address || !projectDescription) {
@@ -251,127 +245,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     };
   }, [step, isOpen]);
 
-  // Load Google Maps API ONLY for step 2.1 (description step) address field
-  useEffect(() => {
-    let autocompleteInstance: any = null;
 
-    // ONLY enable Google Places on description step for address field (step 3)
-    if (step === 'description' && addressInputRef.current) {
-      const loadGoogleMapsAPI = async () => {
-        return new Promise((resolve, reject) => {
-          if (window.google?.maps?.places) {
-            resolve(window.google.maps);
-            return;
-          }
-          
-          // Check if script is already loading
-          if (document.querySelector('script[src*="maps.googleapis.com"]')) {
-            // Wait for it to load
-            const checkLoaded = setInterval(() => {
-              if (window.google?.maps?.places) {
-                clearInterval(checkLoaded);
-                resolve(window.google.maps);
-              }
-            }, 100);
-            setTimeout(() => {
-              clearInterval(checkLoaded);
-              reject(new Error('Google Maps API load timeout'));
-            }, 10000);
-            return;
-          }
-
-          // Fetch API key from server
-          fetch('/api/google-maps-key')
-            .then(res => res.json())
-            .then(data => {
-              const apiKey = data.apiKey;
-              if (!apiKey) {
-                reject(new Error('No API key available'));
-                return;
-              }
-
-              const script = document.createElement('script');
-              script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMaps`;
-              script.async = true;
-              script.defer = true;
-              
-              window.initGoogleMaps = () => {
-                console.log('Google Maps API loaded successfully');
-                resolve(window.google.maps);
-              };
-              
-              script.onerror = () => reject(new Error('Failed to load Google Maps API'));
-              document.head.appendChild(script);
-            })
-            .catch(reject);
-        });
-      };
-
-      loadGoogleMapsAPI().then(() => {
-        // Add small delay to ensure DOM is ready
-        setTimeout(() => {
-          const addressInput = addressInputRef.current;
-          if (addressInput && window.google?.maps?.places) {
-            // Clear any existing autocomplete
-            if (autocompleteInstance && window.google?.maps?.event) {
-              window.google.maps.event.clearInstanceListeners(autocompleteInstance);
-            }
-
-            // Create autocomplete with broader settings for better predictions
-            autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
-              types: ['geocode'],
-              componentRestrictions: { country: ['nl', 'be'] },
-              fields: ['formatted_address', 'address_components', 'geometry', 'name'],
-              strictBounds: false
-            });
-
-            console.log('Google Places Autocomplete initialized for address field');
-            console.log('Autocomplete instance:', autocompleteInstance);
-
-            // Debug: Check if autocomplete is working by monitoring input
-            addressInput.addEventListener('input', (e) => {
-              console.log('Input event detected:', e.target.value);
-              // Trigger autocomplete manually if needed
-              setTimeout(() => {
-                console.log('Checking for pac-container elements:', document.querySelectorAll('.pac-container').length);
-              }, 500);
-            });
-
-            autocompleteInstance.addListener('place_changed', () => {
-              const place = autocompleteInstance!.getPlace();
-              console.log('Place selected:', place);
-              if (place.formatted_address) {
-                setAddress(place.formatted_address);
-                console.log('Address updated:', place.formatted_address);
-              }
-            });
-
-            // Remove Google branding after autocomplete is initialized
-            setTimeout(() => {
-              const logoElements = document.querySelectorAll('.pac-logo, .pac-item:last-child, a[href*="maps.google.com"], [aria-label*="powered by Google"]');
-              logoElements.forEach(el => el.remove());
-              console.log('Google branding removed');
-            }, 1000);
-          }
-        }, 100);
-      }).catch((error) => {
-        console.warn('Google Maps API failed to load:', error);
-      });
-    } else {
-      // For all other steps, ensure no Google Places interference
-      if (autocompleteInstance && window.google?.maps?.event) {
-        window.google.maps.event.clearInstanceListeners(autocompleteInstance);
-        autocompleteInstance = null;
-      }
-    }
-
-    // Cleanup function
-    return () => {
-      if (autocompleteInstance && window.google?.maps?.event) {
-        window.google.maps.event.clearInstanceListeners(autocompleteInstance);
-      }
-    };
-  }, [step]);
 
 
 
@@ -623,27 +497,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       <label className="block text-sm font-semibold text-gray-800 mb-3">
                         Projectadres
                       </label>
-                      <div className="relative">
-                        <input
-                          ref={addressInputRef}
-                          type="text"
-                          value={address}
-                          onChange={(e) => setAddress(e.target.value)}
-                          className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
-                          placeholder="Typ je adres..."
-                          autoComplete="off"
-                          id="address-input"
-                          name="address"
-                          data-form-type="address"
-                          data-places-autocomplete="target"
-                        />
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                        </div>
-                      </div>
+                      <GooglePlacesInput
+                        value={address}
+                        onChange={setAddress}
+                        placeholder="Typ je adres..."
+                        className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
+                      />
                       <p className="text-xs text-gray-500 mt-2">Begin met typen voor adresuggesties</p>
                     </div>
                     
