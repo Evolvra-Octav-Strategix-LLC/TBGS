@@ -169,9 +169,16 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
-  // Track current step on body for CSS targeting
+  // Track current step on body for CSS targeting and manage scroll locking
   useEffect(() => {
     document.body.setAttribute('data-step', step);
+    
+    // Manage body scroll locking for mobile
+    if (isOpen) {
+      document.body.classList.add('form-open');
+    } else {
+      document.body.classList.remove('form-open');
+    }
     
     // If we're NOT on the description step, ensure no Google Places interference
     if (step !== 'description') {
@@ -179,7 +186,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       const pacContainers = document.querySelectorAll('.pac-container');
       pacContainers.forEach(container => container.remove());
     }
-  }, [step]);
+
+    // Cleanup when component unmounts
+    return () => {
+      document.body.classList.remove('form-open');
+    };
+  }, [step, isOpen]);
 
   // Load Google Maps API ONLY for step 2.1 (description step) address field
   useEffect(() => {
@@ -255,6 +267,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               console.log('Address selected:', place.formatted_address);
             }
           });
+
+          // Remove Google branding after autocomplete is initialized
+          setTimeout(() => {
+            const logoElements = document.querySelectorAll('.pac-logo, .pac-item:last-child, a[href*="maps.google.com"], [aria-label*="powered by Google"]');
+            logoElements.forEach(el => el.remove());
+          }, 500);
         }
       }).catch((error) => {
         console.warn('Google Maps API failed to load:', error);
@@ -288,7 +306,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
       {/* Service Form Modal - Lower with matching padding */}
       {isOpen && (
-        <div className="absolute -bottom-4 -right-4 w-96 max-w-[90vw] h-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
+        <div className="floating-service-form absolute -bottom-4 -right-4 w-96 max-w-[90vw] h-[85vh] max-h-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
             {/* Step Indicators and Close Button */}

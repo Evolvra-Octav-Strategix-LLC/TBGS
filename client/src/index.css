@@ -108,6 +108,46 @@
     pointer-events: auto !important;
     z-index: 9999 !important;
   }
+
+  /* Hide Google branding and "powered by Google" text */
+  .pac-logo::after,
+  .pac-logo,
+  .pac-item:last-child,
+  a[href^="https://maps.google.com/maps/api/"],
+  div[style*="color: rgb(153, 153, 153)"],
+  .pac-container .pac-logo {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Hide any text containing "powered by Google" */
+  *:contains("powered by Google"),
+  *[aria-label*="powered by Google"] {
+    display: none !important;
+  }
+
+  /* Prevent mobile viewport scrolling when form is open */
+  body.form-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+  }
+
+  /* Ensure form stays within viewport on mobile */
+  @media (max-height: 700px) {
+    .floating-service-form {
+      height: 90vh !important;
+      max-height: 90vh !important;
+    }
+  }
+
+  @media (max-height: 600px) {
+    .floating-service-form {
+      height: 95vh !important;
+      max-height: 95vh !important;
+    }
+  }
 }
 
 /* Google Places Autocomplete Styling */
