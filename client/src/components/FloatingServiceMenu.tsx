@@ -317,15 +317,25 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               window.google.maps.event.clearInstanceListeners(autocompleteInstance);
             }
 
-            // Create autocomplete ONLY for address field in step 2.1
+            // Create autocomplete with broader settings for better predictions
             autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
-              types: ['address'],
+              types: ['geocode'],
               componentRestrictions: { country: ['nl', 'be'] },
-              fields: ['formatted_address', 'address_components', 'geometry'],
+              fields: ['formatted_address', 'address_components', 'geometry', 'name'],
               strictBounds: false
             });
 
             console.log('Google Places Autocomplete initialized for address field');
+            console.log('Autocomplete instance:', autocompleteInstance);
+
+            // Debug: Check if autocomplete is working by monitoring input
+            addressInput.addEventListener('input', (e) => {
+              console.log('Input event detected:', e.target.value);
+              // Trigger autocomplete manually if needed
+              setTimeout(() => {
+                console.log('Checking for pac-container elements:', document.querySelectorAll('.pac-container').length);
+              }, 500);
+            });
 
             autocompleteInstance.addListener('place_changed', () => {
               const place = autocompleteInstance!.getPlace();
@@ -620,7 +630,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                           value={address}
                           onChange={(e) => setAddress(e.target.value)}
                           className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
-                          placeholder="Type je adres... bijv. Hoofdstraat 123, Amsterdam"
+                          placeholder="Typ je adres..."
                           autoComplete="off"
                           id="address-input"
                           name="address"
@@ -667,74 +677,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       </svg>
                     </button>
                   </div>
-                </div>
-              </>
-            ) : step === 'description' ? (
-              <>
-                <button
-                  onClick={() => setStep('photo')}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  <span className="text-sm">Terug</span>
-                </button>
-
-                {/* Address Input */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-800 mb-3">
-                    Projectadres
-                  </label>
-                  <div className="relative">
-                    <input
-                      ref={addressInputRef}
-                      type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
-                      placeholder="Type je adres... bijv. Hoofdstraat 123, Amsterdam"
-                      autoComplete="off"
-                      id="address-input"
-                      name="address"
-                      data-form-type="address"
-                      data-places-autocomplete="target"
-                    />
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-2">Begin met typen voor adresuggesties</p>
-                </div>
-
-                {/* Project Description */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-800 mb-3">
-                    Projectbeschrijving
-                  </label>
-                  <textarea
-                    value={projectDescription}
-                    onChange={(e) => setProjectDescription(e.target.value)}
-                    className="w-full h-32 p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 resize-none bg-white shadow-sm"
-                    placeholder="Beschrijf je project in detail. Hoe kunnen we je helpen?"
-                    autoComplete="off"
-                    data-form-type="description"
-                    id="description-textarea"
-                    name="description"
-                  />
-                  <p className="text-xs text-gray-500 mt-2">Optioneel - Help ons je project beter te begrijpen</p>
-                </div>
-
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => setStep('custom')}
-                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
-                  >
-                    Volgende
-                  </button>
                 </div>
               </>
             ) : (
