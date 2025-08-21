@@ -124,7 +124,11 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setSelectedFiles(files);
+    setSelectedFiles(prev => [...prev, ...files].slice(0, 5)); // Limit to 5 files
+  };
+
+  const removeFile = (indexToRemove: number) => {
+    setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
 
@@ -287,9 +291,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     <>
                       {/* Photo Count Display */}
                       <div className="text-center mb-6">
-                        <div className="text-lg text-gray-600 mb-1">
-                          Voeg voor de volledigheid van je aanvraag een foto toe
-                        </div>
                         <div className="text-3xl font-bold text-gray-900">
                           {selectedFiles.length} / 5 foto's
                         </div>
@@ -298,15 +299,28 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       {/* Photo Grid */}
                       <div className="grid grid-cols-3 gap-3 w-full max-w-xs">
                         {/* Display selected photos */}
-                        {selectedFiles.slice(0, 5).map((file, index) => (
-                          <div key={index} className="aspect-square bg-gray-100 rounded-xl border-2 border-gray-200 flex items-center justify-center relative overflow-hidden">
-                            <div className="absolute inset-0 bg-blue-500/10 flex items-center justify-center">
-                              <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                              </svg>
+                        {selectedFiles.slice(0, 5).map((file, index) => {
+                          const imageUrl = URL.createObjectURL(file);
+                          return (
+                            <div key={index} className="aspect-square bg-gray-100 rounded-xl border-2 border-gray-200 relative overflow-hidden">
+                              <img 
+                                src={imageUrl} 
+                                alt={`Preview ${index + 1}`}
+                                className="w-full h-full object-cover"
+                                onLoad={() => URL.revokeObjectURL(imageUrl)}
+                              />
+                              {/* Delete button */}
+                              <button
+                                onClick={() => removeFile(index)}
+                                className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center text-xs transition-colors shadow-lg z-10"
+                              >
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                         
                         {/* Add more button if less than 5 photos */}
                         {selectedFiles.length < 5 && (
