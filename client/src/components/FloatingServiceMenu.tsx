@@ -147,7 +147,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         setEmail('');
         setPhone('');
         setContactPreference('whatsapp');
-        setStep('service');
+        setStep('services');
         setIsOpen(false);
       } else {
         alert(result.message || 'Er is een fout opgetreden. Probeer het opnieuw.');
@@ -273,6 +273,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 resolve(window.google.maps);
               }
             }, 100);
+            setTimeout(() => {
+              clearInterval(checkLoaded);
+              reject(new Error('Google Maps API load timeout'));
+            }, 10000);
             return;
           }
 
@@ -292,10 +296,11 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               script.defer = true;
               
               window.initGoogleMaps = () => {
+                console.log('Google Maps API loaded successfully');
                 resolve(window.google.maps);
               };
               
-              script.onerror = reject;
+              script.onerror = () => reject(new Error('Failed to load Google Maps API'));
               document.head.appendChild(script);
             })
             .catch(reject);
@@ -303,39 +308,42 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       };
 
       loadGoogleMapsAPI().then(() => {
-        const addressInput = addressInputRef.current;
-        if (addressInput && window.google?.maps?.places) {
-          // Clear any existing autocomplete
-          if (autocompleteInstance && window.google?.maps?.event) {
-            window.google.maps.event.clearInstanceListeners(autocompleteInstance);
-          }
-
-          // Create autocomplete ONLY for address field in step 2.1
-          autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
-            types: ['address'],
-            componentRestrictions: { country: ['nl', 'be'] },
-            fields: ['formatted_address', 'address_components', 'geometry'],
-            strictBounds: false
-          });
-
-          console.log('Google Places Autocomplete initialized for address field');
-
-          autocompleteInstance.addListener('place_changed', () => {
-            const place = autocompleteInstance!.getPlace();
-            console.log('Place selected:', place);
-            if (place.formatted_address) {
-              setAddress(place.formatted_address);
-              console.log('Address updated:', place.formatted_address);
+        // Add small delay to ensure DOM is ready
+        setTimeout(() => {
+          const addressInput = addressInputRef.current;
+          if (addressInput && window.google?.maps?.places) {
+            // Clear any existing autocomplete
+            if (autocompleteInstance && window.google?.maps?.event) {
+              window.google.maps.event.clearInstanceListeners(autocompleteInstance);
             }
-          });
 
-          // Remove Google branding after autocomplete is initialized
-          setTimeout(() => {
-            const logoElements = document.querySelectorAll('.pac-logo, .pac-item:last-child, a[href*="maps.google.com"], [aria-label*="powered by Google"]');
-            logoElements.forEach(el => el.remove());
-            console.log('Google branding removed');
-          }, 1000);
-        }
+            // Create autocomplete ONLY for address field in step 2.1
+            autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
+              types: ['address'],
+              componentRestrictions: { country: ['nl', 'be'] },
+              fields: ['formatted_address', 'address_components', 'geometry'],
+              strictBounds: false
+            });
+
+            console.log('Google Places Autocomplete initialized for address field');
+
+            autocompleteInstance.addListener('place_changed', () => {
+              const place = autocompleteInstance!.getPlace();
+              console.log('Place selected:', place);
+              if (place.formatted_address) {
+                setAddress(place.formatted_address);
+                console.log('Address updated:', place.formatted_address);
+              }
+            });
+
+            // Remove Google branding after autocomplete is initialized
+            setTimeout(() => {
+              const logoElements = document.querySelectorAll('.pac-logo, .pac-item:last-child, a[href*="maps.google.com"], [aria-label*="powered by Google"]');
+              logoElements.forEach(el => el.remove());
+              console.log('Google branding removed');
+            }, 1000);
+          }
+        }, 100);
       }).catch((error) => {
         console.warn('Google Maps API failed to load:', error);
       });
