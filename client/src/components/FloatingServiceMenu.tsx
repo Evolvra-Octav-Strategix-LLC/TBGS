@@ -106,24 +106,29 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setIsSubmitting(true);
     
     try {
-      const formData = {
-        selectedService,
-        photos: selectedFiles.map(file => file.name), // For now, just store filenames
-        address,
-        projectDescription,
-        firstName,
-        lastName,
-        email,
-        phone: `${phoneCountry === 'nl' ? '+31' : '+32'}${phone}`,
-        contactPreference,
-      };
+      // Create FormData object voor file uploads
+      const formData = new FormData();
+      
+      // Add form fields
+      formData.append('selectedService', selectedService || '');
+      formData.append('address', address);
+      formData.append('projectDescription', projectDescription);
+      formData.append('firstName', firstName);
+      formData.append('lastName', lastName);
+      formData.append('email', email);
+      formData.append('phone', `${phoneCountry === 'nl' ? '+31' : '+32'}${phone}`);
+      formData.append('contactPreference', contactPreference);
+      formData.append('photos', JSON.stringify(selectedFiles.map(file => file.name)));
+      
+      // Add file uploads
+      selectedFiles.forEach((file, index) => {
+        formData.append('files', file);
+      });
 
       const response = await fetch('/api/service-request', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        // Don't set Content-Type header - FormData sets it automatically with boundary
+        body: formData,
       });
 
       const result = await response.json();
