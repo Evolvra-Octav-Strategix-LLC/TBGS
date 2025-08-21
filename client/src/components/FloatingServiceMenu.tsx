@@ -139,6 +139,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       fileInputRef.current.click();
     }
     setShowFileOptions(false);
+    // Auto advance to next step after file selection
+    setTimeout(() => setStep('custom'), 500);
   };
 
   const openGallery = () => {
@@ -147,6 +149,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       fileInputRef.current.click();
     }
     setShowFileOptions(false);
+    // Auto advance to next step after file selection
+    setTimeout(() => setStep('custom'), 500);
   };
 
   return (
@@ -364,6 +368,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                                     fileInputRef.current.click();
                                   }
                                   setShowFileOptions(false);
+                                  setTimeout(() => setStep('custom'), 500);
                                 }}
                                 className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
                               >
@@ -410,12 +415,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                                     fileInputRef.current.click();
                                   }
                                   setShowFileOptions(false);
+                                  setTimeout(() => setStep('custom'), 500);
                                 }}
                                 className="w-full px-6 py-4 flex items-center space-x-4 hover:bg-gray-50 transition-colors"
                               >
                                 <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
                                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13l3 3 7-7" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2V7zm0 0V5a2 0 012-2h6l2 2h6a2 2 0 012 2v2M7 13l3 3 7-7" />
                                   </svg>
                                 </div>
                                 <span className="text-lg text-gray-900">Bestandsverkenner</span>
@@ -427,20 +433,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         {/* Action Buttons */}
                         <div className="p-4 space-y-3">
                           <button
-                            onClick={() => setStep('custom')}
-                            className="w-full bg-green-500 hover:bg-green-600 text-white rounded-2xl py-3 px-4 font-medium transition-colors flex items-center justify-center space-x-2"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span>Foto's selecteren</span>
-                          </button>
-                          
-                          <button
                             onClick={() => setShowFileOptions(false)}
                             className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-2xl py-3 px-4 font-medium transition-colors"
                           >
-                            Overslaan
+                            Annuleren
                           </button>
                         </div>
                       </div>
