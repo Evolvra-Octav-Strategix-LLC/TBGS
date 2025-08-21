@@ -181,12 +181,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     }
 
     if (isOpen) {
-      // Disable body scroll when form is open
-      document.body.style.overflow = 'hidden';
       document.addEventListener('mousedown', handleClickOutside);
       return () => {
-        // Re-enable body scroll when form is closed
-        document.body.style.overflow = 'unset';
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }
@@ -198,9 +194,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setIsOpen(!isOpen);
     if (!isOpen) {
       setStep('services');
-    } else {
-      // Re-enable body scroll when closing form
-      document.body.style.overflow = 'unset';
     }
   };
 
