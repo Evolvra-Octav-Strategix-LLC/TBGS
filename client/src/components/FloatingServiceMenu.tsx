@@ -85,6 +85,11 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [projectDescription, setProjectDescription] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [contactPreference, setContactPreference] = useState('email');
+  const [priority, setPriority] = useState('normal');
+  const [phoneCountry, setPhoneCountry] = useState('nl');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
@@ -144,6 +149,23 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const removeFile = (indexToRemove: number) => {
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
+
+  // Initialize Google Places Autocomplete
+  useEffect(() => {
+    if (step === 'description' && addressInputRef.current && window.google?.maps?.places) {
+      const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
+        types: ['address'],
+        componentRestrictions: { country: ['nl', 'be'] }
+      });
+
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (place.formatted_address) {
+          setAddress(place.formatted_address);
+        }
+      });
+    }
+  }, [step]);
 
 
 
@@ -452,12 +474,45 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     </div>
                   </div>
 
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Voorkeur contact
+                      </label>
+                      <select
+                        value={contactPreference}
+                        onChange={(e) => setContactPreference(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      >
+                        <option value="email">E-mail</option>
+                        <option value="whatsapp">WhatsApp</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Prioriteit
+                      </label>
+                      <select
+                        value={priority}
+                        onChange={(e) => setPriority(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      >
+                        <option value="low">Laag</option>
+                        <option value="normal">Normaal</option>
+                        <option value="high">Hoog</option>
+                        <option value="urgent">Urgent</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       E-mailadres
                     </label>
                     <input
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
                     />
@@ -468,14 +523,20 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       Telefoonnummer
                     </label>
                     <div className="flex">
-                      <div className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl">
-                        <span className="text-lg">🇳🇱</span>
-                        <span className="ml-1 text-sm text-gray-600">+31</span>
-                      </div>
+                      <select
+                        value={phoneCountry}
+                        onChange={(e) => setPhoneCountry(e.target.value)}
+                        className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      >
+                        <option value="nl">🇳🇱 +31</option>
+                        <option value="be">🇧🇪 +32</option>
+                      </select>
                       <input
                         type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                        placeholder="545 454 548"
+                        placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
                       />
                     </div>
                   </div>
