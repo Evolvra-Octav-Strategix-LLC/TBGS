@@ -77,11 +77,12 @@ interface FloatingServiceFormProps {
 
 export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState<'services' | 'photo' | 'custom'>('services');
+  const [step, setStep] = useState<'services' | 'photo' | 'description' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
   const [address, setAddress] = useState('');
+  const [projectDescription, setProjectDescription] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
@@ -217,10 +218,25 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   Voeg voor de volledigheid van je aanvraag een foto toe
                 </p>
               </>
-            ) : (
+            ) : step === 'description' ? (
               <>
                 <button
                   onClick={() => setStep('photo')}
+                  className="flex items-center space-x-3 text-gray-900 hover:text-gray-700 mb-3"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span className="text-lg font-bold">Beschrijf je project</span>
+                </button>
+                <p className="text-sm text-gray-600 mt-1">
+                  Vertel ons meer over je project
+                </p>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setStep('description')}
                   className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -358,18 +374,49 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     onChange={handleFileSelect}
                     className="hidden"
                   />
+                  
+                  {/* Next Button */}
+                  <div className="mt-6">
+                    <button
+                      onClick={() => setStep('description')}
+                      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-xl transition-colors"
+                    >
+                      Volgende
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : step === 'description' ? (
+              <>
+                {/* Project Description Form */}
+                <div className="flex flex-col h-full">
+                  <div className="flex-1">
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Beschrijf je project
+                      </label>
+                      <textarea
+                        value={projectDescription}
+                        onChange={(e) => setProjectDescription(e.target.value)}
+                        className="w-full h-32 p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none"
+                        placeholder="Vertel ons meer over je project. Wat voor werk moet er gebeuren? Wanneer zou je het graag uitgevoerd hebben?"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Next Button */}
+                  <div className="mt-4">
+                    <button
+                      onClick={() => setStep('custom')}
+                      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-xl transition-colors"
+                    >
+                      Volgende
+                    </button>
+                  </div>
                 </div>
               </>
             ) : (
               <>
-                {/* Selected Service Display */}
-                {selectedService && (
-                  <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-xl">
-                    <div className="text-sm font-medium text-blue-900">Geselecteerde service:</div>
-                    <div className="text-sm text-blue-700">{selectedService}</div>
-                  </div>
-                )}
-
                 {/* Contact Form */}
                 <div className="space-y-4">
                   <div>
