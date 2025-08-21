@@ -169,57 +169,69 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
-  // Load Google Maps API and initialize autocomplete
+  // Track current step on body for CSS targeting
+  useEffect(() => {
+    document.body.setAttribute('data-step', step);
+    
+    // If we're NOT on the description step, ensure no Google Places interference
+    if (step !== 'description') {
+      // Clean up any existing Google Places instances
+      const pacContainers = document.querySelectorAll('.pac-container');
+      pacContainers.forEach(container => container.remove());
+    }
+  }, [step]);
+
+  // Load Google Maps API ONLY for step 2.1 (description step) address field
   useEffect(() => {
     let autocompleteInstance: any = null;
 
-    const loadGoogleMapsAPI = async () => {
-      return new Promise((resolve, reject) => {
-        if (window.google?.maps?.places) {
-          resolve(window.google.maps);
-          return;
-        }
-        
-        // Check if script is already loading
-        if (document.querySelector('script[src*="maps.googleapis.com"]')) {
-          // Wait for it to load
-          const checkLoaded = setInterval(() => {
-            if (window.google?.maps?.places) {
-              clearInterval(checkLoaded);
-              resolve(window.google.maps);
-            }
-          }, 100);
-          return;
-        }
-
-        // Fetch API key from server
-        fetch('/api/google-maps-key')
-          .then(res => res.json())
-          .then(data => {
-            const apiKey = data.apiKey;
-            if (!apiKey) {
-              reject(new Error('No API key available'));
-              return;
-            }
-
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMaps`;
-            script.async = true;
-            script.defer = true;
-            
-            window.initGoogleMaps = () => {
-              resolve(window.google.maps);
-            };
-            
-            script.onerror = reject;
-            document.head.appendChild(script);
-          })
-          .catch(reject);
-      });
-    };
-
-    // Only initialize when we're on description step and have the specific address input
+    // ONLY enable Google Places on description step for address field
     if (step === 'description' && addressInputRef.current) {
+      const loadGoogleMapsAPI = async () => {
+        return new Promise((resolve, reject) => {
+          if (window.google?.maps?.places) {
+            resolve(window.google.maps);
+            return;
+          }
+          
+          // Check if script is already loading
+          if (document.querySelector('script[src*="maps.googleapis.com"]')) {
+            // Wait for it to load
+            const checkLoaded = setInterval(() => {
+              if (window.google?.maps?.places) {
+                clearInterval(checkLoaded);
+                resolve(window.google.maps);
+              }
+            }, 100);
+            return;
+          }
+
+          // Fetch API key from server
+          fetch('/api/google-maps-key')
+            .then(res => res.json())
+            .then(data => {
+              const apiKey = data.apiKey;
+              if (!apiKey) {
+                reject(new Error('No API key available'));
+                return;
+              }
+
+              const script = document.createElement('script');
+              script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMaps`;
+              script.async = true;
+              script.defer = true;
+              
+              window.initGoogleMaps = () => {
+                resolve(window.google.maps);
+              };
+              
+              script.onerror = reject;
+              document.head.appendChild(script);
+            })
+            .catch(reject);
+        });
+      };
+
       loadGoogleMapsAPI().then(() => {
         const addressInput = addressInputRef.current;
         if (addressInput && window.google?.maps?.places) {
@@ -228,16 +240,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             window.google.maps.event.clearInstanceListeners(autocompleteInstance);
           }
 
-          // Create new autocomplete instance specifically for the address field ONLY
+          // Create autocomplete ONLY for address field in step 2.1
           autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
             types: ['address'],
             componentRestrictions: { country: ['nl', 'be'] },
             fields: ['formatted_address', 'address_components', 'geometry'],
             strictBounds: true
           });
-
-          // Ensure it only works on this specific element
-          addressInput.setAttribute('data-places-autocomplete', 'enabled');
 
           autocompleteInstance.addListener('place_changed', () => {
             const place = autocompleteInstance!.getPlace();
@@ -250,6 +259,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       }).catch((error) => {
         console.warn('Google Maps API failed to load:', error);
       });
+    } else {
+      // For all other steps, ensure no Google Places interference
+      if (autocompleteInstance && window.google?.maps?.event) {
+        window.google.maps.event.clearInstanceListeners(autocompleteInstance);
+        autocompleteInstance = null;
+      }
     }
 
     // Cleanup function
@@ -560,10 +575,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jan"
-                        autoComplete="off"
+                        autoComplete="nope"
                         id="firstName-input"
                         name="firstName"
                         data-form-type="name"
+                        role="textbox"
+                        aria-autocomplete="none"
                       />
                     </div>
                     <div>
@@ -576,10 +593,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jansen"
-                        autoComplete="off"
+                        autoComplete="nope"
                         id="lastName-input"
                         name="lastName"
                         data-form-type="name"
+                        role="textbox"
+                        aria-autocomplete="none"
                       />
                     </div>
                   </div>
@@ -594,10 +613,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
-                      autoComplete="off"
+                      autoComplete="nope"
                       id="email-input"
                       name="email"
                       data-form-type="email"
+                      role="textbox"
+                      aria-autocomplete="none"
                     />
                   </div>
 
