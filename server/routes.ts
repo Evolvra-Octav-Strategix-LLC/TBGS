@@ -51,14 +51,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate request body
       const validatedData = insertServiceRequestSchema.parse(req.body);
       
+      // Convert photos to proper string array
+      const photosArray: string[] = validatedData.photos ? Array.from(validatedData.photos).map(String) : [];
+      
       // Save to database
-      const [savedRequest] = await db.insert(serviceRequests).values(validatedData).returning();
+      const [savedRequest] = await db.insert(serviceRequests).values({
+        ...validatedData,
+        photos: photosArray
+      }).returning();
       
       // Send notification email to admin
       try {
         await emailService.sendNotificationEmail({
           ...validatedData,
+          photos: photosArray,
           submittedAt: savedRequest.submittedAt || new Date(),
+          formType: 'popup' as const
         });
       } catch (emailError) {
         console.error('Failed to send notification email:', emailError);
@@ -68,7 +76,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       try {
         await emailService.sendThankYouEmail({
           ...validatedData,
+          photos: photosArray,
           submittedAt: savedRequest.submittedAt || new Date(),
+          formType: 'popup' as const
         });
       } catch (emailError) {
         console.error('Failed to send thank you email:', emailError);
@@ -154,29 +164,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate request body
       const validatedData = offerteFormSchema.parse(req.body);
       
-      // Log the offerte submission (in production, you'd save to database or send email)
-      console.log("Offerte form submission:", {
-        timestamp: new Date().toISOString(),
-        name: `${validatedData.voornaam} ${validatedData.achternaam}`,
+      // Transform offerte data to email format
+      const emailData = {
+        firstName: validatedData.voornaam,
+        lastName: validatedData.achternaam,
         email: validatedData.email,
-        telefoon: validatedData.telefoon,
-        adres: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
-        specialisme: validatedData.specialisme,
-        projectType: validatedData.projectType,
+        phone: validatedData.telefoon,
+        selectedService: `${validatedData.specialisme} - ${validatedData.projectType}`,
+        address: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
+        projectDescription: `${validatedData.beschrijving}\n\nProject details:\n- Tijdlijn: ${validatedData.tijdlijn}\n- Budget: ${validatedData.budget || "Niet opgegeven"}`,
+        contactPreference: validatedData.contactVoorkeur,
+        photos: [] as string[],
+        submittedAt: new Date(),
+        formType: 'offerte' as const
+      };
 
-        tijdlijn: validatedData.tijdlijn,
-        budget: validatedData.budget || "Niet opgegeven",
-        beschrijving: validatedData.beschrijving,
-        contactVoorkeur: validatedData.contactVoorkeur,
-        nieuwsbrief: validatedData.nieuwsbrief || false
-      });
+      // Send notification email to admin
+      try {
+        await emailService.sendNotificationEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send offerte notification email:', emailError);
+      }
 
-      // In a production environment, you would:
-      // 1. Save to database
-      // 2. Send email notification to company
-      // 3. Send confirmation email to customer
-      // 4. Integrate with CRM system
-      // 5. Create lead in project management system
+      // Send thank you email to client
+      try {
+        await emailService.sendThankYouEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send offerte thank you email:', emailError);
+      }
 
       res.status(200).json({ 
         success: true, 
