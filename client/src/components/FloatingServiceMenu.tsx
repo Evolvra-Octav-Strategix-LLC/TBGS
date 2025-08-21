@@ -380,7 +380,21 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               <>
                 {/* Project Description Form */}
                 <div className="flex flex-col h-full">
-                  <div className="flex-1">
+                  <div className="flex-1 space-y-4">
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Adres
+                      </label>
+                      <input
+                        ref={addressInputRef}
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                        placeholder="Bijv. Hoofdstraat 123, Amsterdam"
+                      />
+                    </div>
+                    
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Beschrijf je project
@@ -446,20 +460,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         placeholder="545 454 548"
                       />
                     </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Adres
-                    </label>
-                    <input
-                      ref={addressInputRef}
-                      type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      placeholder="Bijv. Hoofdstraat 123, Amsterdam"
-                    />
                   </div>
 
                   <div className="text-xs text-gray-500 text-center">
