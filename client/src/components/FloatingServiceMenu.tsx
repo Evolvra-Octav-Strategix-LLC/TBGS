@@ -103,7 +103,18 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setDeviceType(isMobile ? 'mobile' : 'desktop');
 
     function handleClickOutside(event: MouseEvent) {
-      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      
+      // Don't close if clicking on Google Places dropdown elements
+      if (target && (
+        (target as Element).closest?.('.pac-container') ||
+        (target as Element).classList?.contains('pac-item') ||
+        (target as Element).classList?.contains('pac-matched')
+      )) {
+        return;
+      }
+      
+      if (formRef.current && !formRef.current.contains(target)) {
         setIsOpen(false);
         setStep('services');
       }
@@ -202,13 +213,22 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         if (addressInputRef.current && window.google?.maps?.places) {
           const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
             types: ['address'],
-            componentRestrictions: { country: ['nl', 'be'] }
+            componentRestrictions: { country: ['nl', 'be'] },
+            fields: ['formatted_address', 'address_components', 'geometry']
           });
 
           autocomplete.addListener('place_changed', () => {
             const place = autocomplete.getPlace();
             if (place.formatted_address) {
               setAddress(place.formatted_address);
+              console.log('Address selected:', place.formatted_address);
+              
+              // Keep the form open by preventing the click event from propagating
+              setTimeout(() => {
+                if (addressInputRef.current) {
+                  addressInputRef.current.value = place.formatted_address;
+                }
+              }, 50);
             }
           });
         }
