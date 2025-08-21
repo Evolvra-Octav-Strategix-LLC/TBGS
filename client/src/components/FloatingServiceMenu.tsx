@@ -729,12 +729,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <button
           onClick={toggleForm}
           type="button"
-          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
+          className="bg-white hover:bg-gray-50 active:bg-gray-100 text-black border border-gray-200 rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
           style={{ zIndex: 9999 }}
         >
           {/* Avatar Icon */}
-          <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <MessageCircle className="w-4 h-4" />
+          <div className="w-7 h-7 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <MessageCircle className="w-4 h-4 text-white" />
           </div>
           {/* Text */}
           <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
