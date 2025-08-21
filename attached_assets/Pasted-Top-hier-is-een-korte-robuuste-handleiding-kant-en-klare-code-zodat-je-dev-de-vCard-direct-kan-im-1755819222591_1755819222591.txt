@@ -1,0 +1,268 @@
+Top—hier is een korte, robuuste handleiding + kant‑en‑klare code zodat je dev de vCard direct kan importeren en meesturen vanuit jullie emailService.ts.
+
+⸻
+
+1) Voeg een vCard helper toe
+
+Maak een bestand vcard.ts (TypeScript) en plak dit erin:
+
+// vcard.ts
+import crypto from "crypto";
+
+/** vCard veld-escaping */
+function esc(s: string = "") {
+  return String(s)
+    .replace(/\\/g, "\\\\")
+    .replace(/\n/g, "\\n")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,");
+}
+
+/** vCard line folding (compat met Outlook/Gmail) */
+function fold(line: string) {
+  const bytes = Buffer.from(line, "utf8");
+  if (bytes.length <= 73) return line;
+  let out = "";
+  let i = 0;
+  while (i < bytes.length) {
+    const take = Math.min(73, bytes.length - i);
+    out += Buffer.from(bytes.slice(i, i + take)).toString("utf8");
+    i += take;
+    if (i < bytes.length) out += "\r\n ";
+  }
+  return out;
+}
+
+export type VCardInput = {
+  givenName?: string;
+  familyName?: string;
+  fullName?: string;
+  org?: string;
+  title?: string;
+  email?: string;
+  phone?: string;   // vast werknummer
+  mobile?: string;  // mobiel
+  street?: string;
+  city?: string;
+  region?: string;     // provincie/regio
+  postcode?: string;
+  country?: string;
+  url?: string;
+  notes?: string;
+};
+
+/** Genereer vCard 3.0 als Buffer (CRLF) */
+export function createVCard(c: VCardInput) {
+  const now = new Date()
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d+Z$/, "Z"); // 20250822T120000Z
+  const uid =
+    (crypto as any).randomUUID?.() ??
+    crypto.randomBytes(16).toString("hex");
+
+  const fullName =
+    c.fullName ||
+    [c.givenName, c.familyName].filter(Boolean).join(" ").trim() ||
+    c.org ||
+    "Contact";
+
+  const n = `${esc(c.familyName || "")};${esc(c.givenName || "")};;;`;
+  const fn = esc(fullName);
+  const org = esc(c.org || "TBGS");
+  const title = esc(c.title || "");
+  const email = esc(c.email || "");
+  const phone = esc(c.phone || "");
+  const mobile = esc(c.mobile || "");
+  const url = esc(c.url || "");
+  const notes = esc(c.notes || "");
+
+  const street = esc(c.street || "");
+  const city = esc(c.city || "");
+  const region = esc(c.region || "");
+  const postcode = esc(c.postcode || "");
+  const country = esc(c.country || "");
+  const adr = `;;${street};${city};${region};${postcode};${country}`;
+
+  const lines = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    fold(`N:${n}`),
+    fold(`FN:${fn}`),
+    org ? fold(`ORG:${org}`) : "",
+    title ? fold(`TITLE:${title}`) : "",
+    email ? fold(`EMAIL;TYPE=INTERNET,PREF:${email}`) : "",
+    phone ? fold(`TEL;TYPE=WORK,VOICE:${phone}`) : "",
+    mobile ? fold(`TEL;TYPE=CELL,VOICE:${mobile}`) : "",
+    (street || city || region || postcode || country)
+      ? fold(`ADR;TYPE=WORK:${adr}`)
+      : "",
+    url ? fold(`URL:${url}`) : "",
+    notes ? fold(`NOTE:${notes}`) : "",
+    `REV:${now}`,
+    `UID:${uid}`,
+    "END:VCARD",
+  ].filter(Boolean);
+
+  const vcf = lines.join("\r\n") + "\r\n"; // CRLF verplicht
+  return Buffer.from(vcf, "utf8");
+}
+
+Waarom zo?
+	•	v3.0 → beste compatibiliteit (Gmail/Outlook/Apple).
+	•	Escaping + line‑folding → voorkomt kapotte kaartjes.
+	•	Output is Buffer + CRLF → e‑mailclients herkennen het meteen.
+
+⸻
+
+2) Importeer in emailService.ts en voeg als attachment toe
+
+Voorbeeldintegratie met Nodemailer. Je dev past alleen de attachments aan:
+
+// emailService.ts (relevant fragment)
+import nodemailer from "nodemailer";
+import type { Attachment } from "nodemailer/lib/mailer";
+import { createVCard } from "./vcard";
+
+type SendMailOpts = {
+  to: string | string[];
+  from: string;
+  subject: string;
+  html: string;
+  text?: string;
+  // Uploads van Multer of elders
+  files?: Array<{
+    filename?: string;
+    originalname?: string;
+    mimetype?: string;
+    path?: string;
+    buffer?: Buffer;
+    size?: number;
+  }>;
+  // Lead/contact velden voor vCard:
+  contact?: {
+    givenName?: string;
+    familyName?: string;
+    fullName?: string;
+    email?: string;
+    phone?: string;
+    mobile?: string;
+    street?: string;
+    city?: string;
+    region?: string;
+    postcode?: string;
+    country?: string;
+    org?: string;
+    title?: string;
+    notes?: string;
+    url?: string;
+  };
+};
+
+export async function sendMail(opts: SendMailOpts) {
+  const { to, from, subject, html, text, files = [], contact } = opts;
+
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: process.env.SMTP_USER && process.env.SMTP_PASS
+      ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+      : undefined,
+    // optioneel: DKIM
+    // dkim: { domainName, keySelector, privateKey }
+  });
+
+  // 1) upload-attachments voorbereiden
+  const uploadAttachments: Attachment[] = files
+    .map((f) => {
+      const filename = f.originalname || f.filename || "upload.bin";
+      if (f.path) {
+        return { filename, path: f.path, contentType: f.mimetype };
+      }
+      if (f.buffer) {
+        return { filename, content: f.buffer, contentType: f.mimetype };
+      }
+      return null;
+    })
+    .filter(Boolean) as Attachment[];
+
+  // 2) vCard attachment genereren (alleen als contact is meegegeven)
+  const vcardAttachment: Attachment | undefined = contact
+    ? {
+        filename: "contact.vcf",
+        content: createVCard({
+          ...contact,
+          org: contact.org || "TBGS",
+          url: contact.url || "https://www.tbgs.nl",
+        }),
+        contentType: "text/vcard; charset=utf-8", // of 'text/x-vcard'
+      }
+    : undefined;
+
+  const attachments: Attachment[] = vcardAttachment
+    ? [...uploadAttachments, vcardAttachment]
+    : [...uploadAttachments];
+
+  const info = await transporter.sendMail({
+    from,
+    to,
+    subject,
+    html,
+    text: text || html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 1000),
+    attachments,
+  });
+
+  return info;
+}
+
+
+⸻
+
+3) Aanroepvoorbeeld (bijv. in je route/controller)
+
+// In je Express/Next API handler:
+await sendMail({
+  from: 'TBGS <no-reply@tbgs.nl>',
+  to: 'admin@tbgs.nl',
+  subject: 'Nieuwe lead – Plat dak',
+  html: `
+    <h2>Nieuwe lead</h2>
+    <p><b>Naam:</b> ${req.body.firstName} ${req.body.lastName}</p>
+    <p><b>E-mail:</b> ${req.body.email}</p>
+    <p><b>Tel:</b> ${req.body.phone}</p>
+    <p><b>Adres:</b> ${req.body.street}, ${req.body.postcode} ${req.body.city}</p>
+    <p><b>Bericht:</b><br/>${(req.body.message || '').replace(/\n/g,'<br/>')}</p>
+  `,
+  files: req.files as any, // Multer array
+  contact: {
+    givenName: req.body.firstName,
+    familyName: req.body.lastName,
+    email: req.body.email,
+    phone: req.body.phone,
+    mobile: req.body.mobile,
+    street: req.body.street,
+    city: req.body.city,
+    region: req.body.region,
+    postcode: req.body.postcode,
+    country: req.body.country || 'NL',
+    title: req.body.title,
+    notes: req.body.message,
+  },
+});
+
+Resultaat:
+	•	Alle geüploade bestanden gaan mee als losse attachments.
+	•	Extra bijlage contact.vcf zit erbij → 1 klik in Gmail/Apple/Outlook om op te slaan in contacten/Google Contacts.
+
+⸻
+
+Korte checklist voor je dev
+	•	vcard.ts toevoegen en exporteren.
+	•	emailService.ts attachments uitbreiden met vCard‑buffer.
+	•	MIME: text/vcard; charset=utf-8 (of text/x-vcard).
+	•	CRLF (\r\n) in vCard (zit in helper).
+	•	Form‑velden mappen naar contact (bovenstaand voorbeeld).
+	•	(Optioneel) DKIM/SPF/DMARC juist instellen voor deliverability.
+
+Wil je dat ik dit ook aanpas voor je bestaande exacte field‑namen (zodat je niets hoeft te mappen), stuur me dan even de namen van je formvelden of een voorbeeld payload; dan lever ik het 1‑op‑1 plug‑in‑klaar.

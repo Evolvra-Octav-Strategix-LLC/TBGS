@@ -133,7 +133,6 @@ class EmailService {
     files?: FileUpload[];
     to?: string;
     from?: string;
-    meta?: Record<string, any>;
   }) {
     const {
       subject,
@@ -141,8 +140,7 @@ class EmailService {
       text,
       files = [],
       to = MAIL_TO,
-      from = MAIL_FROM,
-      meta = {}
+      from = MAIL_FROM
     } = opts;
 
     if (!subject || !html) {
@@ -200,11 +198,6 @@ class EmailService {
       total += size;
     }
 
-    // Verrijk HTML met metadata (optioneel)
-    const metaBlock = Object.keys(meta).length
-      ? `<hr /><p><strong>Metadata</strong></p><ul>${Object.entries(meta).map(([k,v]) => `<li><b>${k}:</b> ${String(v ?? '')}</li>`).join('')}</ul>`
-      : '';
-
     const transporter = await this.getTransporter();
 
     const mailOptions = {
@@ -212,7 +205,7 @@ class EmailService {
       to,
       subject,
       text: text || html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 1000),
-      html: `${html}${metaBlock}`,
+      html: html, // Clean HTML without metadata
       attachments,
     };
 
@@ -311,11 +304,8 @@ class EmailService {
       await this.sendEmailWithAttachments({
         subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
         html,
-        files: data.files || [],
-        meta: { 
-          ip: 'server', 
-          formType: data.formType 
-        }
+        files: data.files || []
+        // No metadata in email body anymore
       });
 
       console.log('Notification email sent successfully');
