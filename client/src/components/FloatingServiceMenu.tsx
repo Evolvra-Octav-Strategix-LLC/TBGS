@@ -90,6 +90,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [phoneCountry, setPhoneCountry] = useState('nl');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
@@ -131,6 +134,80 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       };
     }
   }, [isOpen]);
+
+  // Form submission function
+  const submitForm = async () => {
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      // Validate required fields
+      if (!firstName.trim()) throw new Error('Voornaam is verplicht');
+      if (!lastName.trim()) throw new Error('Achternaam is verplicht');
+      if (!email.trim()) throw new Error('E-mailadres is verplicht');
+      if (!phone.trim()) throw new Error('Telefoonnummer is verplicht');
+      if (!address.trim()) throw new Error('Adres is verplicht');
+      if (!selectedService) throw new Error('Service is verplicht');
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) throw new Error('Ongeldig e-mailadres');
+
+      // Phone validation
+      const phoneRegex = phoneCountry === 'nl' ? /^[6]\d{8}$/ : /^[4]\d{8}$/;
+      if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+        throw new Error(`Ongeldig ${phoneCountry === 'nl' ? 'Nederlands' : 'Belgisch'} telefoonnummer`);
+      }
+
+      const formData = new FormData();
+      formData.append('firstName', firstName);
+      formData.append('lastName', lastName);
+      formData.append('email', email);
+      formData.append('phone', `+${phoneCountry === 'nl' ? '31' : '32'}${phone.replace(/\s/g, '')}`);
+      formData.append('address', address);
+      formData.append('service', selectedService);
+      formData.append('projectDescription', projectDescription);
+      formData.append('contactPreference', contactPreference);
+      formData.append('priority', priority);
+
+      // Add files
+      selectedFiles.forEach((file, index) => {
+        formData.append(`file_${index}`, file);
+      });
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Er is een fout opgetreden bij het verzenden');
+      }
+
+      setSubmitSuccess(true);
+      
+      // Reset form after success
+      setTimeout(() => {
+        setIsOpen(false);
+        setStep('services');
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+        setAddress('');
+        setProjectDescription('');
+        setSelectedFiles([]);
+        setContactPreference('email');
+        setPriority('normal');
+        setSubmitSuccess(false);
+      }, 2000);
+
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Er is een onbekende fout opgetreden');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const toggleForm = () => {
     setIsOpen(!isOpen);
@@ -197,7 +274,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             script.async = true;
             script.defer = true;
             
-            window.initGoogleMaps = () => {
+            (window as any).initGoogleMaps = () => {
               resolve(window.google.maps);
             };
             
@@ -530,7 +607,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Voornaam
+                        Voornaam <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -540,11 +617,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         placeholder="Jan"
                         autoComplete="off"
                         data-no-places="true"
+                        required
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Achternaam
+                        Achternaam <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -554,13 +632,14 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         placeholder="Jansen"
                         autoComplete="off"
                         data-no-places="true"
+                        required
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      E-mailadres
+                      E-mailadres <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -570,12 +649,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       placeholder="Bijv. email@example.com"
                       autoComplete="off"
                       data-no-places="true"
+                      required
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefoonnummer
+                      Telefoonnummer <span className="text-red-500">*</span>
                     </label>
                     <div className="flex">
                       <select
@@ -594,6 +674,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
                         autoComplete="off"
                         data-no-places="true"
+                        required
                       />
                     </div>
                   </div>
@@ -676,15 +757,53 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           )}
           
           {step === 'custom' && (
-            <div className="p-4 border-t border-gray-200">
+            <div className="p-4 border-t border-gray-200 space-y-3">
+              {/* Error Message */}
+              {submitError && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-3">
+                  <p className="text-red-700 text-sm font-medium">{submitError}</p>
+                </div>
+              )}
+
+              {/* Success Message */}
+              {submitSuccess && (
+                <div className="bg-green-50 border border-green-200 rounded-xl p-3">
+                  <p className="text-green-700 text-sm font-medium">
+                    Bedankt! Uw aanvraag is succesvol verzonden. We nemen spoedig contact met u op.
+                  </p>
+                </div>
+              )}
+
+              {/* Submit Button */}
               <button
-                onClick={() => {
-                  // Here you would normally submit the form data
-                  setIsOpen(false);
-                }}
-                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+                onClick={submitForm}
+                disabled={isSubmitting || submitSuccess}
+                className={`w-full py-3 px-4 font-medium rounded-2xl transition-all duration-200 flex items-center justify-center space-x-2 ${
+                  submitSuccess 
+                    ? 'bg-green-500 text-white cursor-default'
+                    : isSubmitting
+                    ? 'bg-gray-400 text-white cursor-not-allowed'
+                    : 'bg-green-500 hover:bg-green-600 text-white'
+                }`}
               >
-                Volgende
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Versturen...</span>
+                  </>
+                ) : submitSuccess ? (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Verzonden!</span>
+                  </>
+                ) : (
+                  <span>Offerte verzenden</span>
+                )}
               </button>
             </div>
           )}
