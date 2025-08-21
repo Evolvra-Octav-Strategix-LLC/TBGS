@@ -238,8 +238,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       document.body.classList.remove('form-open');
     }
     
-    // If we're NOT on the photo step, ensure no Google Places interference
-    if (step !== 'photo') {
+    // If we're NOT on the description step, ensure no Google Places interference
+    if (step !== 'description') {
       // Clean up any existing Google Places instances
       const pacContainers = document.querySelectorAll('.pac-container');
       pacContainers.forEach(container => container.remove());
@@ -255,8 +255,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   useEffect(() => {
     let autocompleteInstance: any = null;
 
-    // ONLY enable Google Places on photo step for address field (step 2)
-    if (step === 'photo' && addressInputRef.current) {
+    // ONLY enable Google Places on description step for address field (step 3)
+    if (step === 'description' && addressInputRef.current) {
       const loadGoogleMapsAPI = async () => {
         return new Promise((resolve, reject) => {
           if (window.google?.maps?.places) {
@@ -393,9 +393,14 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   2
                 </div>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'description' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
                 }`}>
                   3
+                </div>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                }`}>
+                  4
                 </div>
               </div>
               
@@ -511,37 +516,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               </>
             ) : step === 'photo' ? (
               <>
-                {/* Address Input First */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-800 mb-3">
-                    Projectadres
-                  </label>
-                  <div className="relative">
-                    <input
-                      ref={addressInputRef}
-                      type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
-                      placeholder="Type je adres... bijv. Hoofdstraat 123, Amsterdam"
-                      autoComplete="off"
-                      id="address-input"
-                      name="address"
-                      data-form-type="address"
-                      data-places-autocomplete="target"
-                    />
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-2">Begin met typen voor adresuggesties</p>
-                </div>
-
                 {/* Photo Upload Section */}
-                <div className="flex flex-col items-center justify-center py-4 min-h-[200px]">
+                <div className="flex flex-col items-center justify-center py-4 min-h-[300px]">
                   {selectedFiles.length === 0 ? (
                     <>
                       {/* Camera Interface Image */}
@@ -693,26 +669,88 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   </div>
                 </div>
               </>
+            ) : step === 'description' ? (
+              <>
+                <button
+                  onClick={() => setStep('photo')}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span className="text-sm">Terug</span>
+                </button>
+
+                {/* Address Input */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-800 mb-3">
+                    Projectadres
+                  </label>
+                  <div className="relative">
+                    <input
+                      ref={addressInputRef}
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
+                      placeholder="Type je adres... bijv. Hoofdstraat 123, Amsterdam"
+                      autoComplete="off"
+                      id="address-input"
+                      name="address"
+                      data-form-type="address"
+                      data-places-autocomplete="target"
+                    />
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Begin met typen voor adresuggesties</p>
+                </div>
+
+                {/* Project Description */}
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-800 mb-3">
+                    Projectbeschrijving
+                  </label>
+                  <textarea
+                    value={projectDescription}
+                    onChange={(e) => setProjectDescription(e.target.value)}
+                    className="w-full h-32 p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 resize-none bg-white shadow-sm"
+                    placeholder="Beschrijf je project in detail. Hoe kunnen we je helpen?"
+                    autoComplete="off"
+                    data-form-type="description"
+                    id="description-textarea"
+                    name="description"
+                  />
+                  <p className="text-xs text-gray-500 mt-2">Optioneel - Help ons je project beter te begrijpen</p>
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setStep('custom')}
+                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+                  >
+                    Volgende
+                  </button>
+                </div>
+              </>
             ) : (
               <>
+                <button
+                  onClick={() => setStep('description')}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span className="text-sm">Terug</span>
+                </button>
+
                 {/* Contact Form */}
                 <div className="space-y-4">
-                  {/* Project Description */}
-                  <div className="mb-4">
-                    <label className="block text-sm font-semibold text-gray-800 mb-3">
-                      Projectbeschrijving
-                    </label>
-                    <textarea
-                      value={projectDescription}
-                      onChange={(e) => setProjectDescription(e.target.value)}
-                      className="w-full h-24 p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none bg-white"
-                      placeholder="Beschrijf je project kort..."
-                      autoComplete="off"
-                      data-form-type="description"
-                      id="description-input"
-                      name="description"
-                    />
-                  </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -860,17 +898,19 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               </button>
               <div className="flex gap-3">
                 <button
-                  onClick={() => setStep('custom')}
+                  onClick={() => setStep('description')}
                   className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-2xl py-3 px-4 font-medium transition-all duration-200"
                 >
-                  Overslaan foto's
+                  Overslaan
                 </button>
-                <button
-                  onClick={() => setStep('custom')}
-                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
-                >
-                  Volgende
-                </button>
+                {selectedFiles.length > 0 && (
+                  <button
+                    onClick={() => setStep('description')}
+                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+                  >
+                    Volgende
+                  </button>
+                )}
               </div>
             </div>
           )}
