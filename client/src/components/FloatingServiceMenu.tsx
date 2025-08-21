@@ -668,11 +668,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       <select
                         value={phoneCountry}
                         onChange={(e) => setPhoneCountry(e.target.value)}
-                        className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 z-50 relative"
-                        style={{ zIndex: 9999, position: 'relative' }}
+                        className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       >
-                        <option value="nl">+31</option>
-                        <option value="be">+32</option>
+                        <option value="nl">🇳🇱 +31</option>
+                        <option value="be">🇧🇪 +32</option>
                       </select>
                       <input
                         type="tel"
@@ -698,8 +697,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       <select
                         value={contactPreference}
                         onChange={(e) => setContactPreference(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 z-50 relative"
-                        style={{ zIndex: 9999, position: 'relative' }}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       >
                         <option value="email">E-mail</option>
                         <option value="whatsapp">WhatsApp</option>
@@ -712,8 +710,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       <select
                         value={priority}
                         onChange={(e) => setPriority(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 z-50 relative"
-                        style={{ zIndex: 9999, position: 'relative' }}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       >
                         <option value="low">Laag</option>
                         <option value="normal">Normaal</option>
