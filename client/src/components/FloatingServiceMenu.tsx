@@ -258,9 +258,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <div className="fixed inset-0 bg-black/5 -z-10" />
       )}
 
-      {/* Service Form Modal - Lower with matching padding */}
+      {/* Service Form Modal - 60% width when opened */}
       {isOpen && (
-        <div className="floating-service-form absolute -bottom-4 -right-4 w-96 max-w-[90vw] h-[85vh] max-h-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
+        <div className="floating-service-form absolute -bottom-4 -right-4 w-[60vw] max-w-[400px] min-w-[320px] h-[85vh] max-h-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 flex flex-col">
           {/* Header with Step Indicator */}
           <div className="relative p-4 border-b border-gray-200">
             {/* Step Indicators and Close Button */}
@@ -735,22 +735,24 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         </div>
       )}
 
-      {/* Floating Action Button - Only show when closed */}
-      {!isOpen && (
-        <button
-          onClick={toggleForm}
-          type="button"
-          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none"
-          style={{ zIndex: 9999 }}
-        >
-          {/* Avatar Icon */}
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <MessageCircle className="w-4 h-4" />
-          </div>
-          {/* Text */}
-          <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
-        </button>
-      )}
+      {/* Floating Action Button - Always show but reposition when menu is open */}
+      <button
+        onClick={toggleForm}
+        type="button"
+        className={`bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 px-4 py-3 group cursor-pointer select-none ${
+          isOpen ? 'absolute -bottom-20 right-0' : ''
+        }`}
+        style={{ zIndex: 9999 }}
+      >
+        {/* Avatar Icon */}
+        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <MessageCircle className="w-4 h-4" />
+        </div>
+        {/* Text */}
+        <span className="text-sm font-medium whitespace-nowrap">
+          {isOpen ? 'Sluiten' : 'Offerte aanvragen'}
+        </span>
+      </button>
     </div>
   );
 }
