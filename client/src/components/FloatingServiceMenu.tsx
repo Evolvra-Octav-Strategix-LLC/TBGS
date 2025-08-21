@@ -79,7 +79,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'services' | 'photo' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [showFileOptions, setShowFileOptions] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
   const formRef = useRef<HTMLDivElement>(null);
@@ -126,32 +125,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
     setSelectedFiles(files);
-    setShowFileOptions(false);
   };
 
-  const openFileOptions = () => {
-    setShowFileOptions(true);
-  };
 
-  const openCamera = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.setAttribute('capture', 'environment');
-      fileInputRef.current.click();
-    }
-    setShowFileOptions(false);
-    // Auto advance to next step after file selection
-    setTimeout(() => setStep('custom'), 500);
-  };
-
-  const openGallery = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.removeAttribute('capture');
-      fileInputRef.current.click();
-    }
-    setShowFileOptions(false);
-    // Auto advance to next step after file selection
-    setTimeout(() => setStep('custom'), 500);
-  };
 
   return (
     <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={formRef}>
@@ -478,7 +454,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           {step === 'photo' && (
             <div className="p-4 border-t border-gray-200 space-y-3">
               <button
-                onClick={openFileOptions}
+                onClick={() => {
+                  if (fileInputRef.current) {
+                    fileInputRef.current.removeAttribute('capture');
+                    fileInputRef.current.click();
+                  }
+                  setTimeout(() => setStep('custom'), 500);
+                }}
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
