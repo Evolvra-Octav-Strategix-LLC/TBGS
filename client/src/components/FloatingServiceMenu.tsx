@@ -150,19 +150,70 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
-  // Initialize Google Places Autocomplete
+  // Load Google Maps API and initialize autocomplete
   useEffect(() => {
-    if (step === 'description' && addressInputRef.current && window.google?.maps?.places) {
-      const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
-        types: ['address'],
-        componentRestrictions: { country: ['nl', 'be'] }
-      });
-
-      autocomplete.addListener('place_changed', () => {
-        const place = autocomplete.getPlace();
-        if (place.formatted_address) {
-          setAddress(place.formatted_address);
+    const loadGoogleMapsAPI = async () => {
+      return new Promise((resolve, reject) => {
+        if (window.google?.maps?.places) {
+          resolve(window.google.maps);
+          return;
         }
+        
+        // Check if script is already loading
+        if (document.querySelector('script[src*="maps.googleapis.com"]')) {
+          // Wait for it to load
+          const checkLoaded = setInterval(() => {
+            if (window.google?.maps?.places) {
+              clearInterval(checkLoaded);
+              resolve(window.google.maps);
+            }
+          }, 100);
+          return;
+        }
+
+        // Fetch API key from server
+        fetch('/api/google-maps-key')
+          .then(res => res.json())
+          .then(data => {
+            const apiKey = data.apiKey;
+            if (!apiKey) {
+              reject(new Error('No API key available'));
+              return;
+            }
+
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initGoogleMaps`;
+            script.async = true;
+            script.defer = true;
+            
+            window.initGoogleMaps = () => {
+              resolve(window.google.maps);
+            };
+            
+            script.onerror = reject;
+            document.head.appendChild(script);
+          })
+          .catch(reject);
+      });
+    };
+
+    if (step === 'description' && addressInputRef.current) {
+      loadGoogleMapsAPI().then(() => {
+        if (addressInputRef.current && window.google?.maps?.places) {
+          const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
+            types: ['address'],
+            componentRestrictions: { country: ['nl', 'be'] }
+          });
+
+          autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            if (place.formatted_address) {
+              setAddress(place.formatted_address);
+            }
+          });
+        }
+      }).catch((error) => {
+        console.warn('Google Maps API failed to load:', error);
       });
     }
   }, [step]);

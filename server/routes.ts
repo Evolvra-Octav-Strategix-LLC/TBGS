@@ -37,6 +37,11 @@ const offerteFormSchema = z.object({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Google Maps API key endpoint
+  app.get("/api/google-maps-key", (req, res) => {
+    res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY || '' });
+  });
+
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
