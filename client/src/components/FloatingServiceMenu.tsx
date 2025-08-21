@@ -540,7 +540,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <div className="flex-1 space-y-4">
                     <div className="mb-6">
                       <label className="block text-sm font-semibold text-gray-800 mb-3">
-                        📍 Projectadres
+                        Projectadres
                       </label>
                       <div className="relative">
                         <input
@@ -568,7 +568,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     
                     <div className="mb-4">
                       <label className="block text-sm font-semibold text-gray-800 mb-3">
-                        📝 Projectbeschrijving
+                        Projectbeschrijving
                       </label>
                       <textarea
                         value={projectDescription}
