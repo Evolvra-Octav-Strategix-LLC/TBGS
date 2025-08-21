@@ -252,7 +252,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={formRef}>
+    <div className={`fixed bottom-6 right-6 z-40 ${className}`} ref={formRef}>
       {/* Overlay - Much less fade */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/5 -z-10" />
