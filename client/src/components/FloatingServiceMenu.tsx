@@ -729,19 +729,15 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <button
           onClick={toggleForm}
           type="button"
-          className="bg-white/95 backdrop-blur-lg hover:bg-white active:bg-gray-50 text-slate-800 border border-gray-200/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 ease-out flex items-center justify-center space-x-3 px-5 py-3.5 group cursor-pointer select-none hover:scale-105 hover:-translate-y-0.5"
+          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
           style={{ zIndex: 9999 }}
         >
-          {/* Modern Icon Container */}
-          <div className="relative">
-            <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-110">
-              <MessageCircle className="w-4.5 h-4.5 text-white" />
-            </div>
-            {/* Subtle pulse effect */}
-            <div className="absolute inset-0 w-8 h-8 bg-green-400/30 rounded-xl animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Avatar Icon */}
+          <div className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <MessageCircle className="w-4 h-4" />
           </div>
-          {/* Modern Text */}
-          <span className="text-sm font-semibold whitespace-nowrap tracking-wide">Offerte aanvragen</span>
+          {/* Text */}
+          <span className="text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
         </button>
       )}
     </div>
