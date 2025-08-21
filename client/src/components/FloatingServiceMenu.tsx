@@ -228,12 +228,16 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             window.google.maps.event.clearInstanceListeners(autocompleteInstance);
           }
 
-          // Create new autocomplete instance specifically for the address field
+          // Create new autocomplete instance specifically for the address field ONLY
           autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
             types: ['address'],
             componentRestrictions: { country: ['nl', 'be'] },
-            fields: ['formatted_address', 'address_components', 'geometry']
+            fields: ['formatted_address', 'address_components', 'geometry'],
+            strictBounds: true
           });
+
+          // Ensure it only works on this specific element
+          addressInput.setAttribute('data-places-autocomplete', 'enabled');
 
           autocompleteInstance.addListener('place_changed', () => {
             const place = autocompleteInstance!.getPlace();
@@ -508,6 +512,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         autoComplete="street-address"
                         id="address-input"
                         name="address"
+                        data-form-type="address"
+                        data-places-autocomplete="target"
                       />
                     </div>
                     
@@ -520,6 +526,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setProjectDescription(e.target.value)}
                         className="w-full h-32 p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none"
                         placeholder="Vertel ons meer over je project. Wat voor werk moet er gebeuren? Wanneer zou je het graag uitgevoerd hebben?"
+                        autoComplete="off"
+                        data-form-type="description"
+                        id="description-input"
+                        name="description"
                       />
                     </div>
                   </div>
@@ -550,9 +560,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jan"
-                        autoComplete="given-name"
+                        autoComplete="off"
                         id="firstName-input"
                         name="firstName"
+                        data-form-type="name"
                       />
                     </div>
                     <div>
@@ -565,9 +576,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jansen"
-                        autoComplete="family-name"
+                        autoComplete="off"
                         id="lastName-input"
                         name="lastName"
+                        data-form-type="name"
                       />
                     </div>
                   </div>
@@ -582,9 +594,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
-                      autoComplete="email"
+                      autoComplete="off"
                       id="email-input"
                       name="email"
+                      data-form-type="email"
                     />
                   </div>
 
@@ -607,9 +620,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
-                        autoComplete="tel"
+                        autoComplete="off"
                         id="phone-input"
                         name="phone"
+                        data-form-type="tel"
                       />
                     </div>
                   </div>
