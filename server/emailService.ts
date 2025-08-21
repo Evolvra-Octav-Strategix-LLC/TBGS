@@ -213,13 +213,40 @@ class EmailService {
     if (contactData && (contactData.firstName || contactData.email)) {
       try {
         const vcardBuffer = createTBGSVCard(contactData);
-        const contactName = [contactData.firstName, contactData.lastName].filter(Boolean).join('_') || 'tbgs_contact';
+        
+        // Create comprehensive filename with name, address and postcode
+        let filenameParts = [];
+        
+        // Add name
+        if (contactData.firstName || contactData.lastName) {
+          filenameParts.push([contactData.firstName, contactData.lastName].filter(Boolean).join('_'));
+        }
+        
+        // Parse address for street and house number
+        if (contactData.address) {
+          const addressParts = contactData.address.split(',')[0].trim(); // First part usually contains street + number
+          const cleanAddress = addressParts.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+          if (cleanAddress) {
+            filenameParts.push(cleanAddress);
+          }
+          
+          // Extract postcode if present
+          const postcodeMatch = contactData.address.match(/(\d{4}\s*[A-Za-z]{2})/);
+          if (postcodeMatch) {
+            filenameParts.push(postcodeMatch[1].replace(/\s/g, ''));
+          }
+        }
+        
+        const filename = filenameParts.length > 0 
+          ? `${filenameParts.join('_').toLowerCase().replace(/[^a-z0-9_]/g, '')}_tbgs.vcf`
+          : 'tbgs_contact.vcf';
+        
         attachments.push({
-          filename: `${contactName.toLowerCase().replace(/[^a-z0-9]/g, '_')}_tbgs.vcf`,
+          filename,
           contentType: 'text/vcard; charset=utf-8',
           content: vcardBuffer,
         });
-        console.log(`✓ TBGS vCard toegevoegd voor ${contactData.firstName} ${contactData.lastName}`);
+        console.log(`✓ TBGS vCard toegevoegd: ${filename}`);
       } catch (vcardError) {
         console.warn('vCard generatie gefaald:', vcardError);
       }
