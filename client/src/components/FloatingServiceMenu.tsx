@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import { X, MessageCircle, Home, Wrench, Hammer, Building2, Shield, Sun, AlertTriangle, Droplets } from 'lucide-react';
 import cameraImage from '@assets/IMG_2694_1755733684734.png';
+import { DisablePlacesAutocomplete } from './DisablePlacesAutocomplete';
 
 interface ServiceOption {
   id: string;
@@ -238,7 +239,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
-  // Load Google Maps API and initialize autocomplete
+  // Load Google Maps API and initialize autocomplete ONLY for address field
   useEffect(() => {
     const loadGoogleMapsAPI = async () => {
       return new Promise((resolve, reject) => {
@@ -275,6 +276,14 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             script.defer = true;
             
             (window as any).initGoogleMaps = () => {
+              // Immediately after Google Maps loads, disable it on form fields
+              setTimeout(() => {
+                document.querySelectorAll('input[data-form-type]').forEach(input => {
+                  const htmlInput = input as HTMLInputElement;
+                  htmlInput.setAttribute('autocomplete', 'off');
+                  htmlInput.style.setProperty('-webkit-autofill', 'none', 'important');
+                });
+              }, 100);
               resolve(window.google.maps);
             };
             
@@ -288,12 +297,42 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     if (step === 'description' && addressInputRef.current) {
       loadGoogleMapsAPI().then(() => {
         if (addressInputRef.current && window.google?.maps?.places) {
-          // Clear any existing autocomplete instances on other inputs
-          document.querySelectorAll('input[data-no-places="true"]').forEach((input) => {
-            if (input.getAttribute('autocomplete') === 'off') {
-              input.setAttribute('autocomplete', 'off');
-            }
+          // Completely disable Google Places on non-address input fields
+          document.querySelectorAll('input[data-form-type]').forEach((input) => {
+            const htmlInput = input as HTMLInputElement;
+            
+            // Multiple approaches to prevent Google Places
+            htmlInput.setAttribute('autocomplete', htmlInput.getAttribute('autocomplete') || 'off');
+            
+            // Override any Google Places listeners
+            const originalAddEventListener = htmlInput.addEventListener;
+            htmlInput.addEventListener = function(type: string, listener: any, options?: any) {
+              // Block Google Places specific events
+              if (type === 'focus' && listener?.toString?.().includes('google')) {
+                return;
+              }
+              return originalAddEventListener.call(this, type, listener, options);
+            };
           });
+
+          // Add CSS to completely hide Google Places dropdown for non-address fields
+          if (!document.getElementById('disable-places-css')) {
+            const style = document.createElement('style');
+            style.id = 'disable-places-css';
+            style.textContent = `
+              input[data-form-type="name"] + .pac-container,
+              input[data-form-type="contact"] + .pac-container {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+              }
+              .pac-container {
+                z-index: 10000;
+              }
+            `;
+            document.head.appendChild(style);
+          }
 
           const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
             types: ['address'],
@@ -328,6 +367,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
   return (
     <div className={`fixed bottom-6 right-6 z-50 ${className}`} ref={formRef}>
+      {/* Component to disable Google Places on form fields */}
+      <DisablePlacesAutocomplete />
       {/* Overlay - Much less fade */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/5 -z-10" />
@@ -615,8 +656,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jan"
-                        autoComplete="off"
-                        data-no-places="true"
+                        autoComplete="given-name"
+                        data-form-type="name"
                         required
                       />
                     </div>
@@ -630,8 +671,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jansen"
-                        autoComplete="off"
-                        data-no-places="true"
+                        autoComplete="family-name"
+                        data-form-type="name"
                         required
                       />
                     </div>
@@ -647,8 +688,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
-                      autoComplete="off"
-                      data-no-places="true"
+                      autoComplete="email"
+                      data-form-type="contact"
                       required
                     />
                   </div>
@@ -672,8 +713,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
-                        autoComplete="off"
-                        data-no-places="true"
+                        autoComplete="tel"
+                        data-form-type="contact"
                         required
                       />
                     </div>
