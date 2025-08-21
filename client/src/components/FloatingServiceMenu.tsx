@@ -96,11 +96,69 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [contactPreference, setContactPreference] = useState('whatsapp');
   const [priority, setPriority] = useState('normal');
   const [phoneCountry, setPhoneCountry] = useState('nl');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = async () => {
+    if (!firstName || !lastName || !email || !phone || !address || !projectDescription) {
+      alert('Vul alle velden in');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const formData = {
+        selectedService,
+        photos: selectedFiles.map(file => file.name), // For now, just store filenames
+        address,
+        projectDescription,
+        firstName,
+        lastName,
+        email,
+        phone: `${phoneCountry === 'nl' ? '+31' : '+32'}${phone}`,
+        contactPreference,
+      };
+
+      const response = await fetch('/api/service-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Uw aanvraag is succesvol verzonden! We nemen binnen 24 uur contact met u op.');
+        
+        // Reset form
+        setSelectedService('');
+        setSelectedFiles([]);
+        setAddress('');
+        setProjectDescription('');
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+        setContactPreference('whatsapp');
+        setStep('service');
+        setIsOpen(false);
+      } else {
+        alert(result.message || 'Er is een fout opgetreden. Probeer het opnieuw.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Er is een fout opgetreden. Controleer uw internetverbinding en probeer opnieuw.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Detect device type and close form when clicking outside
   useEffect(() => {
@@ -769,13 +827,26 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           {step === 'custom' && (
             <div className="p-4 border-t border-gray-200">
               <button
-                onClick={() => {
-                  // Here you would normally submit the form data
-                  setIsOpen(false);
-                }}
-                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className={`w-full ${isSubmitting ? 'bg-gray-400' : 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700'} text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2`}
               >
-                Volgende
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Versturen...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Aanvraag versturen</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </>
+                )}
               </button>
             </div>
           )}

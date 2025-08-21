@@ -3,6 +3,9 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
+import { db } from "./db";
+import { serviceRequests, insertServiceRequestSchema } from "@shared/schema";
+import { emailService } from "./emailService";
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -40,6 +43,59 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Google Maps API key endpoint
   app.get("/api/google-maps-key", (req, res) => {
     res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY || '' });
+  });
+
+  // Service request submission endpoint
+  app.post("/api/service-request", async (req, res) => {
+    try {
+      // Validate request body
+      const validatedData = insertServiceRequestSchema.parse(req.body);
+      
+      // Save to database
+      const [savedRequest] = await db.insert(serviceRequests).values(validatedData).returning();
+      
+      // Send notification email to admin
+      try {
+        await emailService.sendNotificationEmail({
+          ...validatedData,
+          submittedAt: savedRequest.submittedAt || new Date(),
+        });
+      } catch (emailError) {
+        console.error('Failed to send notification email:', emailError);
+      }
+
+      // Send thank you email to client
+      try {
+        await emailService.sendThankYouEmail({
+          ...validatedData,
+          submittedAt: savedRequest.submittedAt || new Date(),
+        });
+      } catch (emailError) {
+        console.error('Failed to send thank you email:', emailError);
+      }
+
+      res.status(200).json({ 
+        success: true, 
+        message: "Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.",
+        id: savedRequest.id
+      });
+
+    } catch (error) {
+      console.error('Service request error:', error);
+      
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Controleer uw gegevens en probeer opnieuw.",
+          errors: error.errors 
+        });
+      }
+
+      res.status(500).json({ 
+        success: false, 
+        message: "Er is een fout opgetreden. Probeer het later opnieuw." 
+      });
+    }
   });
 
   // Contact form submission endpoint
