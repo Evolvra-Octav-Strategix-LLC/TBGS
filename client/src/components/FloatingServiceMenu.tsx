@@ -192,7 +192,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
     }
   }, [isOpen]);
 
-  const toggleForm = () => {
+  const toggleForm = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setIsOpen(!isOpen);
     if (!isOpen) {
       setStep('services');
@@ -290,7 +292,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               
               {/* Close Button - Smaller and to the right */}
               <button
-                onClick={toggleForm}
+                onClick={(e) => toggleForm(e)}
                 className="w-6 h-6 text-gray-400 hover:text-gray-600 flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
