@@ -43,7 +43,8 @@ Implementation Style: Execute comprehensive SEO strategy with urgency messaging 
 - **Modal System**: Contact form modal for lead generation.
 - **Responsive Design**: Mobile-first approach with grid layouts and responsive navigation.
 - **Review Slider**: Redesigned to match Google review style.
-- **Modern Offerte Form**: Includes file upload capabilities.
+- **Modern Offerte Form**: Includes robust file upload capabilities with Multer middleware, supporting up to 8 files (12MB each) with secure mime-type validation and automatic cleanup.
+- **Email Service**: Gmail SMTP integration with attachment support, retry logic with exponential backoff, and clean HTML templates.
 - **Kennisbank Redesign**: Modernized with clean card design, "Meest Populair" section, colorful badges, and enhanced search functionality. New high-end SEO articles (groendaken, zonnepanelen) for improved GBP rankings.
 - **Pricing**: All pricing information is explicitly removed from the website.
 - **Terminology**: "Expert" is consistently changed to "specialist" throughout.

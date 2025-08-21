@@ -41,7 +41,17 @@ const offerteFormSchema = z.object({
   nieuwsbrief: z.boolean().optional(),
 });
 
-// Multer setup voor file uploads
+// Utility function to normalize file names (inspired by PHP example)
+const normalizeFileName = (originalName: string): string => {
+  return originalName
+    .toLowerCase()
+    .replace(/\s+/g, '-')           // spaces to dashes
+    .replace(/[^a-z0-9.-]/g, '')    // remove special chars except dots and dashes
+    .replace(/--+/g, '-')           // multiple dashes to single
+    .replace(/^-|-$/g, '');         // remove leading/trailing dashes
+};
+
+// Multer setup voor file uploads met verbeterde file naming
 const upload = multer({
   dest: 'tmp/uploads',
   limits: {
@@ -51,6 +61,10 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     // Voorfilter (extra veilig, echte check zit ook in emailservice)
     const ok = /^(image\/(jpe?g|png|gif|webp)|application\/pdf|text\/plain|application\/(msword|vnd.openxmlformats-officedocument\.(wordprocessingml\.document|spreadsheetml\.sheet)))/i.test(file.mimetype);
+    if (ok) {
+      // Normalize filename for better handling
+      file.originalname = normalizeFileName(file.originalname);
+    }
     cb(null, ok);
   }
 });
@@ -76,6 +90,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         photos: photosArray
       }).returning();
       
+      // Log uploaded files (like PHP example)
+      const uploadedFiles = req.files as any[] || [];
+      if (uploadedFiles.length > 0) {
+        console.log(`✓ ${uploadedFiles.length} bestanden ontvangen voor aanvraag ${savedRequest.id}:`);
+        uploadedFiles.forEach((file, index) => {
+          console.log(`  ${index + 1}. ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
+        });
+      }
+
       // Send notification email to admin met attachments
       try {
         await emailService.sendNotificationEmail({
@@ -83,8 +106,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           photos: photosArray,
           submittedAt: savedRequest.submittedAt || new Date(),
           formType: 'popup' as const,
-          files: req.files as any[] || []
+          files: uploadedFiles
         });
+        console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} met ${uploadedFiles.length} attachments`);
       } catch (emailError) {
         console.error('Failed to send notification email:', emailError);
       }
