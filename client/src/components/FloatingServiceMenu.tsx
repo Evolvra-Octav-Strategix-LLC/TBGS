@@ -3,6 +3,14 @@ import { Link } from 'wouter';
 import { X, MessageCircle, Home, Wrench, Hammer, Building2, Shield, Sun, AlertTriangle, Droplets } from 'lucide-react';
 import cameraImage from '@assets/IMG_2694_1755733684734.png';
 
+// Google Maps API type declarations
+declare global {
+  interface Window {
+    google: any;
+    initGoogleMaps: () => void;
+  }
+}
+
 interface ServiceOption {
   id: string;
   title: string;
@@ -163,6 +171,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
   // Load Google Maps API and initialize autocomplete
   useEffect(() => {
+    let autocompleteInstance: any = null;
+
     const loadGoogleMapsAPI = async () => {
       return new Promise((resolve, reject) => {
         if (window.google?.maps?.places) {
@@ -208,27 +218,28 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
       });
     };
 
+    // Only initialize when we're on description step and have the specific address input
     if (step === 'description' && addressInputRef.current) {
       loadGoogleMapsAPI().then(() => {
-        if (addressInputRef.current && window.google?.maps?.places) {
-          const autocomplete = new window.google.maps.places.Autocomplete(addressInputRef.current, {
+        const addressInput = addressInputRef.current;
+        if (addressInput && window.google?.maps?.places) {
+          // Clear any existing autocomplete
+          if (autocompleteInstance && window.google?.maps?.event) {
+            window.google.maps.event.clearInstanceListeners(autocompleteInstance);
+          }
+
+          // Create new autocomplete instance specifically for the address field
+          autocompleteInstance = new window.google.maps.places.Autocomplete(addressInput, {
             types: ['address'],
             componentRestrictions: { country: ['nl', 'be'] },
             fields: ['formatted_address', 'address_components', 'geometry']
           });
 
-          autocomplete.addListener('place_changed', () => {
-            const place = autocomplete.getPlace();
+          autocompleteInstance.addListener('place_changed', () => {
+            const place = autocompleteInstance!.getPlace();
             if (place.formatted_address) {
               setAddress(place.formatted_address);
               console.log('Address selected:', place.formatted_address);
-              
-              // Keep the form open by preventing the click event from propagating
-              setTimeout(() => {
-                if (addressInputRef.current) {
-                  addressInputRef.current.value = place.formatted_address;
-                }
-              }, 50);
             }
           });
         }
@@ -236,6 +247,13 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         console.warn('Google Maps API failed to load:', error);
       });
     }
+
+    // Cleanup function
+    return () => {
+      if (autocompleteInstance && window.google?.maps?.event) {
+        window.google.maps.event.clearInstanceListeners(autocompleteInstance);
+      }
+    };
   }, [step]);
 
 
@@ -487,6 +505,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setAddress(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Bijv. Hoofdstraat 123, Amsterdam"
+                        autoComplete="street-address"
+                        id="address-input"
+                        name="address"
                       />
                     </div>
                     
@@ -529,6 +550,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jan"
+                        autoComplete="given-name"
+                        id="firstName-input"
+                        name="firstName"
                       />
                     </div>
                     <div>
@@ -541,6 +565,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder="Jansen"
+                        autoComplete="family-name"
+                        id="lastName-input"
+                        name="lastName"
                       />
                     </div>
                   </div>
@@ -555,6 +582,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                       placeholder="Bijv. email@example.com"
+                      autoComplete="email"
+                      id="email-input"
+                      name="email"
                     />
                   </div>
 
@@ -577,6 +607,9 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         onChange={(e) => setPhone(e.target.value)}
                         className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                         placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
+                        autoComplete="tel"
+                        id="phone-input"
+                        name="phone"
                       />
                     </div>
                   </div>

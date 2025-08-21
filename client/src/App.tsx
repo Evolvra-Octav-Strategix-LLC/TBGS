@@ -249,20 +249,20 @@ function Router() {
           <Route path="/nl/son-en-breugel/onderhoud" component={() => <SonEnBreugelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE Location-Service Routes */}
-          <Route path="/be/hamont-achel/daklekkage" component={HamontAchelDaklekkage} />
+          <Route path="/be/hamont-achel/daklekkage" component={() => <HamontAchelDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/retie/daklekkage" component={() => <RetieDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/lommel/renovatie" component={() => <LommelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/hamont-achel/renovatie" component={HamontAchelRenovatie} />
-          <Route path="/be/hamont-achel/onderhoud" component={HamontAchelOnderhoud} />
-          <Route path="/be/hamont/daklekkage" component={HamontDaklekkage} />
-          <Route path="/be/hamont/renovatie" component={HamontRenovatie} />
-          <Route path="/be/hamont/onderhoud" component={HamontOnderhoud} />
-          <Route path="/be/pelt/daklekkage" component={PeltDaklekkage} />
-          <Route path="/be/pelt/renovatie" component={PeltRenovatie} />
-          <Route path="/be/sint-huibrechts-lille/daklekkage" component={SintHuibrechtsLilleDaklekkage} />
+          <Route path="/be/hamont-achel/renovatie" component={() => <HamontAchelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont-achel/onderhoud" component={() => <HamontAchelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/daklekkage" component={() => <HamontDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/renovatie" component={() => <HamontRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/onderhoud" component={() => <HamontOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/daklekkage" component={() => <PeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/renovatie" component={() => <PeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/daklekkage" component={() => <SintHuibrechtsLilleDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/sint-huibrechts-lille/renovatie" component={() => <SintHuibrechtsLilleRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/sint-huibrechts-lille/onderhoud" component={SintHuibrechtsLilleOnderhoud} />
+          <Route path="/be/sint-huibrechts-lille/onderhoud" component={() => <SintHuibrechtsLilleOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/overpelt/daklekkage" component={() => <OverpeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
