@@ -61,25 +61,54 @@ class EmailService {
       // Prepare attachments for photos
       const attachments: any[] = [];
       
-      // TODO: Implement actual photo attachments when file upload infrastructure is added
-      // This would require:
-      // 1. Storing uploaded files in a directory or cloud storage
-      // 2. Reading the files as buffers
-      // 3. Adding them to attachments array:
-      // if (data.photos.length > 0) {
-      //   for (const photoPath of data.photos) {
-      //     try {
-      //       const photoBuffer = await fs.readFile(photoPath);
-      //       attachments.push({
-      //         filename: path.basename(photoPath),
-      //         content: photoBuffer,
-      //         contentType: 'image/jpeg'
-      //       });
-      //     } catch (error) {
-      //       console.error(`Error reading photo ${photoPath}:`, error);
-      //     }
-      //   }
-      // }
+      // Process photo attachments from object storage URLs
+      if (data.photos && data.photos.length > 0) {
+        for (let i = 0; i < data.photos.length; i++) {
+          const photoUrl = data.photos[i];
+          try {
+            // Convert object storage URL to server-accessible URL
+            let serverUrl = photoUrl;
+            if (photoUrl.startsWith('https://storage.googleapis.com/')) {
+              // Extract the object path from the storage URL
+              const urlParts = photoUrl.split('/');
+              const bucketIndex = urlParts.findIndex(part => part === 'repl-default-bucket-' + process.env.REPL_ID);
+              if (bucketIndex !== -1 && bucketIndex < urlParts.length - 1) {
+                const objectPath = urlParts.slice(bucketIndex + 1).join('/');
+                serverUrl = `http://localhost:5000/objects/${objectPath}`;
+              }
+            }
+
+            console.log(`Downloading image ${i + 1} from:`, serverUrl);
+            
+            // Fetch the image from our server endpoint
+            const response = await fetch(serverUrl);
+            if (response.ok) {
+              const imageBuffer = await response.arrayBuffer();
+              const buffer = Buffer.from(imageBuffer);
+              
+              // Determine content type based on URL or use default
+              let contentType = 'image/jpeg';
+              if (photoUrl.toLowerCase().includes('.png')) {
+                contentType = 'image/png';
+              } else if (photoUrl.toLowerCase().includes('.pdf')) {
+                contentType = 'application/pdf';
+              }
+              
+              attachments.push({
+                filename: `foto_${i + 1}.${contentType === 'image/png' ? 'png' : contentType === 'application/pdf' ? 'pdf' : 'jpg'}`,
+                content: buffer,
+                contentType: contentType
+              });
+              
+              console.log(`Successfully attached image ${i + 1} (${buffer.length} bytes)`);
+            } else {
+              console.error(`Failed to fetch image ${i + 1}:`, response.status, response.statusText);
+            }
+          } catch (error) {
+            console.error(`Error processing photo ${i + 1} (${photoUrl}):`, error);
+          }
+        }
+      }
       
       const mailOptions = {
         from: process.env.GMAIL_USER,

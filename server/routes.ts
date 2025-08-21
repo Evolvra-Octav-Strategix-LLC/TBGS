@@ -111,25 +111,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
-      // Validate request body
-      const validatedData = contactFormSchema.parse(req.body);
+      // Validate request body (excluding uploadedFiles from validation)
+      const { uploadedFiles, ...formData } = req.body;
+      const validatedData = contactFormSchema.parse(formData);
       
-      // Log the contact form submission (in production, you'd save to database or send email)
-      console.log("Contact form submission:", {
-        timestamp: new Date().toISOString(),
-        name: `${validatedData.firstName} ${validatedData.lastName}`,
+      // Convert uploadedFiles to photos array
+      const photosArray: string[] = Array.isArray(uploadedFiles) ? uploadedFiles.map(String) : [];
+      
+      // Transform contact data to email format
+      const emailData = {
+        firstName: validatedData.firstName,
+        lastName: validatedData.lastName,
         email: validatedData.email,
         phone: validatedData.phone,
-        location: validatedData.location,
-        serviceType: validatedData.serviceType,
-        description: validatedData.description || "Geen beschrijving opgegeven"
-      });
+        selectedService: validatedData.serviceType,
+        address: validatedData.location,
+        projectDescription: validatedData.description || "Geen beschrijving opgegeven",
+        contactPreference: "Email", // Default for contact form
+        photos: photosArray,
+        submittedAt: new Date(),
+        formType: 'popup' as const
+      };
 
-      // In a production environment, you would:
-      // 1. Save to database
-      // 2. Send email notification to company
-      // 3. Send confirmation email to customer
-      // 4. Integrate with CRM system
+      // Send notification email to admin
+      try {
+        await emailService.sendNotificationEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send contact notification email:', emailError);
+      }
+
+      // Send thank you email to client
+      try {
+        await emailService.sendThankYouEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send contact thank you email:', emailError);
+      }
 
       res.status(200).json({ 
         success: true, 
@@ -161,8 +177,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Offerte form submission endpoint
   app.post("/api/offerte", async (req, res) => {
     try {
-      // Validate request body
-      const validatedData = offerteFormSchema.parse(req.body);
+      // Validate request body (excluding uploadedFiles from validation)
+      const { uploadedFiles, ...formData } = req.body;
+      const validatedData = offerteFormSchema.parse(formData);
+      
+      // Convert uploadedFiles to photos array
+      const photosArray: string[] = Array.isArray(uploadedFiles) ? uploadedFiles.map(String) : [];
       
       // Transform offerte data to email format
       const emailData = {
@@ -174,7 +194,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         address: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
         projectDescription: `${validatedData.beschrijving}\n\nProject details:\n- Tijdlijn: ${validatedData.tijdlijn}\n- Budget: ${validatedData.budget || "Niet opgegeven"}`,
         contactPreference: validatedData.contactVoorkeur,
-        photos: [] as string[],
+        photos: photosArray,
         submittedAt: new Date(),
         formType: 'offerte' as const
       };
