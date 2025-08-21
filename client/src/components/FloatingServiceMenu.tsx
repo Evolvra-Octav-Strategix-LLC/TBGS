@@ -540,16 +540,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
               </>
             ) : (
               <>
-                <button
-                  onClick={() => setStep('description')}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 mb-3"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  <span className="text-sm">Terug</span>
-                </button>
-
                 {/* Contact Form */}
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
