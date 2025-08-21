@@ -283,9 +283,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                         />
                       </div>
                       
-                      <p className="text-center text-gray-600 text-sm mb-4">
-                        Tik op de camera om een foto toe te voegen
-                      </p>
+
                     </>
                   ) : (
                     <>
