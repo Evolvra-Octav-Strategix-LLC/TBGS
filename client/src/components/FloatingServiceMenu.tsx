@@ -356,9 +356,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Contactgegevens
                 </h3>
-                <p className="text-sm text-gray-600">
-                  Bijna klaar! Vul je gegevens hieronder in
-                </p>
               </>
             )}
           </div>
