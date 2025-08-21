@@ -81,8 +81,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
+  const [address, setAddress] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const addressInputRef = useRef<HTMLInputElement>(null);
 
   // Detect device type and close form when clicking outside
   useEffect(() => {
@@ -139,6 +141,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const removeFile = (indexToRemove: number) => {
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
+
+
 
 
 
@@ -409,12 +413,15 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Beschrijf je probleem
+                      Adres
                     </label>
-                    <textarea
-                      className="w-full p-3 border border-gray-300 rounded-xl text-sm resize-none h-20 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      placeholder="Bijv. Ik wil graag..."
-                      maxLength={250}
+                    <input
+                      ref={addressInputRef}
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                      placeholder="Bijv. Hoofdstraat 123, Amsterdam"
                     />
                   </div>
 
