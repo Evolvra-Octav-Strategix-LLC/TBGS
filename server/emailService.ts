@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { createTBGSVCard } from './vcard';
 
 interface EmailData {
   selectedService: string;
@@ -133,6 +134,15 @@ class EmailService {
     files?: FileUpload[];
     to?: string;
     from?: string;
+    contactData?: {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      phone?: string;
+      address?: string;
+      projectDescription?: string;
+      selectedService?: string;
+    };
   }) {
     const {
       subject,
@@ -140,7 +150,8 @@ class EmailService {
       text,
       files = [],
       to = MAIL_TO,
-      from = MAIL_FROM
+      from = MAIL_FROM,
+      contactData
     } = opts;
 
     if (!subject || !html) {
@@ -196,6 +207,22 @@ class EmailService {
       }
 
       total += size;
+    }
+
+    // Add high-end TBGS vCard attachment met logo
+    if (contactData && (contactData.firstName || contactData.email)) {
+      try {
+        const vcardBuffer = createTBGSVCard(contactData);
+        const contactName = [contactData.firstName, contactData.lastName].filter(Boolean).join('_') || 'tbgs_contact';
+        attachments.push({
+          filename: `${contactName.toLowerCase().replace(/[^a-z0-9]/g, '_')}_tbgs.vcf`,
+          contentType: 'text/vcard; charset=utf-8',
+          content: vcardBuffer,
+        });
+        console.log(`✓ TBGS vCard toegevoegd voor ${contactData.firstName} ${contactData.lastName}`);
+      } catch (vcardError) {
+        console.warn('vCard generatie gefaald:', vcardError);
+      }
     }
 
     const transporter = await this.getTransporter();
@@ -286,12 +313,20 @@ class EmailService {
           </html>
       `;
 
-      // Gebruik nieuwe attachment functionaliteit
+      // Gebruik nieuwe attachment functionaliteit met high-end vCard
       await this.sendEmailWithAttachments({
         subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
         html,
-        files: data.files || []
-        // No metadata in email body anymore
+        files: data.files || [],
+        contactData: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          projectDescription: data.projectDescription,
+          selectedService: data.selectedService
+        }
       });
 
       console.log('Notification email sent successfully');
