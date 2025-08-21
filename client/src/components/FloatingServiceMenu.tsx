@@ -459,7 +459,6 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                     fileInputRef.current.removeAttribute('capture');
                     fileInputRef.current.click();
                   }
-                  setTimeout(() => setStep('custom'), 500);
                 }}
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl py-3 px-4 font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
@@ -468,6 +467,22 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 </svg>
                 <span>{deviceType === 'mobile' ? 'Foto\'s toevoegen' : 'Bestanden selecteren'}</span>
               </button>
+              
+              <div className="flex space-x-3 mt-3">
+                <button
+                  onClick={() => setStep('custom')}
+                  className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-2xl py-3 px-4 font-medium transition-colors"
+                >
+                  Overslaan
+                </button>
+                <button
+                  onClick={() => setStep('custom')}
+                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white rounded-2xl py-3 px-4 font-medium transition-colors"
+                  disabled={selectedFiles.length === 0}
+                >
+                  Volgende
+                </button>
+              </div>
               <button
                 onClick={() => setStep('custom')}
                 className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-2xl py-3 px-4 font-medium transition-all duration-200"
