@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import fs from 'fs/promises';
+import path from 'path';
 
 interface EmailData {
   selectedService: string;
@@ -12,6 +14,12 @@ interface EmailData {
   contactPreference: string;
   submittedAt: Date;
   formType?: 'popup' | 'offerte';
+}
+
+interface Attachment {
+  filename: string;
+  content: Buffer;
+  contentType: string;
 }
 
 class EmailService {
@@ -49,12 +57,35 @@ class EmailService {
       const transporter = await this.getTransporter();
       const formIcon = this.getFormTypeIcon(data.formType);
       const formTypeName = this.getFormTypeName(data.formType);
-      const addressLink = this.createAddressLink(data.address);
+      
+      // Prepare attachments for photos
+      const attachments: any[] = [];
+      
+      // TODO: Implement actual photo attachments when file upload infrastructure is added
+      // This would require:
+      // 1. Storing uploaded files in a directory or cloud storage
+      // 2. Reading the files as buffers
+      // 3. Adding them to attachments array:
+      // if (data.photos.length > 0) {
+      //   for (const photoPath of data.photos) {
+      //     try {
+      //       const photoBuffer = await fs.readFile(photoPath);
+      //       attachments.push({
+      //         filename: path.basename(photoPath),
+      //         content: photoBuffer,
+      //         contentType: 'image/jpeg'
+      //       });
+      //     } catch (error) {
+      //       console.error(`Error reading photo ${photoPath}:`, error);
+      //     }
+      //   }
+      // }
       
       const mailOptions = {
         from: process.env.GMAIL_USER,
         to: process.env.NOTIFICATION_EMAIL || process.env.GMAIL_USER,
         subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
+        attachments: attachments,
         html: `
           <!DOCTYPE html>
           <html>
@@ -63,118 +94,74 @@ class EmailService {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Nieuwe ${formTypeName}</title>
           </head>
-          <body style="margin: 0; padding: 0; background-color: #f4f4f4;">
-            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 650px; margin: 20px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
               
-              <!-- Header -->
-              <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 20px; text-align: center; position: relative;">
-                <div style="position: absolute; top: 15px; right: 20px; background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 20px; font-size: 14px; color: white;">
-                  ${data.formType === 'offerte' ? 'OFFERTE' : 'SNELLE AANVRAAG'}
-                </div>
-                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">
-                  ${formIcon} Nieuwe ${formTypeName}
-                </h1>
-                <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px;">
-                  Ontvangen op ${data.submittedAt.toLocaleDateString('nl-NL', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })} om ${data.submittedAt.toLocaleTimeString('nl-NL', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                  })}
+              <h1 style="color: #333; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+                ${formIcon} Nieuwe ${formTypeName}
+              </h1>
+              
+              <p style="color: #666; margin-bottom: 30px;">
+                Ontvangen op ${data.submittedAt.toLocaleDateString('nl-NL')} om ${data.submittedAt.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}
+              </p>
+              
+              <div style="margin-bottom: 25px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Klantgegevens</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Naam:</td>
+                    <td style="padding: 8px 0;">${data.firstName} ${data.lastName}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Adres:</td>
+                    <td style="padding: 8px 0;"><a href="https://maps.google.com/maps?q=${encodeURIComponent(data.address)}" target="_blank" style="color: #0066cc; text-decoration: none;">${data.address}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Email:</td>
+                    <td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #0066cc; text-decoration: none;">${data.email}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Telefoon:</td>
+                    <td style="padding: 8px 0;"><a href="tel:${data.phone}" style="color: #0066cc; text-decoration: none;">${data.phone}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold;">Contact voorkeur:</td>
+                    <td style="padding: 8px 0;">${data.contactPreference}</td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div style="margin-bottom: 25px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Project Details</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Service:</td>
+                    <td style="padding: 8px 0;">${data.selectedService}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; vertical-align: top;">Beschrijving:</td>
+                    <td style="padding: 8px 0; line-height: 1.5;">${data.projectDescription}</td>
+                  </tr>
+                </table>
+              </div>
+              
+              ${data.photos.length > 0 ? `
+              <div style="margin-bottom: 25px;">
+                <h3 style="color: #333; margin-bottom: 15px;">Bijgevoegde Foto's</h3>
+                <p style="color: #666; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+                  ${data.photos.length} foto${data.photos.length > 1 ? "'s" : ''} bijgevoegd (zie bijlagen)
                 </p>
               </div>
+              ` : ''}
               
-              <!-- Content -->
-              <div style="padding: 30px;">
-                
-                <!-- Priority Alert for urgent services -->
-                ${data.selectedService.toLowerCase().includes('storm') || data.selectedService.toLowerCase().includes('lekkage') ? `
-                <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: center;">
-                  <h3 style="margin: 0; font-size: 18px;">⚡ SPOED AANVRAAG</h3>
-                  <p style="margin: 5px 0 0 0; font-size: 14px;">Deze klant heeft mogelijk een spoedgeval</p>
-                </div>
-                ` : ''}
-                
-                <!-- Client Information -->
-                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
-                  <h2 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 20px; display: flex; align-items: center;">
-                    👤 Klantgegevens
-                  </h2>
-                  <div style="display: grid; gap: 12px;">
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #667eea;">
-                      <strong style="width: 140px; color: #555;">Naam:</strong>
-                      <span>${data.firstName} ${data.lastName}</span>
-                    </div>
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #667eea;">
-                      <strong style="width: 140px; color: #555;">Email:</strong>
-                      <span><a href="mailto:${data.email}" style="color: #667eea; text-decoration: none;">${data.email}</a></span>
-                    </div>
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #667eea;">
-                      <strong style="width: 140px; color: #555;">Telefoon:</strong>
-                      <span><a href="tel:${data.phone}" style="color: #667eea; text-decoration: none;">${data.phone}</a></span>
-                    </div>
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #667eea;">
-                      <strong style="width: 140px; color: #555;">Contact voorkeur:</strong>
-                      <span style="background: #e3f2fd; padding: 4px 8px; border-radius: 4px; font-size: 13px;">${data.contactPreference}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Project Information -->
-                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
-                  <h2 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 20px; display: flex; align-items: center;">
-                    🏗️ Project Details
-                  </h2>
-                  <div style="display: grid; gap: 12px;">
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #27ae60;">
-                      <strong style="width: 140px; color: #555;">Service:</strong>
-                      <span style="background: #e8f5e8; padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #27ae60;">${data.selectedService}</span>
-                    </div>
-                    <div style="display: flex; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #e74c3c;">
-                      <strong style="width: 140px; color: #555;">Adres:</strong>
-                      <span>${addressLink} 
-                        <a href="https://maps.google.com/maps?q=${encodeURIComponent(data.address)}" target="_blank" style="margin-left: 8px; background: #3498db; color: white; padding: 2px 6px; border-radius: 3px; text-decoration: none; font-size: 11px;">📍 KAART</a>
-                      </span>
-                    </div>
-                    <div style="padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #f39c12;">
-                      <strong style="color: #555; display: block; margin-bottom: 8px;">Beschrijving:</strong>
-                      <div style="background: #fdf6e3; padding: 12px; border-radius: 4px; line-height: 1.5; white-space: pre-wrap;">${data.projectDescription}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Photos Section -->
-                ${data.photos.length > 0 ? `
-                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
-                  <h2 style="color: #2c3e50; margin: 0 0 15px 0; font-size: 20px; display: flex; align-items: center;">
-                    📸 Bijgevoegde Foto's
-                  </h2>
-                  <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #9b59b6;">
-                    <span style="background: #f3e5f5; color: #8e24aa; padding: 6px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">
-                      ${data.photos.length} foto${data.photos.length > 1 ? "'s" : ''} bijgevoegd
-                    </span>
-                    <p style="margin: 10px 0 0 0; color: #666; font-size: 13px;">Foto's zijn opgeslagen en kunnen worden bekeken in het systeem</p>
-                  </div>
-                </div>
-                ` : ''}
-
-                <!-- Action Required -->
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center;">
-                  <h3 style="margin: 0 0 10px 0; font-size: 18px;">🎯 Actie Vereist</h3>
-                  <p style="margin: 0; font-size: 14px; opacity: 0.9;">
-                    Neem binnen 2 uur contact op met de klant voor de beste service ervaring
-                  </p>
-                </div>
+              <div style="margin-top: 30px; padding: 15px; background: #f0f8ff; border-left: 4px solid #0066cc; border-radius: 4px;">
+                <p style="margin: 0; color: #333; font-weight: bold;">Actie vereist:</p>
+                <p style="margin: 5px 0 0 0; color: #666;">Neem binnen 2 uur contact op met de klant.</p>
               </div>
               
-              <!-- Footer -->
-              <div style="background: #2c3e50; color: white; padding: 20px; text-align: center;">
-                <h3 style="margin: 0 0 5px 0; font-size: 18px;">TBGS B.V.</h3>
-                <p style="margin: 0; font-size: 14px; opacity: 0.8;">Totaal Bouw Groep Specialisten</p>
-                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.6;">Samen duurzaam & innovatief (ver)bouwen</p>
+              <div style="margin-top: 30px; text-align: center; color: #666; font-size: 14px; border-top: 1px solid #eee; padding-top: 20px;">
+                <strong>TBGS B.V.</strong><br>
+                Totaal Bouw Groep Specialisten
               </div>
             </div>
           </body>
