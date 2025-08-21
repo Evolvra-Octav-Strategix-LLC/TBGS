@@ -257,14 +257,17 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
             types: ['address'],
             componentRestrictions: { country: ['nl', 'be'] },
             fields: ['formatted_address', 'address_components', 'geometry'],
-            strictBounds: true
+            strictBounds: false
           });
+
+          console.log('Google Places Autocomplete initialized for address field');
 
           autocompleteInstance.addListener('place_changed', () => {
             const place = autocompleteInstance!.getPlace();
+            console.log('Place selected:', place);
             if (place.formatted_address) {
               setAddress(place.formatted_address);
-              console.log('Address selected:', place.formatted_address);
+              console.log('Address updated:', place.formatted_address);
             }
           });
 
@@ -272,7 +275,8 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
           setTimeout(() => {
             const logoElements = document.querySelectorAll('.pac-logo, .pac-item:last-child, a[href*="maps.google.com"], [aria-label*="powered by Google"]');
             logoElements.forEach(el => el.remove());
-          }, 500);
+            console.log('Google branding removed');
+          }, 1000);
         }
       }).catch((error) => {
         console.warn('Google Maps API failed to load:', error);
@@ -377,10 +381,10 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                   </svg>
-                  <span className="text-lg font-bold">Beschrijf je project</span>
+                  <span className="text-lg font-bold">Project Details</span>
                 </button>
                 <p className="text-sm text-gray-600 mt-1">
-                  Vertel ons meer over je project
+                  Beschrijf je project en voeg het adres toe
                 </p>
               </>
             ) : (
@@ -394,9 +398,12 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                   </svg>
                   <span className="text-sm">Terug</span>
                 </button>
-                <h3 className="text-lg font-bold text-gray-900">
-                  Vul je gegevens in
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Contactgegevens
                 </h3>
+                <p className="text-sm text-gray-600">
+                  Bijna klaar! Vul je gegevens in zodat we contact kunnen opnemen
+                </p>
               </>
             )}
           </div>
@@ -532,48 +539,61 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
                 <div className="flex flex-col h-full">
                   <div className="flex-1 space-y-4">
                     <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Adres
+                      <label className="block text-sm font-semibold text-gray-800 mb-3">
+                        📍 Projectadres
                       </label>
-                      <input
-                        ref={addressInputRef}
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                        placeholder="Bijv. Hoofdstraat 123, Amsterdam"
-                        autoComplete="street-address"
-                        id="address-input"
-                        name="address"
-                        data-form-type="address"
-                        data-places-autocomplete="target"
-                      />
+                      <div className="relative">
+                        <input
+                          ref={addressInputRef}
+                          type="text"
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
+                          className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
+                          placeholder="Type je adres... bijv. Hoofdstraat 123, Amsterdam"
+                          autoComplete="off"
+                          id="address-input"
+                          name="address"
+                          data-form-type="address"
+                          data-places-autocomplete="target"
+                        />
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-2">Begin met typen voor adresuggesties</p>
                     </div>
                     
                     <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Beschrijf je project
+                      <label className="block text-sm font-semibold text-gray-800 mb-3">
+                        📝 Projectbeschrijving
                       </label>
                       <textarea
                         value={projectDescription}
                         onChange={(e) => setProjectDescription(e.target.value)}
-                        className="w-full h-32 p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 resize-none"
-                        placeholder="Vertel ons meer over je project. Wat voor werk moet er gebeuren? Wanneer zou je het graag uitgevoerd hebben?"
+                        className="w-full h-32 p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 resize-none bg-white shadow-sm"
+                        placeholder="Beschrijf je project in detail. Wat voor werk moet er gebeuren? Zijn er specifieke wensen of deadlines?"
                         autoComplete="off"
                         data-form-type="description"
                         id="description-input"
                         name="description"
                       />
+                      <p className="text-xs text-gray-500 mt-2">Hoe meer details, hoe beter we kunnen helpen</p>
                     </div>
                   </div>
                   
                   {/* Next Button */}
-                  <div className="mt-4">
+                  <div className="mt-6">
                     <button
                       onClick={() => setStep('custom')}
-                      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-xl transition-colors"
+                      className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                     >
-                      Volgende
+                      <span>Naar contactgegevens</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </button>
                   </div>
                 </div>
