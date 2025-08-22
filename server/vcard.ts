@@ -99,15 +99,15 @@ export function createVCard(c: VCardInput) {
   const url = esc(c.url || ""); // No default URL
   const notes = esc(c.notes || ""); // Only custom notes
 
-  // Nederlandse addressering
+  // Use actual address components without defaults
   const street = esc(c.street || "");
   const city = esc(c.city || "");
-  const region = esc(c.region || "Noord-Brabant");
+  const region = esc(c.region || "");
   const postcode = esc(c.postcode || "");
-  const country = esc(c.country || "Nederland");
+  const country = esc(c.country || "");
   const adr = `;;${street};${city};${region};${postcode};${country}`;
 
-  // Create Google Maps URL for address
+  // Create Google Maps URL for address using actual components
   const addressForMaps = [street, city, region, postcode, country].filter(Boolean).join(', ');
   const mapsUrl = addressForMaps ? `https://maps.google.com/maps?q=${encodeURIComponent(addressForMaps)}` : "";
 
@@ -168,38 +168,52 @@ export function createTBGSVCard(formData: {
   let houseNumber = formData.houseNumber || "";
   let country = formData.country || "Nederland";
   
-  // Fallback: parse address string if no individual components
+  // Fallback: parse address string if no individual components  
   if (!street && !city && !postcode && formData.address) {
-    const addressParts = formData.address.split(',').map(p => p.trim());
-    if (addressParts.length >= 2) {
-      // Extract street and house number from first part
-      const streetPart = addressParts[0];
-      const streetMatch = streetPart.match(/^(.+?)\s+(\d+.*?)$/);
-      if (streetMatch) {
-        street = streetMatch[1];
-        houseNumber = streetMatch[2];
-      } else {
-        street = streetPart;
-      }
+    // Better parsing for Dutch addresses like "Hurkssestraat 64, 5652 AH Eindhoven"
+    const fullAddress = formData.address.trim();
+    
+    // Try to match Dutch address pattern: Street Number, Postcode City
+    const dutchMatch = fullAddress.match(/^(.+?\s+\d+.*?),\s*(\d{4}\s*[A-Za-z]{2})\s+(.+)$/);
+    if (dutchMatch) {
+      const streetWithNumber = dutchMatch[1].trim();
+      postcode = dutchMatch[2].trim();
+      city = dutchMatch[3].trim();
       
-      const lastPart = addressParts[addressParts.length - 1];
-      const postcodeMatch = lastPart.match(/(\d{4}\s*[A-Za-z]{2})/);
-      if (postcodeMatch) {
-        postcode = postcodeMatch[1];
-        city = lastPart.replace(postcodeMatch[0], '').trim();
+      // Extract street and house number
+      const streetNumberMatch = streetWithNumber.match(/^(.+?)\s+(\d+.*?)$/);
+      if (streetNumberMatch) {
+        street = streetNumberMatch[1];
+        houseNumber = streetNumberMatch[2];
       } else {
-        city = lastPart;
+        street = streetWithNumber;
       }
     } else {
-      // Single address string - try to parse
-      const singleMatch = formData.address.match(/^(.+?)\s+(\d+.*?),?\s*(\d{4}\s*[A-Za-z]{2})?\s*(.*)$/);
-      if (singleMatch) {
-        street = singleMatch[1];
-        houseNumber = singleMatch[2];
-        if (singleMatch[3]) postcode = singleMatch[3];
-        if (singleMatch[4]) city = singleMatch[4];
+      // Try simpler parsing with comma separation
+      const addressParts = fullAddress.split(',').map(p => p.trim());
+      if (addressParts.length >= 2) {
+        // First part should be street + number
+        const streetPart = addressParts[0];
+        const streetMatch = streetPart.match(/^(.+?)\s+(\d+.*?)$/);
+        if (streetMatch) {
+          street = streetMatch[1];
+          houseNumber = streetMatch[2];
+        } else {
+          street = streetPart;
+        }
+        
+        // Last part should contain postcode and city
+        const lastPart = addressParts[addressParts.length - 1];
+        const postcodeMatch = lastPart.match(/(\d{4}\s*[A-Za-z]{2})/);
+        if (postcodeMatch) {
+          postcode = postcodeMatch[1];
+          city = lastPart.replace(postcodeMatch[0], '').trim();
+        } else {
+          city = lastPart;
+        }
       } else {
-        street = formData.address;
+        // Single string fallback
+        street = fullAddress;
       }
     }
   }
@@ -236,11 +250,11 @@ export function createTBGSVCard(formData: {
     email: formData.email,
     mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
     phone: undefined, // No work number unless provided
-    street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address
-    city, // Separate city field
-    postcode, // Separate postcode field
-    country,
-    region: "Noord-Brabant",
+    street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address: Hurkssestraat 64
+    city: city, // Exact city: Eindhoven
+    postcode: postcode, // Exact postcode: 5652 AH
+    country: country || "Nederland", // Country with fallback
+    region: "", // No region to avoid confusion
     org: "TBGS B.V.",
     title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Full address in title for quick reference
     url: undefined, // Remove homepage URL
