@@ -248,27 +248,56 @@ export function createTBGSVCard(formData: {
     }
   }
 
-  // Create comprehensive notes with all client info - no standard TBGS text
+  // Create detailed notes with all client information
   let notes = "";
   
+  // Add client contact details
+  if (formData.firstName || formData.lastName) {
+    const fullName = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
+    notes += `Contactpersoon: ${fullName}\n`;
+  }
+  
+  if (formData.email) {
+    notes += `Email: ${formData.email}\n`;
+  }
+  
+  if (formData.phone) {
+    notes += `Telefoon: ${formData.phone}\n`;
+  }
+  
+  // Clean city name - remove country names that might be appended
+  const cleanCity = city.replace(/,?\s*(Nederland|Belgium|België)\s*$/i, '').trim();
+  
+  // Add address details
+  const addressDetails = [street, houseNumber, postcode, cleanCity].filter(Boolean);
+  if (addressDetails.length > 0) {
+    notes += `Adres: ${addressDetails.join(' ')}\n`;
+  }
+  
+  if (country) {
+    notes += `Land: ${country}\n`;
+  }
+  
+  // Add service details
   if (formData.selectedService) {
-    notes += `Service: ${formData.selectedService}\n`;
+    notes += `\nGewenste service: ${formData.selectedService}\n`;
   }
   
   if (formData.projectDescription) {
-    notes += `Beschrijving: ${formData.projectDescription}\n`;
+    notes += `Projectomschrijving: ${formData.projectDescription}\n`;
   }
   
+  // Add source information
+  notes += `\n--- TBGS B.V. ---\nContactverzoek ontvangen via website\nSpecialisten in dak-, schoorsteen- en onderhoudswerkzaamheden`;
+  
   if (notes.length === 0) {
-    notes = "Klant aangemaakt via TBGS website";
-  } else {
-    notes += `\nKlant aangemaakt via TBGS website`;
+    notes = "TBGS B.V. - Contactverzoek via website";
   }
-
+  
   // Create display name for WhatsApp recognition: voornaam achternaam, straatnaam huisnummer, postcode stad (NO country)
   const namePart = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
   const addressPart = [street, houseNumber].filter(Boolean).join(' ');
-  const locationPart = [postcode, city].filter(Boolean).join(' '); // Only postcode and city, NO country
+  const locationPart = [postcode, cleanCity].filter(Boolean).join(' '); // Only postcode and clean city, NO country
   
   const displayParts = [namePart, addressPart, locationPart].filter(Boolean);
   const fullDisplayName = displayParts.join(', ');
@@ -289,12 +318,12 @@ export function createTBGSVCard(formData: {
     mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
     phone: undefined, // No work number unless provided
     street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address: Hurkssestraat 64
-    city: city, // Exact city: Eindhoven/Antwerpen (NO country)
+    city: cleanCity, // Clean city without country: Eindhoven/Antwerpen
     postcode: postcode, // Exact postcode: 5652 AH / 2000
     country: country, // Nederland or België - separate field
     region: region, // Province/region based on country
     org: "TBGS B.V.",
-    title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Address in title: straatnaam huisnummer postcode stad (NO country)
+    title: [street, houseNumber, postcode, cleanCity].filter(Boolean).join(' '), // Clean address in title: straatnaam huisnummer postcode stad (NO country)
     url: undefined, // Remove homepage URL
     notes
   });
