@@ -404,9 +404,9 @@ class EmailService {
       // Get TBGS logo for embedded image
       let logoAttachment = null;
       try {
-        const fs = require('fs');
-        const path = require('path');
-        const tbgsLogoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
+        const fs = await import('fs');
+        const pathLib = await import('path');
+        const tbgsLogoPath = pathLib.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
         if (fs.existsSync(tbgsLogoPath)) {
           logoAttachment = {
             filename: 'tbgs-logo.png',
@@ -414,6 +414,9 @@ class EmailService {
             cid: 'tbgs-logo',
             contentDisposition: 'inline' as const
           };
+          console.log('✓ TBGS logo loaded for email:', tbgsLogoPath);
+        } else {
+          console.warn('TBGS logo file not found:', tbgsLogoPath);
         }
       } catch (error) {
         console.warn('Could not load TBGS logo for email:', error);
@@ -475,11 +478,11 @@ class EmailService {
                 <div style="background: #667eea; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
                   <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
                   <div style="display: grid; gap: 10px; max-width: 300px; margin: 0 auto;">
-                    <a href="tel:+31402026744" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block;">
-                      +31 40 202 67 44
+                    <a href="https://wa.me/31614595142?text=Hallo%20TBGS%2C%20ik%20heb%20een%20aanvraag%20ingediend%20via%20de%20website%20en%20zou%20graag%20meer%20informatie%20ontvangen.%20Er%20zit%20wat%20haast%20bij." style="background: #25d366; color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block; font-weight: 500;">
+                      📱 WhatsApp Direct
                     </a>
                     <a href="mailto:info@tbgs.nl" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block;">
-                      info@tbgs.nl
+                      ✉️ info@tbgs.nl
                     </a>
                   </div>
                 </div>
