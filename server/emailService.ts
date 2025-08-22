@@ -418,120 +418,45 @@ class EmailService {
               
               <!-- Header -->
               <div style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 30px 20px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 32px; font-weight: 300;">
-                  🎉 Bedankt ${data.firstName}!
+                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">
+                  Bedankt ${data.firstName}!
                 </h1>
-                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 18px;">
-                  Je ${formTypeName.toLowerCase()} is succesvol ontvangen
+                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
+                  Je aanvraag is succesvol ontvangen
                 </p>
               </div>
               
               <!-- Content -->
               <div style="padding: 30px;">
                 
-                <!-- Success Message -->
+                <!-- Simple confirmation -->
                 <div style="text-align: center; margin-bottom: 30px;">
-                  <div style="background: #e8f5e8; color: #27ae60; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h2 style="margin: 0; font-size: 22px;">✅ Aanvraag Ontvangen</h2>
-                    <p style="margin: 10px 0 0 0; font-size: 16px;">
-                      We hebben je aanvraag voor <strong>${data.selectedService}</strong> succesvol ontvangen en in behandeling genomen.
-                    </p>
-                  </div>
+                  <p style="color: #2c3e50; font-size: 18px; line-height: 1.6; margin: 0;">
+                    We hebben je aanvraag voor <strong>${data.selectedService}</strong> ontvangen.<br>
+                    Een van onze specialisten neemt binnen 24 uur contact met je op.
+                  </p>
                 </div>
 
-                <!-- What happens next -->
-                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
-                  <h2 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 22px; text-align: center;">
-                    🚀 Wat gebeurt er nu?
-                  </h2>
-                  <div style="display: grid; gap: 15px;">
-                    <div style="display: flex; align-items: start; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #3498db;">
-                      <span style="background: #3498db; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-weight: bold;">1</span>
-                      <div>
-                        <strong style="color: #2c3e50;">Snelle beoordeling</strong>
-                        <p style="margin: 5px 0 0 0; color: #666; line-height: 1.4;">We bekijken je aanvraag binnen 2 uur en beoordelen de beste aanpak</p>
-                      </div>
-                    </div>
-                    <div style="display: flex; align-items: start; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #e74c3c;">
-                      <span style="background: #e74c3c; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-weight: bold;">2</span>
-                      <div>
-                        <strong style="color: #2c3e50;">Persoonlijk contact</strong>
-                        <p style="margin: 5px 0 0 0; color: #666; line-height: 1.4;">Een van onze specialisten neemt contact met je op via ${data.contactPreference.toLowerCase()}</p>
-                      </div>
-                    </div>
-                    <div style="display: flex; align-items: start; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #27ae60;">
-                      <span style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-weight: bold;">3</span>
-                      <div>
-                        <strong style="color: #2c3e50;">Vrijblijvende afspraak</strong>
-                        <p style="margin: 5px 0 0 0; color: #666; line-height: 1.4;">We plannen een afspraak voor advies en ${data.formType === 'offerte' ? 'een uitgebreide offerte' : 'directe hulp'}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Project Summary -->
-                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
-                  <h2 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 20px; text-align: center;">
-                    📋 Jouw Project Samenvatting
-                  </h2>
-                  <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #667eea;">
-                    <div style="display: grid; gap: 12px;">
-                      <div style="display: flex;">
-                        <strong style="width: 130px; color: #555;">Service:</strong>
-                        <span style="background: #e8f5e8; color: #27ae60; padding: 4px 8px; border-radius: 4px; font-weight: 600;">${data.selectedService}</span>
-                      </div>
-                      <div style="display: flex;">
-                        <strong style="width: 130px; color: #555;">Adres:</strong>
-                        <span>${addressLink}</span>
-                      </div>
-                      <div style="display: flex;">
-                        <strong style="width: 130px; color: #555;">Contact via:</strong>
-                        <span style="background: #e3f2fd; padding: 4px 8px; border-radius: 4px; color: #1565c0;">${data.contactPreference}</span>
-                      </div>
-                      ${data.photos.length > 0 ? `
-                      <div style="display: flex;">
-                        <strong style="width: 130px; color: #555;">Foto's:</strong>
-                        <span style="background: #f3e5f5; color: #8e24aa; padding: 4px 8px; border-radius: 4px;">${data.photos.length} bijgevoegd</span>
-                      </div>
-                      ` : ''}
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Urgency Note for Storm/Lekkage -->
                 ${data.selectedService.toLowerCase().includes('storm') || data.selectedService.toLowerCase().includes('lekkage') ? `
-                <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: center;">
-                  <h3 style="margin: 0 0 10px 0; font-size: 18px;">⚡ Spoedgeval Herkend</h3>
+                <div style="background: #ff6b6b; color: white; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: center;">
+                  <h3 style="margin: 0 0 10px 0; font-size: 16px;">Spoedgeval</h3>
                   <p style="margin: 0; font-size: 14px;">
-                    We begrijpen dat dit mogelijk urgent is. Onze specialist neemt zo spoedig mogelijk contact met je op.
+                    We begrijpen dat dit urgent kan zijn. Onze specialist neemt zo snel mogelijk contact op.
                   </p>
                 </div>
                 ` : ''}
 
                 <!-- Contact Information -->
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
-                  <h3 style="margin: 0 0 15px 0; font-size: 20px;">📞 Vragen of Spoed?</h3>
-                  <p style="margin: 0 0 15px 0; font-size: 14px; opacity: 0.9;">
-                    Neem gerust direct contact met ons op
-                  </p>
+                <div style="background: #667eea; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
+                  <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
                   <div style="display: grid; gap: 10px; max-width: 300px; margin: 0 auto;">
                     <a href="tel:+31402026744" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block;">
-                      📞 +31 40 202 67 44
+                      +31 40 202 67 44
                     </a>
                     <a href="mailto:info@tbgs.nl" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block;">
-                      ✉️ info@tbgs.nl
-                    </a>
-                    <a href="https://www.tbgs.nl" target="_blank" style="background: rgba(255,255,255,0.2); color: white; padding: 12px; border-radius: 6px; text-decoration: none; display: block;">
-                      🌐 www.tbgs.nl
+                      info@tbgs.nl
                     </a>
                   </div>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div style="text-align: center; color: #666; font-size: 14px;">
-                  <p style="margin: 0 0 10px 0;">
-                    ⭐ Meer dan 15 jaar ervaring • 🛡️ Volledig verzekerd • 🏅 Gecertificeerde specialisten
-                  </p>
                 </div>
               </div>
               
