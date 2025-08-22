@@ -401,10 +401,29 @@ class EmailService {
       const formTypeName = this.getFormTypeName(data.formType);
       const addressLink = this.createAddressLink(data.address);
       
+      // Get TBGS logo for embedded image
+      let logoAttachment = null;
+      try {
+        const fs = require('fs');
+        const path = require('path');
+        const tbgsLogoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
+        if (fs.existsSync(tbgsLogoPath)) {
+          logoAttachment = {
+            filename: 'tbgs-logo.png',
+            path: tbgsLogoPath,
+            cid: 'tbgs-logo',
+            contentDisposition: 'inline' as const
+          };
+        }
+      } catch (error) {
+        console.warn('Could not load TBGS logo for email:', error);
+      }
+
       const mailOptions = {
         from: process.env.GMAIL_USER,
         to: data.email,
         subject: `Bedankt ${data.firstName}! Je ${formTypeName.toLowerCase()} is ontvangen - TBGS B.V.`,
+        attachments: logoAttachment ? [logoAttachment] : [],
         html: `
           <!DOCTYPE html>
           <html>
@@ -416,13 +435,19 @@ class EmailService {
           <body style="margin: 0; padding: 0; background-color: #f4f4f4;">
             <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 650px; margin: 20px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
               
-              <!-- Header -->
+              <!-- Header with TBGS Branding -->
               <div style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 30px 20px; text-align: center;">
+                <div style="margin-bottom: 20px;">
+                  <img src="cid:tbgs-logo" alt="TBGS Logo" style="max-width: 120px; height: auto;">
+                </div>
                 <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">
                   Bedankt ${data.firstName}!
                 </h1>
-                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
+                <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px;">
                   Je aanvraag is succesvol ontvangen
+                </p>
+                <p style="color: rgba(255,255,255,0.8); margin: 8px 0 0 0; font-size: 14px; font-weight: 500;">
+                  TBGS B.V. - Totaal Bouw Groep Specialisten
                 </p>
               </div>
               
