@@ -170,15 +170,15 @@ export function createTBGSVCard(formData: {
   
   // Fallback: parse address string if no individual components  
   if (!street && !city && !postcode && formData.address) {
-    // Better parsing for Dutch addresses like "Hurkssestraat 64, 5652 AH Eindhoven"
     const fullAddress = formData.address.trim();
     
-    // Try to match Dutch address pattern: Street Number, Postcode City
+    // Try Dutch address pattern first: "Hurkssestraat 64, 5652 AH Eindhoven"
     const dutchMatch = fullAddress.match(/^(.+?\s+\d+.*?),\s*(\d{4}\s*[A-Za-z]{2})\s+(.+)$/);
     if (dutchMatch) {
       const streetWithNumber = dutchMatch[1].trim();
       postcode = dutchMatch[2].trim();
       city = dutchMatch[3].trim();
+      country = "Nederland";
       
       // Extract street and house number
       const streetNumberMatch = streetWithNumber.match(/^(.+?)\s+(\d+.*?)$/);
@@ -189,31 +189,61 @@ export function createTBGSVCard(formData: {
         street = streetWithNumber;
       }
     } else {
-      // Try simpler parsing with comma separation
-      const addressParts = fullAddress.split(',').map(p => p.trim());
-      if (addressParts.length >= 2) {
-        // First part should be street + number
-        const streetPart = addressParts[0];
-        const streetMatch = streetPart.match(/^(.+?)\s+(\d+.*?)$/);
-        if (streetMatch) {
-          street = streetMatch[1];
-          houseNumber = streetMatch[2];
-        } else {
-          street = streetPart;
-        }
+      // Try Belgian address pattern: "Rue de la Paix 15, 1000 Bruxelles" or "Kerkstraat 23, 2000 Antwerpen"
+      const belgianMatch = fullAddress.match(/^(.+?\s+\d+.*?),\s*(\d{4})\s+(.+)$/);
+      if (belgianMatch) {
+        const streetWithNumber = belgianMatch[1].trim();
+        postcode = belgianMatch[2].trim();
+        city = belgianMatch[3].trim();
+        country = "België";
         
-        // Last part should contain postcode and city
-        const lastPart = addressParts[addressParts.length - 1];
-        const postcodeMatch = lastPart.match(/(\d{4}\s*[A-Za-z]{2})/);
-        if (postcodeMatch) {
-          postcode = postcodeMatch[1];
-          city = lastPart.replace(postcodeMatch[0], '').trim();
+        // Extract street and house number
+        const streetNumberMatch = streetWithNumber.match(/^(.+?)\s+(\d+.*?)$/);
+        if (streetNumberMatch) {
+          street = streetNumberMatch[1];
+          houseNumber = streetNumberMatch[2];
         } else {
-          city = lastPart;
+          street = streetWithNumber;
         }
       } else {
-        // Single string fallback
-        street = fullAddress;
+        // Generic parsing with comma separation for other formats
+        const addressParts = fullAddress.split(',').map(p => p.trim());
+        if (addressParts.length >= 2) {
+          // First part should be street + number
+          const streetPart = addressParts[0];
+          const streetMatch = streetPart.match(/^(.+?)\s+(\d+.*?)$/);
+          if (streetMatch) {
+            street = streetMatch[1];
+            houseNumber = streetMatch[2];
+          } else {
+            street = streetPart;
+          }
+          
+          // Last part should contain postcode and city
+          const lastPart = addressParts[addressParts.length - 1];
+          
+          // Try Dutch postcode pattern first (4 digits + 2 letters)
+          const dutchPostcodeMatch = lastPart.match(/(\d{4}\s*[A-Za-z]{2})/);
+          if (dutchPostcodeMatch) {
+            postcode = dutchPostcodeMatch[1];
+            city = lastPart.replace(dutchPostcodeMatch[0], '').trim();
+            country = "Nederland";
+          } else {
+            // Try Belgian postcode pattern (4 digits only)
+            const belgianPostcodeMatch = lastPart.match(/(\d{4})/);
+            if (belgianPostcodeMatch) {
+              postcode = belgianPostcodeMatch[1];
+              city = lastPart.replace(belgianPostcodeMatch[0], '').trim();
+              country = "België";
+            } else {
+              // No postcode found, treat as city only
+              city = lastPart;
+            }
+          }
+        } else {
+          // Single string fallback
+          street = fullAddress;
+        }
       }
     }
   }
@@ -243,6 +273,14 @@ export function createTBGSVCard(formData: {
   const displayParts = [namePart, addressPart, locationPart].filter(Boolean);
   const fullDisplayName = displayParts.join(', ');
 
+  // Set region based on country for better address display
+  let region = "";
+  if (country === "Nederland") {
+    region = "Noord-Brabant";
+  } else if (country === "België") {
+    region = ""; // Let Belgium determine region automatically
+  }
+
   return createVCard({
     givenName: fullDisplayName, // Full info in firstname for WhatsApp: naam, adres, postcode stad
     familyName: "", // Keep lastname empty to avoid duplication
@@ -251,10 +289,10 @@ export function createTBGSVCard(formData: {
     mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
     phone: undefined, // No work number unless provided
     street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address: Hurkssestraat 64
-    city: city, // Exact city: Eindhoven
-    postcode: postcode, // Exact postcode: 5652 AH
-    country: country || "Nederland", // Country with fallback
-    region: "", // No region to avoid confusion
+    city: city, // Exact city: Eindhoven/Antwerpen
+    postcode: postcode, // Exact postcode: 5652 AH / 2000
+    country: country, // Nederland or België
+    region: region, // Province/region based on country
     org: "TBGS B.V.",
     title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Full address in title for quick reference
     url: undefined, // Remove homepage URL
