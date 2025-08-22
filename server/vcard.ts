@@ -145,7 +145,7 @@ export function createVCard(c: VCardInput) {
   return Buffer.from(vcf, "utf8");
 }
 
-/** Create TBGS vCard from form data */
+/** Create TBGS vCard from form data with Google Places integration */
 export function createTBGSVCard(formData: {
   firstName?: string;
   lastName?: string;
@@ -154,14 +154,22 @@ export function createTBGSVCard(formData: {
   address?: string;
   projectDescription?: string;
   selectedService?: string;
+  // Google Places data
+  street?: string;
+  houseNumber?: string;
+  city?: string;
+  postcode?: string;
+  country?: string;
 }) {
-  // Parse address for better vCard structure
-  let street = "";
-  let city = "";
-  let postcode = "";
-  let houseNumber = "";
+  // Use individual address components if provided (from Google Places API), otherwise parse address string
+  let street = formData.street || "";
+  let city = formData.city || "";
+  let postcode = formData.postcode || "";
+  let houseNumber = formData.houseNumber || "";
+  let country = formData.country || "Nederland";
   
-  if (formData.address) {
+  // Fallback: parse address string if no individual components
+  if (!street && !city && !postcode && formData.address) {
     const addressParts = formData.address.split(',').map(p => p.trim());
     if (addressParts.length >= 2) {
       // Extract street and house number from first part
@@ -213,24 +221,28 @@ export function createTBGSVCard(formData: {
     notes += `\nKlant aangemaakt via TBGS website`;
   }
 
-  // Create comprehensive display name for easy WhatsApp recognition
-  const addressParts = [street, houseNumber, postcode, city].filter(Boolean);
-  const fullDisplayName = [formData.firstName, formData.lastName, ...addressParts].filter(Boolean).join(' ');
+  // Create comprehensive display name for WhatsApp recognition: voornaam achternaam, straatnaam huisnummer, postcode, city
+  const namePart = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
+  const addressPart = [street, houseNumber].filter(Boolean).join(' ');
+  const locationPart = [postcode, city].filter(Boolean).join(' ');
+  
+  const displayParts = [namePart, addressPart, locationPart].filter(Boolean);
+  const fullDisplayName = displayParts.join(', ');
 
   return createVCard({
-    givenName: fullDisplayName, // Full info in firstname for WhatsApp
+    givenName: fullDisplayName, // Full info in firstname for WhatsApp: naam, adres, postcode stad
     familyName: "", // Keep lastname empty to avoid duplication
     fullName: fullDisplayName,
     email: formData.email,
     mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
     phone: undefined, // No work number unless provided
-    street: `${street} ${houseNumber}`.trim(),
-    city,
-    postcode,
-    country: "Nederland",
+    street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address
+    city, // Separate city field
+    postcode, // Separate postcode field
+    country,
     region: "Noord-Brabant",
     org: "TBGS B.V.",
-    title: `${street} ${houseNumber} ${postcode} ${city}`.trim(), // Address in title for quick reference
+    title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Full address in title for quick reference
     url: undefined, // Remove homepage URL
     notes
   });

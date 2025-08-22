@@ -17,6 +17,12 @@ interface EmailData {
   submittedAt: Date;
   formType?: 'popup' | 'offerte';
   files?: FileUpload[]; // Voor multer uploads
+  // Google Places API data
+  street?: string;
+  houseNumber?: string;
+  city?: string;
+  postcode?: string;
+  country?: string;
 }
 
 interface FileUpload {
@@ -212,7 +218,24 @@ class EmailService {
     // Add high-end TBGS vCard attachment met logo
     if (contactData && (contactData.firstName || contactData.email)) {
       try {
-        const vcardBuffer = createTBGSVCard(contactData);
+        // Pass through separate address components if available (from Google Places API)
+        const vcardData = {
+          firstName: contactData.firstName,
+          lastName: contactData.lastName,
+          email: contactData.email,
+          phone: contactData.phone,
+          address: contactData.address,
+          projectDescription: contactData.projectDescription,
+          selectedService: contactData.selectedService,
+          // Add individual components if available
+          street: (contactData as any).street,
+          houseNumber: (contactData as any).houseNumber,
+          city: (contactData as any).city,
+          postcode: (contactData as any).postcode,
+          country: (contactData as any).country
+        };
+        
+        const vcardBuffer = createTBGSVCard(vcardData);
         
         // Create comprehensive filename with name, address and postcode
         let filenameParts = [];
@@ -222,15 +245,20 @@ class EmailService {
           filenameParts.push([contactData.firstName, contactData.lastName].filter(Boolean).join('_'));
         }
         
-        // Parse address for street and house number
-        if (contactData.address) {
-          const addressParts = contactData.address.split(',')[0].trim(); // First part usually contains street + number
+        // Use individual address components if available, otherwise parse address string
+        if ((contactData as any).street && (contactData as any).houseNumber) {
+          filenameParts.push(`${(contactData as any).street}_${(contactData as any).houseNumber}`.replace(/[^a-zA-Z0-9_]/g, '_'));
+          if ((contactData as any).postcode) {
+            filenameParts.push((contactData as any).postcode.replace(/\s/g, ''));
+          }
+        } else if (contactData.address) {
+          // Fallback: parse address string
+          const addressParts = contactData.address.split(',')[0].trim();
           const cleanAddress = addressParts.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
           if (cleanAddress) {
             filenameParts.push(cleanAddress);
           }
           
-          // Extract postcode if present
           const postcodeMatch = contactData.address.match(/(\d{4}\s*[A-Za-z]{2})/);
           if (postcodeMatch) {
             filenameParts.push(postcodeMatch[1].replace(/\s/g, ''));
