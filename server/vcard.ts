@@ -94,10 +94,10 @@ export function createVCard(c: VCardInput) {
   const org = esc(c.org || "TBGS B.V. - Totaal Bouw Groep Specialisten");
   const title = esc(c.title || "Specialist");
   const email = esc(c.email || "");
-  const phone = esc(c.phone || "+31 40 123 4567"); // TBGS hoofdnummer
+  const phone = esc(c.phone || ""); // Only client provided phone
   const mobile = esc(c.mobile || "");
-  const url = esc(c.url || "https://www.tbgs.nl");
-  const notes = esc(c.notes || "TBGS - Uw specialist voor dak, schoorsteen, onderhoud en bouw werkzaamheden in Nederland en België.");
+  const url = esc(c.url || ""); // No default URL
+  const notes = esc(c.notes || ""); // Only custom notes
 
   // Nederlandse addressering
   const street = esc(c.street || "");
@@ -124,7 +124,7 @@ export function createVCard(c: VCardInput) {
     (street || city || region || postcode || country)
       ? fold(`ADR;TYPE=WORK:${adr}`)
       : "",
-    fold(`URL:${url}`),
+    url ? fold(`URL:${url}`) : "",
     mapsUrl ? fold(`URL;TYPE=MAPS:${mapsUrl}`) : "", // Google Maps link
     notes ? fold(`NOTE:${notes}`) : "",
     `REV:${now}`,
@@ -196,8 +196,8 @@ export function createTBGSVCard(formData: {
     }
   }
 
-  // Create comprehensive notes with all client info
-  let notes = "TBGS B.V. - Uw betrouwbare partner voor alle bouw- en onderhoudswerkzaamheden.\n\n";
+  // Create comprehensive notes with all client info - no standard TBGS text
+  let notes = "";
   
   if (formData.selectedService) {
     notes += `Service: ${formData.selectedService}\n`;
@@ -207,7 +207,11 @@ export function createTBGSVCard(formData: {
     notes += `Beschrijving: ${formData.projectDescription}\n`;
   }
   
-  notes += `\nKlant aangemaakt via TBGS website`;
+  if (notes.length === 0) {
+    notes = "Klant aangemaakt via TBGS website";
+  } else {
+    notes += `\nKlant aangemaakt via TBGS website`;
+  }
 
   // Create comprehensive display name for easy WhatsApp recognition
   const addressParts = [street, houseNumber, postcode, city].filter(Boolean);
@@ -227,7 +231,7 @@ export function createTBGSVCard(formData: {
     region: "Noord-Brabant",
     org: "TBGS B.V.",
     title: `${street} ${houseNumber} ${postcode} ${city}`.trim(), // Address in title for quick reference
-    url: "https://www.tbgs.nl",
+    url: undefined, // Remove homepage URL
     notes
   });
 }
