@@ -173,49 +173,7 @@ class EmailService {
 
     const attachments: any[] = [];
 
-    for (const f of files) {
-      const name = hashName(f.originalname || f.filename || 'upload.bin');
-      const mimetype = f.mimetype || 'application/octet-stream';
-      const size = typeof f.size === 'number'
-        ? f.size
-        : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
-
-      if (!isAllowedFile(f.originalname || f.path || name, mimetype)) {
-        console.warn(`emailservice: blocked/unknown file type: ${f.originalname || f.path}`);
-        continue;
-      }
-
-      if (size > perFileLimit) {
-        console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
-        continue;
-      }
-      if (total + size > totalLimit) {
-        console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
-        continue;
-      }
-
-      // Attachment via stream indien mogelijk
-      if (f.path && fs.existsSync(f.path)) {
-        attachments.push({
-          filename: name,
-          contentType: mimetype,
-          content: fs.createReadStream(f.path),
-        });
-      } else if (f.buffer) {
-        attachments.push({
-          filename: name,
-          contentType: mimetype,
-          content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
-        });
-      } else {
-        console.warn(`emailservice: onbekend file input, skip: ${f.originalname || 'unnamed'}`);
-        continue;
-      }
-
-      total += size;
-    }
-
-    // Add high-end TBGS vCard attachment met logo
+    // Add high-end TBGS vCard attachment met logo FIRST (to show at top of email)
     if (contactData && (contactData.firstName || contactData.email)) {
       try {
         // Pass through separate address components if available (from Google Places API)
@@ -269,16 +227,62 @@ class EmailService {
           ? `${filenameParts.join('_').toLowerCase().replace(/[^a-z0-9_]/g, '')}_tbgs.vcf`
           : 'tbgs_contact.vcf';
         
+        // Add vCard as FIRST attachment
         attachments.push({
           filename,
           contentType: 'text/vcard; charset=utf-8',
           content: vcardBuffer,
         });
-        console.log(`✓ TBGS vCard toegevoegd: ${filename}`);
+        console.log(`✓ TBGS vCard toegevoegd als eerste attachment: ${filename}`);
       } catch (vcardError) {
         console.warn('vCard generatie gefaald:', vcardError);
       }
     }
+
+    // Now process other file attachments
+    for (const f of files) {
+      const name = hashName(f.originalname || f.filename || 'upload.bin');
+      const mimetype = f.mimetype || 'application/octet-stream';
+      const size = typeof f.size === 'number'
+        ? f.size
+        : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
+
+      if (!isAllowedFile(f.originalname || f.path || name, mimetype)) {
+        console.warn(`emailservice: blocked/unknown file type: ${f.originalname || f.path}`);
+        continue;
+      }
+
+      if (size > perFileLimit) {
+        console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
+        continue;
+      }
+      if (total + size > totalLimit) {
+        console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
+        continue;
+      }
+
+      // Attachment via stream indien mogelijk
+      if (f.path && fs.existsSync(f.path)) {
+        attachments.push({
+          filename: name,
+          contentType: mimetype,
+          content: fs.createReadStream(f.path),
+        });
+      } else if (f.buffer) {
+        attachments.push({
+          filename: name,
+          contentType: mimetype,
+          content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
+        });
+      } else {
+        console.warn(`emailservice: onbekend file input, skip: ${f.originalname || 'unnamed'}`);
+        continue;
+      }
+
+      total += size;
+    }
+
+
 
     const transporter = await this.getTransporter();
 
