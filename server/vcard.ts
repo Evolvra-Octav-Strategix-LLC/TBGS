@@ -265,10 +265,10 @@ export function createTBGSVCard(formData: {
     notes += `\nKlant aangemaakt via TBGS website`;
   }
 
-  // Create comprehensive display name for WhatsApp recognition: voornaam achternaam, straatnaam huisnummer, postcode, city
+  // Create display name for WhatsApp recognition: voornaam achternaam, straatnaam huisnummer, postcode stad (NO country)
   const namePart = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
   const addressPart = [street, houseNumber].filter(Boolean).join(' ');
-  const locationPart = [postcode, city].filter(Boolean).join(' ');
+  const locationPart = [postcode, city].filter(Boolean).join(' '); // Only postcode and city, NO country
   
   const displayParts = [namePart, addressPart, locationPart].filter(Boolean);
   const fullDisplayName = displayParts.join(', ');
@@ -282,19 +282,19 @@ export function createTBGSVCard(formData: {
   }
 
   return createVCard({
-    givenName: fullDisplayName, // Full info in firstname for WhatsApp: naam, adres, postcode stad
+    givenName: fullDisplayName, // Full info in firstname for WhatsApp: naam, adres, postcode stad (NO country)
     familyName: "", // Keep lastname empty to avoid duplication
     fullName: fullDisplayName,
     email: formData.email,
     mobile: formData.phone ? formData.phone : undefined, // Only add if client provided
     phone: undefined, // No work number unless provided
     street: [street, houseNumber].filter(Boolean).join(' '), // Complete street address: Hurkssestraat 64
-    city: city, // Exact city: Eindhoven/Antwerpen
+    city: city, // Exact city: Eindhoven/Antwerpen (NO country)
     postcode: postcode, // Exact postcode: 5652 AH / 2000
-    country: country, // Nederland or België
+    country: country, // Nederland or België - separate field
     region: region, // Province/region based on country
     org: "TBGS B.V.",
-    title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Full address in title for quick reference
+    title: [street, houseNumber, postcode, city].filter(Boolean).join(' '), // Address in title: straatnaam huisnummer postcode stad (NO country)
     url: undefined, // Remove homepage URL
     notes
   });
