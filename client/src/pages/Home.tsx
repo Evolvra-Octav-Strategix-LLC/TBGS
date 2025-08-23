@@ -502,63 +502,29 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Clean Horizontal Sliding Partners - Configured Order */}
-          <div className="overflow-hidden py-8">
-            <div className="flex animate-partners-scroll items-center space-x-8 lg:space-x-10">
-              {/* First set - Correct order: Defranq → Unilin → Velux → Zinkunique → Monier → BMI → Recticel → Ubbink */}
-              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-              </div>
-              {/* Duplicate set for seamless infinite scroll */}
-              <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[140px] lg:min-w-[180px]">
-                  <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-                <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
-                </div>
-              </div>
+          {/* Perfect Infinite Partners Slider - Based on Robby's Technique */}
+          <div className="partners-container py-8">
+            <div className="partners-slide">
+              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/soudal.png" alt="Soudal" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+            </div>
+            <div className="partners-slide">
+              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+              <img src="/src/assets/partners/soudal.png" alt="Soudal" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
             </div>
           </div>
 

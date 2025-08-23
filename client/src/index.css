@@ -150,29 +150,59 @@
   color: #1d4ed8 !important;
 }
 
-/* Clean Partners Slider Animation - Configurable Speed */
+/* Perfect Infinite Partners Slider - Based on Robby's Code */
 :root {
-  --partners-scroll-duration: 25s; /* Desktop speed */
-  --partners-scroll-mobile-duration: 15s; /* Mobile speed - faster */
+  --partners-scroll-duration: 40s; /* Desktop speed - longer */
+  --partners-scroll-mobile-duration: 25s; /* Mobile speed - faster */
 }
 
-@keyframes partners-scroll {
-  0% {
+@keyframes partners-slide {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(-100%);
   }
 }
 
-.animate-partners-scroll {
-  animation: partners-scroll var(--partners-scroll-duration) linear infinite;
-  will-change: transform;
+.partners-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.partners-container:before,
+.partners-container:after {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.partners-container:before {
+  left: 0;
+  background: linear-gradient(to right, white, rgba(255,255,255,0));
+}
+
+.partners-container:after {
+  right: 0;
+  background: linear-gradient(to left, white, rgba(255,255,255,0));
+}
+
+.partners-slide {
+  display: inline-block;
+  animation: partners-slide var(--partners-scroll-duration) infinite linear;
+}
+
+.partners-container:hover .partners-slide {
+  animation-play-state: paused;
 }
 
 /* Faster animation for mobile devices */
 @media (max-width: 768px) {
-  .animate-partners-scroll {
+  .partners-slide {
     animation-duration: var(--partners-scroll-mobile-duration);
   }
 }
