@@ -111,7 +111,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                   <i className="fas fa-gift text-3xl text-white"></i>
                 </div>
               </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Waarom Gratis?</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Waarom gratis?</h2>
               <p className="text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto">
                 <strong>80% van alle bouwproblemen</strong> zijn te voorkomen met tijdige inspectie. Wij investeren in preventieve zorg omdat tevreden klanten onze beste reclame zijn.
               </p>
@@ -144,7 +144,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Kies Uw <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Inspectie Type</span>
+              Kies uw <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">inspectietype</span>
             </h2>
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Elke inspectie wordt uitgevoerd door een <strong>gecertificeerde specialist</strong> en u ontvangt een <strong>uitgebreid rapport</strong> met concrete aanbevelingen.
@@ -230,7 +230,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Waarom <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Preventieve Inspectie</span>?
+              Waarom <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">preventieve inspectie</span>?
             </h2>
           </div>
 
@@ -254,7 +254,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                   <i className="fas fa-lightbulb"></i>
                   <span>Voorbeeld uit de Praktijk</span>
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-6">€12.000 Besparing door Preventieve Inspectie</h3>
+                <h3 className="text-3xl font-bold text-slate-900 mb-6">€12.000 besparing door preventieve inspectie</h3>
                 <p className="text-lg text-slate-700 leading-relaxed mb-6">
                   <strong>Klant uit Eindhoven</strong> - Bij een gratis dakinspectie ontdekten wij een kleine lekkage die nog niet zichtbaar was van binnen. 
                   Door direct actie te ondernemen voorkwamen we een volledige dakrenovatie.

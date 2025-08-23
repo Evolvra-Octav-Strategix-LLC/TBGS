@@ -299,7 +299,7 @@ export default function Locaties() {
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Onze <span className="text-yellow-400">Locaties</span>
+              Onze <span className="text-yellow-400">locaties</span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
               TBGS BV bedient Nederland en België met gespecialiseerde bouwdiensten. 
@@ -472,7 +472,7 @@ export default function Locaties() {
         <div className="mt-20 mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              Onze Service <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Gebieden</span>
+              Onze service <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">gebieden</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               TBGS bedient Nederland en België met lokale expertise en gecertificeerde specialisten in elke regio.

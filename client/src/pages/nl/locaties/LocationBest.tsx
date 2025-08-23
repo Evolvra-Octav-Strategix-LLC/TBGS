@@ -52,7 +52,7 @@ export default function LocationBest({ onOpenContactModal }: LocationBestProps) 
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Onze Diensten in Best</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">Onze diensten in Best</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <Card className="border-2 hover:border-tbgs-navy hover:shadow-xl transition-all duration-300">
                   <CardHeader className="text-center">

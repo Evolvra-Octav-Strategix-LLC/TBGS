@@ -114,7 +114,7 @@ export default function LocationNuenen({ onOpenContactModal }: LocationNuenenPro
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Onze Diensten in <span className="bg-gradient-to-r from-tbgs-green to-green-600 bg-clip-text text-transparent">Nuenen</span>
+              Onze diensten in <span className="bg-gradient-to-r from-tbgs-green to-green-600 bg-clip-text text-transparent">Nuenen</span>
             </h2>
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Gespecialiseerd in <strong>historische panden</strong> en <strong>moderne woningen</strong> in het Van Gogh dorp.

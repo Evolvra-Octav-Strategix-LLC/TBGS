@@ -275,7 +275,7 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
                     <tr className="border-b-2">
                       <th className="text-left py-4 px-2 font-semibold text-gray-900">Voorziening</th>
                       <th className="text-center py-4 px-2 font-semibold text-gray-900">Voordeel</th>
-                      <th className="text-center py-4 px-2 font-semibold text-tbgs-red">Potentiële Besparing</th>
+                      <th className="text-center py-4 px-2 font-semibold text-tbgs-red">Potentiële besparing</th>
                     </tr>
                   </thead>
                   <tbody>

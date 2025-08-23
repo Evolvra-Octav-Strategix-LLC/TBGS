@@ -199,7 +199,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <span>Onze Specialiteiten</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Onze <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Specialiteiten</span>
+              Onze <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">specialiteiten</span>
             </h2>
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Van <strong>dak tot fundering</strong>, van <strong>schoorsteen tot gevelbekleding</strong>. TBGS biedt complete totaaloplossingen voor al uw bouwprojecten met gespecialiseerde teams per vakgebied.
@@ -364,7 +364,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <span>Ons Verhaal</span>
                 </div>
                 <h3 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  Waarom Kiezen voor <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS?</span>
+                  Waarom kiezen voor <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS?</span>
                 </h3>
                 <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
                   Complete ontzorging bij <strong>dak, schoorsteen, onderhoud en bouw</strong> werkzaamheden. Wij nemen uw project volledig in beheer, zodat u zich nergens zorgen over hoeft te maken.
@@ -480,7 +480,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               {/* Desktop: Separate Mission Statement */}
               <div className="hidden lg:block text-center mb-12">
                 <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
-                  <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze Missie</h4>
+                  <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze missie</h4>
                   <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
                     TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
                   </p>
@@ -506,7 +506,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-green-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
                     <ShieldCheck className="w-6 h-6 lg:w-8 lg:h-8 text-green-600" />
                   </div>
-                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Preventief Werken</h5>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Preventief werken</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Problemen voorkomen in plaats van achteraf oplossen</p>
                 </div>
                 
@@ -514,7 +514,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-blue-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
                     <i className="fas fa-users-cog text-lg lg:text-2xl text-blue-600"></i>
                   </div>
-                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">4 Specialisten</h5>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">4 specialisten</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Dak, schoorsteen, onderhoud én bouw onder één dak</p>
                 </div>
                 
@@ -522,7 +522,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-purple-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
                     <i className="fas fa-handshake text-lg lg:text-2xl text-purple-600"></i>
                   </div>
-                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Totale Ontzorging</h5>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Totale ontzorging</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Eén aanspreekpunt van offerte tot nazorg</p>
                 </div>
                 
@@ -530,7 +530,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-yellow-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
                     <i className="fas fa-clock text-lg lg:text-2xl text-yellow-600"></i>
                   </div>
-                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Altijd Vooruit</h5>
+                  <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Altijd vooruit</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Door jarenlange ervaring weten wij waar u tegenaan loopt</p>
                 </div>
               </div>
@@ -544,7 +544,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-6">
-              Onze partners.
+              Onze partners
             </h2>
           </div>
 
@@ -582,7 +582,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <span>Klantbeoordelingen</span>
             </div>
             <h2 className="text-3xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              Wat <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Klanten</span> Zeggen
+              Wat <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">klanten</span> zeggen
             </h2>
             <p className="text-lg lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Onze klanten waarderen ons <strong>vakmanschap</strong>, <strong>betrouwbaarheid</strong> en persoonlijke aanpak. Ontdek waarom zij ons aanbevelen.

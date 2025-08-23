@@ -114,7 +114,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              Onze Diensten in <span className="bg-gradient-to-r from-tbgs-orange to-orange-600 bg-clip-text text-transparent">Veldhoven</span>
+              Onze diensten in <span className="bg-gradient-to-r from-tbgs-orange to-orange-600 bg-clip-text text-transparent">Veldhoven</span>
             </h2>
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
               Gespecialiseerd in <strong>nieuwbouwprojecten</strong> en <strong>moderne woningen</strong> in Veldhoven.
