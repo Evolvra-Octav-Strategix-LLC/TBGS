@@ -150,13 +150,8 @@
   color: #1d4ed8 !important;
 }
 
-/* Perfect Infinite Partners Slider - Based on Robby's Code */
-:root {
-  --partners-scroll-duration: 40s; /* Desktop speed - longer */
-  --partners-scroll-mobile-duration: 25s; /* Mobile speed - faster */
-}
-
-@keyframes partners-slide {
+/* Simple Working Partners Slider */
+@keyframes slide {
   from {
     transform: translateX(0);
   }
@@ -165,46 +160,46 @@
   }
 }
 
-.partners-container {
+.logos {
   overflow: hidden;
+  padding: 60px 0;
+  background: white;
   white-space: nowrap;
   position: relative;
 }
 
-.partners-container:before,
-.partners-container:after {
+.logos:before,
+.logos:after {
   position: absolute;
   top: 0;
-  width: 100px;
+  width: 250px;
   height: 100%;
   content: "";
   z-index: 2;
 }
 
-.partners-container:before {
+.logos:before {
   left: 0;
-  background: linear-gradient(to right, white, rgba(255,255,255,0));
+  background: linear-gradient(to left, rgba(255,255,255,0), white);
 }
 
-.partners-container:after {
+.logos:after {
   right: 0;
-  background: linear-gradient(to left, white, rgba(255,255,255,0));
+  background: linear-gradient(to right, rgba(255,255,255,0), white);
 }
 
-.partners-slide {
-  display: inline-block;
-  animation: partners-slide var(--partners-scroll-duration) infinite linear;
-}
-
-.partners-container:hover .partners-slide {
+.logos:hover .logos-slide {
   animation-play-state: paused;
 }
 
-/* Faster animation for mobile devices */
-@media (max-width: 768px) {
-  .partners-slide {
-    animation-duration: var(--partners-scroll-mobile-duration);
-  }
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 50px;
+  margin: 0 40px;
 }
 
 @layer components {

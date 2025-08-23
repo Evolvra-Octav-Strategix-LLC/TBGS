@@ -502,29 +502,29 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Perfect Infinite Partners Slider - Based on Robby's Technique */}
-          <div className="partners-container py-8">
-            <div className="partners-slide">
-              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/soudal.png" alt="Soudal" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+          {/* Simple Working Horizontal Partners Slider */}
+          <div className="logos">
+            <div className="logos-slide">
+              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
+              <img src="/src/assets/partners/unilin.png" alt="Unilin" />
+              <img src="/src/assets/partners/velux.png" alt="Velux" />
+              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" />
+              <img src="/src/assets/partners/monier.png" alt="Monier" />
+              <img src="/src/assets/partners/bmi.png" alt="BMI" />
+              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" />
+              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" />
+              <img src="/src/assets/partners/soudal.png" alt="Soudal" />
             </div>
-            <div className="partners-slide">
-              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/bmi.png" alt="BMI" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
-              <img src="/src/assets/partners/soudal.png" alt="Soudal" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out mx-8 lg:mx-10" />
+            <div className="logos-slide">
+              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
+              <img src="/src/assets/partners/unilin.png" alt="Unilin" />
+              <img src="/src/assets/partners/velux.png" alt="Velux" />
+              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" />
+              <img src="/src/assets/partners/monier.png" alt="Monier" />
+              <img src="/src/assets/partners/bmi.png" alt="BMI" />
+              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" />
+              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" />
+              <img src="/src/assets/partners/soudal.png" alt="Soudal" />
             </div>
           </div>
 
