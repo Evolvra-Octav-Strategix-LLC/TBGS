@@ -417,11 +417,6 @@ export default function GratisOfferte() {
   // Step 3: Contact Information
   const step3Content = (
     <div className="space-y-6">
-      <div className="text-center">
-        <h4 className="text-lg font-bold text-gray-900 mb-2">Contact Gegevens</h4>
-        <p className="text-sm text-gray-600">Hoe kunnen we u bereiken?</p>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
