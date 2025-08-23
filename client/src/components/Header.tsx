@@ -161,7 +161,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
         }`}>
             <div className="flex flex-col h-full">
               {/* Menu Header */}
-              <div className="flex items-center p-6 pt-16">
+              <div className="flex items-center p-6 pt-12">
                 <Link 
                   href="/" 
                   className="flex items-center space-x-3"
@@ -189,7 +189,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     onChange={(e) => handleSearchChange(e.target.value)}
                     onFocus={handleSearchFocus}
                     onBlur={handleSearchBlur}
-                    className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 ${
+                    className={`pl-10 pr-4 py-3 w-full border rounded-lg transition-all duration-200 text-sm ${
                       isSearchFocused 
                         ? 'border-blue-600 ring-2 ring-blue-600/20' 
                         : 'border-gray-300'
