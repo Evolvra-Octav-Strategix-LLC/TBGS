@@ -139,11 +139,11 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           onClick={() => setIsMobileMenuOpen(false)}
         />
         
-        {/* Mobile Menu Panel - 50% Width Clean Design */}
-        <div className={`fixed top-0 right-0 w-1/2 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden shadow-2xl rounded-l-3xl transition-all duration-500 ease-out ${
+        {/* Mobile Menu Panel - 60% Width Clean Design */}
+        <div className={`fixed top-0 left-0 w-3/5 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden shadow-2xl rounded-r-3xl transition-all duration-500 ease-out ${
           isMobileMenuOpen 
             ? 'transform translate-x-0 opacity-100 scale-100' 
-            : 'transform translate-x-full opacity-0 scale-95'
+            : 'transform -translate-x-full opacity-0 scale-95'
         }`}>
             <div className="flex flex-col h-full">
               {/* Menu Header */}
