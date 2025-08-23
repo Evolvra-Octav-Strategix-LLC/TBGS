@@ -137,7 +137,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   className="group border-2 border-slate-300 text-slate-700 px-10 py-5 rounded-2xl font-semibold text-lg hover:border-tbgs-navy hover:text-tbgs-navy transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/50"
                 >
                   <i className="fas fa-play mr-3 transition-transform group-hover:scale-110"></i>
-                  Bekijk Onze Projecten
+                  Bekijk onze projecten
                 </button>
               </div>
 
@@ -361,7 +361,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="text-center mb-16">
                 <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
                   <i className="fas fa-building"></i>
-                  <span>Ons Verhaal</span>
+                  <span>Ons verhaal</span>
                 </div>
                 <h3 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   Waarom kiezen voor <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS?</span>
@@ -401,15 +401,15 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <i className="fas fa-check-circle text-green-300"></i>
-                      <span>4 Generaties Ervaring</span>
+                      <span>4 generaties ervaring</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <i className="fas fa-check-circle text-green-300"></i>
-                      <span>Duizenden Problemen Opgelost</span>
+                      <span>Duizenden problemen opgelost</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <i className="fas fa-check-circle text-green-300"></i>
-                      <span>4 Gespecialiseerde Teams</span>
+                      <span>4 gespecialiseerde teams</span>
                     </div>
                   </div>
                 </div>
@@ -461,15 +461,15 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <div className="space-y-4">
                         <div className="flex items-center space-x-3">
                           <i className="fas fa-check-circle text-green-300"></i>
-                          <span>4 Generaties Ervaring</span>
+                          <span>4 generaties ervaring</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <i className="fas fa-check-circle text-green-300"></i>
-                          <span>Duizenden Problemen Opgelost</span>
+                          <span>Duizenden problemen opgelost</span>
                         </div>
                         <div className="flex items-center space-x-3">
                           <i className="fas fa-check-circle text-green-300"></i>
-                          <span>4 Gespecialiseerde Teams</span>
+                          <span>4 gespecialiseerde teams</span>
                         </div>
                       </div>
                     </div>
@@ -691,7 +691,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
       {/* Contact CTA - Minimal Design */}
       <section id="contact" className="py-8 lg:py-12 bg-tbgs-navy text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-4">Start Uw Project</h2>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-4">Start uw project</h2>
           <div className="text-lg mb-6 opacity-90 flex flex-col sm:flex-row items-center justify-center gap-2">
             <a href="https://wa.me/31614595142" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300">
               <i className="fab fa-whatsapp mr-2"></i>

@@ -54,7 +54,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                         <i className="fas fa-phone text-white"></i>
                       </div>
                       <div>
-                        <p className="font-medium">Direct Contact</p>
+                        <p className="font-medium">Direct contact</p>
                         <a href="tel:+31402026744" className="text-white/70 text-sm hover:text-white transition-colors">040 202 67 44</a>
                       </div>
                     </div>
@@ -141,7 +141,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/20">Bedrijf</h4>
                 <ul className="space-y-3 text-white/70">
                   <li><a href="#" className="hover:text-white transition-colors">Over TBGS</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Onze Projecten</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Onze projecten</a></li>
                   <li><Link href="/kennisbank" className="hover:text-white transition-colors">Kennisbank</Link></li>
                   <li><a href="#" className="hover:text-white transition-colors">Carrière</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>

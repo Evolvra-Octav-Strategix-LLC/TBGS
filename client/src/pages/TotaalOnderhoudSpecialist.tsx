@@ -52,14 +52,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   className="bg-tbgs-green text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-calculator mr-3"></i>
-                  Onderhoud Offerte
+                  Onderhoud offerte
                 </button>
                 <a 
                   href="tel:+31402026744"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
-                  Direct Bellen
+                  Direct bellen
                 </a>
               </div>
 
@@ -158,7 +158,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-wrench text-tbgs-green text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Algemene Reparaties</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Algemene reparaties</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Timmerwerk</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Loodgieterswerk</li>
@@ -177,7 +177,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-calendar-check text-tbgs-green text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief Onderhoud</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Onderhoudscontracten</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Jaarlijkse inspectie</li>
@@ -312,14 +312,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 className="bg-white text-tbgs-green px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-calculator mr-3"></i>
-                Gratis Onderhoud Offerte
+                Gratis Onderhoud offerte
               </button>
               <a 
                 href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-green transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>
-                Direct Bellen
+                Direct bellen
               </a>
             </div>
           </div>

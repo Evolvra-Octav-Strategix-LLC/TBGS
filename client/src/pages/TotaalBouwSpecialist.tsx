@@ -52,14 +52,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                   className="bg-tbgs-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-calculator mr-3"></i>
-                  Bouw Offerte
+                  Bouw offerte
                 </button>
                 <a 
                   href="tel:+31402026744"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
-                  Direct Bellen
+                  Direct bellen
                 </a>
               </div>
 
@@ -158,7 +158,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-bath text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Badkamer Renovatie</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Badkamer renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete badkamer</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Leidingwerk</li>
@@ -177,7 +177,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-utensils text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Keuken Renovatie</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Keuken renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keukenverbouwing</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk kasten</li>
@@ -312,14 +312,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 className="bg-white text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-calculator mr-3"></i>
-                Gratis Bouw Offerte
+                Gratis Bouw offerte
               </button>
               <a 
                 href="tel:+31402026744"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-orange transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>
-                Direct Bellen
+                Direct bellen
               </a>
             </div>
           </div>

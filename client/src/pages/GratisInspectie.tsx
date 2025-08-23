@@ -45,7 +45,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
     },
     {
       id: 'bouw',
-      title: 'Bouwkundige Inspectie',
+      title: 'Bouwkundige inspectie',
       icon: 'fas fa-hammer',
       color: 'tbgs-orange',
       description: 'Uitgebreide technische beoordeling van uw pand',
@@ -68,7 +68,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
     },
     {
       icon: 'fas fa-clock',
-      title: 'Planbare Onderhoud',
+      title: 'Planbare onderhoud',
       description: 'Werk op het juiste moment uitvoeren voor optimale resultaten'
     },
     {
@@ -279,7 +279,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                 />
                 <div className="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-xl font-bold">
                   <i className="fas fa-check-circle mr-2"></i>
-                  Probleem Voorkomen
+                  Probleem voorkomen
                 </div>
               </div>
             </div>
@@ -380,13 +380,13 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                 <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-calendar-plus text-2xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Online Afspraak</h3>
+                <h3 className="text-xl font-bold mb-2">Online afspraak</h3>
                 <p className="opacity-90 mb-4">Kies zelf tijd en datum</p>
                 <button 
                   onClick={onOpenContactModal}
                   className="bg-yellow-400 text-slate-900 px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition-colors"
                 >
-                  Plan Inspectie
+                  Plan inspectie
                 </button>
               </div>
             </div>

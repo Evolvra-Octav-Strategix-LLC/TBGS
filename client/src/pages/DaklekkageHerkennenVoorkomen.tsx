@@ -21,19 +21,19 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
     },
     {
       icon: <AlertTriangle className="w-6 h-6 text-orange-500" />,
-      titel: "Druppelend Water",
+      titel: "Druppelend water",
       beschrijving: "Direct zichtbaar water dat door het plafond of langs muren naar beneden loopt.",
       urgentie: "Kritiek"
     },
     {
       icon: <Eye className="w-6 h-6 text-yellow-500" />,
-      titel: "Muffe Geur in Huis",
+      titel: "Muffe geur in huis",
       beschrijving: "Een karakteristieke muffe of schimmelachtige geur kan wijzen op verborgen vocht.",
       urgentie: "Gemiddeld"
     },
     {
       icon: <AlertTriangle className="w-6 h-6 text-tbgs-red" />,
-      titel: "Loslatend Behang door Vocht",
+      titel: "Loslatend behang door vocht",
       beschrijving: "Behang dat begint te bollen of los te laten door vochtinwerking van boven.",
       urgentie: "Hoog"
     },
@@ -45,7 +45,7 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
     },
     {
       icon: <Wrench className="w-6 h-6 text-blue-500" />,
-      titel: "Beschadigde Dakgoot",
+      titel: "Beschadigde dakgoot",
       beschrijving: "Overlopende of beschadigde dakgoten kunnen leiden tot water infiltratie.",
       urgentie: "Gemiddeld"
     }
@@ -54,19 +54,19 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
   const preventieStappen = [
     {
       stap: 1,
-      titel: "Regelmatige Dakinspectie",
+      titel: "Regelmatige dakinspectie",
       beschrijving: "Laat uw dak minimaal 2x per jaar professioneel inspecteren, vooral na stormen.",
       periode: "Elk halfjaar"
     },
     {
       stap: 2,
-      titel: "Dakgoot Onderhoud",
+      titel: "Dakgoot onderhoud",
       beschrijving: "Houd dakgoten schoon en controleer op scheuren of loshangende onderdelen.",
       periode: "3x per jaar"
     },
     {
       stap: 3,
-      titel: "Daklood Controle",
+      titel: "Daklood controle",
       beschrijving: "Controleer daklood rond schoorstenen en dakdoorvoeren op scheurtjes.",
       periode: "Jaarlijks"
     },

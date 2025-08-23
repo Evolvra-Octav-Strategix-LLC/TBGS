@@ -72,7 +72,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   className="bg-tbgs-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
                   <Calculator className="w-5 h-5 mr-3" />
-                  Schoorsteen Offerte
+                  Schoorsteen offerte
                 </button>
                 <a 
                   href="tel:+31402026744"
@@ -157,9 +157,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={removalIcon} alt="Schoorsteen Verwijderen" className="w-12 h-12 object-contain brightness-0 invert" />
+                <img src={removalIcon} alt="Schoorsteen verwijderen" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen verwijderen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><CheckCircle className="w-4 h-4 text-tbgs-blue mr-2 relative z-10 flex-shrink-0 fill-current" />Volledige sloop</li>
                 <li className="flex items-center"><CheckCircle className="w-4 h-4 text-tbgs-blue mr-2 relative z-10 flex-shrink-0 fill-current" />Veilige afbraak</li>
@@ -195,9 +195,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-blue rounded-full flex items-center justify-center mb-4 relative z-10">
-                <img src={replacementIcon} alt="Schoorsteen Vervanging" className="w-12 h-12 object-contain brightness-0 invert" />
+                <img src={replacementIcon} alt="Schoorsteen vervanging" className="w-12 h-12 object-contain brightness-0 invert" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vervanging</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen vervanging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><CheckCircle className="w-4 h-4 text-tbgs-blue mr-2 relative z-10 flex-shrink-0 fill-current" />Complete vervanging</li>
                 <li className="flex items-center"><CheckCircle className="w-4 h-4 text-tbgs-blue mr-2 relative z-10 flex-shrink-0 fill-current" />RVS inliner plaatsing</li>
@@ -271,7 +271,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 className="bg-white text-tbgs-blue px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <Calculator className="w-5 h-5 mr-3 fill-current stroke-current" />
-                Gratis Schoorsteen Offerte
+                Gratis Schoorsteen offerte
               </button>
               <a 
                 href="tel:+31402026744"
