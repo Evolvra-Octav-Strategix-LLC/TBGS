@@ -204,9 +204,9 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                 </div>
               </div>
 
-              {/* Menu Content - Scrollable */}
-              <div className="flex-1 overflow-y-auto px-6">
-                <nav className="flex flex-col space-y-2 pb-4">
+              {/* Menu Content */}
+              <div className="flex-1 px-6">
+                <nav className="flex flex-col space-y-2">
                   <Link 
                     href="/locaties" 
                     className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
