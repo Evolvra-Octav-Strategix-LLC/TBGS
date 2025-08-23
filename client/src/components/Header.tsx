@@ -47,10 +47,10 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
   // Get specialist-specific tagline
   const getSpecialistTagline = () => {
     switch(specialist) {
-      case "TDS": return "Dak specialist";
-      case "TSS": return "Schoorsteen specialist";
-      case "TOS": return "Onderhoud specialist";
-      case "TBS": return "Bouw specialist";
+      case "TDS": return "Totaal Dak Specialist";
+      case "TSS": return "Totaal Schoorsteen Specialist";
+      case "TOS": return "Totaal Onderhoud Specialist";
+      case "TBS": return "Totaal Bouw Specialist";
       default: return "Totaal Bouw Groep Specialisten";
     }
   };
@@ -102,7 +102,7 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">{getSpecialistTagline()}</p>
+                <p className={`text-xs sm:text-sm whitespace-nowrap font-medium ${specialist ? colors.primary : 'text-gray-600'}`}>{getSpecialistTagline()}</p>
               </div>
             </div>
           </Link>
