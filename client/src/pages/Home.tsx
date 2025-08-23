@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import { ShieldCheck } from "lucide-react";
@@ -16,6 +16,19 @@ interface HomeProps {
 }
 
 export default function Home({ onOpenContactModal }: HomeProps) {
+  const logosRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Clone the logos-slide for infinite effect (like GitHub code)
+    if (logosRef.current) {
+      const firstSlide = logosRef.current.querySelector('.logos-slide');
+      if (firstSlide) {
+        const copy = firstSlide.cloneNode(true);
+        logosRef.current.appendChild(copy);
+      }
+    }
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -502,19 +515,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Simple Working Horizontal Partners Slider */}
-          <div className="logos">
-            <div className="logos-slide">
-              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
-              <img src="/src/assets/partners/unilin.png" alt="Unilin" />
-              <img src="/src/assets/partners/velux.png" alt="Velux" />
-              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" />
-              <img src="/src/assets/partners/monier.png" alt="Monier" />
-              <img src="/src/assets/partners/bmi.png" alt="BMI" />
-              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" />
-              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" />
-              <img src="/src/assets/partners/soudal.png" alt="Soudal" />
-            </div>
+          {/* Perfect Horizontal Partners Slider - GitHub Main Branch Style */}
+          <div className="logos" ref={logosRef}>
             <div className="logos-slide">
               <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
               <img src="/src/assets/partners/unilin.png" alt="Unilin" />
