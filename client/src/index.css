@@ -150,7 +150,12 @@
   color: #1d4ed8 !important;
 }
 
-/* Clean Partners Slider Animation - Seamless Loop */
+/* Clean Partners Slider Animation - Configurable Speed */
+:root {
+  --partners-scroll-duration: 25s; /* Desktop speed */
+  --partners-scroll-mobile-duration: 15s; /* Mobile speed - faster */
+}
+
 @keyframes partners-scroll {
   0% {
     transform: translateX(0);
@@ -161,8 +166,15 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 20s linear infinite;
+  animation: partners-scroll var(--partners-scroll-duration) linear infinite;
   will-change: transform;
+}
+
+/* Faster animation for mobile devices */
+@media (max-width: 768px) {
+  .animate-partners-scroll {
+    animation-duration: var(--partners-scroll-mobile-duration);
+  }
 }
 
 @layer components {
