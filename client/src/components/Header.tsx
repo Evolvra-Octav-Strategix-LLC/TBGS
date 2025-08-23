@@ -206,45 +206,45 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
               {/* Menu Content - Scrollable */}
               <div className="flex-1 overflow-y-auto px-6">
-                <nav className="flex flex-col space-y-2 pb-4">
+                <nav className="flex flex-col space-y-1 pb-4">
                   <Link 
                     href="/locaties" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Locaties
                   </Link>
                   <Link 
                     href="/kennisbank" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Kennisbank
                   </Link>
                   <Link 
                     href="/zorgeloos-wonen" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Zorgeloos wonen
                   </Link>
                   <Link 
                     href="/onze-projecten" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Onze projecten
                   </Link>
                   <Link 
                     href="/over-ons" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Over ons
                   </Link>
                   <Link 
                     href="/contact" 
-                    className="text-white hover:text-gray-200 font-medium transition-colors py-4 text-xl"
+                    className="text-white hover:text-gray-200 font-medium transition-colors py-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact
