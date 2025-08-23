@@ -511,10 +511,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter sepia-[0.3] hue-rotate-[180deg]" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter saturate-150 hue-rotate-[45deg]" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
@@ -535,16 +535,16 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               {/* Duplicate set for seamless infinite scroll */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter hue-rotate-[120deg] saturate-125" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter sepia-[0.4] hue-rotate-[270deg]" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/monier.png" alt="Monier" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter hue-rotate-[200deg] saturate-150" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/unilin.png" alt="Unilin" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
@@ -562,10 +562,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               {/* Third set for extra smooth infinite effect */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter sepia-[0.5] hue-rotate-[60deg]" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
-                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
+                  <img src="/src/assets/partners/ubbink.png" alt="Ubbink" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out filter hue-rotate-[300deg] saturate-125" />
                 </div>
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">
                   <img src="/src/assets/partners/velux.png" alt="Velux" className="h-12 lg:h-16 object-contain opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-500 ease-out" />
