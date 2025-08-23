@@ -252,43 +252,37 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                 </nav>
               </div>
 
-              {/* Menu Footer */}
-              <div className="p-6 pb-12">
+              {/* Menu Footer - Compact */}
+              <div className="p-4 pb-6">
                 {/* Phone Link */}
                 <a 
                   href="tel:+31402026744" 
-                  className="flex items-center text-white font-medium py-3 mb-4 hover:text-gray-200 transition-colors"
+                  className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <i className="fas fa-phone mr-3 text-lg"></i>
-                  <span className="text-lg">040 202 6744</span>
+                  <i className="fas fa-phone mr-3 text-base"></i>
+                  <span className="text-base">040 202 6744</span>
                 </a>
                 
-                {/* CTA Button - Smaller and Cleaner */}
+                {/* CTA Button */}
                 <button 
                   onClick={() => {
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-green-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition-colors w-full text-base shadow-md flex items-center justify-center"
+                  className="bg-green-500 text-white px-4 py-2.5 rounded-lg font-medium hover:bg-green-600 transition-colors w-full text-sm shadow-md flex items-center justify-center"
                 >
-                  Gratis offerte <i className="fas fa-arrow-right ml-2 text-sm"></i>
+                  Gratis offerte <i className="fas fa-arrow-right ml-2 text-xs"></i>
                 </button>
                 
                 {/* Social Icons */}
-                <div className="flex justify-center space-x-6 mt-6">
-                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-facebook text-xl"></i>
-                  </a>
-                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-instagram text-xl"></i>
-                  </a>
-                </div>
-                
-                {/* Language Flags */}
                 <div className="flex justify-center space-x-4 mt-4">
-                  <span className="text-xl">🇳🇱</span>
-                  <span className="text-xl">🇬🇧</span>
+                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
+                    <i className="fab fa-facebook text-lg"></i>
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
+                    <i className="fab fa-instagram text-lg"></i>
+                  </a>
                 </div>
               </div>
             </div>
