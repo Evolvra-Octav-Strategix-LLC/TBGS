@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import SpecialistHeader from "@/components/SpecialistHeader";
+import Header from "@/components/Header";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
 import roofRepairIcon from "@assets/image (20)_1755004272803.png";
 import gutterIcon from "@assets/image (21)_1755004272803.png";
@@ -23,13 +23,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         url="https://tbgs.nl/totaal-dak-specialist"
       />
 
-      <SpecialistHeader
+      <Header 
         specialist="TDS"
-        logo={tdsLogo}
-        companyName="Totaal Dak Specialist"
-        tagline="TDS - Uw dakwerken specialist"
-        primaryColor="text-tbgs-red"
-        hoverColor="text-red-700"
         onOpenContactModal={onOpenContactModal}
       />
 

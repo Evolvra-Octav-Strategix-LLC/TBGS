@@ -6,9 +6,10 @@ import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
 interface HeaderProps {
   onOpenContactModal: () => void;
+  specialist?: "TDS" | "TSS" | "TOS" | "TBS";
 }
 
-export default function Header({ onOpenContactModal }: HeaderProps) {
+export default function Header({ onOpenContactModal, specialist }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -42,6 +43,30 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
     if (searchInputRef.current) searchInputRef.current.blur();
     if (mobileSearchInputRef.current) mobileSearchInputRef.current.blur();
   };
+
+  // Get specialist-specific tagline
+  const getSpecialistTagline = () => {
+    switch(specialist) {
+      case "TDS": return "Dak specialist";
+      case "TSS": return "Schoorsteen specialist";
+      case "TOS": return "Onderhoud specialist";
+      case "TBS": return "Bouw specialist";
+      default: return "Totaal Bouw Groep Specialisten";
+    }
+  };
+
+  // Get specialist-specific colors
+  const getSpecialistColors = () => {
+    switch(specialist) {
+      case "TDS": return { primary: "text-tbgs-red", hover: "hover:text-red-700", bg: "bg-tbgs-red", hoverBg: "hover:bg-red-700" };
+      case "TSS": return { primary: "text-tbgs-blue", hover: "hover:text-blue-700", bg: "bg-tbgs-blue", hoverBg: "hover:bg-blue-700" };
+      case "TOS": return { primary: "text-tbgs-green", hover: "hover:text-green-700", bg: "bg-tbgs-green", hoverBg: "hover:bg-green-700" };
+      case "TBS": return { primary: "text-tbgs-orange", hover: "hover:text-orange-700", bg: "bg-tbgs-orange", hoverBg: "hover:bg-orange-700" };
+      default: return { primary: "text-tbgs-navy", hover: "hover:text-tbgs-navy", bg: "bg-tbgs-navy", hoverBg: "hover:bg-blue-800" };
+    }
+  };
+
+  const colors = getSpecialistColors();
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -77,7 +102,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">Totaal Bouw Groep Specialisten</p>
+                <p className="text-xs sm:text-sm text-gray-600 whitespace-nowrap">{getSpecialistTagline()}</p>
               </div>
             </div>
           </Link>
@@ -86,11 +111,11 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
-            <Link href="/locaties" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Locaties</Link>
-            <Link href="/kennisbank" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Kennisbank</Link>
-            <Link href="/onze-projecten" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Onze projecten</Link>
-            <Link href="/over-ons" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Over Ons</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-tbgs-navy font-medium transition-colors whitespace-nowrap">Contact</Link>
+            <Link href="/locaties" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
+            <Link href="/kennisbank" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
+            <Link href="/onze-projecten" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
+            <Link href="/over-ons" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Contact</Link>
           </nav>
 
           {/* Desktop Search */}
@@ -122,14 +147,14 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
-            <Link href="/offerte" className="bg-tbgs-navy text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm whitespace-nowrap">
+            <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}>
               Gratis offerte
             </Link>
           </div>
 
           {/* Mobile CTA Button and Menu */}
           <div className="lg:hidden flex items-center space-x-2">
-            <Link href="/offerte" className="bg-tbgs-navy text-white px-3 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm">
+            <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
               Offerte
             </Link>
             <button 
@@ -270,7 +295,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-green-500 text-white px-4 py-2.5 rounded-lg font-medium hover:bg-green-600 transition-colors w-full text-sm shadow-md flex items-center justify-center"
+                  className={`${colors.bg} text-white px-4 py-2.5 rounded-lg font-medium ${colors.hoverBg} transition-colors w-full text-sm shadow-md flex items-center justify-center`}
                 >
                   Gratis offerte <i className="fas fa-arrow-right ml-2 text-xs"></i>
                 </button>

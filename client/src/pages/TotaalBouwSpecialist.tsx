@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import SpecialistHeader from "@/components/SpecialistHeader";
+import Header from "@/components/Header";
 import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 interface TotaalBouwSpecialistProps {
@@ -16,13 +16,8 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         url="https://tbgs.nl/totaal-bouw-specialist"
       />
 
-      <SpecialistHeader
+      <Header 
         specialist="TBS"
-        logo={tbsLogo}
-        companyName="Totaal Bouw Specialist"
-        tagline="TBS - Uw bouw expert"
-        primaryColor="text-tbgs-orange"
-        hoverColor="text-orange-700"
         onOpenContactModal={onOpenContactModal}
       />
 

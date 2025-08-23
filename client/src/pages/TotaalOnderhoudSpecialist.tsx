@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import SpecialistHeader from "@/components/SpecialistHeader";
+import Header from "@/components/Header";
 import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
 
 interface TotaalOnderhoudSpecialistProps {
@@ -16,13 +16,8 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
         url="https://tbgs.nl/totaal-onderhoud-specialist"
       />
 
-      <SpecialistHeader
+      <Header 
         specialist="TOS"
-        logo={tosLogo}
-        companyName="Totaal Onderhoud Specialist"
-        tagline="TOS - Uw onderhouds expert"
-        primaryColor="text-tbgs-green"
-        hoverColor="text-green-700"
         onOpenContactModal={onOpenContactModal}
       />
 

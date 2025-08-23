@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import SpecialistHeader from "@/components/SpecialistHeader";
+import Header from "@/components/Header";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import { 
   Calculator, 
@@ -36,13 +36,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
         url="https://tbgs.nl/totaal-schoorsteen-specialist"
       />
 
-      <SpecialistHeader
+      <Header 
         specialist="TSS"
-        logo={tssLogo}
-        companyName="Totaal Schoorsteen Specialist"
-        tagline="TSS - Uw schoorsteen expert"
-        primaryColor="text-tbgs-blue"
-        hoverColor="text-blue-700"
         onOpenContactModal={onOpenContactModal}
       />
 
