@@ -24,27 +24,6 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
         onOpenContactModal={onOpenContactModal}
       />
 
-      {/* Breadcrumbs */}
-      <div className="bg-gray-50 py-4">
-        <div className="container mx-auto px-4">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-1 md:space-x-3">
-              <li className="inline-flex items-center">
-                <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-tbgs-green">
-                  <i className="fas fa-home mr-2"></i>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <i className="fas fa-chevron-right text-gray-400 mx-2"></i>
-                  <span className="ml-1 text-sm font-medium text-tbgs-green md:ml-2">Totaal Onderhoud Specialist</span>
-                </div>
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-green-100 py-16 lg:py-24">
