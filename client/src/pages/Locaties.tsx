@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Clock, Star, Search, Navigation } from "lucide-react";
 import { Link } from "wouter";
 import LocationCards from "@/components/LocationCards";
-import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 
 interface Location {
   id: string;
@@ -294,8 +293,6 @@ export default function Locaties() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      <SpecialistNavigationBar />
-      
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>

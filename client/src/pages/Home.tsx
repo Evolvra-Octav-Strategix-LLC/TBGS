@@ -6,7 +6,6 @@ import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
 import LocationCards from "@/components/LocationCards";
-import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
@@ -102,9 +101,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           "Sa 09:00-16:00"
         ]
       }} />
-
-      <SpecialistNavigationBar />
-
       {/* Hero Section - Modern & Engaging */}
       <section id="home" className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 lg:py-16 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
