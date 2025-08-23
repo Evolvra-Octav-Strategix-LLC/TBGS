@@ -219,6 +219,7 @@
 .scroller__inner img {
   height: 50px;
   width: auto;
+  max-width: 160px;
   object-fit: contain;
   opacity: 0.9;
   transition: opacity 0.3s ease, transform 0.2s ease;
@@ -247,6 +248,7 @@
   
   .scroller__inner img {
     height: 40px;
+    max-width: 120px;
     margin: 0 1rem;
   }
 }
