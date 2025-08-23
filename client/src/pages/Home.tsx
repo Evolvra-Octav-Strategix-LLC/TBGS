@@ -583,7 +583,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <img src="/src/assets/partners/bmi.png" alt="BMI" />
               <img src="/src/assets/partners/recticel.jpg" alt="Recticel" />
               <img src="/src/assets/partners/ubbink.png" alt="Ubbink" />
-              <img src="/src/assets/partners/soudal.png" alt="Soudal" />
+              <img src="/src/assets/partners/soudal.png" alt="Fakro" />
             </div>
           </div>
 
