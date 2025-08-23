@@ -66,6 +66,17 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
     }
   };
 
+  // Get specialist-specific mobile menu background
+  const getMobileMenuBackground = () => {
+    switch(specialist) {
+      case "TDS": return "from-tbgs-red to-red-700";
+      case "TSS": return "from-tbgs-blue to-blue-700";
+      case "TOS": return "from-tbgs-green to-green-700";
+      case "TBS": return "from-tbgs-orange to-orange-700";
+      default: return "from-tbgs-navy to-blue-700";
+    }
+  };
+
   const colors = getSpecialistColors();
 
   // Prevent body scroll when mobile menu is open
@@ -147,14 +158,14 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
-            <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}>
+            <Link href="/offerte" className="bg-tbgs-green text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors text-sm whitespace-nowrap">
               Gratis offerte
             </Link>
           </div>
 
           {/* Mobile CTA Button and Menu */}
           <div className="lg:hidden flex items-center space-x-2">
-            <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
+            <Link href="/offerte" className="bg-tbgs-green text-white px-3 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors text-sm">
               Offerte
             </Link>
             <button 
@@ -179,7 +190,7 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
         />
         
         {/* Mobile Menu Panel - 60% Width Clean Design */}
-        <div className={`fixed top-0 right-0 w-3/5 h-full bg-gradient-to-b from-blue-600 to-blue-700 z-50 lg:hidden shadow-2xl rounded-l-3xl transition-all duration-500 ease-out ${
+        <div className={`fixed top-0 right-0 w-3/5 h-full bg-gradient-to-b ${getMobileMenuBackground()} z-50 lg:hidden shadow-2xl rounded-l-3xl transition-all duration-500 ease-out ${
           isMobileMenuOpen 
             ? 'transform translate-x-0 opacity-100 scale-100' 
             : 'transform translate-x-full opacity-0 scale-95'
@@ -295,7 +306,7 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`${colors.bg} text-white px-4 py-2.5 rounded-lg font-medium ${colors.hoverBg} transition-colors w-full text-sm shadow-md flex items-center justify-center`}
+                  className="bg-tbgs-green text-white px-4 py-2.5 rounded-lg font-medium hover:bg-green-700 transition-colors w-full text-sm shadow-md flex items-center justify-center"
                 >
                   Gratis offerte <i className="fas fa-arrow-right ml-2 text-xs"></i>
                 </button>
