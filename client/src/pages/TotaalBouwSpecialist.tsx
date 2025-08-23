@@ -17,12 +17,12 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         url="https://tbgs.nl/totaal-bouw-specialist"
       />
 
+      <SpecialistNavigationBar />
+
       <Header 
         specialist="TBS"
         onOpenContactModal={onOpenContactModal}
       />
-
-      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">

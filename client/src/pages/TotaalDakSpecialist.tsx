@@ -24,12 +24,12 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         url="https://tbgs.nl/totaal-dak-specialist"
       />
 
+      <SpecialistNavigationBar />
+
       <Header 
         specialist="TDS"
         onOpenContactModal={onOpenContactModal}
       />
-
-      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">

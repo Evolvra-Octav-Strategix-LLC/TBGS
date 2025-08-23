@@ -37,12 +37,12 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
         url="https://tbgs.nl/totaal-schoorsteen-specialist"
       />
 
+      <SpecialistNavigationBar />
+
       <Header 
         specialist="TSS"
         onOpenContactModal={onOpenContactModal}
       />
-
-      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">
