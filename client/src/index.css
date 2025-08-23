@@ -226,6 +226,11 @@
   margin: 0 1.5rem;
 }
 
+/* Make Fakro logo smaller to match others */
+.scroller__inner img[alt="Fakro"] {
+  height: 42px;
+}
+
 .scroller__inner img:hover {
   opacity: 1;
   transform: scale(1.1);
