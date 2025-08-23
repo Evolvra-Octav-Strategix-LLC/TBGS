@@ -150,7 +150,7 @@
   color: #1d4ed8 !important;
 }
 
-/* Clean Partners Slider Animation - Fast & Smooth */
+/* Clean Partners Slider Animation - Seamless Loop */
 @keyframes partners-scroll {
   0% {
     transform: translateX(0);
@@ -161,7 +161,7 @@
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 12s linear infinite;
+  animation: partners-scroll 20s linear infinite;
   will-change: transform;
 }
 
