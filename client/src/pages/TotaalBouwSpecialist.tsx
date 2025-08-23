@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SpecialistCards from "@/components/SpecialistCards";
 import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 interface TotaalBouwSpecialistProps {
@@ -118,6 +119,9 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
           </div>
         </div>
       </section>
+
+      {/* Specialist Cards */}
+      <SpecialistCards currentSpecialist="TBS" showTitle={false} compact={true} />
 
       {/* Services Section */}
       <section className="py-16 lg:py-24 bg-white">

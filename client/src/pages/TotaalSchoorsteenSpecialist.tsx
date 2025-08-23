@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SpecialistCards from "@/components/SpecialistCards";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import { 
   Calculator, 
@@ -138,6 +139,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
           </div>
         </div>
       </section>
+
+      {/* Specialist Cards */}
+      <SpecialistCards currentSpecialist="TSS" showTitle={false} compact={true} />
 
       {/* Services Section */}
       <section className="py-16 lg:py-24 bg-white">
