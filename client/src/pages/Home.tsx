@@ -19,8 +19,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
   const logosRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Setup infinite scroll with touch support - simplified to prevent errors
-    const timeoutId = setTimeout(() => {
+    // Setup infinite scroll - robust initialization
+    const initializeSlider = () => {
       if (logosRef.current) {
         const scroller = logosRef.current;
         const scrollerInner = scroller.querySelector('.scroller__inner') as HTMLElement;
@@ -31,6 +31,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             return;
           }
           
+          // First, prepare the element for animation
+          scrollerInner.style.opacity = '0';
+          
           // Clone all images for infinite effect
           const images = Array.from(scrollerInner.children);
           images.forEach((img) => {
@@ -39,11 +42,22 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             scrollerInner.appendChild(clone);
           });
           
-          // Enable animation
-          scroller.setAttribute('data-animated', 'true');
+          // Enable animation smoothly
+          requestAnimationFrame(() => {
+            scroller.setAttribute('data-animated', 'true');
+            scrollerInner.style.opacity = '1';
+            // Force a repaint to ensure smooth start
+            scrollerInner.offsetHeight;
+          });
         }
       }
-    }, 100); // Small delay to prevent startup errors
+    };
+
+    // Try immediate initialization
+    initializeSlider();
+    
+    // Backup with slight delay if DOM isn't ready
+    const timeoutId = setTimeout(initializeSlider, 50);
     
     return () => clearTimeout(timeoutId);
   }, []);
