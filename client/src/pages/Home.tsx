@@ -19,9 +19,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
   const logosRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Kevin Powell's approach: duplicate content for infinite scroll
+    // Setup infinite scroll with touch support
     if (logosRef.current) {
-      const scrollerInner = logosRef.current.querySelector('.scroller__inner');
+      const scroller = logosRef.current;
+      const scrollerInner = scroller.querySelector('.scroller__inner');
+      
       if (scrollerInner) {
         // Clone all images for infinite effect
         const images = Array.from(scrollerInner.children);
@@ -32,7 +34,54 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         });
         
         // Enable animation
-        logosRef.current.setAttribute('data-animated', 'true');
+        scroller.setAttribute('data-animated', 'true');
+        
+        // Add touch support for mobile
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        
+        const handleTouchStart = (e: TouchEvent | MouseEvent) => {
+          isDown = true;
+          scroller.classList.add('paused');
+          startX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+          scrollLeft = scrollerInner.scrollLeft;
+        };
+        
+        const handleTouchEnd = () => {
+          isDown = false;
+          scroller.classList.remove('paused');
+        };
+        
+        const handleTouchMove = (e: TouchEvent | MouseEvent) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const currentX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+          const walk = (currentX - startX) * 2;
+          scrollerInner.scrollLeft = scrollLeft - walk;
+        };
+        
+        // Touch events for mobile
+        scroller.addEventListener('touchstart', handleTouchStart, { passive: false });
+        scroller.addEventListener('touchend', handleTouchEnd);
+        scroller.addEventListener('touchmove', handleTouchMove, { passive: false });
+        
+        // Mouse events for desktop
+        scroller.addEventListener('mousedown', handleTouchStart);
+        scroller.addEventListener('mouseup', handleTouchEnd);
+        scroller.addEventListener('mouseleave', handleTouchEnd);
+        scroller.addEventListener('mousemove', handleTouchMove);
+        
+        // Cleanup
+        return () => {
+          scroller.removeEventListener('touchstart', handleTouchStart);
+          scroller.removeEventListener('touchend', handleTouchEnd);
+          scroller.removeEventListener('touchmove', handleTouchMove);
+          scroller.removeEventListener('mousedown', handleTouchStart);
+          scroller.removeEventListener('mouseup', handleTouchEnd);
+          scroller.removeEventListener('mouseleave', handleTouchEnd);
+          scroller.removeEventListener('mousemove', handleTouchMove);
+        };
       }
     }
   }, []);

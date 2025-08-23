@@ -150,16 +150,18 @@
   color: #1d4ed8 !important;
 }
 
-/* Kevin Powell's Horizontal Scroller for Partners */
+/* Fast Partners Slider with Touch Support */
 .scroller {
   max-width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .scroller__inner {
   padding-block: 2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
   justify-content: center;
 }
 
@@ -168,17 +170,18 @@
   -webkit-mask: linear-gradient(
     90deg,
     transparent,
-    white 20%,
-    white 80%,
+    white 10%,
+    white 90%,
     transparent
   );
-  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
 }
 
 .scroller[data-animated="true"] .scroller__inner {
   width: max-content;
   flex-wrap: nowrap;
-  animation: scroll var(--_animation-duration, 40s)
+  gap: 3rem;
+  animation: scroll var(--_animation-duration, 25s)
     var(--_animation-direction, forwards) linear infinite;
 }
 
@@ -191,16 +194,25 @@
 }
 
 .scroller[data-speed="fast"] {
-  --_animation-duration: 20s;
+  --_animation-duration: 12s;
 }
 
 .scroller[data-speed="slow"] {
-  --_animation-duration: 60s;
+  --_animation-duration: 30s;
+}
+
+/* Pause animation when touching/swiping */
+.scroller[data-animated="true"]:hover .scroller__inner,
+.scroller[data-animated="true"].paused .scroller__inner {
+  animation-play-state: paused;
 }
 
 @keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
   to {
-    transform: translate(calc(-50% - 1rem));
+    transform: translateX(calc(-50% - 1.5rem));
   }
 }
 
@@ -208,8 +220,35 @@
   height: 50px;
   width: auto;
   object-fit: contain;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  flex-shrink: 0;
+  margin: 0 1.5rem;
+}
+
+.scroller__inner img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .scroller[data-speed="fast"] {
+    --_animation-duration: 8s;
+  }
+  
+  .scroller__inner {
+    gap: 2rem;
+  }
+  
+  .scroller[data-animated="true"] .scroller__inner {
+    gap: 2rem;
+  }
+  
+  .scroller__inner img {
+    height: 40px;
+    margin: 0 1rem;
+  }
 }
 
 @layer components {
