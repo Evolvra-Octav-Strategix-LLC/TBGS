@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
 import roofRepairIcon from "@assets/image (20)_1755004272803.png";
 import gutterIcon from "@assets/image (21)_1755004272803.png";
@@ -27,6 +28,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         specialist="TDS"
         onOpenContactModal={onOpenContactModal}
       />
+
+      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">

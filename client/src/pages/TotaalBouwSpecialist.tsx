@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
 
 interface TotaalBouwSpecialistProps {
@@ -20,6 +21,8 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         specialist="TBS"
         onOpenContactModal={onOpenContactModal}
       />
+
+      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">

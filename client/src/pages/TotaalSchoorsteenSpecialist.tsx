@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import { 
   Calculator, 
@@ -40,6 +41,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
         specialist="TSS"
         onOpenContactModal={onOpenContactModal}
       />
+
+      <SpecialistNavigationBar />
 
       {/* Breadcrumbs */}
       <div className="bg-gray-50 py-4">
