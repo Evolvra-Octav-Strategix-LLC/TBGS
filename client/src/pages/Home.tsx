@@ -19,12 +19,20 @@ export default function Home({ onOpenContactModal }: HomeProps) {
   const logosRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Clone the logos-slide for infinite effect (like GitHub code)
+    // Kevin Powell's approach: duplicate content for infinite scroll
     if (logosRef.current) {
-      const firstSlide = logosRef.current.querySelector('.logos-slide');
-      if (firstSlide) {
-        const copy = firstSlide.cloneNode(true);
-        logosRef.current.appendChild(copy);
+      const scrollerInner = logosRef.current.querySelector('.scroller__inner');
+      if (scrollerInner) {
+        // Clone all images for infinite effect
+        const images = Array.from(scrollerInner.children);
+        images.forEach((img) => {
+          const clone = img.cloneNode(true) as HTMLElement;
+          clone.setAttribute('aria-hidden', 'true');
+          scrollerInner.appendChild(clone);
+        });
+        
+        // Enable animation
+        logosRef.current.setAttribute('data-animated', 'true');
       }
     }
   }, []);
@@ -515,9 +523,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Perfect Horizontal Partners Slider - GitHub Main Branch Style */}
-          <div className="logos" ref={logosRef}>
-            <div className="logos-slide">
+          {/* Kevin Powell's Horizontal Partners Scroller */}
+          <div className="scroller" data-speed="fast" ref={logosRef}>
+            <div className="scroller__inner">
               <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
               <img src="/src/assets/partners/unilin.png" alt="Unilin" />
               <img src="/src/assets/partners/velux.png" alt="Velux" />

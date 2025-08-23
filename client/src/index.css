@@ -150,56 +150,66 @@
   color: #1d4ed8 !important;
 }
 
-/* Simple Working Partners Slider */
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+/* Kevin Powell's Horizontal Scroller for Partners */
+.scroller {
+  max-width: 100%;
 }
 
-.logos {
+.scroller__inner {
+  padding-block: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.scroller[data-animated="true"] {
   overflow: hidden;
-  padding: 60px 0;
-  background: white;
-  white-space: nowrap;
-  position: relative;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
 
-.logos:before,
-.logos:after {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  content: "";
-  z-index: 2;
+.scroller[data-animated="true"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
 }
 
-.logos:before {
-  left: 0;
-  background: linear-gradient(to left, rgba(255,255,255,0), white);
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
 }
 
-.logos:after {
-  right: 0;
-  background: linear-gradient(to right, rgba(255,255,255,0), white);
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
 }
 
-.logos:hover .logos-slide {
-  animation-play-state: paused;
+.scroller[data-speed="fast"] {
+  --_animation-duration: 20s;
 }
 
-.logos-slide {
-  display: inline-block;
-  animation: 35s slide infinite linear;
+.scroller[data-speed="slow"] {
+  --_animation-duration: 60s;
 }
 
-.logos-slide img {
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 1rem));
+  }
+}
+
+.scroller__inner img {
   height: 50px;
-  margin: 0 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 @layer components {
