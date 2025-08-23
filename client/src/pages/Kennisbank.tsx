@@ -4,6 +4,7 @@ import SEOHead from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UnfoldableTopicsGrid from "@/components/UnfoldableTopicsGrid";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 
 interface KennisbankProps {
   onOpenContactModal: () => void;
@@ -337,6 +338,8 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
         url="/kennisbank"
         keywords="kennisbank bouw, dakwerk tips, schoorsteenonderhoud, preventief onderhoud, renovatie gids, bouw expertise, onderhoudsadvies, daklekkage voorkomen, TBGS kennis"
       />
+
+      <SpecialistNavigationBar />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 relative overflow-hidden">

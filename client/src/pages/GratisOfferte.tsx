@@ -17,6 +17,7 @@ import { apiRequest } from "@/lib/queryClient";
 import SEOHead from "@/lib/seo";
 import Footer from "@/components/Footer";
 import { ObjectUploader } from "@/components/ObjectUploader";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import { MultiStepForm } from "@/components/MultiStepForm";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Upload, Camera, FileImage, FileVideo, X, Eye, Search } from "lucide-react";
@@ -629,7 +630,7 @@ export default function GratisOfferte() {
         keywords="gratis offerte, offerte aanvragen, dakwerk offerte, schoorsteen offerte, bouw offerte, renovatie prijsopgave, gratis inspectie, TBGS offerte, bouwbedrijf Nederland België"
       />
 
-
+      <SpecialistNavigationBar />
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Hero Section */}
