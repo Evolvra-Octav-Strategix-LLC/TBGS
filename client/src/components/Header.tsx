@@ -270,7 +270,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-green-500 text-white px-4 py-2 rounded-full font-medium hover:bg-green-600 transition-colors w-full text-sm flex items-center justify-center"
+                  className="bg-green-500 text-white px-4 py-2.5 rounded-lg font-medium hover:bg-green-600 transition-colors w-full text-sm shadow-md flex items-center justify-center"
                 >
                   Gratis offerte <i className="fas fa-arrow-right ml-2 text-xs"></i>
                 </button>
