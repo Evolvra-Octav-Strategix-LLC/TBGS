@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect } from "react";
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import { ShieldCheck } from "lucide-react";
@@ -16,65 +16,10 @@ interface HomeProps {
 }
 
 export default function Home({ onOpenContactModal }: HomeProps) {
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const sliderRef = useRef<HTMLDivElement>(null);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setIsPaused(true);
-    setStartX(e.pageX - (sliderRef.current?.offsetLeft || 0));
-    setScrollLeft(sliderRef.current?.scrollLeft || 0);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (sliderRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2;
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft = scrollLeft - walk;
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    setTimeout(() => setIsPaused(false), 500); // Resume animation after 500ms
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setIsPaused(true);
-    setStartX(e.touches[0].pageX - (sliderRef.current?.offsetLeft || 0));
-    setScrollLeft(sliderRef.current?.scrollLeft || 0);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const x = e.touches[0].pageX - (sliderRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2;
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft = scrollLeft - walk;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    setTimeout(() => setIsPaused(false), 500); // Resume animation after 500ms
-  };
-
-  const handleClick = () => {
-    if (!isDragging) {
-      setIsPaused(!isPaused);
     }
   };
 
@@ -557,21 +502,9 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             </h2>
           </div>
 
-          {/* Beautiful Horizontal Sliding Partners with Drag Support */}
-          <div className="overflow-hidden py-8" ref={sliderRef}>
-            <div 
-              className={`flex animate-partners-scroll items-center space-x-8 lg:space-x-10 select-none ${
-                isDragging ? 'cursor-grabbing' : 'cursor-grab'
-              } ${isPaused ? 'paused' : ''}`}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onClick={handleClick}
-            >
+          {/* Clean Horizontal Sliding Partners */}
+          <div className="overflow-hidden py-8">
+            <div className="flex animate-partners-scroll items-center space-x-8 lg:space-x-10">
               {/* First set of logos */}
               <div className="flex items-center space-x-8 lg:space-x-10 flex-shrink-0">
                 <div className="flex items-center justify-center h-24 lg:h-28 min-w-[160px] lg:min-w-[200px]">

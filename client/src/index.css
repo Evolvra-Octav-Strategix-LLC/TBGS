@@ -150,32 +150,19 @@
   color: #1d4ed8 !important;
 }
 
-/* Beautiful Partners Slider Animation - Ultra Smooth */
+/* Clean Partners Slider Animation - Seamless Loop */
 @keyframes partners-scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-20%);
-  }
-}
-
-/* Ensure smooth animation without any pauses */
-@media (prefers-reduced-motion: no-preference) {
-  .animate-partners-scroll {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-fill-mode: none;
+    transform: translateX(-50%);
   }
 }
 
 .animate-partners-scroll {
-  animation: partners-scroll 8s linear infinite;
+  animation: partners-scroll 20s linear infinite;
   will-change: transform;
-}
-
-.animate-partners-scroll.paused {
-  animation-play-state: paused;
 }
 
 @layer components {
