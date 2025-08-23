@@ -143,7 +143,7 @@ export default function PeltRenovatie() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Renovatie Diensten
+                Onze renovatie diensten
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Complete renovatieoplossingen voor uw woning in Pelt
@@ -250,7 +250,7 @@ export default function PeltRenovatie() {
                 className="bg-white text-orange-600 hover:bg-orange-50 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Gratis Offerte Aanvragen
+                Gratis offerte Aanvragen
               </Button>
               <Button 
                 onClick={() => window.open('tel:+31614595142', '_blank')}

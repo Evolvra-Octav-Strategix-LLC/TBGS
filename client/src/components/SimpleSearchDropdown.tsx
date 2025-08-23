@@ -265,7 +265,7 @@ const searchData: SearchResult[] = [
   },
   {
     id: 'page-3',
-    title: 'Gratis Offerte',
+    title: 'Gratis offerte',
     url: '/offerte',
     type: 'page',
     excerpt: 'Vraag een gratis offerte aan voor uw project',

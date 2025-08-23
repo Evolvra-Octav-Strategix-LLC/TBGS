@@ -24,7 +24,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEOHead 
-        title="Contact TBGS BV - Gratis Offerte & Inspectie Aanvragen | Nederland & België"
+        title="Contact TBGS BV - Gratis offerte & Inspectie Aanvragen | Nederland & België"
         description="Neem contact op met TBGS BV voor dakwerk, schoorsteenservice, onderhoud en bouwprojecten. Gratis offertes, snelle reactietijd. Telefoon, email en contactformulier beschikbaar. Service in Nederland en België."
         url="/contact"
         keywords="TBGS contact, gratis offerte aanvragen, dakspecialist contact, schoorsteenspecialist contact, bouwbedrijf contact Nederland België, gratis inspectie, telefoonnummer, email adres"
@@ -60,7 +60,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                 <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-euro-sign text-2xl text-blue-600"></i>
                 </div>
-                <div className="font-bold text-slate-900 mb-2">Gratis Offerte</div>
+                <div className="font-bold text-slate-900 mb-2">Gratis offerte</div>
                 <div className="text-slate-600 text-sm">Altijd vrijblijvend</div>
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
@@ -214,7 +214,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     className="w-full bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     <i className="fas fa-paper-plane mr-3"></i>
-                    Gratis Offerte Aanvragen
+                    Gratis offerte Aanvragen
                   </button>
 
                   <button 

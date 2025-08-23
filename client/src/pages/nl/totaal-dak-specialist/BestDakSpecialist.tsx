@@ -154,7 +154,7 @@ export default function BestDakSpecialist({ onOpenContactModal }: BestDakSpecial
               size="lg"
               className="bg-tbgs-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Gratis Offerte Best
+              Gratis offerte Best
             </Button>
           </div>
         </div>

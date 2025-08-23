@@ -123,7 +123,7 @@ export default function NuenenRenovatie({ onOpenContactModal }: NuenenRenovatieP
                 onClick={onOpenContactModal}
                 className="bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg hover:bg-white hover:text-green-600 transition-all duration-300 w-full sm:w-auto"
               >
-                <span className="text-xs sm:text-sm lg:text-base">Gratis Offerte</span>
+                <span className="text-xs sm:text-sm lg:text-base">Gratis offerte</span>
               </button>
             </div>
           </div>

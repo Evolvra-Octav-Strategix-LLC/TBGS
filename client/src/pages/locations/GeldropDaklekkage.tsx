@@ -73,7 +73,7 @@ export default function GeldropDaklekkage() {
                 className="border-2 border-white text-white hover:bg-white hover:text-red-800 font-semibold px-8 py-4 rounded-xl text-lg"
                 onClick={() => setIsContactModalOpen(true)}
               >
-                Gratis Offerte
+                Gratis offerte
               </Button>
             </div>
             

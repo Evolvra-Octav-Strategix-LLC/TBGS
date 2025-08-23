@@ -123,7 +123,7 @@ export default function Header({ onOpenContactModal }: HeaderProps) {
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center flex-shrink-0">
             <Link href="/offerte" className="bg-tbgs-navy text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-sm whitespace-nowrap">
-              Gratis Offerte
+              Gratis offerte
             </Link>
           </div>
 

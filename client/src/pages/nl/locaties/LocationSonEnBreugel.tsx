@@ -85,7 +85,7 @@ export default function LocationSonEnBreugel({ onOpenContactModal }: LocationSon
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/offerte" className="bg-tbgs-navy text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all duration-300 inline-flex items-center justify-center">
                 <Phone className="w-5 h-5 mr-3" />
-                Gratis Offerte
+                Gratis offerte
               </Link>
               <a href="tel:+31402026744" className="bg-white text-tbgs-navy border-2 border-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-tbgs-navy hover:text-white transition-all duration-300 inline-flex items-center justify-center">
                 040 202 6744

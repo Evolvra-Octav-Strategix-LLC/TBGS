@@ -141,7 +141,7 @@ export default function LocationOverpelt({ onOpenContactModal }: LocationOverpel
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Diensten in Overpelt
+                Onze diensten in Overpelt
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Van spoeddienst tot geplande projecten - wij zijn uw betrouwbare partner in België
@@ -222,7 +222,7 @@ export default function LocationOverpelt({ onOpenContactModal }: LocationOverpel
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl"
               >
-                Gratis Offerte Aanvragen
+                Gratis offerte Aanvragen
               </Button>
             </div>
           </div>

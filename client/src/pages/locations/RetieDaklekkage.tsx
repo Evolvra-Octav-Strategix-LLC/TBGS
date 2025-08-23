@@ -97,7 +97,7 @@ export default function RetieDaklekkage({ onOpenContactModal }: RetieDaklekkageP
                   className="border-white text-white hover:bg-white hover:text-red-700 px-8"
                   onClick={onOpenContactModal}
                 >
-                  Gratis Offerte België
+                  Gratis offerte België
                 </Button>
               </div>
             </div>

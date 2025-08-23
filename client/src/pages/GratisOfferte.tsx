@@ -150,7 +150,7 @@ export default function GratisOfferte() {
 
   // Multi-step form configuration
   const serviceTypes = [
-    { value: "offerte", label: "Gratis Offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
+    { value: "offerte", label: "Gratis offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
     { value: "inspectie", label: "Gratis Inspectie", description: "Locatie bezoek voor analyse en advies" },
     { value: "spoedservice", label: "Spoedservice", description: "Dringende reparatie binnen 24 uur" },
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
@@ -623,7 +623,7 @@ export default function GratisOfferte() {
   return (
     <>
       <SEOHead 
-        title="Gratis Offerte Aanvragen - TBGS BV | Professionele Bouwdiensten Nederland & België"
+        title="Gratis offerte Aanvragen - TBGS BV | Professionele Bouwdiensten Nederland & België"
         description="Vraag nu uw gratis offerte aan bij TBGS BV. Specialist in dakwerk, schoorsteenservice, onderhoud en bouw. Upload foto's en wij nemen binnen 24 uur contact met u op."
         url="/gratis-offerte"
         keywords="gratis offerte, offerte aanvragen, dakwerk offerte, schoorsteen offerte, bouw offerte, renovatie prijsopgave, gratis inspectie, TBGS offerte, bouwbedrijf Nederland België"
@@ -644,7 +644,7 @@ export default function GratisOfferte() {
               </div>
               
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Gratis Offerte Aanvragen
+                Gratis offerte Aanvragen
               </h1>
               
               <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">

@@ -100,7 +100,7 @@ export default function LommelDakSpecialist({ onOpenContactModal }: LommelDakSpe
               size="lg"
               className="bg-tbgs-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Gratis Offerte Lommel
+              Gratis offerte Lommel
             </Button>
           </div>
         </div>

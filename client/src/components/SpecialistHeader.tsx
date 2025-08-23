@@ -135,7 +135,7 @@ export default function SpecialistHeader({
               onClick={onOpenContactModal}
               className={`${primaryColor.replace('text-', 'bg-')} text-white px-4 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm whitespace-nowrap`}
             >
-              Gratis Offerte
+              Gratis offerte
             </button>
           </div>
 
@@ -280,7 +280,7 @@ export default function SpecialistHeader({
                   className={`${primaryColor.replace('text-', 'bg-')} text-white px-6 py-4 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors w-full shadow-lg`}
                 >
                   <i className="fas fa-calculator mr-2"></i>
-                  Gratis Offerte
+                  Gratis offerte
                 </button>
               </div>
             </div>

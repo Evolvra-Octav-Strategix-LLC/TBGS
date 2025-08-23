@@ -92,7 +92,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <div className="space-y-3">
                     <a href="/gratis-offerte" className="w-full bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors flex items-center justify-center">
                       <i className="fas fa-calculator mr-2"></i>
-                      Gratis Offerte Aanvragen
+                      Gratis offerte Aanvragen
                     </a>
                     <a href="https://wa.me/31614595142" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
                       <i className="fab fa-whatsapp mr-2"></i>
@@ -107,7 +107,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               {/* Specialists */}
               <div>
-                <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/20">Onze Specialiteiten</h4>
+                <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/20">Onze specialiteiten</h4>
                 <ul className="space-y-3">
                   <li>
                     <Link href="/totaal-dak-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">

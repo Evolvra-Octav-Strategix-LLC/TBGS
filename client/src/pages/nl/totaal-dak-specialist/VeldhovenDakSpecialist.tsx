@@ -154,7 +154,7 @@ export default function VeldhovenDakSpecialist({ onOpenContactModal }: Veldhoven
               size="lg"
               className="bg-tbgs-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Gratis Offerte Veldhoven
+              Gratis offerte Veldhoven
             </Button>
           </div>
         </div>

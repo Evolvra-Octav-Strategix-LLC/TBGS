@@ -245,7 +245,7 @@ export default function PatioDak({ onOpenContactModal }: PatioDakProps) {
                   onClick={onOpenContactModal}
                   className="bg-white text-tbgs-navy px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  Gratis Offerte Aanvragen
+                  Gratis offerte Aanvragen
                 </button>
                 <Link href="/contact">
                   <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-tbgs-navy transition-all duration-300">

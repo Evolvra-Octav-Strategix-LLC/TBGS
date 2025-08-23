@@ -98,7 +98,7 @@ export default function WaalreRenovatie({ onOpenContactModal }: WaalreRenovatieP
                   className="border-white text-white hover:bg-white hover:text-blue-700 px-8"
                   onClick={onOpenContactModal}
                 >
-                  Gratis Offerte
+                  Gratis offerte
                 </Button>
               </div>
             </div>

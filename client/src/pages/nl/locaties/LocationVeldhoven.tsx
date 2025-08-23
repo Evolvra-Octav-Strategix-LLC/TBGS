@@ -81,7 +81,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/offerte" className="bg-tbgs-orange text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-3" />
-                  Gratis Offerte Veldhoven
+                  Gratis offerte Veldhoven
                 </Link>
                 <a href="tel:+31402026744" className="bg-white text-tbgs-orange border-2 border-tbgs-orange px-8 py-4 rounded-2xl font-bold text-lg hover:bg-tbgs-orange hover:text-white transition-all duration-300 inline-flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-3" />
@@ -250,7 +250,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
           <div className="text-center">
             <Link href="/offerte" className="bg-yellow-400 text-slate-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center">
               <Phone className="w-6 h-6 mr-3" />
-              Gratis Offerte Veldhoven
+              Gratis offerte Veldhoven
             </Link>
           </div>
         </div>

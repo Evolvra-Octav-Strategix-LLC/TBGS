@@ -97,7 +97,7 @@ export default function MierloDaklekkage({ onOpenContactModal }: MierloDaklekkag
                   className="border-white text-white hover:bg-white hover:text-red-700 px-8"
                   onClick={onOpenContactModal}
                 >
-                  Gratis Offerte
+                  Gratis offerte
                 </Button>
               </div>
             </div>

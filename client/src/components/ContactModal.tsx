@@ -98,7 +98,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const serviceTypes = [
-    { value: "offerte", label: "Gratis Offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
+    { value: "offerte", label: "Gratis offerte", description: "Persoonlijke inspectie en gedetailleerde prijsopgave" },
     { value: "inspectie", label: "Gratis Inspectie", description: "Locatie bezoek voor analyse en advies" },
     { value: "spoedservice", label: "Spoedservice", description: "Dringende reparatie binnen 24 uur" },
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
@@ -531,7 +531,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         >
           <div className="p-6 sm:p-8">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900">Gratis Offerte Aanvragen</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
               <Button variant="ghost" size="sm" onClick={onClose}>
                 <X className="w-5 h-5" />
               </Button>

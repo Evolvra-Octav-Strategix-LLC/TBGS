@@ -228,7 +228,7 @@ export default function LocationGeldrop({ onOpenContactModal }: LocationGeldropP
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl"
               >
-                Gratis Offerte Aanvragen
+                Gratis offerte Aanvragen
               </Button>
             </div>
           </div>

@@ -90,7 +90,7 @@ export default function NuenenDakSpecialist({ onOpenContactModal }: NuenenDakSpe
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Dakdekker Diensten in Nuenen
+              Dakdekker diensten in Nuenen
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -155,7 +155,7 @@ export default function NuenenDakSpecialist({ onOpenContactModal }: NuenenDakSpe
                 size="lg"
                 className="bg-tbgs-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
-                Gratis Offerte Nuenen
+                Gratis offerte Nuenen
               </Button>
             </div>
           </div>

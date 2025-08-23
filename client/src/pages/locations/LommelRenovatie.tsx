@@ -98,7 +98,7 @@ export default function LommelRenovatie({ onOpenContactModal }: LommelRenovatieP
                   className="border-white text-white hover:bg-white hover:text-blue-700 px-8"
                   onClick={onOpenContactModal}
                 >
-                  Gratis Offerte België
+                  Gratis offerte België
                 </Button>
               </div>
             </div>
