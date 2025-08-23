@@ -67,7 +67,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                 <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-search text-2xl text-purple-600"></i>
                 </div>
-                <div className="font-bold text-slate-900 mb-2">Gratis Inspectie</div>
+                <div className="font-bold text-slate-900 mb-2">Gratis inspectie</div>
                 <div className="text-slate-600 text-sm">Preventieve check</div>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     <i className="fas fa-phone text-2xl text-white"></i>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Bel Direct</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Bel direct</h3>
                     <p className="text-slate-700 mb-4">Voor spoedeisende zaken en directe vragen</p>
                     <a 
                       href="tel:+31402026744" 
@@ -222,7 +222,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     className="w-full bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     <i className="fas fa-search mr-3"></i>
-                    Gratis Inspectie Aanvragen
+                    Gratis inspectie aanvragen
                   </button>
                 </div>
 

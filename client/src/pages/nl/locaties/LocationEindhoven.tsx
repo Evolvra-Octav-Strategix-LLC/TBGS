@@ -323,7 +323,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-8 h-8 text-tbgs-navy" />
                 </div>
-                <CardTitle>Lokale Kennis</CardTitle>
+                <CardTitle>Lokale kennis</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-slate-600">15+ jaar ervaring in Eindhoven. Wij kennen de lokale bouwvoorschriften en gemeentelijke procedures.</p>
@@ -335,7 +335,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
                 <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-8 h-8 text-green-600" />
                 </div>
-                <CardTitle>Snelle Service</CardTitle>
+                <CardTitle>Snelle service</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-slate-600">Korte reistijd betekent snellere service en lagere kosten. 24/7 spoedservice beschikbaar in Eindhoven.</p>
@@ -347,7 +347,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
                 <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Award className="w-8 h-8 text-yellow-600" />
                 </div>
-                <CardTitle>Erkend Vakmanschap</CardTitle>
+                <CardTitle>Erkend vakmanschap</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-slate-600">Erkende specialisten met alle benodigde certificeringen. Lid van lokale vakorganisaties.</p>
@@ -373,7 +373,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
               <CardHeader className="text-center">
                 <Phone className="w-12 h-12 mx-auto mb-4" />
-                <CardTitle>Bel Direct</CardTitle>
+                <CardTitle>Bel direct</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <a href="tel:+31402026744" className="text-2xl font-bold text-yellow-300 hover:text-white transition-colors">
@@ -386,7 +386,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
               <CardHeader className="text-center">
                 <Mail className="w-12 h-12 mx-auto mb-4" />
-                <CardTitle>Email Ons</CardTitle>
+                <CardTitle>E-mail ons</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <a href="mailto:eindhoven@tbgs.nl" className="text-xl font-bold text-yellow-300 hover:text-white transition-colors">

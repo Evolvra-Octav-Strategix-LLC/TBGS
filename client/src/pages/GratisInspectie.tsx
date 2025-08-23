@@ -369,7 +369,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                 <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-phone text-2xl text-white"></i>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Bel Direct</h3>
+                <h3 className="text-xl font-bold mb-2">Bel direct</h3>
                 <p className="opacity-90 mb-4">Voor snelle afspraak</p>
                 <a href="tel:+31402026744" className="text-2xl font-bold text-yellow-400">
                   040 202 6744

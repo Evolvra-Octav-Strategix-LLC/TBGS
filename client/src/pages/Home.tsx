@@ -130,7 +130,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   className="group bg-tbgs-navy text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <i className="fas fa-search mr-3 transition-transform group-hover:scale-110"></i>
-                  Gratis Inspectie in 24u Gepland
+                  Gratis inspectie in 24u gepland
                 </button>
                 <button 
                   onClick={() => scrollToSection('projecten')}
@@ -703,7 +703,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             onClick={onOpenContactModal}
             className="bg-yellow-400 text-slate-900 px-8 py-3 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            Gratis Inspectie in 24u Gepland
+            Gratis inspectie in 24u gepland
           </button>
         </div>
       </section>

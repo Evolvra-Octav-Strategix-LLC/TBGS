@@ -127,7 +127,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
                 <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-home text-2xl text-tbgs-orange"></i>
                 </div>
-                <CardTitle className="text-xl">Nieuwbouw Dakwerken</CardTitle>
+                <CardTitle className="text-xl">Nieuwbouw dakwerken</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-slate-600">
@@ -147,7 +147,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-industry text-2xl text-tbgs-blue"></i>
                 </div>
-                <CardTitle className="text-xl">Moderne Schoorsteenwerk</CardTitle>
+                <CardTitle className="text-xl">Moderne schoorsteenwerk</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-slate-600">
@@ -215,7 +215,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white text-center">
               <CardHeader>
                 <Phone className="w-12 h-12 mx-auto mb-4" />
-                <CardTitle>Bel Direct</CardTitle>
+                <CardTitle>Bel direct</CardTitle>
               </CardHeader>
               <CardContent>
                 <a href="tel:+31402026744" className="text-2xl font-bold text-yellow-300 hover:text-white transition-colors">
@@ -227,7 +227,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white text-center">
               <CardHeader>
                 <Mail className="w-12 h-12 mx-auto mb-4" />
-                <CardTitle>Email Ons</CardTitle>
+                <CardTitle>E-mail ons</CardTitle>
               </CardHeader>
               <CardContent>
                 <a href="mailto:veldhoven@tbgs.nl" className="text-xl font-bold text-yellow-300 hover:text-white transition-colors">

@@ -310,14 +310,14 @@ export default function DaklekkageHerkennenVoorkomen({ onOpenContactModal }: Dak
                   className="bg-white text-tbgs-red px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
                 >
                   <Calendar className="w-5 h-5 mr-2" />
-                  Plan Gratis Inspectie
+                  Plan gratis inspectie
                 </button>
                 <a 
                   href="tel:+31402026744"
                   className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-tbgs-red transition-colors flex items-center justify-center"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Bel Direct: 040 202 6744
+                  Bel direct: 040 202 6744
                 </a>
               </div>
 

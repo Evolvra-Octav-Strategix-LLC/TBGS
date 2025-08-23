@@ -261,7 +261,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                 className="group bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center w-full sm:w-auto"
               >
                 <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
-                <span className="text-sm sm:text-base lg:text-xl">Gratis Inspectie Aanvragen</span>
+                <span className="text-sm sm:text-base lg:text-xl">Gratis inspectie aanvragen</span>
               </button>
               <a 
                 href="https://wa.me/31614595142" 
