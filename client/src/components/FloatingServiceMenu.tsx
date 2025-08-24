@@ -76,9 +76,10 @@ const serviceOptions: ServiceOption[] = [
 
 interface FloatingServiceFormProps {
   className?: string;
+  specialist?: "TDS" | "TSS" | "TOS" | "TBS";
 }
 
-export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps) {
+export function FloatingServiceForm({ className = '', specialist }: FloatingServiceFormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'services' | 'photo' | 'description' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -96,6 +97,19 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
   const [phone, setPhone] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Get specialist-specific colors
+  const getSpecialistColors = () => {
+    switch(specialist) {
+      case "TDS": return { bg: "bg-tbgs-red", hoverBg: "hover:bg-red-700", activeBg: "active:bg-red-800" };
+      case "TSS": return { bg: "bg-tbgs-blue", hoverBg: "hover:bg-blue-700", activeBg: "active:bg-blue-800" };
+      case "TOS": return { bg: "bg-tbgs-green", hoverBg: "hover:bg-green-700", activeBg: "active:bg-green-800" };
+      case "TBS": return { bg: "bg-tbgs-orange", hoverBg: "hover:bg-orange-700", activeBg: "active:bg-orange-800" };
+      default: return { bg: "bg-tbgs-navy", hoverBg: "hover:bg-tbgs-blue", activeBg: "active:bg-blue-800" };
+    }
+  };
+
+  const colors = getSpecialistColors();
 
   const handleSubmit = async () => {
     if (!firstName || !lastName || !email || !phone || !address || !projectDescription) {
@@ -734,7 +748,7 @@ export function FloatingServiceForm({ className = '' }: FloatingServiceFormProps
         <button
           onClick={toggleForm}
           type="button"
-          className="bg-tbgs-navy hover:bg-tbgs-blue active:bg-blue-800 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none"
+          className={`${colors.bg} ${colors.hoverBg} ${colors.activeBg} text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none`}
           style={{ zIndex: 9999 }}
         >
           {/* Avatar Icon */}

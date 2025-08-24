@@ -124,6 +124,22 @@ function Router() {
     '/totaal-bouw-specialist'
   ].includes(location);
 
+  // Get specialist type based on current page
+  const getCurrentSpecialist = (): "TDS" | "TSS" | "TOS" | "TBS" | undefined => {
+    switch(location) {
+      case '/totaal-dak-specialist':
+        return 'TDS';
+      case '/totaal-schoorsteen-specialist':
+        return 'TSS';
+      case '/totaal-onderhoud-specialist':
+        return 'TOS';
+      case '/totaal-bouw-specialist':
+        return 'TBS';
+      default:
+        return undefined;
+    }
+  };
+
   // Get footer colors based on current page
   const getFooterProps = () => {
     switch(location) {
@@ -283,7 +299,7 @@ function Router() {
         onClose={() => setIsContactModalOpen(false)} 
       />
       <BackToTopButton />
-      <FloatingServiceForm />
+      <FloatingServiceForm specialist={getCurrentSpecialist()} />
     </div>
   );
 }
