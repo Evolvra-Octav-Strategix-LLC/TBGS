@@ -164,12 +164,12 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
           </div>
 
           {/* Mobile CTA Button and Menu */}
-          <div className="lg:hidden flex items-center space-x-2 flex-shrink-0">
-            <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}>
+          <div className="lg:hidden flex items-center space-x-2">
+            <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
               Offerte
             </Link>
             <button 
-              className="text-gray-700 p-2 flex items-center justify-center"
+              className="text-gray-700 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
