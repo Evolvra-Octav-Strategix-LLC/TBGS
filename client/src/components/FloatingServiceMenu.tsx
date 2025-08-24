@@ -748,7 +748,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         <button
           onClick={toggleForm}
           type="button"
-          className={`${colors.bg} ${colors.hoverBg} ${colors.activeBg} text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none`}
+          className={`${colors.bg} ${colors.hoverBg} ${colors.activeBg} text-white rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex items-center justify-center space-x-3 px-4 py-3 group cursor-pointer select-none`}
           style={{ zIndex: 9999 }}
         >
           {/* Avatar Icon */}
