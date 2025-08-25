@@ -292,7 +292,7 @@ export default function Locaties() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-x-hidden">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -305,22 +305,22 @@ export default function Locaties() {
               TBGS BV bedient Nederland en België met gespecialiseerde bouwdiensten. 
               Vind de dichtstbijzijnde vestiging en ontdek onze lokale expertise.
             </p>
-            <div className="flex items-center justify-center gap-6 text-blue-200">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-blue-200">
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                <span className="font-medium">{locations.length} Locaties</span>
+                <span className="font-medium text-sm sm:text-base">{locations.length} Locaties</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                <span className="font-medium">4.8 Beoordeling</span>
+                <span className="font-medium text-sm sm:text-base">4.8 Beoordeling</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-5 h-5 text-center">🇳🇱</span>
-                <span className="font-medium">Nederland</span>
+                <span className="font-medium text-sm sm:text-base">Nederland</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-5 h-5 text-center">🇧🇪</span>
-                <span className="font-medium">België</span>
+                <span className="font-medium text-sm sm:text-base">België</span>
               </div>
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function Locaties() {
                 <select
                   value={selectedRegion}
                   onChange={(e) => setSelectedRegion(e.target.value)}
-                  className="h-12 px-4 border border-gray-200 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-lg bg-white"
+                  className="h-12 px-4 border border-gray-200 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-lg bg-white min-w-0 w-full md:w-auto"
                 >
                   {regions.map(region => (
                     <option key={region} value={region}>{region}</option>
@@ -362,7 +362,7 @@ export default function Locaties() {
         </div>
 
         {/* Locations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredLocations.map((location) => (
             <Card key={location.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-200 overflow-hidden bg-white">
               <CardContent className="p-4">
