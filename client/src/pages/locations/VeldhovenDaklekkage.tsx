@@ -1,179 +1,112 @@
-import { useEffect } from "react";
-import SEOHead from "@/lib/seo";
-import LocalSEOSchema from "@/components/LocalSEOSchema";
-import { Link } from "wouter";
-import { MapPin, Phone, Mail, Clock, Shield, Award, Zap, CheckCircle, AlertTriangle, Droplets } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import DefinitievereparatiesCard from "@/components/DefinitievereparatiesCard";
+import ServiceLocationTemplate from "@/components/templates/ServiceLocationTemplate";
+import { 
+  Shield, 
+  Clock, 
+  Award, 
+  Wrench, 
+  CheckCircle2, 
+  Users,
+  Star,
+  Phone,
+  Eye,
+  Zap
+} from "lucide-react";
 
 interface VeldhovenDaklekkageProps {
   onOpenContactModal: () => void;
 }
 
 export default function VeldhovenDaklekkage({ onOpenContactModal }: VeldhovenDaklekkageProps) {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <>
-      <SEOHead 
-        title="Daklekkage Reparatie Veldhoven | Direct Service | Heel Veldhoven"
-        description="🚨 SPOED DAKLEKKAGE VELDHOVEN? ✓ Direct ter plaatse ✓ Heel Veldhoven specialist ✓ Alle daktypen ervaring ✓ 15 jaar garantie ✓ 24/7 spoeddienst ✓ 150+ tevreden klanten"
-        url="https://tbgs.nl/nl/veldhoven/daklekkage"
-        keywords="daklekkage Veldhoven, spoed daklekkage Veldhoven, dakdekker Veldhoven ASML buurt, daklek Veldhoven binnen 2 uur, nieuwbouw daklekkage specialist Veldhoven"
-      />
-      <LocalSEOSchema businessData={{
-        name: "TBGS Veldhoven - Daklekkage Specialist",
-        address: {
-          streetAddress: "Servicegebied Veldhoven",
-          addressLocality: "Veldhoven",
-          addressRegion: "Noord-Brabant", 
-          postalCode: "5500",
-          addressCountry: "NL"
+    <ServiceLocationTemplate
+      service="daklekkage"
+      city="Veldhoven"
+      citySlug="veldhoven" 
+      country="nl"
+      region="Noord-Brabant"
+      nearbyAreas={["Eindhoven", "Waalre", "Eersel", "Oirschot", "Best", "Steensel"]}
+      
+      serviceTitle="Daklekkage Reparatie"
+      serviceDescription="Professionele daklekkage reparatie in Veldhoven. 24/7 spoeddienst, lokale specialisten, volledige garantie."
+      pageTitle="Daklekkage Reparatie Veldhoven | TBGS - Lokale Specialist"
+      metaDescription="Daklekkage in Veldhoven? ✓ Binnen 3u ter plaatse ✓ Lokale specialist ✓ 25+ jaar ervaring ✓ Volledige garantie. Bel direct!"
+      
+      heroDescription="Professionele daklekkage reparatie in Veldhoven en omgeving. Als lokale specialist staan wij binnen 3 uur bij u voor spoedgevallen. Volledig verzekerd en gecertificeerd."
+      problemsTitle="Veelvoorkomende Daklekkage Problemen in Veldhoven"
+      problems={[
+        "Lekkage door storm en windschade in open landschap rond Veldhoven",
+        "Verstopte dakgoten door bladval van bomen in woonwijken", 
+        "Scheuren in dakpannen door temperatuurwisselingen",
+        "Vochtproblemen door slechte ventilatie in nieuwbouwwijken",
+        "Veroudering van dakbedekking in oudere delen van Veldhoven"
+      ]}
+      solutionsTitle="TBGS Daklekkage Oplossingen Veldhoven"
+      solutions={[
+        "Snelle lokalisatie met professionele detectieapparatuur",
+        "Directe noodafdichting om verdere schade te voorkomen",
+        "Duurzame reparatie met materialen geschikt voor lokaal klimaat",
+        "Preventief advies specifiek voor Veldhoven omstandigheden",
+        "Volledige garantie op alle uitgevoerde reparaties"
+      ]}
+      
+      benefits={[
+        {
+          icon: <Clock className="w-6 h-6" />,
+          title: "Lokale Snelheid",
+          description: "Als Veldhoven specialist staan we binnen 3 uur bij u voor spoedgevallen. We kennen alle wijken van de gemeente."
         },
-        telephone: "+31 40 202 6744",
-        email: "veldhoven@tbgs.nl",
-        website: "https://tbgs-bv.nl/veldhoven/daklekkage",
-        geo: { latitude: 51.4170, longitude: 5.4041 },
-        areaServed: ["Veldhoven", "Oerle", "Zeelst"],
-        rating: { ratingValue: 4.8, reviewCount: 45 },
-        openingHours: ["Mo-Su 00:00-24:00"]
-      }} />
-
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center space-x-2 bg-orange-100 border border-orange-200 rounded-full px-4 py-2 text-sm font-medium text-orange-700 mb-6">
-              <AlertTriangle className="w-4 h-4" />
-              <span>24u Daklekkage Specialist</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight mb-6 sm:mb-8">
-              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Daklekkage</span>
-              <br />
-              <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">Reparatie Veldhoven</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto">
-              <strong className="text-orange-600">Daklek in Veldhoven?</strong> Specialist in <strong>heel Veldhoven</strong> - van centrum tot buitenwijken. 24u spoeddienst voor alle daktypen met volledige garantie.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-16">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-orange-600 mb-1 sm:mb-2">45m</div>
-                <div className="text-xs sm:text-sm lg:text-base text-slate-600">Response Tijd</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-red-600 mb-1 sm:mb-2">24/7</div>
-                <div className="text-xs sm:text-sm lg:text-base text-slate-600">Service</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-600 mb-1 sm:mb-2">4.8★</div>
-                <div className="text-xs sm:text-sm lg:text-base text-slate-600">Klant Review</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-600 mb-1 sm:mb-2">15j</div>
-                <div className="text-xs sm:text-sm lg:text-base text-slate-600">Veldhoven Ervaring</div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-              <button 
-                onClick={onOpenContactModal}
-                className="group bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl hover:from-orange-400 hover:to-red-400 transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center w-full sm:w-auto"
-              >
-                <Zap className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
-                <span className="text-sm sm:text-base lg:text-xl">Daklekkage Spoedservice</span>
-              </button>
-              <a 
-                href="https://wa.me/31614595142" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group bg-green-500 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl hover:bg-green-400 transition-all duration-300 shadow-2xl hover:shadow-green-500/25 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center w-full sm:w-auto"
-              >
-                <i className="fab fa-whatsapp text-xl sm:text-2xl mr-2 sm:mr-3 group-hover:animate-bounce"></i>
-                <span className="text-sm sm:text-base lg:text-xl">Direct WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Veldhoven Specialization */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-                Daklekkage Service <span className="text-orange-600">Veldhoven</span>
-              </h2>
-              <p className="text-lg text-slate-600">
-                Heel Veldhoven - van centrum tot buitenwijken. TBGS kent alle daktypen en materialen.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border-l-4 border-l-orange-500">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">Veldhoven Wijken</h3>
-                  <ul className="space-y-3 text-slate-600">
-                    <li>• Centrum Veldhoven</li>
-                    <li>• Wijk De Run</li>
-                    <li>• Oerle en Zeelst</li>
-                    <li>• Alle woningtypen</li>
-                    <li>• Villa's en rijtjeshuizen</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-l-4 border-l-blue-500">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">Dak Specialisaties</h3>
-                  <ul className="space-y-3 text-slate-600">
-                    <li>• Pannendaken reparatie</li>
-                    <li>• Platte daken EPDM</li>
-                    <li>• Dakgoten en kroonlijsten</li>
-                    <li>• Bitumen daken</li>
-                    <li>• Daklood en loodwerk</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-600 to-red-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              Daklekkage in Veldhoven?
-            </h2>
-            <p className="text-lg sm:text-xl mb-8 opacity-90">
-              Heel Veldhoven specialist - alle daktypen en materialen
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href="tel:+31402026744"
-                className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 inline-flex items-center"
-              >
-                <Phone className="w-5 h-5 mr-3" />
-                040 - 202 6744
-              </a>
-              <button 
-                onClick={onOpenContactModal}
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all duration-300"
-              >
-                Gratis Dakinspectie
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+        {
+          icon: <Shield className="w-6 h-6" />,
+          title: "Volledige Garantie",
+          description: "Alle daklekkage reparaties komen met uitgebreide garantie. Bij problemen komen we kosteloos terug."
+        },
+        {
+          icon: <Award className="w-6 h-6" />,
+          title: "25+ Jaar in Veldhoven",
+          description: "Al meer dan 25 jaar de betrouwbare daklekkage specialist voor inwoners van Veldhoven en omgeving."
+        },
+        {
+          icon: <Users className="w-6 h-6" />,
+          title: "Lokale Vakspecialisten",
+          description: "Ons team kent Veldhoven goed en heeft ervaring met alle bouwstijlen in de gemeente."
+        },
+        {
+          icon: <Eye className="w-6 h-6" />,
+          title: "Grondige Inspectie",
+          description: "Uitgebreide controle van uw dak om verborgen problemen op te sporen en te voorkomen."
+        },
+        {
+          icon: <Zap className="w-6 h-6" />,
+          title: "24/7 Bereikbaar",
+          description: "Ook 's avonds, 's nachts en in het weekend bereikbaar voor acute daklekkages in Veldhoven."
+        }
+      ]}
+      
+      faqs={[
+        {
+          question: "Hoe snel kunnen jullie bij daklekkage in Veldhoven ter plaatse zijn?",
+          answer: "Als lokale specialist kunnen we bij spoedgevallen meestal binnen 2-3 uur in Veldhoven zijn. Voor minder urgente reparaties plannen we binnen 24 uur een afspraak in."
+        },
+        {
+          question: "Wat kost daklekkage reparatie in Veldhoven gemiddeld?",
+          answer: "De kosten variëren per situatie. Een kleine reparatie begint rond €150, grotere reparaties kunnen oplopen tot €1200 of meer. We geven altijd een gratis inspectie en transparante offerte vooraf."
+        },
+        {
+          question: "Kennen jullie de specifieke situatie in Veldhoven goed?",
+          answer: "Zeker! We werken al 25+ jaar in Veldhoven en kennen de lokale omstandigheden goed. Van het centrum tot Meerveldhoven en Zeelst - we begrijpen de uitdagingen van verschillende wijken."
+        },
+        {
+          question: "Bedienen jullie ook de nieuwbouwwijken in Veldhoven?",
+          answer: "Ja, we hebben veel ervaring met de nieuwere ontwikkelingen in Veldhoven. We kennen de specifieke uitdagingen van moderne bouwmethoden en materialen."
+        },
+        {
+          question: "Bieden jullie garantie op daklekkage reparaties in Veldhoven?",
+          answer: "Ja, alle reparaties komen met volledige garantie. Op kleine reparaties 2 jaar, op grotere werkzaamheden tot 5 jaar. Bij problemen lossen we dit kosteloos op."
+        }
+      ]}
+      
+      phone="+31 40 123 4567"
+      onOpenContactModal={onOpenContactModal}
+    />
   );
 }

@@ -1,15 +1,5 @@
 import ServiceLocationTemplate from "@/components/templates/ServiceLocationTemplate";
-import { 
-  Shield, 
-  Clock, 
-  Award, 
-  Wrench, 
-  CheckCircle2, 
-  Users,
-  Calendar,
-  Settings,
-  Search
-} from "lucide-react";
+import { Shield, Clock, Award, Wrench, CheckCircle2, Users, Calendar, Settings, Search } from "lucide-react";
 
 interface MierloOnderhoudProps {
   onOpenContactModal: () => void;
@@ -18,7 +8,6 @@ interface MierloOnderhoudProps {
 export default function MierloOnderhoud({ onOpenContactModal }: MierloOnderhoudProps) {
   return (
     <ServiceLocationTemplate
-      // Core Data
       service="onderhoud"
       city="Mierlo"
       citySlug="mierlo" 
@@ -26,13 +15,11 @@ export default function MierloOnderhoud({ onOpenContactModal }: MierloOnderhoudP
       region="Noord-Brabant"
       nearbyAreas={["Geldrop", "Helmond", "Eindhoven", "Nuenen", "Lierop", "Aarle-Rixtel"]}
       
-      // SEO Data
       serviceTitle="Onderhoud & Service"
       serviceDescription="Professioneel onderhoud van woningen en bedrijfspanden in Mierlo. Preventief onderhoud, reparaties en technische diensten."
       pageTitle="Onderhoud Mierlo | TBGS - Betrouwbaar Woningonderhoud"
       metaDescription="Onderhoud in Mierlo? ✓ Preventief onderhoud ✓ Snelle service ✓ Vaste contactpersoon ✓ 25+ jaar ervaring. Gratis inspectie!"
       
-      // Content
       heroDescription="Professioneel onderhoud van woningen en bedrijfspanden in Mierlo door lokale specialisten. Preventief onderhoud, snelle reparaties en technische diensten voor een zorgeloze woning."
       problemsTitle="Veelvoorkomende Onderhoudsproblemen in Mierlo"
       problems={[
@@ -51,7 +38,6 @@ export default function MierloOnderhoud({ onOpenContactModal }: MierloOnderhoudP
         "Transparante prijzen en duidelijke planning"
       ]}
       
-      // Benefits/USPs
       benefits={[
         {
           icon: <Calendar className="w-6 h-6" />,
@@ -85,7 +71,6 @@ export default function MierloOnderhoud({ onOpenContactModal }: MierloOnderhoudP
         }
       ]}
       
-      // FAQ
       faqs={[
         {
           question: "Wat houdt een onderhoudscontract in Mierlo precies in?",
@@ -102,14 +87,9 @@ export default function MierloOnderhoud({ onOpenContactModal }: MierloOnderhoudP
         {
           question: "Hoe vaak komen jullie langs voor onderhoud in Mierlo?",
           answer: "Standaard komen we 1x per jaar voor de jaarlijkse controle. Bij specifieke wensen kunnen we vaker langskomen. Voor contractklanten zijn we altijd binnen 48 uur beschikbaar."
-        },
-        {
-          question: "Kunnen jullie ook het binnenschilderwerk onderhouden?",
-          answer: "Ja, naast buitenonderhoud verzorgen we ook binnenschilderwerk, kleine reparaties en technisch onderhoud. We bieden totaalpakketten voor binnen- en buitenonderhoud."
         }
       ]}
       
-      // Contact
       phone="+31 40 202 6744"
       onOpenContactModal={onOpenContactModal}
     />

@@ -1,15 +1,5 @@
 import ServiceLocationTemplate from "@/components/templates/ServiceLocationTemplate";
-import { 
-  Shield, 
-  Clock, 
-  Award, 
-  Wrench, 
-  CheckCircle2, 
-  Users,
-  Paintbrush,
-  Home,
-  Ruler
-} from "lucide-react";
+import { Shield, Clock, Award, Wrench, CheckCircle2, Users, Paintbrush, Home, Ruler } from "lucide-react";
 
 interface MierloRenovatieProps {
   onOpenContactModal: () => void;
@@ -18,7 +8,6 @@ interface MierloRenovatieProps {
 export default function MierloRenovatie({ onOpenContactModal }: MierloRenovatieProps) {
   return (
     <ServiceLocationTemplate
-      // Core Data
       service="renovatie"
       city="Mierlo"
       citySlug="mierlo" 
@@ -26,13 +15,11 @@ export default function MierloRenovatie({ onOpenContactModal }: MierloRenovatieP
       region="Noord-Brabant"
       nearbyAreas={["Geldrop", "Helmond", "Eindhoven", "Nuenen", "Lierop", "Aarle-Rixtel"]}
       
-      // SEO Data
       serviceTitle="Renovatie & Verbouw"
       serviceDescription="Complete woningrenovaties in Mierlo door ervaren vakspecialisten. Van badkamer tot zolder met kwaliteit en vakmanschap."
       pageTitle="Renovatie Mierlo | TBGS - Complete Woningrenovatie"
       metaDescription="Renovatie in Mierlo? ✓ Complete woningrenovatie ✓ Badkamer & keuken ✓ 25+ jaar ervaring ✓ Lokale specialisten. Gratis offerte!"
       
-      // Content
       heroDescription="Complete woningrenovaties in Mierlo door ervaren vakspecialisten. Van kleinschalige verbouwingen tot complete renovaties. Wij realiseren uw droomhuis met kwaliteit en vakmanschap."
       problemsTitle="Renovatie Uitdagingen in Mierlo Woningen"
       problems={[
@@ -51,7 +38,6 @@ export default function MierloRenovatie({ onOpenContactModal }: MierloRenovatieP
         "Transparante communicatie gedurende het hele project"
       ]}
       
-      // Benefits/USPs
       benefits={[
         {
           icon: <Home className="w-6 h-6" />,
@@ -85,7 +71,6 @@ export default function MierloRenovatie({ onOpenContactModal }: MierloRenovatieP
         }
       ]}
       
-      // FAQ
       faqs={[
         {
           question: "Wat voor renovaties voeren jullie uit in Mierlo?",
@@ -102,14 +87,9 @@ export default function MierloRenovatie({ onOpenContactModal }: MierloRenovatieP
         {
           question: "Wat kost een renovatie in Mierlo gemiddeld?",
           answer: "Dit varieert sterk per project. Een badkamerrenovatie vanaf €8.000, keuken vanaf €12.000, zolderverbouwing vanaf €15.000. We maken altijd een gedetaileerde offerte op maat."
-        },
-        {
-          question: "Houden jullie rekening met de stijl van oudere woningen in Mierlo?",
-          answer: "Absoluut! We respecteren de authentieke karakter van oudere woningen in Mierlo. We combineren moderne technieken met behoud van karakteristieke details waar mogelijk."
         }
       ]}
       
-      // Contact
       phone="+31 40 202 6744"
       onOpenContactModal={onOpenContactModal}
     />
