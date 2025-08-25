@@ -105,14 +105,14 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 alt="Professionele schoorsteenveger aan het werk" 
                 className="rounded-2xl shadow-2xl w-full h-auto" 
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10">
+                  <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center relative z-10 flex-shrink-0">
                     <img src={certifiedIcon} alt="Gecertificeerd" className="w-10 h-10 object-contain brightness-0 invert" />
                   </div>
-                  <div>
-                    <div className="font-bold text-gray-900">Gecertificeerd</div>
-                    <div className="text-sm text-gray-600">Erkend schoorsteenveger</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-gray-900 text-sm leading-tight">Gecertificeerd</div>
+                    <div className="text-xs text-gray-600 leading-tight whitespace-nowrap">Erkend schoorsteenveger</div>
                   </div>
                 </div>
               </div>
