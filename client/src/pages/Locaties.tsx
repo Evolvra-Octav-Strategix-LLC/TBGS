@@ -386,7 +386,7 @@ export default function Locaties() {
         </div>
 
         {/* Locations Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredLocations.map((location) => (
             <Card key={location.id} className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 overflow-hidden bg-white shadow-lg">
               <CardContent className="p-0">
@@ -418,7 +418,7 @@ export default function Locaties() {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 space-y-4">
+                <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {location.description}
                   </p>
@@ -431,7 +431,7 @@ export default function Locaties() {
                         href={location.region === "Limburg, België" ? `/be/${location.slug}/daklekkage` : `/nl/${location.slug}/daklekkage`}
                         className="group/service"
                       >
-                        <div className="bg-red-50 hover:bg-red-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-red-100">
+                        <div className="bg-red-50 hover:bg-red-100 p-1.5 sm:p-2 rounded-lg transition-colors text-center cursor-pointer border border-red-100">
                           <div className="text-red-600 text-xs font-medium">Daklekkage</div>
                           <ArrowRight className="w-3 h-3 text-red-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
                         </div>
@@ -440,7 +440,7 @@ export default function Locaties() {
                         href={location.region === "Limburg, België" ? `/be/${location.slug}/renovatie` : `/nl/${location.slug}/renovatie`}
                         className="group/service"
                       >
-                        <div className="bg-blue-50 hover:bg-blue-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-blue-100">
+                        <div className="bg-blue-50 hover:bg-blue-100 p-1.5 sm:p-2 rounded-lg transition-colors text-center cursor-pointer border border-blue-100">
                           <div className="text-blue-600 text-xs font-medium">Renovatie</div>
                           <ArrowRight className="w-3 h-3 text-blue-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
                         </div>
@@ -449,7 +449,7 @@ export default function Locaties() {
                         href={location.region === "Limburg, België" ? `/be/${location.slug}/onderhoud` : `/nl/${location.slug}/onderhoud`}
                         className="group/service"
                       >
-                        <div className="bg-green-50 hover:bg-green-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-green-100">
+                        <div className="bg-green-50 hover:bg-green-100 p-1.5 sm:p-2 rounded-lg transition-colors text-center cursor-pointer border border-green-100">
                           <div className="text-green-600 text-xs font-medium">Onderhoud</div>
                           <ArrowRight className="w-3 h-3 text-green-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
                         </div>
@@ -457,21 +457,9 @@ export default function Locaties() {
                     </div>
                   </div>
                   
-                  {/* Specialist Services */}
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Specialisten:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {location.services.map((service) => (
-                        <Badge key={service} variant="outline" className="text-xs border-gray-300 text-gray-600">
-                          <CheckCircle2 className="w-3 h-3 mr-1" />
-                          {service}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Contact Info */}
-                  <div className="space-y-2 pt-2 border-t border-gray-100">
+                  <div className="space-y-2 pt-2 sm:pt-3 border-t border-gray-100">
                     <div className="flex items-center gap-2 text-gray-600 text-sm">
                       <Phone className="w-4 h-4 text-green-600 flex-shrink-0" />
                       <a href={`tel:${location.phone}`} className="hover:text-blue-600 transition-colors font-medium">
@@ -486,7 +474,7 @@ export default function Locaties() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2 pt-2">
+                  <div className="flex gap-2 pt-2 sm:pt-3">
                     <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
                       <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                         <Navigation className="w-4 h-4 mr-2" />
