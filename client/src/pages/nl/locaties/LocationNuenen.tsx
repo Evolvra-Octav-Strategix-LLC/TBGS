@@ -112,7 +112,7 @@ export default function LocationNuenen({ onOpenContactModal }: LocationNuenenPro
         },
         {
           question: "Hoe snel kunnen jullie in Nuenen ter plaatse zijn?",
-          answer: "Voor spoedgevallen kunnen we meestal binnen 2-3 uur in Nuenen zijn. Voor reguliere afspraken plannen we binnen 24-48 uur een geschikt moment."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         }
       ]}
       

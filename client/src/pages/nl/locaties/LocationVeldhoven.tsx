@@ -104,7 +104,7 @@ export default function LocationVeldhoven({ onOpenContactModal }: LocationVeldho
         },
         {
           question: "Hoe snel kunnen jullie in Veldhoven ter plaatse zijn?",
-          answer: "Voor spoedgevallen kunnen we meestal binnen 2-4 uur in Veldhoven zijn. Voor reguliere afspraken plannen we binnen 24-48 uur een geschikt tijdstip."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         },
         {
           question: "Hebben jullie ervaring met nieuwbouwwijken in Veldhoven?",

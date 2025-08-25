@@ -108,7 +108,7 @@ export default function LocationMierlo({ onOpenContactModal }: LocationMierloPro
         },
         {
           question: "Hoe snel kunnen jullie in Mierlo ter plaatse zijn voor spoedgevallen?",
-          answer: "Voor spoedgevallen in Mierlo kunnen we meestal binnen 2-4 uur ter plaatse zijn. Bij acute situaties zoals daklekkages tijdens storm hebben we 24/7 service beschikbaar."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         }
       ]}
       

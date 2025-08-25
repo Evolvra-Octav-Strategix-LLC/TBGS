@@ -85,7 +85,7 @@ export default function VeldhovenDaklekkage({ onOpenContactModal }: VeldhovenDak
       faqs={[
         {
           question: "Hoe snel kunnen jullie bij daklekkage in Veldhoven ter plaatse zijn?",
-          answer: "Als lokale specialist kunnen we bij spoedgevallen meestal binnen 2-3 uur in Veldhoven zijn. Voor minder urgente reparaties plannen we binnen 24 uur een afspraak in."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         },
         {
           question: "Wat kost daklekkage reparatie in Veldhoven gemiddeld?",

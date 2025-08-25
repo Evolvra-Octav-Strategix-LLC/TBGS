@@ -74,7 +74,7 @@ export default function MierloDaklekkage({ onOpenContactModal }: MierloDaklekkag
       faqs={[
         {
           question: "Hoe snel kunnen jullie bij daklekkage in Mierlo ter plaatse zijn?",
-          answer: "Als lokale specialist kunnen we bij spoedgevallen meestal binnen 2-4 uur in Mierlo zijn. Voor minder urgente reparaties plannen we binnen 24-48 uur een afspraak in."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         },
         {
           question: "Wat kost daklekkage reparatie in Mierlo gemiddeld?",

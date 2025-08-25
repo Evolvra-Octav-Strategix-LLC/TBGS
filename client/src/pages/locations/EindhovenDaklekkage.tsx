@@ -85,7 +85,7 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
       faqs={[
         {
           question: "Hoe snel kunnen jullie bij daklekkage in Eindhoven ter plaatse zijn?",
-          answer: "Bij spoedgevallen streven we ernaar binnen 24 uur ter plaatse te zijn. Voor minder urgente zaken plannen we binnen 48 uur een afspraak. We bedienen Eindhoven en omliggende gebieden zoals Veldhoven, Nuenen en Best."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         },
         {
           question: "Wat kost daklekkage reparatie in Eindhoven gemiddeld?",

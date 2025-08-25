@@ -129,7 +129,7 @@ export default function LocationEindhoven({ onOpenContactModal }: LocationEindho
         },
         {
           question: "Hoe snel kunnen jullie in Eindhoven ter plaatse zijn voor spoedgevallen?",
-          answer: "Voor spoedgevallen in Eindhoven streven we ernaar binnen 4-6 uur ter plaatse te zijn, afhankelijk van de drukte en het tijdstip. Voor acute situaties zoals daklekkages tijdens storm hebben we een 24/7 spoeddienst beschikbaar."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement."
         },
         {
           question: "Werken jullie ook samen met andere bedrijven in de regio Eindhoven?",
