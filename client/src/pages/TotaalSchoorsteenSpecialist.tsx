@@ -23,6 +23,7 @@ import repairIcon from "@assets/image (17)_1754999543404.png";
 import replacementIcon from "@assets/image (14)_1754999543397.png";
 import renovationIcon from "@assets/image (17)_1754999543404.png";
 import emergencyIcon from "@assets/image (18)_1754999543407.png";
+import heroImage from "@assets/Totaal Schoorsteen Specialist (1)_1754928058600.jpg";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;
@@ -101,8 +102,8 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
 
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1664362240026-7f8e4c845a5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professionele schoorsteenveger aan het werk" 
+                src={heroImage} 
+                alt="Totaal Schoorsteen Specialist - professionele schoorsteenveger" 
                 className="rounded-2xl shadow-2xl w-full h-auto" 
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
