@@ -3,9 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Phone, Clock, Star, Search, Navigation } from "lucide-react";
+import { MapPin, Phone, Clock, Star, Search, Navigation, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import LocationCards from "@/components/LocationCards";
+import SEOHead from "@/lib/seo";
 
 interface Location {
   id: string;
@@ -142,6 +143,22 @@ const locations: Location[] = [
     description: "Premium bouwdiensten met persoonlijke service.",
     openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
     slug: "waalre"
+  },
+  {
+    id: "son-en-breugel",
+    name: "TBGS Son en Breugel",
+    city: "Son en Breugel",
+    region: "Noord-Brabant",
+    address: "",
+    postalCode: "",
+    phone: "+31 40 202 6744",
+    coordinates: { lat: 51.5167, lng: 5.4833 },
+    services: ["TDS", "TSS", "TOS", "TBS"],
+    rating: 4.8,
+    reviewCount: 127,
+    description: "Volledige bouw- en onderhoudsdiensten in Son en Breugel.",
+    openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
+    slug: "son-en-breugel"
   },
   // Belgium - Actieve gebieden
   {
@@ -292,7 +309,14 @@ export default function Locaties() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-x-hidden">
+    <>
+      <SEOHead 
+        title="TBGS Locaties - Bouwspecialisten in Nederland en België | Vind uw vestiging"
+        description="Vind de dichtstbijzijnde TBGS vestiging voor dak-, schoorsteen-, onderhoud- en bouwdiensten. 15+ locaties in Nederland en België met lokale expertise."
+        url="https://tbgs.nl/locaties"
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-x-hidden">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -362,93 +386,121 @@ export default function Locaties() {
         </div>
 
         {/* Locations Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredLocations.map((location) => (
-            <Card key={location.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-200 overflow-hidden bg-white">
-              <CardContent className="p-4">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors mb-1">
-                      {location.city}
-                    </h3>
-                    <div className="flex items-center gap-1 text-gray-500 text-sm mb-2">
-                      <MapPin className="w-3 h-3" />
-                      <span>{location.region}</span>
+            <Card key={location.id} className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 overflow-hidden bg-white shadow-lg">
+              <CardContent className="p-0">
+                {/* Header */}
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 relative">
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold mb-1">
+                        {location.city}
+                      </h3>
+                      <div className="flex items-center gap-1 text-blue-100 text-sm">
+                        <MapPin className="w-4 h-4" />
+                        <span>{location.region}</span>
+                      </div>
                     </div>
+                    {location.isMainLocation && (
+                      <Badge className="bg-yellow-500 text-black border-0 text-xs font-bold px-2 py-1">
+                        Hoofdkantoor
+                      </Badge>
+                    )}
                   </div>
-                  {location.isMainLocation && (
-                    <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white border-0 text-xs px-2 py-1">
-                      Hoofdkantoor
-                    </Badge>
-                  )}
+                  
+                  <div className="flex items-center gap-2 text-blue-100 text-sm">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span className="font-medium">{location.rating} rating</span>
+                    <span>•</span>
+                    <span>{location.reviewCount} reviews</span>
+                  </div>
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                  {location.description}
-                </p>
+                {/* Content */}
+                <div className="p-4 space-y-4">
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {location.description}
+                  </p>
 
-                {/* Service Links */}
-                <div className="mb-3">
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/daklekkage` : `/nl/${location.slug}/daklekkage`}>
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors cursor-pointer">
-                        Daklekkage
-                      </span>
-                    </Link>
-                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/renovatie` : `/nl/${location.slug}/renovatie`}>
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors cursor-pointer">
-                        Renovatie
-                      </span>
-                    </Link>
-                    <Link href={location.region === "Limburg, België" ? `/be/${location.slug}/onderhoud` : `/nl/${location.slug}/onderhoud`}>
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors cursor-pointer">
-                        Onderhoud
-                      </span>
-                    </Link>
+                  {/* Popular Services */}
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Populaire diensten:</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                      <Link 
+                        href={location.region === "Limburg, België" ? `/be/${location.slug}/daklekkage` : `/nl/${location.slug}/daklekkage`}
+                        className="group/service"
+                      >
+                        <div className="bg-red-50 hover:bg-red-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-red-100">
+                          <div className="text-red-600 text-xs font-medium">Daklekkage</div>
+                          <ArrowRight className="w-3 h-3 text-red-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                      <Link 
+                        href={location.region === "Limburg, België" ? `/be/${location.slug}/renovatie` : `/nl/${location.slug}/renovatie`}
+                        className="group/service"
+                      >
+                        <div className="bg-blue-50 hover:bg-blue-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-blue-100">
+                          <div className="text-blue-600 text-xs font-medium">Renovatie</div>
+                          <ArrowRight className="w-3 h-3 text-blue-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                      <Link 
+                        href={location.region === "Limburg, België" ? `/be/${location.slug}/onderhoud` : `/nl/${location.slug}/onderhoud`}
+                        className="group/service"
+                      >
+                        <div className="bg-green-50 hover:bg-green-100 p-2 rounded-lg transition-colors text-center cursor-pointer border border-green-100">
+                          <div className="text-green-600 text-xs font-medium">Onderhoud</div>
+                          <ArrowRight className="w-3 h-3 text-green-500 mx-auto mt-1 group-hover/service:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                   
                   {/* Specialist Services */}
-                  <div className="flex flex-wrap gap-1">
-                    {location.services.map((service) => (
-                      <Badge key={service} variant="secondary" className="text-xs bg-gray-100 text-gray-600 px-2 py-1">
-                        {service}
-                      </Badge>
-                    ))}
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Specialisten:</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {location.services.map((service) => (
+                        <Badge key={service} variant="outline" className="text-xs border-gray-300 text-gray-600">
+                          <CheckCircle2 className="w-3 h-3 mr-1" />
+                          {service}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Contact Info */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Phone className="w-4 h-4 text-green-600 flex-shrink-0" />
-                    <a href={`tel:${location.phone}`} className="hover:text-blue-600 transition-colors">
-                      {location.phone}
-                    </a>
+                  {/* Contact Info */}
+                  <div className="space-y-2 pt-2 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-gray-600 text-sm">
+                      <Phone className="w-4 h-4 text-green-600 flex-shrink-0" />
+                      <a href={`tel:${location.phone}`} className="hover:text-blue-600 transition-colors font-medium">
+                        {location.phone}
+                      </a>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 text-gray-600 text-sm">
+                      <Clock className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                      <span>{location.openingHours[0]}</span>
+                    </div>
                   </div>
-                  
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Clock className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                    <span>{location.openingHours[0]}</span>
-                  </div>
-                </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
-                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs">
-                      <Navigation className="w-3 h-3 mr-1" />
-                      Info
+                  {/* Action Buttons */}
+                  <div className="flex gap-2 pt-2">
+                    <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
+                      <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                        <Navigation className="w-4 h-4 mr-2" />
+                        Bekijk locatie
+                      </Button>
+                    </Link>
+                    <Button 
+                      size="sm"
+                      className="bg-green-600 hover:bg-green-700 text-white font-semibold px-4"
+                      onClick={() => window.open(`tel:${location.phone}`, '_self')}
+                    >
+                      <Phone className="w-4 h-4" />
                     </Button>
-                  </Link>
-                  <Button 
-                    size="sm"
-                    variant="outline" 
-                    className="flex-1 border-blue-200 text-blue-700 hover:bg-blue-50 text-xs"
-                    onClick={() => window.open(`tel:${location.phone}`, '_self')}
-                  >
-                    <Phone className="w-3 h-3 mr-1" />
-                    Bel
-                  </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -505,6 +557,7 @@ export default function Locaties() {
           </Card>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
