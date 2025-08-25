@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Phone, Clock, Star, Search, Navigation, ArrowRight, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Clock, Star, Search, Navigation, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import LocationCards from "@/components/LocationCards";
 import SEOHead from "@/lib/seo";
@@ -474,20 +474,33 @@ export default function Locaties() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2 pt-2 sm:pt-3">
-                    <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
-                      <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-                        <Navigation className="w-4 h-4 mr-2" />
-                        Bekijk locatie
+                  <div className="space-y-2 pt-2 sm:pt-3">
+                    <div className="flex gap-2">
+                      <Link href={location.region === "Limburg, België" ? `/be/locaties/${location.slug}` : `/nl/locaties/${location.slug}`} className="flex-1">
+                        <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs">
+                          <Navigation className="w-3 h-3 mr-1" />
+                          Bekijk locatie
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        size="sm"
+                        className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold text-xs"
+                        onClick={() => window.open(`tel:${location.phone}`, '_self')}
+                      >
+                        <Phone className="w-3 h-3 mr-1" />
+                        Bellen
                       </Button>
-                    </Link>
-                    <Button 
-                      size="sm"
-                      className="bg-green-600 hover:bg-green-700 text-white font-semibold px-4"
-                      onClick={() => window.open(`tel:${location.phone}`, '_self')}
-                    >
-                      <Phone className="w-4 h-4" />
-                    </Button>
+                      <Button 
+                        size="sm"
+                        className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold text-xs"
+                        onClick={() => window.open(`https://wa.me/${location.phone.replace(/\s+/g, '').replace('+', '')}?text=Hallo! Ik heb een vraag over jullie diensten in ${location.city}.`, '_blank')}
+                      >
+                        <MessageCircle className="w-3 h-3 mr-1" />
+                        WhatsApp
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>
