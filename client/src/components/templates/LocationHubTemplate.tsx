@@ -244,12 +244,11 @@ export default function LocationHubTemplate({
                 </Button>
                 <Button 
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-700 font-semibold text-lg px-8 py-4"
-                  onClick={() => window.open(`tel:${phone}`, '_self')}
+                  className="bg-green-500 hover:bg-green-600 text-white font-semibold text-lg px-8 py-4"
+                  onClick={() => window.open(`https://wa.me/${phone.replace(/\s+/g, '').replace('+', '')}?text=Hallo! Ik heb een vraag over TBGS diensten in ${city}.`, '_blank')}
                 >
-                  <Phone className="w-5 h-5 mr-3" />
-                  Direct Bellen
+                  <MessageCircle className="w-5 h-5 mr-3" />
+                  WhatsApp Contact
                 </Button>
               </div>
 
@@ -530,14 +529,6 @@ export default function LocationHubTemplate({
                 >
                   <Calendar className="w-5 h-5 mr-3" />
                   Gratis Offerte Aanvragen
-                </Button>
-                <Button 
-                  size="lg"
-                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-8"
-                  onClick={() => window.open(`tel:${phone}`, '_self')}
-                >
-                  <Phone className="w-5 h-5 mr-3" />
-                  {phone}
                 </Button>
                 <Button 
                   size="lg"
