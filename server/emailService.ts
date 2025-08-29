@@ -6,6 +6,10 @@ import { createTBGSVCard } from './vcard';
 
 interface EmailData {
   selectedService: string;
+  serviceType?: string;
+  specialist?: string;
+  projectType?: string;
+  urgencyLevel?: string;
   photos: string[];
   address: string;
   projectDescription: string;
@@ -352,10 +356,30 @@ class EmailService {
               <div style="margin-bottom: 25px;">
                 <h3 style="color: #333; margin-bottom: 15px;">Project Details</h3>
                 <table style="width: 100%; border-collapse: collapse;">
+                  ${data.serviceType ? `
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Wat heeft u nodig:</td>
+                    <td style="padding: 8px 0;">${data.serviceType}</td>
+                  </tr>` : ''}
+                  ${data.specialist ? `
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Specialist:</td>
+                    <td style="padding: 8px 0;">${data.specialist}</td>
+                  </tr>` : ''}
+                  ${data.projectType ? `
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Type werkzaamheden:</td>
+                    <td style="padding: 8px 0;">${data.projectType}</td>
+                  </tr>` : ''}
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; width: 120px;">Service:</td>
                     <td style="padding: 8px 0;">${data.selectedService}</td>
                   </tr>
+                  ${data.urgencyLevel ? `
+                  <tr>
+                    <td style="padding: 8px 0; font-weight: bold; width: 120px;">Urgentie:</td>
+                    <td style="padding: 8px 0; ${data.urgencyLevel === 'urgent' ? 'color: #e74c3c; font-weight: bold;' : ''}">${data.urgencyLevel === 'urgent' ? '🚨 SPOEDEISEND' : 'Normaal'}</td>
+                  </tr>` : ''}
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; vertical-align: top;">Beschrijving:</td>
                     <td style="padding: 8px 0; line-height: 1.5;">${data.projectDescription}</td>

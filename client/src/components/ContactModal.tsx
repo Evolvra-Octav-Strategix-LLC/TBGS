@@ -70,6 +70,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       
       // Add form fields
       formData.append('selectedService', data.serviceType + (data.projectType ? ` - ${data.projectType}` : ''));
+      formData.append('serviceType', data.serviceType);
+      formData.append('specialist', data.specialisme);
+      formData.append('projectType', data.projectType || '');
       formData.append('address', data.location);
       formData.append('projectDescription', data.description);
       formData.append('firstName', data.firstName);
@@ -123,6 +126,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const onSubmit = () => {
     form.handleSubmit((data) => {
+      // Show immediate feedback
+      toast({
+        title: "Bezig met verzenden...",
+        description: "Uw aanvraag wordt verwerkt.",
+      });
       submitMutation.mutate(data);
     })();
   };

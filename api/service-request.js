@@ -28,6 +28,10 @@ export default async function handler(req, res) {
   try {
     const {
       selectedService,
+      serviceType,
+      specialist,
+      projectType,
+      urgencyLevel,
       photos = [],
       address,
       projectDescription,
@@ -62,6 +66,10 @@ export default async function handler(req, res) {
     try {
       await emailService.sendNotificationEmail({
         selectedService,
+        serviceType,
+        specialist,
+        projectType,
+        urgencyLevel,
         photos: Array.isArray(photos) ? photos : [],
         address,
         projectDescription: projectDescription || '',
@@ -81,6 +89,10 @@ export default async function handler(req, res) {
     try {
       await emailService.sendThankYouEmail({
         selectedService,
+        serviceType,
+        specialist,
+        projectType,
+        urgencyLevel,
         photos: Array.isArray(photos) ? photos : [],
         address,
         projectDescription: projectDescription || '',
