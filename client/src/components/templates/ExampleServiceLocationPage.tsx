@@ -60,6 +60,14 @@ export default function ExampleServiceLocationPage({ onOpenContactModal }: Examp
         }
       ]}
       
+      faqs={[
+        {
+          question: "Example FAQ question?",
+          answer: "Example FAQ answer."
+        }
+      ]}
+      
+      phone="+31 40 202 6744"
       onOpenContactModal={onOpenContactModal}
     />
   );

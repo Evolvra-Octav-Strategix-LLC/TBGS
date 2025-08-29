@@ -67,6 +67,15 @@ export default function ExampleLocationHubPage({ onOpenContactModal }: ExampleLo
         }
       ]}
       
+      faqs={[
+        {
+          question: "Example FAQ question?",
+          answer: "Example FAQ answer."
+        }
+      ]}
+      
+      phone="+31 40 202 6744"
+      coordinates={{ lat: 51.4416, lng: 5.4697 }}
       onOpenContactModal={onOpenContactModal}
     />
   );
