@@ -639,7 +639,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           {/* Real Google Reviews Slider */}
-          <GoogleReviewSlider placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs" className="mb-0" />
+          <GoogleReviewSlider placeId="17376797705532743285" className="mb-0" />
         </div>
       </section>
       {/* Service Areas - Modern Design */}
@@ -679,7 +679,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           </div>
 
           <GoogleBusinessIntegration 
-            placeId="ChIJd0X8fA-7xkcRKOkp7DQsQZs"
+            placeId="17376797705532743285"
             showReviews={true}
             showMap={true}
             showHours={true}

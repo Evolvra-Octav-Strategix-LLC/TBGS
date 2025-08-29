@@ -44,7 +44,7 @@ interface GoogleBusinessIntegrationProps {
 }
 
 export default function GoogleBusinessIntegration({
-  placeId = "ChIJd0X8fA-7xkcRKOkp7DQsQZs", // Default place ID from Google profile
+  placeId = "17376797705532743285", // TBGS BV Place ID
   showReviews = true,
   showMap = true,
   showHours = true,
