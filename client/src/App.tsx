@@ -56,6 +56,12 @@ import VeldhovenDaklekkage from "@/pages/locations/VeldhovenDaklekkage";
 import MierloDaklekkage from "@/pages/locations/MierloDaklekkage";
 import MierloRenovatie from "@/pages/locations/MierloRenovatie";
 import MierloOnderhoud from "@/pages/locations/MierloOnderhoud";
+import BestDaklekkage from "@/pages/locations/BestDaklekkage";
+import BestRenovatie from "@/pages/locations/BestRenovatie";
+import BestOnderhoud from "@/pages/locations/BestOnderhoud";
+import NuenenDaklekkage from "@/pages/locations/NuenenDaklekkage";
+import NuenenRenovatie from "@/pages/locations/NuenenRenovatie";
+import NuenenOnderhoud from "@/pages/locations/NuenenOnderhoud";
 
 // Location-Specific Plat Dak Specialist Pages
 import EindhovenPlatDak from "@/pages/locaties/EindhovenPlatDak";
@@ -215,6 +221,12 @@ function Router() {
           <Route path="/nl/mierlo/daklekkage" component={() => <MierloDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/mierlo/renovatie" component={() => <MierloRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/mierlo/onderhoud" component={() => <MierloOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/best/daklekkage" component={() => <BestDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/best/renovatie" component={() => <BestRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/best/onderhoud" component={() => <BestOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen/daklekkage" component={() => <NuenenDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen/renovatie" component={() => <NuenenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/nuenen/onderhoud" component={() => <NuenenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE Location-Service Routes - None currently existing */}
           
