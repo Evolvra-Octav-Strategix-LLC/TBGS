@@ -25,6 +25,16 @@ interface Review {
   date: string;
 }
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
 interface LocationHubTemplateProps {
   city: string;
   citySlug: string;
@@ -38,6 +48,9 @@ interface LocationHubTemplateProps {
   cityDescription: string;
   services: Service[];
   reviews: Review[];
+  faqs: FAQ[];
+  phone: string;
+  coordinates: Coordinates;
   onOpenContactModal: () => void;
 }
 
@@ -54,6 +67,9 @@ export default function LocationHubTemplate({
   cityDescription,
   services,
   reviews,
+  faqs,
+  phone,
+  coordinates,
   onOpenContactModal
 }: LocationHubTemplateProps) {
   const getColorClasses = (color: string) => {

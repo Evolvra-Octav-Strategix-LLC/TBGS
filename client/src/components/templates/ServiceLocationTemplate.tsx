@@ -13,6 +13,11 @@ interface Benefit {
   description: string;
 }
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
 interface ServiceLocationTemplateProps {
   service: string;
   city: string;
@@ -30,6 +35,8 @@ interface ServiceLocationTemplateProps {
   solutionsTitle: string;
   solutions: string[];
   benefits: Benefit[];
+  faqs: FAQ[];
+  phone: string;
   onOpenContactModal: () => void;
 }
 
@@ -50,6 +57,8 @@ export default function ServiceLocationTemplate({
   solutionsTitle,
   solutions,
   benefits,
+  faqs,
+  phone,
   onOpenContactModal
 }: ServiceLocationTemplateProps) {
   return (
