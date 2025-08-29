@@ -88,7 +88,7 @@ export default function EindhovenRenovatie({ onOpenContactModal }: EindhovenReno
         },
         {
           question: "Hoelang duurt een gemiddelde renovatie in Eindhoven?",
-          answer: "Dit hangt af van de omvang. Een badkamerrenovatie duurt 2-3 weken, een keuken 1-2 weken, een zolderverbouwing 3-4 weken. Complete woningrenovaties kunnen 2-4 maanden duren, afhankelijk van de omvang en complexiteit."
+          answer: "De duur is afhankelijk van vele factoren zoals omvang, complexiteit, vergunningen en materiaallevering. We doen ons uiterste best om elk project zo snel mogelijk uit te voeren, zonder in te boeren op kwaliteit. Bij de offerte geven we een realistische planning."
         },
         {
           question: "Kunnen jullie ook vergunningen regelen voor verbouwingen in Eindhoven?",
