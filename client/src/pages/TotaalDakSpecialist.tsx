@@ -3,13 +3,13 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
-import roofRepairIcon from "@assets/image (20)_1756491691449.png";
-import gutterIcon from "@assets/image (21)_1756491691449.png";
-import leakageDetectionIcon from "@assets/image (22)_1756491691448.png";
-import roofInsulationIcon from "@assets/image (23)_1756491691448.png";
-import flatRoofIcon from "@assets/image (24)_1756491691448.png";
-import slopedRoofIcon from "@assets/image (25)_1756491691448.png";
-import roofWarrantyIcon from "@assets/image (26)_1756491691448.png";
+import roofRepairIcon from "@assets/image (20)_1755004272803.png";
+import gutterIcon from "@assets/image (21)_1755004272803.png";
+import leakageDetectionIcon from "@assets/image (22)_1755004272803.png";
+import roofInsulationIcon from "@assets/image (23)_1755004272803.png";
+import flatRoofIcon from "@assets/image (24)_1755004272803.png";
+import slopedRoofIcon from "@assets/image (25)_1755004272804.png";
+import roofWarrantyIcon from "@assets/image (26)_1755004272804.png";
 
 interface TotaalDakSpecialistProps {
   onOpenContactModal: () => void;

@@ -62,18 +62,17 @@ export default function GoogleBusinessIntegration({
     try {
       setIsLoading(true);
       
-      // Temporarily disabled to prevent API errors with invalid place ID
-      // const response = await fetch(`/api/google-business/${placeId}`);
-      // if (!response.ok) {
-      //   throw new Error('Failed to load business data');
-      // }
-      // const data = await response.json();
-      // setBusinessData(data);
+      // In production, this would call your backend API that fetches from Google Places API
+      const response = await fetch(`/api/google-business/${placeId}`);
       
-      // Use fallback data instead
-      throw new Error('Using fallback data');
+      if (!response.ok) {
+        throw new Error('Failed to load business data');
+      }
+      
+      const data = await response.json();
+      setBusinessData(data);
     } catch (err) {
-      // console.error('Error loading Google Business data:', err);
+      console.error('Error loading Google Business data:', err);
       setError('Unable to load business information');
       
       // Real TBGS business data

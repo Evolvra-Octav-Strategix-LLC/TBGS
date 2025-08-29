@@ -16,13 +16,13 @@ import {
   CheckCircle,
   Home
 } from "lucide-react";
-import certifiedIcon from "@assets/image (13)_1756491691450.png";
-import cleaningIcon from "@assets/image (19)_1756491691449.png";
-import removalIcon from "@assets/image (16)_1756491691449.png";
-import repairIcon from "@assets/image (17)_1756491691449.png";
-import replacementIcon from "@assets/image (14)_1756491691450.png";
-import renovationIcon from "@assets/image (17)_1756491691449.png";
-import emergencyIcon from "@assets/image (18)_1756491691449.png";
+import certifiedIcon from "@assets/image (13)_1754999543397.png";
+import cleaningIcon from "@assets/image (19)_1754999543410.png";
+import removalIcon from "@assets/image (16)_1754999543400.png";
+import repairIcon from "@assets/image (17)_1754999543404.png";
+import replacementIcon from "@assets/image (14)_1754999543397.png";
+import renovationIcon from "@assets/image (17)_1754999543404.png";
+import emergencyIcon from "@assets/image (18)_1754999543407.png";
 import heroImage from "@assets/Totaal Schoorsteen Specialist (1)_1754928058600.jpg";
 
 interface TotaalSchoorsteenSpecialistProps {
