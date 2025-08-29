@@ -206,6 +206,9 @@ function Router() {
           {/* BE - City Hubs (Locatie Hubs) - Only existing files */}
           <Route path="/be/locaties/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
+          {/* BE - Direct city routes (cleaner URLs) */}
+          <Route path="/be/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
 
           
           {/* Location-Specific Plat Dak Specialist Routes */}

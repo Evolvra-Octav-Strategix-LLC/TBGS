@@ -28,19 +28,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/eindhoven" className="hover:text-tbgs-navy font-medium">Eindhoven</Link>
+                  <Link href="/nl/eindhoven" className="hover:text-tbgs-navy font-medium">Eindhoven</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/nuenen" className="hover:text-tbgs-navy font-medium">Nuenen</Link>
+                  <Link href="/nl/nuenen" className="hover:text-tbgs-navy font-medium">Nuenen</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/veldhoven" className="hover:text-tbgs-navy font-medium">Veldhoven</Link>
+                  <Link href="/nl/veldhoven" className="hover:text-tbgs-navy font-medium">Veldhoven</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/best" className="hover:text-tbgs-navy font-medium">Best</Link>
+                  <Link href="/nl/best" className="hover:text-tbgs-navy font-medium">Best</Link>
                 </li>
               </ul>
             </div>
@@ -49,19 +49,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/son-en-breugel" className="hover:text-tbgs-navy font-medium">Son en Breugel</Link>
+                  <Link href="/nl/son-en-breugel" className="hover:text-tbgs-navy font-medium">Son en Breugel</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/geldrop" className="hover:text-tbgs-navy font-medium">Geldrop</Link>
+                  <Link href="/nl/geldrop" className="hover:text-tbgs-navy font-medium">Geldrop</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/mierlo" className="hover:text-tbgs-navy font-medium">Mierlo</Link>
+                  <Link href="/nl/mierlo" className="hover:text-tbgs-navy font-medium">Mierlo</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/nl/locaties/waalre" className="hover:text-tbgs-navy font-medium">Waalre</Link>
+                  <Link href="/nl/waalre" className="hover:text-tbgs-navy font-medium">Waalre</Link>
                 </li>
               </ul>
             </div>
@@ -85,19 +85,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/retie" className="hover:text-tbgs-navy font-medium">Retie</Link>
+                  <Link href="/be/retie" className="hover:text-tbgs-navy font-medium">Retie</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/lommel" className="hover:text-tbgs-navy font-medium">Lommel</Link>
+                  <Link href="/be/lommel" className="hover:text-tbgs-navy font-medium">Lommel</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/hamont-achel" className="hover:text-tbgs-navy font-medium">Hamont-Achel</Link>
+                  <Link href="/be/hamont-achel" className="hover:text-tbgs-navy font-medium">Hamont-Achel</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/hamont" className="hover:text-tbgs-navy font-medium">Hamont</Link>
+                  <Link href="/be/hamont" className="hover:text-tbgs-navy font-medium">Hamont</Link>
                 </li>
               </ul>
             </div>
@@ -106,19 +106,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/pelt" className="hover:text-tbgs-navy font-medium">Pelt</Link>
+                  <Link href="/be/pelt" className="hover:text-tbgs-navy font-medium">Pelt</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/sint-huibrechts-lille" className="hover:text-tbgs-navy font-medium">Sint-Huibrechts-Lille</Link>
+                  <Link href="/be/sint-huibrechts-lille" className="hover:text-tbgs-navy font-medium">Sint-Huibrechts-Lille</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/overpelt" className="hover:text-tbgs-navy font-medium">Overpelt</Link>
+                  <Link href="/be/overpelt" className="hover:text-tbgs-navy font-medium">Overpelt</Link>
                 </li>
                 <li className="flex items-center">
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
-                  <Link href="/be/locaties/neerpelt" className="hover:text-tbgs-navy font-medium">Neerpelt</Link>
+                  <Link href="/be/neerpelt" className="hover:text-tbgs-navy font-medium">Neerpelt</Link>
                 </li>
               </ul>
             </div>
