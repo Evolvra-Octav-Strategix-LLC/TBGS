@@ -14,6 +14,8 @@ import Kennisbank from "@/pages/Kennisbank";
 import GratisOfferte from "@/pages/GratisOfferte";
 import OverOns from "@/pages/OverOns";
 import Contact from "@/pages/Contact";
+import AdminApp from "@/pages/admin/AdminApp";
+import AdminArticle from "@/pages/AdminArticle";
 
 import DaklekkageHerkennenVoorkomen from "@/pages/DaklekkageHerkennenVoorkomen";
 import EnergibesparingDoorIsolatie from "@/pages/EnergibesparingDoorIsolatie";
@@ -143,6 +145,9 @@ function Router() {
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
 
+          {/* Admin-generated articles - dynamic route for admin articles */}
+          <Route path="/kennisbank/:slug" component={() => <AdminArticle onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -212,6 +217,9 @@ function Router() {
           <Route path="/nl/mierlo/onderhoud" component={() => <MierloOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE Location-Service Routes - None currently existing */}
+          
+          {/* Admin Routes */}
+          <Route path="/admin*" component={AdminApp} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />

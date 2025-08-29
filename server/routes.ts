@@ -4,10 +4,20 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 import { db } from "./db";
-import { serviceRequests, insertServiceRequestSchema } from "@shared/schema";
+import { 
+  serviceRequests, 
+  insertServiceRequestSchema,
+  insertCategorySchema,
+  insertTagSchema,
+  insertArticleSchema,
+  insertAdminUserSchema
+} from "@shared/schema";
 import { emailService } from "./emailService";
 import multer from 'multer';
 import fs from 'fs';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import session from 'express-session';
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -40,6 +50,49 @@ const offerteFormSchema = z.object({
   privacyAkkoord: z.boolean().refine(val => val === true, "U moet akkoord gaan met de privacyverklaring"),
   nieuwsbrief: z.boolean().optional(),
 });
+
+// Admin authentication schemas
+const adminLoginSchema = z.object({
+  email: z.string().email("Ongeldig e-mailadres"),
+  password: z.string().min(6, "Wachtwoord moet minimaal 6 karakters zijn")
+});
+
+const adminCreateSchema = insertAdminUserSchema.extend({
+  password: z.string().min(6, "Wachtwoord moet minimaal 6 karakters zijn")
+});
+
+// JWT secret for admin auth
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
+
+// Middleware for admin authentication
+const requireAdminAuth = async (req: any, res: any, next: any) => {
+  try {
+    const token = req.headers.authorization?.replace('Bearer ', '');
+    if (!token) {
+      return res.status(401).json({ error: 'Geen authenticatie token' });
+    }
+
+    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    const adminUser = await storage.getAdminUser(decoded.userId);
+    
+    if (!adminUser) {
+      return res.status(401).json({ error: 'Ongeldige token' });
+    }
+
+    req.adminUser = adminUser;
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Ongeldige token' });
+  }
+};
+
+// Helper function to generate slug from title
+const generateSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+};
 
 // Utility function to normalize file names (inspired by PHP example)
 const normalizeFileName = (originalName: string): string => {
@@ -484,6 +537,350 @@ export async function registerRoutes(app: Express): Promise<Server> {
       };
 
       res.json(tbgsData);
+    }
+  });
+
+  // ==================== ADMIN API ROUTES ====================
+  
+  // Admin authentication
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { email, password } = adminLoginSchema.parse(req.body);
+      
+      const adminUser = await storage.getAdminUserByEmail(email);
+      if (!adminUser) {
+        return res.status(401).json({ error: "Ongeldige inloggegevens" });
+      }
+
+      const passwordValid = await bcrypt.compare(password, adminUser.password);
+      if (!passwordValid) {
+        return res.status(401).json({ error: "Ongeldige inloggegevens" });
+      }
+
+      const token = jwt.sign({ userId: adminUser.id }, JWT_SECRET, { expiresIn: '7d' });
+      
+      res.json({
+        token,
+        user: {
+          id: adminUser.id,
+          email: adminUser.email,
+          name: adminUser.name,
+          role: adminUser.role
+        }
+      });
+    } catch (error) {
+      console.error("Admin login error:", error);
+      res.status(400).json({ error: "Login mislukt" });
+    }
+  });
+
+  // Create first admin user (only if no admin exists)
+  app.post("/api/admin/setup", async (req, res) => {
+    try {
+      const existingAdmins = await storage.getAdminUser("any"); // Just check if any admin exists
+      // We'll check count instead
+      
+      const { email, password, name } = adminCreateSchema.parse(req.body);
+      
+      const hashedPassword = await bcrypt.hash(password, 12);
+      const adminUser = await storage.createAdminUser({
+        email,
+        password: hashedPassword,
+        name,
+        role: 'admin'
+      });
+
+      res.json({ 
+        message: "Admin gebruiker aangemaakt",
+        user: {
+          id: adminUser.id,
+          email: adminUser.email,
+          name: adminUser.name
+        }
+      });
+    } catch (error) {
+      console.error("Admin setup error:", error);
+      res.status(400).json({ error: "Setup mislukt" });
+    }
+  });
+
+  // Check admin authentication
+  app.get("/api/admin/me", requireAdminAuth, (req: any, res) => {
+    res.json({
+      id: req.adminUser.id,
+      email: req.adminUser.email,
+      name: req.adminUser.name,
+      role: req.adminUser.role
+    });
+  });
+
+  // ==================== CATEGORIES API ====================
+  
+  // Get all categories
+  app.get("/api/admin/categories", requireAdminAuth, async (req, res) => {
+    try {
+      const categories = await storage.getCategories();
+      res.json(categories);
+    } catch (error) {
+      console.error("Get categories error:", error);
+      res.status(500).json({ error: "Categorieën ophalen mislukt" });
+    }
+  });
+
+  // Create category
+  app.post("/api/admin/categories", requireAdminAuth, async (req, res) => {
+    try {
+      const data = insertCategorySchema.parse(req.body);
+      if (!data.slug) {
+        data.slug = generateSlug(data.name);
+      }
+      
+      const category = await storage.createCategory(data);
+      res.json(category);
+    } catch (error) {
+      console.error("Create category error:", error);
+      res.status(400).json({ error: "Categorie aanmaken mislukt" });
+    }
+  });
+
+  // Update category
+  app.put("/api/admin/categories/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = insertCategorySchema.partial().parse(req.body);
+      
+      const category = await storage.updateCategory(id, data);
+      if (!category) {
+        return res.status(404).json({ error: "Categorie niet gevonden" });
+      }
+      
+      res.json(category);
+    } catch (error) {
+      console.error("Update category error:", error);
+      res.status(400).json({ error: "Categorie bijwerken mislukt" });
+    }
+  });
+
+  // Delete category
+  app.delete("/api/admin/categories/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleted = await storage.deleteCategory(id);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Categorie niet gevonden" });
+      }
+      
+      res.json({ message: "Categorie verwijderd" });
+    } catch (error) {
+      console.error("Delete category error:", error);
+      res.status(400).json({ error: "Categorie verwijderen mislukt" });
+    }
+  });
+
+  // ==================== TAGS API ====================
+  
+  // Get all tags
+  app.get("/api/admin/tags", requireAdminAuth, async (req, res) => {
+    try {
+      const tags = await storage.getTags();
+      res.json(tags);
+    } catch (error) {
+      console.error("Get tags error:", error);
+      res.status(500).json({ error: "Tags ophalen mislukt" });
+    }
+  });
+
+  // Create tag
+  app.post("/api/admin/tags", requireAdminAuth, async (req, res) => {
+    try {
+      const data = insertTagSchema.parse(req.body);
+      if (!data.slug) {
+        data.slug = generateSlug(data.name);
+      }
+      
+      const tag = await storage.createTag(data);
+      res.json(tag);
+    } catch (error) {
+      console.error("Create tag error:", error);
+      res.status(400).json({ error: "Tag aanmaken mislukt" });
+    }
+  });
+
+  // Update tag
+  app.put("/api/admin/tags/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = insertTagSchema.partial().parse(req.body);
+      
+      const tag = await storage.updateTag(id, data);
+      if (!tag) {
+        return res.status(404).json({ error: "Tag niet gevonden" });
+      }
+      
+      res.json(tag);
+    } catch (error) {
+      console.error("Update tag error:", error);
+      res.status(400).json({ error: "Tag bijwerken mislukt" });
+    }
+  });
+
+  // Delete tag
+  app.delete("/api/admin/tags/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleted = await storage.deleteTag(id);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Tag niet gevonden" });
+      }
+      
+      res.json({ message: "Tag verwijderd" });
+    } catch (error) {
+      console.error("Delete tag error:", error);
+      res.status(400).json({ error: "Tag verwijderen mislukt" });
+    }
+  });
+
+  // ==================== ARTICLES API ====================
+  
+  // Get articles with filters
+  app.get("/api/admin/articles", requireAdminAuth, async (req, res) => {
+    try {
+      const { status, categoryId, search } = req.query;
+      const filters = {
+        status: status as string,
+        categoryId: categoryId as string,
+        search: search as string
+      };
+      
+      const articles = await storage.getArticles(filters);
+      res.json(articles);
+    } catch (error) {
+      console.error("Get articles error:", error);
+      res.status(500).json({ error: "Artikelen ophalen mislukt" });
+    }
+  });
+
+  // Get published articles (public endpoint for frontend)
+  app.get("/api/articles", async (req, res) => {
+    try {
+      const articles = await storage.getPublishedArticles();
+      res.json(articles);
+    } catch (error) {
+      console.error("Get published articles error:", error);
+      res.status(500).json({ error: "Artikelen ophalen mislukt" });
+    }
+  });
+
+  // Get single article
+  app.get("/api/admin/articles/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const article = await storage.getArticle(id);
+      
+      if (!article) {
+        return res.status(404).json({ error: "Artikel niet gevonden" });
+      }
+      
+      // Get article tags
+      const tags = await storage.getArticleTags(id);
+      
+      res.json({ ...article, tags });
+    } catch (error) {
+      console.error("Get article error:", error);
+      res.status(500).json({ error: "Artikel ophalen mislukt" });
+    }
+  });
+
+  // Get article by slug (public)
+  app.get("/api/articles/:slug", async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const article = await storage.getArticleBySlug(slug);
+      
+      if (!article || article.status !== 'published') {
+        return res.status(404).json({ error: "Artikel niet gevonden" });
+      }
+      
+      const tags = await storage.getArticleTags(article.id);
+      res.json({ ...article, tags });
+    } catch (error) {
+      console.error("Get article by slug error:", error);
+      res.status(500).json({ error: "Artikel ophalen mislukt" });
+    }
+  });
+
+  // Create article
+  app.post("/api/admin/articles", requireAdminAuth, async (req, res) => {
+    try {
+      const data = insertArticleSchema.parse(req.body);
+      if (!data.slug) {
+        data.slug = generateSlug(data.title);
+      }
+      
+      // Check if slug already exists
+      const existingArticle = await storage.getArticleBySlug(data.slug);
+      if (existingArticle) {
+        data.slug = `${data.slug}-${Date.now()}`;
+      }
+      
+      const article = await storage.createArticle(data);
+      
+      // Handle tags if provided
+      if (req.body.tagIds && Array.isArray(req.body.tagIds)) {
+        await storage.setArticleTags(article.id, req.body.tagIds);
+      }
+      
+      res.json(article);
+    } catch (error) {
+      console.error("Create article error:", error);
+      res.status(400).json({ error: "Artikel aanmaken mislukt" });
+    }
+  });
+
+  // Update article
+  app.put("/api/admin/articles/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = insertArticleSchema.partial().parse(req.body);
+      
+      // If publishing, set publishedAt
+      if (data.status === 'published' && !data.publishedAt) {
+        data.publishedAt = new Date();
+      }
+      
+      const article = await storage.updateArticle(id, data);
+      if (!article) {
+        return res.status(404).json({ error: "Artikel niet gevonden" });
+      }
+      
+      // Handle tags if provided
+      if (req.body.tagIds && Array.isArray(req.body.tagIds)) {
+        await storage.setArticleTags(id, req.body.tagIds);
+      }
+      
+      res.json(article);
+    } catch (error) {
+      console.error("Update article error:", error);
+      res.status(400).json({ error: "Artikel bijwerken mislukt" });
+    }
+  });
+
+  // Delete article
+  app.delete("/api/admin/articles/:id", requireAdminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleted = await storage.deleteArticle(id);
+      
+      if (!deleted) {
+        return res.status(404).json({ error: "Artikel niet gevonden" });
+      }
+      
+      res.json({ message: "Artikel verwijderd" });
+    } catch (error) {
+      console.error("Delete article error:", error);
+      res.status(400).json({ error: "Artikel verwijderen mislukt" });
     }
   });
 

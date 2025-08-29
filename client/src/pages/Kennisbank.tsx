@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 import SEOHead from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UnfoldableTopicsGrid from "@/components/UnfoldableTopicsGrid";
+import { formatDistanceToNow } from "date-fns";
+import { nl } from "date-fns/locale";
+import { CalendarIcon, ClockIcon, TagIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface KennisbankProps {
   onOpenContactModal: () => void;
@@ -13,6 +18,21 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Fetch published articles from admin system
+  const { data: adminArticles = [], isLoading: adminLoading } = useQuery({
+    queryKey: ['/api/articles'],
+    queryFn: async () => {
+      try {
+        const response = await fetch('/api/articles');
+        if (!response.ok) return [];
+        return response.json();
+      } catch (error) {
+        console.error('Failed to fetch admin articles:', error);
+        return [];
+      }
+    },
+  });
 
   const knowledgeCategories = [
     {
@@ -534,6 +554,69 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
               </Link>
             </div>
           </div>
+
+          {/* Admin Articles Section */}
+          {adminArticles.length > 0 && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Recente Expertise Artikelen</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {adminArticles.slice(0, 6).map((article: any) => (
+                  <Link key={article.id} href={`/kennisbank/${article.slug}`}>
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group">
+                      {article.featuredImage && (
+                        <div className="relative overflow-hidden">
+                          <img 
+                            src={article.featuredImage}
+                            alt={article.title}
+                            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                          <div className="absolute top-4 left-4">
+                            <Badge className="bg-blue-500 text-white">Nieuw</Badge>
+                          </div>
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <h4 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">{article.title}</h4>
+                        {article.excerpt && (
+                          <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                            {article.excerpt}
+                          </p>
+                        )}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-sm text-gray-500">
+                            <CalendarIcon className="h-4 w-4 mr-1" />
+                            {formatDistanceToNow(new Date(article.publishedAt || article.createdAt), { 
+                              addSuffix: true,
+                              locale: nl 
+                            })}
+                          </div>
+                          <span className="text-blue-600 font-semibold group-hover:text-blue-700">Lees meer →</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {adminLoading && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 animate-pulse">
+                      <div className="bg-gray-200 h-48"></div>
+                      <div className="p-6">
+                        <div className="h-4 bg-gray-200 rounded mb-3"></div>
+                        <div className="h-3 bg-gray-200 rounded mb-2"></div>
+                        <div className="h-3 bg-gray-200 rounded mb-4"></div>
+                        <div className="flex justify-between">
+                          <div className="h-3 bg-gray-200 rounded w-20"></div>
+                          <div className="h-3 bg-gray-200 rounded w-16"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Unfoldable Topics Grid */}
           <div className="mb-12">
