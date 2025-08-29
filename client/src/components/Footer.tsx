@@ -111,25 +111,25 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <ul className="space-y-3">
                   <li>
                     <Link href="/totaal-dak-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
-                      <img src={tdsLogo} alt="TDS" className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <img src={tdsLogo} alt="TDS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Dak Specialist</span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/totaal-schoorsteen-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
-                      <img src={tssLogo} alt="TSS" className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <img src={tssLogo} alt="TSS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Schoorsteen Specialist</span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/totaal-onderhoud-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
-                      <img src={tosLogo} alt="TOS" className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <img src={tosLogo} alt="TOS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Onderhoud Specialist</span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/totaal-bouw-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
-                      <img src={tbsLogo} alt="TBS" className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <img src={tbsLogo} alt="TBS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Bouw Specialist</span>
                     </Link>
                   </li>
