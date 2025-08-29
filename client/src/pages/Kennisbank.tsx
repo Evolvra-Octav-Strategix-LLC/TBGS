@@ -415,9 +415,9 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-12">
             {knowledgeCategories.map((category) => (
-              <div key={category.id} className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div key={category.id} className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-6 lg:p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mr-6">
                     <i className={`${category.icon} text-2xl text-tbgs-${category.color.split('-')[1]}`}></i>
@@ -462,19 +462,19 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
       </section>
 
       {/* Kennisbank Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Kennisbank</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section className="py-20 lg:py-32 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-8">Kennisbank</h2>
+            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
               Alle begrippen voor u op een rij - Expert kennis van TBGS specialisten
             </p>
           </div>
 
           {/* Featured/Important Cards */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Meest Populair</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mb-20">
+            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-12 text-center">Meest Populair</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
               {/* Daklekkage - Most Important */}
               <Link href="/kennisbank/daklekkage-herkennen-voorkomen">
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group">
@@ -619,8 +619,8 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
           )}
 
           {/* Unfoldable Topics Grid */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Alle Onderwerpen</h3>
+          <div className="mt-24">
+            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-12 text-center">Alle Onderwerpen</h3>
             <UnfoldableTopicsGrid categories={topicCategories} />
           </div>
         </div>
