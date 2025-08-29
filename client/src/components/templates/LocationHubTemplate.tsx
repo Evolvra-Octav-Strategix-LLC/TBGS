@@ -101,6 +101,11 @@ export default function LocationHubTemplate({
 }: LocationHubTemplateProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [city, citySlug]);
+
   // Generate structured data
   const structuredData = {
     "@context": "https://schema.org",
