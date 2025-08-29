@@ -93,6 +93,9 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   const [priority, setPriority] = useState('normal');
   const [phoneCountry, setPhoneCountry] = useState('nl');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [urgencyLevel, setUrgencyLevel] = useState<'normal' | 'urgent' | 'emergency'>('normal');
+  const [timeOnPage, setTimeOnPage] = useState(0);
+  const [interactionCount, setInteractionCount] = useState(0);
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
@@ -110,6 +113,43 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   };
 
   const colors = getSpecialistColors();
+
+  // Track time on page for urgency messaging
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeOnPage(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Track interactions for lead scoring
+  const trackInteraction = () => {
+    setInteractionCount(prev => prev + 1);
+  };
+
+  // Determine urgency messaging based on time and interactions
+  const getUrgencyMessage = () => {
+    if (timeOnPage > 180) { // 3 minutes
+      return {
+        level: 'emergency' as const,
+        message: '⚡ SPOED: Gratis inspectie binnen 2 uur mogelijk!',
+        color: 'bg-red-600 text-white'
+      };
+    } else if (timeOnPage > 60 || interactionCount > 3) { // 1 minute or high interaction
+      return {
+        level: 'urgent' as const,
+        message: '🔥 ACTIE: Vandaag nog gratis inspectie - Beperkte plaatsen!',
+        color: 'bg-orange-500 text-white'
+      };
+    }
+    return {
+      level: 'normal' as const,
+      message: '✅ Gratis inspectie en advies op locatie',
+      color: 'bg-green-100 text-green-800'
+    };
+  };
+
+  const urgencyData = getUrgencyMessage();
 
   const handleSubmit = async () => {
     if (!firstName || !lastName || !email || !phone || !address || !projectDescription) {
@@ -138,6 +178,12 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       selectedFiles.forEach((file, index) => {
         formData.append('files', file);
       });
+
+      // Add urgency and lead scoring data
+      formData.append('urgencyLevel', urgencyLevel);
+      formData.append('timeOnPage', timeOnPage.toString());
+      formData.append('interactionCount', interactionCount.toString());
+      formData.append('leadScore', (interactionCount * 2 + Math.min(timeOnPage / 30, 10)).toString());
 
       const response = await fetch('/api/service-request', {
         method: 'POST',
