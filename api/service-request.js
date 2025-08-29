@@ -4,6 +4,7 @@ import { drizzle } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
 import { serviceRequests } from '../shared/schema.js';
 import { emailService } from '../server/emailService.js';
+import multiparty from 'multiparty';
 
 neonConfig.webSocketConstructor = ws;
 
@@ -26,6 +27,34 @@ export default async function handler(req, res) {
   }
 
   try {
+    let formData = {};
+    let files = [];
+
+    // Parse FormData if content-type includes multipart
+    if (req.headers['content-type']?.includes('multipart/form-data')) {
+      const form = new multiparty.Form();
+      
+      const parseResult = await new Promise((resolve, reject) => {
+        form.parse(req, (err, fields, uploadedFiles) => {
+          if (err) reject(err);
+          else resolve({ fields, files: uploadedFiles });
+        });
+      });
+      
+      // Convert fields to single values (multiparty returns arrays)
+      for (const [key, value] of Object.entries(parseResult.fields)) {
+        formData[key] = Array.isArray(value) ? value[0] : value;
+      }
+      
+      // Handle uploaded files
+      if (parseResult.files.files) {
+        files = Array.isArray(parseResult.files.files) ? parseResult.files.files : [parseResult.files.files];
+      }
+    } else {
+      // Use regular JSON body parsing
+      formData = req.body;
+    }
+
     const {
       selectedService,
       serviceType,
@@ -40,7 +69,7 @@ export default async function handler(req, res) {
       email,
       phone,
       contactPreference
-    } = req.body;
+    } = formData;
 
     // Validate required fields
     if (!selectedService || !address || !firstName || !lastName || !email || !phone) {
@@ -62,6 +91,17 @@ export default async function handler(req, res) {
       contactPreference: contactPreference || 'phone'
     }).returning();
 
+    // Log received data for debugging
+    console.log('Received form data:', {
+      selectedService,
+      serviceType,
+      specialist,
+      projectType,
+      urgencyLevel,
+      firstName,
+      lastName
+    });
+
     // Send notification email to admin
     try {
       await emailService.sendNotificationEmail({
@@ -79,7 +119,8 @@ export default async function handler(req, res) {
         phone,
         contactPreference: contactPreference || 'phone',
         submittedAt: savedRequest.submittedAt || new Date(),
-        formType: 'popup'
+        formType: 'popup',
+        files: files || []
       });
     } catch (emailError) {
       console.error('Failed to send notification email:', emailError);
