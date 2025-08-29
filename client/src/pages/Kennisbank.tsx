@@ -236,8 +236,6 @@ export default function Kennisbank({ onOpenContactModal }: KennisbankProps) {
         keywords="TBGS kennisbank, dakwerk tips, schoorsteen onderhoud, bouw gids, renovatie advies, daklekkage voorkomen, isolatie tips, duurzaam bouwen, dakspecialist Nederland, expert bouwadvies"
       />
       
-      <Header />
-      
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-tbgs-navy via-blue-900 to-indigo-900 text-white py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
