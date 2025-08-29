@@ -42,4 +42,83 @@ export function useLeadScoring() {
     
     let score = 0;
     
-    // Time engagement scoring (0-30 points)\n    if (timeOnPage > 300) score += 30; // 5+ minutes\n    else if (timeOnPage > 180) score += 20; // 3-5 minutes\n    else if (timeOnPage > 60) score += 10; // 1-3 minutes\n    else if (timeOnPage > 30) score += 5; // 30s-1min\n    \n    // Interaction scoring (0-25 points)\n    score += Math.min(interactionCount * 3, 25);\n    \n    // Form progress scoring (0-25 points)\n    score += formProgress;\n    \n    // Urgency level scoring (0-15 points)\n    if (urgencyLevel === 'emergency') score += 15;\n    else if (urgencyLevel === 'urgent') score += 10;\n    else score += 0;\n    \n    // Device type bonus (0-5 points)\n    if (deviceType === 'desktop') score += 5; // Desktop users often more serious\n    \n    return Math.min(score, 100);\n  };\n\n  const getCategory = (score: number): LeadScoringData['category'] => {\n    if (score >= 80) return 'qualified';\n    if (score >= 60) return 'hot';\n    if (score >= 30) return 'warm';\n    return 'cold';\n  };\n\n  useEffect(() => {\n    const score = calculateScore();\n    const category = getCategory(score);\n    \n    setLeadData(prev => ({\n      ...prev,\n      score,\n      category\n    }));\n  }, [leadData.factors]);\n\n  const getRecommendedAction = () => {\n    switch(leadData.category) {\n      case 'qualified':\n        return {\n          priority: 'IMMEDIATE',\n          action: 'Direct phone call within 15 minutes',\n          message: 'High-intent lead - immediate attention required'\n        };\n      case 'hot':\n        return {\n          priority: 'HIGH',\n          action: 'WhatsApp follow-up within 1 hour',\n          message: 'Strong interest shown - quick response needed'\n        };\n      case 'warm':\n        return {\n          priority: 'MEDIUM',\n          action: 'Email follow-up within 4 hours',\n          message: 'Engaged visitor - nurture with information'\n        };\n      case 'cold':\n        return {\n          priority: 'LOW',\n          action: 'Standard email sequence',\n          message: 'New visitor - provide value and build trust'\n        };\n    }\n  };\n\n  return {\n    leadData,\n    updateFactor,\n    getRecommendedAction,\n    incrementInteraction: () => updateFactor('interactionCount', leadData.factors.interactionCount + 1),\n    updateTimeOnPage: (time: number) => updateFactor('timeOnPage', time),\n    updateFormProgress: (progress: number) => updateFactor('formProgress', progress),\n    updateUrgencyLevel: (level: 'normal' | 'urgent' | 'emergency') => updateFactor('urgencyLevel', level)\n  };\n}
+    // Time engagement scoring (0-30 points)
+    if (timeOnPage > 300) score += 30; // 5+ minutes
+    else if (timeOnPage > 180) score += 20; // 3-5 minutes
+    else if (timeOnPage > 60) score += 10; // 1-3 minutes
+    else if (timeOnPage > 30) score += 5; // 30s-1min
+    
+    // Interaction scoring (0-25 points)
+    score += Math.min(interactionCount * 3, 25);
+    
+    // Form progress scoring (0-25 points)
+    score += formProgress;
+    
+    // Urgency level scoring (0-15 points)
+    if (urgencyLevel === 'emergency') score += 15;
+    else if (urgencyLevel === 'urgent') score += 10;
+    else score += 0;
+    
+    // Device type bonus (0-5 points)
+    if (deviceType === 'desktop') score += 5; // Desktop users often more serious
+    
+    return Math.min(score, 100);
+  };
+
+  const getCategory = (score: number): LeadScoringData['category'] => {
+    if (score >= 80) return 'qualified';
+    if (score >= 60) return 'hot';
+    if (score >= 30) return 'warm';
+    return 'cold';
+  };
+
+  useEffect(() => {
+    const score = calculateScore();
+    const category = getCategory(score);
+    
+    setLeadData(prev => ({
+      ...prev,
+      score,
+      category
+    }));
+  }, [leadData.factors]);
+
+  const getRecommendedAction = () => {
+    switch(leadData.category) {
+      case 'qualified':
+        return {
+          priority: 'IMMEDIATE',
+          action: 'Direct phone call within 15 minutes',
+          message: 'High-intent lead - immediate attention required'
+        };
+      case 'hot':
+        return {
+          priority: 'HIGH',
+          action: 'WhatsApp follow-up within 1 hour',
+          message: 'Strong interest shown - quick response needed'
+        };
+      case 'warm':
+        return {
+          priority: 'MEDIUM',
+          action: 'Email follow-up within 4 hours',
+          message: 'Engaged visitor - nurture with information'
+        };
+      case 'cold':
+        return {
+          priority: 'LOW',
+          action: 'Standard email sequence',
+          message: 'New visitor - provide value and build trust'
+        };
+    }
+  };
+
+  return {
+    leadData,
+    updateFactor,
+    getRecommendedAction,
+    incrementInteraction: () => updateFactor('interactionCount', leadData.factors.interactionCount + 1),
+    updateTimeOnPage: (time: number) => updateFactor('timeOnPage', time),
+    updateFormProgress: (progress: number) => updateFactor('formProgress', progress),
+    updateUrgencyLevel: (level: 'normal' | 'urgent' | 'emergency') => updateFactor('urgencyLevel', level)
+  };
+}
