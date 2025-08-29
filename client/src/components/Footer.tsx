@@ -181,7 +181,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
                         <i className="fas fa-certificate text-green-400 text-sm"></i>
                       </div>
-                      <span className="text-sm text-white/80">ISO 9001 Gecertificeerd</span>
+                      <span className="text-sm text-white/80">VCA Veiligheidscertificaat</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
