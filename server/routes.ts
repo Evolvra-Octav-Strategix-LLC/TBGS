@@ -448,7 +448,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = await response.json();
       
       if (data.status !== 'OK') {
-        console.error('Google Places API status:', data.status, data.error_message);
+        console.log('Google Places API status:', data.status, 'Using fallback TBGS data');
         throw new Error(`Google Places API status: ${data.status}`);
       }
       

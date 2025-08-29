@@ -62,8 +62,8 @@ export default function Zonnepanelen({ onOpenContactModal }: ZonnepanelenProps) 
     <>
       <Helmet>
         <title>Zonnepanelen op Dak | Complete Gids 2025 | TBGS Dakspecialisten</title>
-        <meta name="description" content="☀️ Zonnepanelen expert gids: rendement, installatie, onderhoud. ✓ Subsidies 2025 ✓ Terugverdientijd ✓ Professioneel advies. TBGS zonnepaneel specialisten." />
-        <meta name="keywords" content="zonnepanelen dak, zonnepanelen installatie, rendement zonnepanelen, zonnepaneel specialist, subsidie zonnepanelen 2025" />
+        <meta name="description" content="☀️ Zonnepanelen expert gids: €1890 besparing/jaar, 7-9 jaar terugverdientijd. ✓ Subsidies 2025 ✓ 25+ jaar garantie ✓ Gratis berekening. TBGS zonnepaneel specialisten." />
+        <meta name="keywords" content="zonnepanelen dak, zonnepanelen installatie, rendement zonnepanelen, zonnepaneel specialist, subsidie zonnepanelen 2025, terugverdientijd zonnepanelen, TBGS zonnepanelen, energiebesparing" />
         <link rel="canonical" href="https://tbgs.nl/kennisbank/zonnepanelen" />
         <meta property="og:title" content="Zonnepanelen op Dak | Complete Expert Gids 2025 | TBGS" />
         <meta property="og:description" content="Complete gids voor zonnepanelen op uw dak: rendement, installatie en onderhoud door zonnepaneel specialisten. Maximaal rendement gegarandeerd." />
@@ -94,6 +94,7 @@ export default function Zonnepanelen({ onOpenContactModal }: ZonnepanelenProps) 
                   size="lg" 
                   className="bg-yellow-400 text-yellow-900 hover:bg-yellow-300 font-semibold px-8 py-3"
                   onClick={onOpenContactModal}
+                  data-testid="button-contact-zonnepaneel-expert"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Zonnepaneel Expert: 040 202 6744
@@ -103,9 +104,10 @@ export default function Zonnepanelen({ onOpenContactModal }: ZonnepanelenProps) 
                   variant="outline" 
                   className="border-white text-white hover:bg-white hover:text-orange-700 px-8"
                   onClick={onOpenContactModal}
+                  data-testid="button-rendement-berekening"
                 >
                   <Calculator className="w-5 h-5 mr-2" />
-                  Rendement Berekening
+                  Gratis Rendement Berekening
                 </Button>
               </div>
             </div>
