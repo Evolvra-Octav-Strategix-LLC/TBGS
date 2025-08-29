@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,15 +6,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
-import { ObjectUploader } from "@/components/ObjectUploader";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import { MultiStepForm } from "@/components/MultiStepForm";
-import type { UploadResult } from "@uppy/core";
 import { Upload, X, FileText, Camera, FileImage } from "lucide-react";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
@@ -44,7 +41,8 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   const form = useForm<OfferteFormData>({
@@ -67,11 +65,43 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
-      const response = await apiRequest("POST", "/api/contact", {
-        ...data,
-        uploadedFiles,
+      // Create FormData for file uploads (same as FloatingServiceMenu)
+      const formData = new FormData();
+      
+      // Add form fields
+      formData.append('selectedService', data.serviceType + (data.projectType ? ` - ${data.projectType}` : ''));
+      formData.append('address', data.location);
+      formData.append('projectDescription', data.description);
+      formData.append('firstName', data.firstName);
+      formData.append('lastName', data.lastName);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('contactPreference', 'email'); // Default for modal form
+      formData.append('photos', JSON.stringify(uploadedFiles.map((file, index) => `attachment_${index + 1}`)));
+      
+      // Add file uploads from state
+      uploadedFiles.forEach((file, index) => {
+        formData.append('files', file);
       });
-      return response;
+
+      // Add urgency data
+      formData.append('urgencyLevel', data.urgent ? 'urgent' : 'normal');
+      formData.append('timeOnPage', '0');
+      formData.append('interactionCount', '1');
+      formData.append('leadScore', '3');
+
+      const response = await fetch('/api/service-request', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Er is een fout opgetreden');
+      }
+
+      return result;
     },
     onSuccess: () => {
       toast({
@@ -82,10 +112,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setUploadedFiles([]);
       onClose();
     },
-    onError: () => {
+    onError: (error: Error) => {
       toast({
         title: "Er is een fout opgetreden",
-        description: "Probeer het opnieuw of neem telefonisch contact op.",
+        description: error.message || "Probeer het opnieuw of neem telefonisch contact op.",
         variant: "destructive",
       });
     },
@@ -121,35 +151,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const selectedSpecialisme = form.watch("specialisme");
   const currentProjectTypes = selectedSpecialisme ? projectTypes[selectedSpecialisme as keyof typeof projectTypes] || [] : [];
 
-  const handleGetUploadParameters = async () => {
-    try {
-      const response = await apiRequest("POST", "/api/objects/upload") as unknown as { uploadURL: string };
-      return {
-        method: "PUT" as const,
-        url: response.uploadURL,
-      };
-    } catch (error) {
-      console.error("Error getting upload parameters:", error);
-      throw error;
-    }
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    setUploadedFiles(prev => [...prev, ...files].slice(0, 5)); // Limit to 5 files
   };
 
-  const handleUploadComplete = (result: UploadResult<Record<string, unknown>, Record<string, unknown>>) => {
-    if (result.successful) {
-      const uploadedUrls = result.successful
-        .map(file => file.uploadURL)
-        .filter((url): url is string => typeof url === 'string');
-      setUploadedFiles(prev => [...prev, ...uploadedUrls]);
-      
-      toast({
-        title: "Bestanden geüpload",
-        description: `${result.successful.length} bestand(en) succesvol geüpload.`,
-      });
-    }
-  };
-
-  const removeFile = (fileToRemove: string) => {
-    setUploadedFiles(prev => prev.filter(file => file !== fileToRemove));
+  const removeFile = (indexToRemove: number) => {
+    setUploadedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
   const handleLocationChange = (address: string, details?: {
@@ -333,41 +341,46 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <div className="text-center mb-4">
             <h4 className="text-base font-semibold text-gray-900 mb-2">Upload Foto's (Optioneel)</h4>
             
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept="image/*,.pdf,.doc,.docx"
+              onChange={handleFileSelect}
+              className="hidden"
+            />
             
-            <ObjectUploader
-              maxNumberOfFiles={5}
-              maxFileSize={10 * 1024 * 1024} // 10MB
-              onGetUploadParameters={handleGetUploadParameters}
-              onComplete={handleUploadComplete}
-              buttonClassName="bg-tbgs-navy hover:bg-blue-800 text-white px-6 py-3"
+            <Button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="bg-tbgs-navy hover:bg-blue-800 text-white px-6 py-3"
             >
-              <div className="flex items-center">
-                <Upload className="w-5 h-5 mr-2" />
-                Selecteer Bestanden
-              </div>
-            </ObjectUploader>
+              <Upload className="w-5 h-5 mr-2" />
+              Selecteer Bestanden
+            </Button>
+            
             <p className="text-xs text-gray-500 mt-3">
-              Ondersteunde formaten: PNG, JPG, PDF. Max 10MB per bestand.
+              Ondersteunde formaten: PNG, JPG, PDF, DOC. Max 12MB per bestand.
             </p>
           </div>
 
           {uploadedFiles.length > 0 && (
             <div className="space-y-3">
-              <h5 className="font-semibold text-gray-900">Geüploade Bestanden:</h5>
+              <h5 className="font-semibold text-gray-900">Geselecteerde Bestanden:</h5>
               <div className="grid grid-cols-1 gap-2">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <FileImage className="w-5 h-5 text-tbgs-navy" />
                       <span className="text-sm font-medium text-gray-700">
-                        Bestand {index + 1}
+                        {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
                       </span>
                     </div>
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      onClick={() => removeFile(file)}
+                      onClick={() => removeFile(index)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X className="w-4 h-4" />
