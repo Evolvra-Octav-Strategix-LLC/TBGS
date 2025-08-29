@@ -278,8 +278,8 @@ export default function ServiceLocationTemplate({
                   <div className="space-y-4">
                     {problems.map((problem, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <div className="w-2 h-2 bg-red-600 rounded-full"></div>
+                        <div className={`w-6 h-6 ${currentColors.accent} rounded-full flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                          <div className={`w-2 h-2 ${currentColors.bg.replace('bg-', 'bg-')} rounded-full`}></div>
                         </div>
                         <p className="text-gray-700 leading-relaxed">{problem}</p>
                       </div>

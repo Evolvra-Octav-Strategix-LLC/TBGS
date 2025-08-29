@@ -92,11 +92,11 @@ export default function EindhovenRenovatie({ onOpenContactModal }: EindhovenReno
         },
         {
           question: "Kunnen jullie ook vergunningen regelen voor verbouwingen in Eindhoven?",
-          answer: "Ja, we helpen graag met vergunningaanvragen bij de gemeente Eindhoven. We weten precies welke vergunningen nodig zijn en hoe we deze het snelst kunnen verkrijgen. We kennen de lokale procedures goed."
+          answer: "Ja, we helpen graag met vergunningaanvragen bij de gemeente Eindhoven. We weten precies welke vergunningen nodig zijn en hoe we deze het snelst kunnen verkrijgen. Voor dit service rekenen we een redelijke vergoeding. We kennen de lokale procedures goed en begeleiden u van A tot Z."
         },
         {
-          question: "Wat kost een renovatie in Eindhoven gemiddeld?",
-          answer: "Dit varieert sterk per project. Een badkamerrenovatie vanaf €8.000, keuken vanaf €12.000, zolderverbouwing vanaf €15.000. Voor complete woningrenovaties hangt dit af van de omvang en wensen. We maken altijd een gedetaileerde offerte op maat."
+          question: "Hoe werkt het offerteproces voor renovaties in Eindhoven?",
+          answer: "We beginnen altijd met een gratis kennismaking en inspectie ter plaatse. Vervolgens maken we een gedetailleerde offerte op maat, volledig afgestemd op uw wensen en budget. Alle kosten worden transparant weergegeven."
         },
         {
           question: "Houden jullie rekening met de karakteristieke stijl van Eindhovense woningen?",
@@ -104,7 +104,7 @@ export default function EindhovenRenovatie({ onOpenContactModal }: EindhovenReno
         }
       ]}
       
-      phone="+31 40 123 4567"
+      phone="040 202 6744"
       onOpenContactModal={onOpenContactModal}
     />
   );
