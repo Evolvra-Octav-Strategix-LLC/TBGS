@@ -92,6 +92,11 @@ export default function ServiceLocationTemplate({
 }: ServiceLocationTemplateProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [city, citySlug, service]);
+
   const getServiceColor = () => {
     switch(service) {
       case "daklekkage": return "red";
@@ -235,12 +240,11 @@ export default function ServiceLocationTemplate({
                 </Button>
                 <Button 
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-700 font-semibold text-lg px-8 py-4"
-                  onClick={() => window.open(`tel:${phone}`, '_self')}
+                  className="bg-green-500 hover:bg-green-600 text-white font-semibold text-lg px-8 py-4"
+                  onClick={() => window.open(`https://wa.me/31614595142?text=Hallo Team TBGS, ik heb een vraag over ${serviceTitle.toLowerCase()} in ${city}.`, '_blank')}
                 >
-                  <Phone className="w-5 h-5 mr-3" />
-                  Direct Bellen
+                  <MessageCircle className="w-5 h-5 mr-3" />
+                  WhatsApp Contact
                 </Button>
               </div>
 
@@ -399,7 +403,7 @@ export default function ServiceLocationTemplate({
                 <div className="text-center">
                   <Phone className="w-8 h-8 mx-auto mb-3 text-blue-200" />
                   <h3 className="font-semibold mb-2">Telefoon</h3>
-                  <p className="text-blue-100">{phone}</p>
+                  <p className="text-blue-100">040 202 6744</p>
                 </div>
                 <div className="text-center">
                   <Clock className="w-8 h-8 mx-auto mb-3 text-blue-200" />
@@ -424,16 +428,8 @@ export default function ServiceLocationTemplate({
                 </Button>
                 <Button 
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-8"
-                  onClick={() => window.open(`tel:${phone}`, '_self')}
-                >
-                  <Phone className="w-5 h-5 mr-3" />
-                  {phone}
-                </Button>
-                <Button 
-                  size="lg"
                   className="bg-green-500 hover:bg-green-600 text-white font-bold px-8"
-                  onClick={() => window.open(`https://wa.me/${phone.replace(/\s+/g, '').replace('+', '')}?text=Hallo! Ik heb een vraag over ${serviceTitle.toLowerCase()} in ${city}.`, '_blank')}
+                  onClick={() => window.open(`https://wa.me/31614595142?text=Hallo Team TBGS, ik heb een vraag over ${serviceTitle.toLowerCase()} in ${city}.`, '_blank')}
                 >
                   <MessageCircle className="w-5 h-5 mr-3" />
                   WhatsApp

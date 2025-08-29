@@ -105,7 +105,7 @@ export default function EindhovenDaklekkage({ onOpenContactModal }: EindhovenDak
         }
       ]}
       
-      phone="+31 40 123 4567"
+      phone="040 202 6744"
       onOpenContactModal={onOpenContactModal}
     />
   );
