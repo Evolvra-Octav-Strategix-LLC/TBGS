@@ -1,0 +1,83 @@
+Zoekwoorden verfijnen (per stad & regio)
+
+Je hebt nu een algemene tekst. Voeg varianten in met:
+
+Plat dak specialist Eindhoven / Brabant / Limburg
+
+EPDM dakbedekking Eindhoven
+
+Plat dak laten maken in [plaatsnaam]
+
+Gebruik dit per locatiepagina in H1/H2 en in de body.
+
+Structured data (Schema.org)
+
+Voeg Service + LocalBusiness schema toe met:
+
+Dienst: Plat dak specialist
+
+Regio’s: Eindhoven, Nuenen, Veldhoven, …
+
+USP’s: “25+ jaar ervaring”, “20 jaar garantie”, etc.
+
+Dit helpt je in AI Overviews & Local Pack.
+
+SEO-technische verbeteringen
+
+H1: nu waarschijnlijk “Plat Dak Specialist” → uitbreiden naar bv. Plat Dak Specialist Eindhoven – EPDM & Bitumen Dakbedekking
+
+Meta title: max 60 tekens met zoekwoord + regio + USP.
+
+Meta description: kort, met call to action en locatie.
+
+Alt-tags op alle afbeeldingen (EPDM dak, plat dak onderhoud).
+
+Interne linking
+
+Link van deze pagina door naar:
+
+“Daklekkage specialist”
+
+“Onderhoud plat dak”
+
+“EPDM dakbedekking” (aparte kennisbank-pagina)
+
+Zo bouw je een sterk SEO-silo.
+
+Locatie-signalering voor GBP
+
+Voeg per stad een blokje met NAP (naam, adres, telefoon) + link naar Google Maps.
+
+Voorbeeld: TBGS – Plat Dak Specialist Eindhoven, KvK nr., Tel nr., klik hier voor route.
+
+Visuele SEO (rich content)
+
+Voeg FAQ blok toe onderaan → met “Hoe lang gaat een plat dak mee?”, “Wat kost EPDM dakbedekking per m²?”, etc.
+
+Deze kun je ook als FAQ schema markeren → hogere CTR in Google.
+
+Voeg een before/after foto slider of projectcases toe → versterkt autoriteit.
+
+🎯 Voor GBP ranking specifiek
+
+Consistentie: dezelfde tekst (verkort) in je GBP posts + diensten.
+
+Foto’s: upload echte projectfoto’s (EPDM, bitumen, onderhoud). Google geeft voorrang aan originele media.
+
+Reviews: vraag klanten om specifiek te benoemen → “TBGS heeft mijn plat dak in Eindhoven vernieuwd met EPDM”. → dit linkt “plat dak + plaatsnaam” aan jouw profiel.
+
+Posts: elke 2 weken korte post met project + foto + call to action.
+
+⚡ TL;DR
+
+👉 Ja, je pagina is goed, maar nog te algemeen. Voor SEO & GBP moet je:
+
+Per stad/regio een variant maken (H1, tekstblok, interne link).
+
+Structured data toevoegen.
+
+Meta’s en FAQ’s optimaliseren.
+
+NAP & Google Maps embeds toevoegen.
+
+Dan gaat deze pagina écht shinen en kom je in de top 3 Local Pack + organisch.

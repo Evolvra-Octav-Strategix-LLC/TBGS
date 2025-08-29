@@ -1,0 +1,127 @@
+Top, dan maken we de **TBGS Superprompt** direct volledig op maat, inclusief jouw locaties, vier specialismen, en de juiste kleuren & diensten.
+Hiermee kan je in één keer de hele site laten genereren, SEO-proof en klaar voor implementatie.
+
+---
+
+## **TBGS Superprompt 2025 – Op Maat voor TBGS B.V.**
+
+**PROMPT:**
+
+> Je bent een top webdesigner en SEO-specialist in 2025. Bouw een complete, moderne, conversiegerichte website voor **Totaal Bouw Groep Specialisten B.V. (TBGS)**, gevestigd in Nederland en België, actief in dakwerken, schoorsteenwerken, onderhoud en algemene bouw.
+>
+> **Structuur van de site:**
+>
+> **1. Hoofddomein: tbgs.nl**
+>
+> * **Hoofdpagina (Home)**:
+>
+>   * Hero-sectie boven de vouw: TBGS-logo, tagline “Samen duurzaam & innovatief (ver)bouwen”, grote CTA-knop “Gratis Offerte Aanvragen”.
+>   * 4 klikbare blokken (elk in eigen kleur + icoon) naar de specialismen:
+>
+>     * Rood: Totaal Dak Specialist (TDS)
+>     * Blauw: Totaal Schoorsteen Specialist (TSS)
+>     * Groen: Totaal Onderhoud Specialist (TOS)
+>     * Oranje: Totaal Bouw Specialist (TBS)
+>   * Secties: dienstenoverzicht, recente projecten, klantreviews (met sterren), servicegebieden (Google Maps embed), sterke CTA.
+>   * Sticky header en contactformulier in de footer.
+>
+> **2. Specialistische hoofdpagina’s (submappen)**
+> Elk specialisme krijgt een eigen “mini-homepage” binnen tbgs.nl, in eigen kleurthema, met unieke content:
+>
+> * **Totaal Dak Specialist** – rood thema (#D71920)
+> * **Totaal Schoorsteen Specialist** – blauw thema (#0056A6)
+> * **Totaal Onderhoud Specialist** – groen thema (#7BBF3B)
+> * **Totaal Bouw Specialist** – oranje thema (#F5A623)
+>
+> **Inhoud specialistpagina’s:**
+>
+> * Intro met H1: “Uw \[specialisme] in \[regio] – Snel, professioneel en duurzaam”
+> * Lijst van belangrijkste diensten (met links naar aparte dienstpagina’s)
+> * Waarom kiezen voor ons? (USP’s)
+> * 3–4 klantcases met foto’s
+> * Call-to-action blokken
+>
+> **3. Dienstenpagina’s** *(voorbeeldlijst)*
+>
+> * Platte daken vervangen en repareren
+>
+> * Hellende daken vervangen en repareren
+>
+> * Dakisolatie plaatsen
+>
+> * Schoorsteenvegen en -reparatie
+>
+> * Gevelreiniging en -onderhoud
+>
+> * Lekkagedetectie en reparatie
+>
+> * Algemene onderhoudswerken
+>
+> * Renovatie & verbouwing
+>
+> * Minimaal 800 woorden per dienst
+>
+> * SEO-geoptimaliseerd voor “Dienst + Stad”
+>
+> * Opbouw: intro, voordelen, werkwijze, indicatieve prijzen, FAQ, CTA
+>
+> * Interne links naar relevante kennisbankartikelen en specialistpagina
+>
+> **4. Locatiepagina’s** *(alle kernlocaties)*
+>
+> * Nederland: Eindhoven, Nuenen, Veldhoven, Best, Geldrop, Son en Breugel, Valkenswaard
+>
+> * België: Hamont-Achel, Lommel, Pelt
+>
+> * Hyperlokale content: beschrijving van projecten, buurtbenoemingen, lokale klantreviews, Google Maps embed van het servicegebied.
+>
+> * SEO-titel: “\[Hoofddienst] in \[Plaats] – TBGS”
+>
+> **5. Kennisbank**
+>
+> * Minimaal 20 artikelen met vraag-gestuurde titels (bijv. “Wat is de levensduur van een bitumen dak?”, “Hoe vaak moet ik mijn schoorsteen laten vegen?”, “Welke isolatie is het meest geschikt voor platte daken?”)
+> * Direct antwoord in eerste alinea (AI-overview optimalisatie)
+> * Lengte: 600–1200 woorden
+>
+> **6. Designrichtlijnen**
+>
+> * Modern, clean, witruimte, consistente kleuren per specialisme
+> * Sticky header met logo links, menu in het midden, CTA-knop rechts
+> * Mobielvriendelijk responsive design
+> * Footer: volledig bedrijfsadres, telefoonnummer, e-mail, openingstijden, social media links, Google Maps embed
+> * Formulieren: 3–5 velden, duidelijke labels, microcopy voor vertrouwen (“Wij reageren binnen 24 uur”), succesboodschap na verzenden
+>
+> **7. SEO & Technische eisen**
+>
+> * Volledige on-page SEO: title-tags, meta-descriptions, H1/H2, interne linkstructuur
+> * LocalBusiness schema per specialistische pagina en homepage
+> * Afbeeldingen met alt-teksten
+> * Pagina’s in HTML-structuur, direct klaar om in WordPress, Webflow of ander CMS te plakken
+> * PageSpeed score 90+
+>
+> **Output instructies:**
+>
+> * Genereer de volledige site in één output, in logische volgorde:
+>
+>   1. Homepage HTML
+>   2. Specialistpagina’s HTML (TDS, TSS, TOS, TBS)
+>   3. Dienstenpagina’s HTML (minimaal 8 voorbeeldpagina’s)
+>   4. Locatiepagina’s HTML (3 voorbeeldpagina’s)
+>   5. Kennisbankartikelen HTML (3 voorbeeldartikelen)
+>   6. Header & Footer HTML + CSS
+>   7. Formulier HTML + CSS
+> * Schrijf alle teksten conversiegericht en SEO-proof.
+> * Gebruik de kleuren:
+>
+>   * Rood: #D71920 (TDS)
+>   * Blauw: #0056A6 (TSS)
+>   * Groen: #7BBF3B (TOS)
+>   * Oranje: #F5A623 (TBS)
+> * Voeg waar nodig call-to-action blokken in de content.
+
+---
+
+Met deze prompt krijg je in één run alle pagina’s, volledig gevuld met TBGS-specifieke content én SEO-optimalisatie.
+Als je wilt, kan ik ook **een kant-en-klaar AI-exportbestand maken voor WordPress of Webflow** zodat je het direct kunt importeren zonder te kopiëren en plakken.
+
+Wil je dat ik die WordPress/Webflow-importversie ook voor je klaarzet? Dan krijg je alles direct bruikbaar online.

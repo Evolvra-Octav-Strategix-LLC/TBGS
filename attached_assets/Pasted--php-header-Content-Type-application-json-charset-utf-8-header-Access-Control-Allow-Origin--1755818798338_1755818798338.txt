@@ -1,0 +1,112 @@
+<?php 
+header('Content-Type: application/json; charset=utf-8');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
+
+$response = array();
+$upload_dir = '../../uploads/requests/';
+
+if($_FILES['proof'])
+{
+    $proof_name = $_FILES["proof"]["name"];
+    $proof_tmp_name = $_FILES["proof"]["tmp_name"];
+    $error = $_FILES["proof"]["error"];
+    $prefix =  $_POST["id"];
+    if(is_dir($upload_dir.$prefix) === false)
+    {
+        mkdir($upload_dir.$prefix, 0777);    
+    }
+    $upload_dir = $upload_dir.$prefix.'/';
+    if($error > 0){
+        $response = array(
+            "status" => "error",
+            "error" => true,
+            "message" => "Error uploading the file!"
+        );
+    }else 
+    {
+        $random_name = $proof_name;
+        $upload_name = $upload_dir.strtolower($random_name);
+        $upload_name = preg_replace('/\s+/', '-', $upload_name);
+
+        if(move_uploaded_file($proof_tmp_name , $upload_name)) {
+            $response = array(
+                "status" => "success",
+                "error" => false,
+                "message" => "File uploaded successfully",
+                "url" => "/".$upload_name
+              );
+        }else
+        {
+            $response = array(
+                "status" => "error",
+                "error" => true,
+                "message" => "Error uploading the file!"
+            );
+        }
+    }    
+
+}else{
+    $response = array(
+        "status" => "error",
+        "error" => true,
+        "message" => "No file was sent!"
+    );
+}
+
+echo json_encode($response);
+?>
+
+
+
+
+<?php
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+    // you want to allow, and if so:
+    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');    // cache for 1 day
+    header("Content-Type: application/json; charset=UTF-8");
+    header("Access-Control-Allow-Methods:  POST");
+    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+}
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+        // may also be using PUT, PATCH, HEAD etc
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+    exit(0);
+}
+         
+
+include_once '../../config/database.php';
+include_once '../../class/requestImages.php';
+$database = new Database();
+$db = $database->getConnection();
+
+$request = new RequestImage($db);
+$request->idRequest = $_POST["idRequest"];
+$request->imageName = $_POST["imageName"];
+$request->imageUrl = $_POST["imageUrl"];
+
+$request->createRequest();
+if($request == false){
+    http_response_code(400);
+} else{
+    echo json_encode($request);
+    http_response_code(201);
+}
+
+
+?>
+
+
+
+
+
+How does this file attachment works?

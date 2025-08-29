@@ -1,0 +1,106 @@
+Goal:
+Create two reusable, high-end SEO page templates that maximize organic ranking + Google Business Profile (GBP) visibility + Local Pack performance for TBGS B.V.
+
+1. Dienst × Locatie Template
+
+For pages like:
+
+/nl/eindhoven/daklekkage
+
+/nl/nuenen/renovatie
+
+/be/lommel/onderhoud
+
+Requirements:
+
+SEO-optimized structure with proper <title>, <meta description>, <h1>, <h2>.
+
+Strong intro paragraph with “Dienst + Stad” immediately included.
+
+Service explanation (what it is, common problems, TBGS solutions).
+
+Local trust signals: mention the city, nearby areas, and “TBGS in [Stad]”.
+
+Project showcase section (with before/after photos or case examples).
+
+Benefits/USP block (fast service, warranty, 25+ years experience).
+
+FAQ block with schema.org markup (service + city specific questions).
+
+Call-to-Action blocks (sticky phone button, free quote form).
+
+Google Maps embed of TBGS location for GBP authority.
+
+Structured data (JSON-LD): Service + LocalBusiness + FAQ.
+
+Internal links: back to
+
+main service page (/nl/daklekkage)
+
+city hub page (/nl/eindhoven)
+
+2. Locatie Hub Template
+
+For pages like:
+
+/nl/eindhoven
+
+/be/lommel
+
+Requirements:
+
+H1: “TBGS in [Stad] – Dak, Schoorsteen, Onderhoud & Bouw”.
+
+Intro paragraph highlighting TBGS’ role in the city.
+
+Service overview block → links to Dienst × Locatie pages (Daklekkage Eindhoven, Renovatie Eindhoven, etc.).
+
+About the city section (local landmarks/areas) to strengthen geo relevance.
+
+Reviews/testimonials from customers in that city (with schema).
+
+Project showcase (local).
+
+FAQ about services in that city.
+
+Google Maps embed of TBGS location.
+
+Structured data (JSON-LD): LocalBusiness + FAQ.
+
+Internal links back to homepage, service hubs, nearby city pages.
+
+If user visits /eindhoven without /nl/, auto-redirect (301) → /nl/eindhoven.
+
+General SEO Rules (apply to both templates):
+
+Title tag: [Dienst] in [Stad] | TBGS – Totaal Bouw Groep Specialisten
+
+Meta description: short, includes service + city + CTA.
+
+H1: always [Dienst] in [Stad] or TBGS in [Stad].
+
+Content length: 900–1200 words minimum.
+
+Keyword density: Dienst + Stad in first 100 words, then naturally 6–8x.
+
+Media: at least 3 optimized images (with alt="Dienst [Stad]").
+
+Schema Markup: LocalBusiness, Service, FAQ, Review.
+
+NAP consistency: identical address/phone as GBP footer.
+
+Maps embed: always include official GBP location.
+
+Final Output Expectation
+
+Each template should produce:
+
+Full HTML page skeleton (ready for Next.js/React integration).
+
+Example content placeholders ([Dienst], [Stad], [Nearby areas]).
+
+Schema.org JSON-LD blocks for LocalBusiness + Service + FAQ.
+
+Internal linking structure.
+
+SEO-ready to copy-paste and adapt for each city/service.
