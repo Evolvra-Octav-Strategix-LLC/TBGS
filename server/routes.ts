@@ -461,10 +461,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tbgsData = {
         place_id: placeId,
         name: "TBGS BV - Totaal Bouw Groep Specialisten",
-        formatted_address: "Eindhoven, Nederland",
+        formatted_address: "Hurksestraat 64, 5652 AL Eindhoven, Nederland",
         formatted_phone_number: "+31 40 202 6744",
-        website: "https://tbgs.nl",
-        rating: 4.8,
+        website: "https://www.tbgs.nl",
+        rating: 4.9,
         user_ratings_total: 127,
         opening_hours: {
           open_now: true,
