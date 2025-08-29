@@ -143,7 +143,6 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <li><a href="#" className="hover:text-white transition-colors">Over TBGS</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Onze projecten</a></li>
                   <li><Link href="/kennisbank" className="hover:text-white transition-colors">Kennisbank</Link></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Carrière</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
                 </ul>
               </div>
