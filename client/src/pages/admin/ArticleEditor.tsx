@@ -97,11 +97,13 @@ export default function ArticleEditor({ user }: ArticleEditorProps) {
   // Create tag mutation
   const createTagMutation = useMutation({
     mutationFn: async (tagData: { name: string; slug: string }) => {
-      return apiRequest('/api/admin/tags', {
+      const response = await fetch('/api/admin/tags', {
         method: 'POST',
         headers: authHeaders,
         body: JSON.stringify(tagData),
       });
+      if (!response.ok) throw new Error('Failed to create tag');
+      return response.json();
     },
     onSuccess: (newTag) => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/tags'] });
@@ -128,11 +130,13 @@ export default function ArticleEditor({ user }: ArticleEditorProps) {
       const url = isEditing ? `/api/admin/articles/${id}` : '/api/admin/articles';
       const method = isEditing ? 'PUT' : 'POST';
       
-      return apiRequest(url, {
+      const response = await fetch(url, {
         method,
         headers: authHeaders,
         body: JSON.stringify({ ...data, tagIds: selectedTags }),
       });
+      if (!response.ok) throw new Error('Failed to save article');
+      return response.json();
     },
     onSuccess: (savedArticle) => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/articles'] });

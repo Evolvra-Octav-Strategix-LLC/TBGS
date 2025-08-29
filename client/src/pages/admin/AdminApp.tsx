@@ -25,9 +25,12 @@ export default function AdminApp() {
   return (
     <Switch>
       <Route path="/admin" component={() => <AdminDashboard user={user} onLogout={logout} />} />
+      <Route path="/admin/articles" component={() => <AdminDashboard user={user} onLogout={logout} />} />
       <Route path="/admin/articles/new" component={() => <ArticleEditor user={user} />} />
       <Route path="/admin/articles/:id/edit" component={() => <ArticleEditor user={user} />} />
-      {/* Add more admin routes as needed */}
+      <Route path="/admin/categories" component={() => <AdminDashboard user={user} onLogout={logout} />} />
+      <Route path="/admin/tags" component={() => <AdminDashboard user={user} onLogout={logout} />} />
+      {/* Default fallback */}
       <Route component={() => <AdminDashboard user={user} onLogout={logout} />} />
     </Switch>
   );
