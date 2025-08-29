@@ -61,8 +61,8 @@ export default function Groendaken({ onOpenContactModal }: GroendakenProps) {
     <>
       <Helmet>
         <title>Groendaken Specialist | Complete Gids & Installatie | TBGS</title>
-        <meta name="description" content="🌱 Groendaken expert gids: 30% energiebesparing, voordelen, types en installatie. ✓ Subsidies 2025 ✓ 25+ jaar ervaring ✓ Gratis advies. TBGS groendak specialisten." />
-        <meta name="keywords" content="groendaken, extensief groendak, intensief groendak, sedum dak, groendak installatie, groendak specialist, duurzaam bouwen, groendak subsidie 2025, energiebesparing dak, TBGS groendak" />
+        <meta name="description" content="🌱 Groendaken expert gids: voordelen, types, installatie en onderhoud. ✓ Subsidies ✓ Energiebesparing ✓ Professioneel advies. TBGS groendak specialisten." />
+        <meta name="keywords" content="groendaken, extensief groendak, intensief groendak, sedum dak, groendak installatie, groendak specialist, duurzaam bouwen" />
         <link rel="canonical" href="https://tbgs.nl/kennisbank/groendaken" />
         <meta property="og:title" content="Groendaken Specialist | Complete Expert Gids | TBGS" />
         <meta property="og:description" content="Complete gids voor groendaken: voordelen, installatie en onderhoud door groendak specialisten. Van sedum tot intensieve daktuinen." />
@@ -93,7 +93,6 @@ export default function Groendaken({ onOpenContactModal }: GroendakenProps) {
                   size="lg" 
                   className="bg-emerald-500 text-white hover:bg-emerald-400 font-semibold px-8 py-3"
                   onClick={onOpenContactModal}
-                  data-testid="button-contact-groendak-specialist"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Groendak Specialist: 040 202 6744
@@ -103,7 +102,6 @@ export default function Groendaken({ onOpenContactModal }: GroendakenProps) {
                   variant="outline" 
                   className="border-white text-white hover:bg-white hover:text-green-700 px-8"
                   onClick={onOpenContactModal}
-                  data-testid="button-gratis-groendak-advies"
                 >
                   Gratis Groendak Advies
                 </Button>
