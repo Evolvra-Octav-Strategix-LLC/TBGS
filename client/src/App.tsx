@@ -151,9 +151,6 @@ function Router() {
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
 
-          {/* Admin-generated articles - dynamic route for admin articles */}
-          <Route path="/kennisbank/:slug" component={() => <AdminArticle onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -173,6 +170,9 @@ function Router() {
           <Route path="/kennisbank/dakkapel-renovatie" component={() => <DakkapelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/groendaken" component={() => <Groendaken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/zonnepanelen" component={() => <Zonnepanelen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Admin-generated articles - dynamic route for admin articles - MUST BE LAST */}
+          <Route path="/kennisbank/:slug" component={() => <AdminArticle onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Main Locations Page */}
           <Route path="/locaties" component={() => <Locaties />} />

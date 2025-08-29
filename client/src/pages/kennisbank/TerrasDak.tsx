@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
-import Header from "../../components/Header";
+// import Header from "../../components/Header"; // Header is already rendered by App.tsx
 import Footer from "../../components/Footer";
 
 interface TerrasDakProps {
@@ -52,7 +52,7 @@ export default function TerrasDak({ onOpenContactModal }: TerrasDakProps) {
         </script>
       </Helmet>
 
-      <Header onOpenContactModal={onOpenContactModal} />
+      {/* Header is already rendered by App.tsx */}
 
       <main className="flex-1">
         {/* Hero Section */}
