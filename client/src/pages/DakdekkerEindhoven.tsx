@@ -80,9 +80,9 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
 
   const whyChooseUs = [
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: "VCA Gecertificeerd",
-      description: "Alle werkzaamheden volgens veiligheidsnormen"
+      icon: <Award className="h-6 w-6" />,
+      title: "80 Jaar Familietraditie",
+      description: "Van vader op zoon - vier generaties dakdekkersvakmanschap"
     },
     {
       icon: <Clock className="h-6 w-6" />,
@@ -90,9 +90,9 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
       description: "Altijd binnen 24 uur ter plaatse in Eindhoven"
     },
     {
-      icon: <Award className="h-6 w-6" />,
-      title: "80 Jaar Familietraditie",
-      description: "Van vader op zoon - vier generaties dakdekkersvakmanschap"
+      icon: <Shield className="h-6 w-6" />,
+      title: "VCA Gecertificeerd",
+      description: "Alle werkzaamheden volgens veiligheidsnormen"
     },
     {
       icon: <Users className="h-6 w-6" />,
