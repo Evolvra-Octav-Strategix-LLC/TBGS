@@ -13,6 +13,73 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
+// Email service configuration
+const createEmailTransporter = () => {
+  return nodemailer.createTransporter({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD
+    }
+  });
+};
+
+// Email service functions
+const sendOfferteNotificationEmail = async (data) => {
+  const transporter = createEmailTransporter();
+  
+  const attachments = data.files?.map(file => ({
+    filename: `tbgs-${file.originalname || file.originalFilename || 'attachment'}`,
+    path: file.path,
+    contentType: file.mimetype
+  })) || [];
+
+  const emailContent = `
+    <h2>Nieuwe Offerteaanvraag - TBGS BV</h2>
+    <p><strong>Naam:</strong> ${data.voornaam} ${data.achternaam}</p>
+    <p><strong>Email:</strong> ${data.email}</p>
+    <p><strong>Telefoon:</strong> ${data.telefoon}</p>
+    <p><strong>Adres:</strong> ${data.adres}, ${data.postcode} ${data.plaats}</p>
+    <p><strong>Specialisme:</strong> ${data.specialisme}</p>
+    <p><strong>Project Type:</strong> ${data.projectType}</p>
+    <p><strong>Tijdlijn:</strong> ${data.tijdlijn}</p>
+    <p><strong>Budget:</strong> ${data.budget || 'Niet opgegeven'}</p>
+    <p><strong>Beschrijving:</strong> ${data.beschrijving}</p>
+    <p><strong>Contact voorkeur:</strong> ${data.contactVoorkeur}</p>
+    <p><strong>Ingediend op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
+    ${data.files?.length > 0 ? `<p><strong>Bijlagen:</strong> ${data.files.length} bestand(en)</p>` : ''}
+  `;
+
+  await transporter.sendMail({
+    from: process.env.GMAIL_USER,
+    to: process.env.GMAIL_USER,
+    subject: `Nieuwe offerteaanvraag: ${data.specialisme}`,
+    html: emailContent,
+    attachments
+  });
+};
+
+const sendOfferteThankYouEmail = async (data) => {
+  const transporter = createEmailTransporter();
+  
+  const emailContent = `
+    <h2>Bedankt voor uw offerteaanvraag!</h2>
+    <p>Beste ${data.voornaam},</p>
+    <p>Wij hebben uw offerteaanvraag voor <strong>${data.specialisme}</strong> goed ontvangen.</p>
+    <p>Onze specialist neemt binnen 24 uur contact met u op voor een vrijblijvende offerte.</p>
+    <p>Met vriendelijke groet,<br>Het TBGS BV Team</p>
+  `;
+
+  await transporter.sendMail({
+    from: process.env.GMAIL_USER,
+    to: data.email,
+    subject: 'Bevestiging van uw offerteaanvraag - TBGS BV',
+    html: emailContent
+  });
+};
+
 // Utility function to normalize file names
 const normalizeFileName = (originalName) => {
   return originalName
@@ -362,7 +429,7 @@ export default async function handler(req, res) {
       // Send emails in background (non-blocking)
       setImmediate(async () => {
         try {
-          await sendNotificationEmail({
+          await sendOfferteNotificationEmail({
             id: savedRequest.id,
             ...validatedData,
             processedImages: [],
@@ -376,7 +443,7 @@ export default async function handler(req, res) {
         }
 
         try {
-          await sendThankYouEmail({
+          await sendOfferteThankYouEmail({
             ...validatedData,
             processedImages: [],
             totalImages: emailFiles.length
