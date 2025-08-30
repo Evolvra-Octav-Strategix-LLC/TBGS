@@ -6,7 +6,8 @@ import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
-import fs from 'fs';
+import { readFileSync, existsSync, unlinkSync } from 'fs';
+import { readFile } from 'fs/promises';
 import path from 'path';
 import { z } from 'zod';
 
@@ -112,7 +113,7 @@ async function sendNotificationEmail(data) {
     let logoBase64 = null;
     try {
       const logoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
-      const logoBuffer = await fs.readFile(logoPath);
+      const logoBuffer = await readFile(logoPath);
       logoBase64 = logoBuffer.toString('base64');
       console.log('✓ TBGS logo loaded for vCard:', 'TBGS 545x642_1754928031668.png');
     } catch (logoError) {
@@ -135,7 +136,7 @@ async function sendNotificationEmail(data) {
     if (data.files && data.files.length > 0) {
       for (const file of data.files) {
         try {
-          const fileBuffer = await fs.readFile(file.path);
+          const fileBuffer = await readFile(file.path);
           const filename = `tbgs-${file.originalname || 'uploaded-file'}`;
           
           attachments.push({
@@ -405,8 +406,8 @@ export default async function handler(req, res) {
       // Clean up temporary files
       files.forEach(file => {
         try {
-          if (fs.existsSync(file.path)) {
-            fs.unlinkSync(file.path);
+          if (existsSync(file.path)) {
+            unlinkSync(file.path);
           }
         } catch (err) {
           console.warn('Could not clean up temp file:', err);

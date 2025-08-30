@@ -1,0 +1,46 @@
+2025-08-30T20:17:07.237Z [info] 🔥 /api/service-request endpoint hit
+2025-08-30T20:17:07.263Z [info] 📁 Files received: 5
+2025-08-30T20:17:07.800Z [info] ⚡ INSTANT submission complete for 4248fb40-6c8a-4a5c-8ff1-b5686f61dd5b
+2025-08-30T20:17:07.870Z [info] Logo not found for vCard, continuing without logo
+2025-08-30T20:17:07.870Z [info] ✓ TBGS vCard toegevoegd als eerste attachment: rick_helmont_hurksestraat64_tbgs.vcf
+2025-08-30T20:17:07.870Z [error] Error reading service file: tbgs-7e4bac42-1002-4b03-b075-572b92e51a7f.jpeg TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at Object.readFile (node:fs:365:3)
+    at sendNotificationEmail (file:///var/task/api/service-request.js:138:39)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:392:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+2025-08-30T20:17:07.870Z [error] Error reading service file: tbgs-11ffd93f-309e-4012-8d33-9568fee79497.jpeg TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at Object.readFile (node:fs:365:3)
+    at sendNotificationEmail (file:///var/task/api/service-request.js:138:39)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:392:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+2025-08-30T20:17:07.870Z [error] Error reading service file: tbgs-14b39001-ab2d-4dcc-be9e-279395cf2fdc.jpeg TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at Object.readFile (node:fs:365:3)
+    at sendNotificationEmail (file:///var/task/api/service-request.js:138:39)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:392:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+2025-08-30T20:17:07.870Z [error] Error reading service file: tbgs-38bedb0a-330b-4a99-891f-6dc61e39dc3b.jpeg TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at Object.readFile (node:fs:365:3)
+    at sendNotificationEmail (file:///var/task/api/service-request.js:138:39)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:392:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+2025-08-30T20:17:07.870Z [error] Error reading service file: tbgs-43f5477c-1676-4aaa-afe9-9d8c5c2465dc.jpeg TypeError [ERR_INVALID_ARG_TYPE]: The "cb" argument must be of type function. Received undefined
+    at Object.readFile (node:fs:365:3)
+    at sendNotificationEmail (file:///var/task/api/service-request.js:138:39)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:392:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+2025-08-30T20:17:07.870Z [info] ✓ 5 bestanden verwerkt voor aanvraag unknown
