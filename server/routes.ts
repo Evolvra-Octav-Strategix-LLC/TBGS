@@ -177,38 +177,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         console.log(`⚡ Using ${emailFiles.length} pre-compressed files from client`);
 
-        // Send emails with optimized files
-        try {
-          await emailService.sendNotificationEmail({
-            ...validatedData,
-            photos: [],
-            submittedAt: savedRequest.submittedAt || new Date(),
-            formType: 'popup' as const,
-            files: emailFiles
-          });
-          console.log(`✓ Notification email sent for ${savedRequest.id}`);
-        } catch (emailError) {
-          console.error('Failed to send notification email:', emailError);
-        }
-
-        try {
-          await emailService.sendThankYouEmail({
-            ...validatedData,
-            photos: [],
-            submittedAt: savedRequest.submittedAt || new Date(),
-            formType: 'popup' as const
-          });
-          console.log(`✓ Thank you email sent for ${savedRequest.id}`);
-        } catch (emailError) {
-          console.error('Failed to send thank you email:', emailError);
-        }
-
+        // Respond immediately to user
         console.log(`⚡ INSTANT submission complete for ${savedRequest.id}`);
         res.status(200).json({
           success: true,
           message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
           requestId: savedRequest.id
         });
+
+        // Send emails in background (non-blocking)
+        setImmediate(async () => {
+          try {
+            await emailService.sendNotificationEmail({
+              ...validatedData,
+              photos: [],
+              submittedAt: savedRequest.submittedAt || new Date(),
+              formType: 'popup' as const,
+              files: emailFiles
+            });
+            console.log(`✓ Background notification email sent for ${savedRequest.id}`);
+          } catch (emailError) {
+            console.error('Failed to send notification email:', emailError);
+          }
+
+          try {
+            await emailService.sendThankYouEmail({
+              ...validatedData,
+              photos: [],
+              submittedAt: savedRequest.submittedAt || new Date(),
+              formType: 'popup' as const
+            });
+            console.log(`✓ Background thank you email sent for ${savedRequest.id}`);
+          } catch (emailError) {
+            console.error('Failed to send thank you email:', emailError);
+          }
+        });
+
         return;
       }
       
@@ -218,36 +222,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
         photos: photosArray
       }).returning();
 
-      // Send notification email to admin (no files)
-      try {
-        await emailService.sendNotificationEmail({
-          ...validatedData,
-          photos: photosArray,
-          submittedAt: savedRequest.submittedAt || new Date(),
-          formType: 'popup' as const,
-          files: []
-        });
-        console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} (no files)`);
-      } catch (emailError) {
-        console.error('Failed to send notification email:', emailError);
-      }
-
-      // Send thank you email to client
-      try {
-        await emailService.sendThankYouEmail({
-          ...validatedData,
-          photos: photosArray,
-          submittedAt: savedRequest.submittedAt || new Date(),
-          formType: 'popup' as const
-        });
-      } catch (emailError) {
-        console.error('Failed to send thank you email:', emailError);
-      }
-
+      // Respond immediately to user
       res.status(200).json({ 
         success: true, 
         message: "Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.",
         id: savedRequest.id
+      });
+
+      // Send emails in background (non-blocking)
+      setImmediate(async () => {
+        try {
+          await emailService.sendNotificationEmail({
+            ...validatedData,
+            photos: photosArray,
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const,
+            files: []
+          });
+          console.log(`✓ Background notification email sent voor aanvraag ${savedRequest.id} (no files)`);
+        } catch (emailError) {
+          console.error('Failed to send notification email:', emailError);
+        }
+
+        try {
+          await emailService.sendThankYouEmail({
+            ...validatedData,
+            photos: photosArray,
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const
+          });
+          console.log(`✓ Background thank you email sent voor aanvraag ${savedRequest.id} (no files)`);
+        } catch (emailError) {
+          console.error('Failed to send thank you email:', emailError);
+        }
       });
 
     } catch (error) {
