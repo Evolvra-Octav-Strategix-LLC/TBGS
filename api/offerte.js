@@ -6,6 +6,8 @@ import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
+import { promises as fs } from 'fs';
+import { imageProcessor } from '../server/imageProcessor.js';
 import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
@@ -86,6 +88,27 @@ async function sendNotificationEmail(data) {
           <p><strong>Beschrijving:</strong> ${data.beschrijving}</p>
           <p><strong>Contact voorkeur:</strong> ${data.contactVoorkeur}</p>
           <p><strong>Nieuwsbrief:</strong> ${data.nieuwsbrief ? 'Ja' : 'Nee'}</p>
+          ${data.processedImages && data.processedImages.length > 0 ? `
+          <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+            <h3 style="margin-top: 0;">📸 Geüploade Foto's (${data.processedImages.length})</h3>
+            ${data.processedImages.map((img, index) => `
+              <div style="margin: 10px 0; padding: 10px; background: white; border-radius: 3px;">
+                <p><strong>Foto ${index + 1}:</strong> ${img.originalName}</p>
+                <p>• <strong>Origineel:</strong> ${(img.originalSize / 1024).toFixed(1)} KB</p>
+                <p>• <strong>Geoptimaliseerd:</strong> ${(img.optimizedSize / 1024).toFixed(1)} KB</p>
+                <p>• <strong>Compressie:</strong> ${img.compressionRatio}% besparing</p>
+                <p>• <strong>Afmetingen:</strong> ${img.dimensions.width}x${img.dimensions.height}</p>
+                <p>• <strong>Features:</strong> ${[
+                  img.hasWatermark ? 'TBGS Watermark' : null,
+                  img.hasThumbnail ? 'Thumbnail' : null,
+                  'Auto-rotate',
+                  'Metadata verwijderd'
+                ].filter(Boolean).join(', ')}</p>
+                ${img.processingFailed ? '<p style="color: red;">⚠️ Verwerking mislukt - origineel bestand gebruikt</p>' : ''}
+              </div>
+            `).join('')}
+          </div>
+          ` : ''}
           <p><strong>Ontvangen op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
         </div>
       `,
@@ -185,6 +208,75 @@ export default async function handler(req, res) {
       formData = req.body;
     }
 
+    // Process uploaded images with FFmpeg optimization
+    let processedImages = [];
+    if (files && files.length > 0) {
+      try {
+        console.log(`Processing ${files.length} uploaded images for offerte...`);
+        
+        // Convert files to buffer format for processing
+        const imageData = [];
+        for (const file of files) {
+          const buffer = await fs.readFile(file.path);
+          imageData.push({
+            buffer,
+            fileName: file.originalFilename || 'image.jpg'
+          });
+        }
+
+        // Process all images with FFmpeg
+        const results = await imageProcessor.processMultipleImages(imageData, {
+          maxWidth: 1920,
+          maxHeight: 1080,
+          quality: 85,
+          format: 'jpeg',
+          createThumbnail: true,
+          thumbnailSize: 300,
+          addWatermark: true,
+          watermarkText: 'TBGS B.V.',
+          removeMetadata: true,
+          autoRotate: true
+        });
+
+        // Store processed image metadata
+        processedImages = results.map((result, index) => ({
+          originalName: files[index].originalFilename || 'image.jpg',
+          processedName: `processed_${Date.now()}_${index}.jpg`,
+          originalSize: result.metadata.originalSize,
+          optimizedSize: result.metadata.optimizedSize,
+          compressionRatio: result.metadata.compressionRatio,
+          dimensions: result.metadata.dimensions,
+          hasThumbnail: !!result.thumbnailPath,
+          hasWatermark: !!result.watermarkedPath
+        }));
+
+        // Cleanup temporary files
+        for (const result of results) {
+          await imageProcessor.cleanup(result);
+        }
+
+        console.log(`Successfully processed ${processedImages.length} offerte images`);
+        console.log('Offerte compression summary:', processedImages.map(img => 
+          `${img.originalName}: ${(img.originalSize / 1024).toFixed(1)}KB → ${(img.optimizedSize / 1024).toFixed(1)}KB (${img.compressionRatio}% reduction)`
+        ));
+
+      } catch (error) {
+        console.error('Offerte image processing failed:', error);
+        // Continue without processed images - don't fail the entire request
+        processedImages = files.map(file => ({
+          originalName: file.originalFilename || 'image.jpg',
+          processedName: file.originalFilename || 'image.jpg',
+          originalSize: file.size || 0,
+          optimizedSize: file.size || 0,
+          compressionRatio: 0,
+          dimensions: { width: 0, height: 0 },
+          hasThumbnail: false,
+          hasWatermark: false,
+          processingFailed: true
+        }));
+      }
+    }
+
     // Convert string booleans to actual booleans
     if (formData.privacyAkkoord === 'true' || formData.privacyAkkoord === true) {
       formData.privacyAkkoord = true;
@@ -218,7 +310,7 @@ export default async function handler(req, res) {
       contactVoorkeur: validatedData.contactVoorkeur,
       privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
       nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
-      files: files.map(file => ({
+      files: processedImages.length > 0 ? processedImages : files.map(file => ({
         originalname: file.originalFilename || '',
         mimetype: file.headers['content-type'] || '',
         size: file.size || 0
@@ -227,14 +319,22 @@ export default async function handler(req, res) {
 
     // Send notification email to admin
     try {
-      await sendNotificationEmail(validatedData);
+      await sendNotificationEmail({
+        ...validatedData,
+        processedImages,
+        totalImages: processedImages.length || files.length
+      });
     } catch (emailError) {
       console.error('Failed to send offerte notification email:', emailError);
     }
 
     // Send thank you email to client
     try {
-      await sendThankYouEmail(validatedData);
+      await sendThankYouEmail({
+        ...validatedData,
+        processedImages,
+        totalImages: processedImages.length || files.length
+      });
     } catch (emailError) {
       console.error('Failed to send offerte thank you email:', emailError);
     }
