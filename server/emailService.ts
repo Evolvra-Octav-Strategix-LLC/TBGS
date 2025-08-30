@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { createTBGSVCard } from './vcard';
+import { imageProcessor } from './imageProcessor';
 
 interface EmailData {
   selectedService: string;
@@ -36,6 +37,17 @@ interface FileUpload {
   filename?: string;
   mimetype?: string;
   size?: number;
+}
+
+interface ProcessedImageData {
+  originalName: string;
+  compressedPath?: string;
+  watermarkedPath?: string;
+  thumbnailPath?: string;
+  originalSize: number;
+  optimizedSize: number;
+  compressionRatio: number;
+  processingFailed?: boolean;
 }
 
 // ---- Config via ENV ----
@@ -243,8 +255,142 @@ class EmailService {
       }
     }
 
-    // Now process other file attachments
-    for (const f of files) {
+    // Process image files with FFmpeg compression before adding as attachments
+    const imageFiles = files.filter(f => {
+      const mimetype = f.mimetype || 'application/octet-stream';
+      return mimetype.startsWith('image/') && isAllowedFile(f.originalname || f.path || '', mimetype);
+    });
+
+    const nonImageFiles = files.filter(f => {
+      const mimetype = f.mimetype || 'application/octet-stream';
+      return !mimetype.startsWith('image/') || !isAllowedFile(f.originalname || f.path || '', mimetype);
+    });
+
+    let processedImageData: ProcessedImageData[] = [];
+
+    // Process images with FFmpeg compression
+    if (imageFiles.length > 0) {
+      try {
+        console.log(`🚀 Processing ${imageFiles.length} images with FFmpeg compression...`);
+        
+        // Convert files to buffer format for processing
+        const imageData = [];
+        for (const file of imageFiles) {
+          let buffer: Buffer;
+          if (file.buffer) {
+            buffer = Buffer.isBuffer(file.buffer) ? file.buffer : Buffer.from(file.buffer);
+          } else if (file.path && fs.existsSync(file.path)) {
+            buffer = fs.readFileSync(file.path);
+          } else {
+            continue;
+          }
+          
+          imageData.push({
+            buffer,
+            fileName: file.originalname || 'image.jpg'
+          });
+        }
+
+        // Process all images with FFmpeg
+        const results = await imageProcessor.processMultipleImages(imageData, {
+          maxWidth: 1920,
+          maxHeight: 1080,
+          quality: 85,
+          format: 'jpeg',
+          createThumbnail: true,
+          thumbnailSize: 300,
+          addWatermark: true,
+          watermarkText: 'TBGS B.V.',
+          removeMetadata: true,
+          autoRotate: true
+        });
+
+        // Store processed image data
+        processedImageData = results.map((result, index) => ({
+          originalName: imageFiles[index].originalname || 'image.jpg',
+          compressedPath: result.compressedPath,
+          watermarkedPath: result.watermarkedPath,
+          thumbnailPath: result.thumbnailPath,
+          originalSize: result.metadata.originalSize,
+          optimizedSize: result.metadata.optimizedSize,
+          compressionRatio: result.metadata.compressionRatio,
+          processingFailed: false
+        }));
+
+        // Add compressed images as attachments
+        for (const processedImage of processedImageData) {
+          const attachmentPath = processedImage.watermarkedPath || processedImage.compressedPath;
+          
+          if (attachmentPath && fs.existsSync(attachmentPath)) {
+            const compressedBuffer = fs.readFileSync(attachmentPath);
+            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.jpg`;
+            
+            if (total + compressedBuffer.length <= totalLimit) {
+              attachments.push({
+                filename,
+                contentType: 'image/jpeg',
+                content: compressedBuffer,
+              });
+              total += compressedBuffer.length;
+              
+              console.log(`✅ Compressed attachment: ${filename} (${(compressedBuffer.length / 1024).toFixed(1)}KB, ${processedImage.compressionRatio}% reduction)`);
+            } else {
+              console.warn(`emailservice: compressed image still too large for total limit: ${filename}`);
+            }
+          }
+        }
+
+        // Cleanup FFmpeg temporary files
+        for (const result of results) {
+          try {
+            await imageProcessor.cleanup(result);
+          } catch (cleanupError) {
+            console.warn('FFmpeg cleanup error:', cleanupError);
+          }
+        }
+
+        console.log(`✅ FFmpeg processing complete: ${processedImageData.length} images compressed`);
+
+      } catch (error) {
+        console.error('FFmpeg processing failed, falling back to original images:', error);
+        
+        // Fallback to original images if FFmpeg fails
+        for (const f of imageFiles) {
+          const name = hashName(f.originalname || f.filename || 'upload.bin');
+          const mimetype = f.mimetype || 'application/octet-stream';
+          const size = typeof f.size === 'number'
+            ? f.size
+            : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
+
+          if (size > perFileLimit) {
+            console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
+            continue;
+          }
+          if (total + size > totalLimit) {
+            console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
+            continue;
+          }
+
+          if (f.path && fs.existsSync(f.path)) {
+            attachments.push({
+              filename: name,
+              contentType: mimetype,
+              content: fs.createReadStream(f.path),
+            });
+          } else if (f.buffer) {
+            attachments.push({
+              filename: name,
+              contentType: mimetype,
+              content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
+            });
+          }
+          total += size;
+        }
+      }
+    }
+
+    // Process non-image files normally
+    for (const f of nonImageFiles) {
       const name = hashName(f.originalname || f.filename || 'upload.bin');
       const mimetype = f.mimetype || 'application/octet-stream';
       const size = typeof f.size === 'number'
