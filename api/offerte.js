@@ -431,7 +431,7 @@ export default async function handler(req, res) {
         try {
           await sendOfferteNotificationEmail({
             id: savedRequest.id,
-            ...validatedData,
+            ...validatedOfferteData,
             processedImages: [],
             totalImages: emailFiles.length,
             files: emailFiles,
@@ -444,7 +444,7 @@ export default async function handler(req, res) {
 
         try {
           await sendOfferteThankYouEmail({
-            ...validatedData,
+            ...validatedOfferteData,
             processedImages: [],
             totalImages: emailFiles.length
           });
@@ -482,25 +482,25 @@ export default async function handler(req, res) {
     }
 
     // Validate form data
-    const validatedData = offerteFormSchema.parse(formData);
+    const validatedOfferteData = offerteFormSchema.parse(formData);
 
     // Save to database
     const [savedRequest] = await db.insert(offerteRequests).values({
-      voornaam: validatedData.voornaam,
-      achternaam: validatedData.achternaam,
-      email: validatedData.email,
-      telefoon: validatedData.telefoon,
-      adres: validatedData.adres,
-      postcode: validatedData.postcode,
-      plaats: validatedData.plaats,
-      specialisme: validatedData.specialisme,
-      projectType: validatedData.projectType,
-      tijdlijn: validatedData.tijdlijn,
-      budget: validatedData.budget || '',
-      beschrijving: validatedData.beschrijving,
-      contactVoorkeur: validatedData.contactVoorkeur,
-      privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
-      nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
+      voornaam: validatedOfferteData.voornaam,
+      achternaam: validatedOfferteData.achternaam,
+      email: validatedOfferteData.email,
+      telefoon: validatedOfferteData.telefoon,
+      adres: validatedOfferteData.adres,
+      postcode: validatedOfferteData.postcode,
+      plaats: validatedOfferteData.plaats,
+      specialisme: validatedOfferteData.specialisme,
+      projectType: validatedOfferteData.projectType,
+      tijdlijn: validatedOfferteData.tijdlijn,
+      budget: validatedOfferteData.budget || '',
+      beschrijving: validatedOfferteData.beschrijving,
+      contactVoorkeur: validatedOfferteData.contactVoorkeur,
+      privacyAkkoord: validatedOfferteData.privacyAkkoord ? 'true' : 'false',
+      nieuwsbrief: validatedOfferteData.nieuwsbrief ? 'true' : 'false',
       files: []
     }).returning();
 
@@ -516,7 +516,7 @@ export default async function handler(req, res) {
       try {
         await sendNotificationEmail({
           id: savedRequest.id,
-          ...validatedData,
+          ...validatedOfferteData,
           processedImages: [],
           totalImages: 0,
           files: [],
@@ -529,7 +529,7 @@ export default async function handler(req, res) {
 
       try {
         await sendThankYouEmail({
-          ...validatedData,
+          ...validatedOfferteData,
           processedImages: [],
           totalImages: 0
         });
