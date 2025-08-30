@@ -171,11 +171,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
               processingOptions: {
                 maxWidth: 1920,
                 maxHeight: 1080,
-                quality: 85,
+                quality: 75,
                 format: 'jpeg',
                 createThumbnail: true,
                 thumbnailSize: 300,
-                addWatermark: true,
+                addWatermark: false,
                 watermarkText: 'TBGS B.V.',
                 removeMetadata: true,
                 autoRotate: true
