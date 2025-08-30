@@ -214,8 +214,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                 </Button>
                 <Button 
                   size="lg" 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-red-600 hover:border-red-600 font-bold text-lg px-8 py-4 transition-colors"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-red-900 hover:text-red-900 font-bold text-lg px-8 py-4 transition-colors"
                   onClick={onOpenContactModal}
                 >
                   <FileText className="mr-2 h-5 w-5" />
@@ -447,8 +446,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
               </Button>
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-red-600 hover:border-red-600 font-bold text-xl px-8 py-4 transition-colors"
+                className="bg-yellow-500 hover:bg-yellow-400 text-red-900 hover:text-red-900 font-bold text-xl px-8 py-4 transition-colors"
                 onClick={onOpenContactModal}
               >
                 <FileText className="mr-2 h-6 w-6" />
