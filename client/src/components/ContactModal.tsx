@@ -686,14 +686,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       />
       
       {/* Modal content */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
         <div 
-          className="bg-white rounded-xl max-w-4xl w-full max-h-screen overflow-y-auto pointer-events-auto"
+          className="bg-white rounded-xl max-w-md sm:max-w-2xl lg:max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto pointer-events-auto shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-6 sm:p-8">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
               <Button variant="ghost" size="sm" onClick={onClose}>
                 <X className="w-5 h-5" />
               </Button>

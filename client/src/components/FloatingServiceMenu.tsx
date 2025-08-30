@@ -427,6 +427,9 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     setProcessedFiles(prev => prev.filter(p => p.original !== fileToRemove));
   };
 
+  // Store scroll position in ref to avoid losing it
+  const scrollPositionRef = useRef<number>(0);
+
   // Track current step on body for CSS targeting and manage scroll locking
   useEffect(() => {
     document.body.setAttribute('data-step', step);
@@ -434,16 +437,16 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     // Manage body scroll locking with position restoration
     if (isOpen) {
       // Save current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.top = `-${scrollY}px`;
+      scrollPositionRef.current = window.scrollY;
+      document.body.style.top = `-${scrollPositionRef.current}px`;
       document.body.classList.add('form-open');
     } else {
       // Restore scroll position
-      const scrollY = document.body.style.top;
       document.body.classList.remove('form-open');
       document.body.style.top = '';
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      // Use the saved scroll position
+      if (scrollPositionRef.current !== undefined) {
+        window.scrollTo(0, scrollPositionRef.current);
       }
     }
     
@@ -456,8 +459,14 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
 
     // Cleanup when component unmounts
     return () => {
-      document.body.classList.remove('form-open');
-      document.body.style.top = '';
+      if (document.body.classList.contains('form-open')) {
+        document.body.classList.remove('form-open');
+        document.body.style.top = '';
+        // Restore scroll position on cleanup
+        if (scrollPositionRef.current !== undefined) {
+          window.scrollTo(0, scrollPositionRef.current);
+        }
+      }
     };
   }, [step, isOpen]);
 
