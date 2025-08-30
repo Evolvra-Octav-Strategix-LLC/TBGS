@@ -82,6 +82,7 @@ const db = drizzle({ client: pool });
 
 // Email service
 async function sendNotificationEmail(data) {
+  console.log('📧 Starting sendNotificationEmail function...');
   try {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -389,18 +390,21 @@ export default async function handler(req, res) {
 
     // Send emails in background (non-blocking)
     setImmediate(async () => {
+      console.log(`📧 Starting background email processing for ${savedRequest.id}`);
       try {
+        console.log('📧 Sending notification email...');
         await sendNotificationEmail(emailData);
         console.log(`✓ Background notification email sent for ${savedRequest.id}`);
       } catch (emailError) {
-        console.error('Failed to send notification email:', emailError);
+        console.error('❌ Failed to send notification email:', emailError);
       }
 
       try {
+        console.log('📧 Sending thank you email...');
         await sendThankYouEmail(emailData);
         console.log(`✓ Background thank you email sent for ${savedRequest.id}`);
       } catch (emailError) {
-        console.error('Failed to send thank you email:', emailError);
+        console.error('❌ Failed to send thank you email:', emailError);
       }
 
       // Clean up temporary files
