@@ -220,9 +220,10 @@ export class BackgroundTaskProcessor implements TaskProcessor {
           .where(eq(serviceRequests.id, parentId));
 
         // Create file objects for email attachments from processed images
+        const fs = await import('fs');
         const files = [];
         for (const task of completedTasks) {
-          if (task.result?.compressedPath && require('fs').existsSync(task.result.compressedPath)) {
+          if (task.result?.compressedPath && fs.existsSync(task.result.compressedPath)) {
             files.push({
               path: task.result.compressedPath,
               originalname: task.originalName,
