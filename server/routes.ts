@@ -204,13 +204,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         // Return early with queued status
         console.log(`⚡ Sending instant response for request ${savedRequest.id}`);
-        return res.json({
+        res.status(200).json({
           success: true,
           message: 'Aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
           requestId: savedRequest.id,
           queuedImages,
           emailWillBeSentAfterProcessing: true
         });
+        return;
       }
       
       // No files case - save directly and send emails immediately
