@@ -93,7 +93,6 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   const [priority, setPriority] = useState('normal');
   const [phoneCountry, setPhoneCountry] = useState('nl');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isProcessingImages, setIsProcessingImages] = useState(false);
   const [urgencyLevel, setUrgencyLevel] = useState<'normal' | 'urgent' | 'emergency'>('normal');
   const [timeOnPage, setTimeOnPage] = useState(0);
   const [interactionCount, setInteractionCount] = useState(0);
@@ -160,11 +159,6 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
 
     setIsSubmitting(true);
     
-    // Show image processing status if files are uploaded
-    if (selectedFiles.length > 0) {
-      setIsProcessingImages(true);
-    }
-    
     try {
       // Create FormData object voor file uploads
       const formData = new FormData();
@@ -213,9 +207,6 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
 
       const result = await response.json();
       console.log('FloatingServiceMenu: API response:', result);
-
-      // Hide image processing status
-      setIsProcessingImages(false);
 
       if (result.success) {
         alert('Uw aanvraag is succesvol verzonden! We nemen binnen 24 uur contact met u op.');
@@ -818,12 +809,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <span>
-                      {isProcessingImages 
-                        ? `Foto's optimaliseren... (${selectedFiles.length})`
-                        : 'Versturen...'
-                      }
-                    </span>
+                    <span>Versturen...</span>
                   </>
                 ) : (
                   <>
