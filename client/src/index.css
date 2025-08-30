@@ -69,6 +69,22 @@
     @apply font-sans antialiased bg-background text-foreground;
     font-family: var(--font-sans);
   }
+
+  /* Modal scroll lock styles */
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+
+  /* Form open scroll lock for FloatingServiceMenu */
+  body.form-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);

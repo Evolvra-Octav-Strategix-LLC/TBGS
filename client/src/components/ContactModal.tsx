@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,6 +46,30 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [isProcessingFiles, setIsProcessingFiles] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+
+  // Handle scroll locking when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.top = `-${scrollY}px`;
+      document.body.classList.add('modal-open');
+    } else {
+      // Restore scroll position
+      const scrollY = document.body.style.top;
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
 
   const form = useForm<OfferteFormData>({
     resolver: zodResolver(formSchema),
@@ -253,22 +277,22 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const newProcessedFiles = [];
     for (const file of validFiles) {
       try {
-        const fileData = {original: file, compressed: file, status: 'processing' as const};
-        setProcessedFiles(prev => [...prev, fileData]);
+        const initialFileData = {original: file, compressed: file, status: 'processing' as const};
+        setProcessedFiles(prev => [...prev, initialFileData]);
         
+        let finalFileData;
         if (file.type.startsWith('image/')) {
           const compressed = await compressImage(file);
           const compressionRatio = ((file.size - compressed.size) / file.size * 100).toFixed(1);
           console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
           
-          fileData.compressed = compressed;
-          fileData.status = 'completed' as const;
+          finalFileData = {original: file, compressed: compressed, status: 'completed' as const};
         } else {
-          fileData.status = 'completed' as const;
+          finalFileData = {original: file, compressed: file, status: 'completed' as const};
         }
         
-        newProcessedFiles.push(fileData);
-        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+        newProcessedFiles.push(finalFileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? finalFileData : p));
       } catch (error) {
         console.error(`Failed to compress ${file.name}:`, error);
         const fileData = {original: file, compressed: file, status: 'failed' as const};

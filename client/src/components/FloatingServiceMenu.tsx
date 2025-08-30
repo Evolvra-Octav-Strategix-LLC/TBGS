@@ -393,22 +393,22 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     const newProcessedFiles = [];
     for (const file of validFiles) {
       try {
-        const fileData = {original: file, compressed: file, status: 'processing' as const};
-        setProcessedFiles(prev => [...prev, fileData]);
+        const initialFileData = {original: file, compressed: file, status: 'processing' as const};
+        setProcessedFiles(prev => [...prev, initialFileData]);
         
+        let finalFileData;
         if (file.type.startsWith('image/')) {
           const compressed = await compressImage(file);
           const compressionRatio = ((file.size - compressed.size) / file.size * 100).toFixed(1);
           console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
           
-          fileData.compressed = compressed;
-          fileData.status = 'completed' as const;
+          finalFileData = {original: file, compressed: compressed, status: 'completed' as const};
         } else {
-          fileData.status = 'completed' as const;
+          finalFileData = {original: file, compressed: file, status: 'completed' as const};
         }
         
-        newProcessedFiles.push(fileData);
-        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+        newProcessedFiles.push(finalFileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? finalFileData : p));
       } catch (error) {
         console.error(`Failed to compress ${file.name}:`, error);
         const fileData = {original: file, compressed: file, status: 'failed' as const};
@@ -431,11 +431,20 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   useEffect(() => {
     document.body.setAttribute('data-step', step);
     
-    // Manage body scroll locking for mobile
+    // Manage body scroll locking with position restoration
     if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.top = `-${scrollY}px`;
       document.body.classList.add('form-open');
     } else {
+      // Restore scroll position
+      const scrollY = document.body.style.top;
       document.body.classList.remove('form-open');
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
     
     // If we're NOT on the description step, ensure no Google Places interference
@@ -448,6 +457,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     // Cleanup when component unmounts
     return () => {
       document.body.classList.remove('form-open');
+      document.body.style.top = '';
     };
   }, [step, isOpen]);
 
