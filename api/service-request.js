@@ -84,7 +84,8 @@ const db = drizzle({ client: pool });
 async function sendNotificationEmail(data) {
   console.log('📧 Starting sendNotificationEmail function...');
   try {
-    const transporter = nodemailer.createTransport({
+    console.log('📧 Creating email transporter with user:', process.env.GMAIL_USER?.substring(0, 5) + '***');
+    const transporter = nodemailer.createTransporter({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
@@ -92,7 +93,14 @@ async function sendNotificationEmail(data) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
+    
+    // Test connection
+    await transporter.verify();
+    console.log('✅ Email transporter verified successfully');
 
     // Generate vCard content
     const vCardContent = generateVCard({
@@ -199,11 +207,20 @@ async function sendNotificationEmail(data) {
       attachments
     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('Notification email sent successfully');
+    console.log('📧 Attempting to send notification email with', attachments.length, 'attachments');
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Notification email sent successfully:', result.messageId);
     console.log(`✓ Notification email sent voor aanvraag ${data.id || 'unknown'} met ${attachments.length} attachments`);
+    return result;
   } catch (error) {
-    console.error('Failed to send notification email:', error);
+    console.error('❌ DETAILED EMAIL ERROR:', error);
+    console.error('❌ Error details:', {
+      code: error.code,
+      command: error.command,
+      response: error.response,
+      responseCode: error.responseCode
+    });
+    throw error;
   }
 }
 
@@ -227,7 +244,8 @@ URL:https://tbgs.nl
 
 async function sendThankYouEmail(data) {
   try {
-    const transporter = nodemailer.createTransport({
+    console.log('📧 Creating thank you email transporter...');
+    const transporter = nodemailer.createTransporter({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
@@ -235,7 +253,14 @@ async function sendThankYouEmail(data) {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
+    
+    // Test connection
+    await transporter.verify();
+    console.log('✅ Thank you email transporter verified');
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
@@ -260,10 +285,19 @@ async function sendThankYouEmail(data) {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('Thank you email sent successfully');
+    console.log('📧 Attempting to send thank you email to:', data.email);
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Thank you email sent successfully:', result.messageId);
+    return result;
   } catch (error) {
-    console.error('Failed to send thank you email:', error);
+    console.error('❌ DETAILED THANK YOU EMAIL ERROR:', error);
+    console.error('❌ Error details:', {
+      code: error.code,
+      command: error.command,
+      response: error.response,
+      responseCode: error.responseCode
+    });
+    throw error;
   }
 }
 
