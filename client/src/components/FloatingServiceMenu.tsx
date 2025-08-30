@@ -84,6 +84,8 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   const [step, setStep] = useState<'services' | 'photo' | 'description' | 'custom'>('services');
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [processedFiles, setProcessedFiles] = useState<{original: File, compressed: File, status: 'processing' | 'completed' | 'failed'}[]>([]);
+  const [isProcessingFiles, setIsProcessingFiles] = useState(false);
   const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
   const [address, setAddress] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
@@ -178,10 +180,16 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       formData.append('contactPreference', contactPreference);
       formData.append('photos', JSON.stringify(selectedFiles.map(file => file.name)));
       
-      // Add file uploads
-      selectedFiles.forEach((file, index) => {
+      // Add pre-compressed files (ready for instant submission!)
+      const filesToSubmit = processedFiles.length > 0 
+        ? processedFiles.filter(p => p.status === 'completed').map(p => p.compressed)
+        : selectedFiles;
+        
+      filesToSubmit.forEach((file, index) => {
         formData.append('files', file);
       });
+      
+      console.log(`🚀 Submitting ${filesToSubmit.length} pre-processed files (instant!)`);
 
       // Add urgency and lead scoring data
       formData.append('urgencyLevel', urgencyLevel);
@@ -307,7 +315,52 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     setStep('photo');
   };
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Immediate compression when files are selected
+  const compressImage = (file: File): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        // Quick compression settings for speed
+        const maxWidth = 1200;
+        const maxHeight = 800;
+        let { width, height } = img;
+        
+        if (width > maxWidth || height > maxHeight) {
+          const aspectRatio = width / height;
+          if (width > height) {
+            width = maxWidth;
+            height = width / aspectRatio;
+          } else {
+            height = maxHeight;
+            width = height * aspectRatio;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        ctx?.drawImage(img, 0, 0, width, height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const compressedFile = new File([blob], file.name, {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        }, 'image/jpeg', 0.75);
+      };
+      
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
     const maxFileSize = 10 * 1024 * 1024; // 10MB per file
     
@@ -319,15 +372,49 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       return true;
     });
     
-    setSelectedFiles(prev => [...prev, ...validFiles].slice(0, 5)); // Limit to 5 files
+    if (validFiles.length === 0) return;
     
-    if (validFiles.length > 0) {
-      console.log(`📁 Selected ${validFiles.length} files - FFmpeg will compress them on the server for faster processing`);
+    setSelectedFiles(prev => [...prev, ...validFiles].slice(0, 5));
+    setIsProcessingFiles(true);
+    
+    console.log(`🔄 Starting immediate compression of ${validFiles.length} files...`);
+    
+    // Process each file immediately
+    const newProcessedFiles = [];
+    for (const file of validFiles) {
+      try {
+        const fileData = {original: file, compressed: file, status: 'processing' as const};
+        setProcessedFiles(prev => [...prev, fileData]);
+        
+        if (file.type.startsWith('image/')) {
+          const compressed = await compressImage(file);
+          const compressionRatio = ((file.size - compressed.size) / file.size * 100).toFixed(1);
+          console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
+          
+          fileData.compressed = compressed;
+          fileData.status = 'completed';
+        } else {
+          fileData.status = 'completed';
+        }
+        
+        newProcessedFiles.push(fileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+      } catch (error) {
+        console.error(`Failed to compress ${file.name}:`, error);
+        const fileData = {original: file, compressed: file, status: 'failed' as const};
+        newProcessedFiles.push(fileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+      }
     }
+    
+    setIsProcessingFiles(false);
+    console.log(`✅ All files processed and ready for instant submission!`);
   };
 
   const removeFile = (indexToRemove: number) => {
+    const fileToRemove = selectedFiles[indexToRemove];
     setSelectedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
+    setProcessedFiles(prev => prev.filter(p => p.original !== fileToRemove));
   };
 
   // Track current step on body for CSS targeting and manage scroll locking
@@ -577,6 +664,31 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                           </div>
                         )}
                       </div>
+                      
+                      {/* Processing Status */}
+                      {(isProcessingFiles || processedFiles.length > 0) && (
+                        <div className="mt-4 w-full max-w-xs">
+                          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                            <div className="text-center">
+                              {isProcessingFiles ? (
+                                <div className="flex items-center justify-center space-x-2">
+                                  <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                                  <span className="text-sm font-medium text-blue-700">Comprimeren...</span>
+                                </div>
+                              ) : (
+                                <div className="flex items-center justify-center space-x-2">
+                                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                  </svg>
+                                  <span className="text-sm font-medium text-green-700">
+                                    {processedFiles.filter(p => p.status === 'completed').length} bestanden klaar!
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </>
                   )}
 
