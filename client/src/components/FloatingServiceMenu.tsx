@@ -185,13 +185,28 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       formData.append('interactionCount', interactionCount.toString());
       formData.append('leadScore', (interactionCount * 2 + Math.min(timeOnPage / 30, 10)).toString());
 
+      console.log('FloatingServiceMenu: Submitting form data:', {
+        selectedService: selectedService || '',
+        address,
+        firstName,
+        lastName,
+        email,
+        phone: `${phoneCountry === 'nl' ? '+31' : '+32'}${phone}`,
+        projectDescription
+      });
+
       const response = await fetch('/api/service-request', {
         method: 'POST',
         // Don't set Content-Type header - FormData sets it automatically with boundary
         body: formData,
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
+      console.log('FloatingServiceMenu: API response:', result);
 
       if (result.success) {
         alert('Uw aanvraag is succesvol verzonden! We nemen binnen 24 uur contact met u op.');
@@ -212,7 +227,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         alert(result.message || 'Er is een fout opgetreden. Probeer het opnieuw.');
       }
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error('FloatingServiceMenu submission error:', error);
       alert('Er is een fout opgetreden. Controleer uw internetverbinding en probeer opnieuw.');
     } finally {
       setIsSubmitting(false);

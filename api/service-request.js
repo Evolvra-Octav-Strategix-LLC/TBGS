@@ -124,11 +124,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('=== SERVICE REQUEST DEBUG ===');
-    console.log('Method:', req.method);
-    console.log('Headers:', req.headers);
-    console.log('Content-Type:', req.headers['content-type']);
-    
     let formData = {};
     let files = [];
 
@@ -157,9 +152,6 @@ export default async function handler(req, res) {
       formData = req.body;
     }
 
-    console.log('Parsed form data:', formData);
-    console.log('Files count:', files.length);
-
     const {
       selectedService,
       serviceType,
@@ -178,14 +170,6 @@ export default async function handler(req, res) {
 
     // Validate required fields
     if (!selectedService || !address || !firstName || !lastName || !email || !phone) {
-      console.error('Missing required fields:', {
-        selectedService: !!selectedService,
-        address: !!address,
-        firstName: !!firstName,
-        lastName: !!lastName,
-        email: !!email,
-        phone: !!phone
-      });
       return res.status(400).json({ 
         success: false,
         message: 'Ontbrekende verplichte velden',
@@ -206,16 +190,7 @@ export default async function handler(req, res) {
       contactPreference: contactPreference || 'phone'
     }).returning();
 
-    // Log received data for debugging
-    console.log('Received form data:', {
-      selectedService,
-      serviceType,
-      specialist,
-      projectType,
-      urgencyLevel,
-      firstName,
-      lastName
-    });
+    // Prepare data for database and email
 
     // Send notification email to admin
     try {
