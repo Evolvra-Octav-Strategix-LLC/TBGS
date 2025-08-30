@@ -255,10 +255,12 @@ class EmailService {
       }
     }
 
-    // Add all files directly as attachments without any processing
+    // Process all files as direct attachments
     for (const f of files) {
       try {
+        const name = hashName(f.originalname || f.filename || 'upload.bin');
         const mimetype = f.mimetype || 'application/octet-stream';
+        
         if (!isAllowedFile(f.originalname || f.path || '', mimetype)) {
           console.warn(`emailservice: blocked file type: ${f.originalname}`);
           continue;
@@ -266,198 +268,42 @@ class EmailService {
         
         console.log(`📎 Adding attachment: ${f.originalname}`);
         
-        // Convert files to buffer format for processing
-        const imageData = [];
-        for (const file of imageFiles) {
-          let buffer: Buffer;
-          if (file.buffer) {
-            buffer = Buffer.isBuffer(file.buffer) ? file.buffer : Buffer.from(file.buffer);
-          } else if (file.path && fs.existsSync(file.path)) {
-            buffer = fs.readFileSync(file.path);
-          } else {
-            continue;
-          }
-          
-          imageData.push({
-            buffer,
-            fileName: file.originalname || 'image.jpg'
-          });
+        let size = 0;
+        let buffer: Buffer;
+
+        // Get buffer and size
+        if (f.buffer) {
+          buffer = Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer);
+          size = buffer.length;
+        } else if (f.path && fs.existsSync(f.path)) {
+          buffer = fs.readFileSync(f.path);
+          size = buffer.length;
+        } else {
+          console.warn(`emailservice: no buffer or path for file: ${f.originalname}`);
+          continue;
         }
 
-        // Process all images with FFmpeg
-        const results = await imageProcessor.processMultipleImages(imageData, {
-          maxWidth: 1920,
-          maxHeight: 1080,
-          quality: 85,
-          format: 'png',
-          createThumbnail: true,
-          thumbnailSize: 300,
-          addWatermark: true,
-          watermarkText: 'TBGS B.V.',
-          removeMetadata: true,
-          autoRotate: true
+        if (size > perFileLimit) {
+          console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
+          continue;
+        }
+        if (total + size > totalLimit) {
+          console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
+          continue;
+        }
+
+        // Add file as attachment
+        attachments.push({
+          filename: name,
+          contentType: mimetype,
+          content: buffer,
         });
-
-        // Store processed image data
-        processedImageData = results.map((result, index) => ({
-          originalName: imageFiles[index].originalname || 'image.jpg',
-          compressedPath: result.optimizedPath,
-          watermarkedPath: result.watermarkedPath,
-          thumbnailPath: result.thumbnailPath,
-          originalSize: result.metadata.originalSize,
-          optimizedSize: result.metadata.optimizedSize,
-          compressionRatio: result.metadata.compressionRatio,
-          processingFailed: false
-        }));
-
-        // Add compressed images as attachments
-        for (const processedImage of processedImageData) {
-          const attachmentPath = processedImage.watermarkedPath || processedImage.compressedPath;
-          
-          if (attachmentPath && fs.existsSync(attachmentPath)) {
-            const compressedBuffer = fs.readFileSync(attachmentPath);
-            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.png`;
-            
-            if (total + compressedBuffer.length <= totalLimit) {
-              attachments.push({
-                filename,
-                contentType: 'image/png',
-                content: compressedBuffer,
-              });
-              total += compressedBuffer.length;
-              
-              console.log(`✅ Compressed attachment: ${filename} (${(compressedBuffer.length / 1024).toFixed(1)}KB, ${processedImage.compressionRatio}% reduction)`);
-            } else {
-              console.warn(`emailservice: compressed image still too large for total limit: ${filename}`);
-            }
-          }
-        }
-
-        // Cleanup FFmpeg temporary files
-        for (const result of results) {
-          try {
-            await imageProcessor.cleanup(result);
-          } catch (cleanupError) {
-            console.warn('FFmpeg cleanup error:', cleanupError);
-          }
-        }
-
-        console.log(`✅ FFmpeg processing complete: ${processedImageData.length} images compressed`);
-
-      } catch (error) {
-        console.error('FFmpeg processing failed, falling back to original images:', error);
+        total += size;
+        console.log(`✅ Added attachment: ${name} (${(size / 1024).toFixed(1)}KB)`);
         
-        // Fallback to original images if FFmpeg fails
-        for (const f of imageFiles) {
-          const name = hashName(f.originalname || f.filename || 'upload.bin');
-          const mimetype = f.mimetype || 'application/octet-stream';
-          let size = 0;
-          let buffer: Buffer;
-
-          // Get buffer and size
-          if (f.buffer) {
-            buffer = Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer);
-            size = buffer.length;
-          } else if (f.path && fs.existsSync(f.path)) {
-            buffer = fs.readFileSync(f.path);
-            size = buffer.length;
-          } else {
-            console.warn(`emailservice: no buffer or path for file: ${f.originalname}`);
-            continue;
-          }
-
-          if (size > perFileLimit) {
-            console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
-            continue;
-          }
-          if (total + size > totalLimit) {
-            console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
-            continue;
-          }
-
-          // Add original image as attachment
-          attachments.push({
-            filename: `original_${name}`,
-            contentType: mimetype,
-            content: buffer,
-          });
-          total += size;
-          console.log(`🔄 Fallback: Added original image: ${name} (${(size / 1024).toFixed(1)}KB)`);
-        }
+      } catch (error) {
+        console.error(`Failed to process attachment ${f.originalname}:`, error);
       }
-    } else if (hasPreProcessedImages && imageFiles.length > 0) {
-      // Handle pre-processed images from background system
-      console.log(`✅ Using ${imageFiles.length} pre-processed images from background system`);
-      
-      for (const f of imageFiles) {
-        if (f.path && fs.existsSync(f.path)) {
-          const buffer = fs.readFileSync(f.path);
-          const size = buffer.length;
-          
-          if (size > perFileLimit) {
-            console.warn(`emailservice: pre-processed file too large (${size} > ${perFileLimit}): ${f.originalname}`);
-            continue;
-          }
-          if (total + size > totalLimit) {
-            console.warn(`emailservice: total attachment limit reached. Skip: ${f.originalname}`);
-            continue;
-          }
-
-          const filename = `tbgs_${(f.originalname || 'image').replace(/\.[^/.]+$/, '')}_optimized.jpg`;
-          
-          attachments.push({
-            filename,
-            contentType: 'image/jpeg',
-            content: buffer,
-          });
-          total += size;
-          
-          console.log(`✅ Pre-processed attachment: ${filename} (${(size / 1024).toFixed(1)}KB)`);
-        }
-      }
-    }
-
-    // Process non-image files normally
-    for (const f of nonImageFiles) {
-      const name = hashName(f.originalname || f.filename || 'upload.bin');
-      const mimetype = f.mimetype || 'application/octet-stream';
-      const size = typeof f.size === 'number'
-        ? f.size
-        : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
-
-      if (!isAllowedFile(f.originalname || f.path || name, mimetype)) {
-        console.warn(`emailservice: blocked/unknown file type: ${f.originalname || f.path}`);
-        continue;
-      }
-
-      if (size > perFileLimit) {
-        console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
-        continue;
-      }
-      if (total + size > totalLimit) {
-        console.warn(`emailservice: total attachment limiet bereikt. Skip: ${f.originalname}`);
-        continue;
-      }
-
-      // Attachment via stream indien mogelijk
-      if (f.path && fs.existsSync(f.path)) {
-        attachments.push({
-          filename: name,
-          contentType: mimetype,
-          content: fs.createReadStream(f.path),
-        });
-      } else if (f.buffer) {
-        attachments.push({
-          filename: name,
-          contentType: mimetype,
-          content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
-        });
-      } else {
-        console.warn(`emailservice: onbekend file input, skip: ${f.originalname || 'unnamed'}`);
-        continue;
-      }
-
-      total += size;
     }
 
 
