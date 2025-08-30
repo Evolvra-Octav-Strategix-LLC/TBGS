@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import TotaalDakSpecialist from "@/pages/TotaalDakSpecialist";
@@ -267,6 +268,7 @@ function App() {
           <Toaster />
           <Router />
           <SpeedInsights />
+          <Analytics />
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>
