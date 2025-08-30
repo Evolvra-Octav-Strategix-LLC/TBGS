@@ -257,8 +257,6 @@ class EmailService {
 
     // Check if images are already processed by background system
     const hasPreProcessedImages = files.some(f => f.isPreProcessed);
-    console.log(`🔍 Email service debug: hasPreProcessedImages=${hasPreProcessedImages}, files.length=${files.length}`);
-    files.forEach((f, i) => console.log(`  File ${i}: ${f.originalname}, isPreProcessed=${f.isPreProcessed}`));
     
     // Process image files with FFmpeg compression before adding as attachments
     const imageFiles = files.filter(f => {

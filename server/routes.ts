@@ -13,7 +13,7 @@ import {
   insertAdminUserSchema
 } from "@shared/schema";
 import { emailService } from "./emailService";
-import multer from 'multer';
+import multiparty from 'multiparty';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -104,23 +104,31 @@ const normalizeFileName = (originalName: string): string => {
     .replace(/^-|-$/g, '');         // remove leading/trailing dashes
 };
 
-// Multer setup voor file uploads met verbeterde file naming
-const upload = multer({
-  dest: 'tmp/uploads',
-  limits: {
-    fileSize: 12 * 1024 * 1024, // 12MB per file
-    files: 8
-  },
-  fileFilter: (req, file, cb) => {
-    // Voorfilter (extra veilig, echte check zit ook in emailservice)
-    const ok = /^(image\/(jpe?g|png|gif|webp)|application\/pdf|text\/plain|application\/(msword|vnd.openxmlformats-officedocument\.(wordprocessingml\.document|spreadsheetml\.sheet)))/i.test(file.mimetype);
-    if (ok) {
-      // Normalize filename for better handling
-      file.originalname = normalizeFileName(file.originalname);
-    }
-    cb(null, ok);
-  }
-});
+// Fast file processing without blocking HTTP response
+const processMultipartRequest = (req: any): Promise<{fields: any, files: any[]}> => {
+  return new Promise((resolve, reject) => {
+    const form = new multiparty.Form({
+      maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
+      maxFiles: 8
+    });
+    
+    form.parse(req, (err, fields, files) => {
+      if (err) return reject(err);
+      
+      const processedFiles = [];
+      for (const [fieldName, fileArray] of Object.entries(files)) {
+        for (const file of fileArray as any[]) {
+          if (file.originalFilename) {
+            file.originalname = normalizeFileName(file.originalFilename);
+            processedFiles.push(file);
+          }
+        }
+      }
+      
+      resolve({ fields, files: processedFiles });
+    });
+  });
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Google Maps API key endpoint
@@ -129,21 +137,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Service request submission endpoint met file upload support
-  app.post("/api/service-request", upload.array('files', 8), async (req, res) => {
+  app.post("/api/service-request", async (req, res) => {
     console.log('🔥 /api/service-request endpoint hit');
     try {
+      // Process multipart data instantly
+      const { fields, files } = await processMultipartRequest(req);
+      
+      // Extract form data from multipart fields
+      const formData: any = {};
+      for (const [key, values] of Object.entries(fields)) {
+        formData[key] = Array.isArray(values) ? values[0] : values;
+      }
+      
       // Validate request body
-      const validatedData = insertServiceRequestSchema.parse(req.body);
+      const validatedData = insertServiceRequestSchema.parse(formData);
       
       // Convert photos to proper string array
       const photosArray: string[] = validatedData.photos ? Array.from(validatedData.photos).map(String) : [];
       
-      const uploadedFiles = req.files as any[] || [];
-      console.log(`📁 Files received: ${uploadedFiles.length}`);
+      console.log(`📁 Files received: ${files.length}`);
       
       // Queue uploaded images for background processing with FFmpeg
-      if (uploadedFiles.length > 0) {
-        console.log(`🚀 Queueing ${uploadedFiles.length} images for background FFmpeg compression...`);
+      if (files.length > 0) {
+        console.log(`🚀 Queueing ${files.length} images for background FFmpeg compression...`);
         
         // Save to database first to get request ID
         const [savedRequest] = await db.insert(serviceRequests).values({
@@ -152,8 +168,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }).returning();
 
         // Log uploaded files
-        console.log(`✓ ${uploadedFiles.length} bestanden ontvangen voor aanvraag ${savedRequest.id}:`);
-        uploadedFiles.forEach((file, index) => {
+        console.log(`✓ ${files.length} bestanden ontvangen voor aanvraag ${savedRequest.id}:`);
+        files.forEach((file, index) => {
           console.log(`  ${index + 1}. ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
         });
 
@@ -161,7 +177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const { taskProcessor } = await import('./taskQueue');
         
         let queuedImages = [];
-        for (const file of uploadedFiles) {
+        for (const file of files) {
           try {
             const taskId = await taskProcessor.addImageTask({
               originalPath: file.path,
@@ -274,10 +290,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Contact form submission endpoint met file upload support
-  app.post("/api/contact", upload.array('files', 8), async (req, res) => {
+  app.post("/api/contact", async (req, res) => {
     try {
-      // Validate request body
-      const validatedData = contactFormSchema.parse(req.body);
+      // Process multipart data for forms with files
+      let validatedData;
+      let files = [];
+      
+      if (req.headers['content-type']?.includes('multipart/form-data')) {
+        const { fields, files: uploadedFiles } = await processMultipartRequest(req);
+        
+        // Extract form data from multipart fields
+        const formData: any = {};
+        for (const [key, values] of Object.entries(fields)) {
+          formData[key] = Array.isArray(values) ? values[0] : values;
+        }
+        
+        validatedData = contactFormSchema.parse(formData);
+        files = uploadedFiles;
+      } else {
+        // Handle regular JSON requests
+        validatedData = contactFormSchema.parse(req.body);
+      }
       
       // Transform contact data to email format
       const emailData = {
@@ -292,7 +325,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         photos: [] as string[],
         submittedAt: new Date(),
         formType: 'popup' as const,
-        files: req.files as any[] || []
+        files: files
       };
 
       // Send notification email to admin met attachments
@@ -342,10 +375,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Offerte form submission endpoint met file upload support
-  app.post("/api/offerte", upload.array('files', 8), async (req, res) => {
+  app.post("/api/offerte", async (req, res) => {
     try {
-      // Validate request body
-      const validatedData = offerteFormSchema.parse(req.body);
+      // Process multipart data for forms with files
+      let validatedData;
+      let files = [];
+      
+      if (req.headers['content-type']?.includes('multipart/form-data')) {
+        const { fields, files: uploadedFiles } = await processMultipartRequest(req);
+        
+        // Extract form data from multipart fields
+        const formData: any = {};
+        for (const [key, values] of Object.entries(fields)) {
+          formData[key] = Array.isArray(values) ? values[0] : values;
+        }
+        
+        validatedData = offerteFormSchema.parse(formData);
+        files = uploadedFiles;
+      } else {
+        // Handle regular JSON requests
+        validatedData = offerteFormSchema.parse(req.body);
+      }
       
       // Transform offerte data to email format
       const emailData = {
@@ -360,7 +410,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         photos: [] as string[],
         submittedAt: new Date(),
         formType: 'offerte' as const,
-        files: req.files as any[] || []
+        files: files
       };
 
       // Send notification email to admin
