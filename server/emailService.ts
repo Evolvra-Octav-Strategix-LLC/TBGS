@@ -416,9 +416,26 @@ class EmailService {
           </html>
       `;
 
+      // Create address string for subject
+      let addressPart = '';
+      if (data.street && data.houseNumber && data.city) {
+        addressPart = `${data.street}, ${data.houseNumber}, ${data.city}`;
+      } else if (data.address) {
+        // Parse from full address if individual components not available
+        const addressParts = data.address.split(',').map(p => p.trim());
+        if (addressParts.length >= 2) {
+          // Try to extract street/number from first part and city from last part
+          const streetPart = addressParts[0];
+          const cityPart = addressParts[addressParts.length - 1];
+          addressPart = `${streetPart}, ${cityPart}`;
+        } else {
+          addressPart = data.address;
+        }
+      }
+
       // Gebruik nieuwe attachment functionaliteit met high-end vCard
       await this.sendEmailWithAttachments({
-        subject: `${formIcon} Nieuwe ${formTypeName}: ${data.selectedService} - ${data.firstName} ${data.lastName}`,
+        subject: `💬 Aanvraag: "${data.selectedService}" "${addressPart}"`,
         html,
         files: data.files || [],
         contactData: {
