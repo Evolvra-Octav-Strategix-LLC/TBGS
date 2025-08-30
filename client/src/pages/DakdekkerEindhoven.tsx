@@ -14,7 +14,12 @@ import {
   Zap,
   Wrench,
   Home,
-  Calendar
+  Calendar,
+  MessageCircle,
+  Droplets,
+  Building,
+  Hammer,
+  FileText
 } from "lucide-react";
 
 interface DakdekkerEindhovenProps {
@@ -24,18 +29,53 @@ interface DakdekkerEindhovenProps {
 export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEindhovenProps) {
   const urgentServices = [
     "Daklekkage spoedservice",
-    "Noodreparaties 24/7",
+    "Binnen 24 uur ter plaatse",
     "Stormdade herstel",
-    "Dakgoot ontstopping"
+    "Alles inclusief service"
   ];
 
-  const specializations = [
-    "Pannendaken reparatie",
-    "Platte daken renovatie", 
-    "Dakisolatie verbetering",
-    "Dakgoten onderhoud",
-    "Zinkwerk specialist",
-    "Dakramen installatie"
+  const leakageTypes = [
+    {
+      icon: <Droplets className="h-5 w-5" />,
+      title: "Dakgoot Lekkage",
+      description: "Verstopte of beschadigde dakgoten direct gerepareerd"
+    },
+    {
+      icon: <Home className="h-5 w-5" />,
+      title: "Pannendak Lekkage", 
+      description: "Kapotte dakpannen en naden professioneel hersteld"
+    },
+    {
+      icon: <Building className="h-5 w-5" />,
+      title: "Platdak Lekkage",
+      description: "EPDM, bitumen en andere platdak materialen"
+    },
+    {
+      icon: <Hammer className="h-5 w-5" />,
+      title: "Schoorsteen Lekkage",
+      description: "Loodwerk en schoorsteenvoet reparaties"
+    },
+    {
+      icon: <Home className="h-5 w-5" />,
+      title: "Dakkapel Lekkage",
+      description: "Dakkapellen waterdicht maken en isoleren"
+    },
+    {
+      icon: <Wrench className="h-5 w-5" />,
+      title: "Zinken Dakgoot",
+      description: "Zinken dakgoten onderhoud en vervanging"
+    }
+  ];
+
+  const allInclusiveServices = [
+    "Gratis uitgebreide dakinspectie",
+    "Professionele schaderapportage", 
+    "Tijdelijke noodoplossing",
+    "Permanente duurzame reparatie",
+    "Garantie op alle werkzaamheden",
+    "Opruimen en afvoeren materiaal",
+    "Directe verzekeringshulp",
+    "Follow-up onderhoud service"
   ];
 
   const whyChooseUs = [
@@ -46,8 +86,8 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
     },
     {
       icon: <Clock className="h-6 w-6" />,
-      title: "24/7 Spoedservice",
-      description: "Bij acute daklekkage direct beschikbaar"
+      title: "Binnen 24 Uur",
+      description: "Altijd binnen 24 uur ter plaatse in Eindhoven"
     },
     {
       icon: <Award className="h-6 w-6" />,
@@ -150,7 +190,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-yellow-500 text-red-900 hover:bg-yellow-400 text-lg px-4 py-2">
-                🚨 24/7 SPOEDSERVICE DAKLEKKAGE
+                🚨 BINNEN 24 UUR TER PLAATSE
               </Badge>
               
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
@@ -158,18 +198,19 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
               </h1>
               
               <p className="text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
-                Professionele daklekkage reparatie en dakonderhoud in Eindhoven en omgeving. 
-                <strong className="text-yellow-300"> VCA gecertificeerd</strong> met 15+ jaar ervaring.
+                Specialist in <strong className="text-yellow-300">alle soorten daklekkages</strong> in Eindhoven. 
+                Dakgoot, pannendak, platdak, schoorsteen en dakkapel lekkages - 
+                <strong className="text-yellow-300"> alles inclusief service</strong> binnen 24 uur.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Button 
                   size="lg" 
-                  className="bg-yellow-500 hover:bg-yellow-400 text-red-900 font-bold text-lg px-8 py-4"
-                  onClick={onOpenContactModal}
+                  className="bg-green-600 hover:bg-green-500 text-white font-bold text-lg px-8 py-4"
+                  onClick={() => window.open('https://wa.me/31612345678?text=Hallo%2C%20ik%20heb%20daklekkage%20in%20Eindhoven%20en%20zou%20graag%20hulp%20willen.', '_blank')}
                 >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Bel Nu: 040 - 123 4567
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  WhatsApp Direct
                 </Button>
                 <Button 
                   size="lg" 
@@ -177,6 +218,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                   className="border-white text-white hover:bg-white hover:text-red-700 font-bold text-lg px-8 py-4"
                   onClick={onOpenContactModal}
                 >
+                  <FileText className="mr-2 h-5 w-5" />
                   Gratis Offerte
                 </Button>
               </div>
@@ -235,21 +277,25 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">
-                      Daklekkage in Eindhoven? Onze ervaren dakdekkers zijn 24/7 bereikbaar voor noodreparaties. 
-                      Binnen 2 uur ter plaatse voor acute lekkages.
+                      Daklekkage in Eindhoven? Onze lokale dakdekkers zijn binnen 24 uur ter plaatse voor alle 
+                      soorten lekkages. Van dakgoot tot schoorsteen - alles inclusief service voor een vaste prijs.
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Binnen 2 uur ter plaatse
+                        Binnen 24 uur ter plaatse in Eindhoven
                       </li>
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Tijdelijke én permanente oplossingen
+                        Dakgoot, pannendak, platdak specialisten
                       </li>
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Alle daktypen (pannen, plat, riet)
+                        Schoorsteen en dakkapel lekkage expert
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
+                        Alles inclusief - geen verrassingen
                       </li>
                     </ul>
                   </CardContent>
@@ -264,35 +310,71 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">
-                      Preventief dakonderhoud bespaart u veel kosten. Onze dakdekkers in Eindhoven 
-                      zorgen dat uw dak jarenlang meegaat.
+                      Preventief dakonderhoud voorkomt kostbare lekkages. Onze Eindhovense dakspecialisten 
+                      bieden uitgebreid onderhoud voor pannendaken, platdaken, dakgoten en schoorstenen.
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Gratis dakinspectie
+                        Uitgebreide dakinspectie met rapport
                       </li>
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Dakgoot reiniging & reparatie
+                        Dakgoot ontstopping en reiniging
                       </li>
                       <li className="flex items-center text-sm">
                         <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
-                        Complete dakrenovatie
+                        Pannendak en platdak onderhoud
+                      </li>
+                      <li className="flex items-center text-sm">
+                        <CheckCircle className="mr-2 h-4 w-4 text-green-600" />
+                        Schoorsteen en loodwerk controle
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Specializations Grid */}
-              <div className="bg-gray-50 rounded-lg p-8">
-                <h3 className="text-2xl font-bold text-center mb-6">Onze Dakspecialisaties in Eindhoven</h3>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {specializations.map((spec, index) => (
+              {/* All Leakage Types Grid */}
+              <div className="bg-gray-50 rounded-lg p-8 mb-12">
+                <h3 className="text-3xl font-bold text-center mb-6 text-gray-900">
+                  Alle Soorten Daklekkages in <span className="text-red-600">Eindhoven</span>
+                </h3>
+                <p className="text-center text-gray-600 mb-8 text-lg">
+                  Van dakgoot tot dakkapel - wij repareren alle lekkages snel en vakkundig
+                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {leakageTypes.map((type, index) => (
+                    <Card key={index} className="border-red-200 hover:shadow-lg transition-shadow">
+                      <CardContent className="p-6">
+                        <div className="flex items-start space-x-4">
+                          <div className="text-red-600 mt-1 flex-shrink-0">
+                            {type.icon}
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-lg mb-2 text-gray-900">{type.title}</h4>
+                            <p className="text-gray-600 text-sm">{type.description}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* All-Inclusive Service */}
+              <div className="bg-red-50 rounded-lg p-8">
+                <h3 className="text-3xl font-bold text-center mb-6 text-gray-900">
+                  <span className="text-red-600">Alles Inclusief</span> Daklekkage Service
+                </h3>
+                <p className="text-center text-gray-600 mb-8 text-lg">
+                  Geen verrassingen - alles wat u nodig heeft voor een waterdicht dak
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {allInclusiveServices.map((service, index) => (
                     <div key={index} className="flex items-center bg-white rounded-lg p-4 shadow-sm">
-                      <Home className="h-5 w-5 text-red-600 mr-3 flex-shrink-0" />
-                      <span className="font-medium">{spec}</span>
+                      <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                      <span className="font-medium text-gray-800">{service}</span>
                     </div>
                   ))}
                 </div>
@@ -309,7 +391,8 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                 Dakdekker Service in <span className="text-red-600">Eindhoven</span> en Omgeving
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Als lokale dakdekker kennen wij de Eindhovense bouwstijlen en klimaatomstandigheden perfect
+                Als lokale dakdekker specialist kennen wij alle wijken van Eindhoven. Van historische panden in het centrum 
+                tot moderne woningen in Meerhoven - wij weten precies hoe uw dak het beste gerepareerd wordt.
               </p>
               
               <div className="grid md:grid-cols-5 gap-3 mb-8">
@@ -332,9 +415,10 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                   </div>
                   <h3 className="text-xl font-bold mb-2">4.8/5 uit 127+ Reviews</h3>
                   <p className="text-gray-600">
-                    "Beste dakdekker in Eindhoven! Snelle service bij daklekkage en eerlijke prijzen."
+                    "Binnen 24 uur was de daklekkage gerepareerd! Professionele dakdekker uit Eindhoven met 
+                    alles-inclusief service. Geen verrassingen achteraf."
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">- Google My Business Reviews</p>
+                  <p className="text-sm text-gray-500 mt-2">- Tevreden klanten uit Eindhoven</p>
                 </CardContent>
               </Card>
             </div>
@@ -348,17 +432,18 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
               Daklekkage in Eindhoven? <span className="text-yellow-300">Bel Nu!</span>
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Onze dakdekkers staan 24/7 voor u klaar. Gratis offerte en binnen 2 uur ter plaatse.
+              Daklekkage spoedservice in Eindhoven. Binnen 24 uur ter plaatse voor dakgoot, pannendak, 
+              platdak, schoorsteen en dakkapel lekkages. Alles inclusief tegen vaste prijs.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-yellow-500 hover:bg-yellow-400 text-red-900 font-bold text-xl px-8 py-4"
-                onClick={onOpenContactModal}
+                className="bg-green-600 hover:bg-green-500 text-white font-bold text-xl px-8 py-4"
+                onClick={() => window.open('https://wa.me/31612345678?text=Hallo%2C%20ik%20heb%20daklekkage%20in%20Eindhoven%20en%20heb%20hulp%20nodig.', '_blank')}
               >
-                <Phone className="mr-2 h-6 w-6" />
-                040 - 123 4567
+                <MessageCircle className="mr-2 h-6 w-6" />
+                WhatsApp Nu
               </Button>
               <Button 
                 size="lg" 
@@ -366,13 +451,13 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                 className="border-white text-white hover:bg-white hover:text-red-700 font-bold text-xl px-8 py-4"
                 onClick={onOpenContactModal}
               >
-                <Calendar className="mr-2 h-6 w-6" />
-                Plan Afspraak
+                <FileText className="mr-2 h-6 w-6" />
+                Gratis Offerte
               </Button>
             </div>
 
             <p className="text-sm mt-6 opacity-75">
-              ✓ Gratis offerte ✓ VCA gecertificeerd ✓ 15+ jaar ervaring ✓ Lokale dakdekker Eindhoven
+              ✓ Binnen 24 uur ter plaatse ✓ Alles inclusief service ✓ VCA gecertificeerd ✓ Dakgoot, pannendak, platdak, schoorsteen & dakkapel specialist
             </p>
           </div>
         </section>
