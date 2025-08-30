@@ -46,10 +46,9 @@ export default function GratisOfferte() {
             </div>
           </div>
         </section>
-
         {/* Form Section - Moved to Top */}
         <section className="px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-6xl mx-auto py-8">
+          <div className="max-w-6xl mx-auto pt-8 pb-16">
             <ContactModalV2 />
           </div>
         </section>
