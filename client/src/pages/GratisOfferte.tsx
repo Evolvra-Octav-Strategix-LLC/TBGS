@@ -43,26 +43,6 @@ export default function GratisOfferte() {
                 </p>
               </div>
 
-              {/* Value Propositions */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
-                  <Clock className="w-12 h-12 text-tbgs-navy mb-4" />
-                  <h3 className="font-semibold text-gray-900 mb-2">Binnen 24 Uur Contact</h3>
-                  <p className="text-sm text-gray-600 text-center">Snelle reactie en spoedservice voor urgente reparaties</p>
-                </div>
-                
-                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
-                  <Shield className="w-12 h-12 text-tbgs-green mb-4" />
-                  <h3 className="font-semibold text-gray-900 mb-2">Volledig Verzekerd</h3>
-                  <p className="text-sm text-gray-600 text-center">Gecertificeerd en verzekerd voor alle werkzaamheden</p>
-                </div>
-                
-                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
-                  <Star className="w-12 h-12 text-tbgs-orange mb-4" />
-                  <h3 className="font-semibold text-gray-900 mb-2">5-Sterren Service</h3>
-                  <p className="text-sm text-gray-600 text-center">Uitstekende klantbeoordelingen en tevredenheidsgarantie</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
