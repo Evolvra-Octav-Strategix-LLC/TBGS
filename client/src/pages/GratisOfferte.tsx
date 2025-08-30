@@ -67,6 +67,24 @@ export default function GratisOfferte() {
           </div>
         </section>
 
+        {/* Form Section - Moved to Top */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Vraag Uw Gratis Offerte Aan
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte op maat. 
+                Geen verplichtingen, altijd vrijblijvend.
+              </p>
+            </div>
+
+            {/* Inline Contact Form */}
+            <ContactModalV2 />
+          </div>
+        </section>
+
         {/* Services Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-6xl mx-auto">
@@ -192,24 +210,6 @@ export default function GratisOfferte() {
                 <p className="text-gray-600">24/7 beschikbaar voor noodgevallen. Binnen 24 uur ter plaatse</p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Form Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Vraag Uw Gratis Offerte Aan
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte op maat. 
-                Geen verplichtingen, altijd vrijblijvend.
-              </p>
-            </div>
-
-            {/* Inline Contact Form */}
-            <ContactModalV2 />
           </div>
         </section>
 
