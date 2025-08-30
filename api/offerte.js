@@ -110,8 +110,43 @@ async function sendNotificationEmail(data) {
     });
     console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
 
-    // Add uploaded files as attachments
-    if (data.files && data.files.length > 0) {
+    // Add compressed FFmpeg files as attachments (prefer compressed over originals)
+    if (data.processedImages && data.processedImages.length > 0) {
+      for (const processedImage of data.processedImages) {
+        try {
+          // Use compressed watermarked file if available, otherwise compressed file
+          const attachmentPath = processedImage.watermarkedPath || processedImage.compressedPath;
+          
+          if (attachmentPath && !processedImage.processingFailed) {
+            const fileBuffer = await fs.readFile(attachmentPath);
+            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.jpg`;
+            
+            attachments.push({
+              filename,
+              content: fileBuffer,
+              contentType: 'image/jpeg'
+            });
+            
+            console.log(`✓ Compressed attachment: ${filename} (${(fileBuffer.length / 1024).toFixed(1)}KB, ${processedImage.compressionRatio}% reduction)`);
+          } else {
+            // Fallback to original if processing failed
+            const originalFile = data.files.find(f => f.originalFilename === processedImage.originalName);
+            if (originalFile) {
+              const fileBuffer = await fs.readFile(originalFile.path);
+              attachments.push({
+                filename: originalFile.originalFilename || 'uploaded_file',
+                content: fileBuffer,
+                contentType: originalFile.headers ? originalFile.headers['content-type'] : 'image/jpeg'
+              });
+              console.log(`⚠️ Fallback to original: ${originalFile.originalFilename} (processing failed)`);
+            }
+          }
+        } catch (fileError) {
+          console.error('Error reading processed image:', processedImage.originalName, fileError);
+        }
+      }
+    } else if (data.files && data.files.length > 0) {
+      // Fallback to original files if no processed images
       for (const file of data.files) {
         try {
           const fileBuffer = await fs.readFile(file.path);
@@ -120,15 +155,16 @@ async function sendNotificationEmail(data) {
             content: fileBuffer,
             contentType: file.headers ? file.headers['content-type'] : 'application/octet-stream'
           });
+          console.log(`✓ Original attachment: ${file.originalFilename} (no FFmpeg processing)`);
         } catch (fileError) {
-          console.error('Error reading file:', file.originalFilename, fileError);
+          console.error('Error reading original file:', file.originalFilename, fileError);
         }
       }
-      console.log(`✓ ${data.files.length} bestanden ontvangen voor offerte ${data.id || 'unknown'}:`);
-      data.files.forEach((file, index) => {
-        const fileSizeMB = file.size ? (file.size / (1024 * 1024)).toFixed(2) : 'unknown';
-        console.log(`  ${index + 1}. ${file.originalFilename} (${fileSizeMB}MB)`);
-      });
+    }
+    
+    const totalImages = data.processedImages?.length || data.files?.length || 0;
+    if (totalImages > 0) {
+      console.log(`✓ ${totalImages} bestanden verwerkt voor offerte ${data.id || 'unknown'}`);
     }
 
     const mailOptions = {
@@ -320,7 +356,7 @@ export default async function handler(req, res) {
           autoRotate: true
         });
 
-        // Store processed image metadata
+        // Store processed image metadata WITH paths for email attachments
         processedImages = results.map((result, index) => ({
           originalName: files[index].originalFilename || 'image.jpg',
           processedName: `processed_${Date.now()}_${index}.jpg`,
@@ -329,13 +365,15 @@ export default async function handler(req, res) {
           compressionRatio: result.metadata.compressionRatio,
           dimensions: result.metadata.dimensions,
           hasThumbnail: !!result.thumbnailPath,
-          hasWatermark: !!result.watermarkedPath
+          hasWatermark: !!result.watermarkedPath,
+          // Keep paths for email attachments
+          compressedPath: result.outputPath,
+          watermarkedPath: result.watermarkedPath,
+          thumbnailPath: result.thumbnailPath
         }));
 
-        // Cleanup temporary files
-        for (const result of results) {
-          await imageProcessor.cleanup(result);
-        }
+        // DON'T cleanup yet - we need files for email attachments
+        console.log('✓ FFmpeg processing complete, keeping files for email attachments');
 
         console.log(`Successfully processed ${processedImages.length} offerte images`);
         console.log('Offerte compression summary:', processedImages.map(img => 
@@ -399,17 +437,30 @@ export default async function handler(req, res) {
       }))
     }).returning();
 
-    // Send notification email to admin
+    // Send notification email to admin with compressed attachments
     try {
       await sendNotificationEmail({
         id: savedRequest.id,
         ...validatedData,
         processedImages,
         totalImages: processedImages.length || files.length,
-        files: files || []
+        files: files || [],
+        ffmpegResults: processedImages.length > 0 ? results : [] // Pass FFmpeg results for cleanup
       });
     } catch (emailError) {
       console.error('Failed to send offerte notification email:', emailError);
+    }
+
+    // Cleanup FFmpeg temporary files after email
+    if (processedImages.length > 0 && results) {
+      try {
+        for (const result of results) {
+          await imageProcessor.cleanup(result);
+        }
+        console.log('✓ FFmpeg temporary files cleaned up after email');
+      } catch (cleanupError) {
+        console.error('Failed to cleanup FFmpeg files:', cleanupError);
+      }
     }
 
     // Send thank you email to client
