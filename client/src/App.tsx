@@ -48,7 +48,7 @@ import LocationWaalre from "@/pages/nl/locaties/LocationWaalre";
 import LimburgRegioHub from "@/pages/be/LimburgRegioHub";
 
 // BE - City Hubs (Locatie Hubs) - Only existing files
-import LocationLommel from "@/pages/be/locaties/LocationLommel";
+import LocationLommel from "@/pages/be/LocationLommel";
 
 // Location-Service Pages - Only existing files
 import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
@@ -209,10 +209,9 @@ function Router() {
           <Route path="/be/limburg" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE - City Hubs (Locatie Hubs) - Only existing files */}
-          <Route path="/be/locaties/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE - Direct city routes (cleaner URLs) */}
-          <Route path="/be/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
 
           

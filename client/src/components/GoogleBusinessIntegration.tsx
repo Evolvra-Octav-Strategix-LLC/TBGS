@@ -298,21 +298,21 @@ export default function GoogleBusinessIntegration({
                 <div>
                   <p className="font-semibold text-slate-700 mb-1">België:</p>
                   <div className="flex flex-wrap justify-center gap-1">
-                    <Link href="/be/locaties/retie" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Retie</Link>
+                    <Link href="/be/retie" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Retie</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/lommel" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Lommel</Link>
+                    <Link href="/be/lommel" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Lommel</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/hamont-achel" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Hamont-Achel</Link>
+                    <Link href="/be/hamont-achel" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Hamont-Achel</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/hamont" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Hamont</Link>
+                    <Link href="/be/hamont" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Hamont</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/pelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Pelt</Link>
+                    <Link href="/be/pelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Pelt</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/sint-huibrechts-lille" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Sint-Huibrechts-Lille</Link>
+                    <Link href="/be/sint-huibrechts-lille" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Sint-Huibrechts-Lille</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/overpelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Overpelt</Link>
+                    <Link href="/be/overpelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Overpelt</Link>
                     <span className="text-slate-400">•</span>
-                    <Link href="/be/locaties/neerpelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Neerpelt</Link>
+                    <Link href="/be/neerpelt" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Neerpelt</Link>
                   </div>
                 </div>
               </div>

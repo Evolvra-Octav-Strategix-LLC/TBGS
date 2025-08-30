@@ -266,7 +266,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Lommel</h3>
                 <p className="text-sm text-gray-600 mb-3">Hoofdlocatie Limburg</p>
-                <Link href="/be/locaties/lommel">
+                <Link href="/be/lommel">
                   <Button variant="outline" size="sm" className="w-full">
                     Meer Info
                   </Button>
@@ -281,7 +281,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Hamont-Achel</h3>
                 <p className="text-sm text-gray-600 mb-3">Grensgebied dienstverlening</p>
-                <Link href="/be/locaties/hamont-achel">
+                <Link href="/be/hamont-achel">
                   <Button variant="outline" size="sm" className="w-full">
                     Meer Info
                   </Button>
@@ -296,7 +296,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Pelt</h3>
                 <p className="text-sm text-gray-600 mb-3">Noordoost Limburg</p>
-                <Link href="/be/locaties/pelt">
+                <Link href="/be/pelt">
                   <Button variant="outline" size="sm" className="w-full">
                     Meer Info
                   </Button>
@@ -311,7 +311,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Retie</h3>
                 <p className="text-sm text-gray-600 mb-3">Kempen regio</p>
-                <Link href="/be/locaties/retie">
+                <Link href="/be/retie">
                   <Button variant="outline" size="sm" className="w-full">
                     Meer Info
                   </Button>

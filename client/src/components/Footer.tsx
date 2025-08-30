@@ -163,9 +163,9 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <div>
                     <h5 className="font-semibold text-white mb-2">België</h5>
                     <ul className="space-y-1 text-sm text-white/70">
-                      <li><a href="/be/locaties/hamont-achel" className="hover:text-white transition-colors">Hamont-Achel</a></li>
-                      <li><a href="/be/locaties/lommel" className="hover:text-white transition-colors">Lommel</a></li>
-                      <li><a href="/be/locaties/pelt" className="hover:text-white transition-colors">Pelt</a></li>
+                      <li><a href="/be/hamont-achel" className="hover:text-white transition-colors">Hamont-Achel</a></li>
+                      <li><a href="/be/lommel" className="hover:text-white transition-colors">Lommel</a></li>
+                      <li><a href="/be/pelt" className="hover:text-white transition-colors">Pelt</a></li>
                       <li><a href="/locaties" className="hover:text-white transition-colors">+ 5 anderen</a></li>
                     </ul>
                   </div>

@@ -213,7 +213,7 @@ export function initializeSearchContent() {
     // Location pages - Belgium
     {
       title: 'TBGS Lommel',
-      url: '/be/locaties/lommel',
+      url: '/be/lommel',
       type: 'locatie',
       excerpt: 'TBGS diensten in Lommel, België - lokale vakmannen',
       category: 'België',
@@ -221,7 +221,7 @@ export function initializeSearchContent() {
     },
     {
       title: 'TBGS Hamont-Achel',
-      url: '/be/locaties/hamont-achel',
+      url: '/be/hamont-achel',
       type: 'locatie',
       excerpt: 'Betrouwbare bouwdiensten in Hamont-Achel',
       category: 'België',
@@ -229,7 +229,7 @@ export function initializeSearchContent() {
     },
     {
       title: 'TBGS Pelt',
-      url: '/be/locaties/pelt',
+      url: '/be/pelt',
       type: 'locatie',
       excerpt: 'Vakkundige bouwservice in Pelt door lokale specialisten',
       category: 'België',
