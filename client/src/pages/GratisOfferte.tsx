@@ -21,10 +21,9 @@ export default function GratisOfferte() {
         keywords="gratis offerte, dakdekker offerte, schoorsteen reparatie offerte, bouw offerte, onderhoud offerte, TBGS aanvraag"
         canonical="https://tbgs.nl/gratis-offerte"
       />
-
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Hero Section */}
-        <section className="relative py-12 px-4 sm:px-6 lg:px-8">
+        <section className="relative py-12 px-4 sm:px-6 lg:px-8 pt-[2px] pb-[2px]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <div className="mb-8">
@@ -240,7 +239,6 @@ export default function GratisOfferte() {
           </div>
         </section>
       </main>
-
       <Footer />
     </>
   );
