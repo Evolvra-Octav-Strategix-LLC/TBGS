@@ -11,6 +11,17 @@ import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
 import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
+// Partner logos - using same pattern as other working logos
+import defrancqLogo from "@/assets/partners/defrancq.png";
+import unilinLogo from "@/assets/partners/unilin.png";
+import veluxLogo from "@/assets/partners/velux.png";
+import zinkUniqueLogo from "@/assets/partners/zinkunique.png";
+import monierLogo from "@/assets/partners/monier.png";
+import bmiLogo from "@/assets/partners/bmi.png";
+import recticelLogo from "@/assets/partners/recticel.jpg";
+import ubbinkLogo from "@/assets/partners/ubbink.png";
+import soudalLogo from "@/assets/partners/soudal.png";
+
 interface HomeProps {
   onOpenContactModal: () => void;
 }
@@ -551,15 +562,15 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           {/* Kevin Powell's Horizontal Partners Scroller */}
           <div className="scroller" data-speed="fast" ref={logosRef}>
             <div className="scroller__inner">
-              <img src="/src/assets/partners/defrancq.png" alt="Defrancq" />
-              <img src="/src/assets/partners/unilin.png" alt="Unilin" />
-              <img src="/src/assets/partners/velux.png" alt="Velux" />
-              <img src="/src/assets/partners/zinkunique.png" alt="Zinkunique" />
-              <img src="/src/assets/partners/monier.png" alt="Monier" />
-              <img src="/src/assets/partners/bmi.png" alt="BMI" />
-              <img src="/src/assets/partners/recticel.jpg" alt="Recticel" />
-              <img src="/src/assets/partners/ubbink.png" alt="Ubbink" />
-              <img src="/src/assets/partners/soudal.png" alt="Soudal" />
+              <img src={defrancqLogo} alt="Defrancq" />
+              <img src={unilinLogo} alt="Unilin" />
+              <img src={veluxLogo} alt="Velux" />
+              <img src={zinkUniqueLogo} alt="Zinkunique" />
+              <img src={monierLogo} alt="Monier" />
+              <img src={bmiLogo} alt="BMI" />
+              <img src={recticelLogo} alt="Recticel" />
+              <img src={ubbinkLogo} alt="Ubbink" />
+              <img src={soudalLogo} alt="Soudal" />
             </div>
           </div>
 
