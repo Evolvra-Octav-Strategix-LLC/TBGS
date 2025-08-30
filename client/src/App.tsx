@@ -86,6 +86,9 @@ import DakpannenWelkeKeus from "@/pages/kennisbank/DakpannenWelkeKeus";
 import LekkageDakkapellen from "@/pages/kennisbank/LekkageDakkapellen";
 import DakkapelRenovatie from "@/pages/kennisbank/DakkapelRenovatie";
 
+// SEO Landing Pages
+import DakdekkerEindhoven from "@/pages/DakdekkerEindhoven";
+
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
@@ -237,6 +240,9 @@ function Router() {
           
           {/* Admin Routes */}
           <Route path="/admin*" component={AdminApp} />
+          
+          {/* High-Ranking SEO Landing Pages */}
+          <Route path="/dakdekker-eindhoven" component={() => <DakdekkerEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Legacy Routes - Keep for Existing SEO */}
           <Route path="/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />

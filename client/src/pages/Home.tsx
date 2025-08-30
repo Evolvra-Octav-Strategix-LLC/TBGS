@@ -72,7 +72,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
   return (
     <>
       <SEOHead 
-        title="TBGS BV - Premium Bouwspecialisten | Dakwerken, Schoorsteenwerken & Onderhoud Nederland & België"
+        title="TBGS BV - Uw totaalspecialist - Dakdekker Eindhoven | Daklekkage Specialist"
         description="✓ Totaal Bouw Groep Specialisten ✓ Gecertificeerde vakmannen ✓ 15+ jaar ervaring ✓ Dakwerken, schoorsteenwerken, onderhoud & renovatie ✓ Nederland & België ✓ Gratis offerte"
         url="https://tbgs.nl"
         keywords="dakwerken, schoorsteenwerken, onderhoud, bouw, renovatie, Eindhoven, België, Limburg, dakisolatie, dakgoten, gevelbekleding, TBGS"
