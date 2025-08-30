@@ -137,31 +137,95 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Convert photos to proper string array
       const photosArray: string[] = validatedData.photos ? Array.from(validatedData.photos).map(String) : [];
       
-      // Save to database
-      const [savedRequest] = await db.insert(serviceRequests).values({
-        ...validatedData,
-        photos: photosArray
-      }).returning();
-      
-      // Log uploaded files (like PHP example)
       const uploadedFiles = req.files as any[] || [];
+      
+      // Queue uploaded images for background processing with FFmpeg
       if (uploadedFiles.length > 0) {
+        console.log(`🚀 Processing ${uploadedFiles.length} images with FFmpeg compression...`);
+        
+        // Save to database first to get request ID
+        const [savedRequest] = await db.insert(serviceRequests).values({
+          ...validatedData,
+          photos: [] // Will be updated when processing completes
+        }).returning();
+
+        // Log uploaded files
         console.log(`✓ ${uploadedFiles.length} bestanden ontvangen voor aanvraag ${savedRequest.id}:`);
         uploadedFiles.forEach((file, index) => {
           console.log(`  ${index + 1}. ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
         });
-      }
 
-      // Send notification email to admin met attachments
+        // Queue each image for background processing
+        const { taskProcessor } = await import('./taskQueue');
+        
+        let queuedImages = [];
+        for (const file of uploadedFiles) {
+          try {
+            const taskId = await taskProcessor.addImageTask({
+              originalPath: file.path,
+              originalName: file.originalname || 'image.jpg',
+              parentType: 'service_request',
+              parentId: savedRequest.id,
+              processingOptions: {
+                maxWidth: 1920,
+                maxHeight: 1080,
+                quality: 85,
+                format: 'jpeg',
+                createThumbnail: true,
+                thumbnailSize: 300,
+                addWatermark: true,
+                watermarkText: 'TBGS B.V.',
+                removeMetadata: true,
+                autoRotate: true
+              }
+            });
+
+            queuedImages.push({
+              taskId,
+              originalName: file.originalname || 'image.jpg',
+              originalSize: file.size || 0,
+              status: 'queued'
+            });
+
+          } catch (error) {
+            console.error(`Failed to queue image ${file.originalname}:`, error);
+            queuedImages.push({
+              originalName: file.originalname || 'image.jpg',
+              originalSize: file.size || 0,
+              status: 'failed',
+              error: error.message
+            });
+          }
+        }
+
+        console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} images queued for background processing`);
+
+        // Return early with queued status
+        return res.json({
+          success: true,
+          message: 'Aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
+          requestId: savedRequest.id,
+          queuedImages,
+          emailWillBeSentAfterProcessing: true
+        });
+      }
+      
+      // No files case - save directly and send emails immediately
+      const [savedRequest] = await db.insert(serviceRequests).values({
+        ...validatedData,
+        photos: photosArray
+      }).returning();
+
+      // Send notification email to admin (no files)
       try {
         await emailService.sendNotificationEmail({
           ...validatedData,
           photos: photosArray,
           submittedAt: savedRequest.submittedAt || new Date(),
           formType: 'popup' as const,
-          files: uploadedFiles
+          files: []
         });
-        console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} met ${uploadedFiles.length} attachments`);
+        console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} (no files)`);
       } catch (emailError) {
         console.error('Failed to send notification email:', emailError);
       }
@@ -200,10 +264,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: "Er is een fout opgetreden. Probeer het later opnieuw." 
       });
     } finally {
-      // tmp bestanden opruimen
-      for (const f of (req.files as any[] || [])) {
-        try { fs.unlinkSync(f.path); } catch {}
-      }
+      // Don't clean up temp files if they're queued for background processing
+      // The background processor will clean them up after processing
     }
   });
 
