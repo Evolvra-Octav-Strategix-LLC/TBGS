@@ -164,6 +164,10 @@ class ImageProcessor {
         command = command
           .videoCodec('mjpeg')
           .outputOptions(['-q:v', options.quality.toString()]);
+      } else if (options.format === 'png') {
+        command = command
+          .videoCodec('png')
+          .outputOptions(['-compression_level', '6']);
       }
 
       // Remove metadata for privacy
@@ -195,6 +199,8 @@ class ImageProcessor {
       
       if (format === 'jpeg') {
         command = command.videoCodec('mjpeg');
+      } else if (format === 'png') {
+        command = command.videoCodec('png');
       }
       
       command
@@ -215,7 +221,7 @@ class ImageProcessor {
   ): Promise<void> {
     return new Promise((resolve, reject) => {
       ffmpeg(inputPath)
-        .videoCodec('mjpeg')
+        .videoCodec('png')
         .videoFilter(`drawtext=text='${text}':fontcolor=white@0.7:fontsize=24:x=w-tw-20:y=h-th-20:shadowcolor=black@0.8:shadowx=2:shadowy=2`)
         .output(outputPath)
         .on('end', () => resolve())

@@ -296,7 +296,7 @@ class EmailService {
           maxWidth: 1920,
           maxHeight: 1080,
           quality: 85,
-          format: 'jpeg',
+          format: 'png',
           createThumbnail: true,
           thumbnailSize: 300,
           addWatermark: true,
@@ -323,12 +323,12 @@ class EmailService {
           
           if (attachmentPath && fs.existsSync(attachmentPath)) {
             const compressedBuffer = fs.readFileSync(attachmentPath);
-            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.jpg`;
+            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.png`;
             
             if (total + compressedBuffer.length <= totalLimit) {
               attachments.push({
                 filename,
-                contentType: 'image/jpeg',
+                contentType: 'image/png',
                 content: compressedBuffer,
               });
               total += compressedBuffer.length;
@@ -358,9 +358,20 @@ class EmailService {
         for (const f of imageFiles) {
           const name = hashName(f.originalname || f.filename || 'upload.bin');
           const mimetype = f.mimetype || 'application/octet-stream';
-          const size = typeof f.size === 'number'
-            ? f.size
-            : (f.path && fs.existsSync(f.path) ? fs.statSync(f.path).size : 0);
+          let size = 0;
+          let buffer: Buffer;
+
+          // Get buffer and size
+          if (f.buffer) {
+            buffer = Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer);
+            size = buffer.length;
+          } else if (f.path && fs.existsSync(f.path)) {
+            buffer = fs.readFileSync(f.path);
+            size = buffer.length;
+          } else {
+            console.warn(`emailservice: no buffer or path for file: ${f.originalname}`);
+            continue;
+          }
 
           if (size > perFileLimit) {
             console.warn(`emailservice: file te groot (${size} > ${perFileLimit}): ${f.originalname}`);
@@ -371,20 +382,14 @@ class EmailService {
             continue;
           }
 
-          if (f.path && fs.existsSync(f.path)) {
-            attachments.push({
-              filename: name,
-              contentType: mimetype,
-              content: fs.createReadStream(f.path),
-            });
-          } else if (f.buffer) {
-            attachments.push({
-              filename: name,
-              contentType: mimetype,
-              content: Buffer.isBuffer(f.buffer) ? f.buffer : Buffer.from(f.buffer),
-            });
-          }
+          // Add original image as attachment
+          attachments.push({
+            filename: `original_${name}`,
+            contentType: mimetype,
+            content: buffer,
+          });
           total += size;
+          console.log(`🔄 Fallback: Added original image: ${name} (${(size / 1024).toFixed(1)}KB)`);
         }
       }
     }
