@@ -1,0 +1,45 @@
+2025-08-30T20:43:29.710Z [info] 🔥 /api/service-request endpoint hit
+2025-08-30T20:43:29.727Z [info] 📁 Files received: 5
+2025-08-30T20:43:30.157Z [info] ⚡ INSTANT submission complete for b47a883b-99d3-4497-9106-cf8a937ccab4
+2025-08-30T20:43:30.187Z [info] 📧 Starting background email processing for b47a883b-99d3-4497-9106-cf8a937ccab4
+2025-08-30T20:43:30.187Z [info] 📧 Sending notification email...
+2025-08-30T20:43:30.187Z [info] 📧 Starting sendNotificationEmail function...
+2025-08-30T20:43:30.187Z [info] 📧 Creating email transporter with user: Info@***
+2025-08-30T20:43:30.187Z [error] ❌ DETAILED EMAIL ERROR: TypeError: nodemailer.createTransporter is not a function
+    at sendNotificationEmail (file:///var/task/api/service-request.js:88:36)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:430:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)
+2025-08-30T20:43:30.187Z [error] ❌ Error details: {
+  code: undefined,
+  command: undefined,
+  response: undefined,
+  responseCode: undefined
+}
+2025-08-30T20:43:30.187Z [error] ❌ Failed to send notification email: TypeError: nodemailer.createTransporter is not a function
+    at sendNotificationEmail (file:///var/task/api/service-request.js:88:36)
+    at Immediate._onImmediate (file:///var/task/api/service-request.js:430:15)
+    at process.processImmediate (node:internal/timers:485:21)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)
+2025-08-30T20:43:30.187Z [info] 📧 Sending thank you email...
+2025-08-30T20:43:30.187Z [info] 📧 Creating thank you email transporter...
+2025-08-30T20:43:30.187Z [error] ❌ DETAILED THANK YOU EMAIL ERROR: TypeError: nodemailer.createTransporter is not a function
+    at sendThankYouEmail (file:///var/task/api/service-request.js:248:36)
+    at Immediate.<anonymous> (file:///var/task/api/service-request.js:438:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at process.processImmediate (node:internal/timers:453:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)
+2025-08-30T20:43:30.187Z [error] ❌ Error details: {
+  code: undefined,
+  command: undefined,
+  response: undefined,
+  responseCode: undefined
+}
+2025-08-30T20:43:30.187Z [error] ❌ Failed to send thank you email: TypeError: nodemailer.createTransporter is not a function
+    at sendThankYouEmail (file:///var/task/api/service-request.js:248:36)
+    at Immediate.<anonymous> (file:///var/task/api/service-request.js:438:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at process.processImmediate (node:internal/timers:453:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)

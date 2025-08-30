@@ -16,7 +16,7 @@ neonConfig.webSocketConstructor = ws;
 
 // Email service configuration
 const createEmailTransporter = () => {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
     secure: false,

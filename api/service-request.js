@@ -85,7 +85,7 @@ async function sendNotificationEmail(data) {
   console.log('📧 Starting sendNotificationEmail function...');
   try {
     console.log('📧 Creating email transporter with user:', process.env.GMAIL_USER?.substring(0, 5) + '***');
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
@@ -245,7 +245,7 @@ URL:https://tbgs.nl
 async function sendThankYouEmail(data) {
   try {
     console.log('📧 Creating thank you email transporter...');
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
