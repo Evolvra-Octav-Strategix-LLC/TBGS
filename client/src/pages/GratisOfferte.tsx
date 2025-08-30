@@ -24,9 +24,9 @@ export default function GratisOfferte() {
 
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Hero Section */}
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        <section className="relative py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center">
               <div className="mb-8">
                 <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm font-semibold bg-tbgs-navy text-white">
                   80 Jaar Ervaring • 4 Generaties Vakmanschap
