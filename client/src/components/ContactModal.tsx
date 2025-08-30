@@ -101,7 +101,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       formData.append('interactionCount', '1');
       formData.append('leadScore', '3');
 
-      const response = await fetch('/api/service-request', {
+      const response = await fetch('/api/contact-modal', {
         method: 'POST',
         body: formData,
       });
