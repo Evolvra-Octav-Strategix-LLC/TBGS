@@ -14,7 +14,7 @@ export default function DuurzaamheidsCertificeringen() {
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="py-24 lg:py-32 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/sustainability-pattern.svg')] opacity-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-100/30 to-emerald-100/30"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center bg-green-100 text-green-700 px-6 py-3 rounded-full font-medium mb-8">

@@ -7,13 +7,14 @@ export default function WaterdichtingssystemenAdvanced() {
         title="Geavanceerde Waterdichtingssystemen 2025 | EPDM, TPO & Liquid Membranen | TBGS"
         description="Professionele waterdichtingsoplossingen: EPDM, TPO, liquid membranen, groendak systemen. TBGS 25+ jaar expertise in waterdichte dakconstructies Nederland & België."
         keywords="waterdichtingssystemen, EPDM dakbedekking, TPO membraan, liquid waterproofing, groendak waterproofing, TBGS specialist"
+        url="/kennisbank/waterdichtingssystemen-advanced"
         image="/images/waterproofing-systems-banner.jpg"
       />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-50 via-slate-50 to-cyan-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/water-pattern.svg')] opacity-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-cyan-100/30"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center bg-blue-100 text-blue-700 px-6 py-3 rounded-full font-medium mb-8">

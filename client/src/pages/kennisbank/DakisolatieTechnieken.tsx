@@ -7,13 +7,14 @@ export default function DakisolatieTechnieken() {
         title="Dakisolatie Technieken 2025 | Professionele Isolatiemethoden | TBGS Specialisten"
         description="Ontdek moderne dakisolatie technieken: PIR isolatie, spouwmuurisolatie, vakmanschap van TBGS. 25+ jaar ervaring in energiebesparende isolatieoplossingen voor Nederland en België."
         keywords="dakisolatie technieken, PIR isolatie, spouwmuurisolatie, energiebesparing, isolatie specialist, TBGS"
+        url="/kennisbank/dakisolatie-technieken"
         image="/images/dakisolatie-technieken-banner.jpg"
       />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="py-24 lg:py-32 bg-gradient-to-br from-green-50 via-blue-50 to-slate-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/pattern-bg.svg')] opacity-5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-100/30 to-blue-100/30"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center bg-green-100 text-green-700 px-6 py-3 rounded-full font-medium mb-8">
