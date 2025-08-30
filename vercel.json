@@ -8,13 +8,15 @@
         "buildCommand": "vite build",
         "outputDirectory": "dist/public"
       }
+    },
+    {
+      "src": "api/service-request.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxDuration": 30
+      }
     }
   ],
-  "functions": {
-    "api/service-request.js": {
-      "maxDuration": 30
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
