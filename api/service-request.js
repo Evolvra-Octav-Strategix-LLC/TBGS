@@ -8,9 +8,31 @@ import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { imageProcessor } from '../server/imageProcessor.js';
+import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
+
+// Contact form validation schema
+const contactFormSchema = z.object({
+  firstName: z.string().min(1, "Voornaam is verplicht"),
+  lastName: z.string().min(1, "Achternaam is verplicht"),
+  email: z.string().email("Ongeldig e-mailadres"),
+  phone: z.string().min(1, "Telefoonnummer is verplicht"),
+  location: z.string().min(1, "Locatie is verplicht"),
+  serviceType: z.string().min(1, "Type werkzaamheden is verplicht"),
+  description: z.string().optional(),
+  privacy: z.boolean().refine(val => val === true, "Akkoord met privacyverklaring is verplicht")
+});
+
+// Utility function to normalize file names
+const normalizeFileName = (originalName) => {
+  return originalName
+    .toLowerCase()
+    .replace(/\s+/g, '-')           // spaces to dashes
+    .replace(/[^a-z0-9.-]/g, '')    // remove special chars except dots and dashes
+    .replace(/--+/g, '-')           // multiple dashes to single
+    .replace(/^-|-$/g, '');         // remove leading/trailing dashes
+};
 
 // Database schema
 const serviceRequests = pgTable("service_requests", {
@@ -83,54 +105,21 @@ async function sendNotificationEmail(data) {
     });
     console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
 
-    // Add compressed FFmpeg files as attachments (prefer compressed over originals)
-    if (data.processedImages && data.processedImages.length > 0) {
-      for (const processedImage of data.processedImages) {
-        try {
-          // Use compressed watermarked file if available, otherwise compressed file
-          const attachmentPath = processedImage.watermarkedPath || processedImage.compressedPath;
-          
-          if (attachmentPath && !processedImage.processingFailed) {
-            const fileBuffer = await fs.readFile(attachmentPath);
-            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.jpg`;
-            
-            attachments.push({
-              filename,
-              content: fileBuffer,
-              contentType: 'image/jpeg'
-            });
-            
-            console.log(`✓ Compressed attachment: ${filename} (${(fileBuffer.length / 1024).toFixed(1)}KB, ${processedImage.compressionRatio}% reduction)`);
-          } else {
-            // Fallback to original if processing failed
-            const originalFile = data.files.find(f => f.originalFilename === processedImage.originalName);
-            if (originalFile) {
-              const fileBuffer = await fs.readFile(originalFile.path);
-              attachments.push({
-                filename: originalFile.originalFilename || 'uploaded_file',
-                content: fileBuffer,
-                contentType: originalFile.headers ? originalFile.headers['content-type'] : 'image/jpeg'
-              });
-              console.log(`⚠️ Fallback to original: ${originalFile.originalFilename} (processing failed)`);
-            }
-          }
-        } catch (fileError) {
-          console.error('Error reading processed image:', processedImage.originalName, fileError);
-        }
-      }
-    } else if (data.files && data.files.length > 0) {
-      // Fallback to original files if no processed images
+    // Add uploaded files with tbgs- prefix
+    if (data.files && data.files.length > 0) {
       for (const file of data.files) {
         try {
           const fileBuffer = await fs.readFile(file.path);
+          const filename = `tbgs-${file.originalname || 'uploaded-file'}`;
+          
           attachments.push({
-            filename: file.originalFilename || 'uploaded_file',
+            filename,
             content: fileBuffer,
-            contentType: file.headers ? file.headers['content-type'] : 'application/octet-stream'
+            contentType: file.mimetype || 'application/octet-stream'
           });
-          console.log(`✓ Original attachment: ${file.originalFilename} (no FFmpeg processing)`);
+          console.log(`✓ Service attachment: ${filename}`);
         } catch (fileError) {
-          console.error('Error reading original file:', file.originalFilename, fileError);
+          console.error('Error reading service file:', file.originalname, fileError);
         }
       }
     }
@@ -250,6 +239,32 @@ async function sendThankYouEmail(data) {
   }
 }
 
+// Fast file processing without blocking HTTP response
+const processMultipartRequest = (req) => {
+  return new Promise((resolve, reject) => {
+    const form = new multiparty.Form({
+      maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
+      maxFiles: 8
+    });
+    
+    form.parse(req, (err, fields, files) => {
+      if (err) return reject(err);
+      
+      const processedFiles = [];
+      for (const [fieldName, fileArray] of Object.entries(files)) {
+        for (const file of fileArray) {
+          if (file.originalFilename) {
+            file.originalname = normalizeFileName(file.originalFilename);
+            processedFiles.push(file);
+          }
+        }
+      }
+      
+      resolve({ fields, files: processedFiles });
+    });
+  });
+};
+
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -264,215 +279,122 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  console.log('🔥 /api/service-request endpoint hit');
+  
   try {
-    let formData = {};
+    let validatedData;
     let files = [];
 
-    // Parse FormData if content-type includes multipart
+    // Process multipart data for forms with files
     if (req.headers['content-type']?.includes('multipart/form-data')) {
-      const form = new multiparty.Form({
-        maxFilesSize: 50 * 1024 * 1024, // 50MB total
-        maxFiles: 5, // Max 5 files
-        maxFieldsSize: 20 * 1024 * 1024 // 20MB for text fields
-      });
+      const { fields, files: uploadedFiles } = await processMultipartRequest(req);
       
-      const parseResult = await new Promise((resolve, reject) => {
-        form.parse(req, (err, fields, uploadedFiles) => {
-          if (err) reject(err);
-          else resolve({ fields, files: uploadedFiles });
-        });
-      });
-      
-      // Convert fields to single values (multiparty returns arrays)
-      for (const [key, value] of Object.entries(parseResult.fields)) {
-        formData[key] = Array.isArray(value) ? value[0] : value;
+      // Extract form data from multipart fields
+      const formData = {};
+      for (const [key, values] of Object.entries(fields)) {
+        formData[key] = Array.isArray(values) ? values[0] : values;
       }
       
-      // Handle uploaded files
-      if (parseResult.files.files) {
-        files = Array.isArray(parseResult.files.files) ? parseResult.files.files : [parseResult.files.files];
+      // Convert string booleans to actual booleans
+      if (formData.privacy === 'true' || formData.privacy === true) {
+        formData.privacy = true;
+      } else {
+        formData.privacy = false;
       }
+      
+      validatedData = contactFormSchema.parse(formData);
+      files = uploadedFiles;
     } else {
-      // Use regular JSON body parsing
-      formData = req.body;
+      // Handle regular JSON requests
+      validatedData = contactFormSchema.parse(req.body);
     }
 
-    const {
-      selectedService,
-      serviceType,
-      specialist,
-      projectType,
-      urgencyLevel,
-      photos = [],
-      address,
-      projectDescription,
-      firstName,
-      lastName,
-      email,
-      phone,
-      contactPreference
-    } = formData;
+    console.log(`📁 Files received: ${files.length}`);
 
-    // Validate required fields
-    if (!selectedService || !address || !firstName || !lastName || !email || !phone) {
-      return res.status(400).json({ 
-        success: false,
-        message: 'Ontbrekende verplichte velden',
-        error: 'Ontbrekende verplichte velden' 
-      });
-    }
+    // Transform contact data to database format
+    const dbData = {
+      selectedService: validatedData.serviceType,
+      photos: [],
+      address: validatedData.location,
+      projectDescription: validatedData.description || "Geen beschrijving opgegeven",
+      firstName: validatedData.firstName,
+      lastName: validatedData.lastName,
+      email: validatedData.email,
+      phone: validatedData.phone,
+      contactPreference: 'E-mail'
+    };
 
-    // Queue uploaded images for background processing with FFmpeg
-    let queuedImages = [];
-    if (files && files.length > 0) {
-      console.log(`🚀 Processing ${files.length} images with FFmpeg compression...`);
-      
-      // Save to database first to get request ID
-      const [savedRequest] = await db.insert(serviceRequests).values({
-        selectedService,
-        photos: [], // Will be updated when processing completes
-        address,
-        projectDescription: projectDescription || '',
-        firstName,
-        lastName,
-        email,
-        phone,
-        contactPreference: contactPreference || 'phone'
-      }).returning();
+    // Save to database immediately
+    const [savedRequest] = await db.insert(serviceRequests).values(dbData).returning();
 
-      // Queue each image for background processing
-      const { taskProcessor } = await import('../server/taskQueue.js');
-      
-      for (const file of files) {
-        try {
-          const taskId = await taskProcessor.addImageTask({
-            originalPath: file.path,
-            originalName: file.originalFilename || 'image.jpg',
-            parentType: 'service_request',
-            parentId: savedRequest.id,
-            processingOptions: {
-              maxWidth: 1920,
-              maxHeight: 1080,
-              quality: 85,
-              format: 'jpeg',
-              createThumbnail: true,
-              thumbnailSize: 300,
-              addWatermark: true,
-              watermarkText: 'TBGS B.V.',
-              removeMetadata: true,
-              autoRotate: true
-            }
-          });
+    // Transform data for email
+    const emailData = {
+      ...dbData,
+      submittedAt: savedRequest.submittedAt || new Date(),
+      formType: 'popup',
+      files: files.map(file => ({
+        path: file.path,
+        originalname: file.originalname,
+        originalFilename: file.originalFilename,
+        size: file.size,
+        mimetype: file.headers?.['content-type'] || 'application/octet-stream'
+      }))
+    };
 
-          queuedImages.push({
-            taskId,
-            originalName: file.originalFilename || 'image.jpg',
-            originalSize: file.size || 0,
-            status: 'queued'
-          });
+    // Respond immediately to user
+    console.log(`⚡ INSTANT submission complete for ${savedRequest.id}`);
+    res.status(200).json({
+      success: true,
+      message: 'Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.',
+      requestId: savedRequest.id
+    });
 
-        } catch (error) {
-          console.error(`Failed to queue image ${file.originalFilename}:`, error);
-          queuedImages.push({
-            originalName: file.originalFilename || 'image.jpg',
-            originalSize: file.size || 0,
-            status: 'failed',
-            error: error.message
-          });
-        }
+    // Send emails in background (non-blocking)
+    setImmediate(async () => {
+      try {
+        await sendNotificationEmail(emailData);
+        console.log(`✓ Background notification email sent for ${savedRequest.id}`);
+      } catch (emailError) {
+        console.error('Failed to send notification email:', emailError);
       }
 
-      console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} images queued for background processing`);
+      try {
+        await sendThankYouEmail(emailData);
+        console.log(`✓ Background thank you email sent for ${savedRequest.id}`);
+      } catch (emailError) {
+        console.error('Failed to send thank you email:', emailError);
+      }
 
-      // Return early with queued status
-      return res.json({
-        success: true,
-        message: 'Aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
-        requestId: savedRequest.id,
-        queuedImages,
-        emailWillBeSentAfterProcessing: true
+      // Clean up temporary files
+      files.forEach(file => {
+        try {
+          if (fs.existsSync && fs.existsSync(file.path)) {
+            fs.unlinkSync(file.path);
+          }
+        } catch (err) {
+          console.warn('Could not clean up temp file:', err);
+        }
       });
-    }
-
-    // If no files, save directly to database
-    const [savedRequest] = await db.insert(serviceRequests).values({
-      selectedService,
-      photos: Array.isArray(photos) ? photos : [],
-      address,
-      projectDescription: projectDescription || '',
-      firstName,
-      lastName,
-      email,
-      phone,
-      contactPreference: contactPreference || 'phone'
-    }).returning();
-
-    // Prepare data for database and email
-
-    // Send notification email to admin with compressed attachments
-    try {
-      await sendNotificationEmail({
-        id: savedRequest.id,
-        selectedService,
-        serviceType,
-        specialist,
-        projectType,
-        urgencyLevel,
-        photos: Array.isArray(photos) ? photos : [],
-        processedImages: [],
-        address,
-        projectDescription: projectDescription || '',
-        firstName,
-        lastName,
-        email,
-        phone,
-        contactPreference: contactPreference || 'phone',
-        submittedAt: savedRequest.submittedAt || new Date(),
-        formType: 'popup',
-        files: files || [],
-        ffmpegResults: [] // No files to process
-      });
-    } catch (emailError) {
-      console.error('Failed to send notification email:', emailError);
-    }
-
-    // No FFmpeg cleanup needed for no-files case
-
-    // Send thank you email to client
-    try {
-      await sendThankYouEmail({
-        selectedService,
-        serviceType,
-        specialist,
-        projectType,
-        urgencyLevel,
-        photos: Array.isArray(photos) ? photos : [],
-        address,
-        projectDescription: projectDescription || '',
-        firstName,
-        lastName,
-        email,
-        phone,
-        contactPreference: contactPreference || 'phone',
-        submittedAt: savedRequest.submittedAt || new Date(),
-        formType: 'popup'
-      });
-    } catch (emailError) {
-      console.error('Failed to send thank you email:', emailError);
-    }
-
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.',
-      id: savedRequest.id
     });
 
   } catch (error) {
-    console.error('Service request error:', error);
-    return res.status(500).json({ 
-      success: false,
-      message: 'Er is een fout opgetreden. Probeer het opnieuw.',
-      error: 'Er is een fout opgetreden. Probeer het opnieuw.' 
-    });
+    if (error instanceof z.ZodError) {
+      // Validation errors
+      return res.status(400).json({
+        success: false,
+        message: "Controleer uw invoer en probeer opnieuw.",
+        errors: error.errors.map(err => ({
+          field: err.path.join('.'),
+          message: err.message
+        }))
+      });
+    } else {
+      // Other errors
+      console.error("Contact form error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Er is een fout opgetreden bij het versturen van uw bericht. Probeer het opnieuw of neem telefonisch contact op."
+      });
+    }
   }
 }

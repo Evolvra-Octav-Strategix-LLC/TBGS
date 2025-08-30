@@ -13,6 +13,16 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
+// Utility function to normalize file names
+const normalizeFileName = (originalName) => {
+  return originalName
+    .toLowerCase()
+    .replace(/\s+/g, '-')           // spaces to dashes
+    .replace(/[^a-z0-9.-]/g, '')    // remove special chars except dots and dashes
+    .replace(/--+/g, '-')           // multiple dashes to single
+    .replace(/^-|-$/g, '');         // remove leading/trailing dashes
+};
+
 // Database schema
 const offerteRequests = pgTable("offerte_requests", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
@@ -110,54 +120,21 @@ async function sendNotificationEmail(data) {
     });
     console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
 
-    // Add compressed FFmpeg files as attachments (prefer compressed over originals)
-    if (data.processedImages && data.processedImages.length > 0) {
-      for (const processedImage of data.processedImages) {
-        try {
-          // Use compressed watermarked file if available, otherwise compressed file
-          const attachmentPath = processedImage.watermarkedPath || processedImage.compressedPath;
-          
-          if (attachmentPath && !processedImage.processingFailed) {
-            const fileBuffer = await fs.readFile(attachmentPath);
-            const filename = `tbgs_${processedImage.originalName.replace(/\.[^/.]+$/, '')}_compressed.jpg`;
-            
-            attachments.push({
-              filename,
-              content: fileBuffer,
-              contentType: 'image/jpeg'
-            });
-            
-            console.log(`✓ Compressed attachment: ${filename} (${(fileBuffer.length / 1024).toFixed(1)}KB, ${processedImage.compressionRatio}% reduction)`);
-          } else {
-            // Fallback to original if processing failed
-            const originalFile = data.files.find(f => f.originalFilename === processedImage.originalName);
-            if (originalFile) {
-              const fileBuffer = await fs.readFile(originalFile.path);
-              attachments.push({
-                filename: originalFile.originalFilename || 'uploaded_file',
-                content: fileBuffer,
-                contentType: originalFile.headers ? originalFile.headers['content-type'] : 'image/jpeg'
-              });
-              console.log(`⚠️ Fallback to original: ${originalFile.originalFilename} (processing failed)`);
-            }
-          }
-        } catch (fileError) {
-          console.error('Error reading processed image:', processedImage.originalName, fileError);
-        }
-      }
-    } else if (data.files && data.files.length > 0) {
-      // Fallback to original files if no processed images
+    // Add uploaded files with tbgs- prefix
+    if (data.files && data.files.length > 0) {
       for (const file of data.files) {
         try {
           const fileBuffer = await fs.readFile(file.path);
+          const filename = `tbgs-${file.originalname || 'uploaded-file'}`;
+          
           attachments.push({
-            filename: file.originalFilename || 'uploaded_file',
+            filename,
             content: fileBuffer,
-            contentType: file.headers ? file.headers['content-type'] : 'application/octet-stream'
+            contentType: file.mimetype || 'application/octet-stream'
           });
-          console.log(`✓ Original attachment: ${file.originalFilename} (no FFmpeg processing)`);
+          console.log(`✓ Offerte attachment: ${filename}`);
         } catch (fileError) {
-          console.error('Error reading original file:', file.originalFilename, fileError);
+          console.error('Error reading offerte file:', file.originalname, fileError);
         }
       }
     }
@@ -303,7 +280,10 @@ export default async function handler(req, res) {
 
     // Parse FormData if content-type includes multipart
     if (req.headers['content-type']?.includes('multipart/form-data')) {
-      const form = new multiparty.Form();
+      const form = new multiparty.Form({
+        maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
+        maxFiles: 8
+      });
       
       const parseResult = await new Promise((resolve, reject) => {
         form.parse(req, (err, fields, uploadedFiles) => {
@@ -317,10 +297,17 @@ export default async function handler(req, res) {
         formData[key] = Array.isArray(value) ? value[0] : value;
       }
       
-      // Handle uploaded files
-      if (parseResult.files.files) {
-        files = Array.isArray(parseResult.files.files) ? parseResult.files.files : [parseResult.files.files];
+      // Handle uploaded files with normalization
+      const processedFiles = [];
+      for (const [fieldName, fileArray] of Object.entries(parseResult.files)) {
+        for (const file of fileArray) {
+          if (file.originalFilename) {
+            file.originalname = normalizeFileName(file.originalFilename);
+            processedFiles.push(file);
+          }
+        }
       }
+      files = processedFiles;
     } else {
       // Use regular JSON body parsing
       formData = req.body;
@@ -357,9 +344,11 @@ export default async function handler(req, res) {
 
       // Process files for email attachments (pre-compressed from client)
       const emailFiles = files.map(file => ({
-        filename: file.originalFilename || 'attachment.jpg',
-        content: fs.readFileSync(file.path),
-        contentType: file.headers?.['content-type'] || 'image/jpeg'
+        path: file.path,
+        originalname: `tbgs-${normalizeFileName(file.originalFilename || 'attachment.jpg')}`,
+        originalFilename: file.originalFilename,
+        size: file.size,
+        mimetype: file.headers?.['content-type'] || 'image/jpeg'
       }));
 
       // Respond immediately to user
