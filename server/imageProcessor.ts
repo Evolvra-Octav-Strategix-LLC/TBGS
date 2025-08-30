@@ -159,18 +159,17 @@ class ImageProcessor {
       // Resize while maintaining aspect ratio
       command = command.size(`${options.maxWidth}x${options.maxHeight}`);
 
-      // Set quality
+      // Set codec and quality
       if (options.format === 'jpeg') {
-        command = command.outputOptions(['-q:v', options.quality.toString()]);
+        command = command
+          .videoCodec('mjpeg')
+          .outputOptions(['-q:v', options.quality.toString()]);
       }
 
       // Remove metadata for privacy
       if (options.removeMetadata) {
         command = command.outputOptions(['-map_metadata', '-1']);
       }
-
-      // Set output format
-      command = command.format(options.format);
 
       command
         .output(outputPath)
@@ -190,10 +189,15 @@ class ImageProcessor {
     format: string
   ): Promise<void> {
     return new Promise((resolve, reject) => {
-      ffmpeg(inputPath)
+      let command = ffmpeg(inputPath)
         .size(`${size}x${size}`)
-        .aspect('1:1')
-        .format(format)
+        .aspect('1:1');
+      
+      if (format === 'jpeg') {
+        command = command.videoCodec('mjpeg');
+      }
+      
+      command
         .output(outputPath)
         .on('end', () => resolve())
         .on('error', (err) => reject(err))
@@ -211,6 +215,7 @@ class ImageProcessor {
   ): Promise<void> {
     return new Promise((resolve, reject) => {
       ffmpeg(inputPath)
+        .videoCodec('mjpeg')
         .videoFilter(`drawtext=text='${text}':fontcolor=white@0.7:fontsize=24:x=w-tw-20:y=h-th-20:shadowcolor=black@0.8:shadowx=2:shadowy=2`)
         .output(outputPath)
         .on('end', () => resolve())

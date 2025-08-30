@@ -308,7 +308,7 @@ class EmailService {
         // Store processed image data
         processedImageData = results.map((result, index) => ({
           originalName: imageFiles[index].originalname || 'image.jpg',
-          compressedPath: result.compressedPath,
+          compressedPath: result.optimizedPath,
           watermarkedPath: result.watermarkedPath,
           thumbnailPath: result.thumbnailPath,
           originalSize: result.metadata.originalSize,
