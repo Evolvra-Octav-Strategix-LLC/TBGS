@@ -58,7 +58,7 @@ const db = drizzle({ client: pool });
 // Email service
 async function sendNotificationEmail(data) {
   try {
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
@@ -100,7 +100,7 @@ async function sendNotificationEmail(data) {
 
 async function sendThankYouEmail(data) {
   try {
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
