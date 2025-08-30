@@ -96,7 +96,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Local Expert",
+      title: "Lokale Expert",
       description: "Bekend met Eindhovense bouwstijlen"
     }
   ];
