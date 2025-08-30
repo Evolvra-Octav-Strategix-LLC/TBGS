@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/lib/seo";
 import Footer from "@/components/Footer";
-import ContactModal from "@/components/ContactModal";
-import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap } from "lucide-react";
+import ContactModalV2 from "@/components/ContactModalV2";
+import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home } from "lucide-react";
 
 export default function GratisOfferte() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -25,52 +25,138 @@ export default function GratisOfferte() {
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Hero Section */}
         <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Gratis Offerte
-                <span className="block text-3xl md:text-4xl lg:text-5xl text-tbgs-navy mt-2">
-                  Binnen 24 Uur
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Professionele dienstverlening voor al uw dak-, schoorsteen-, onderhoud- en bouwprojecten. 
-                80 jaar ervaring, 4 generaties vakmanschap.
-              </p>
-            </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="mb-8">
+                <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm font-semibold bg-tbgs-navy text-white">
+                  80 Jaar Ervaring • 4 Generaties Vakmanschap
+                </Badge>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                  Gratis Offerte
+                  <span className="block text-3xl md:text-4xl lg:text-5xl text-tbgs-navy mt-2">
+                    Binnen 24 Uur
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+                  Professionele dienstverlening voor al uw dak-, schoorsteen-, onderhoud- en bouwprojecten. 
+                  Van spoedservice tot complete renovaties - wij staan voor u klaar.
+                </p>
+              </div>
 
-            {/* Call to Action */}
-            <div className="space-y-6">
-              <Button
-                onClick={() => setIsContactModalOpen(true)}
-                size="lg"
-                className="bg-tbgs-navy hover:bg-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                data-testid="button-open-offerte-modal"
-              >
-                <Calculator className="w-6 h-6 mr-3" />
-                Gratis Offerte Aanvragen
-              </Button>
-              
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span>Binnen 24 uur contact</span>
+              {/* Value Propositions */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
+                  <Clock className="w-12 h-12 text-tbgs-navy mb-4" />
+                  <h3 className="font-semibold text-gray-900 mb-2">Binnen 24 Uur Contact</h3>
+                  <p className="text-sm text-gray-600 text-center">Snelle reactie en spoedservice voor urgente reparaties</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span>Geen verborgen kosten</span>
+                
+                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
+                  <Shield className="w-12 h-12 text-tbgs-green mb-4" />
+                  <h3 className="font-semibold text-gray-900 mb-2">Volledig Verzekerd</h3>
+                  <p className="text-sm text-gray-600 text-center">Gecertificeerd en verzekerd voor alle werkzaamheden</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span>Gratis inspectie</span>
+                
+                <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border">
+                  <Star className="w-12 h-12 text-tbgs-orange mb-4" />
+                  <h3 className="font-semibold text-gray-900 mb-2">5-Sterren Service</h3>
+                  <p className="text-sm text-gray-600 text-center">Uitstekende klantbeoordelingen en tevredenheidsgarantie</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Services Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Onze Specialismen
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Vier gespecialiseerde teams met elk hun eigen expertise. Van daklekkage tot complete renovaties.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-200 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="text-center pb-4">
+                  <Home className="w-12 h-12 text-red-600 mx-auto mb-4" />
+                  <CardTitle className="text-red-800">TDS - Dak Specialist</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-red-700 text-center mb-4">
+                    Dakvervanging, reparatie, isolatie en lekkage oplossen
+                  </CardDescription>
+                  <ul className="text-sm text-red-600 space-y-1">
+                    <li>• Daklekkage reparatie</li>
+                    <li>• Dakvervanging</li>
+                    <li>• Dakisolatie</li>
+                    <li>• Zonnepanelen</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="text-center pb-4">
+                  <Building className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                  <CardTitle className="text-blue-800">TSS - Schoorsteen Specialist</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-blue-700 text-center mb-4">
+                    Schoorsteenreparatie, reiniging en rookgasafvoer
+                  </CardDescription>
+                  <ul className="text-sm text-blue-600 space-y-1">
+                    <li>• Schoorsteenreparatie</li>
+                    <li>• Jaarlijkse controle</li>
+                    <li>• Rookgasafvoer</li>
+                    <li>• Reiniging</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="text-center pb-4">
+                  <Users className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                  <CardTitle className="text-green-800">TOS - Onderhoud Specialist</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-green-700 text-center mb-4">
+                    Preventief onderhoud en onderhoudscontracten
+                  </CardDescription>
+                  <ul className="text-sm text-green-600 space-y-1">
+                    <li>• Preventief onderhoud</li>
+                    <li>• Onderhoudscontracten</li>
+                    <li>• Gevelreiniging</li>
+                    <li>• Dakonderhoud</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="text-center pb-4">
+                  <Award className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+                  <CardTitle className="text-orange-800">TBS - Bouw Specialist</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-orange-700 text-center mb-4">
+                    Verbouwing, renovatie en nieuwbouw projecten
+                  </CardDescription>
+                  <ul className="text-sm text-orange-600 space-y-1">
+                    <li>• Verbouwing</li>
+                    <li>• Renovatie</li>
+                    <li>• Aanbouw</li>
+                    <li>• Kozijnen</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose TBGS Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -81,165 +167,114 @@ export default function GratisOfferte() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center pb-4">
-                  <Clock className="w-12 h-12 text-tbgs-navy mx-auto mb-4" />
-                  <CardTitle className="text-lg">Binnen 24 Uur</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">
-                    Snelle reactie en spoedservice voor urgente reparaties
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-tbgs-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Familiebedrijf</h3>
+                <p className="text-gray-600">4 generaties ervaring, doorgeegeven vakmanschap en persoonlijke service</p>
+              </div>
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center pb-4">
-                  <Users className="w-12 h-12 text-tbgs-green mx-auto mb-4" />
-                  <CardTitle className="text-lg">4 Generaties</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">
-                    80 jaar familiebedrijf met doorgeegeven vakmanschap
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-tbgs-green rounded-full flex items-center justify-center mx-auto mb-4">
+                  <ThumbsUp className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Kwaliteitsgarantie</h3>
+                <p className="text-gray-600">Alleen de beste materialen en vakmannen. Garantie op al ons werk</p>
+              </div>
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center pb-4">
-                  <Award className="w-12 h-12 text-tbgs-red mx-auto mb-4" />
-                  <CardTitle className="text-lg">Gecertificeerd</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">
-                    Volledig verzekerd en gecertificeerd voor alle werkzaamheden
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader className="text-center pb-4">
-                  <Star className="w-12 h-12 text-tbgs-orange mx-auto mb-4" />
-                  <CardTitle className="text-lg">5-Sterren Service</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">
-                    Uitstekende klantbeoordelingen en tevredenheidsgarantie
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-tbgs-red rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Spoedservice</h3>
+                <p className="text-gray-600">24/7 beschikbaar voor noodgevallen. Binnen 24 uur ter plaatse</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Services Overview */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
+        {/* Form Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Specialismen
+                Vraag Uw Gratis Offerte Aan
               </h2>
-              <p className="text-xl text-gray-600">
-                Vier gespecialiseerde teams voor al uw bouwbehoeften
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte op maat. 
+                Geen verplichtingen, altijd vrijblijvend.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-200 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-red-800">TDS - Dak Specialist</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-red-700">
-                    Dakvervanging, reparatie, isolatie en lekkage oplossen
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-blue-800">TSS - Schoorsteen Specialist</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-blue-700">
-                    Schoorsteenreparatie, reiniging en rookgasafvoer
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-green-800">TOS - Onderhoud Specialist</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-green-700">
-                    Preventief onderhoud en onderhoudscontracten
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-orange-800">TBS - Bouw Specialist</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-orange-700">
-                    Verbouwing, renovatie en nieuwbouw projecten
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
+            {/* Inline Contact Form */}
+            <ContactModalV2 />
           </div>
         </section>
 
         {/* Contact Information */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Direct Contact Opnemen?
+              Of Neem Direct Contact Op
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
                 <Phone className="w-8 h-8 text-tbgs-navy mb-4" />
                 <h3 className="font-semibold text-gray-900 mb-2">Telefonisch</h3>
-                <p className="text-gray-600">040 202 6744</p>
+                <p className="text-gray-600 font-medium">040 202 6744</p>
+                <p className="text-sm text-gray-500 mt-1">Ma-Vr: 08:00-18:00</p>
               </div>
               
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow">
+              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
                 <Mail className="w-8 h-8 text-tbgs-navy mb-4" />
                 <h3 className="font-semibold text-gray-900 mb-2">E-mail</h3>
-                <p className="text-gray-600">info@tbgs.nl</p>
+                <p className="text-gray-600 font-medium">info@tbgs.nl</p>
+                <p className="text-sm text-gray-500 mt-1">Binnen 4 uur reactie</p>
               </div>
               
-              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow">
+              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
                 <MapPin className="w-8 h-8 text-tbgs-navy mb-4" />
                 <h3 className="font-semibold text-gray-900 mb-2">Werkgebied</h3>
-                <p className="text-gray-600">Nederland & België</p>
+                <p className="text-gray-600 font-medium">Nederland & België</p>
+                <p className="text-sm text-gray-500 mt-1">Landelijk actief</p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <Button
-              onClick={() => setIsContactModalOpen(true)}
-              size="lg"
-              className="bg-tbgs-navy hover:bg-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-xl"
-              data-testid="button-open-offerte-modal-bottom"
-            >
-              <FileText className="w-6 h-6 mr-3" />
-              Start Uw Offerte Aanvraag
-            </Button>
+        {/* Trust Indicators */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-tbgs-navy">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-8">
+              Vertrouwd Door Duizenden Klanten
+            </h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
+              <div className="text-center">
+                <div className="text-3xl font-bold mb-2">80+</div>
+                <div className="text-sm opacity-90">Jaar Ervaring</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold mb-2">5000+</div>
+                <div className="text-sm opacity-90">Projecten Voltooid</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold mb-2">4.8★</div>
+                <div className="text-sm opacity-90">Google Reviews</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold mb-2">24u</div>
+                <div className="text-sm opacity-90">Reactietijd</div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
       <Footer />
-
-      {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
-      />
     </>
   );
 }
