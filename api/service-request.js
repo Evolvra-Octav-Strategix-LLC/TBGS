@@ -12,16 +12,25 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Contact form validation schema
-const contactFormSchema = z.object({
+// Service request validation schema (handles both ContactModal and FloatingServiceMenu)
+const serviceRequestSchema = z.object({
+  selectedService: z.string().min(1, "Service is verplicht"),
+  address: z.string().min(1, "Adres is verplicht"),
+  projectDescription: z.string().min(1, "Beschrijving is verplicht"),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
   email: z.string().email("Ongeldig e-mailadres"),
   phone: z.string().min(1, "Telefoonnummer is verplicht"),
-  location: z.string().min(1, "Locatie is verplicht"),
-  serviceType: z.string().min(1, "Type werkzaamheden is verplicht"),
-  description: z.string().optional(),
-  privacy: z.boolean().refine(val => val === true, "Akkoord met privacyverklaring is verplicht")
+  contactPreference: z.string().min(1, "Contact voorkeur is verplicht"),
+  photos: z.string().optional(),
+  // Optional fields from ContactModal
+  serviceType: z.string().optional(),
+  specialist: z.string().optional(),
+  projectType: z.string().optional(),
+  urgencyLevel: z.string().optional(),
+  timeOnPage: z.string().optional(),
+  interactionCount: z.string().optional(),
+  leadScore: z.string().optional()
 });
 
 // Utility function to normalize file names
@@ -302,26 +311,26 @@ export default async function handler(req, res) {
         formData.privacy = false;
       }
       
-      validatedData = contactFormSchema.parse(formData);
+      validatedData = serviceRequestSchema.parse(formData);
       files = uploadedFiles;
     } else {
       // Handle regular JSON requests
-      validatedData = contactFormSchema.parse(req.body);
+      validatedData = serviceRequestSchema.parse(req.body);
     }
 
     console.log(`📁 Files received: ${files.length}`);
 
-    // Transform contact data to database format
+    // Transform data to database format
     const dbData = {
-      selectedService: validatedData.serviceType,
+      selectedService: validatedData.selectedService,
       photos: [],
-      address: validatedData.location,
-      projectDescription: validatedData.description || "Geen beschrijving opgegeven",
+      address: validatedData.address,
+      projectDescription: validatedData.projectDescription,
       firstName: validatedData.firstName,
       lastName: validatedData.lastName,
       email: validatedData.email,
       phone: validatedData.phone,
-      contactPreference: 'E-mail'
+      contactPreference: validatedData.contactPreference
     };
 
     // Save to database immediately
