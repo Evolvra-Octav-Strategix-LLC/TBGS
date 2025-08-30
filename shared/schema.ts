@@ -73,6 +73,41 @@ export const adminUsers = pgTable("admin_users", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// Background task queue for image processing
+export const imageTasks = pgTable("image_tasks", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  originalPath: text("original_path").notNull(),
+  originalName: text("original_name").notNull(),
+  status: text("status").notNull().default("pending"), // pending, processing, completed, failed
+  parentType: text("parent_type").notNull(), // service_request, offerte
+  parentId: varchar("parent_id").notNull(),
+  processingOptions: json("processing_options").$type<{
+    maxWidth?: number;
+    maxHeight?: number;
+    quality?: number;
+    format?: string;
+    createThumbnail?: boolean;
+    thumbnailSize?: number;
+    addWatermark?: boolean;
+    watermarkText?: string;
+    removeMetadata?: boolean;
+    autoRotate?: boolean;
+  }>().default({}),
+  result: json("result").$type<{
+    originalSize?: number;
+    optimizedSize?: number;
+    compressionRatio?: number;
+    dimensions?: { width: number; height: number };
+    compressedPath?: string;
+    watermarkedPath?: string;
+    thumbnailPath?: string;
+  }>(),
+  errorMessage: text("error_message"),
+  createdAt: timestamp("created_at").defaultNow(),
+  startedAt: timestamp("started_at"),
+  completedAt: timestamp("completed_at"),
+});
+
 // Relations
 export const categoriesRelations = relations(categories, ({ many }) => ({
   articles: many(articles),
@@ -140,6 +175,13 @@ export const insertAdminUserSchema = createInsertSchema(adminUsers).omit({
   createdAt: true,
 });
 
+export const insertImageTaskSchema = createInsertSchema(imageTasks).omit({
+  id: true,
+  createdAt: true,
+  startedAt: true,
+  completedAt: true,
+});
+
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -154,3 +196,5 @@ export type InsertArticle = z.infer<typeof insertArticleSchema>;
 export type Article = typeof articles.$inferSelect;
 export type InsertAdminUser = z.infer<typeof insertAdminUserSchema>;
 export type AdminUser = typeof adminUsers.$inferSelect;
+export type InsertImageTask = z.infer<typeof insertImageTaskSchema>;
+export type ImageTask = typeof imageTasks.$inferSelect;

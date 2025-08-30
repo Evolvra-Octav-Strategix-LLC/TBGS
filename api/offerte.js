@@ -326,75 +326,85 @@ export default async function handler(req, res) {
       formData = req.body;
     }
 
-    // Process uploaded images with FFmpeg optimization
-    let processedImages = [];
+    // Validate form data first
+    const validatedData = offerteFormSchema.parse(formData);
+
+    // Queue uploaded images for background processing with FFmpeg
+    let queuedImages = [];
     if (files && files.length > 0) {
-      try {
-        console.log(`Processing ${files.length} uploaded images for offerte...`);
-        
-        // Convert files to buffer format for processing
-        const imageData = [];
-        for (const file of files) {
-          const buffer = await fs.readFile(file.path);
-          imageData.push({
-            buffer,
-            fileName: file.originalFilename || 'image.jpg'
+      console.log(`🚀 Processing ${files.length} offerte images with FFmpeg compression...`);
+      
+      // Save to database first to get request ID
+      const [savedRequest] = await db.insert(offerteRequests).values({
+        voornaam: validatedData.voornaam,
+        achternaam: validatedData.achternaam,
+        email: validatedData.email,
+        telefoon: validatedData.telefoon,
+        adres: validatedData.adres,
+        postcode: validatedData.postcode,
+        plaats: validatedData.plaats,
+        specialisme: validatedData.specialisme,
+        projectType: validatedData.projectType,
+        tijdlijn: validatedData.tijdlijn,
+        budget: validatedData.budget || '',
+        beschrijving: validatedData.beschrijving,
+        privacyAkkoord: validatedData.privacyAkkoord,
+        nieuwsbrief: validatedData.nieuwsbrief,
+        files: [] // Will be updated when processing completes
+      }).returning();
+
+      // Queue each image for background processing
+      const { taskProcessor } = await import('../server/taskQueue.js');
+      
+      for (const file of files) {
+        try {
+          const taskId = await taskProcessor.addImageTask({
+            originalPath: file.path,
+            originalName: file.originalFilename || 'image.jpg',
+            parentType: 'offerte',
+            parentId: savedRequest.id,
+            processingOptions: {
+              maxWidth: 1920,
+              maxHeight: 1080,
+              quality: 85,
+              format: 'jpeg',
+              createThumbnail: true,
+              thumbnailSize: 300,
+              addWatermark: true,
+              watermarkText: 'TBGS B.V.',
+              removeMetadata: true,
+              autoRotate: true
+            }
+          });
+
+          queuedImages.push({
+            taskId,
+            originalName: file.originalFilename || 'image.jpg',
+            originalSize: file.size || 0,
+            status: 'queued'
+          });
+
+        } catch (error) {
+          console.error(`Failed to queue offerte image ${file.originalFilename}:`, error);
+          queuedImages.push({
+            originalName: file.originalFilename || 'image.jpg',
+            originalSize: file.size || 0,
+            status: 'failed',
+            error: error.message
           });
         }
-
-        // Process all images with FFmpeg
-        const results = await imageProcessor.processMultipleImages(imageData, {
-          maxWidth: 1920,
-          maxHeight: 1080,
-          quality: 85,
-          format: 'jpeg',
-          createThumbnail: true,
-          thumbnailSize: 300,
-          addWatermark: true,
-          watermarkText: 'TBGS B.V.',
-          removeMetadata: true,
-          autoRotate: true
-        });
-
-        // Store processed image metadata WITH paths for email attachments
-        processedImages = results.map((result, index) => ({
-          originalName: files[index].originalFilename || 'image.jpg',
-          processedName: `processed_${Date.now()}_${index}.jpg`,
-          originalSize: result.metadata.originalSize,
-          optimizedSize: result.metadata.optimizedSize,
-          compressionRatio: result.metadata.compressionRatio,
-          dimensions: result.metadata.dimensions,
-          hasThumbnail: !!result.thumbnailPath,
-          hasWatermark: !!result.watermarkedPath,
-          // Keep paths for email attachments
-          compressedPath: result.outputPath,
-          watermarkedPath: result.watermarkedPath,
-          thumbnailPath: result.thumbnailPath
-        }));
-
-        // DON'T cleanup yet - we need files for email attachments
-        console.log('✓ FFmpeg processing complete, keeping files for email attachments');
-
-        console.log(`Successfully processed ${processedImages.length} offerte images`);
-        console.log('Offerte compression summary:', processedImages.map(img => 
-          `${img.originalName}: ${(img.originalSize / 1024).toFixed(1)}KB → ${(img.optimizedSize / 1024).toFixed(1)}KB (${img.compressionRatio}% reduction)`
-        ));
-
-      } catch (error) {
-        console.error('Offerte image processing failed:', error);
-        // Continue without processed images - don't fail the entire request
-        processedImages = files.map(file => ({
-          originalName: file.originalFilename || 'image.jpg',
-          processedName: file.originalFilename || 'image.jpg',
-          originalSize: file.size || 0,
-          optimizedSize: file.size || 0,
-          compressionRatio: 0,
-          dimensions: { width: 0, height: 0 },
-          hasThumbnail: false,
-          hasWatermark: false,
-          processingFailed: true
-        }));
       }
+
+      console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} offerte images queued for background processing`);
+
+      // Return early with queued status
+      return res.json({
+        success: true,
+        message: 'Offerte aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
+        requestId: savedRequest.id,
+        queuedImages,
+        emailWillBeSentAfterProcessing: true
+      });
     }
 
     // Convert string booleans to actual booleans
@@ -430,11 +440,7 @@ export default async function handler(req, res) {
       contactVoorkeur: validatedData.contactVoorkeur,
       privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
       nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
-      files: processedImages.length > 0 ? processedImages : files.map(file => ({
-        originalname: file.originalFilename || '',
-        mimetype: file.headers['content-type'] || '',
-        size: file.size || 0
-      }))
+      files: []
     }).returning();
 
     // Send notification email to admin with compressed attachments
@@ -442,33 +448,23 @@ export default async function handler(req, res) {
       await sendNotificationEmail({
         id: savedRequest.id,
         ...validatedData,
-        processedImages,
-        totalImages: processedImages.length || files.length,
-        files: files || [],
-        ffmpegResults: processedImages.length > 0 ? results : [] // Pass FFmpeg results for cleanup
+        processedImages: [],
+        totalImages: 0,
+        files: [],
+        ffmpegResults: []
       });
     } catch (emailError) {
       console.error('Failed to send offerte notification email:', emailError);
     }
 
-    // Cleanup FFmpeg temporary files after email
-    if (processedImages.length > 0 && results) {
-      try {
-        for (const result of results) {
-          await imageProcessor.cleanup(result);
-        }
-        console.log('✓ FFmpeg temporary files cleaned up after email');
-      } catch (cleanupError) {
-        console.error('Failed to cleanup FFmpeg files:', cleanupError);
-      }
-    }
+    // No FFmpeg cleanup needed for no-files case
 
     // Send thank you email to client
     try {
       await sendThankYouEmail({
         ...validatedData,
-        processedImages,
-        totalImages: processedImages.length || files.length
+        processedImages: [],
+        totalImages: 0
       });
     } catch (emailError) {
       console.error('Failed to send offerte thank you email:', emailError);

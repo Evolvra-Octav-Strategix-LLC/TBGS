@@ -1,6 +1,7 @@
 import express from "express";
 import { registerRoutes } from "./routes";
 import { log, setupVite } from "./vite";
+import { taskProcessor } from "./taskQueue";
 
 const app = express();
 
@@ -19,6 +20,9 @@ async function startServer() {
     const port = process.env.PORT || 5000;
     server.listen(port, () => {
       log(`serving on port ${port}`);
+      
+      // Start background task processor
+      taskProcessor.start();
     });
   } catch (error) {
     console.error("Failed to start server:", error);
