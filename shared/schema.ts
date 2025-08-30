@@ -152,6 +152,15 @@ export const insertServiceRequestSchema = createInsertSchema(serviceRequests).pi
   email: true,
   phone: true,
   contactPreference: true,
+}).extend({
+  // Allow additional optional fields from forms
+  serviceType: z.string().optional(),
+  specialist: z.string().optional(),
+  projectType: z.string().optional(),
+  urgencyLevel: z.string().optional(),
+  timeOnPage: z.string().optional(),
+  interactionCount: z.string().optional(),
+  leadScore: z.string().optional(),
 });
 
 export const insertCategorySchema = createInsertSchema(categories).omit({

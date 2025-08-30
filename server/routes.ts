@@ -140,17 +140,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/service-request", async (req, res) => {
     console.log('🔥 /api/service-request endpoint hit');
     try {
-      // Process multipart data instantly
-      const { fields, files } = await processMultipartRequest(req);
+      let validatedData: any;
+      let files: any[] = [];
       
-      // Extract form data from multipart fields
-      const formData: any = {};
-      for (const [key, values] of Object.entries(fields)) {
-        formData[key] = Array.isArray(values) ? values[0] : values;
+      // Check if it's a multipart request (with files) or JSON
+      const contentType = req.headers['content-type'] || '';
+      
+      if (contentType.includes('multipart/form-data')) {
+        // Handle multipart data (with files)
+        const { fields, files: uploadedFiles } = await processMultipartRequest(req);
+        
+        // Extract form data from multipart fields
+        const formData: any = {};
+        for (const [key, values] of Object.entries(fields)) {
+          formData[key] = Array.isArray(values) ? values[0] : values;
+        }
+        
+        validatedData = insertServiceRequestSchema.parse(formData);
+        files = uploadedFiles;
+      } else {
+        // Handle JSON data (no files)
+        validatedData = insertServiceRequestSchema.parse(req.body);
       }
-      
-      // Validate request body
-      const validatedData = insertServiceRequestSchema.parse(formData);
       
       // Convert photos to proper string array
       const photosArray: string[] = validatedData.photos ? Array.from(validatedData.photos).map(String) : [];
