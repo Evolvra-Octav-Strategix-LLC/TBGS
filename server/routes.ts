@@ -167,15 +167,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
           photos: [] // No processing needed
         }).returning();
 
-        // Prepare files for email without any processing
-        const emailFiles = files.map(file => ({
-          path: file.path,
-          originalname: file.originalname,
-          size: file.size,
-          mimetype: file.mimetype || 'application/octet-stream'
-        }));
+        // Quick FFmpeg compression for email attachments (fast processing)
+        const emailFiles = [];
+        for (const file of files) {
+          try {
+            // Only compress images, skip if too large to avoid delays
+            if (file.mimetype?.startsWith('image/') && file.size && file.size < 10 * 1024 * 1024) {
+              console.log(`🔄 Quick FFmpeg compression: ${file.originalname}`);
+              
+              // Read file buffer for FFmpeg processing
+              const fs = await import('fs');
+              const fileBuffer = fs.readFileSync(file.path);
+              
+              // Quick compression with FFmpeg
+              const { imageProcessor } = await import('./imageProcessor');
+              const processed = await imageProcessor.processImage(fileBuffer, file.originalname, {
+                maxWidth: 1200,     // Smaller size for faster processing
+                maxHeight: 800,     // Smaller size for faster processing  
+                quality: 75,        // Lower quality for speed
+                format: 'jpeg',     // JPEG for smaller files
+                createThumbnail: false,  // Skip thumbnail for speed
+                addWatermark: false,     // Skip watermark for speed
+                removeMetadata: true,
+                autoRotate: true
+              });
+              
+              emailFiles.push({
+                path: processed.optimizedPath,
+                originalname: `compressed_${file.originalname}`,
+                size: processed.metadata.optimizedSize,
+                mimetype: 'image/jpeg'
+              });
+              
+              console.log(`✅ Quick compressed: ${file.originalname} (${(processed.metadata.compressionRatio)}% reduction)`);
+            } else {
+              // Use original file for non-images or large files
+              emailFiles.push({
+                path: file.path,
+                originalname: file.originalname,
+                size: file.size,
+                mimetype: file.mimetype || 'application/octet-stream'
+              });
+            }
+          } catch (compressionError) {
+            console.error(`Quick compression failed for ${file.originalname}, using original:`, compressionError);
+            // Fallback to original file
+            emailFiles.push({
+              path: file.path,
+              originalname: file.originalname,
+              size: file.size,
+              mimetype: file.mimetype || 'application/octet-stream'
+            });
+          }
+        }
 
-        // Send emails immediately with original files
+        // Send emails with optimized files
         try {
           await emailService.sendNotificationEmail({
             ...validatedData,

@@ -159,9 +159,11 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
 
     setIsSubmitting(true);
     
-    // Images will be processed in background, no need to show processing status
-    
     try {
+      // Show immediate feedback for file processing
+      if (selectedFiles.length > 0) {
+        console.log(`🔄 Processing ${selectedFiles.length} files for upload...`);
+      }
       // Create FormData object voor file uploads
       const formData = new FormData();
       
@@ -318,6 +320,10 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
     });
     
     setSelectedFiles(prev => [...prev, ...validFiles].slice(0, 5)); // Limit to 5 files
+    
+    if (validFiles.length > 0) {
+      console.log(`📁 Selected ${validFiles.length} files - FFmpeg will compress them on the server for faster processing`);
+    }
   };
 
   const removeFile = (indexToRemove: number) => {
