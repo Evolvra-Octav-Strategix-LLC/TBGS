@@ -1,16 +1,113 @@
 // Vercel serverless function for service requests
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
+import { pgTable, text, varchar, timestamp, json } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 import ws from 'ws';
-import { serviceRequests } from '../shared/schema.js';
-import { emailService } from '../server/emailService.js';
 import multiparty from 'multiparty';
+import nodemailer from 'nodemailer';
 
 neonConfig.webSocketConstructor = ws;
+
+// Database schema
+const serviceRequests = pgTable("service_requests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  selectedService: text("selected_service").notNull(),
+  photos: json("photos").$type().default([]),
+  address: text("address").notNull(),
+  projectDescription: text("project_description").notNull(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  contactPreference: text("contact_preference").notNull(),
+  submittedAt: timestamp("submitted_at").defaultNow(),
+});
 
 // Database setup
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
+
+// Email service
+async function sendNotificationEmail(data) {
+  try {
+    const transporter = nodemailer.createTransporter({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
+      subject: `🚨 Nieuwe Service Aanvraag - ${data.selectedService}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Nieuwe Service Aanvraag</h2>
+          <p><strong>Service:</strong> ${data.selectedService}</p>
+          <p><strong>Naam:</strong> ${data.firstName} ${data.lastName}</p>
+          <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Telefoon:</strong> ${data.phone}</p>
+          <p><strong>Adres:</strong> ${data.address}</p>
+          <p><strong>Beschrijving:</strong> ${data.projectDescription}</p>
+          <p><strong>Contact voorkeur:</strong> ${data.contactPreference}</p>
+          <p><strong>Ontvangen op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
+        </div>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Notification email sent successfully');
+  } catch (error) {
+    console.error('Failed to send notification email:', error);
+  }
+}
+
+async function sendThankYouEmail(data) {
+  try {
+    const transporter = nodemailer.createTransporter({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: data.email,
+      subject: `Bedankt ${data.firstName}! Je aanvraag is ontvangen - TBGS B.V.`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #27ae60;">Bedankt ${data.firstName}!</h2>
+          <p>Je aanvraag voor <strong>${data.selectedService}</strong> is succesvol ontvangen.</p>
+          <p>Wij nemen binnen 24 uur contact met je op via ${data.contactPreference}.</p>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <h3>Jouw aanvraag details:</h3>
+            <p><strong>Service:</strong> ${data.selectedService}</p>
+            <p><strong>Adres:</strong> ${data.address}</p>
+            <p><strong>Beschrijving:</strong> ${data.projectDescription}</p>
+          </div>
+          <p>Met vriendelijke groet,<br>Team TBGS</p>
+          <p style="font-size: 12px; color: #666;">
+            TBGS B.V. | Tel: 040 202 6744 | Email: info@tbgs.nl | Website: tbgs.nl
+          </p>
+        </div>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Thank you email sent successfully');
+  } catch (error) {
+    console.error('Failed to send thank you email:', error);
+  }
+}
 
 export default async function handler(req, res) {
   // Enable CORS
@@ -104,7 +201,7 @@ export default async function handler(req, res) {
 
     // Send notification email to admin
     try {
-      await emailService.sendNotificationEmail({
+      await sendNotificationEmail({
         selectedService,
         serviceType,
         specialist,
@@ -128,7 +225,7 @@ export default async function handler(req, res) {
 
     // Send thank you email to client
     try {
-      await emailService.sendThankYouEmail({
+      await sendThankYouEmail({
         selectedService,
         serviceType,
         specialist,
