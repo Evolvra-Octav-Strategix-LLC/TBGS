@@ -90,39 +90,6 @@ export default function GratisOfferte() {
             </div>
           </div>
         </section>
-
-        {/* Contact Information */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Of Neem Direct Contact Op
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
-                <Phone className="w-8 h-8 text-tbgs-navy mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Telefonisch</h3>
-                <p className="text-gray-600 font-medium">040 202 6744</p>
-                <p className="text-sm text-gray-500 mt-1">Ma-Vr: 08:00-18:00</p>
-              </div>
-              
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
-                <Mail className="w-8 h-8 text-tbgs-navy mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">E-mail</h3>
-                <p className="text-gray-600 font-medium">info@tbgs.nl</p>
-                <p className="text-sm text-gray-500 mt-1">Binnen 4 uur reactie</p>
-              </div>
-              
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
-                <MapPin className="w-8 h-8 text-tbgs-navy mb-4" />
-                <h3 className="font-semibold text-gray-900 mb-2">Werkgebied</h3>
-                <p className="text-gray-600 font-medium">Nederland & België</p>
-                <p className="text-sm text-gray-500 mt-1">Landelijk actief</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Trust Indicators */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-tbgs-navy">
           <div className="max-w-4xl mx-auto text-center">
