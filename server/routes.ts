@@ -157,75 +157,96 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       console.log(`📁 Files received: ${files.length}`);
       
-      // Queue uploaded images for background processing with FFmpeg
+      // Process uploaded images directly with FFmpeg
       if (files.length > 0) {
-        console.log(`🚀 Queueing ${files.length} images for background FFmpeg compression...`);
+        console.log(`⚡ Processing ${files.length} images directly with FFmpeg...`);
         
-        // Save to database first to get request ID
-        const [savedRequest] = await db.insert(serviceRequests).values({
-          ...validatedData,
-          photos: [] // Will be updated when processing completes
-        }).returning();
-
-        // Log uploaded files
-        console.log(`✓ ${files.length} bestanden ontvangen voor aanvraag ${savedRequest.id}:`);
-        files.forEach((file, index) => {
-          console.log(`  ${index + 1}. ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)`);
-        });
-
-        // Queue each image for background processing
-        const { taskProcessor } = await import('./taskQueue');
+        // Process images immediately with FFmpeg
+        const { imageProcessor } = await import('./imageProcessor');
+        const processedImageData = [];
         
-        let queuedImages = [];
         for (const file of files) {
           try {
-            const taskId = await taskProcessor.addImageTask({
-              originalPath: file.path,
-              originalName: file.originalname || 'image.jpg',
-              parentType: 'service_request',
-              parentId: savedRequest.id,
-              processingOptions: {
-                maxWidth: 1920,
-                maxHeight: 1080,
-                quality: 75,
-                format: 'jpeg',
-                createThumbnail: true,
-                thumbnailSize: 300,
-                addWatermark: false,
-                watermarkText: 'TBGS B.V.',
-                removeMetadata: true,
-                autoRotate: true
-              }
+            console.log(`🔄 Processing ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)...`);
+            
+            const buffer = fs.readFileSync(file.path);
+            const result = await imageProcessor.processImage(buffer, file.originalname || 'image.jpg', {
+              maxWidth: 1920,
+              maxHeight: 1080,
+              quality: 75,
+              format: 'jpeg',
+              createThumbnail: false,
+              addWatermark: false,
+              removeMetadata: true,
+              autoRotate: true
             });
-
-            queuedImages.push({
-              taskId,
-              originalName: file.originalname || 'image.jpg',
-              originalSize: file.size || 0,
-              status: 'queued'
+            
+            processedImageData.push({
+              originalName: file.originalname,
+              compressedPath: result.compressedPath,
+              compressionRatio: result.compressionRatio
             });
-
+            
+            console.log(`✅ Processed ${file.originalname}: ${result.compressionRatio}% reduction`);
+            
           } catch (error) {
-            console.error(`Failed to queue image ${file.originalname}:`, error);
-            queuedImages.push({
-              originalName: file.originalname || 'image.jpg',
-              originalSize: file.size || 0,
-              status: 'failed',
-              error: error instanceof Error ? error.message : 'Unknown error'
-            });
+            console.error(`Failed to process image ${file.originalname}:`, error);
           }
         }
 
-        console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} images queued for background processing`);
+        // Save to database with processed image paths
+        const processedPaths = processedImageData.map(img => img.compressedPath).filter(Boolean);
+        const [savedRequest] = await db.insert(serviceRequests).values({
+          ...validatedData,
+          photos: processedPaths
+        }).returning();
 
-        // Return early with queued status
-        console.log(`⚡ Sending instant response for request ${savedRequest.id}`);
+        // Send emails immediately with processed images
+        const processedFiles = processedImageData.map(img => ({
+          path: img.compressedPath,
+          originalname: img.originalName,
+          size: fs.existsSync(img.compressedPath) ? fs.statSync(img.compressedPath).size : 0,
+          mimetype: 'image/jpeg',
+          isPreProcessed: true
+        })).filter(f => f.path && fs.existsSync(f.path));
+
+        // Send notification email to admin
+        try {
+          await emailService.sendNotificationEmail({
+            ...validatedData,
+            photos: processedPaths,
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const,
+            files: processedFiles
+          });
+          console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} with ${processedFiles.length} images`);
+        } catch (emailError) {
+          console.error('Failed to send notification email:', emailError);
+        }
+
+        // Send thank you email to client
+        try {
+          await emailService.sendThankYouEmail({
+            ...validatedData,
+            photos: processedPaths,
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const
+          });
+        } catch (emailError) {
+          console.error('Failed to send thank you email:', emailError);
+        }
+
+        // Cleanup temp files
+        for (const file of files) {
+          try { fs.unlinkSync(file.path); } catch {}
+        }
+
+        console.log(`⚡ Instant response sent for request ${savedRequest.id}`);
         res.status(200).json({
           success: true,
-          message: 'Aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
+          message: 'Aanvraag succesvol ingediend! Uw afbeeldingen zijn verwerkt en de e-mails zijn verzonden.',
           requestId: savedRequest.id,
-          queuedImages,
-          emailWillBeSentAfterProcessing: true
+          processedImages: processedImageData.length
         });
         return;
       }
