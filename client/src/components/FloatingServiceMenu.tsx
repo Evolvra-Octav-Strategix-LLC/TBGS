@@ -231,9 +231,10 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       if (result.success) {
         alert('Uw aanvraag is succesvol verzonden! We nemen binnen 24 uur contact met u op.');
         
-        // Reset form
+        // Reset form and close menu
         setSelectedService('');
         setSelectedFiles([]);
+        setProcessedFiles([]);
         setAddress('');
         setProjectDescription('');
         setFirstName('');
@@ -242,7 +243,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         setPhone('');
         setContactPreference('whatsapp');
         setStep('services');
-        setIsOpen(false);
+        setIsOpen(false); // Auto-close menu after successful submission
       } else {
         alert(result.message || 'Er is een fout opgetreden. Probeer het opnieuw.');
       }
@@ -345,7 +346,13 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         
         canvas.toBlob((blob) => {
           if (blob) {
-            const compressedFile = new File([blob], file.name, {
+            // Add "tbgs-" prefix to filename
+            const originalName = file.name;
+            const fileExtension = originalName.substring(originalName.lastIndexOf('.'));
+            const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+            const newFileName = `tbgs-${baseName}${fileExtension}`;
+            
+            const compressedFile = new File([blob], newFileName, {
               type: 'image/jpeg',
               lastModified: Date.now()
             });
