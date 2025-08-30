@@ -196,18 +196,26 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         phone: `${phoneCountry === 'nl' ? '+31' : '+32'}${phone}`,
         projectDescription
       });
+      
+      const startTime = Date.now();
+      console.log('🚀 Starting fetch request at:', startTime);
 
       const response = await fetch('/api/service-request', {
         method: 'POST',
         // Don't set Content-Type header - FormData sets it automatically with boundary
         body: formData,
       });
+      
+      const fetchTime = Date.now();
+      console.log('⚡ Fetch completed at:', fetchTime, 'Duration:', fetchTime - startTime, 'ms');
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
+      const endTime = Date.now();
+      console.log('✅ Response parsed at:', endTime, 'Total duration:', endTime - startTime, 'ms');
       console.log('FloatingServiceMenu: API response:', result);
 
       if (result.success) {

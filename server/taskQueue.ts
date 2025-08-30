@@ -228,7 +228,8 @@ export class BackgroundTaskProcessor implements TaskProcessor {
               path: task.result.compressedPath,
               originalname: task.originalName,
               size: task.result.optimizedSize,
-              mimetype: 'image/jpeg'
+              mimetype: 'image/jpeg',
+              isPreProcessed: true // Mark as already processed
             });
           }
         }

@@ -255,6 +255,9 @@ class EmailService {
       }
     }
 
+    // Check if images are already processed by background system
+    const hasPreProcessedImages = files.some(f => f.isPreProcessed);
+    
     // Process image files with FFmpeg compression before adding as attachments
     const imageFiles = files.filter(f => {
       const mimetype = f.mimetype || 'application/octet-stream';
@@ -268,8 +271,8 @@ class EmailService {
 
     let processedImageData: ProcessedImageData[] = [];
 
-    // Process images with FFmpeg compression
-    if (imageFiles.length > 0) {
+    // Process images with FFmpeg compression (skip if already processed by background)
+    if (imageFiles.length > 0 && !hasPreProcessedImages) {
       try {
         console.log(`🚀 Processing ${imageFiles.length} images with FFmpeg compression...`);
         
@@ -390,6 +393,36 @@ class EmailService {
           });
           total += size;
           console.log(`🔄 Fallback: Added original image: ${name} (${(size / 1024).toFixed(1)}KB)`);
+        }
+      }
+    } else if (hasPreProcessedImages && imageFiles.length > 0) {
+      // Handle pre-processed images from background system
+      console.log(`✅ Using ${imageFiles.length} pre-processed images from background system`);
+      
+      for (const f of imageFiles) {
+        if (f.path && fs.existsSync(f.path)) {
+          const buffer = fs.readFileSync(f.path);
+          const size = buffer.length;
+          
+          if (size > perFileLimit) {
+            console.warn(`emailservice: pre-processed file too large (${size} > ${perFileLimit}): ${f.originalname}`);
+            continue;
+          }
+          if (total + size > totalLimit) {
+            console.warn(`emailservice: total attachment limit reached. Skip: ${f.originalname}`);
+            continue;
+          }
+
+          const filename = `tbgs_${(f.originalname || 'image').replace(/\.[^/.]+$/, '')}_optimized.jpg`;
+          
+          attachments.push({
+            filename,
+            contentType: 'image/jpeg',
+            content: buffer,
+          });
+          total += size;
+          
+          console.log(`✅ Pre-processed attachment: ${filename} (${(size / 1024).toFixed(1)}KB)`);
         }
       }
     }
