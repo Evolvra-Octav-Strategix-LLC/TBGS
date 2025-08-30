@@ -215,7 +215,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-red-700 font-bold text-lg px-8 py-4"
+                  className="border-white text-white hover:bg-white hover:text-red-600 hover:border-red-600 font-bold text-lg px-8 py-4 transition-colors"
                   onClick={onOpenContactModal}
                 >
                   <FileText className="mr-2 h-5 w-5" />
@@ -439,7 +439,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-green-600 hover:bg-green-500 text-white font-bold text-xl px-8 py-4"
+                className="bg-green-600 hover:bg-green-500 text-white hover:text-white font-bold text-xl px-8 py-4 transition-colors"
                 onClick={() => window.open('https://wa.me/31612345678?text=Hallo%2C%20ik%20heb%20daklekkage%20in%20Eindhoven%20en%20heb%20hulp%20nodig.', '_blank')}
               >
                 <MessageCircle className="mr-2 h-6 w-6" />
@@ -448,7 +448,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-red-700 font-bold text-xl px-8 py-4"
+                className="border-white text-white hover:bg-white hover:text-red-600 hover:border-red-600 font-bold text-xl px-8 py-4 transition-colors"
                 onClick={onOpenContactModal}
               >
                 <FileText className="mr-2 h-6 w-6" />
