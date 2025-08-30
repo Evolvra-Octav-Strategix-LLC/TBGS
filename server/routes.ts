@@ -130,6 +130,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Service request submission endpoint met file upload support
   app.post("/api/service-request", upload.array('files', 8), async (req, res) => {
+    console.log('🔥 /api/service-request endpoint hit');
     try {
       // Validate request body
       const validatedData = insertServiceRequestSchema.parse(req.body);
@@ -138,10 +139,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const photosArray: string[] = validatedData.photos ? Array.from(validatedData.photos).map(String) : [];
       
       const uploadedFiles = req.files as any[] || [];
+      console.log(`📁 Files received: ${uploadedFiles.length}`);
       
       // Queue uploaded images for background processing with FFmpeg
       if (uploadedFiles.length > 0) {
-        console.log(`🚀 Processing ${uploadedFiles.length} images with FFmpeg compression...`);
+        console.log(`🚀 Queueing ${uploadedFiles.length} images for background FFmpeg compression...`);
         
         // Save to database first to get request ID
         const [savedRequest] = await db.insert(serviceRequests).values({
@@ -193,7 +195,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               originalName: file.originalname || 'image.jpg',
               originalSize: file.size || 0,
               status: 'failed',
-              error: error.message
+              error: error instanceof Error ? error.message : 'Unknown error'
             });
           }
         }
@@ -201,6 +203,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} images queued for background processing`);
 
         // Return early with queued status
+        console.log(`⚡ Sending instant response for request ${savedRequest.id}`);
         return res.json({
           success: true,
           message: 'Aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',

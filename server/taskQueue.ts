@@ -100,7 +100,10 @@ export class BackgroundTaskProcessor implements TaskProcessor {
         const result = await this.imageProcessor.processImage(
           fileBuffer,
           pendingTask.originalName,
-          pendingTask.processingOptions || {}
+          {
+            ...pendingTask.processingOptions,
+            format: (pendingTask.processingOptions?.format as 'jpeg' | 'png' | 'webp') || 'jpeg'
+          }
         );
 
         // Update task with results
