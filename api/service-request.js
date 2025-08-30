@@ -6,7 +6,7 @@ import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
-import { promises as fs } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 
@@ -441,7 +441,7 @@ export default async function handler(req, res) {
       // Clean up temporary files
       files.forEach(file => {
         try {
-          if (fs.existsSync && fs.existsSync(file.path)) {
+          if (fs.existsSync(file.path)) {
             fs.unlinkSync(file.path);
           }
         } catch (err) {

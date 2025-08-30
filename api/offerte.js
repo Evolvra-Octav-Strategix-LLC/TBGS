@@ -8,7 +8,7 @@ import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import path from 'path';
-import { imageProcessor } from '../server/imageProcessor.js';
+// imageProcessor not needed for serverless function
 import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
@@ -456,7 +456,7 @@ export default async function handler(req, res) {
         // Clean up temporary files
         files.forEach(file => {
           try {
-            if (fs.existsSync && fs.existsSync(file.path)) {
+            if (fs.existsSync(file.path)) {
               fs.unlinkSync(file.path);
             }
           } catch (err) {
