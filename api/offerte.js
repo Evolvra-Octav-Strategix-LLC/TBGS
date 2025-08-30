@@ -341,6 +341,17 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Validate environment variables early
+  if (!process.env.DATABASE_URL) {
+    console.error('❌ DATABASE_URL not found');
+    return res.status(500).json({ error: 'Database configuration missing' });
+  }
+  
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.error('❌ Email credentials not found');
+    return res.status(500).json({ error: 'Email configuration missing' });
+  }
+
   try {
     let formData = {};
     let files = [];

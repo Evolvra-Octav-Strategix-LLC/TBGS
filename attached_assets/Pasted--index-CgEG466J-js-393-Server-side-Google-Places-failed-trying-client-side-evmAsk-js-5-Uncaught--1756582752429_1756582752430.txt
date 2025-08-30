@@ -1,0 +1,41 @@
+
+index-CgEG466J.js:393 Server-side Google Places failed, trying client-side...
+evmAsk.js:5 Uncaught TypeError: Cannot redefine property: ethereum
+    at Object.defineProperty (<anonymous>)
+    at r.inject (evmAsk.js:5:5093)
+    at window.addEventListener.once (evmAsk.js:5:9013)
+index-CgEG466J.js:393 Error loading Google Business data: SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+tbgs.vercel.app/:1 Access to fetch at 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJVSc2_y…etry,photos,user_ratings_total&key=AIzaSyDcnWjazRb8XCuRFrCASBxwEjhCg4s2IMw' from origin 'https://tbgs.vercel.app' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+maps.googleapis.com/…CASBxwEjhCg4s2IMw:1 
+ Failed to load resource: net::ERR_FAILED
+evmAsk.js:5 Uncaught TypeError: Cannot redefine property: ethereum
+    at Object.defineProperty (<anonymous>)
+    at r.inject (evmAsk.js:5:5093)
+    at window.addEventListener.once (evmAsk.js:5:9013)
+index-CgEG466J.js:498 🔄 Starting immediate compression of 5 files...
+index-CgEG466J.js:498 ✅ Compressed 7E4BAC42-1002-4B03-B075-572B92E51A7F.jpeg: 5179.7KB → 245.2KB (95.3% reduction)
+index-CgEG466J.js:498 ✅ Compressed 11FFD93F-309E-4012-8D33-9568FEE79497.jpeg: 4733.4KB → 102.4KB (97.8% reduction)
+index-CgEG466J.js:498 ✅ Compressed 14B39001-AB2D-4DCC-BE9E-279395CF2FDC.jpeg: 3538.9KB → 84.3KB (97.6% reduction)
+index-CgEG466J.js:498 ✅ Compressed 38BEDB0A-330B-4A99-891F-6DC61E39DC3B.jpeg: 5142.9KB → 111.3KB (97.8% reduction)
+index-CgEG466J.js:433 API Key status: Found
+js?key=AIzaSyDcnWjaz…llback=initMap:1413 Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading
+js?key=AIzaSyDcnWjaz…callback=initMap:93 As of March 1st, 2025, google.maps.places.Autocomplete is not available to new customers. Please use google.maps.places.PlaceAutocompleteElement instead. At this time, google.maps.places.Autocomplete is not scheduled to be discontinued, but google.maps.places.PlaceAutocompleteElement is recommended over google.maps.places.Autocomplete. While google.maps.places.Autocomplete will continue to receive bug fixes for any major regressions, existing bugs in google.maps.places.Autocomplete will not be addressed. At least 12 months notice will be given before support is discontinued. Please see https://developers.google.com/maps/legacy for additional details and https://developers.google.com/maps/documentation/javascript/places-migration-overview for the migration guide.
+index-CgEG466J.js:498 ✅ Compressed 43F5477C-1676-4AAA-AFE9-9D8C5C2465DC.jpeg: 6072.8KB → 257.4KB (95.8% reduction)
+index-CgEG466J.js:498 ✅ All files processed and ready for instant submission!
+index-CgEG466J.js:498 🔄 Processing 5 files for upload...
+index-CgEG466J.js:498 🚀 Submitting 5 pre-processed files (instant!)
+index-CgEG466J.js:498 FloatingServiceMenu: Submitting form data: 
+Object
+index-CgEG466J.js:498 🚀 Starting fetch request at: 1756582698294
+/api/service-request:1 
+ Failed to load resource: the server responded with a status of 500 ()
+index-CgEG466J.js:498 ⚡ Fetch completed at: 1756582699124 Duration: 830 ms
+index-CgEG466J.js:498 API Error Response: A server error has occurred
+
+FUNCTION_INVOCATION_FAILED
+
+cdg1::mhbt8-1756582698379-1214f9ae70a6
+Me	@	index-CgEG466J.js:498
+index-CgEG466J.js:498 FloatingServiceMenu submission error: Error: Server fout: HTTP error! status: 500. Probeer het later opnieuw.
+    at Me (index-CgEG466J.js:498:69725)
+Me	@	index-CgEG466J.js:498

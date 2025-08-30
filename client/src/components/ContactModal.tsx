@@ -262,9 +262,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
           
           fileData.compressed = compressed;
-          fileData.status = 'completed';
+          fileData.status = 'completed' as const;
         } else {
-          fileData.status = 'completed';
+          fileData.status = 'completed' as const;
         }
         
         newProcessedFiles.push(fileData);

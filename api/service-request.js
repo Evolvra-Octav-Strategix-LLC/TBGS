@@ -25,56 +25,9 @@ const createEmailTransporter = () => {
   });
 };
 
-// Email service functions
-const sendNotificationEmail = async (data) => {
-  const transporter = createEmailTransporter();
-  
-  const attachments = data.files?.map(file => ({
-    filename: `tbgs-${file.originalname || file.originalFilename || 'attachment'}`,
-    path: file.path,
-    contentType: file.mimetype
-  })) || [];
+// Email service functions - using the more complete version below
 
-  const emailContent = `
-    <h2>Nieuwe Serviceverzoek - TBGS BV</h2>
-    <p><strong>Service:</strong> ${data.selectedService}</p>
-    <p><strong>Naam:</strong> ${data.firstName} ${data.lastName}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Telefoon:</strong> ${data.phone}</p>
-    <p><strong>Adres:</strong> ${data.address}</p>
-    <p><strong>Beschrijving:</strong> ${data.projectDescription}</p>
-    <p><strong>Contact voorkeur:</strong> ${data.contactPreference}</p>
-    <p><strong>Ingediend op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
-    ${data.files?.length > 0 ? `<p><strong>Bijlagen:</strong> ${data.files.length} bestand(en)</p>` : ''}
-  `;
-
-  await transporter.sendMail({
-    from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER,
-    subject: `Nieuwe serviceverzoek: ${data.selectedService}`,
-    html: emailContent,
-    attachments
-  });
-};
-
-const sendThankYouEmail = async (data) => {
-  const transporter = createEmailTransporter();
-  
-  const emailContent = `
-    <h2>Bedankt voor uw aanvraag!</h2>
-    <p>Beste ${data.firstName},</p>
-    <p>Wij hebben uw aanvraag voor <strong>${data.selectedService}</strong> goed ontvangen.</p>
-    <p>Onze specialist neemt binnen 24 uur contact met u op.</p>
-    <p>Met vriendelijke groet,<br>Het TBGS BV Team</p>
-  `;
-
-  await transporter.sendMail({
-    from: process.env.GMAIL_USER,
-    to: data.email,
-    subject: 'Bevestiging van uw serviceverzoek - TBGS BV',
-    html: emailContent
-  });
-};
+// Thank you email function - using the more complete version below
 
 // Service request validation schema (handles both ContactModal and FloatingServiceMenu)
 const serviceRequestSchema = z.object({
@@ -353,6 +306,17 @@ export default async function handler(req, res) {
   }
 
   console.log('🔥 /api/service-request endpoint hit');
+  
+  // Validate environment variables early
+  if (!process.env.DATABASE_URL) {
+    console.error('❌ DATABASE_URL not found');
+    return res.status(500).json({ error: 'Database configuration missing' });
+  }
+  
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.error('❌ Email credentials not found');
+    return res.status(500).json({ error: 'Email configuration missing' });
+  }
   
   try {
     let validatedData;
