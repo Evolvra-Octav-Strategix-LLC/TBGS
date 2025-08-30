@@ -28,10 +28,16 @@ const formSchema = z.object({
   email: z.string().email("Ongeldig e-mailadres"),
   phone: z.string().min(10, "Telefoonnummer is verplicht"),
   location: z.string().min(1, "Locatie is verplicht"),
+  postcode: z.string().min(6, "Postcode is verplicht"),
+  plaats: z.string().min(1, "Plaats is verplicht"),
   description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
+  tijdlijn: z.string().min(1, "Selecteer een tijdlijn"),
+  budget: z.string().optional(),
+  contactVoorkeur: z.string().min(1, "Selecteer contactvoorkeur"),
   attachments: z.array(z.string()).optional(),
   urgent: z.boolean().default(false),
   privacy: z.boolean().refine((val) => val === true, "U moet akkoord gaan met de privacyverklaring"),
+  nieuwsbrief: z.boolean().default(false),
 });
 
 type OfferteFormData = z.infer<typeof formSchema>;
@@ -52,44 +58,53 @@ export default function ContactModalV2() {
       email: "",
       phone: "",
       location: "",
+      postcode: "",
+      plaats: "",
       description: "",
+      tijdlijn: "",
+      budget: "",
+      contactVoorkeur: "",
       attachments: [],
       urgent: false,
       privacy: false,
+      nieuwsbrief: false,
     },
   });
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
-      // Create FormData for file uploads (same as FloatingServiceMenu)
+      // Create FormData for file uploads
       const formData = new FormData();
       
-      // Add form fields
-      formData.append('selectedService', data.serviceType + (data.projectType ? ` - ${data.projectType}` : ''));
-      formData.append('serviceType', data.serviceType);
-      formData.append('specialist', data.specialisme);
-      formData.append('projectType', data.projectType || '');
-      formData.append('address', data.location);
-      formData.append('projectDescription', data.description);
-      formData.append('firstName', data.firstName);
-      formData.append('lastName', data.lastName);
+      // Parse location into address, postcode, and plaats
+      const locationParts = data.location.split(',').map(part => part.trim());
+      const adres = locationParts[0] || data.location;
+      const postcode = data.postcode || (locationParts[1] || '').replace(/\D/g, '').substring(0, 4) + (locationParts[1] || '').replace(/\D/g, '').substring(4, 6);
+      const plaats = data.plaats || locationParts[locationParts.length - 1] || '';
+      
+      // Add form fields matching offerte.js schema
+      formData.append('voornaam', data.firstName);
+      formData.append('achternaam', data.lastName);
       formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('contactPreference', 'email'); // Default for modal form
-      formData.append('photos', JSON.stringify(uploadedFiles.map((file, index) => `attachment_${index + 1}`)));
+      formData.append('telefoon', data.phone);
+      formData.append('adres', adres);
+      formData.append('postcode', postcode);
+      formData.append('plaats', plaats);
+      formData.append('specialisme', data.specialisme);
+      formData.append('projectType', data.projectType || '');
+      formData.append('tijdlijn', data.tijdlijn);
+      formData.append('budget', data.budget || '');
+      formData.append('beschrijving', data.description);
+      formData.append('contactVoorkeur', data.contactVoorkeur);
+      formData.append('privacyAkkoord', data.privacy.toString());
+      formData.append('nieuwsbrief', data.nieuwsbrief.toString());
       
       // Add file uploads from state
       uploadedFiles.forEach((file, index) => {
         formData.append('files', file);
       });
 
-      // Add urgency data
-      formData.append('urgencyLevel', data.urgent ? 'urgent' : 'normal');
-      formData.append('timeOnPage', '0');
-      formData.append('interactionCount', '1');
-      formData.append('leadScore', '3');
-
-      const response = await fetch('/api/service-request', {
+      const response = await fetch('/api/offerte', {
         method: 'POST',
         body: formData,
       });
@@ -162,6 +177,29 @@ export default function ContactModalV2() {
     { value: "inspectie", label: "Gratis Inspectie", description: "Locatie bezoek voor analyse en advies" },
     { value: "spoedservice", label: "Spoedservice", description: "Dringende reparatie binnen 24 uur" },
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
+  ];
+
+  const tijdlijnen = [
+    { value: "asap", label: "Zo snel mogelijk" },
+    { value: "1-week", label: "Binnen 1 week" },
+    { value: "2-weeks", label: "Binnen 2 weken" },
+    { value: "1-month", label: "Binnen 1 maand" },
+    { value: "3-months", label: "Binnen 3 maanden" },
+    { value: "flexible", label: "Flexibel" }
+  ];
+
+  const budgetOpties = [
+    { value: "1000-2500", label: "€1.000 - €2.500" },
+    { value: "2500-5000", label: "€2.500 - €5.000" },
+    { value: "5000-10000", label: "€5.000 - €10.000" },
+    { value: "10000+", label: "€10.000+" },
+    { value: "unknown", label: "Weet ik nog niet" }
+  ];
+
+  const contactVoorkeuren = [
+    { value: "phone", label: "Telefonisch contact" },
+    { value: "email", label: "E-mail contact" },
+    { value: "whatsapp", label: "WhatsApp" }
   ];
 
   // Step 1: Service & Specialist Selection
@@ -439,9 +477,110 @@ export default function ContactModalV2() {
               <GooglePlacesInput
                 value={field.value}
                 onChange={field.onChange}
-                placeholder="Straat en huisnummer, postcode, plaats"
+                placeholder="Straat en huisnummer"
                 className="border border-gray-300"
               />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="postcode"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Postcode *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="1234 AB" className="border border-gray-300" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="plaats"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Plaats *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="Uw woonplaats" className="border border-gray-300" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="tijdlijn"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Gewenste tijdlijn *</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="border border-gray-300">
+                    <SelectValue placeholder="Wanneer moet het klaar zijn?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {tijdlijnen.map((tijdlijn) => (
+                      <SelectItem key={tijdlijn.value} value={tijdlijn.value}>{tijdlijn.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="budget"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Budget (optioneel)</FormLabel>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="border border-gray-300">
+                    <SelectValue placeholder="Wat is uw budget?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {budgetOpties.map((budget) => (
+                      <SelectItem key={budget.value} value={budget.value}>{budget.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <FormField
+        control={form.control}
+        name="contactVoorkeur"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Hoe mogen we u bereiken? *</FormLabel>
+            <FormControl>
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger className="border border-gray-300">
+                  <SelectValue placeholder="Kies uw contactvoorkeur" />
+                </SelectTrigger>
+                <SelectContent>
+                  {contactVoorkeuren.map((voorkeur) => (
+                    <SelectItem key={voorkeur.value} value={voorkeur.value}>{voorkeur.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -489,6 +628,28 @@ export default function ContactModalV2() {
                   Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
                 </FormLabel>
                 <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="nieuwsbrief"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value === true}
+                  onCheckedChange={(checked) => {
+                    field.onChange(checked === true);
+                  }}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-sm text-gray-600 cursor-pointer">
+                  Ja, ik wil graag updates ontvangen over tips en aanbiedingen
+                </FormLabel>
               </div>
             </FormItem>
           )}

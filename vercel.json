@@ -5,6 +5,9 @@
   "functions": {
     "api/service-request.js": {
       "maxDuration": 30
+    },
+    "api/offerte.js": {
+      "maxDuration": 30
     }
   },
   "routes": [
