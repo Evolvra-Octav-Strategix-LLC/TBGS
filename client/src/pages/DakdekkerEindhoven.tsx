@@ -91,8 +91,8 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "15+ Jaar Ervaring",
-      description: "Specialist in alle dakwerkzaamheden"
+      title: "80 Jaar Familietraditie",
+      description: "Van vader op zoon - vier generaties dakdekkersvakmanschap"
     },
     {
       icon: <Users className="h-6 w-6" />,
