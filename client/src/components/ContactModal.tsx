@@ -686,9 +686,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       />
       
       {/* Modal content */}
-      <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-1 sm:p-4 pointer-events-none">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
         <div 
-          className="bg-white rounded-lg sm:rounded-xl max-w-md sm:max-w-2xl lg:max-w-4xl w-full h-[100vh] sm:h-auto sm:max-h-[90vh] overflow-y-auto pointer-events-auto shadow-xl mt-0 sm:mt-0"
+          className="bg-white rounded-xl max-w-md sm:max-w-2xl lg:max-w-4xl w-full max-h-[92vh] sm:max-h-[90vh] overflow-y-auto pointer-events-auto shadow-xl my-4 sm:my-0"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-3 sm:p-6 lg:p-8">
