@@ -228,7 +228,15 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       }
     } catch (error) {
       console.error('FloatingServiceMenu submission error:', error);
-      alert('Er is een fout opgetreden. Controleer uw internetverbinding en probeer opnieuw.');
+      
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        alert('Geen internetverbinding. Controleer uw verbinding en probeer opnieuw.');
+      } else if (error instanceof Error && error.message.includes('HTTP error')) {
+        alert(`Server fout: ${error.message}. Probeer het later opnieuw.`);
+      } else {
+        alert('Er is een fout opgetreden. Controleer uw internetverbinding en probeer opnieuw.');
+      }
     } finally {
       setIsSubmitting(false);
     }

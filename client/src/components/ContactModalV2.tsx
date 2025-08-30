@@ -689,7 +689,7 @@ export default function ContactModalV2() {
         <Form {...form}>
           <MultiStepForm
             steps={steps}
-            onSubmit={onSubmit}
+            onSubmit={() => form.handleSubmit(onSubmit)()}
             onBack={() => {}}
             isSubmitting={submitMutation.isPending}
           />
