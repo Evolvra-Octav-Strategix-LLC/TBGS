@@ -5,91 +5,13 @@ import { pgTable, text, varchar, timestamp, json } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
-import nodemailer from 'nodemailer';
-import { readFileSync, existsSync, unlinkSync } from 'fs';
 import { readFile } from 'fs/promises';
-import path from 'path';
-// imageProcessor not needed for serverless function
 import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Email service configuration
-const createEmailTransporter = () => {
-  return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD
-    }
-  });
-};
-
-// Email service functions
-const sendOfferteNotificationEmail = async (data) => {
-  const transporter = createEmailTransporter();
-  
-  const attachments = data.files?.map(file => ({
-    filename: `tbgs-${file.originalname || file.originalFilename || 'attachment'}`,
-    path: file.path,
-    contentType: file.mimetype
-  })) || [];
-
-  const emailContent = `
-    <h2>Nieuwe Offerteaanvraag - TBGS BV</h2>
-    <p><strong>Naam:</strong> ${data.voornaam} ${data.achternaam}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Telefoon:</strong> ${data.telefoon}</p>
-    <p><strong>Adres:</strong> ${data.adres}, ${data.postcode} ${data.plaats}</p>
-    <p><strong>Specialisme:</strong> ${data.specialisme}</p>
-    <p><strong>Project Type:</strong> ${data.projectType}</p>
-    <p><strong>Tijdlijn:</strong> ${data.tijdlijn}</p>
-    <p><strong>Budget:</strong> ${data.budget || 'Niet opgegeven'}</p>
-    <p><strong>Beschrijving:</strong> ${data.beschrijving}</p>
-    <p><strong>Contact voorkeur:</strong> ${data.contactVoorkeur}</p>
-    <p><strong>Ingediend op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
-    ${data.files?.length > 0 ? `<p><strong>Bijlagen:</strong> ${data.files.length} bestand(en)</p>` : ''}
-  `;
-
-  await transporter.sendMail({
-    from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER,
-    subject: `Nieuwe offerteaanvraag: ${data.specialisme}`,
-    html: emailContent,
-    attachments
-  });
-};
-
-const sendOfferteThankYouEmail = async (data) => {
-  const transporter = createEmailTransporter();
-  
-  const emailContent = `
-    <h2>Bedankt voor uw offerteaanvraag!</h2>
-    <p>Beste ${data.voornaam},</p>
-    <p>Wij hebben uw offerteaanvraag voor <strong>${data.specialisme}</strong> goed ontvangen.</p>
-    <p>Onze specialist neemt binnen 24 uur contact met u op voor een vrijblijvende offerte.</p>
-    <p>Met vriendelijke groet,<br>Het TBGS BV Team</p>
-  `;
-
-  await transporter.sendMail({
-    from: process.env.GMAIL_USER,
-    to: data.email,
-    subject: 'Bevestiging van uw offerteaanvraag - TBGS BV',
-    html: emailContent
-  });
-};
-
-// Utility function to normalize file names
-const normalizeFileName = (originalName) => {
-  return originalName
-    .toLowerCase()
-    .replace(/\s+/g, '-')           // spaces to dashes
-    .replace(/[^a-z0-9.-]/g, '')    // remove special chars except dots and dashes
-    .replace(/--+/g, '-')           // multiple dashes to single
-    .replace(/^-|-$/g, '');         // remove leading/trailing dashes
-};
+// Webhook URL for email service
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
 
 // Database schema
 const offerteRequests = pgTable("offerte_requests", {
@@ -113,7 +35,7 @@ const offerteRequests = pgTable("offerte_requests", {
   submittedAt: timestamp("submitted_at").defaultNow(),
 });
 
-// Zod validation schema
+// Validation schema
 const offerteFormSchema = z.object({
   voornaam: z.string().min(2, "Voornaam moet minimaal 2 karakters zijn"),
   achternaam: z.string().min(2, "Achternaam moet minimaal 2 karakters zijn"),
@@ -136,249 +58,76 @@ const offerteFormSchema = z.object({
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service
-async function sendNotificationEmail(data) {
+// Email service via webhook to main server
+async function sendEmailViaWebhook(emailData, files) {
+  console.log('📧 Sending offerte email via webhook to main server...');
   try {
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    });
-
-    // Generate vCard content
-    const vCardContent = generateVCard({
-      firstName: data.voornaam,
-      lastName: data.achternaam,
-      email: data.email,
-      phone: data.telefoon,
-      address: `${data.adres}, ${data.postcode} ${data.plaats}`,
-      service: `${data.specialisme} - ${data.projectType}`
-    });
-
-    // Prepare attachments array
-    const attachments = [];
-
-    // Add vCard as first attachment
-    const vCardFilename = `${data.voornaam.toLowerCase()}_${data.achternaam.toLowerCase()}_${data.adres.split(',')[0].toLowerCase().replace(/\s+/g, '')}_tbgs.vcf`;
-    
-    // Load TBGS logo for vCard
-    let logoBase64 = null;
-    try {
-      const logoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
-      const logoBuffer = await readFile(logoPath);
-      logoBase64 = logoBuffer.toString('base64');
-      console.log('✓ TBGS logo loaded for email:', logoPath);
-    } catch (logoError) {
-      console.log('Logo not found for vCard, continuing without logo');
-    }
-
-    // Add logo to vCard if available
-    const finalVCardContent = logoBase64 ? 
-      vCardContent + `PHOTO;ENCODING=BASE64;TYPE=PNG:${logoBase64}\n` + 'END:VCARD' :
-      vCardContent + 'END:VCARD';
-
-    attachments.push({
-      filename: vCardFilename,
-      content: finalVCardContent,
-      contentType: 'text/vcard'
-    });
-    console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
-
-    // Add uploaded files with tbgs- prefix
-    if (data.files && data.files.length > 0) {
-      for (const file of data.files) {
+    // Prepare files for webhook (encode buffers as base64)
+    const webhookFiles = [];
+    if (files && files.length > 0) {
+      for (const file of files) {
         try {
           const fileBuffer = await readFile(file.path);
-          const filename = `tbgs-${file.originalname || 'uploaded-file'}`;
-          
-          attachments.push({
-            filename,
-            content: fileBuffer,
-            contentType: file.mimetype || 'application/octet-stream'
+          webhookFiles.push({
+            buffer: fileBuffer.toString('base64'),
+            originalname: file.originalname,
+            mimetype: file.mimetype,
+            size: file.size
           });
-          console.log(`✓ Offerte attachment: ${filename}`);
+          console.log(`✓ Prepared offerte file for webhook: ${file.originalname}`);
         } catch (fileError) {
-          console.error('Error reading offerte file:', file.originalname, fileError);
+          console.error('Error reading offerte file for webhook:', file.originalname, fileError);
         }
       }
     }
-    
-    const totalImages = data.processedImages?.length || data.files?.length || 0;
-    if (totalImages > 0) {
-      console.log(`✓ ${totalImages} bestanden verwerkt voor offerte ${data.id || 'unknown'}`);
-    }
 
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
-      subject: `📋 Nieuwe Offerte Aanvraag - ${data.specialisme}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Nieuwe Offerte Aanvraag</h2>
-          <p><strong>Naam:</strong> ${data.voornaam} ${data.achternaam}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Telefoon:</strong> ${data.telefoon}</p>
-          <p><strong>Adres:</strong> ${data.adres}, ${data.postcode} ${data.plaats}</p>
-          <p><strong>Specialisme:</strong> ${data.specialisme}</p>
-          <p><strong>Project Type:</strong> ${data.projectType}</p>
-          <p><strong>Tijdlijn:</strong> ${data.tijdlijn}</p>
-          <p><strong>Budget:</strong> ${data.budget || 'Niet opgegeven'}</p>
-          <p><strong>Beschrijving:</strong> ${data.beschrijving}</p>
-          <p><strong>Contact voorkeur:</strong> ${data.contactVoorkeur}</p>
-          <p><strong>Nieuwsbrief:</strong> ${data.nieuwsbrief ? 'Ja' : 'Nee'}</p>
-          ${data.processedImages && data.processedImages.length > 0 ? `
-          <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px;">
-            <h3 style="margin-top: 0;">📸 Geüploade Foto's (${data.processedImages.length})</h3>
-            ${data.processedImages.map((img, index) => `
-              <div style="margin: 10px 0; padding: 10px; background: white; border-radius: 3px;">
-                <p><strong>Foto ${index + 1}:</strong> ${img.originalName}</p>
-                <p>• <strong>Origineel:</strong> ${(img.originalSize / 1024).toFixed(1)} KB</p>
-                <p>• <strong>Geoptimaliseerd:</strong> ${(img.optimizedSize / 1024).toFixed(1)} KB</p>
-                <p>• <strong>Compressie:</strong> ${img.compressionRatio}% besparing</p>
-                <p>• <strong>Afmetingen:</strong> ${img.dimensions.width}x${img.dimensions.height}</p>
-                <p>• <strong>Features:</strong> ${[
-                  img.hasWatermark ? 'TBGS Watermark' : null,
-                  img.hasThumbnail ? 'Thumbnail' : null,
-                  'Auto-rotate',
-                  'Metadata verwijderd'
-                ].filter(Boolean).join(', ')}</p>
-                ${img.processingFailed ? '<p style="color: red;">⚠️ Verwerking mislukt - origineel bestand gebruikt</p>' : ''}
-              </div>
-            `).join('')}
-          </div>
-          ` : ''}
-          <p><strong>Bijlagen:</strong> ${attachments.length} (inclusief vCard)</p>
-          <p><strong>Ontvangen op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
-        </div>
-      `,
-      attachments
-    };
-
-    await transporter.sendMail(mailOptions);
-    console.log('Offerte notification email sent successfully');
-    console.log(`✓ Notification email sent voor offerte ${data.id || 'unknown'} met ${attachments.length} attachments`);
-  } catch (error) {
-    console.error('Failed to send offerte notification email:', error);
-  }
-}
-
-// Helper function to generate vCard
-function generateVCard({ firstName, lastName, email, phone, address, service }) {
-  const formattedPhone = phone.startsWith('+') ? phone : `+31${phone.replace(/^0/, '')}`;
-  
-  return `BEGIN:VCARD
-VERSION:3.0
-FN:${firstName} ${lastName}
-N:${lastName};${firstName};;;
-EMAIL:${email}
-TEL;TYPE=MOBILE:${formattedPhone}
-ADR;TYPE=HOME:;;${address};;;;
-NOTE:Offerte aanvraag: ${service}
-ORG:TBGS B.V. - Offerte Aanvraag
-TITLE:Klant
-URL:https://tbgs.nl
-`;
-}
-
-async function sendThankYouEmail(data) {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+    const response = await fetch(EMAIL_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        emailData,
+        files: webhookFiles
+      })
     });
 
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: data.email,
-      subject: `Bedankt ${data.voornaam}! Je offerte aanvraag is ontvangen - TBGS B.V.`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #27ae60;">Bedankt ${data.voornaam}!</h2>
-          <p>Je offerte aanvraag voor <strong>${data.specialisme} - ${data.projectType}</strong> is succesvol ontvangen.</p>
-          <p>Wij nemen binnen 24 uur contact met je op via ${data.contactVoorkeur} voor een afspraak.</p>
-          <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
-            <h3>Jouw aanvraag details:</h3>
-            <p><strong>Project:</strong> ${data.specialisme} - ${data.projectType}</p>
-            <p><strong>Adres:</strong> ${data.adres}, ${data.postcode} ${data.plaats}</p>
-            <p><strong>Tijdlijn:</strong> ${data.tijdlijn}</p>
-            <p><strong>Budget:</strong> ${data.budget || 'Niet opgegeven'}</p>
-            <p><strong>Beschrijving:</strong> ${data.beschrijving}</p>
-          </div>
-          <p>Met vriendelijke groet,<br>Team TBGS</p>
-          <p style="font-size: 12px; color: #666;">
-            TBGS B.V. | Tel: 040 202 6744 | Email: info@tbgs.nl | Website: tbgs.nl
-          </p>
-        </div>
-      `,
-    };
+    if (!response.ok) {
+      throw new Error(`Webhook failed: ${response.status} ${response.statusText}`);
+    }
 
-    await transporter.sendMail(mailOptions);
-    console.log('Offerte thank you email sent successfully');
+    const result = await response.json();
+    console.log('✅ Offerte email webhook successful:', result.message);
+    return result;
   } catch (error) {
-    console.error('Failed to send offerte thank you email:', error);
+    console.error('❌ Offerte email webhook error:', error);
+    throw error;
   }
 }
 
-export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+// Utility function to normalize file names
+const normalizeFileName = (originalName) => {
+  return originalName
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9.-]/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-|-$/g, '');
+};
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  // Validate environment variables early
-  if (!process.env.DATABASE_URL) {
-    console.error('❌ DATABASE_URL not found');
-    return res.status(500).json({ error: 'Database configuration missing' });
-  }
-  
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.error('❌ Email credentials not found');
-    return res.status(500).json({ error: 'Email configuration missing' });
-  }
-
-  try {
-    let formData = {};
-    let files = [];
-
-    // Parse FormData if content-type includes multipart
-    if (req.headers['content-type']?.includes('multipart/form-data')) {
-      const form = new multiparty.Form({
-        maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
-        maxFiles: 8
-      });
+// Fast file processing
+const processMultipartRequest = (req) => {
+  return new Promise((resolve, reject) => {
+    const form = new multiparty.Form({
+      maxFilesSize: 12 * 1024 * 1024 * 8,
+      maxFiles: 8
+    });
+    
+    form.parse(req, (err, fields, files) => {
+      if (err) return reject(err);
       
-      const parseResult = await new Promise((resolve, reject) => {
-        form.parse(req, (err, fields, uploadedFiles) => {
-          if (err) reject(err);
-          else resolve({ fields, files: uploadedFiles });
-        });
-      });
-      
-      // Convert fields to single values (multiparty returns arrays)
-      for (const [key, value] of Object.entries(parseResult.fields)) {
-        formData[key] = Array.isArray(value) ? value[0] : value;
-      }
-      
-      // Handle uploaded files with normalization
       const processedFiles = [];
-      for (const [fieldName, fileArray] of Object.entries(parseResult.files)) {
+      for (const [fieldName, fileArray] of Object.entries(files)) {
         for (const file of fileArray) {
           if (file.originalFilename) {
             file.originalname = normalizeFileName(file.originalFilename);
@@ -386,189 +135,100 @@ export default async function handler(req, res) {
           }
         }
       }
-      files = processedFiles;
-    } else {
-      // Use regular JSON body parsing
-      formData = req.body;
-    }
-
-    // Validate form data first
-    const validatedData = offerteFormSchema.parse(formData);
-
-    // Handle files with instant background processing (same as service-request)
-    if (files && files.length > 0) {
-      console.log(`🔥 /api/offerte endpoint hit with ${files.length} files`);
-      console.log(`⚡ Instant submission with ${files.length} files...`);
-      console.log(`⚡ Using ${files.length} pre-compressed files from client`);
       
-      // Save to database first
-      const [savedRequest] = await db.insert(offerteRequests).values({
-        voornaam: validatedData.voornaam,
-        achternaam: validatedData.achternaam,
-        email: validatedData.email,
-        telefoon: validatedData.telefoon,
-        adres: validatedData.adres,
-        postcode: validatedData.postcode,
-        plaats: validatedData.plaats,
-        specialisme: validatedData.specialisme,
-        projectType: validatedData.projectType,
-        tijdlijn: validatedData.tijdlijn,
-        budget: validatedData.budget || '',
-        beschrijving: validatedData.beschrijving,
-        contactVoorkeur: validatedData.contactVoorkeur,
-        privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
-        nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
-        files: []
-      }).returning();
+      resolve({ fields, files: processedFiles });
+    });
+  });
+};
 
-      // Process files for email attachments (pre-compressed from client)
-      const emailFiles = files.map(file => ({
-        path: file.path,
-        originalname: `tbgs-${normalizeFileName(file.originalFilename || 'attachment.jpg')}`,
-        originalFilename: file.originalFilename,
-        size: file.size,
-        mimetype: file.headers?.['content-type'] || 'image/jpeg'
-      }));
+// Main handler
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-      // Respond immediately to user
-      console.log(`⚡ INSTANT offerte submission complete for ${savedRequest.id}`);
-      res.status(200).json({
-        success: true,
-        message: 'Offerte aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
-        requestId: savedRequest.id
-      });
-
-      // Send emails in background (non-blocking)
-      setImmediate(async () => {
-        try {
-          await sendOfferteNotificationEmail({
-            id: savedRequest.id,
-            ...validatedOfferteData,
-            processedImages: [],
-            totalImages: emailFiles.length,
-            files: emailFiles,
-            ffmpegResults: []
-          });
-          console.log(`✓ Background notification email sent for offerte ${savedRequest.id}`);
-        } catch (emailError) {
-          console.error('Failed to send offerte notification email:', emailError);
-        }
-
-        try {
-          await sendOfferteThankYouEmail({
-            ...validatedOfferteData,
-            processedImages: [],
-            totalImages: emailFiles.length
-          });
-          console.log(`✓ Background thank you email sent for offerte ${savedRequest.id}`);
-        } catch (emailError) {
-          console.error('Failed to send offerte thank you email:', emailError);
-        }
-
-        // Clean up temporary files
-        files.forEach(file => {
-          try {
-            if (existsSync(file.path)) {
-              unlinkSync(file.path);
-            }
-          } catch (err) {
-            console.warn('Could not clean up temp file:', err);
-          }
-        });
-      });
-
-      return;
-    }
-
-    // Convert string booleans to actual booleans
-    if (formData.privacyAkkoord === 'true' || formData.privacyAkkoord === true) {
-      formData.privacyAkkoord = true;
+  console.log('🔥 Offerte request serverless function called');
+  
+  try {
+    let validatedData;
+    let files = [];
+    
+    // Check if it's multipart (with files) or JSON
+    const contentType = req.headers['content-type'] || '';
+    
+    if (contentType.includes('multipart/form-data')) {
+      const { fields, files: uploadedFiles } = await processMultipartRequest(req);
+      
+      // Extract form data from multipart fields
+      const formData = {};
+      for (const [key, values] of Object.entries(fields)) {
+        formData[key] = Array.isArray(values) ? values[0] : values;
+      }
+      
+      validatedData = offerteFormSchema.parse(formData);
+      files = uploadedFiles;
     } else {
-      formData.privacyAkkoord = false;
+      validatedData = offerteFormSchema.parse(req.body);
     }
-
-    if (formData.nieuwsbrief === 'true' || formData.nieuwsbrief === true) {
-      formData.nieuwsbrief = true;
-    } else {
-      formData.nieuwsbrief = false;
-    }
-
-    // Validate form data
-    const validatedOfferteData = offerteFormSchema.parse(formData);
-
-    // Save to database
+    
+    // Save to database immediately
     const [savedRequest] = await db.insert(offerteRequests).values({
-      voornaam: validatedOfferteData.voornaam,
-      achternaam: validatedOfferteData.achternaam,
-      email: validatedOfferteData.email,
-      telefoon: validatedOfferteData.telefoon,
-      adres: validatedOfferteData.adres,
-      postcode: validatedOfferteData.postcode,
-      plaats: validatedOfferteData.plaats,
-      specialisme: validatedOfferteData.specialisme,
-      projectType: validatedOfferteData.projectType,
-      tijdlijn: validatedOfferteData.tijdlijn,
-      budget: validatedOfferteData.budget || '',
-      beschrijving: validatedOfferteData.beschrijving,
-      contactVoorkeur: validatedOfferteData.contactVoorkeur,
-      privacyAkkoord: validatedOfferteData.privacyAkkoord ? 'true' : 'false',
-      nieuwsbrief: validatedOfferteData.nieuwsbrief ? 'true' : 'false',
+      ...validatedData,
+      privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
+      nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
       files: []
     }).returning();
 
-    // Respond immediately to user
-    res.status(200).json({ 
-      success: true, 
-      message: "Uw offerte aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op voor een afspraak.",
-      id: savedRequest.id
+    console.log(`⚡ Offerte saved to database: ${savedRequest.id}`);
+
+    // Respond immediately to user for fast submission
+    res.status(200).json({
+      success: true,
+      message: 'Uw offerte aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op voor een afspraak.',
+      requestId: savedRequest.id
     });
 
-    // Send emails in background (non-blocking)
+    // Send emails via webhook to main server (non-blocking)
     setImmediate(async () => {
       try {
-        await sendNotificationEmail({
-          id: savedRequest.id,
-          ...validatedOfferteData,
-          processedImages: [],
-          totalImages: 0,
-          files: [],
-          ffmpegResults: []
-        });
-        console.log(`✓ Background notification email sent for offerte ${savedRequest.id} (no files)`);
-      } catch (emailError) {
-        console.error('Failed to send offerte notification email:', emailError);
-      }
+        // Transform offerte data to format expected by email service
+        const emailData = {
+          firstName: validatedData.voornaam,
+          lastName: validatedData.achternaam,
+          email: validatedData.email,
+          phone: validatedData.telefoon,
+          selectedService: `${validatedData.specialisme} - ${validatedData.projectType}`,
+          address: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
+          projectDescription: `${validatedData.beschrijving}\n\nProject details:\n- Tijdlijn: ${validatedData.tijdlijn}\n- Budget: ${validatedData.budget || "Niet opgegeven"}`,
+          contactPreference: validatedData.contactVoorkeur,
+          photos: [],
+          submittedAt: savedRequest.submittedAt || new Date(),
+          formType: 'offerte',
+          id: savedRequest.id
+        };
 
-      try {
-        await sendThankYouEmail({
-          ...validatedOfferteData,
-          processedImages: [],
-          totalImages: 0
-        });
-        console.log(`✓ Background thank you email sent for offerte ${savedRequest.id} (no files)`);
+        await sendEmailViaWebhook(emailData, files);
+        
+        console.log(`✓ Webhook emails sent for offerte ${savedRequest.id}`);
       } catch (emailError) {
-        console.error('Failed to send offerte thank you email:', emailError);
+        console.error('Webhook email failed (form still submitted):', emailError);
       }
     });
 
   } catch (error) {
+    console.error('Offerte request error:', error);
+    
     if (error instanceof z.ZodError) {
-      // Validation errors
-      return res.status(400).json({
-        success: false,
+      return res.status(400).json({ 
+        success: false, 
         message: "Controleer uw invoer en probeer opnieuw.",
-        errors: error.errors.map(err => ({
-          field: err.path.join('.'),
-          message: err.message
-        }))
-      });
-    } else {
-      // Other errors
-      console.error("Offerte form error:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Er is een fout opgetreden bij het versturen van uw offerte aanvraag. Probeer het opnieuw of neem telefonisch contact op."
+        errors: error.errors 
       });
     }
+
+    res.status(500).json({ 
+      success: false, 
+      message: "Er is een fout opgetreden. Probeer het later opnieuw." 
+    });
   }
 }

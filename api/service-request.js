@@ -5,32 +5,15 @@ import { pgTable, text, varchar, timestamp, json } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
-import nodemailer from 'nodemailer';
-import { readFileSync, existsSync, unlinkSync } from 'fs';
 import { readFile } from 'fs/promises';
-import path from 'path';
 import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Email service configuration
-const createEmailTransporter = () => {
-  return nodemailer.createTransporter({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD
-    }
-  });
-};
+// Webhook URL for email service
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
 
-// Email service functions - using the more complete version below
-
-// Thank you email function - using the more complete version below
-
-// Service request validation schema (handles both ContactModal and FloatingServiceMenu)
+// Service request validation schema
 const serviceRequestSchema = z.object({
   selectedService: z.string().min(1, "Service is verplicht"),
   address: z.string().min(1, "Adres is verplicht"),
@@ -41,7 +24,6 @@ const serviceRequestSchema = z.object({
   phone: z.string().min(1, "Telefoonnummer is verplicht"),
   contactPreference: z.string().min(1, "Contact voorkeur is verplicht"),
   photos: z.string().optional(),
-  // Optional fields from ContactModal
   serviceType: z.string().optional(),
   specialist: z.string().optional(),
   projectType: z.string().optional(),
@@ -50,16 +32,6 @@ const serviceRequestSchema = z.object({
   interactionCount: z.string().optional(),
   leadScore: z.string().optional()
 });
-
-// Utility function to normalize file names
-const normalizeFileName = (originalName) => {
-  return originalName
-    .toLowerCase()
-    .replace(/\s+/g, '-')           // spaces to dashes
-    .replace(/[^a-z0-9.-]/g, '')    // remove special chars except dots and dashes
-    .replace(/--+/g, '-')           // multiple dashes to single
-    .replace(/^-|-$/g, '');         // remove leading/trailing dashes
-};
 
 // Database schema
 const serviceRequests = pgTable("service_requests", {
@@ -80,232 +52,68 @@ const serviceRequests = pgTable("service_requests", {
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service
-async function sendNotificationEmail(data) {
-  console.log('📧 Starting sendNotificationEmail function...');
+// Email service via webhook to main server
+async function sendEmailViaWebhook(emailData, files) {
+  console.log('📧 Sending email via webhook to main server...');
   try {
-    console.log('📧 Creating email transporter with user:', process.env.GMAIL_USER?.substring(0, 5) + '***');
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
-    
-    // Test connection
-    await transporter.verify();
-    console.log('✅ Email transporter verified successfully');
-
-    // Generate vCard content
-    const vCardContent = generateVCard({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      phone: data.phone,
-      address: data.address,
-      service: data.selectedService
-    });
-
-    // Prepare attachments array
-    const attachments = [];
-
-    // Add vCard as first attachment
-    const vCardFilename = `${data.firstName.toLowerCase()}_${data.lastName.toLowerCase()}_${data.address.split(',')[0].toLowerCase().replace(/\s+/g, '')}_tbgs.vcf`;
-    
-    // Load TBGS logo for vCard
-    let logoBase64 = null;
-    try {
-      const logoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
-      const logoBuffer = await readFile(logoPath);
-      logoBase64 = logoBuffer.toString('base64');
-      console.log('✓ TBGS logo loaded for vCard:', 'TBGS 545x642_1754928031668.png');
-    } catch (logoError) {
-      console.log('Logo not found for vCard, continuing without logo');
-    }
-
-    // Add logo to vCard if available
-    const finalVCardContent = logoBase64 ? 
-      vCardContent + `PHOTO;ENCODING=BASE64;TYPE=PNG:${logoBase64}\n` + 'END:VCARD' :
-      vCardContent + 'END:VCARD';
-
-    attachments.push({
-      filename: vCardFilename,
-      content: finalVCardContent,
-      contentType: 'text/vcard'
-    });
-    console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
-
-    // Add uploaded files with tbgs- prefix
-    if (data.files && data.files.length > 0) {
-      for (const file of data.files) {
+    // Prepare files for webhook (encode buffers as base64)
+    const webhookFiles = [];
+    if (files && files.length > 0) {
+      for (const file of files) {
         try {
           const fileBuffer = await readFile(file.path);
-          const filename = `tbgs-${file.originalname || 'uploaded-file'}`;
-          
-          attachments.push({
-            filename,
-            content: fileBuffer,
-            contentType: file.mimetype || 'application/octet-stream'
+          webhookFiles.push({
+            buffer: fileBuffer.toString('base64'),
+            originalname: file.originalname,
+            mimetype: file.mimetype,
+            size: file.size
           });
-          console.log(`✓ Service attachment: ${filename}`);
+          console.log(`✓ Prepared file for webhook: ${file.originalname}`);
         } catch (fileError) {
-          console.error('Error reading service file:', file.originalname, fileError);
+          console.error('Error reading file for webhook:', file.originalname, fileError);
         }
       }
     }
-    
-    const totalImages = data.processedImages?.length || data.files?.length || 0;
-    if (totalImages > 0) {
-      console.log(`✓ ${totalImages} bestanden verwerkt voor aanvraag ${data.id || 'unknown'}`);
+
+    const response = await fetch(EMAIL_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        emailData,
+        files: webhookFiles
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook failed: ${response.status} ${response.statusText}`);
     }
 
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
-      subject: `🚨 Nieuwe Service Aanvraag - ${data.selectedService}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Nieuwe Service Aanvraag</h2>
-          <p><strong>Service:</strong> ${data.selectedService}</p>
-          <p><strong>Naam:</strong> ${data.firstName} ${data.lastName}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Telefoon:</strong> ${data.phone}</p>
-          <p><strong>Adres:</strong> ${data.address}</p>
-          <p><strong>Beschrijving:</strong> ${data.projectDescription}</p>
-          <p><strong>Contact voorkeur:</strong> ${data.contactPreference}</p>
-          ${data.processedImages && data.processedImages.length > 0 ? `
-          <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px;">
-            <h3 style="margin-top: 0;">📸 Geüploade Foto's (${data.processedImages.length})</h3>
-            ${data.processedImages.map((img, index) => `
-              <div style="margin: 10px 0; padding: 10px; background: white; border-radius: 3px;">
-                <p><strong>Foto ${index + 1}:</strong> ${img.originalName}</p>
-                <p>• <strong>Origineel:</strong> ${(img.originalSize / 1024).toFixed(1)} KB</p>
-                <p>• <strong>Geoptimaliseerd:</strong> ${(img.optimizedSize / 1024).toFixed(1)} KB</p>
-                <p>• <strong>Compressie:</strong> ${img.compressionRatio}% besparing</p>
-                <p>• <strong>Afmetingen:</strong> ${img.dimensions.width}x${img.dimensions.height}</p>
-                <p>• <strong>Features:</strong> ${[
-                  img.hasWatermark ? 'TBGS Watermark' : null,
-                  img.hasThumbnail ? 'Thumbnail' : null,
-                  'Auto-rotate',
-                  'Metadata verwijderd'
-                ].filter(Boolean).join(', ')}</p>
-                ${img.processingFailed ? '<p style="color: red;">⚠️ Verwerking mislukt - origineel bestand gebruikt</p>' : ''}
-              </div>
-            `).join('')}
-          </div>
-          ` : ''}
-          <p><strong>Bijlagen:</strong> ${attachments.length} (inclusief vCard)</p>
-          <p><strong>Ontvangen op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
-        </div>
-      `,
-      attachments
-    };
-
-    console.log('📧 Attempting to send notification email with', attachments.length, 'attachments');
-    const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Notification email sent successfully:', result.messageId);
-    console.log(`✓ Notification email sent voor aanvraag ${data.id || 'unknown'} met ${attachments.length} attachments`);
+    const result = await response.json();
+    console.log('✅ Email webhook successful:', result.message);
     return result;
   } catch (error) {
-    console.error('❌ DETAILED EMAIL ERROR:', error);
-    console.error('❌ Error details:', {
-      code: error.code,
-      command: error.command,
-      response: error.response,
-      responseCode: error.responseCode
-    });
+    console.error('❌ Email webhook error:', error);
     throw error;
   }
 }
 
-// Helper function to generate vCard
-function generateVCard({ firstName, lastName, email, phone, address, service }) {
-  const formattedPhone = phone.startsWith('+') ? phone : `+31${phone.replace(/^0/, '')}`;
-  
-  return `BEGIN:VCARD
-VERSION:3.0
-FN:${firstName} ${lastName}
-N:${lastName};${firstName};;;
-EMAIL:${email}
-TEL;TYPE=MOBILE:${formattedPhone}
-ADR;TYPE=HOME:;;${address};;;;
-NOTE:Service aanvraag: ${service}
-ORG:TBGS B.V. - Service Aanvraag
-TITLE:Klant
-URL:https://tbgs.nl
-`;
-}
+// Utility function to normalize file names
+const normalizeFileName = (originalName) => {
+  return originalName
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9.-]/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-|-$/g, '');
+};
 
-async function sendThankYouEmail(data) {
-  try {
-    console.log('📧 Creating thank you email transporter...');
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
-    
-    // Test connection
-    await transporter.verify();
-    console.log('✅ Thank you email transporter verified');
-
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: data.email,
-      subject: `Bedankt ${data.firstName}! Je aanvraag is ontvangen - TBGS B.V.`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #27ae60;">Bedankt ${data.firstName}!</h2>
-          <p>Je aanvraag voor <strong>${data.selectedService}</strong> is succesvol ontvangen.</p>
-          <p>Wij nemen binnen 24 uur contact met je op via ${data.contactPreference}.</p>
-          <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
-            <h3>Jouw aanvraag details:</h3>
-            <p><strong>Service:</strong> ${data.selectedService}</p>
-            <p><strong>Adres:</strong> ${data.address}</p>
-            <p><strong>Beschrijving:</strong> ${data.projectDescription}</p>
-          </div>
-          <p>Met vriendelijke groet,<br>Team TBGS</p>
-          <p style="font-size: 12px; color: #666;">
-            TBGS B.V. | Tel: 040 202 6744 | Email: info@tbgs.nl | Website: tbgs.nl
-          </p>
-        </div>
-      `,
-    };
-
-    console.log('📧 Attempting to send thank you email to:', data.email);
-    const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Thank you email sent successfully:', result.messageId);
-    return result;
-  } catch (error) {
-    console.error('❌ DETAILED THANK YOU EMAIL ERROR:', error);
-    console.error('❌ Error details:', {
-      code: error.code,
-      command: error.command,
-      response: error.response,
-      responseCode: error.responseCode
-    });
-    throw error;
-  }
-}
-
-// Fast file processing without blocking HTTP response
+// Fast file processing
 const processMultipartRequest = (req) => {
   return new Promise((resolve, reject) => {
     const form = new multiparty.Form({
-      maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
+      maxFilesSize: 12 * 1024 * 1024 * 8,
       maxFiles: 8
     });
     
@@ -327,39 +135,22 @@ const processMultipartRequest = (req) => {
   });
 };
 
+// Main handler
 export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  console.log('🔥 /api/service-request endpoint hit');
-  
-  // Validate environment variables early
-  if (!process.env.DATABASE_URL) {
-    console.error('❌ DATABASE_URL not found');
-    return res.status(500).json({ error: 'Database configuration missing' });
-  }
-  
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.error('❌ Email credentials not found');
-    return res.status(500).json({ error: 'Email configuration missing' });
-  }
+  console.log('🔥 Service request serverless function called');
   
   try {
     let validatedData;
     let files = [];
-
-    // Process multipart data for forms with files
-    if (req.headers['content-type']?.includes('multipart/form-data')) {
+    
+    // Check if it's multipart (with files) or JSON
+    const contentType = req.headers['content-type'] || '';
+    
+    if (contentType.includes('multipart/form-data')) {
       const { fields, files: uploadedFiles } = await processMultipartRequest(req);
       
       // Extract form data from multipart fields
@@ -368,109 +159,55 @@ export default async function handler(req, res) {
         formData[key] = Array.isArray(values) ? values[0] : values;
       }
       
-      // Convert string booleans to actual booleans
-      if (formData.privacy === 'true' || formData.privacy === true) {
-        formData.privacy = true;
-      } else {
-        formData.privacy = false;
-      }
-      
       validatedData = serviceRequestSchema.parse(formData);
       files = uploadedFiles;
     } else {
-      // Handle regular JSON requests
       validatedData = serviceRequestSchema.parse(req.body);
     }
-
-    console.log(`📁 Files received: ${files.length}`);
-
-    // Transform data to database format
-    const dbData = {
-      selectedService: validatedData.selectedService,
-      photos: [],
-      address: validatedData.address,
-      projectDescription: validatedData.projectDescription,
-      firstName: validatedData.firstName,
-      lastName: validatedData.lastName,
-      email: validatedData.email,
-      phone: validatedData.phone,
-      contactPreference: validatedData.contactPreference
-    };
-
+    
     // Save to database immediately
-    const [savedRequest] = await db.insert(serviceRequests).values(dbData).returning();
+    const [savedRequest] = await db.insert(serviceRequests).values({
+      ...validatedData,
+      photos: []
+    }).returning();
 
-    // Transform data for email
-    const emailData = {
-      ...dbData,
-      submittedAt: savedRequest.submittedAt || new Date(),
-      formType: 'popup',
-      files: files.map(file => ({
-        path: file.path,
-        originalname: file.originalname,
-        originalFilename: file.originalFilename,
-        size: file.size,
-        mimetype: file.headers?.['content-type'] || 'application/octet-stream'
-      }))
-    };
+    console.log(`⚡ Request saved to database: ${savedRequest.id}`);
 
-    // Respond immediately to user
-    console.log(`⚡ INSTANT submission complete for ${savedRequest.id}`);
+    // Send emails via webhook to main server
+    try {
+      await sendEmailViaWebhook({
+        ...validatedData,
+        formType: 'popup',
+        submittedAt: savedRequest.submittedAt || new Date(),
+        id: savedRequest.id
+      }, files);
+      
+      console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
+    } catch (emailError) {
+      console.error('Webhook email failed (form still submitted):', emailError);
+    }
+
+    // Return success immediately
     res.status(200).json({
       success: true,
-      message: 'Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.',
+      message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
       requestId: savedRequest.id
     });
 
-    // Send emails in background (non-blocking)
-    setImmediate(async () => {
-      console.log(`📧 Starting background email processing for ${savedRequest.id}`);
-      try {
-        console.log('📧 Sending notification email...');
-        await sendNotificationEmail(emailData);
-        console.log(`✓ Background notification email sent for ${savedRequest.id}`);
-      } catch (emailError) {
-        console.error('❌ Failed to send notification email:', emailError);
-      }
-
-      try {
-        console.log('📧 Sending thank you email...');
-        await sendThankYouEmail(emailData);
-        console.log(`✓ Background thank you email sent for ${savedRequest.id}`);
-      } catch (emailError) {
-        console.error('❌ Failed to send thank you email:', emailError);
-      }
-
-      // Clean up temporary files
-      files.forEach(file => {
-        try {
-          if (existsSync(file.path)) {
-            unlinkSync(file.path);
-          }
-        } catch (err) {
-          console.warn('Could not clean up temp file:', err);
-        }
-      });
-    });
-
   } catch (error) {
+    console.error('Service request error:', error);
+    
     if (error instanceof z.ZodError) {
-      // Validation errors
-      return res.status(400).json({
-        success: false,
-        message: "Controleer uw invoer en probeer opnieuw.",
-        errors: error.errors.map(err => ({
-          field: err.path.join('.'),
-          message: err.message
-        }))
-      });
-    } else {
-      // Other errors
-      console.error("Contact form error:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Er is een fout opgetreden bij het versturen van uw bericht. Probeer het opnieuw of neem telefonisch contact op."
+      return res.status(400).json({ 
+        success: false, 
+        message: "Controleer uw gegevens en probeer opnieuw.",
+        errors: error.errors 
       });
     }
+
+    res.status(500).json({ 
+      success: false, 
+      message: "Er is een fout opgetreden. Probeer het later opnieuw." 
+    });
   }
 }

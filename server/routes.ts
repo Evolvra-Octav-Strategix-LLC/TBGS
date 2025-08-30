@@ -468,6 +468,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  // Email webhook endpoint for serverless functions
+  app.post("/api/email-webhook", async (req, res) => {
+    console.log('📧 Email webhook called from serverless function');
+    try {
+      const { emailData, files } = req.body;
+      
+      if (!emailData) {
+        return res.status(400).json({ error: 'emailData is required' });
+      }
+
+      // Convert files array to proper format for email service
+      const processedFiles = (files || []).map((file: any) => ({
+        buffer: file.buffer ? Buffer.from(file.buffer, 'base64') : undefined,
+        originalname: file.originalname,
+        mimetype: file.mimetype,
+        size: file.size
+      }));
+
+      // Send notification email using existing email service
+      await emailService.sendNotificationEmail({
+        ...emailData,
+        files: processedFiles,
+        submittedAt: new Date(emailData.submittedAt)
+      });
+
+      // Send thank you email
+      await emailService.sendThankYouEmail({
+        ...emailData,
+        files: processedFiles,
+        submittedAt: new Date(emailData.submittedAt)
+      });
+
+      console.log('✓ Webhook emails sent successfully');
+      res.status(200).json({ success: true, message: 'Emails sent successfully' });
+      
+    } catch (error) {
+      console.error('Email webhook error:', error);
+      res.status(500).json({ error: 'Failed to send emails', details: error.message });
+    }
+  });
+
   // Service areas endpoint (for future Google Maps integration)
   app.get("/api/service-areas", (req, res) => {
     const serviceAreas = {
