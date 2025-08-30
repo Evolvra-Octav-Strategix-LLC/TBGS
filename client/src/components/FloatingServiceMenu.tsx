@@ -297,7 +297,17 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setSelectedFiles(prev => [...prev, ...files].slice(0, 5)); // Limit to 5 files
+    const maxFileSize = 10 * 1024 * 1024; // 10MB per file
+    
+    const validFiles = files.filter(file => {
+      if (file.size > maxFileSize) {
+        alert(`Het bestand "${file.name}" is te groot. Maximum bestandsgrootte is 10MB.`);
+        return false;
+      }
+      return true;
+    });
+    
+    setSelectedFiles(prev => [...prev, ...validFiles].slice(0, 5)); // Limit to 5 files
   };
 
   const removeFile = (indexToRemove: number) => {

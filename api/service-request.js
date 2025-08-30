@@ -129,7 +129,11 @@ export default async function handler(req, res) {
 
     // Parse FormData if content-type includes multipart
     if (req.headers['content-type']?.includes('multipart/form-data')) {
-      const form = new multiparty.Form();
+      const form = new multiparty.Form({
+        maxFilesSize: 50 * 1024 * 1024, // 50MB total
+        maxFiles: 5, // Max 5 files
+        maxFieldsSize: 20 * 1024 * 1024 // 20MB for text fields
+      });
       
       const parseResult = await new Promise((resolve, reject) => {
         form.parse(req, (err, fields, uploadedFiles) => {

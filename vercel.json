@@ -4,10 +4,12 @@
   "outputDirectory": "dist/public",
   "functions": {
     "api/service-request.js": {
-      "maxDuration": 30
+      "maxDuration": 30,
+      "memory": 1024
     },
     "api/offerte.js": {
-      "maxDuration": 30
+      "maxDuration": 30,
+      "memory": 1024
     }
   },
   "routes": [
