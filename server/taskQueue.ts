@@ -124,6 +124,9 @@ export class BackgroundTaskProcessor implements TaskProcessor {
         console.log(`✅ Completed image task ${pendingTask.id}: ${pendingTask.originalName}`);
         console.log(`   Compression: ${(result.metadata.originalSize / 1024).toFixed(1)}KB → ${(result.metadata.optimizedSize / 1024).toFixed(1)}KB (${result.metadata.compressionRatio}% reduction)`);
 
+        // Check if all tasks for this parent are completed
+        await this.checkAndSendEmailsIfComplete(pendingTask.parentType, pendingTask.parentId);
+
         // Clean up original file after processing
         try {
           await fs.unlink(pendingTask.originalPath);
@@ -168,6 +171,109 @@ export class BackgroundTaskProcessor implements TaskProcessor {
         eq(imageTasks.parentId, parentId)
       ))
       .orderBy(imageTasks.createdAt);
+  }
+
+  async checkAndSendEmailsIfComplete(parentType: string, parentId: string): Promise<void> {
+    try {
+      // Get all tasks for this parent
+      const tasks = await this.getTasksByParent(parentType, parentId);
+      
+      // Check if all tasks are completed or failed
+      const allTasksFinished = tasks.every(task => 
+        task.status === 'completed' || task.status === 'failed'
+      );
+      
+      if (!allTasksFinished) {
+        console.log(`⏳ Not all tasks completed for ${parentType} ${parentId}, waiting...`);
+        return;
+      }
+
+      console.log(`📧 All tasks completed for ${parentType} ${parentId}, sending emails...`);
+
+      // Import services
+      const { emailService } = await import('./emailService');
+      
+      if (parentType === 'service_request') {
+        // Get the service request data
+        const { serviceRequests } = await import('../shared/schema');
+        const [serviceRequest] = await db
+          .select()
+          .from(serviceRequests)
+          .where(eq(serviceRequests.id, parentId));
+
+        if (!serviceRequest) {
+          console.error(`Service request ${parentId} not found`);
+          return;
+        }
+
+        // Get completed image paths
+        const completedTasks = tasks.filter(task => task.status === 'completed');
+        const processedImagePaths = completedTasks.map(task => task.result?.compressedPath).filter(Boolean);
+        
+        // Update service request with processed image paths
+        await db
+          .update(serviceRequests)
+          .set({ photos: processedImagePaths })
+          .where(eq(serviceRequests.id, parentId));
+
+        // Create file objects for email attachments from processed images
+        const files = [];
+        for (const task of completedTasks) {
+          if (task.result?.compressedPath && require('fs').existsSync(task.result.compressedPath)) {
+            files.push({
+              path: task.result.compressedPath,
+              originalname: task.originalName,
+              size: task.result.optimizedSize,
+              mimetype: 'image/jpeg'
+            });
+          }
+        }
+
+        // Send notification email to admin with processed images
+        try {
+          await emailService.sendNotificationEmail({
+            selectedService: serviceRequest.selectedService,
+            address: serviceRequest.address,
+            projectDescription: serviceRequest.projectDescription,
+            firstName: serviceRequest.firstName,
+            lastName: serviceRequest.lastName,
+            email: serviceRequest.email,
+            phone: serviceRequest.phone,
+            contactPreference: serviceRequest.contactPreference || 'phone',
+            photos: processedImagePaths,
+            submittedAt: serviceRequest.submittedAt || new Date(),
+            formType: 'popup' as const,
+            files
+          });
+          console.log(`✓ Notification email sent for service request ${parentId} with ${files.length} processed images`);
+        } catch (emailError) {
+          console.error('Failed to send notification email:', emailError);
+        }
+
+        // Send thank you email to client
+        try {
+          await emailService.sendThankYouEmail({
+            selectedService: serviceRequest.selectedService,
+            address: serviceRequest.address,
+            projectDescription: serviceRequest.projectDescription,
+            firstName: serviceRequest.firstName,
+            lastName: serviceRequest.lastName,
+            email: serviceRequest.email,
+            phone: serviceRequest.phone,
+            contactPreference: serviceRequest.contactPreference || 'phone',
+            photos: processedImagePaths,
+            submittedAt: serviceRequest.submittedAt || new Date(),
+            formType: 'popup' as const
+          });
+          console.log(`✓ Thank you email sent for service request ${parentId}`);
+        } catch (emailError) {
+          console.error('Failed to send thank you email:', emailError);
+        }
+      }
+
+    } catch (error) {
+      console.error(`Error checking and sending emails for ${parentType} ${parentId}:`, error);
+    }
   }
 }
 
