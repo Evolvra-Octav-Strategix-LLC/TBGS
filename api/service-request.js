@@ -7,6 +7,7 @@ import ws from 'ws';
 import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
 import { promises as fs } from 'fs';
+import path from 'path';
 import { imageProcessor } from '../server/imageProcessor.js';
 
 neonConfig.webSocketConstructor = ws;
@@ -43,6 +44,66 @@ async function sendNotificationEmail(data) {
       },
     });
 
+    // Generate vCard content
+    const vCardContent = generateVCard({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      service: data.selectedService
+    });
+
+    // Prepare attachments array
+    const attachments = [];
+
+    // Add vCard as first attachment
+    const vCardFilename = `${data.firstName.toLowerCase()}_${data.lastName.toLowerCase()}_${data.address.split(',')[0].toLowerCase().replace(/\s+/g, '')}_tbgs.vcf`;
+    
+    // Load TBGS logo for vCard
+    let logoBase64 = null;
+    try {
+      const logoPath = path.join(process.cwd(), 'attached_assets', 'TBGS 545x642_1754928031668.png');
+      const logoBuffer = await fs.readFile(logoPath);
+      logoBase64 = logoBuffer.toString('base64');
+      console.log('✓ TBGS logo loaded for vCard:', 'TBGS 545x642_1754928031668.png');
+    } catch (logoError) {
+      console.log('Logo not found for vCard, continuing without logo');
+    }
+
+    // Add logo to vCard if available
+    const finalVCardContent = logoBase64 ? 
+      vCardContent + `PHOTO;ENCODING=BASE64;TYPE=PNG:${logoBase64}\n` + 'END:VCARD' :
+      vCardContent + 'END:VCARD';
+
+    attachments.push({
+      filename: vCardFilename,
+      content: finalVCardContent,
+      contentType: 'text/vcard'
+    });
+    console.log('✓ TBGS vCard toegevoegd als eerste attachment:', vCardFilename);
+
+    // Add uploaded files as attachments
+    if (data.files && data.files.length > 0) {
+      for (const file of data.files) {
+        try {
+          const fileBuffer = await fs.readFile(file.path);
+          attachments.push({
+            filename: file.originalFilename || 'uploaded_file',
+            content: fileBuffer,
+            contentType: file.headers ? file.headers['content-type'] : 'application/octet-stream'
+          });
+        } catch (fileError) {
+          console.error('Error reading file:', file.originalFilename, fileError);
+        }
+      }
+      console.log(`✓ ${data.files.length} bestanden ontvangen voor aanvraag ${data.id || 'unknown'}:`);
+      data.files.forEach((file, index) => {
+        const fileSizeMB = file.size ? (file.size / (1024 * 1024)).toFixed(2) : 'unknown';
+        console.log(`  ${index + 1}. ${file.originalFilename} (${fileSizeMB}MB)`);
+      });
+    }
+
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER,
@@ -78,16 +139,37 @@ async function sendNotificationEmail(data) {
             `).join('')}
           </div>
           ` : ''}
+          <p><strong>Bijlagen:</strong> ${attachments.length} (inclusief vCard)</p>
           <p><strong>Ontvangen op:</strong> ${new Date().toLocaleString('nl-NL')}</p>
         </div>
       `,
+      attachments
     };
 
     await transporter.sendMail(mailOptions);
     console.log('Notification email sent successfully');
+    console.log(`✓ Notification email sent voor aanvraag ${data.id || 'unknown'} met ${attachments.length} attachments`);
   } catch (error) {
     console.error('Failed to send notification email:', error);
   }
+}
+
+// Helper function to generate vCard
+function generateVCard({ firstName, lastName, email, phone, address, service }) {
+  const formattedPhone = phone.startsWith('+') ? phone : `+31${phone.replace(/^0/, '')}`;
+  
+  return `BEGIN:VCARD
+VERSION:3.0
+FN:${firstName} ${lastName}
+N:${lastName};${firstName};;;
+EMAIL:${email}
+TEL;TYPE=MOBILE:${formattedPhone}
+ADR;TYPE=HOME:;;${address};;;;
+NOTE:Service aanvraag: ${service}
+ORG:TBGS B.V. - Service Aanvraag
+TITLE:Klant
+URL:https://tbgs.nl
+`;
 }
 
 async function sendThankYouEmail(data) {
@@ -291,6 +373,7 @@ export default async function handler(req, res) {
     // Send notification email to admin
     try {
       await sendNotificationEmail({
+        id: savedRequest.id,
         selectedService,
         serviceType,
         specialist,
@@ -338,7 +421,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ 
       success: true, 
-      message: 'Uw aanvraag is succesvol verzonden!' 
+      message: 'Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op.',
+      id: savedRequest.id
     });
 
   } catch (error) {
