@@ -106,9 +106,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         body: formData,
       });
 
+      if (!response.ok) {
+        // Log the response for debugging
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Server fout: HTTP error! status: ${response.status}. Probeer het later opnieuw.`);
+      }
+
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
+      if (!result.success) {
         throw new Error(result.message || 'Er is een fout opgetreden');
       }
 

@@ -220,7 +220,10 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       console.log('⚡ Fetch completed at:', fetchTime, 'Duration:', fetchTime - startTime, 'ms');
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        // Log the response for debugging
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Server fout: HTTP error! status: ${response.status}. Probeer het later opnieuw.`);
       }
 
       const result = await response.json();
