@@ -6,7 +6,7 @@ import { sql } from "drizzle-orm";
 import ws from 'ws';
 import multiparty from 'multiparty';
 import nodemailer from 'nodemailer';
-import { promises as fs } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { imageProcessor } from '../server/imageProcessor.js';
 import { z } from 'zod';
@@ -329,12 +329,13 @@ export default async function handler(req, res) {
     // Validate form data first
     const validatedData = offerteFormSchema.parse(formData);
 
-    // Queue uploaded images for background processing with FFmpeg
-    let queuedImages = [];
+    // Handle files with instant background processing (same as service-request)
     if (files && files.length > 0) {
-      console.log(`🚀 Processing ${files.length} offerte images with FFmpeg compression...`);
+      console.log(`🔥 /api/offerte endpoint hit with ${files.length} files`);
+      console.log(`⚡ Instant submission with ${files.length} files...`);
+      console.log(`⚡ Using ${files.length} pre-compressed files from client`);
       
-      // Save to database first to get request ID
+      // Save to database first
       const [savedRequest] = await db.insert(offerteRequests).values({
         voornaam: validatedData.voornaam,
         achternaam: validatedData.achternaam,
@@ -348,63 +349,67 @@ export default async function handler(req, res) {
         tijdlijn: validatedData.tijdlijn,
         budget: validatedData.budget || '',
         beschrijving: validatedData.beschrijving,
-        privacyAkkoord: validatedData.privacyAkkoord,
-        nieuwsbrief: validatedData.nieuwsbrief,
-        files: [] // Will be updated when processing completes
+        contactVoorkeur: validatedData.contactVoorkeur,
+        privacyAkkoord: validatedData.privacyAkkoord ? 'true' : 'false',
+        nieuwsbrief: validatedData.nieuwsbrief ? 'true' : 'false',
+        files: []
       }).returning();
 
-      // Queue each image for background processing
-      const { taskProcessor } = await import('../server/taskQueue.js');
-      
-      for (const file of files) {
-        try {
-          const taskId = await taskProcessor.addImageTask({
-            originalPath: file.path,
-            originalName: file.originalFilename || 'image.jpg',
-            parentType: 'offerte',
-            parentId: savedRequest.id,
-            processingOptions: {
-              maxWidth: 1920,
-              maxHeight: 1080,
-              quality: 85,
-              format: 'jpeg',
-              createThumbnail: true,
-              thumbnailSize: 300,
-              addWatermark: true,
-              watermarkText: 'TBGS B.V.',
-              removeMetadata: true,
-              autoRotate: true
-            }
-          });
+      // Process files for email attachments (pre-compressed from client)
+      const emailFiles = files.map(file => ({
+        filename: file.originalFilename || 'attachment.jpg',
+        content: fs.readFileSync(file.path),
+        contentType: file.headers?.['content-type'] || 'image/jpeg'
+      }));
 
-          queuedImages.push({
-            taskId,
-            originalName: file.originalFilename || 'image.jpg',
-            originalSize: file.size || 0,
-            status: 'queued'
-          });
-
-        } catch (error) {
-          console.error(`Failed to queue offerte image ${file.originalFilename}:`, error);
-          queuedImages.push({
-            originalName: file.originalFilename || 'image.jpg',
-            originalSize: file.size || 0,
-            status: 'failed',
-            error: error.message
-          });
-        }
-      }
-
-      console.log(`✓ ${queuedImages.filter(img => img.status === 'queued').length} offerte images queued for background processing`);
-
-      // Return early with queued status
-      return res.json({
+      // Respond immediately to user
+      console.log(`⚡ INSTANT offerte submission complete for ${savedRequest.id}`);
+      res.status(200).json({
         success: true,
-        message: 'Offerte aanvraag succesvol ingediend! Uw afbeeldingen worden verwerkt in de achtergrond.',
-        requestId: savedRequest.id,
-        queuedImages,
-        emailWillBeSentAfterProcessing: true
+        message: 'Offerte aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
+        requestId: savedRequest.id
       });
+
+      // Send emails in background (non-blocking)
+      setImmediate(async () => {
+        try {
+          await sendNotificationEmail({
+            id: savedRequest.id,
+            ...validatedData,
+            processedImages: [],
+            totalImages: emailFiles.length,
+            files: emailFiles,
+            ffmpegResults: []
+          });
+          console.log(`✓ Background notification email sent for offerte ${savedRequest.id}`);
+        } catch (emailError) {
+          console.error('Failed to send offerte notification email:', emailError);
+        }
+
+        try {
+          await sendThankYouEmail({
+            ...validatedData,
+            processedImages: [],
+            totalImages: emailFiles.length
+          });
+          console.log(`✓ Background thank you email sent for offerte ${savedRequest.id}`);
+        } catch (emailError) {
+          console.error('Failed to send offerte thank you email:', emailError);
+        }
+
+        // Clean up temporary files
+        files.forEach(file => {
+          try {
+            if (fs.existsSync && fs.existsSync(file.path)) {
+              fs.unlinkSync(file.path);
+            }
+          } catch (err) {
+            console.warn('Could not clean up temp file:', err);
+          }
+        });
+      });
+
+      return;
     }
 
     // Convert string booleans to actual booleans
@@ -443,37 +448,39 @@ export default async function handler(req, res) {
       files: []
     }).returning();
 
-    // Send notification email to admin with compressed attachments
-    try {
-      await sendNotificationEmail({
-        id: savedRequest.id,
-        ...validatedData,
-        processedImages: [],
-        totalImages: 0,
-        files: [],
-        ffmpegResults: []
-      });
-    } catch (emailError) {
-      console.error('Failed to send offerte notification email:', emailError);
-    }
-
-    // No FFmpeg cleanup needed for no-files case
-
-    // Send thank you email to client
-    try {
-      await sendThankYouEmail({
-        ...validatedData,
-        processedImages: [],
-        totalImages: 0
-      });
-    } catch (emailError) {
-      console.error('Failed to send offerte thank you email:', emailError);
-    }
-
-    return res.status(200).json({ 
+    // Respond immediately to user
+    res.status(200).json({ 
       success: true, 
       message: "Uw offerte aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op voor een afspraak.",
       id: savedRequest.id
+    });
+
+    // Send emails in background (non-blocking)
+    setImmediate(async () => {
+      try {
+        await sendNotificationEmail({
+          id: savedRequest.id,
+          ...validatedData,
+          processedImages: [],
+          totalImages: 0,
+          files: [],
+          ffmpegResults: []
+        });
+        console.log(`✓ Background notification email sent for offerte ${savedRequest.id} (no files)`);
+      } catch (emailError) {
+        console.error('Failed to send offerte notification email:', emailError);
+      }
+
+      try {
+        await sendThankYouEmail({
+          ...validatedData,
+          processedImages: [],
+          totalImages: 0
+        });
+        console.log(`✓ Background thank you email sent for offerte ${savedRequest.id} (no files)`);
+      } catch (emailError) {
+        console.error('Failed to send offerte thank you email:', emailError);
+      }
     });
 
   } catch (error) {

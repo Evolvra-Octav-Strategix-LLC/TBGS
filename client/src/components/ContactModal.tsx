@@ -42,6 +42,8 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [processedFiles, setProcessedFiles] = useState<{original: File, compressed: File, status: 'processing' | 'completed' | 'failed'}[]>([]);
+  const [isProcessingFiles, setIsProcessingFiles] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -82,10 +84,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       formData.append('contactPreference', 'email'); // Default for modal form
       formData.append('photos', JSON.stringify(uploadedFiles.map((file, index) => `attachment_${index + 1}`)));
       
-      // Add file uploads from state
-      uploadedFiles.forEach((file, index) => {
+      // Add pre-compressed files (ready for instant submission!)
+      const filesToSubmit = processedFiles.length > 0 
+        ? processedFiles.filter(p => p.status === 'completed').map(p => p.compressed)
+        : uploadedFiles;
+        
+      filesToSubmit.forEach((file, index) => {
         formData.append('files', file);
       });
+      
+      console.log(`🚀 Submitting ${filesToSubmit.length} pre-processed files (instant!)`);
 
       // Add urgency data
       formData.append('urgencyLevel', data.urgent ? 'urgent' : 'normal');
@@ -113,6 +121,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       });
       form.reset();
       setUploadedFiles([]);
+      setProcessedFiles([]);
       onClose();
     },
     onError: (error: Error) => {
@@ -159,9 +168,110 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const selectedSpecialisme = form.watch("specialisme");
   const currentProjectTypes = selectedSpecialisme ? projectTypes[selectedSpecialisme as keyof typeof projectTypes] || [] : [];
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Immediate compression when files are selected (same as FloatingServiceMenu)
+  const compressImage = (file: File): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        // Quick compression settings for speed
+        const maxWidth = 1200;
+        const maxHeight = 800;
+        let { width, height } = img;
+        
+        if (width > maxWidth || height > maxHeight) {
+          const aspectRatio = width / height;
+          if (width > height) {
+            width = maxWidth;
+            height = width / aspectRatio;
+          } else {
+            height = maxHeight;
+            width = height * aspectRatio;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        ctx?.drawImage(img, 0, 0, width, height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            // Add "tbgs-" prefix to filename
+            const originalName = file.name;
+            const fileExtension = originalName.substring(originalName.lastIndexOf('.'));
+            const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+            const newFileName = `tbgs-${baseName}${fileExtension}`;
+            
+            const compressedFile = new File([blob], newFileName, {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        }, 'image/jpeg', 0.75);
+      };
+      
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setUploadedFiles(prev => [...prev, ...files].slice(0, 5)); // Limit to 5 files
+    const maxFileSize = 10 * 1024 * 1024; // 10MB per file
+    
+    const validFiles = files.filter(file => {
+      if (file.size > maxFileSize) {
+        toast({
+          title: "Bestand te groot",
+          description: `Het bestand "${file.name}" is te groot. Maximum bestandsgrootte is 10MB.`,
+          variant: "destructive",
+        });
+        return false;
+      }
+      return true;
+    });
+    
+    if (validFiles.length === 0) return;
+    
+    setUploadedFiles(prev => [...prev, ...validFiles].slice(0, 5));
+    setIsProcessingFiles(true);
+    
+    console.log(`🔄 Starting immediate compression of ${validFiles.length} files...`);
+    
+    // Process each file immediately
+    const newProcessedFiles = [];
+    for (const file of validFiles) {
+      try {
+        const fileData = {original: file, compressed: file, status: 'processing' as const};
+        setProcessedFiles(prev => [...prev, fileData]);
+        
+        if (file.type.startsWith('image/')) {
+          const compressed = await compressImage(file);
+          const compressionRatio = ((file.size - compressed.size) / file.size * 100).toFixed(1);
+          console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
+          
+          fileData.compressed = compressed;
+          fileData.status = 'completed';
+        } else {
+          fileData.status = 'completed';
+        }
+        
+        newProcessedFiles.push(fileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+      } catch (error) {
+        console.error(`Failed to compress ${file.name}:`, error);
+        const fileData = {original: file, compressed: file, status: 'failed' as const};
+        newProcessedFiles.push(fileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
+      }
+    }
+    
+    setIsProcessingFiles(false);
+    console.log(`✅ All files processed and ready for instant submission!`);
   };
 
   const removeFile = (indexToRemove: number) => {
