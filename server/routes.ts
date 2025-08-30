@@ -157,96 +157,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       console.log(`📁 Files received: ${files.length}`);
       
-      // Process uploaded images directly with FFmpeg
+      // Handle files without any processing - instant submission
       if (files.length > 0) {
-        console.log(`⚡ Processing ${files.length} images directly with FFmpeg...`);
+        console.log(`⚡ Instant submission with ${files.length} files...`);
         
-        // Process images immediately with FFmpeg
-        const { imageProcessor } = await import('./imageProcessor');
-        const processedImageData = [];
-        
-        for (const file of files) {
-          try {
-            console.log(`🔄 Processing ${file.originalname} (${(file.size / 1024 / 1024).toFixed(2)}MB)...`);
-            
-            const buffer = fs.readFileSync(file.path);
-            const result = await imageProcessor.processImage(buffer, file.originalname || 'image.jpg', {
-              maxWidth: 1920,
-              maxHeight: 1080,
-              quality: 75,
-              format: 'jpeg',
-              createThumbnail: false,
-              addWatermark: false,
-              removeMetadata: true,
-              autoRotate: true
-            });
-            
-            processedImageData.push({
-              originalName: file.originalname,
-              compressedPath: result.compressedPath,
-              compressionRatio: result.compressionRatio
-            });
-            
-            console.log(`✅ Processed ${file.originalname}: ${result.compressionRatio}% reduction`);
-            
-          } catch (error) {
-            console.error(`Failed to process image ${file.originalname}:`, error);
-          }
-        }
-
-        // Save to database with processed image paths
-        const processedPaths = processedImageData.map(img => img.compressedPath).filter(Boolean);
+        // Save to database immediately
         const [savedRequest] = await db.insert(serviceRequests).values({
           ...validatedData,
-          photos: processedPaths
+          photos: [] // No processing needed
         }).returning();
 
-        // Send emails immediately with processed images
-        const processedFiles = processedImageData.map(img => ({
-          path: img.compressedPath,
-          originalname: img.originalName,
-          size: fs.existsSync(img.compressedPath) ? fs.statSync(img.compressedPath).size : 0,
-          mimetype: 'image/jpeg',
-          isPreProcessed: true
-        })).filter(f => f.path && fs.existsSync(f.path));
+        // Prepare files for email without any processing
+        const emailFiles = files.map(file => ({
+          path: file.path,
+          originalname: file.originalname,
+          size: file.size,
+          mimetype: file.mimetype || 'application/octet-stream'
+        }));
 
-        // Send notification email to admin
+        // Send emails immediately with original files
         try {
           await emailService.sendNotificationEmail({
             ...validatedData,
-            photos: processedPaths,
+            photos: [],
             submittedAt: savedRequest.submittedAt || new Date(),
             formType: 'popup' as const,
-            files: processedFiles
+            files: emailFiles
           });
-          console.log(`✓ Notification email sent voor aanvraag ${savedRequest.id} with ${processedFiles.length} images`);
+          console.log(`✓ Notification email sent for ${savedRequest.id}`);
         } catch (emailError) {
           console.error('Failed to send notification email:', emailError);
         }
 
-        // Send thank you email to client
         try {
           await emailService.sendThankYouEmail({
             ...validatedData,
-            photos: processedPaths,
+            photos: [],
             submittedAt: savedRequest.submittedAt || new Date(),
             formType: 'popup' as const
           });
+          console.log(`✓ Thank you email sent for ${savedRequest.id}`);
         } catch (emailError) {
           console.error('Failed to send thank you email:', emailError);
         }
 
-        // Cleanup temp files
-        for (const file of files) {
-          try { fs.unlinkSync(file.path); } catch {}
-        }
-
-        console.log(`⚡ Instant response sent for request ${savedRequest.id}`);
+        console.log(`⚡ INSTANT submission complete for ${savedRequest.id}`);
         res.status(200).json({
           success: true,
-          message: 'Aanvraag succesvol ingediend! Uw afbeeldingen zijn verwerkt en de e-mails zijn verzonden.',
-          requestId: savedRequest.id,
-          processedImages: processedImageData.length
+          message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
+          requestId: savedRequest.id
         });
         return;
       }

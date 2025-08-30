@@ -255,26 +255,16 @@ class EmailService {
       }
     }
 
-    // Check if images are already processed by background system
-    const hasPreProcessedImages = files.some(f => f.isPreProcessed);
-    
-    // Process image files with FFmpeg compression before adding as attachments
-    const imageFiles = files.filter(f => {
-      const mimetype = f.mimetype || 'application/octet-stream';
-      return mimetype.startsWith('image/') && isAllowedFile(f.originalname || f.path || '', mimetype);
-    });
-
-    const nonImageFiles = files.filter(f => {
-      const mimetype = f.mimetype || 'application/octet-stream';
-      return !mimetype.startsWith('image/') || !isAllowedFile(f.originalname || f.path || '', mimetype);
-    });
-
-    let processedImageData: ProcessedImageData[] = [];
-
-    // Process images with FFmpeg compression (skip if already processed by background)
-    if (imageFiles.length > 0 && !hasPreProcessedImages) {
+    // Add all files directly as attachments without any processing
+    for (const f of files) {
       try {
-        console.log(`🚀 Processing ${imageFiles.length} images with FFmpeg compression...`);
+        const mimetype = f.mimetype || 'application/octet-stream';
+        if (!isAllowedFile(f.originalname || f.path || '', mimetype)) {
+          console.warn(`emailservice: blocked file type: ${f.originalname}`);
+          continue;
+        }
+        
+        console.log(`📎 Adding attachment: ${f.originalname}`);
         
         // Convert files to buffer format for processing
         const imageData = [];
