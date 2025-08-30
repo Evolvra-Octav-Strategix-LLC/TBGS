@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyB9kKYnZG2YmD5nv5L5rNfSBqZgV_z6nGI';
+// API key should be provided via environment variable for security
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
 
 interface GooglePlacesApiResult {
   name: string;
@@ -44,6 +45,10 @@ export function useGooglePlaces(placeId: string) {
       }
 
       // Client-side Google Places API call
+      if (!GOOGLE_MAPS_API_KEY) {
+        throw new Error('Google Places API key not configured. Please set VITE_GOOGLE_PLACES_API_KEY environment variable.');
+      }
+
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,formatted_address,formatted_phone_number,website,opening_hours,geometry,photos,user_ratings_total&key=${GOOGLE_MAPS_API_KEY}`
       );
