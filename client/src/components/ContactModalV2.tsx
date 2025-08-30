@@ -76,11 +76,10 @@ export default function ContactModalV2() {
       // Create FormData for file uploads
       const formData = new FormData();
       
-      // Parse location into address, postcode, and plaats
-      const locationParts = data.location.split(',').map(part => part.trim());
-      const adres = locationParts[0] || data.location;
-      const postcode = data.postcode || (locationParts[1] || '').replace(/\D/g, '').substring(0, 4) + (locationParts[1] || '').replace(/\D/g, '').substring(4, 6);
-      const plaats = data.plaats || locationParts[locationParts.length - 1] || '';
+      // Use the separate address fields directly
+      const adres = data.location || '';
+      const postcode = data.postcode || '';
+      const plaats = data.plaats || '';
       
       // Add form fields matching offerte.js schema
       formData.append('voornaam', data.firstName);
