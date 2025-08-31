@@ -323,9 +323,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Complete <strong>schoorsteen renovatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Modernisering van oude schoorstenen met duurzame materialen.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/totaal-schoorsteen-specialist/schoorsteen-renovatie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen renovatie →
-                </div>
+                </Link>
               </div>
             </div>
 

@@ -31,6 +31,7 @@ import Dakbedekking from "@/pages/totaal-dak-specialist/Dakbedekking";
 import NokverstenRepareren from "@/pages/totaal-dak-specialist/NokverstenRepareren";
 import SchoorsteenVegen from "@/pages/totaal-schoorsteen-specialist/SchoorsteenVegen";
 import SchoorsteenInspectie from "@/pages/totaal-schoorsteen-specialist/SchoorsteenInspectie";
+import SchoorsteenRenovatie from "@/pages/totaal-schoorsteen-specialist/SchoorsteenRenovatie";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
@@ -236,6 +237,7 @@ function Router() {
           <Route path="/totaal-dak-specialist/nokvorsten-repareren" component={() => <NokverstenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/totaal-schoorsteen-specialist/schoorsteen-vegen" component={() => <SchoorsteenVegen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/totaal-schoorsteen-specialist/schoorsteen-inspectie" component={() => <SchoorsteenInspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/totaal-schoorsteen-specialist/schoorsteen-renovatie" component={() => <SchoorsteenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
