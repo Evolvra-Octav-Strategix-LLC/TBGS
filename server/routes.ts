@@ -227,13 +227,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
           // Create customer in Gripp after successful email sending (with files)
           try {
+            // Extract street and house number from address field
+            const extractAddressParts = (address: string) => {
+              if (!address) return { street: '', houseNumber: '', city: '', postcode: '' };
+              
+              // Parse address like "Hurksestraat 64, 5652 LD Eindhoven, Netherlands"
+              const parts = address.split(',').map(p => p.trim());
+              if (parts.length >= 2) {
+                // First part: "Hurksestraat 64"
+                const streetPart = parts[0];
+                const streetMatch = streetPart.match(/^(.+?)\s+(\d+\s*[a-zA-Z]?)$/);
+                
+                // Second part: "5652 LD Eindhoven" or just "Eindhoven"
+                const locationPart = parts[1];
+                const locationMatch = locationPart.match(/^(\d{4}\s*[A-Z]{2})?\s*(.+)$/);
+                
+                return {
+                  street: streetMatch ? streetMatch[1].trim() : streetPart,
+                  houseNumber: streetMatch ? streetMatch[2].trim() : '',
+                  postcode: locationMatch && locationMatch[1] ? locationMatch[1].trim() : '',
+                  city: locationMatch ? locationMatch[2].trim() : locationPart
+                };
+              }
+              
+              return { street: address, houseNumber: '', city: '', postcode: '' };
+            };
+
+            const addressParts = extractAddressParts(validatedData.address || '');
+
             const grippData = {
               requestDescription: validatedData.projectDescription || `${validatedData.selectedService} aanvraag`,
               email: validatedData.email,
-              street: validatedData.address ? validatedData.address.split(',')[0] || '' : '',
-              postalCode: '', // Not always available
-              houseNumber: '',
-              city: validatedData.address ? validatedData.address.split(',').pop()?.trim() || '' : '',
+              street: addressParts.street,
+              postalCode: addressParts.postcode,
+              houseNumber: addressParts.houseNumber,
+              city: addressParts.city,
               phoneNumber: validatedData.phone,
               firstName: validatedData.firstName,
               infix: '',
@@ -296,13 +324,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         // Create customer in Gripp after successful email sending (no files)
         try {
+          // Extract street and house number from address field (same logic as with files)
+          const extractAddressParts = (address: string) => {
+            if (!address) return { street: '', houseNumber: '', city: '', postcode: '' };
+            
+            // Parse address like "Hurksestraat 64, 5652 LD Eindhoven, Netherlands"
+            const parts = address.split(',').map(p => p.trim());
+            if (parts.length >= 2) {
+              // First part: "Hurksestraat 64"
+              const streetPart = parts[0];
+              const streetMatch = streetPart.match(/^(.+?)\s+(\d+\s*[a-zA-Z]?)$/);
+              
+              // Second part: "5652 LD Eindhoven" or just "Eindhoven"
+              const locationPart = parts[1];
+              const locationMatch = locationPart.match(/^(\d{4}\s*[A-Z]{2})?\s*(.+)$/);
+              
+              return {
+                street: streetMatch ? streetMatch[1].trim() : streetPart,
+                houseNumber: streetMatch ? streetMatch[2].trim() : '',
+                postcode: locationMatch && locationMatch[1] ? locationMatch[1].trim() : '',
+                city: locationMatch ? locationMatch[2].trim() : locationPart
+              };
+            }
+            
+            return { street: address, houseNumber: '', city: '', postcode: '' };
+          };
+
+          const addressParts = extractAddressParts(validatedData.address || '');
+
           const grippData = {
             requestDescription: validatedData.projectDescription || `${validatedData.selectedService} aanvraag`,
             email: validatedData.email,
-            street: validatedData.address ? validatedData.address.split(',')[0] || '' : '',
-            postalCode: '', // Not always available
-            houseNumber: '',
-            city: validatedData.address ? validatedData.address.split(',').pop()?.trim() || '' : '',
+            street: addressParts.street,
+            postalCode: addressParts.postcode,
+            houseNumber: addressParts.houseNumber,
+            city: addressParts.city,
             phoneNumber: validatedData.phone,
             firstName: validatedData.firstName,
             infix: '',
@@ -402,7 +458,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           street: '', // Not collected in contact form
           postalCode: '', // Not collected in contact form
           houseNumber: '',
-          city: validatedData.location,
+          city: validatedData.location, // Contact form only collects city/location
           phoneNumber: validatedData.phone,
           firstName: validatedData.firstName,
           infix: '',
@@ -505,12 +561,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Create customer in Gripp after successful email sending
       try {
+        // Extract house number from address field for offerte form
+        const extractStreetAndNumber = (adres: string) => {
+          if (!adres) return { street: '', houseNumber: '' };
+          
+          // Match patterns like "Hurksestraat 64" or "64 Hurksestraat"
+          const match1 = adres.match(/^(.+?)\s+(\d+\s*[a-zA-Z]?)$/);
+          const match2 = adres.match(/^(\d+\s*[a-zA-Z]?)\s+(.+)$/);
+          
+          if (match1) {
+            return { street: match1[1].trim(), houseNumber: match1[2].trim() };
+          } else if (match2) {
+            return { street: match2[2].trim(), houseNumber: match2[1].trim() };
+          }
+          
+          return { street: adres, houseNumber: '' };
+        };
+
+        const { street, houseNumber } = extractStreetAndNumber(validatedData.adres);
+
         const grippData = {
           requestDescription: `${validatedData.specialisme} - ${validatedData.projectType}: ${validatedData.beschrijving}`,
           email: validatedData.email,
-          street: validatedData.adres,
+          street: street,
           postalCode: validatedData.postcode,
-          houseNumber: '', // Could be extracted from adres if needed
+          houseNumber: houseNumber,
           city: validatedData.plaats,
           phoneNumber: validatedData.telefoon,
           firstName: validatedData.voornaam,
@@ -659,13 +734,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log('🔄 Webhook: Starting Gripp integration...');
       console.log('📧 Webhook emailData:', JSON.stringify(emailData, null, 2));
       try {
+        // Extract street and house number properly (like PHP)
+        const extractStreetAndNumber = (streetField: string) => {
+          if (!streetField) return { street: '', houseNumber: '' };
+          
+          // If the street field starts with numbers, extract them as house number
+          const match = streetField.match(/^(\d+\s*[a-zA-Z]?)\s+(.+)$/);
+          if (match) {
+            return {
+              houseNumber: match[1].trim(),
+              street: match[2].trim()
+            };
+          }
+          
+          // If no numbers at start, use entire field as street
+          return { street: streetField, houseNumber: '' };
+        };
+
+        const { street, houseNumber } = extractStreetAndNumber(emailData.street || '');
+
         const grippData = {
           requestDescription: emailData.projectDescription || emailData.description || `${emailData.selectedService} aanvraag`,
           email: emailData.email,
-          street: emailData.address ? emailData.address.split(',')[0] || '' : '',
-          postalCode: '', // Not always available in webhook data
-          houseNumber: '',
-          city: emailData.address ? emailData.address.split(',').pop()?.trim() || '' : '',
+          street: street,
+          postalCode: emailData.postcode || '', // Use postcode from emailData
+          houseNumber: houseNumber || emailData.houseNumber || '',
+          city: emailData.city || '', // Use city directly from emailData
           phoneNumber: emailData.phone,
           firstName: emailData.firstName,
           infix: '',
