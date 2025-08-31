@@ -419,7 +419,7 @@ class EmailService {
       // Create address string for subject
       let addressPart = '';
       if (data.street && data.houseNumber && data.city) {
-        addressPart = `${data.street}, ${data.houseNumber} ${data.city}`;
+        addressPart = `${data.street}, ${data.houseNumber}, ${data.city}`;
       } else if (data.address) {
         // Parse from full address if individual components not available
         const addressParts = data.address.split(',').map(p => p.trim());

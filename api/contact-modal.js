@@ -29,7 +29,13 @@ const contactModalSchema = z.object({
   urgencyLevel: z.string().optional(),
   timeOnPage: z.string().optional(),
   interactionCount: z.string().optional(),
-  leadScore: z.string().optional()
+  leadScore: z.string().optional(),
+  // Individual address components for better email subject formatting
+  street: z.string().optional(),
+  houseNumber: z.string().optional(),
+  city: z.string().optional(),
+  postcode: z.string().optional(),
+  country: z.string().optional()
 });
 
 // Database schema for contact modal requests
@@ -204,6 +210,12 @@ export default async function handler(req, res) {
           serviceType: validatedData.serviceType,
           projectType: validatedData.projectType || '',
           urgent: validatedData.urgent === 'true',
+          // Add individual address components for better email subject formatting
+          street: formData.street || validatedData.street,
+          houseNumber: formData.houseNumber || validatedData.houseNumber,
+          city: formData.city || validatedData.city,
+          postcode: formData.postcode || validatedData.postcode,
+          country: formData.country || validatedData.country,
           id: savedRequest.id
         };
 

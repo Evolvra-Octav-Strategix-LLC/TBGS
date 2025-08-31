@@ -44,6 +44,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [processedFiles, setProcessedFiles] = useState<{original: File, compressed: File, status: 'processing' | 'completed' | 'failed'}[]>([]);
   const [isProcessingFiles, setIsProcessingFiles] = useState(false);
+  const [addressComponents, setAddressComponents] = useState<{
+    street: string;
+    houseNumber: string; 
+    city: string;
+    postcode: string;
+    country: string;
+  } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -124,6 +131,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       formData.append('timeOnPage', '0');
       formData.append('interactionCount', '1');
       formData.append('leadScore', '3');
+      
+      // Add individual address components for better email subject formatting
+      if (addressComponents) {
+        formData.append('street', addressComponents.street);
+        formData.append('houseNumber', addressComponents.houseNumber);
+        formData.append('city', addressComponents.city);
+        formData.append('postcode', addressComponents.postcode);
+        formData.append('country', addressComponents.country);
+      }
 
       const response = await fetch('/api/contact-modal', {
         method: 'POST',
@@ -153,6 +169,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       form.reset();
       setUploadedFiles([]);
       setProcessedFiles([]);
+      setAddressComponents(null);
       onClose();
     },
     onError: (error: Error) => {
@@ -316,6 +333,24 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     country: string;
   }) => {
     form.setValue("location", address);
+    
+    // Store individual address components for better email subject formatting
+    if (details) {
+      // Parse street and house number from Google Places street field
+      const streetMatch = details.street.match(/^(.+?)\s+(\d+.*?)$/);
+      const street = streetMatch ? streetMatch[1] : details.street;
+      const houseNumber = streetMatch ? streetMatch[2] : '';
+      
+      setAddressComponents({
+        street: street,
+        houseNumber: houseNumber,
+        city: details.city,
+        postcode: details.postalCode,
+        country: details.country
+      });
+    } else {
+      setAddressComponents(null);
+    }
   };
 
   // Step 1: Service & Specialist Selection

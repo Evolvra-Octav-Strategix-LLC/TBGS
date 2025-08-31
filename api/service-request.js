@@ -30,7 +30,13 @@ const serviceRequestSchema = z.object({
   urgencyLevel: z.string().optional(),
   timeOnPage: z.string().optional(),
   interactionCount: z.string().optional(),
-  leadScore: z.string().optional()
+  leadScore: z.string().optional(),
+  // Individual address components for better email subject formatting
+  street: z.string().optional(),
+  houseNumber: z.string().optional(),
+  city: z.string().optional(),
+  postcode: z.string().optional(),
+  country: z.string().optional()
 });
 
 // Database schema
@@ -179,6 +185,12 @@ export default async function handler(req, res) {
         ...validatedData,
         formType: 'popup',
         submittedAt: savedRequest.submittedAt || new Date(),
+        // Add individual address components for better email subject formatting
+        street: validatedData.street,
+        houseNumber: validatedData.houseNumber,
+        city: validatedData.city,
+        postcode: validatedData.postcode,
+        country: validatedData.country,
         id: savedRequest.id
       }, files);
       

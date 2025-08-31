@@ -88,6 +88,13 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
   const [isProcessingFiles, setIsProcessingFiles] = useState(false);
   const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('mobile');
   const [address, setAddress] = useState('');
+  const [addressComponents, setAddressComponents] = useState<{
+    street: string;
+    houseNumber: string; 
+    city: string;
+    postcode: string;
+    country: string;
+  } | null>(null);
   const [projectDescription, setProjectDescription] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -196,6 +203,15 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
       formData.append('timeOnPage', timeOnPage.toString());
       formData.append('interactionCount', interactionCount.toString());
       formData.append('leadScore', (interactionCount * 2 + Math.min(timeOnPage / 30, 10)).toString());
+      
+      // Add individual address components for better email subject formatting
+      if (addressComponents) {
+        formData.append('street', addressComponents.street);
+        formData.append('houseNumber', addressComponents.houseNumber);
+        formData.append('city', addressComponents.city);
+        formData.append('postcode', addressComponents.postcode);
+        formData.append('country', addressComponents.country);
+      }
 
       console.log('FloatingServiceMenu: Submitting form data:', {
         selectedService: selectedService || '',
@@ -239,6 +255,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         setSelectedFiles([]);
         setProcessedFiles([]);
         setAddress('');
+        setAddressComponents(null);
         setProjectDescription('');
         setFirstName('');
         setLastName('');
@@ -743,7 +760,26 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                       </label>
                       <GooglePlacesInput
                         value={address}
-                        onChange={setAddress}
+                        onChange={(addr, details) => {
+                          setAddress(addr);
+                          // Store individual address components for better email subject formatting
+                          if (details) {
+                            // Parse street and house number from Google Places street field
+                            const streetMatch = details.street.match(/^(.+?)\s+(\d+.*?)$/);
+                            const street = streetMatch ? streetMatch[1] : details.street;
+                            const houseNumber = streetMatch ? streetMatch[2] : '';
+                            
+                            setAddressComponents({
+                              street: street,
+                              houseNumber: houseNumber,
+                              city: details.city,
+                              postcode: details.postalCode,
+                              country: details.country
+                            });
+                          } else {
+                            setAddressComponents(null);
+                          }
+                        }}
                         placeholder="Typ je adres..."
                         className="w-full p-4 border-2 border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 bg-white shadow-sm"
                       />
