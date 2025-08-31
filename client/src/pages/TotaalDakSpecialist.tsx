@@ -350,9 +350,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Complete <strong>dakrenovatie</strong> door gecertificeerde <strong>dakdekkers</strong>. Van dakpannen vervangen tot volledige <strong>dakwerken</strong> met moderne materialen en garantie.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/dakrenovatie" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dakrenovatie →
-                </div>
+                </Link>
               </div>
             </div>
 
