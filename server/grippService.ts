@@ -45,6 +45,31 @@ function formatZipcode(zipcode: string): string {
   return zipcode;
 }
 
+async function tryGrippRequest(apiToken: string, jsonRpcRequest: any[], apiUrl: string): Promise<GrippApiResponse> {
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiToken}`
+    },
+    body: JSON.stringify(jsonRpcRequest)
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`HTTP ${response.status}: ${errorText}`);
+  }
+
+  const batchResponse = await response.json();
+  
+  // Check for API-level errors in the response
+  if (batchResponse && Array.isArray(batchResponse) && batchResponse[0] && batchResponse[0].error) {
+    throw new Error(`Gripp API Error: ${JSON.stringify(batchResponse[0].error)}`);
+  }
+
+  return batchResponse;
+}
+
 export async function createGrippCompany(formData: {
   requestDescription: string;
   email: string;
@@ -57,11 +82,14 @@ export async function createGrippCompany(formData: {
   infix?: string;
   lastName: string;
 }): Promise<GrippApiResponse> {
+  // Available API tokens with the new token you provided
+  const tokens = [
+    process.env.GRIPP_API_TOKEN_1 || "WGfdU9N2vESmERtVq8BN3gMT4rD1zd",
+    process.env.GRIPP_API_TOKEN_2 || "2KfdaAQ8xCDc2VicbDcNzFhaxVWtov"
+  ].filter(Boolean); // Remove any undefined/empty tokens
+
   try {
-    // Check for available API token environment variables
-    const apiToken = process.env.GRIPP_API_TOKEN_1 || 
-                    process.env.GRIPP_API_TOKEN_2 || 
-                    "WGfdU9N2vESmERtVq8BN3gMT4rD1zd"; // Fallback to your token
+    console.log('🔍 Available tokens:', tokens.map((token, i) => `API ${i + 1}: ${token.substring(0, 8)}...`));
     
     const apiUrl = "https://api.gripp.com/public/api3.php";
     
@@ -95,41 +123,57 @@ export async function createGrippCompany(formData: {
     console.log('🔄 Sending Gripp JSON-RPC request...');
     console.log('📋 Company fields:', companyData);
 
-    // Make API call to Gripp using JSON-RPC format
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiToken}`
-      },
-      body: JSON.stringify(jsonRpcRequest)
-    });
+    // Send to BOTH API keys simultaneously
+    const results = [];
+    let hasSuccess = false;
+    
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i];
+      console.log(`🔑 Sending to Gripp API ${i + 1}/${tokens.length}...`);
+      
+      try {
+        const batchResponse = await tryGrippRequest(token, jsonRpcRequest, apiUrl);
+        console.log(`✅ Gripp API ${i + 1} batch response:`, batchResponse);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('❌ Gripp API HTTP Error:', response.status, errorText);
-      return {
-        success: false,
-        error: `HTTP ${response.status}: ${errorText}`
-      };
+        // Extract result like PHP code: $response = $batchresponse[0]['result'];
+        if (batchResponse && Array.isArray(batchResponse) && batchResponse[0] && batchResponse[0].result) {
+          const result = batchResponse[0].result;
+          console.log(`✅ Gripp company created successfully in API ${i + 1}:`, result);
+          results.push({
+            api: i + 1,
+            success: true,
+            data: result
+          });
+          hasSuccess = true;
+        } else {
+          throw new Error('Unexpected API response format');
+        }
+      } catch (error) {
+        console.error(`❌ API ${i + 1} failed:`, error instanceof Error ? error.message : error);
+        results.push({
+          api: i + 1,
+          success: false,
+          error: error instanceof Error ? error.message : 'Unknown error'
+        });
+      }
     }
 
-    const batchResponse = await response.json();
-    console.log('✅ Gripp API batch response:', batchResponse);
-
-    // Extract result like PHP code: $response = $batchresponse[0]['result'];
-    if (batchResponse && Array.isArray(batchResponse) && batchResponse[0] && batchResponse[0].result) {
-      const result = batchResponse[0].result;
-      console.log('✅ Gripp company created successfully:', result);
+    // Return success if at least one API succeeded
+    if (hasSuccess) {
+      console.log(`✅ Customer created in ${results.filter(r => r.success).length}/${tokens.length} Gripp systems`);
       return {
         success: true,
-        data: result
+        data: {
+          results: results,
+          summary: `Created in ${results.filter(r => r.success).length}/${tokens.length} systems`
+        }
       };
     } else {
-      console.error('❌ Unexpected Gripp API response format:', batchResponse);
+      console.error('❌ All Gripp APIs failed');
       return {
         success: false,
-        error: 'Unexpected API response format'
+        error: 'Failed to create customer in any Gripp system',
+        data: { results }
       };
     }
 
