@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface BackToTopButtonProps {
   className?: string;
@@ -7,6 +8,24 @@ interface BackToTopButtonProps {
 
 export default function BackToTopButton({ className = "" }: BackToTopButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [location] = useLocation();
+
+  // Get specialist colors based on current page
+  const getSpecialistColors = () => {
+    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+      return 'from-tbgs-red to-red-600';
+    }
+    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+      return 'from-tbgs-blue to-blue-600';
+    }
+    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+      return 'from-tbgs-green to-green-600';
+    }
+    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+      return 'from-tbgs-orange to-orange-600';
+    }
+    return 'from-tbgs-navy to-blue-600';
+  };
 
   // Show button when page is scrolled down
   useEffect(() => {
@@ -36,7 +55,7 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-3 left-3 z-40 bg-gradient-to-br from-tbgs-navy to-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center group ${className}`}
+      className={`fixed bottom-3 left-3 z-40 bg-gradient-to-br ${getSpecialistColors()} text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center group ${className}`}
       aria-label="Terug naar boven"
       title="Terug naar boven"
     >
