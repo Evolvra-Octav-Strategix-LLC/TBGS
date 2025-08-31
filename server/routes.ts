@@ -224,6 +224,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
           } catch (emailError) {
             console.error('Failed to send thank you email:', emailError);
           }
+
+          // Create customer in Gripp after successful email sending (with files)
+          try {
+            const grippData = {
+              requestDescription: validatedData.projectDescription || `${validatedData.selectedService} aanvraag`,
+              email: validatedData.email,
+              street: validatedData.address ? validatedData.address.split(',')[0] || '' : '',
+              postalCode: '', // Not always available
+              houseNumber: '',
+              city: validatedData.address ? validatedData.address.split(',').pop()?.trim() || '' : '',
+              phoneNumber: validatedData.phone,
+              firstName: validatedData.firstName,
+              infix: '',
+              lastName: validatedData.lastName
+            };
+
+            const grippResult = await createGrippCompany(grippData);
+            if (grippResult.success) {
+              console.log(`✅ Service request: Customer created in Gripp successfully for ${savedRequest.id}`);
+            } else {
+              console.error(`❌ Service request: Failed to create customer in Gripp for ${savedRequest.id}:`, grippResult.error);
+            }
+          } catch (grippError) {
+            console.error(`Service request: Gripp integration error for ${savedRequest.id}:`, grippError);
+          }
         });
 
         return;
@@ -267,6 +292,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.log(`✓ Background thank you email sent voor aanvraag ${savedRequest.id} (no files)`);
         } catch (emailError) {
           console.error('Failed to send thank you email:', emailError);
+        }
+
+        // Create customer in Gripp after successful email sending (no files)
+        try {
+          const grippData = {
+            requestDescription: validatedData.projectDescription || `${validatedData.selectedService} aanvraag`,
+            email: validatedData.email,
+            street: validatedData.address ? validatedData.address.split(',')[0] || '' : '',
+            postalCode: '', // Not always available
+            houseNumber: '',
+            city: validatedData.address ? validatedData.address.split(',').pop()?.trim() || '' : '',
+            phoneNumber: validatedData.phone,
+            firstName: validatedData.firstName,
+            infix: '',
+            lastName: validatedData.lastName
+          };
+
+          const grippResult = await createGrippCompany(grippData);
+          if (grippResult.success) {
+            console.log(`✅ Service request: Customer created in Gripp successfully for ${savedRequest.id} (no files)`);
+          } else {
+            console.error(`❌ Service request: Failed to create customer in Gripp for ${savedRequest.id} (no files):`, grippResult.error);
+          }
+        } catch (grippError) {
+          console.error(`Service request: Gripp integration error for ${savedRequest.id} (no files):`, grippError);
         }
       });
 
@@ -604,6 +654,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
         files: processedFiles,
         submittedAt: new Date(emailData.submittedAt)
       });
+
+      // Create customer in Gripp after successful email sending (just like contact/offerte forms)
+      console.log('🔄 Webhook: Starting Gripp integration...');
+      console.log('📧 Webhook emailData:', JSON.stringify(emailData, null, 2));
+      try {
+        const grippData = {
+          requestDescription: emailData.projectDescription || emailData.description || `${emailData.selectedService} aanvraag`,
+          email: emailData.email,
+          street: emailData.address ? emailData.address.split(',')[0] || '' : '',
+          postalCode: '', // Not always available in webhook data
+          houseNumber: '',
+          city: emailData.address ? emailData.address.split(',').pop()?.trim() || '' : '',
+          phoneNumber: emailData.phone,
+          firstName: emailData.firstName,
+          infix: '',
+          lastName: emailData.lastName
+        };
+
+        const grippResult = await createGrippCompany(grippData);
+        if (grippResult.success) {
+          console.log('✅ Webhook: Customer created in Gripp successfully');
+        } else {
+          console.error('❌ Webhook: Failed to create customer in Gripp:', grippResult.error);
+        }
+      } catch (grippError) {
+        console.error('Webhook: Gripp integration error:', grippError);
+        // Don't fail the request if Gripp fails
+      }
 
       console.log('✓ Webhook emails sent successfully');
       res.status(200).json({ success: true, message: 'Emails sent successfully' });
