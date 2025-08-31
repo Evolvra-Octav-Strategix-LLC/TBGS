@@ -13,6 +13,7 @@ import {
   insertAdminUserSchema
 } from "@shared/schema";
 import { emailService } from "./emailService";
+import { googlePlacesService } from "./googlePlacesService";
 import multiparty from 'multiparty';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
@@ -1038,6 +1039,44 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Delete article error:", error);
       res.status(400).json({ error: "Artikel verwijderen mislukt" });
+    }
+  });
+
+  // Google Reviews API endpoint
+  app.get("/api/google-reviews/:city/:country", async (req, res) => {
+    try {
+      const { city, country } = req.params;
+      
+      if (country !== 'nl' && country !== 'be') {
+        return res.status(400).json({ error: "Invalid country. Use 'nl' or 'be'" });
+      }
+      
+      console.log(`Fetching Google reviews for ${city}, ${country}`);
+      
+      const businessData = await googlePlacesService.getBusinessData('TBGS', city, country as 'nl' | 'be');
+      
+      if (!businessData) {
+        return res.status(404).json({ error: "Business data not found" });
+      }
+      
+      res.json(businessData);
+    } catch (error) {
+      console.error("Google reviews error:", error);
+      res.status(500).json({ error: "Failed to fetch reviews" });
+    }
+  });
+
+  // Bulk fetch all location data (for caching)
+  app.get("/api/google-reviews/bulk", async (req, res) => {
+    try {
+      console.log("Fetching bulk Google reviews data...");
+      
+      const allData = await googlePlacesService.cacheBusinessDataForLocations();
+      
+      res.json(allData);
+    } catch (error) {
+      console.error("Bulk Google reviews error:", error);
+      res.status(500).json({ error: "Failed to fetch bulk reviews data" });
     }
   });
 

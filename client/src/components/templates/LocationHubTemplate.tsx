@@ -18,10 +18,12 @@ import {
   Wrench,
   Home,
   Building2,
-  Hammer
+  Hammer,
+  Loader2
 } from "lucide-react";
 import { Link } from "wouter";
 import SEOHead from "@/lib/seo";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
 interface LocationHubTemplateProps {
   // Core Data
@@ -50,8 +52,8 @@ interface LocationHubTemplateProps {
     popular?: boolean;
   }[];
   
-  // Reviews/testimonials from this city
-  reviews: {
+  // Reviews/testimonials from this city (fallback if Google reviews fail)
+  reviews?: {
     name: string;
     location: string;
     rating: number;
@@ -92,7 +94,7 @@ export default function LocationHubTemplate({
   heroDescription,
   cityDescription,
   services,
-  reviews,
+  reviews = [],
   projects = [],
   faqs,
   phone,
@@ -100,6 +102,14 @@ export default function LocationHubTemplate({
   onOpenContactModal
 }: LocationHubTemplateProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+  // Fetch real Google reviews
+  const { data: googleData, isLoading: isLoadingReviews } = useGoogleReviews(city, country);
+  
+  // Use Google reviews if available, otherwise fallback to mock reviews
+  const displayReviews = googleData?.reviews && googleData.reviews.length > 0 ? googleData.reviews : reviews;
+  const businessRating = googleData?.rating || 4.8;
+  const totalReviews = googleData?.totalReviews || displayReviews.length;
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -135,8 +145,8 @@ export default function LocationHubTemplate({
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": reviews.length.toString()
+          "ratingValue": businessRating.toString(),
+          "reviewCount": totalReviews.toString()
         },
         "areaServed": nearbyCities.join(", "),
         "hasOfferCatalog": {
@@ -398,52 +408,118 @@ export default function LocationHubTemplate({
         </section>
 
         {/* Reviews Section */}
-        {reviews.length > 0 && (
+        {(displayReviews.length > 0 || isLoadingReviews) && (
           <section className="py-16 lg:py-20">
             <div className="container mx-auto px-4">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                    Wat Klanten in {city} Zeggen
+                    {googleData ? 'Google Reviews' : 'Wat Klanten in'} {city} {googleData ? '' : 'Zeggen'}
                   </h2>
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                      ))}
+                  {isLoadingReviews ? (
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span className="text-gray-600">Reviews laden...</span>
                     </div>
-                    <span className="text-lg font-semibold text-gray-900">4.8/5</span>
-                    <span className="text-gray-600">({reviews.length} reviews)</span>
-                  </div>
+                  ) : (
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <div className="flex gap-1">
+                        {[...Array(Math.round(businessRating))].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        ))}
+                        {[...Array(5 - Math.round(businessRating))].map((_, i) => (
+                          <Star key={i + Math.round(businessRating)} className="w-5 h-5 text-gray-300" />
+                        ))}
+                      </div>
+                      <span className="text-lg font-semibold text-gray-900">{businessRating.toFixed(1)}/5</span>
+                      <span className="text-gray-600">({totalReviews} reviews)</span>
+                      {googleData && (
+                        <Badge variant="secondary" className="ml-2">
+                          <Star className="w-3 h-3 mr-1" />
+                          Google Reviews
+                        </Badge>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {reviews.slice(0, 6).map((review, index) => (
-                    <Card key={index} className="border border-gray-200">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-1 mb-3">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
-                        <p className="text-gray-700 mb-4 leading-relaxed">
-                          "{review.text}"
-                        </p>
-                        <div className="border-t pt-4">
-                          <div className="flex items-center justify-between text-sm">
-                            <div>
-                              <div className="font-semibold text-gray-900">{review.name}</div>
-                              <div className="text-gray-600">{review.location}</div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-gray-600">{review.service}</div>
-                              <div className="text-gray-500">{review.date}</div>
+                  {isLoadingReviews ? (
+                    // Loading skeleton
+                    [...Array(3)].map((_, index) => (
+                      <Card key={index} className="border border-gray-200">
+                        <CardContent className="p-6">
+                          <div className="flex items-center gap-1 mb-3">
+                            {[...Array(5)].map((_, i) => (
+                              <div key={i} className="w-4 h-4 bg-gray-200 rounded animate-pulse" />
+                            ))}
+                          </div>
+                          <div className="space-y-2 mb-4">
+                            <div className="h-4 bg-gray-200 rounded animate-pulse" />
+                            <div className="h-4 bg-gray-200 rounded animate-pulse w-3/4" />
+                          </div>
+                          <div className="border-t pt-4">
+                            <div className="flex items-center justify-between text-sm">
+                              <div>
+                                <div className="h-4 bg-gray-200 rounded animate-pulse w-20 mb-1" />
+                                <div className="h-3 bg-gray-200 rounded animate-pulse w-16" />
+                              </div>
+                              <div className="text-right">
+                                <div className="h-3 bg-gray-200 rounded animate-pulse w-12 mb-1" />
+                                <div className="h-3 bg-gray-200 rounded animate-pulse w-16" />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                        </CardContent>
+                      </Card>
+                    ))
+                  ) : (
+                    displayReviews.slice(0, 6).map((review, index) => (
+                      <Card key={index} className="border border-gray-200">
+                        <CardContent className="p-6">
+                          <div className="flex items-center gap-1 mb-3">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            ))}
+                            {[...Array(5 - review.rating)].map((_, i) => (
+                              <Star key={i + review.rating} className="w-4 h-4 text-gray-300" />
+                            ))}
+                          </div>
+                          <p className="text-gray-700 mb-4 leading-relaxed">
+                            "{review.text.length > 150 ? review.text.substring(0, 150) + '...' : review.text}"
+                          </p>
+                          <div className="border-t pt-4">
+                            <div className="flex items-center justify-between text-sm">
+                              <div className="flex items-center gap-2">
+                                {googleData && 'profilePhoto' in review && (
+                                  <img 
+                                    src={review.profilePhoto} 
+                                    alt={review.name}
+                                    className="w-8 h-8 rounded-full"
+                                    onError={(e) => {
+                                      e.currentTarget.style.display = 'none';
+                                    }}
+                                  />
+                                )}
+                                <div>
+                                  <div className="font-semibold text-gray-900">{review.name}</div>
+                                  <div className="text-gray-600">
+                                    {'location' in review ? review.location : city}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-gray-600">
+                                  {'service' in review ? review.service : 'Google Review'}
+                                </div>
+                                <div className="text-gray-500">{review.date}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
