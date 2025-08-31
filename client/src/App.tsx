@@ -104,6 +104,26 @@ import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
 import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
 import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
 import HamontAchelSchoorsteen from "@/pages/locations/HamontAchelSchoorsteen";
+import PeltDaklekkage from "@/pages/locations/PeltDaklekkage";
+import PeltRenovatie from "@/pages/locations/PeltRenovatie";
+import PeltOnderhoud from "@/pages/locations/PeltOnderhoud";
+import PeltSchoorsteen from "@/pages/locations/PeltSchoorsteen";
+import SintHuibrechtsLilleDaklekkage from "@/pages/locations/SintHuibrechtsLilleDaklekkage";
+import SintHuibrechtsLilleRenovatie from "@/pages/locations/SintHuibrechtsLilleRenovatie";
+import SintHuibrechtsLilleOnderhoud from "@/pages/locations/SintHuibrechtsLilleOnderhoud";
+import SintHuibrechtsLilleSchoorsteen from "@/pages/locations/SintHuibrechtsLilleSchoorsteen";
+import OverpeltDaklekkage from "@/pages/locations/OverpeltDaklekkage";
+import OverpeltRenovatie from "@/pages/locations/OverpeltRenovatie";
+import OverpeltOnderhoud from "@/pages/locations/OverpeltOnderhoud";
+import OverpeltSchoorsteen from "@/pages/locations/OverpeltSchoorsteen";
+import NeerpeltDaklekkage from "@/pages/locations/NeerpeltDaklekkage";
+import NeerpeltRenovatie from "@/pages/locations/NeerpeltRenovatie";
+import NeerpeltOnderhoud from "@/pages/locations/NeerpeltOnderhoud";
+import NeerpeltSchoorsteen from "@/pages/locations/NeerpeltSchoorsteen";
+import HamontDaklekkage from "@/pages/locations/HamontDaklekkage";
+import HamontRenovatie from "@/pages/locations/HamontRenovatie";
+import HamontOnderhoud from "@/pages/locations/HamontOnderhoud";
+import HamontSchoorsteen from "@/pages/locations/HamontSchoorsteen";
 
 // Location-Specific Plat Dak Specialist Pages
 import EindhovenPlatDak from "@/pages/locaties/EindhovenPlatDak";
@@ -316,6 +336,26 @@ function Router() {
           <Route path="/be/hamont-achel/renovatie" component={() => <HamontAchelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/onderhoud" component={() => <HamontAchelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/schoorsteen" component={() => <HamontAchelSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/daklekkage" component={() => <PeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/renovatie" component={() => <PeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/onderhoud" component={() => <PeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt/schoorsteen" component={() => <PeltSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/daklekkage" component={() => <SintHuibrechtsLilleDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/renovatie" component={() => <SintHuibrechtsLilleRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/onderhoud" component={() => <SintHuibrechtsLilleOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille/schoorsteen" component={() => <SintHuibrechtsLilleSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/overpelt/daklekkage" component={() => <OverpeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/overpelt/renovatie" component={() => <OverpeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/overpelt/onderhoud" component={() => <OverpeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/overpelt/schoorsteen" component={() => <OverpeltSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/neerpelt/daklekkage" component={() => <NeerpeltDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/neerpelt/renovatie" component={() => <NeerpeltRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/neerpelt/onderhoud" component={() => <NeerpeltOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/neerpelt/schoorsteen" component={() => <NeerpeltSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/daklekkage" component={() => <HamontDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/renovatie" component={() => <HamontRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/onderhoud" component={() => <HamontOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont/schoorsteen" component={() => <HamontSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* Admin Routes */}
           <Route path="/admin*" component={AdminApp} />
