@@ -294,6 +294,135 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
         </div>
       </section>
 
+      {/* Onderhoud Kennisbank Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Onderhoud Kennisbank
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Uitgebreide informatieartikelen over onderhoud, preventie en zorg voor uw woning. 
+              Professioneel advies van onze ervaren onderhoud specialisten.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Dakkapel Reinigen Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-home text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakkapel Reinigen</h3>
+                <p className="text-gray-600 mb-4">
+                  Professionele <strong>dakkapel reiniging</strong> voor optimale lichtinval en schone constructie. Complete zorg met maatwerk abonnement.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/dakkapel-reinigen" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over dakkapel reinigen →
+                </Link>
+              </div>
+            </div>
+
+            {/* Onderhoud Dakkapel Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-tools text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Dakkapel</h3>
+                <p className="text-gray-600 mb-4">
+                  Complete <strong>dakkapel onderhoud</strong> door ervaren specialisten. Preventief onderhoud voorkomt kostbare reparaties.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/onderhoud-dakkapel" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over dakkapel onderhoud →
+                </Link>
+              </div>
+            </div>
+
+            {/* Onderhoud Hout Dak Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-tree text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Hout in Dak</h3>
+                <p className="text-gray-600 mb-4">
+                  <strong>Houtbescherming</strong> voor dakconstructies door ervaren specialisten. Preventieve behandeling tegen aantasting.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/onderhoud-hout-dak" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over hout onderhoud →
+                </Link>
+              </div>
+            </div>
+
+            {/* Schilder Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-paint-brush text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Schilder</h3>
+                <p className="text-gray-600 mb-4">
+                  Vakkundig <strong>schilderwerk</strong> door ervaren schilders. Binnen- en buitenschilderwerk met perfecte afwerking.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/schilder" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over schilderwerk →
+                </Link>
+              </div>
+            </div>
+
+            {/* Onderhoud Garage Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-car text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Garage</h3>
+                <p className="text-gray-600 mb-4">
+                  Complete <strong>garage onderhoud</strong> door ervaren specialisten. Van dak tot vloer - alle aspecten van garage zorg.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/onderhoud-garage" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over garage onderhoud →
+                </Link>
+              </div>
+            </div>
+
+            {/* Onderhoud Dakgoot Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-tint text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Dakgoot</h3>
+                <p className="text-gray-600 mb-4">
+                  Professioneel <strong>dakgoot onderhoud</strong> voorkomt wateroverlast. Regelmatige reiniging en preventieve zorg.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/onderhoud-dakgoot" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over dakgoot onderhoud →
+                </Link>
+              </div>
+            </div>
+
+            {/* Preventief Onderhoud Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <i className="fas fa-shield-alt text-green-600 text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief Onderhoud</h3>
+                <p className="text-gray-600 mb-4">
+                  <strong>Preventief onderhoud</strong> bespaart geld en voorkomt problemen. Maatwerk onderhoudsprogramma voor uw woning.
+                </p>
+                <Link href="/totaal-onderhoud-specialist/preventief-onderhoud" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                  Lees meer over preventief onderhoud →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-green text-white">
         <div className="container mx-auto px-4">
