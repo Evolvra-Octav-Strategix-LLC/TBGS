@@ -10,9 +10,12 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Webhook URLs
-const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
-const GRIPP_WEBHOOK_URL = 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/gripp-webhook';
+// Dynamic webhook URL generator
+function getWebhookUrl(req, endpoint) {
+  const protocol = req.headers['x-forwarded-proto'] || 'https';
+  const host = req.headers.host;
+  return `${protocol}://${host}/api/${endpoint}`;
+}
 
 // Contact modal validation schema
 const contactModalSchema = z.object({
@@ -62,7 +65,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
 // Email service via webhook to main server
-async function sendEmailViaWebhook(emailData, files) {
+async function sendEmailViaWebhook(emailData, files, webhookUrl) {
   console.log('📧 Sending contact modal email via webhook to main server...');
   try {
     // Prepare files for webhook (encode buffers as base64)
@@ -84,7 +87,7 @@ async function sendEmailViaWebhook(emailData, files) {
       }
     }
 
-    const response = await fetch(EMAIL_WEBHOOK_URL, {
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,10 +112,10 @@ async function sendEmailViaWebhook(emailData, files) {
 }
 
 // Gripp CRM integration via webhook
-async function sendGrippViaWebhook(formData) {
+async function sendGrippViaWebhook(formData, webhookUrl) {
   console.log('🏢 Sending contact modal to Gripp CRM via webhook...');
   try {
-    const response = await fetch(GRIPP_WEBHOOK_URL, {
+    const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -228,6 +231,13 @@ export default async function handler(req, res) {
       requestId: savedRequest.id
     });
 
+    // Generate dynamic webhook URLs for current environment
+    const emailWebhookUrl = getWebhookUrl(req, 'email-webhook');
+    const grippWebhookUrl = getWebhookUrl(req, 'gripp-webhook');
+    
+    console.log(`📧 Using email webhook: ${emailWebhookUrl}`);
+    console.log(`🏢 Using Gripp webhook: ${grippWebhookUrl}`);
+
     // Send emails via webhook to main server (after response)
     try {
       // Transform contact modal data to format expected by email service
@@ -256,7 +266,7 @@ export default async function handler(req, res) {
         id: savedRequest.id
       };
 
-      await sendEmailViaWebhook(emailData, files);
+      await sendEmailViaWebhook(emailData, files, emailWebhookUrl);
       
       console.log(`✓ Webhook emails sent for contact modal ${savedRequest.id}`);
     } catch (emailError) {
@@ -265,7 +275,7 @@ export default async function handler(req, res) {
 
     // Send to Gripp CRM (non-blocking)
     try {
-      await sendGrippViaWebhook(validatedData);
+      await sendGrippViaWebhook(validatedData, grippWebhookUrl);
       console.log(`✓ Gripp CRM updated for contact modal ${savedRequest.id}`);
     } catch (grippError) {
       console.error('Gripp webhook failed (form still submitted):', grippError);
