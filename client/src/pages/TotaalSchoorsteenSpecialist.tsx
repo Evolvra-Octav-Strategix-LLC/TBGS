@@ -363,9 +363,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>schoorsteen reparatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Voegwerk, schoorsteenkap reparatie en noodservice.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/totaal-schoorsteen-specialist/schoorsteen-voegen-repareren" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen repareren →
-                </div>
+                </Link>
               </div>
             </div>
 
