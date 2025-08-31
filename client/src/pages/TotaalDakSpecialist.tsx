@@ -410,9 +410,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Grondige <strong>dakinspectie</strong> door ervaren <strong>dakdekkers</strong>. Thermografisch onderzoek detecteert problemen vroeg en voorkomt dure <strong>dakwerken</strong> reparaties.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/dakinspectie" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dakinspectie →
-                </div>
+                </Link>
               </div>
             </div>
 
