@@ -19,8 +19,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
   return (
     <>
       <SEOHead 
-        title="Totaal Dak Specialist (TDS) - Dakwerken & Dakisolatie | TBGS"
-        description="TDS - Totaal Dak Specialist van TBGS. Specialist in hellende en platte daken, dakisolatie, lekkagedetectie en dakgoten in Nederland en België."
+        title="Dakdekker & Dakwerken Specialist | Daklekkage Reparatie | TDS TBGS"
+        description="🏠 Dakdekker specialist voor daklekkage, dakrenovatie, dakgoot reinigen & dak isolatie. ⚡ 24/7 spoedservice voor dakwerken in Nederland & België. ✅ Gecertificeerde dakspecialisten."
         url="https://tbgs.nl/totaal-dak-specialist"
       />
 
@@ -42,14 +42,14 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   <img src={tdsLogo} alt="TDS Logo" className="w-20 h-20 object-contain" />
                   <div>
                     <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                      Totaal Dak Specialist
+                      Dakdekker & Dakwerken Specialist
                     </h1>
-                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-red font-semibold">TDS - Uw dakwerken specialist</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-red font-semibold">TDS - Gecertificeerde dakdekkers voor alle dakwerken</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Van hellende daken tot platte dakconstructies, van dakisolatie tot lekkagedetectie. 
-                  Onze gecertificeerde dakspecialisten zorgen voor kwalitatieve en duurzame oplossingen.
+                  Professionele <strong>dakdekker</strong> specialist voor <strong>daklekkage</strong>, <strong>dakrenovatie</strong> en <strong>dakgoot reinigen</strong>. 
+                  Onze gecertificeerde <strong>dakwerken</strong> specialisten leveren kwalitatieve oplossingen met garantie.
                 </p>
               </div>
 
@@ -113,11 +113,11 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Onze dakwerk diensten
+              Professionele Dakwerken Diensten
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Als totaal dak specialist bieden wij een complete service voor al uw dakwerk behoeften. 
-              Van kleine reparaties tot volledige dakrenovaties.
+              Als ervaren <strong>dakdekker specialist</strong> bieden wij alle <strong>dakwerken</strong> diensten. 
+              Van <strong>daklekkage reparatie</strong> tot complete <strong>dakrenovatie</strong> met garantie.
             </p>
           </div>
 
@@ -298,6 +298,173 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 Onderhoudstips voor langdurige duurzaamheid.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dakwerken Artikelen Section */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Dakwerken & Dakdekker Advies
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Alles over <strong>dakwerken</strong>, <strong>daklekkage reparatie</strong> en <strong>dakonderhoud</strong>. 
+              Professioneel advies van onze gecertificeerde <strong>dakdekkers</strong> en <strong>dakspecialisten</strong>.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Daklekkage Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                <i className="fas fa-tint text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-red-100 text-tbgs-red px-3 py-1 rounded-full text-sm font-semibold">Spoedservice</span>
+                  <span className="text-gray-500 text-sm">5 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Daklekkage Reparatie</h3>
+                <p className="text-gray-600 mb-4">
+                  <strong>Daklekkage</strong> spoedservice 24/7 door ervaren <strong>dakdekkers</strong>. Snelle lokalisatie en permanente reparatie van lekkende daken met thermografisch onderzoek.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over daklekkage →
+                </div>
+              </div>
+            </div>
+
+            {/* Dakrenovatie Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                <i className="fas fa-hammer text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">Renovatie</span>
+                  <span className="text-gray-500 text-sm">8 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakrenovatie</h3>
+                <p className="text-gray-600 mb-4">
+                  Complete <strong>dakrenovatie</strong> door gecertificeerde <strong>dakdekkers</strong>. Van dakpannen vervangen tot volledige <strong>dakwerken</strong> met moderne materialen en garantie.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakrenovatie →
+                </div>
+              </div>
+            </div>
+
+            {/* Dakgoot reinigen Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <i className="fas fa-broom text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Onderhoud</span>
+                  <span className="text-gray-500 text-sm">4 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoot Reinigen</h3>
+                <p className="text-gray-600 mb-4">
+                  Professionele <strong>dakgoot reinigen</strong> voorkomt waterschade. Onze <strong>dakdekkers</strong> reinigen dakgoten, regenpijpen en voeren preventief onderhoud uit.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakgoot reinigen →
+                </div>
+              </div>
+            </div>
+
+            {/* Dak isolatie Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                <i className="fas fa-thermometer-half text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">Energiebesparing</span>
+                  <span className="text-gray-500 text-sm">6 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dak Isolatie</h3>
+                <p className="text-gray-600 mb-4">
+                  <strong>Dak isolatie</strong> bespaart tot 30% energiekosten. Professionele <strong>dakwerken</strong> isolatie door gecertificeerde <strong>dakdekkers</strong> met premium materialen.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dak isolatie →
+                </div>
+              </div>
+            </div>
+
+            {/* Dakinspectie Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                <i className="fas fa-search text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Inspectie</span>
+                  <span className="text-gray-500 text-sm">7 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakinspectie & Advies</h3>
+                <p className="text-gray-600 mb-4">
+                  Grondige <strong>dakinspectie</strong> door ervaren <strong>dakdekkers</strong>. Thermografisch onderzoek detecteert problemen vroeg en voorkomt dure <strong>dakwerken</strong> reparaties.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakinspectie →
+                </div>
+              </div>
+            </div>
+
+            {/* Dakbedekking Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
+                <i className="fas fa-layer-group text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold">Materialen</span>
+                  <span className="text-gray-500 text-sm">9 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakbedekking</h3>
+                <p className="text-gray-600 mb-4">
+                  Alle soorten <strong>dakbedekking</strong> door vakkundige <strong>dakdekkers</strong>: dakpannen, leien, bitumen shingles en EPDM. Professionele <strong>dakwerken</strong> met kwaliteitsgarantie.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakbedekking →
+                </div>
+              </div>
+            </div>
+
+            {/* Nokvorsten Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
+                <i className="fas fa-tools text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">Reparatie</span>
+                  <span className="text-gray-500 text-sm">5 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Nokvorsten Repareren</h3>
+                <p className="text-gray-600 mb-4">
+                  Professionele <strong>nokvorsten reparatie</strong> door ervaren <strong>dakdekkers</strong>. Vakkundige <strong>dakwerken</strong> reparatie van nokvorsten en complete dakrand afwerking.
+                </p>
+                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over nokvorsten repareren →
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <button 
+              onClick={onOpenContactModal}
+              className="bg-tbgs-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors inline-flex items-center"
+            >
+              <i className="fas fa-envelope mr-3"></i>
+              Vraag advies aan onze dakexperts
+            </button>
           </div>
         </div>
       </section>
