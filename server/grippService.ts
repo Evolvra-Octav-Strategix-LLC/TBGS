@@ -59,10 +59,8 @@ export async function createGrippCompany(formData: {
 }): Promise<GrippApiResponse> {
   try {
     // Check for available API token environment variables
-    const apiToken = process.env.GRIPP_API_TOKEN || 
-                    process.env.GRIPP_TOKEN || 
-                    process.env.GRIPP_API_KEY ||
-                    process.env.GRIPP_API ||
+    const apiToken = process.env.GRIPP_API_TOKEN_1 || 
+                    process.env.GRIPP_API_TOKEN_2 || 
                     "WGfdU9N2vESmERtVq8BN3gMT4rD1zd"; // Fallback to your token
     
     const apiUrl = "https://api.gripp.com/public/api3.php";
