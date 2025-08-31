@@ -430,9 +430,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Alle soorten <strong>dakbedekking</strong> door vakkundige <strong>dakdekkers</strong>: dakpannen, leien, bitumen shingles en EPDM. Professionele <strong>dakwerken</strong> met kwaliteitsgarantie.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/dakbedekking" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dakbedekking →
-                </div>
+                </Link>
               </div>
             </div>
 
