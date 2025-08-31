@@ -283,9 +283,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Professioneel <strong>schoorsteen vegen</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Jaarlijks onderhoud voor veilige rookafvoer en brandpreventie.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/totaal-schoorsteen-specialist/schoorsteen-vegen" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen vegen →
-                </div>
+                </Link>
               </div>
             </div>
 
