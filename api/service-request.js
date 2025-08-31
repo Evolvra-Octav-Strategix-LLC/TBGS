@@ -10,12 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Dynamic webhook URL generator
-function getWebhookUrl(req, endpoint) {
-  const protocol = req.headers['x-forwarded-proto'] || 'https';
-  const host = req.headers.host;
-  return `${protocol}://${host}/api/${endpoint}`;
-}
+// Webhook URL for email service
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
 
 // Service request validation schema
 const serviceRequestSchema = z.object({
@@ -63,7 +59,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
 // Email service via webhook to main server
-async function sendEmailViaWebhook(emailData, files, webhookUrl) {
+async function sendEmailViaWebhook(emailData, files) {
   console.log('📧 Sending email via webhook to main server...');
   try {
     // Prepare files for webhook (encode buffers as base64)
@@ -85,7 +81,7 @@ async function sendEmailViaWebhook(emailData, files, webhookUrl) {
       }
     }
 
-    const response = await fetch(webhookUrl, {
+    const response = await fetch(EMAIL_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,40 +105,49 @@ async function sendEmailViaWebhook(emailData, files, webhookUrl) {
   }
 }
 
-// Gripp CRM integration via webhook
-async function sendGrippViaWebhook(formData, webhookUrl) {
-  console.log('🏢 Sending to Gripp CRM via webhook...');
+// Gripp CRM integration (standalone)
+async function sendToGrippCRM(formData) {
+  console.log('🏢 Sending to Gripp CRM...');
   try {
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        street: formData.street || '',
-        houseNumber: formData.houseNumber || '',
-        city: formData.city || '',
-        postcode: formData.postcode || '',
-        requestDescription: formData.projectDescription || formData.description || '',
-        infix: formData.infix || ''
+    const grippData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      street: formData.street || '',
+      houseNumber: formData.houseNumber || '',
+      city: formData.city || '',
+      postcode: formData.postcode || '',
+      requestDescription: formData.projectDescription || formData.description || '',
+      infix: formData.infix || ''
+    };
+
+    // Try both Gripp API accounts
+    const responses = await Promise.allSettled([
+      fetch('https://api.gripp.com/public/api3.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.GRIPP_API_TOKEN_1}`
+        },
+        body: JSON.stringify(grippData)
+      }),
+      fetch('https://api.gripp.com/public/api3.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', 
+          'Authorization': `Bearer ${process.env.GRIPP_API_TOKEN_2}`
+        },
+        body: JSON.stringify(grippData)
       })
-    });
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`Gripp webhook failed: ${response.status}`);
-    }
-
-    const result = await response.json();
-    console.log('✓ Gripp webhook successful');
-    return result;
+    const successCount = responses.filter(r => r.status === 'fulfilled').length;
+    console.log(`✓ Gripp CRM: ${successCount}/2 accounts updated`);
+    return true;
   } catch (error) {
-    console.error('Gripp webhook failed (non-blocking):', error);
-    // Don't throw - this should not block form submission
-    return null;
+    console.error('Gripp CRM error (non-blocking):', error);
+    return false;
   }
 }
 
@@ -227,14 +232,7 @@ export default async function handler(req, res) {
       requestId: savedRequest.id
     });
 
-    // Generate dynamic webhook URLs for current environment
-    const emailWebhookUrl = getWebhookUrl(req, 'email-webhook');
-    const grippWebhookUrl = getWebhookUrl(req, 'gripp-webhook');
-    
-    console.log(`📧 Using email webhook: ${emailWebhookUrl}`);
-    console.log(`🏢 Using Gripp webhook: ${grippWebhookUrl}`);
-
-    // Send emails and Gripp data via webhooks (after response)
+    // Send emails via webhook to main server
     try {
       await sendEmailViaWebhook({
         ...validatedData,
@@ -247,19 +245,19 @@ export default async function handler(req, res) {
         postcode: validatedData.postcode,
         country: validatedData.country,
         id: savedRequest.id
-      }, files, emailWebhookUrl);
+      }, files);
       
       console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
     } catch (emailError) {
       console.error('Webhook email failed (form still submitted):', emailError);
     }
 
-    // Send to Gripp CRM (non-blocking)
+    // Send to Gripp CRM (separate, non-blocking)
     try {
-      await sendGrippViaWebhook(validatedData, grippWebhookUrl);
+      await sendToGrippCRM(validatedData);
       console.log(`✓ Gripp CRM updated for ${savedRequest.id}`);
     } catch (grippError) {
-      console.error('Gripp webhook failed (form still submitted):', grippError);
+      console.error('Gripp CRM failed (form still submitted):', grippError);
     }
 
     return; // Exit after webhooks complete
