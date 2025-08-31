@@ -344,6 +344,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.error('Failed to send thank you email:', emailError);
       }
 
+      // Create customer in Gripp after successful email sending
+      try {
+        const grippData = {
+          requestDescription: validatedData.description || `${validatedData.serviceType} aanvraag`,
+          email: validatedData.email,
+          street: '', // Not collected in contact form
+          postalCode: '', // Not collected in contact form
+          houseNumber: '',
+          city: validatedData.location,
+          phoneNumber: validatedData.phone,
+          firstName: validatedData.firstName,
+          infix: '',
+          lastName: validatedData.lastName
+        };
+
+        const grippResult = await createGrippCompany(grippData);
+        if (grippResult.success) {
+          console.log('✅ Contact form: Customer created in Gripp successfully');
+        } else {
+          console.error('❌ Contact form: Failed to create customer in Gripp:', grippResult.error);
+        }
+      } catch (grippError) {
+        console.error('Contact form: Gripp integration error:', grippError);
+        // Don't fail the request if Gripp fails
+      }
+
       res.status(200).json({ 
         success: true, 
         message: "Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op." 
@@ -427,6 +453,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
         await emailService.sendThankYouEmail(emailData);
       } catch (emailError) {
         console.error('Failed to send offerte thank you email:', emailError);
+      }
+
+      // Create customer in Gripp after successful email sending
+      try {
+        const grippData = {
+          requestDescription: `${validatedData.specialisme} - ${validatedData.projectType}: ${validatedData.beschrijving}`,
+          email: validatedData.email,
+          street: validatedData.adres,
+          postalCode: validatedData.postcode,
+          houseNumber: '', // Could be extracted from adres if needed
+          city: validatedData.plaats,
+          phoneNumber: validatedData.telefoon,
+          firstName: validatedData.voornaam,
+          infix: '',
+          lastName: validatedData.achternaam
+        };
+
+        const grippResult = await createGrippCompany(grippData);
+        if (grippResult.success) {
+          console.log('✅ Offerte form: Customer created in Gripp successfully');
+        } else {
+          console.error('❌ Offerte form: Failed to create customer in Gripp:', grippResult.error);
+        }
+      } catch (grippError) {
+        console.error('Offerte form: Gripp integration error:', grippError);
+        // Don't fail the request if Gripp fails
       }
 
       res.status(200).json({ 
