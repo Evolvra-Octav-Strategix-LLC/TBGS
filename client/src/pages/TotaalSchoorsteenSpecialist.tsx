@@ -383,9 +383,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Regelmatig <strong>schoorsteen onderhoud</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Preventief onderhoud voorkomt dure reparaties.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/totaal-schoorsteen-specialist/schoorsteen-onderhoud" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen onderhoud →
-                </div>
+                </Link>
               </div>
             </div>
           </div>
