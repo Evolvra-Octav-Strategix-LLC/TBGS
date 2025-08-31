@@ -450,9 +450,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>nokvorsten reparatie</strong> door ervaren <strong>dakdekkers</strong>. Vakkundige <strong>dakwerken</strong> reparatie van nokvorsten en complete dakrand afwerking.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/nokvorsten-repareren" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over nokvorsten repareren →
-                </div>
+                </Link>
               </div>
             </div>
           </div>
