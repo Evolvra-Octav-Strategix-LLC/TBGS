@@ -25,14 +25,14 @@ export default function OnderhoudGarage({ onOpenContactModal }: OnderhoudGarageP
   ];
 
   const garageServices = [
-    "Garage dak onderhoud - Complete onderhoud van garage dakconstructie",
-    "Garagedeur onderhoud - Onderhoud en reparatie van garagedeuren", 
-    "Afwatering garage - Onderhoud van garage drainage systemen",
-    "Garage vloer onderhoud - Reiniging en onderhoud van garage vloeren",
-    "Elektra controle - Controle van garage elektra installaties",
-    "Ventilatie onderhoud - Onderhoud van garage ventilatie systemen",
-    "Preventieve reparaties - Kleine reparaties voorkom grote problemen",
-    "Onderhoudsabonnement - Regelmatige garage zorg volgens afspraak"
+    "Plat dak onderhoud - Garagedak heeft ander onderhoud dan hellende daken",
+    "Waterafvoer controle - Schone dakgoot en regenpijp essentieel", 
+    "Bitumen dakbedekking - Ballastlaag kiezels beschermen tegen UV-stralen",
+    "EPDM rubber dak - Elastisch bij alle temperaturen, langer meegaand",
+    "Groen dak mogelijkheden - EPDM geschikt voor worteldoorgroei",
+    "Lekkage preventie - Voorkom vervelende schade door waterophoping",
+    "Drainage systemen - Groot oppervlak water snel naar grond brengen",
+    "Onderhoudsabonnement - Niet duur maar wel belangrijk voor preventie"
   ];
 
   const serviceAreas = {
@@ -60,88 +60,168 @@ export default function OnderhoudGarage({ onOpenContactModal }: OnderhoudGarageP
 
   const faqs = [
     {
-      question: "Wat houdt garage onderhoud in?",
-      answer: "Complete zorg voor garage: dak, deuren, afwatering, vloer, elektra en ventilatie. Preventief onderhoud voorkomt kostbare reparaties."
+      question: "Waarom heeft een garagedak ander onderhoud nodig?",
+      answer: "Garagedak is vaak plat dak zonder dakpannen en daklood. Heeft groot oppervlak waar water kan blijven staan - andere onderhoudsbenadering nodig."
     },
     {
-      question: "Hoe vaak heeft mijn garage onderhoud nodig?",
-      answer: "Wij adviseren jaarlijkse controle en onderhoud. Dit houdt uw garage in optimale staat en detecteert vroeg eventuele problemen."
+      question: "Wat is het verschil tussen Bitumen en EPDM?",
+      answer: "Bitumen heeft ballastlaag (kiezels) tegen UV-stralen. EPDM synthetisch rubber is elastischer, minder UV-gevoelig en geschikt voor groen dak."
     },
     {
-      question: "Kan garage onderhoud in mijn abonnement?",
-      answer: "Ja, garage onderhoud past perfect in uw maatwerk onderhoudsabonnement. Samenstel uw pakket naar behoefte en gebruik."
+      question: "Waarom is waterafvoer zo belangrijk bij garagedak?",
+      answer: "Plat dak moet regenwater in grote hoeveelheden snel afvoeren. Schone dakgoot en regenpijp essentieel voor lekkage preventie."
     },
     {
-      question: "Welke garage problemen komen het meest voor?",
-      answer: "Meest voorkomende problemen zijn daklekkages, defecte garagedeuren, verstopte afwatering en vocht problemen."
+      question: "Is garagedak onderhoud duur?",
+      answer: "Garagedak onderhouden is niet duur, maar wel belangrijk. Voorkomt lekkage en andere vervelende schade - preventie altijd goedkoper."
     }
   ];
 
   const sections = [
     {
-      title: "Garage Onderhoud Services",
+      title: "Garagedak Onderhoud Services",
       content: "",
       items: garageServices,
       icon: "fas fa-list"
     },
     {
-      title: "Complete Garage Onderhoud",
+      title: "Plat Dak Onderhoud Verschillen",
       content: `
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          <strong>Garage onderhoud</strong> door ervaren specialisten zorgt voor optimale functionaliteit en levensduur van uw garage. Van dak tot vloer - wij verzorgen alle aspecten van garage onderhoud.
+          Een <strong>garagedak</strong> is vaak een plat dak en platte daken hebben ander onderhoud en dak werkzaamheden nodig dan hellende daken. Zo heeft een plat dak bijvoorbeeld geen dakpannen en daklood.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Preventief <strong>onderhoud</strong> van uw garage voorkomt kostbare reparaties en zorgt voor veilige en droge berging van uw auto en spullen. Regelmatige controle detecteert problemen voordat ze groot worden.
+          Het heeft echter wel een groot oppervlak waar water kan blijven staan. Een <strong>garagedak onderhouden</strong> is niet duur, maar wel belangrijk. Zo voorkomt u lekkage en andere vervelende schade.
         </p>
         
-        <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
+        <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
           <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
-            <i class="fas fa-car text-green-600 mr-3"></i>
-            Garage Onderhoud Voordelen
+            <i class="fas fa-home text-green-600 mr-3"></i>
+            Plat Dak Kenmerken
           </h3>
           <ul class="space-y-2 text-gray-700">
-            <li>• Veilige en droge bergruimte</li>
-            <li>• Preventie van kostbare reparaties</li>
-            <li>• Optimale functionaliteit garage</li>
-            <li>• Langere levensduur constructie</li>
-            <li>• Behoud waarde eigendom</li>
+            <li>• Geen dakpannen en daklood</li>
+            <li>• Groot oppervlak waar water kan staan</li>
+            <li>• Onderhoud niet duur maar wel belangrijk</li>
+            <li>• Voorkomt lekkage en vervelende schade</li>
+            <li>• Ander onderhoud dan hellende daken</li>
           </ul>
         </div>
       `,
-      icon: "fas fa-car"
+      icon: "fas fa-home"
+    },
+    {
+      title: "Waterafvoer: Essentieel voor Garagedak",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Een plat dak moet namelijk het regenwater in grote hoeveelheden en korte tijd naar de grond brengen. Een schone <strong>dakgoot en regenpijp</strong> zijn dan van essentieel belang.
+        </p>
+
+        <div class="bg-cyan-50 p-6 rounded-xl border-l-4 border-cyan-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-tint text-green-600 mr-3"></i>
+            Waterafvoer Kritiek
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Regenwater in grote hoeveelheden</li>
+            <li>• Korte tijd naar grond brengen</li>
+            <li>• Schone dakgoot essentieel</li>
+            <li>• Regenpijp van cruciaal belang</li>
+            <li>• Voorkomt waterophoping op dak</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-tint"
+    },
+    {
+      title: "Bitumen Garagedak",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          De meeste <strong>garagedaken</strong> zijn bedekt met Bitumen dakbedekking. Vooral op garagedaken komt u ook een ballastlaag tegen in de vorm van kiezels of drainage-tegels.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Die zorgen ervoor dat uw <strong>Bitumen dakbedekking</strong> lange tijd meegaat, omdat deze niet meer direct blootgesteld wordt aan de zon en uv-stralen van de zon. Bij Bitumen dakbedekking is waterafvoer erg belangrijk.
+        </p>
+
+        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-gray-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-layer-group text-green-600 mr-3"></i>
+            Bitumen Voordelen
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Ballastlaag van kiezels of drainage-tegels</li>
+            <li>• Bescherming tegen zon en UV-stralen</li>
+            <li>• Langere levensduur door ballast</li>
+            <li>• Waterafvoer cruciaal voor duurzaamheid</li>
+            <li>• Hoe beter waterafvoer, hoe langer meegaand</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-layer-group"
+    },
+    {
+      title: "EPDM Garagedak",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          <strong>EPDM</strong> staat voor Ethyleen, Propyleen, Di Monomeer. Een EPDM dakbedekking bestaat uit een synthetisch rubber. De voordelen van een EPDM dakbedekking is dat het zeer elastisch is bij lage en hoge temperaturen.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Het is ook veel minder gevoelig voor de UV stralen van de zon en gaat daarom ook langer mee. U kunt het zelfs gebruiken als ondergrond voor een <strong>groen dak</strong>. Het is namelijk geschikt voor worteldoorgroei en tast boven groeiende vegetatie niet aan.
+        </p>
+
+        <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-leaf text-green-600 mr-3"></i>
+            EPDM Voordelen
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Ethyleen, Propyleen, Di Monomeer rubber</li>
+            <li>• Zeer elastisch bij alle temperaturen</li>
+            <li>• Minder gevoelig voor UV-stralen</li>
+            <li>• Gaat langer mee dan andere materialen</li>
+            <li>• Geschikt voor groen dak ondergrond</li>
+            <li>• Worteldoorgroei bestendig</li>
+            <li>• Groen dak gaat 2x langer mee</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-leaf"
     }
   ];
 
   const mainContent = `
-    <h2 class="text-3xl font-bold text-gray-900 mb-6">Onderhoud van Uw Garage</h2>
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Onderhoud van Uw Garagedak</h2>
     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-      Professioneel <strong>garage onderhoud</strong> door ervaren specialisten. Complete zorg voor garage dak, deuren, afwatering en alle technische installaties.
+      Een <strong>garagedak</strong> is vaak een plat dak en platte daken hebben ander onderhoud en dak werkzaamheden nodig dan hellende daken. Zo heeft een plat dak bijvoorbeeld geen dakpannen en daklood.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+      Het heeft echter wel een groot oppervlak waar water kan blijven staan. Een garagedak onderhouden is niet duur, maar wel belangrijk. Zo voorkomt u lekkage en andere vervelende schade.
     </p>
   `;
 
   return (
     <TOSArticleTemplate
-      title="Garage Onderhoud 2025 | Onderhoud Specialist | Onderhoudsabonnement | Nederland & België"
-      description="🏠 Garage onderhoud 2025! ✅ Complete garage zorg, dak onderhoud, deur service, onderhoudsabonnement - Nederland & België!"
+      title="Garagedak Onderhoud 2025 | Plat Dak | Bitumen EPDM | Nederland & België"
+      description="🏠 Garagedak onderhoud 2025! ✅ Plat dak specialist, Bitumen/EPDM, waterafvoer, groen dak, niet duur maar belangrijk - Nederland & België!"
       url="https://tbgs.nl/totaal-onderhoud-specialist/onderhoud-garage"
-      heroTitle="Onderhoud van uw garage"
-      heroSubtitle="Complete garage onderhoud door ervaren specialisten. Van dak tot vloer - alle aspecten van garage zorg in één hand."
-      heroDescription="Preventief garage onderhoud voorkomt kostbare reparaties. Maatwerk abonnement voor regelmatige zorg en optimale functionaliteit."
+      heroTitle="Onderhoud van uw garagedak"
+      heroSubtitle="Plat dak specialist voor Bitumen en EPDM garagedaken. Niet duur maar wel belangrijk voor lekkage preventie."
+      heroDescription="Groot oppervlak waar water kan staan vereist andere aanpak. Waterafvoer en dakbedekking onderhoud cruciaal."
       heroImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Professioneel garage onderhoud door specialist"
-      urgencyText="Preventief Onderhoud"
+      urgencyText="Niet Duur, Wel Belangrijk"
       statsConfig={{
-        stat1: { number: "Complete", text: "Garage zorg" },
-        stat2: { number: "Preventief", text: "Onderhoud" },
-        stat3: { number: "Maatwerk", text: "Abonnement" }
+        stat1: { number: "Plat", text: "Dak Specialist" },
+        stat2: { number: "Waterafvoer", text: "Essentieel" },
+        stat3: { number: "2x Langer", text: "Groen Dak" }
       }}
       mainContent={mainContent}
       sections={sections}
       processSteps={processSteps}
       serviceAreas={serviceAreas}
       faqs={faqs}
-      ctaTitle="Klaar voor Garage Onderhoud?"
-      ctaDescription="Zorg voor optimale garage functionaliteit met professioneel onderhoud. Preventieve zorg bespaart geld en voorkomt problemen."
+      ctaTitle="Garagedak Onderhoud Plannen?"
+      ctaDescription="Voorkom lekkage en vervelende schade. Garagedak onderhoud is niet duur maar wel belangrijk - neem contact op."
       primaryButtonText="Garage Onderhoud Plannen"
       secondaryButtonText="Specialist Bellen"
       onOpenContactModal={onOpenContactModal}
