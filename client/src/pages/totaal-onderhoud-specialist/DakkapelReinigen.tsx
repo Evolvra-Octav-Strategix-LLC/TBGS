@@ -60,20 +60,20 @@ export default function DakkapelReinigen({ onOpenContactModal }: DakkapelReinige
 
   const faqs = [
     {
+      question: "Waarom is zelf dakkapel reinigen gevaarlijk?",
+      answer: "Dakkapel reinigen is heel onveilig door het klauteren op dak. Risico op vallen en ongevallen is groot. Professionele reiniging is veiliger en effectiever."
+    },
+    {
       question: "Hoe vaak moet ik mijn dakkapel laten reinigen?",
-      answer: "Wij adviseren jaarlijkse reiniging van uw dakkapel. Dit voorkomt vervuiling, houdt ramen helder en detecteert vroeg eventuele onderhoudsproblemen."
+      answer: "Minstens jaarlijks moet uw dakkapel gereinigd worden. Dit voorkomt groene aanslag, algen en vogel uitwerpselen die schilderwerk en materialen aantasten."
     },
     {
-      question: "Wat wordt er gereinigd bij dakkapel onderhoud?",
-      answer: "Complete buitenreiniging van dakkapel, ramen binnen/buiten, kozijnen, afwatering, loodwerk en omliggende dakpannen."
+      question: "Wat houdt het onderhoudsabonnement in?",
+      answer: "Jaarlijks komen wij uw dakkapel reinigen voor vast bedrag. Noodzakelijke behandelingen inbegrepen. U vergeet het nooit meer en hoeft niet elk jaar een reiniger te zoeken."
     },
     {
-      question: "Kan dakkapel reiniging in het onderhoudsabonnement?",
-      answer: "Ja, dakkapel onderhoud kan onderdeel zijn van uw maatwerk abonnement. Samenstel uw pakket en betaal alleen voor gewenste diensten."
-    },
-    {
-      question: "Worden kleine reparaties direct uitgevoerd?",
-      answer: "Ja, tijdens de reiniging voeren wij kleine reparaties direct uit. Dit voorkomt verdere schade en houdt uw dakkapel in optimale staat."
+      question: "Waarom kiezen voor TBGS B.V.?",
+      answer: "Jarenlange ervaring, betrouwbare service, transparantie en klantvriendelijkheid. Wij weten wat écht leeft bij klanten en werken met respect voor materialen."
     }
   ];
 
@@ -85,37 +85,151 @@ export default function DakkapelReinigen({ onOpenContactModal }: DakkapelReinige
       icon: "fas fa-list"
     },
     {
-      title: "Professionele Dakkapel Reiniging",
+      title: "Professioneel Dakkapel Reinigen, Onze Specialiteit!",
       content: `
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          <strong>Dakkapel reiniging</strong> door ervaren onderhoud specialisten zorgt voor heldere ramen, schone constructie en optimale levensduur van uw dakkapel. Regelmatige reiniging voorkomt vervuiling en detecteert vroeg eventuele onderhoudsproblemen.
+          Jaren geleden maakte je de weloverwogen keuze om een <strong>dakkapel</strong> te laten plaatsen. Je hebt kunnen genieten van de extra ruimte en lichtinval, maar je hebt ook praktisch ondervonden dat het schoonmaken toch veel minder leuk en bovendien heel onveilig is.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Onze specialisten reinigen niet alleen de dakkapel zelf, maar controleren ook het omliggende dak, loodwerk en afwateringssysteem. Deze integrale aanpak zorgt voor complete zorg van uw dakkapel.
+          Niets is dan ook zo vervelend dan jouw mooie <strong>dakkapel</strong> langzaam groen te zien worden door de vele aanslag en algen erop. Bij de TBGS B.V. nemen we dit vervelende karwei dan ook met plezier van u over. Niet enkel zijn wij gespecialiseerd in <strong>dakkapel reinigen</strong>, maar we doen dit ook nog eens veilig en professioneel.
         </p>
         
         <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
           <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
-            <i class="fas fa-home text-green-600 mr-3"></i>
-            Dakkapel Reiniging Voordelen
+            <i class="fas fa-shield-alt text-green-600 mr-3"></i>
+            Waarom Professionele Reiniging?
           </h3>
           <ul class="space-y-2 text-gray-700">
-            <li>• Heldere ramen voor maximaal lichtinval</li>
-            <li>• Schone constructie voorkomt vervuiling</li>
-            <li>• Optimale levensduur van dakkapel</li>
-            <li>• Vroege detectie van problemen</li>
-            <li>• Complete integrale zorg</li>
+            <li>• Veilig - geen gevaarlijk zelf klauteren</li>
+            <li>• Voorkomen groene aanslag en algen</li>
+            <li>• Behoud mooie uitstraling dakkapel</li>
+            <li>• Gespecialiseerde ervaring en materialen</li>
+            <li>• Professionele en veilige uitvoering</li>
           </ul>
         </div>
       `,
-      icon: "fas fa-home"
+      icon: "fas fa-star"
+    },
+    {
+      title: "Waarom Reinigen?",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Het is uitermate belangrijk om uw <strong>dakkapel</strong> regelmatig te laten reinigen. Wij zeggen dit niet enkel omdat het de fantastische uitstraling van uw huis sterk kan aantasten, maar ook omdat het zelf reinigen van uw <strong>dakkapel</strong> niet zonder gevaar is.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Bovendien tasten algen, mos en vogel uitwerpselen waarschijnlijk al langdurig uw schilderwerk en plaatmateriaal aan zonder dat u het ooit opmerkte. Het is daarom belangrijk deze met de juiste schoonmaakmiddelen te reinigen. Enkel op die manier voorkomt u structurele schade.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-red-50 p-6 rounded-xl border-l-4 border-red-600">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+              <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
+              Gevaren Zelf Reinigen
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>• Heel onveilig klauteren op dak</li>
+              <li>• Risico op vallen en ongevallen</li>
+              <li>• Verkeerde schoonmaakmiddelen</li>
+              <li>• Schade aan materialen mogelijk</li>
+            </ul>
+          </div>
+          
+          <div class="bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-600">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+              <i class="fas fa-bug text-green-600 mr-3"></i>
+              Schade Door Vervuiling
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li>• Algen en mos aantasting</li>
+              <li>• Vogel uitwerpselen corrosie</li>
+              <li>• Schilderwerk beschadiging</li>
+              <li>• Plaatmateriaal aantasting</li>
+            </ul>
+          </div>
+        </div>
+      `,
+      icon: "fas fa-exclamation-triangle"
+    },
+    {
+      title: "Jarenlange Ervaring & Respect voor Materialen",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Wij hebben een jarenlange ervaring als het op het reinigen van <strong>dakkapellen</strong> aankomt waardoor de reiniging niet enkel professioneel verloopt maar ook met respect voor de gebruikte materialen.
+        </p>
+
+        <div class="bg-green-50 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-medal text-green-600 mr-3"></i>
+            Professionele Expertise
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Jarenlange ervaring in dakkapel reiniging</li>
+            <li>• Respect voor gebruikte materialen</li>
+            <li>• Juiste schoonmaakmiddelen per materiaalsoort</li>
+            <li>• Voorkoming van materiaalschade</li>
+            <li>• Professionele werkwijze gegarandeerd</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-medal"
+    },
+    {
+      title: "Ontdek Nu Ons Onderhoudsabonnement",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Dat u uw <strong>dakkapel</strong> minstens jaarlijks moet laten reinigen mag nu wel duidelijk zijn, toch blijkt dat men dit uiteindelijk vergeet bij te houden en steeds opnieuw op zoek moet naar een reiniger.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Om dit euvel voor eens en voor altijd weg te werken hebben wij speciaal voor u een uitgebreid <strong>onderhoudsabonnement</strong> ontwikkeld. Met dit abonnement komen wij jaarlijks voor een vast bedrag uw <strong>dakkapel reinigen</strong> en voeren wij de noodzakelijke behandelingen uit.
+        </p>
+
+        <div class="bg-blue-50 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-calendar-check text-green-600 mr-3"></i>
+            Onderhoudsabonnement Voordelen
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Vergeet nooit meer jaarlijkse reiniging</li>
+            <li>• Vast bedrag - geen verrassingen</li>
+            <li>• Automatische planning elk jaar</li>
+            <li>• Noodzakelijke behandelingen inbegrepen</li>
+            <li>• Op beide oren slapen - zorgeloos</li>
+            <li>• Geen zoeken naar reiniger elk jaar</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-handshake"
+    },
+    {
+      title: "Waarom Kiezen voor TBGS B.V.?",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Wij staan voor betrouwbare service en garantie. Wij kunnen een jarenlange ervaring binnen ons domein voorleggen en weten wat er écht leeft bij onze klanten. Transparantie, open communicatie en klantvriendelijkheid zijn waarden die wij nauw in het hart dragen.
+        </p>
+
+        <div class="bg-green-50 p-6 rounded-xl">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-heart text-green-600 mr-3"></i>
+            TBGS B.V. Waarden
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Betrouwbare service en garantie</li>
+            <li>• Jarenlange domein ervaring</li>
+            <li>• Weten wat écht leeft bij klanten</li>
+            <li>• Transparantie in alles wat we doen</li>
+            <li>• Open communicatie altijd</li>
+            <li>• Klantvriendelijkheid staat voorop</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-heart"
     }
   ];
 
   const mainContent = `
-    <h2 class="text-3xl font-bold text-gray-900 mb-6">Dakkapel Reinigen</h2>
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Professioneel Dakkapel Reinigen, Onze Specialiteit!</h2>
     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-      Professionele <strong>dakkapel reiniging</strong> door ervaren onderhoud specialisten. Complete zorg voor dakkapel, ramen en omliggende dakstructuur met maatwerk onderhoudsabonnement.
+      U wenst uw <strong>dakkapel te laten reinigen</strong>? Wij staan steeds voor u klaar. Vraag een gratis en vrijblijvende offerte aan via ons contactformulier. Onze vriendelijke medewerkers staan u met plezier te woord en samen zoeken we naar de beste mogelijkheden en oplossingen.
     </p>
   `;
 
@@ -125,8 +239,8 @@ export default function DakkapelReinigen({ onOpenContactModal }: DakkapelReinige
       description="🏠 Dakkapel reinigen 2025! ✅ Professionele reiniging, ramen schoonmaken, onderhoudsabonnement op maat - Nederland & België!"
       url="https://tbgs.nl/totaal-onderhoud-specialist/dakkapel-reinigen"
       heroTitle="Dakkapel reinigen"
-      heroSubtitle="Professionele dakkapel reiniging voor heldere ramen en schone constructie. Complete zorg met maatwerk onderhoudsabonnement."
-      heroDescription="Ervaren specialisten zorgen voor complete dakkapel onderhoud. Samenstel uw eigen abonnement en voorkom vervuiling."
+      heroSubtitle="Veilige en professionele dakkapel reiniging - ons vervelende karwei wordt uw zorgeloze oplossing!"
+      heroDescription="Geen gevaarlijk klauteren meer. Wij nemen het dakkapel reinigen met plezier van u over. Onderhoudsabonnement voor zorgeloos jaar."
       heroImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Professionele dakkapel reiniging door onderhoud specialist"
       urgencyText="Onderhoudsabonnement Beschikbaar"
@@ -140,8 +254,8 @@ export default function DakkapelReinigen({ onOpenContactModal }: DakkapelReinige
       processSteps={processSteps}
       serviceAreas={serviceAreas}
       faqs={faqs}
-      ctaTitle="Klaar voor Dakkapel Reiniging?"
-      ctaDescription="Zorg voor heldere ramen en schone dakkapel met professioneel onderhoud. Samenstel uw maatwerk abonnement voor regelmatige zorg."
+      ctaTitle="Meer Info over Dakkapel Reiniging?"
+      ctaDescription="Vraag een gratis en vrijblijvende offerte aan. Onze vriendelijke medewerkers zoeken samen met u naar de beste oplossingen."
       primaryButtonText="Reiniging Inplannen"
       secondaryButtonText="Onderhoud Specialist Bellen"
       onOpenContactModal={onOpenContactModal}
