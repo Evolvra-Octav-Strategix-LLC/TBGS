@@ -370,9 +370,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>dakgoot reinigen</strong> voorkomt waterschade. Onze <strong>dakdekkers</strong> reinigen dakgoten, regenpijpen en voeren preventief onderhoud uit.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/dakgoot-reinigen" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dakgoot reinigen →
-                </div>
+                </Link>
               </div>
             </div>
 
