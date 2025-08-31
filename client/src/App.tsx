@@ -161,38 +161,40 @@ function Router() {
     '/totaal-schoorsteen-specialist', 
     '/totaal-onderhoud-specialist',
     '/totaal-bouw-specialist'
-  ].includes(location);
+  ].includes(location) || location.startsWith('/totaal-dak-specialist/') || location.startsWith('/totaal-schoorsteen-specialist/') || location.startsWith('/totaal-onderhoud-specialist/') || location.startsWith('/totaal-bouw-specialist/');
 
   // Get specialist type based on current page
   const getCurrentSpecialist = (): "TDS" | "TSS" | "TOS" | "TBS" | undefined => {
-    switch(location) {
-      case '/totaal-dak-specialist':
-        return 'TDS';
-      case '/totaal-schoorsteen-specialist':
-        return 'TSS';
-      case '/totaal-onderhoud-specialist':
-        return 'TOS';
-      case '/totaal-bouw-specialist':
-        return 'TBS';
-      default:
-        return undefined;
+    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+      return 'TDS';
     }
+    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+      return 'TSS';
+    }
+    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+      return 'TOS';
+    }
+    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+      return 'TBS';
+    }
+    return undefined;
   };
 
   // Get footer colors based on current page
   const getFooterProps = () => {
-    switch(location) {
-      case '/totaal-dak-specialist':
-        return { backgroundColor: 'bg-tbgs-red', accentColor: 'text-tbgs-red' };
-      case '/totaal-schoorsteen-specialist':
-        return { backgroundColor: 'bg-tbgs-blue', accentColor: 'text-tbgs-blue' };
-      case '/totaal-onderhoud-specialist':
-        return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
-      case '/totaal-bouw-specialist':
-        return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
-      default:
-        return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy' };
+    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+      return { backgroundColor: 'bg-tbgs-red', accentColor: 'text-tbgs-red' };
     }
+    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+      return { backgroundColor: 'bg-tbgs-blue', accentColor: 'text-tbgs-blue' };
+    }
+    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+      return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
+    }
+    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+      return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
+    }
+    return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy' };
   };
 
   return (
