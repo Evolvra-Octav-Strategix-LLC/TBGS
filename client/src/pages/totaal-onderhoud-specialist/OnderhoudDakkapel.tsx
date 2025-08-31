@@ -25,14 +25,14 @@ export default function OnderhoudDakkapel({ onOpenContactModal }: OnderhoudDakka
   ];
 
   const onderhoudServices = [
-    "Dakkapel constructie onderhoud - Complete onderhoud van dakkapel structuur",
-    "Isolatie controle - Controle en onderhoud van dakkapel isolatie", 
-    "Kozijnen onderhoud - Regelmatig onderhoud van dakkapel kozijnen",
-    "Ramen onderhoud - Professioneel onderhoud van dakkapel beglazing",
-    "Afwatering onderhoud - Onderhoud van dakkapel drainage systemen",
-    "Loodwerk onderhoud - Onderhoud van loodwerk rond dakkapel",
-    "Preventieve reparaties - Kleine reparaties voorkom grote problemen",
-    "Onderhoudsabonnement - Regelmatige zorg volgens afspraak"
+    "Houten dakkapel onderhoud - Jaarlijks onderhoud verlengt levensduur met 10 jaar",
+    "Kunststof dakkapel onderhoud - Preventieve zorg tegen elementen en seizoenen", 
+    "Verfwerk onderhoud - Nieuwe verflaag elke 5 jaar voor optimale bescherming",
+    "Dakleer en daklood - Regelmatige controle voorkomt lekkages",
+    "Goten en regenpijpen - Reiniging voorkomt verstoppingen en wateroverlast",
+    "Stabiliteit controle - Garanderen van dakkapel stabiliteit en veiligheid",
+    "Lekkage preventie - Preventieve maatregelen tegen waterschade",
+    "Onderhoudsabonnement - Vanaf €5,99 voor zorgeloze dakkapel zorg"
   ];
 
   const serviceAreas = {
@@ -60,20 +60,20 @@ export default function OnderhoudDakkapel({ onOpenContactModal }: OnderhoudDakka
 
   const faqs = [
     {
-      question: "Wat houdt dakkapel onderhoud in?",
-      answer: "Complete zorg voor dakkapel: constructie, isolatie, kozijnen, ramen, afwatering en loodwerk. Preventief onderhoud voorkomt dure reparaties."
+      question: "Hoeveel jaar gaat een dakkapel mee?",
+      answer: "Gemiddeld gaat een dakkapel tussen de 20 en 30 jaar mee, afhankelijk van materialen. Houten dakkapel korter dan kunststof, maar met onderhoud tot 10 jaar langer."
     },
     {
-      question: "Hoe vaak heeft mijn dakkapel onderhoud nodig?",
-      answer: "Wij adviseren jaarlijkse controle en onderhoud. Dit houdt uw dakkapel in optimale staat en voorkomt kostbare schade door verwaarlozing."
+      question: "Hoe vaak heeft een houten dakkapel onderhoud nodig?",
+      answer: "Houten dakkapel heeft jaarlijks onderhoud nodig. Elke 5 jaar nieuwe verflaag voor optimale bescherming tegen zon. Dit verlengt levensduur aanzienlijk."
     },
     {
-      question: "Kan ik dakkapel onderhoud in mijn abonnement opnemen?",
-      answer: "Ja, dakkapel onderhoud kan onderdeel zijn van uw maatwerk onderhoudsabonnement. Samenstel uw pakket naar behoefte."
+      question: "Wat kost een onderhoudsabonnement voor dakkapel?",
+      answer: "Onderhoudsabonnement is al beschikbaar vanaf €5,99. Dit zorgt voor regelmatige controle en onderhoud voor een stevig en waterdicht dakkapel."
     },
     {
-      question: "Wat gebeurt er bij verwaarlozing van dakkapel onderhoud?",
-      answer: "Verwaarlozing leidt tot isolatie problemen, lekkages, kozijn schade en verminderde levensduur. Preventief onderhoud is veel voordeliger."
+      question: "Heeft u vragen over dakkapel onderhoud?",
+      answer: "Heeft u vragen bel ons gerust op 040-2026744. Wij helpen u bij onderhoud van uw dakkapel en overige dak werkzaamheden."
     }
   ];
 
@@ -85,50 +85,102 @@ export default function OnderhoudDakkapel({ onOpenContactModal }: OnderhoudDakka
       icon: "fas fa-list"
     },
     {
-      title: "Preventief Dakkapel Onderhoud",
+      title: "Verleng de Levensduur van Uw Dakkapel met 10 Jaar",
       content: `
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          <strong>Dakkapel onderhoud</strong> is essentieel voor behoud van functionaliteit en levensduur van uw dakkapel. Preventief onderhoud voorkomt kostbare reparaties en zorgt voor optimale prestaties van isolatie, beglazing en afwatering.
+          Gemiddeld gaat een <strong>dakkapel</strong> tussen de 20 en 30 jaar mee, vooral afhankelijk van de oorspronkelijke materialen. Een houten dakkapel gaat minder lang mee dan een kunststof dakkapel.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Onze onderhoud specialisten controleren alle aspecten van uw dakkapel: van constructie en isolatie tot kozijnen en loodwerk. Deze integrale aanpak garandeert langdurige functionaliteit.
+          Dit komt met name omdat een houten <strong>dakkapel</strong> jaarlijks onderhoud nodig heeft. Wanneer u dit jaarlijks onderhoud laat plegen, kunt u de levensduur van uw houten dakkapel met wel <strong>10 jaar verlengen</strong>.
         </p>
         
         <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
           <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
-            <i class="fas fa-shield-alt text-green-600 mr-3"></i>
-            Preventief Onderhoud Voordelen
+            <i class="fas fa-clock text-green-600 mr-3"></i>
+            Levensduur Verlenging
           </h3>
           <ul class="space-y-2 text-gray-700">
-            <li>• Voorkom kostbare reparaties</li>
-            <li>• Optimale isolatie prestaties</li>
-            <li>• Langere levensduur dakkapel</li>
-            <li>• Vroege detectie van problemen</li>
-            <li>• Behoud van waarde woning</li>
+            <li>• Houten dakkapel: 20-30 jaar (zonder onderhoud)</li>
+            <li>• Met jaarlijks onderhoud: +10 jaar extra</li>
+            <li>• Kunststof dakkapel gaat langer mee</li>
+            <li>• Onderhoudsabonnement vanaf €5,99</li>
+            <li>• Investering die zich terugbetaalt</li>
           </ul>
         </div>
       `,
-      icon: "fas fa-home"
+      icon: "fas fa-clock"
     },
     {
-      title: "Maatwerk Onderhoudsabonnement",
+      title: "Onderhoud bij Houten Dakkapel",
       content: `
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Samenstel uw eigen <strong>onderhoudsabonnement</strong> en kies welke onderhoud diensten u wilt opnemen. Dakkapel onderhoud combineert perfect met andere diensten zoals dakgoot reiniging, ramen wassen en schilderwerk.
+          Uw houten <strong>dakkapel</strong> krijgt het jaarlijks flink te verduren. Denk maar eens aan koude winters en hete zomers. Vooral het hout wordt flink aangetast door de zon en heeft om de 5 jaar een nieuwe verflaag nodig voor optimale bescherming.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Ook het <strong>dakleer en daklood</strong>, moeten regelmatig gecontroleerd en bijgewerkt worden om lekkages te voorkomen en stabiliteit te garanderen.
+        </p>
+
+        <div class="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-tree text-green-600 mr-3"></i>
+            Houten Dakkapel Zorg
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Koude winters en hete zomers overleven</li>
+            <li>• Hout aangetast door zon - bescherming nodig</li>
+            <li>• Elke 5 jaar nieuwe verflaag voor bescherming</li>
+            <li>• Dakleer en daklood regelmatig controleren</li>
+            <li>• Lekkage preventie en stabiliteit borgen</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-tree"
+    },
+    {
+      title: "Onderhoud bij Kunststof Dakkapel",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Een kunststof <strong>dakkapel</strong> gaat langer mee dan een houten dakkapel, maar ook hier is onderhoud zeer van belang. Ook een kunststof dakkapel moet de elementen trotseren en staat in de zomer vol in de zon en krijgt te maken met flinke vorst in de winter.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Het regenwater moet ook goed afgevoerd worden om lekkages te voorkomen. Tijdens een onderhoudsbeurt voor uw <strong>dakkapel</strong> worden ook de goten en regenpijpen van uw dakkapel schoongemaakt. Dat voorkomt verstoppingen en ophoping van regenwater.
+        </p>
+
+        <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-industry text-green-600 mr-3"></i>
+            Kunststof Dakkapel Zorg
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Langer meegaand dan houten dakkapel</li>
+            <li>• Onderhoud blijft zeer van belang</li>
+            <li>• Trotseren van alle seizoens elementen</li>
+            <li>• Zomer zon en winter vorst weerstand</li>
+            <li>• Goede afwatering cruciaal voor lekkage preventie</li>
+            <li>• Goten en regenpijpen reiniging inbegrepen</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-industry"
+    },
+    {
+      title: "Onderhoudsabonnement vanaf €5,99",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          U heeft al een <strong>onderhoudsabonnement</strong> vanaf €5,99. Dit zorgt voor regelmatige controle en onderhoud van uw dakkapel zodat u kunt genieten van een stevig en waterdicht dakkapel.
         </p>
 
         <div class="bg-green-50 p-6 rounded-xl">
           <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
-            <i class="fas fa-calendar-check text-green-600 mr-3"></i>
-            Abonnement Samenstellen
+            <i class="fas fa-euro-sign text-green-600 mr-3"></i>
+            Voordelig Abonnement
           </h3>
           <ul class="space-y-2 text-gray-700">
-            <li>• Dakkapel reiniging en onderhoud</li>
-            <li>• Ramen wassen service</li>
-            <li>• Dakgoot onderhoud</li>
-            <li>• Preventief schilderwerk</li>
-            <li>• Betaal alleen voor gewenste diensten</li>
-            <li>• Regelmatige planning naar behoefte</li>
+            <li>• Vanaf €5,99 voor dakkapel zorg</li>
+            <li>• Regelmatige controle en onderhoud</li>
+            <li>• Stevig en waterdicht dakkapel</li>
+            <li>• Levensduur verlenging tot 10 jaar</li>
+            <li>• Bekijk onze onderhoudsabonnementen</li>
           </ul>
         </div>
       `,
@@ -137,35 +189,38 @@ export default function OnderhoudDakkapel({ onOpenContactModal }: OnderhoudDakka
   ];
 
   const mainContent = `
-    <h2 class="text-3xl font-bold text-gray-900 mb-6">Dakkapel Reinigen</h2>
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Onderhoud van Uw Dakkapel</h2>
     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-      Professionele <strong>dakkapel reiniging</strong> door ervaren onderhoud specialisten. Complete zorg voor dakkapel constructie, ramen en omliggende dakstructuur.
+      Een <strong>dakkapel</strong> is een mooie verlenging van uw huis. U maakt uw zolder nog nuttiger en ruimer op een eenvoudige manier. Heeft u een dakkapel let dan vooral goed op het onderhoud hiervan.
+    </p>
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+      U kunt dan nog langer genieten van een stevig en waterdicht <strong>dakkapel</strong>. Wij helpen u bij het onderhoud van uw dakkapel en overige dak werkzaamheden.
     </p>
   `;
 
   return (
     <TOSArticleTemplate
-      title="Dakkapel Reinigen 2025 | Onderhoud Specialist | Onderhoudsabonnement | Nederland & België"
-      description="🏠 Dakkapel reinigen 2025! ✅ Professionele dakkapel reiniging, ramen schoonmaken, onderhoudsabonnement - Nederland & België!"
-      url="https://tbgs.nl/totaal-onderhoud-specialist/dakkapel-reinigen"
-      heroTitle="Dakkapel reinigen"
-      heroSubtitle="Professionele dakkapel reiniging voor optimale lichtinval en schone constructie. Maatwerk onderhoudsabonnement beschikbaar."
-      heroDescription="Complete dakkapel zorg door ervaren specialisten. Reiniging, onderhoud en preventieve reparaties in één pakket."
+      title="Onderhoud Dakkapel 2025 | +10 Jaar Levensduur | Abonnement €5,99 | Nederland & België"
+      description="🏠 Dakkapel onderhoud 2025! ✅ Verleng levensduur +10 jaar, houten/kunststof dakkapel, onderhoudsabonnement €5,99 - Nederland & België!"
+      url="https://tbgs.nl/totaal-onderhoud-specialist/onderhoud-dakkapel"
+      heroTitle="Onderhoud van uw dakkapel"
+      heroSubtitle="Verleng de levensduur van uw dakkapel met 10 jaar! Professioneel onderhoud voor houten en kunststof dakkapellen."
+      heroDescription="Maak uw zolder nuttiger en ruimer. Met goed onderhoud geniet u langer van een stevig en waterdicht dakkapel."
       heroImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Professionele dakkapel reiniging door onderhoud specialist"
-      urgencyText="Maatwerk Abonnement"
+      urgencyText="Vanaf €5,99 Abonnement"
       statsConfig={{
-        stat1: { number: "100%", text: "Schoon resultaat" },
-        stat2: { number: "Preventief", text: "Onderhoud" },
-        stat3: { number: "Maatwerk", text: "Abonnement" }
+        stat1: { number: "+10 jaar", text: "Levensduur" },
+        stat2: { number: "€5,99", text: "Vanaf" },
+        stat3: { number: "20-30", text: "Jaar basis" }
       }}
       mainContent={mainContent}
       sections={sections}
       processSteps={processSteps}
       serviceAreas={serviceAreas}
       faqs={faqs}
-      ctaTitle="Klaar voor Dakkapel Onderhoud?"
-      ctaDescription="Samenstel uw maatwerk onderhoudsabonnement en zorg voor optimale dakkapel onderhoud het hele jaar door."
+      ctaTitle="Heeft U Vragen over Dakkapel Onderhoud?"
+      ctaDescription="Bel ons gerust op 040-2026744. Wij helpen u bij onderhoud van uw dakkapel en overige dak werkzaamheden."
       primaryButtonText="Abonnement Samenstellen"
       secondaryButtonText="Onderhoud Specialist"
       onOpenContactModal={onOpenContactModal}
