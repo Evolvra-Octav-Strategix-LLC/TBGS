@@ -105,52 +105,6 @@ async function sendEmailViaWebhook(emailData, files) {
   }
 }
 
-// Gripp CRM integration (standalone)
-async function sendToGrippCRM(formData) {
-  console.log('🏢 Sending to Gripp CRM...');
-  try {
-    const grippData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: formData.phone,
-      street: formData.street || '',
-      houseNumber: formData.houseNumber || '',
-      city: formData.city || '',
-      postcode: formData.postcode || '',
-      requestDescription: formData.projectDescription || formData.description || '',
-      infix: formData.infix || ''
-    };
-
-    // Try both Gripp API accounts
-    const responses = await Promise.allSettled([
-      fetch('https://api.gripp.com/public/api3.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.GRIPP_API_TOKEN_1}`
-        },
-        body: JSON.stringify(grippData)
-      }),
-      fetch('https://api.gripp.com/public/api3.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', 
-          'Authorization': `Bearer ${process.env.GRIPP_API_TOKEN_2}`
-        },
-        body: JSON.stringify(grippData)
-      })
-    ]);
-
-    const successCount = responses.filter(r => r.status === 'fulfilled').length;
-    console.log(`✓ Gripp CRM: ${successCount}/2 accounts updated`);
-    return true;
-  } catch (error) {
-    console.error('Gripp CRM error (non-blocking):', error);
-    return false;
-  }
-}
-
 // Utility function to normalize file names
 const normalizeFileName = (originalName) => {
   return originalName
@@ -225,13 +179,6 @@ export default async function handler(req, res) {
 
     console.log(`⚡ Request saved to database: ${savedRequest.id}`);
 
-    // Return success immediately to user for fast form submission
-    res.status(200).json({
-      success: true,
-      message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
-      requestId: savedRequest.id
-    });
-
     // Send emails via webhook to main server
     try {
       await sendEmailViaWebhook({
@@ -252,15 +199,12 @@ export default async function handler(req, res) {
       console.error('Webhook email failed (form still submitted):', emailError);
     }
 
-    // Send to Gripp CRM (separate, non-blocking)
-    try {
-      await sendToGrippCRM(validatedData);
-      console.log(`✓ Gripp CRM updated for ${savedRequest.id}`);
-    } catch (grippError) {
-      console.error('Gripp CRM failed (form still submitted):', grippError);
-    }
-
-    return; // Exit after webhooks complete
+    // Return success immediately
+    res.status(200).json({
+      success: true,
+      message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
+      requestId: savedRequest.id
+    });
 
   } catch (error) {
     console.error('Service request error:', error);
