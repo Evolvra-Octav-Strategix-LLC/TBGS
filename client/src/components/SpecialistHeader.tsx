@@ -8,8 +8,6 @@ interface SpecialistHeaderProps {
   logo: string;
   companyName: string;
   tagline: string;
-  primaryColor: string;
-  hoverColor: string;
   onOpenContactModal: () => void;
 }
 
@@ -18,8 +16,6 @@ export default function SpecialistHeader({
   logo, 
   companyName, 
   tagline, 
-  primaryColor, 
-  hoverColor, 
   onOpenContactModal 
 }: SpecialistHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -221,7 +217,7 @@ export default function SpecialistHeader({
                 <nav className="flex flex-col p-6 space-y-6">
                   <Link 
                     href="/locaties" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-map-marker-alt mr-4 w-5"></i>
@@ -229,7 +225,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/kennisbank" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-book mr-4 w-5"></i>
@@ -237,7 +233,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/zorgeloos-wonen" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-home mr-4 w-5"></i>
@@ -245,7 +241,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/onze-projecten" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-building mr-4 w-5"></i>
@@ -253,7 +249,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/over-ons" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-users mr-4 w-5"></i>
@@ -261,7 +257,7 @@ export default function SpecialistHeader({
                   </Link>
                   <Link 
                     href="/contact" 
-                    className={`text-gray-700 hover:${primaryColor} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
+                    className={`text-gray-700 ${colors.hover} font-medium transition-colors py-3 border-b border-gray-100 flex items-center`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-envelope mr-4 w-5"></i>
