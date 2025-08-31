@@ -141,12 +141,9 @@ export default function SpecialistHeader({
 
           {/* Mobile CTA Button and Menu */}
           <div className="lg:hidden flex items-center space-x-2">
-            <button 
-              onClick={onOpenContactModal}
-              className={`${primaryColor.replace('text-', 'bg-')} text-white px-3 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm`}
-            >
+            <Link href="/offerte" className={`${primaryColor.replace('text-', 'bg-')} text-white px-3 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm`}>
               Offerte
-            </button>
+            </Link>
             <button 
               className="text-gray-700 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

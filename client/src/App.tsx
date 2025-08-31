@@ -47,8 +47,15 @@ import LocationWaalre from "@/pages/nl/locaties/LocationWaalre";
 // BE - Limburg Regio Hub
 import LimburgRegioHub from "@/pages/be/LimburgRegioHub";
 
-// BE - City Hubs (Locatie Hubs) - Only existing files
+// BE - City Hubs (Locatie Hubs) - All Belgium locations
 import LocationLommel from "@/pages/be/LocationLommel";
+import LocationRetie from "@/pages/be/LocationRetie";
+import LocationHamontAchel from "@/pages/be/LocationHamontAchel";
+import LocationPelt from "@/pages/be/LocationPelt";
+import LocationSintHuibrechtsLille from "@/pages/be/LocationSintHuibrechtsLille";
+import LocationOverpelt from "@/pages/be/LocationOverpelt";
+import LocationNeerpelt from "@/pages/be/LocationNeerpelt";
+import LocationHamont from "@/pages/be/LocationHamont";
 
 // Location-Service Pages - Only existing files
 import EindhovenDaklekkage from "@/pages/locations/EindhovenDaklekkage";
@@ -188,6 +195,8 @@ function Router() {
           <Route path="/nl/locaties/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/son-en-breugel" component={() => <LocationSonEnBreugel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          {/* Direct route for Son en Breugel to match LocationCards links */}
+          <Route path="/nl/son-en-breugel" component={() => <LocationSonEnBreugel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/geldrop" component={() => <LocationGeldrop onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -208,8 +217,15 @@ function Router() {
           <Route path="/be/" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/limburg" component={() => <LimburgRegioHub onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
-          {/* BE - City Hubs (Locatie Hubs) - Only existing files */}
+          {/* BE - City Hubs (Locatie Hubs) - All Belgium locations */}
           <Route path="/be/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont-achel" component={() => <LocationHamontAchel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/pelt" component={() => <LocationPelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/sint-huibrechts-lille" component={() => <LocationSintHuibrechtsLille onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/overpelt" component={() => <LocationOverpelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/neerpelt" component={() => <LocationNeerpelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/hamont" component={() => <LocationHamont onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE - Direct city routes (cleaner URLs) */}
           
