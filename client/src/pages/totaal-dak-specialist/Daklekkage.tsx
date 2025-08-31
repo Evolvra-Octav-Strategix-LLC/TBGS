@@ -200,7 +200,7 @@ export default function Daklekkage({ onOpenContactModal }: DaklekkageProps) {
       title="Daklekkage Reparatie 2025 | 24/7 Spoedservice Dakdekker | Nederland & België"
       description="🚨 Daklekkage spoedservice 2025! ⚡ 24/7 dakdekker voor snelle daklekkage reparatie in Nederland & België. ✅ Thermografisch onderzoek, directe reparatie. Bel nu!"
       url="https://tbgs.nl/totaal-dak-specialist/daklekkage"
-      heroTitle="Daklekkage Reparatie"
+      heroTitle="Daklekkage reparatie"
       heroSubtitle="Daklekkage spoedservice door gecertificeerde dakdekkers in heel Nederland en België. Snelle lokalisatie en permanente reparatie van lekkende daken."
       heroDescription="24/7 beschikbaar voor spoedgevallen met thermografisch onderzoek en directe noodreparatie om waterschade te voorkomen."
       heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
