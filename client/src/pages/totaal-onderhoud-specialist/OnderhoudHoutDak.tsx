@@ -25,14 +25,14 @@ export default function OnderhoudHoutDak({ onOpenContactModal }: OnderhoudHoutDa
   ];
 
   const houtServices = [
-    "Hout inspectie - Grondige controle van houten dakconstructie elementen",
-    "Houtbescherming - Behandeling tegen weer, insecten en schimmelvorming", 
-    "Dakspanten onderhoud - Onderhoud van houten dakspanten en balken",
-    "Houten dakconstructie - Complete zorg voor houten dakstructuren",
-    "Preventieve behandeling - Regelmatige bescherming tegen aantasting",
-    "Reparatie houtwerk - Vakkundige reparatie van beschadigd houtwerk",
-    "Schilderwerk hout - Beschermende coating en afwerking houtwerk",
-    "Onderhoudsabonnement - Preventief houtonderhoud volgens planning"
+    "Houten dakconstructie onderhoud - Stabiliteit en vorm van uw dak behouden",
+    "Dakpannen controle - Voorkomen dat vocht hout bereikt", 
+    "Dakgoten onderhoud - Waterdichtheid garanderen en hout beschermen",
+    "Dakleer en daklood - Preventie van water naar houten onderdelen",
+    "Kapotte dakpan reparatie - Direct repareren voorkomt houtrot",
+    "Houtrot preventie - Voorkomen van instabiel dak door vochtschade",
+    "Jaarlijkse controle - Belangrijke dakpunten controleren en onderhouden",
+    "Onderhoudsabonnement - Preventief programma tegen dak renovatie"
   ];
 
   const serviceAreas = {
@@ -60,20 +60,20 @@ export default function OnderhoudHoutDak({ onOpenContactModal }: OnderhoudHoutDa
 
   const faqs = [
     {
-      question: "Waarom is onderhoud van hout in het dak belangrijk?",
-      answer: "Hout in dakconstructies is kwetsbaar voor weer, insecten en schimmel. Preventief onderhoud voorkomt structurele schade en behoudt sterkte van uw dak."
+      question: "Waarom is hout onder dakpannen zo belangrijk?",
+      answer: "Houten onderdelen zorgen voor stabiliteit en vorm van uw dak. Ze houden dakpannen en nokvorsten stevig op plaats - cruciale functie voor dak integriteit."
     },
     {
-      question: "Hoe vaak heeft houtwerk in het dak onderhoud nodig?",
-      answer: "Afhankelijk van houtsoort en blootstelling adviseren wij elke 3-5 jaar behandeling. Jaarlijkse inspectie detecteert vroeg eventuele problemen."
+      question: "Wat gebeurt als vocht het hout bereikt?",
+      answer: "Water dat wordt geabsorbeerd door hout veroorzaakt houtrot. Dit maakt uw dak instabiel en vaak is dakrenovatie de enige oplossing - zeer kostbaar."
     },
     {
-      question: "Welke behandelingen gebruikt u voor houtbescherming?",
-      answer: "Wij gebruiken professionele houtbeschermingsmiddelen tegen insecten, schimmel en weersinvloeden. Behandeling wordt afgestemd op houtsoort en toepassing."
+      question: "Waarom direct repareren van kapotte dakpannen?",
+      answer: "Een kleine regenbui kan hout onder dakpannen al snel beschadigen. Direct repareren voorkomt houtrot en kostbare dakrenovatie."
     },
     {
-      question: "Kan houtonderhoud in het onderhoudsabonnement?",
-      answer: "Ja, houtonderhoud past perfect in uw maatwerk abonnement. Samenstel uw pakket met dakgoot, ramen en andere onderhoudsdiensten."
+      question: "Hoe voorkom ik kostbare dakrenovatie?",
+      answer: "Jaarlijkse controle met onderhoudsabonnement. Wij controleren dakgoten, dakpannen, dakleer, daklood zodat uw dak waterdicht blijft en jaren meegaat."
     }
   ];
 
@@ -85,63 +85,121 @@ export default function OnderhoudHoutDak({ onOpenContactModal }: OnderhoudHoutDa
       icon: "fas fa-list"
     },
     {
-      title: "Onderhoud Hout in het Dak",
+      title: "Belang van Hout in Uw Dak",
       content: `
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          <strong>Hout onderhoud</strong> in dakconstructies is cruciaal voor behoud van structurele integriteit en levensduur van uw dak. Houten elementen zijn kwetsbaar voor weersinvloeden, insectenaantasting en schimmelvorming.
+          Heeft u dakpannen op uw dak, dan zit hier vaak <strong>hout</strong> onder. Deze houten onderdelen zorgen voor de stabiliteit en vorm van uw dak. Ze houden ook de dakpannen en nokvorsten stevig op hun plaats.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Onze specialisten bieden preventief <strong>houtonderhoud</strong> met professionele behandelingen tegen alle vormen van aantasting. Dit voorkomt kostbare vervanging van dakspanten en andere houten constructie-elementen.
+          Ze hebben dus een belangrijke functie in uw dak en moeten daarom ook goed onderhouden worden. Bij het onderhouden moet u overigens niet denken aan het <strong>hout</strong> dat direct onderhouden moet worden, maar het dak erboven en omheen.
         </p>
         
         <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-600">
           <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
-            <i class="fas fa-tree text-green-600 mr-3"></i>
-            Houtbescherming Voordelen
+            <i class="fas fa-home text-green-600 mr-3"></i>
+            Functies van Hout in Dak
           </h3>
           <ul class="space-y-2 text-gray-700">
-            <li>• Behoud structurele integriteit</li>
-            <li>• Preventie van insectenaantasting</li>
-            <li>• Bescherming tegen schimmelvorming</li>
-            <li>• Langere levensduur houtwerk</li>
-            <li>• Voorkom kostbare vervanging</li>
+            <li>• Stabiliteit en vorm van uw dak</li>
+            <li>• Houden dakpannen stevig op plaats</li>
+            <li>• Ondersteuning voor nokvorsten</li>
+            <li>• Belangrijke structurele functie</li>
+            <li>• Vereist goede onderhoud en bescherming</li>
           </ul>
         </div>
       `,
-      icon: "fas fa-tree"
+      icon: "fas fa-home"
+    },
+    {
+      title: "Voorkom Vocht en Regenwater Bereik",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Wat u wilt voorkomen is dat vocht en regenwater het <strong>hout</strong> van uw dak bereikt met alle gevolgen van dien. Laat uw dak daarom jaarlijks controleren.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Bij TBGS B.V. kan dat met een <strong>onderhoudsabonnement</strong>, hierbij komen wij jaarlijks bij u langs om de belangrijke punten in uw dak te controleren en onderhouden. Denk hierbij aan uw dakgoten, dakpannen, dakleer, daklood en overige dakonderdelen.
+        </p>
+
+        <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-umbrella text-green-600 mr-3"></i>
+            Jaarlijkse Controle Punten
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Dakgoten - voorkomen wateroverlast</li>
+            <li>• Dakpannen - intact houden voor bescherming</li>
+            <li>• Dakleer - waterdichtheid garanderen</li>
+            <li>• Daklood - stabiliteit en afdichting</li>
+            <li>• Overige dakonderdelen - complete zorg</li>
+            <li>• Waterdicht blijven - hout beschermen</li>
+          </ul>
+        </div>
+      `,
+      icon: "fas fa-umbrella"
+    },
+    {
+      title: "Kapotte Dakpannen Direct Repareren",
+      content: `
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Een kapotte of gevallen <strong>dakpan</strong> kan het beste direct gerepareerd worden. Een kleine regenbui kan het hout onder dakpannen namelijk al snel beschadigen.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Water dat wordt geabsorbeerd door <strong>hout</strong> kan houtrot veroorzaken. Dit kan uw dak instabiel maken en is een vervelende vorm van lekkage. Wanneer u namelijk veel houtrot onder uw dakpannen heeft, is vaak de enigste oplossing een dak renovatie.
+        </p>
+
+        <div class="bg-red-50 p-6 rounded-xl border-l-4 border-red-600">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
+            Gevaren van Uitstel
+          </h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Kleine regenbui beschadigt hout al snel</li>
+            <li>• Water absorptie veroorzaakt houtrot</li>
+            <li>• Instabiel dak door houtrot</li>
+            <li>• Vervelende lekkage problemen</li>
+            <li>• Uiteindelijk dak renovatie noodzakelijk</li>
+            <li>• Goed onderhoud voorkomt dit alles</li>
+          </ul>
+        </div>
+        
+        <p class="text-lg text-gray-700 leading-relaxed mt-6">
+          Dat is vervelend, want met goed onderhoud kan uw dak jaren lang mee.
+        </p>
+      `,
+      icon: "fas fa-exclamation-triangle"
     }
   ];
 
   const mainContent = `
-    <h2 class="text-3xl font-bold text-gray-900 mb-6">Onderhoud Hout in het Dak</h2>
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">Onderhoud van het Hout in het Dak</h2>
     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-      Professioneel <strong>hout onderhoud</strong> voor dakconstructies door ervaren specialisten. Bescherming tegen weer, insecten en schimmel met preventieve behandelingen.
+      Wij zorgen ervoor dat uw dak waterdicht blijft en er mooi bij blijft liggen. Bel ons voor meer informatie over onze werkzaamheden en onderhoud mogelijkheden op <strong>040-2026744</strong>.
     </p>
   `;
 
   return (
     <TOSArticleTemplate
-      title="Onderhoud Hout Dak 2025 | Houtbescherming | Onderhoudsabonnement | Nederland & België"
-      description="🏠 Hout onderhoud dak 2025! ✅ Houtbescherming, dakspanten onderhoud, preventieve behandeling, abonnement - Nederland & België!"
+      title="Onderhoud Hout Dak 2025 | Voorkom Houtrot | Onderhoudsabonnement | Nederland & België"
+      description="🏠 Hout onderhoud dak 2025! ✅ Voorkom houtrot, dakpannen controle, waterdicht dak, onderhoudsabonnement - Nederland & België!"
       url="https://tbgs.nl/totaal-onderhoud-specialist/onderhoud-hout-dak"
-      heroTitle="Onderhoud hout in het dak"
-      heroSubtitle="Professionele houtbescherming voor dakconstructies. Preventieve behandeling tegen weer, insecten en schimmelvorming."
-      heroDescription="Behoud de structurele integriteit van uw dak met vakkundig houtonderhoud. Maatwerk abonnement voor continue bescherming."
+      heroTitle="Onderhoud van het hout in het dak"
+      heroSubtitle="Voorkom kostbare dakrenovatie! Bescherm het hout onder uw dakpannen tegen vocht en houtrot."
+      heroDescription="Houten onderdelen zorgen voor stabiliteit van uw dak. Onderhoudsabonnement voorkomt dat vocht het hout bereikt."
       heroImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Professioneel onderhoud van hout in dakconstructie"
-      urgencyText="Preventief Programma"
+      urgencyText="Voorkom Dakrenovatie"
       statsConfig={{
-        stat1: { number: "3-5 jaar", text: "Behandeling" },
-        stat2: { number: "100%", text: "Beschermd" },
-        stat3: { number: "Preventief", text: "Onderhoud" }
+        stat1: { number: "Jaarlijks", text: "Controle" },
+        stat2: { number: "Waterdicht", text: "Dak" },
+        stat3: { number: "Jaren", text: "Langer mee" }
       }}
       mainContent={mainContent}
       sections={sections}
       processSteps={processSteps}
       serviceAreas={serviceAreas}
       faqs={faqs}
-      ctaTitle="Klaar voor Hout Onderhoud?"
-      ctaDescription="Bescherm uw houten dakconstructie met professioneel onderhoud. Voorkom kostbare schade met preventieve behandeling."
+      ctaTitle="Meer Informatie over Hout Onderhoud?"
+      ctaDescription="Bel ons voor meer informatie over onze werkzaamheden en onderhoud mogelijkheden op 040-2026744. Voorkom kostbare dakrenovatie."
       primaryButtonText="Houtonderhoud Plannen"
       secondaryButtonText="Specialist Bellen"
       onOpenContactModal={onOpenContactModal}
