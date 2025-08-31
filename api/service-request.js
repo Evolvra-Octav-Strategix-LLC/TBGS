@@ -217,42 +217,42 @@ export default async function handler(req, res) {
 
     console.log(`⚡ Request saved to database: ${savedRequest.id}`);
 
-    // Send emails and Gripp data via webhooks (non-blocking)
-    setImmediate(async () => {
-      try {
-        await sendEmailViaWebhook({
-          ...validatedData,
-          formType: 'popup',
-          submittedAt: savedRequest.submittedAt || new Date(),
-          // Add individual address components for better email subject formatting
-          street: validatedData.street,
-          houseNumber: validatedData.houseNumber,
-          city: validatedData.city,
-          postcode: validatedData.postcode,
-          country: validatedData.country,
-          id: savedRequest.id
-        }, files);
-        
-        console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
-      } catch (emailError) {
-        console.error('Webhook email failed (form still submitted):', emailError);
-      }
-
-      // Send to Gripp CRM (non-blocking)
-      try {
-        await sendGrippViaWebhook(validatedData);
-        console.log(`✓ Gripp CRM updated for ${savedRequest.id}`);
-      } catch (grippError) {
-        console.error('Gripp webhook failed (form still submitted):', grippError);
-      }
-    });
-
-    // Return success immediately
+    // Return success immediately to user for fast form submission
     res.status(200).json({
       success: true,
       message: 'Aanvraag succesvol ingediend! Wij nemen binnen 24 uur contact met u op.',
       requestId: savedRequest.id
     });
+
+    // Send emails and Gripp data via webhooks (after response)
+    try {
+      await sendEmailViaWebhook({
+        ...validatedData,
+        formType: 'popup',
+        submittedAt: savedRequest.submittedAt || new Date(),
+        // Add individual address components for better email subject formatting
+        street: validatedData.street,
+        houseNumber: validatedData.houseNumber,
+        city: validatedData.city,
+        postcode: validatedData.postcode,
+        country: validatedData.country,
+        id: savedRequest.id
+      }, files);
+      
+      console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
+    } catch (emailError) {
+      console.error('Webhook email failed (form still submitted):', emailError);
+    }
+
+    // Send to Gripp CRM (non-blocking)
+    try {
+      await sendGrippViaWebhook(validatedData);
+      console.log(`✓ Gripp CRM updated for ${savedRequest.id}`);
+    } catch (grippError) {
+      console.error('Gripp webhook failed (form still submitted):', grippError);
+    }
+
+    return; // Exit after webhooks complete
 
   } catch (error) {
     console.error('Service request error:', error);

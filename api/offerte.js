@@ -226,40 +226,40 @@ export default async function handler(req, res) {
       requestId: savedRequest.id
     });
 
-    // Send emails via webhook to main server (non-blocking)
-    setImmediate(async () => {
-      try {
-        // Transform offerte data to format expected by email service
-        const emailData = {
-          firstName: validatedData.voornaam,
-          lastName: validatedData.achternaam,
-          email: validatedData.email,
-          phone: validatedData.telefoon,
-          selectedService: `${validatedData.specialisme} - ${validatedData.projectType}`,
-          address: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
-          projectDescription: `${validatedData.beschrijving}\n\nProject details:\n- Tijdlijn: ${validatedData.tijdlijn}\n- Budget: ${validatedData.budget || "Niet opgegeven"}`,
-          contactPreference: validatedData.contactVoorkeur,
-          photos: [],
-          submittedAt: savedRequest.submittedAt || new Date(),
-          formType: 'offerte',
-          id: savedRequest.id
-        };
+    // Send emails via webhook to main server (after response)
+    try {
+      // Transform offerte data to format expected by email service
+      const emailData = {
+        firstName: validatedData.voornaam,
+        lastName: validatedData.achternaam,
+        email: validatedData.email,
+        phone: validatedData.telefoon,
+        selectedService: `${validatedData.specialisme} - ${validatedData.projectType}`,
+        address: `${validatedData.adres}, ${validatedData.postcode} ${validatedData.plaats}`,
+        projectDescription: `${validatedData.beschrijving}\n\nProject details:\n- Tijdlijn: ${validatedData.tijdlijn}\n- Budget: ${validatedData.budget || "Niet opgegeven"}`,
+        contactPreference: validatedData.contactVoorkeur,
+        photos: [],
+        submittedAt: savedRequest.submittedAt || new Date(),
+        formType: 'offerte',
+        id: savedRequest.id
+      };
 
-        await sendEmailViaWebhook(emailData, files);
-        
-        console.log(`✓ Webhook emails sent for offerte ${savedRequest.id}`);
-      } catch (emailError) {
-        console.error('Webhook email failed (form still submitted):', emailError);
-      }
+      await sendEmailViaWebhook(emailData, files);
+      
+      console.log(`✓ Webhook emails sent for offerte ${savedRequest.id}`);
+    } catch (emailError) {
+      console.error('Webhook email failed (form still submitted):', emailError);
+    }
 
-      // Send to Gripp CRM (non-blocking)
-      try {
-        await sendGrippViaWebhook(validatedData);
-        console.log(`✓ Gripp CRM updated for offerte ${savedRequest.id}`);
-      } catch (grippError) {
-        console.error('Gripp webhook failed (form still submitted):', grippError);
-      }
-    });
+    // Send to Gripp CRM (non-blocking)
+    try {
+      await sendGrippViaWebhook(validatedData);
+      console.log(`✓ Gripp CRM updated for offerte ${savedRequest.id}`);
+    } catch (grippError) {
+      console.error('Gripp webhook failed (form still submitted):', grippError);
+    }
+
+    return; // Exit after webhooks complete
 
   } catch (error) {
     console.error('Offerte request error:', error);

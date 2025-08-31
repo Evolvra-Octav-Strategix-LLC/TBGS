@@ -228,50 +228,50 @@ export default async function handler(req, res) {
       requestId: savedRequest.id
     });
 
-    // Send emails via webhook to main server (non-blocking)
-    setImmediate(async () => {
-      try {
-        // Transform contact modal data to format expected by email service
-        const emailData = {
-          firstName: validatedData.firstName,
-          lastName: validatedData.lastName,
-          email: validatedData.email,
-          phone: validatedData.phone,
-          selectedService: `${validatedData.serviceType}${validatedData.projectType ? ` - ${validatedData.projectType}` : ''}`,
-          address: validatedData.location,
-          projectDescription: validatedData.description,
-          contactPreference: 'email',
-          photos: [],
-          submittedAt: savedRequest.submittedAt || new Date(),
-          formType: 'contact-modal',
-          specialist: validatedData.specialisme,
-          serviceType: validatedData.serviceType,
-          projectType: validatedData.projectType || '',
-          urgent: validatedData.urgent === 'true',
-          // Add individual address components for better email subject formatting
-          street: formData.street || validatedData.street,
-          houseNumber: formData.houseNumber || validatedData.houseNumber,
-          city: formData.city || validatedData.city,
-          postcode: formData.postcode || validatedData.postcode,
-          country: formData.country || validatedData.country,
-          id: savedRequest.id
-        };
+    // Send emails via webhook to main server (after response)
+    try {
+      // Transform contact modal data to format expected by email service
+      const emailData = {
+        firstName: validatedData.firstName,
+        lastName: validatedData.lastName,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        selectedService: `${validatedData.serviceType}${validatedData.projectType ? ` - ${validatedData.projectType}` : ''}`,
+        address: validatedData.location,
+        projectDescription: validatedData.description,
+        contactPreference: 'email',
+        photos: [],
+        submittedAt: savedRequest.submittedAt || new Date(),
+        formType: 'contact-modal',
+        specialist: validatedData.specialisme,
+        serviceType: validatedData.serviceType,
+        projectType: validatedData.projectType || '',
+        urgent: validatedData.urgent === 'true',
+        // Add individual address components for better email subject formatting
+        street: validatedData.street,
+        houseNumber: validatedData.houseNumber,
+        city: validatedData.city,
+        postcode: validatedData.postcode,
+        country: validatedData.country,
+        id: savedRequest.id
+      };
 
-        await sendEmailViaWebhook(emailData, files);
-        
-        console.log(`✓ Webhook emails sent for contact modal ${savedRequest.id}`);
-      } catch (emailError) {
-        console.error('Webhook email failed (form still submitted):', emailError);
-      }
+      await sendEmailViaWebhook(emailData, files);
+      
+      console.log(`✓ Webhook emails sent for contact modal ${savedRequest.id}`);
+    } catch (emailError) {
+      console.error('Webhook email failed (form still submitted):', emailError);
+    }
 
-      // Send to Gripp CRM (non-blocking)
-      try {
-        await sendGrippViaWebhook(validatedData);
-        console.log(`✓ Gripp CRM updated for contact modal ${savedRequest.id}`);
-      } catch (grippError) {
-        console.error('Gripp webhook failed (form still submitted):', grippError);
-      }
-    });
+    // Send to Gripp CRM (non-blocking)
+    try {
+      await sendGrippViaWebhook(validatedData);
+      console.log(`✓ Gripp CRM updated for contact modal ${savedRequest.id}`);
+    } catch (grippError) {
+      console.error('Gripp webhook failed (form still submitted):', grippError);
+    }
+
+    return; // Exit after webhooks complete
 
   } catch (error) {
     console.error('Contact modal request error:', error);
