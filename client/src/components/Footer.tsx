@@ -228,9 +228,6 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <p className="text-white/70 text-sm">
                   &copy; 2024 Totaal Bouw Groep Specialisten B.V. Alle rechten voorbehouden.
                 </p>
-                <p className="text-white/50 text-xs mt-1">
-                  KvK: 12345678 | BTW: NL123456789B01 | Inschrijfnummer Handelsregister: 87654321
-                </p>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
                 <a href="#" className="text-white/70 hover:text-white transition-colors">Privacy</a>
