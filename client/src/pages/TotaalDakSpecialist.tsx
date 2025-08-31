@@ -390,9 +390,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   <strong>Dak isolatie</strong> bespaart tot 30% energiekosten. Professionele <strong>dakwerken</strong> isolatie door gecertificeerde <strong>dakdekkers</strong> met premium materialen.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/totaal-dak-specialist/dakisolatie" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dak isolatie →
-                </div>
+                </Link>
               </div>
             </div>
 
