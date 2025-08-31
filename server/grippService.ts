@@ -85,32 +85,53 @@ export async function createGrippCompany(formData: {
       lastname: formData.lastName.charAt(0).toUpperCase() + formData.lastName.slice(1).toLowerCase()
     };
 
-    // Make API call to Gripp
+    // Create JSON-RPC request structure exactly like the PHP API connector
+    const jsonRpcRequest = [{
+      method: "company.create",
+      params: [companyData],
+      id: 1
+    }];
+
+    console.log('🔄 Sending Gripp JSON-RPC request...');
+    console.log('📋 Company fields:', companyData);
+
+    // Make API call to Gripp using JSON-RPC format
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiToken}`,
-        'Accept': 'application/json'
+        'Authorization': `Bearer ${apiToken}`
       },
-      body: JSON.stringify({
-        method: 'company_create',
-        params: companyData
-      })
+      body: JSON.stringify(jsonRpcRequest)
     });
 
     if (!response.ok) {
-      throw new Error(`Gripp API request failed: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error('❌ Gripp API HTTP Error:', response.status, errorText);
+      return {
+        success: false,
+        error: `HTTP ${response.status}: ${errorText}`
+      };
     }
 
-    const result = await response.json();
-    
-    console.log('✅ Gripp company created successfully:', result);
-    
-    return {
-      success: true,
-      data: result
-    };
+    const batchResponse = await response.json();
+    console.log('✅ Gripp API batch response:', batchResponse);
+
+    // Extract result like PHP code: $response = $batchresponse[0]['result'];
+    if (batchResponse && Array.isArray(batchResponse) && batchResponse[0] && batchResponse[0].result) {
+      const result = batchResponse[0].result;
+      console.log('✅ Gripp company created successfully:', result);
+      return {
+        success: true,
+        data: result
+      };
+    } else {
+      console.error('❌ Unexpected Gripp API response format:', batchResponse);
+      return {
+        success: false,
+        error: 'Unexpected API response format'
+      };
+    }
 
   } catch (error) {
     console.error('❌ Gripp API error:', error);

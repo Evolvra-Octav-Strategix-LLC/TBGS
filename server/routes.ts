@@ -111,14 +111,14 @@ const processMultipartRequest = (req: any): Promise<{fields: any, files: any[]}>
   return new Promise((resolve, reject) => {
     const form = new multiparty.Form({
       maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
-      maxFiles: 8
+      maxFields: 20
     });
     
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, (err: unknown, fields: unknown, files: unknown) => {
       if (err) return reject(err);
       
       const processedFiles = [];
-      for (const [fieldName, fileArray] of Object.entries(files)) {
+      for (const [fieldName, fileArray] of Object.entries(files as Record<string, any>)) {
         for (const file of fileArray as any[]) {
           if (file.originalFilename) {
             file.originalname = normalizeFileName(file.originalFilename);
@@ -396,9 +396,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     } finally {
       // tmp bestanden opruimen
-      for (const f of (req.files as any[] || [])) {
-        try { fs.unlinkSync(f.path); } catch {}
-      }
+      // Files are handled by processMultipartRequest and cleaned up there
     }
   });
 
@@ -507,9 +505,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     } finally {
       // tmp bestanden opruimen
-      for (const f of (req.files as any[] || [])) {
-        try { fs.unlinkSync(f.path); } catch {}
-      }
+      // Files are handled by processMultipartRequest and cleaned up there
     }
   });
 
@@ -614,7 +610,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
     } catch (error) {
       console.error('Email webhook error:', error);
-      res.status(500).json({ error: 'Failed to send emails', details: error.message });
+      res.status(500).json({ error: 'Failed to send emails', details: (error as Error).message || 'Unknown error' });
     }
   });
 
