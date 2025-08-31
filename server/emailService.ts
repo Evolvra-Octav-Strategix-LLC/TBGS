@@ -416,17 +416,19 @@ class EmailService {
           </html>
       `;
 
-      // Create address string for subject
+      // Create clean address string for subject
       let addressPart = '';
       if (data.street && data.houseNumber && data.city) {
-        addressPart = `${data.street}, ${data.houseNumber}, ${data.city}`;
+        // Use individual components for clean formatting: "Hurksestraat 64, Eindhoven"
+        addressPart = `${data.street} ${data.houseNumber}, ${data.city}`;
       } else if (data.address) {
         // Parse from full address if individual components not available
         const addressParts = data.address.split(',').map(p => p.trim());
         if (addressParts.length >= 2) {
-          // Try to extract street/number from first part and city from last part
+          // Try to extract street/number from first part and city from second-to-last part (avoid country)
           const streetPart = addressParts[0];
-          const cityPart = addressParts[addressParts.length - 1];
+          // Get city from second-to-last part to avoid country name
+          const cityPart = addressParts.length > 2 ? addressParts[addressParts.length - 2] : addressParts[addressParts.length - 1];
           addressPart = `${streetPart}, ${cityPart}`;
         } else {
           addressPart = data.address;
@@ -435,7 +437,7 @@ class EmailService {
 
       // Gebruik nieuwe attachment functionaliteit met high-end vCard
       await this.sendEmailWithAttachments({
-        subject: `💬 Aanvraag: "${data.selectedService}" "${addressPart}"`,
+        subject: `💬 Aanvraag: ${data.selectedService} ${addressPart}`,
         html,
         files: data.files || [],
         contactData: {
