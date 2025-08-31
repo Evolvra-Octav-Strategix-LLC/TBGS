@@ -330,9 +330,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   <strong>Daklekkage</strong> spoedservice 24/7 door ervaren <strong>dakdekkers</strong>. Snelle lokalisatie en permanente reparatie van lekkende daken met thermografisch onderzoek.
                 </p>
-                <div className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/daklekkage" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over daklekkage →
-                </div>
+                </Link>
               </div>
             </div>
 

@@ -22,6 +22,7 @@ import AdminArticle from "@/pages/AdminArticle";
 import DaklekkageHerkennenVoorkomen from "@/pages/DaklekkageHerkennenVoorkomen";
 import EnergibesparingDoorIsolatie from "@/pages/EnergibesparingDoorIsolatie";
 import JaarlijkseSchoorsteencontrole from "@/pages/JaarlijkseSchoorsteencontrole";
+import Daklekkage from "@/pages/Daklekkage";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
@@ -216,6 +217,7 @@ function Router() {
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
 
+          <Route path="/daklekkage" component={() => <Daklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
