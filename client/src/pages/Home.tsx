@@ -397,7 +397,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 
                 <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                  Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels.
+                  Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegeven vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels.
                 </p>
                 
                 <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
@@ -450,7 +450,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                     </div>
                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegevan vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
+                      Sinds 1943 gespecialiseerd in <strong>dakwerken, schoorsteenonderhoud en bouwprojecten</strong> in Noord-Brabant en Belgisch Limburg. Van vader op zoon doorgegeven vakkennis voorkomt duizenden euro's aan onnodige reparaties. <strong>Wij voorspellen problemen voordat ze ontstaan.</strong> Door 80+ jaar ervaring herkennen onze specialisten direct zwakke plekken in daken, schoorstenen en gevels. Onze gratis inspecties voorkomen kostbare noodreparaties.
                     </p>
                     
                     {/* Meer Lezen Button */}
