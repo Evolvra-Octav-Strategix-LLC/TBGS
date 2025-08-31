@@ -14,6 +14,7 @@ import {
 } from "@shared/schema";
 import { emailService } from "./emailService";
 import { googlePlacesService } from "./googlePlacesService";
+import { createGrippCompany } from "./grippService";
 import multiparty from 'multiparty';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
@@ -457,6 +458,61 @@ export async function registerRoutes(app: Express): Promise<Server> {
       for (const f of (req.files as any[] || [])) {
         try { fs.unlinkSync(f.path); } catch {}
       }
+    }
+  });
+
+  // Gripp API integration endpoint
+  app.post("/api/gripp", async (req, res) => {
+    try {
+      const grippData = {
+        requestDescription: req.body.description || req.body.projectDescription || '',
+        email: req.body.email,
+        street: req.body.street || req.body.adres || '',
+        postalCode: req.body.postalCode || req.body.postcode || '',
+        houseNumber: req.body.houseNumber || '',
+        city: req.body.city || req.body.plaats || '',
+        phoneNumber: req.body.phone || req.body.telefoon || '',
+        firstName: req.body.firstName || req.body.voornaam || '',
+        infix: req.body.infix || '',
+        lastName: req.body.lastName || req.body.achternaam || ''
+      };
+
+      // Validate required fields
+      const requiredFields = ['email', 'firstName', 'lastName', 'phoneNumber'];
+      const missingFields = requiredFields.filter(field => !grippData[field as keyof typeof grippData]);
+      
+      if (missingFields.length > 0) {
+        return res.status(400).json({
+          success: false,
+          error: `Missing required fields: ${missingFields.join(', ')}`
+        });
+      }
+
+      const result = await createGrippCompany(grippData);
+      
+      if (result.success) {
+        console.log('✅ Gripp company created successfully');
+        res.status(200).json({
+          success: true,
+          message: "Klant succesvol aangemaakt in Gripp",
+          data: result.data
+        });
+      } else {
+        console.error('❌ Failed to create Gripp company:', result.error);
+        res.status(400).json({
+          success: false,
+          message: "Fout bij aanmaken klant in Gripp",
+          error: result.error
+        });
+      }
+
+    } catch (error) {
+      console.error("Gripp API error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Er is een fout opgetreden bij het aanmaken van de klant",
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
     }
   });
 
