@@ -8,7 +8,7 @@ export default function Dakisolatie({ onOpenContactModal }: DakisolatieProps) {
   const processSteps = [
     {
       title: "Isolatie Inspectie",
-      description: "Thermografisch onderzoek om huidige isolatiewaarde en energieverlies punten vast te stellen."
+      description: "Professionele inspectie om huidige isolatiewaarde en energieverlies punten vast te stellen."
     },
     {
       title: "Advies & Materiaaladvies", 

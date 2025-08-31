@@ -188,11 +188,10 @@ export default function ContactModalV2() {
   ];
 
   const budgetOpties = [
-    { value: "1000-2500", label: "€1.000 - €2.500" },
-    { value: "2500-5000", label: "€2.500 - €5.000" },
-    { value: "5000-10000", label: "€5.000 - €10.000" },
-    { value: "10000+", label: "€10.000+" },
-    { value: "unknown", label: "Weet ik nog niet" }
+    { value: "unknown", label: "Weet ik nog niet" },
+    { value: "flexible", label: "Flexibel budget" },
+    { value: "limited", label: "Beperkt budget" },
+    { value: "quality", label: "Kwaliteit staat voorop" }
   ];
 
   const contactVoorkeuren = [

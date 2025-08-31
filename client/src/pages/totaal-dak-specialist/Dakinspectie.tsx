@@ -11,8 +11,8 @@ export default function Dakinspectie({ onOpenContactModal }: DakinspectieProps) 
       description: "Uitgebreide visuele inspectie van dak, dakpannen, dakgoten en constructie door gecertificeerde dakspecialisten."
     },
     {
-      title: "Thermografisch Onderzoek", 
-      description: "Geavanceerde thermische scan om verborgen lekkages, koudebruggen en isolatieproblemen op te sporen."
+      title: "Professionele Lekdetectie", 
+      description: "Geavanceerde inspectietechnieken om verborgen lekkages, koudebruggen en isolatieproblemen op te sporen."
     },
     {
       title: "Schriftelijk Adviesrapport",
@@ -31,7 +31,7 @@ export default function Dakinspectie({ onOpenContactModal }: DakinspectieProps) 
     "Dakpannen inspectie - Beoordeling staat en bevestiging dakpannen",
     "Dakgoot inspectie - Controle afvoersysteem en bevestigingen",
     "Lekkage inspectie - Opsporing van actieve en potentiële lekkages",
-    "Isolatie inspectie - Thermografische controle isolatiewaarden",
+    "Isolatie inspectie - Professionele controle isolatiewaarden",
     "Stormschade inspectie - Beoordeling schade na extreme weersomstandigheden"
   ];
 
@@ -69,7 +69,7 @@ export default function Dakinspectie({ onOpenContactModal }: DakinspectieProps) 
     },
     {
       question: "Wat wordt er gecontroleerd bij een dakinspectie?",
-      answer: "Volledige controle van dakpannen, goten, isolatie, constructie, aansluitingen, schoorsteenconstructie en dakkapellen. Ook thermografisch onderzoek naar verborgen problemen."
+      answer: "Volledige controle van dakpannen, goten, isolatie, constructie, aansluitingen, schoorsteenconstructie en dakkapellen. Met 80+ jaar familietraditie sporen wij verborgen problemen op."
     },
     {
       question: "Krijg ik een schriftelijk rapport?",
@@ -175,12 +175,12 @@ export default function Dakinspectie({ onOpenContactModal }: DakinspectieProps) 
 
   return (
     <TDSArticleTemplate
-      title="Gratis Dakinspectie 2025 | Professioneel Dakadvies | Thermografisch Onderzoek"
-      description="🏠 Gratis dakinspectie 2025! ✅ Professionele dakinspectie met schriftelijk rapport, thermografisch onderzoek & kostenadvies. Voorkom dure reparaties - Nederland & België!"
+      title="Gratis Dakinspectie 2025 | Professioneel Dakadvies | 80+ Jaar Familietraditie"
+      description="🏠 Gratis dakinspectie 2025! ✅ Professionele dakinspectie met schriftelijk rapport & eerlijk advies. 80+ jaar familietraditie - Nederland & België!"
       url="https://tbgs.nl/totaal-dak-specialist/dakinspectie"
       heroTitle="Dakinspectie en advies"
       heroSubtitle="Gratis professionele dakinspectie door gecertificeerde dakspecialisten. Voorkom dure reparaties met tijdige ontdekking van dakproblemen."
-      heroDescription="Volledige dakinspectie met thermografisch onderzoek, schriftelijk adviesrapport en kostenraming - volledig gratis en vrijblijvend."
+      heroDescription="Volledige dakinspectie met 80+ jaar ervaring, schriftelijk adviesrapport en eerlijk advies - volledig gratis en vrijblijvend."
       heroImage="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Professionele dakinspectie door gecertificeerde dakspecialist met thermische camera"
       urgencyText="100% Gratis Dakinspectie"

@@ -78,7 +78,7 @@ export default function MierloDaklekkage({ onOpenContactModal }: MierloDaklekkag
         },
         {
           question: "Wat kost daklekkage reparatie in Mierlo gemiddeld?",
-          answer: "De kosten variëren per situatie. Een kleine reparatie begint rond €175, grotere reparaties kunnen oplopen tot €1200 of meer. We geven altijd een gratis inspectie en transparante offerte vooraf."
+          answer: "We geven altijd een gratis inspectie en transparante offerte vooraf. Met 80+ jaar familietraditie zorgen wij voor eerlijke prijzen en kwaliteit reparaties."
         },
         {
           question: "Kennen jullie de specifieke situatie in Mierlo goed?",

@@ -77,7 +77,7 @@ export default function Dakbedekking({ onOpenContactModal }: DakbedekkingProps) 
     },
     {
       question: "Wat kost nieuwe dakbedekking?",
-      answer: "Kosten variëren van €50-200 per m² afhankelijk van materiaal en complexiteit. EPDM €60-90/m², bitumen €50-70/m², dakpannen €80-150/m². Inclusief gratis advies."
+      answer: "Wij bieden altijd gratis advies en transparante offertes. De keuze van materiaal bepalen wij samen op basis van uw wensen en daktype."
     },
     {
       question: "Kunnen jullie ook bijkomende werkzaamheden doen?",

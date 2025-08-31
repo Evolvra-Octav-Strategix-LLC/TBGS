@@ -89,7 +89,7 @@ export default function BestSchoorsteen({ onOpenContactModal }: BestSchoorsteenP
         },
         {
           question: "Wat kost schoorsteenreiniging in Best?",
-          answer: "Een standaard schoorsteenreiniging kost tussen €80-120. Bij extra werkzaamheden zoals reparaties komen daar kosten bij. We geven altijd vooraf een duidelijke offerte."
+          answer: "We geven altijd vooraf een duidelijke en transparante offerte. Met 80+ jaar familietraditie zorgen wij voor eerlijke prijzen en kwaliteit service."
         },
         {
           question: "Hebben jullie ervaring met karakteristieke Best-schoorstenen?",

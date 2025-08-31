@@ -12,7 +12,7 @@ export default function Daklekkage({ onOpenContactModal }: DaklekkageProps) {
     },
     {
       title: "Lekdetectie", 
-      description: "Thermografisch onderzoek en visuele inspectie om de exacte bron van de lekkage te lokaliseren."
+      description: "Professionele inspectietechnieken en visuele controle om de exacte bron van de lekkage te lokaliseren."
     },
     {
       title: "Noodreparatie",
@@ -65,7 +65,7 @@ export default function Daklekkage({ onOpenContactModal }: DaklekkageProps) {
     },
     {
       question: "Wat kost daklekkage reparatie?",
-      answer: "De kosten variëren per situatie. Wij bieden altijd een gratis inspectie en transparante offerte vooraf. Kleine reparaties vanaf €150, grotere dakwerken op maat."
+      answer: "Wij bieden altijd een gratis inspectie en transparante offerte vooraf. Met 80+ jaar familietraditie zorgen wij voor vakkundige reparaties op maat."
     },
     {
       question: "Hoe voorkom ik daklekkage in de toekomst?",
@@ -198,11 +198,11 @@ export default function Daklekkage({ onOpenContactModal }: DaklekkageProps) {
   return (
     <TDSArticleTemplate
       title="Daklekkage Reparatie 2025 | 24/7 Spoedservice Dakdekker | Nederland & België"
-      description="🚨 Daklekkage spoedservice 2025! ⚡ 24/7 dakdekker voor snelle daklekkage reparatie in Nederland & België. ✅ Thermografisch onderzoek, directe reparatie. Bel nu!"
+      description="🚨 Daklekkage spoedservice 2025! ⚡ 24/7 dakdekker voor snelle daklekkage reparatie in Nederland & België. ✅ 80+ jaar familietraditie, directe reparatie. Bel nu!"
       url="https://tbgs.nl/totaal-dak-specialist/daklekkage"
       heroTitle="Daklekkage reparatie"
       heroSubtitle="Daklekkage spoedservice door gecertificeerde dakdekkers in heel Nederland en België. Snelle lokalisatie en permanente reparatie van lekkende daken."
-      heroDescription="24/7 beschikbaar voor spoedgevallen met thermografisch onderzoek en directe noodreparatie om waterschade te voorkomen."
+      heroDescription="24/7 beschikbaar voor spoedgevallen met 80+ jaar familietraditie en directe noodreparatie om waterschade te voorkomen."
       heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
       heroImageAlt="Dakdekker repareert daklekkage met professionele gereedschappen"
       urgencyText="24/7 Spoedservice Beschikbaar"

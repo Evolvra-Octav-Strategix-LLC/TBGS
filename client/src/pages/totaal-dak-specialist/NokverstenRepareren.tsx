@@ -73,7 +73,7 @@ export default function NokverstenRepareren({ onOpenContactModal }: NokverstenRe
     },
     {
       question: "Wat kost nokvorsten repareren?",
-      answer: "Nokvorsten reparatie met Flexim dakmortel kost €15-25 per strekkende meter nok. Wij geven altijd een gratis inspectie en transparante offerte vooraf."
+      answer: "Wij geven altijd een gratis inspectie en transparante offerte vooraf. Met 80+ jaar familietraditie zorgen wij voor vakkundige nokvorsten reparatie."
     }
   ];
 

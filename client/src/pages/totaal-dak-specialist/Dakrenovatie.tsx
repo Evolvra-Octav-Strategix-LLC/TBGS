@@ -65,7 +65,7 @@ export default function Dakrenovatie({ onOpenContactModal }: DakrenovatieProps) 
     },
     {
       question: "Wat kost een volledige dakrenovatie?",
-      answer: "De kosten variëren van €8.000 tot €25.000 afhankelijk van dakoppervlak, materialen en complexiteit. Wij bieden altijd een gratis inspectie en transparante offerte."
+      answer: "Wij bieden altijd een gratis inspectie en transparante offerte. Met 80+ jaar familietraditie adviseren wij u over de beste renovatiemogelijkheden voor uw dak."
     },
     {
       question: "Hoe lang duurt een dakrenovatie?",

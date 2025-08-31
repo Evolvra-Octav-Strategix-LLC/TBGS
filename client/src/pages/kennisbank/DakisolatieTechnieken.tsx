@@ -276,7 +276,7 @@ export default function DakisolatieTechnieken() {
                   <h3 className="text-xl font-semibold text-slate-900 mb-3">1. Inspectie</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
                     Grondige analyse van de constructie, koudebruggen en bestaande isolatie. 
-                    Thermografisch onderzoek indien nodig.
+                    Professionele inspectie indien nodig.
                   </p>
                 </div>
 

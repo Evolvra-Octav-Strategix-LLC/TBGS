@@ -89,7 +89,7 @@ export default function VeldhovenDaklekkage({ onOpenContactModal }: VeldhovenDak
         },
         {
           question: "Wat kost daklekkage reparatie in Veldhoven gemiddeld?",
-          answer: "De kosten variëren per situatie. Een kleine reparatie begint rond €150, grotere reparaties kunnen oplopen tot €1200 of meer. We geven altijd een gratis inspectie en transparante offerte vooraf."
+          answer: "We geven altijd een gratis inspectie en transparante offerte vooraf. Met 80+ jaar familietraditie zorgen wij voor eerlijke prijzen en kwaliteit reparaties."
         },
         {
           question: "Kennen jullie de specifieke situatie in Veldhoven goed?",

@@ -101,7 +101,7 @@ export default function NeerpeltRenovatie({ onOpenContactModal }: NeerpeltRenova
         },
         {
           question: "Wat kost een renovatie in Neerpelt gemiddeld?",
-          answer: "De kosten zijn afhankelijk van de omvang en gewenste kwaliteit. Een badkamerrenovatie start rond €8.000, een complete woningrenovatie vanaf €40.000. We geven altijd eerst een gratis offerte."
+          answer: "We geven altijd eerst een gratis offerte. De kosten zijn afhankelijk van de omvang en gewenste kwaliteit. Met 80+ jaar familietraditie zorgen wij voor transparante prijzen."
         }
       ]}
       

@@ -89,7 +89,7 @@ export default function PeltDaklekkage({ onOpenContactModal }: PeltDaklekkagePro
         },
         {
           question: "Wat kost daklekkage reparatie in Pelt gemiddeld?",
-          answer: "De kosten variëren afhankelijk van de omvang en locatie van het lek. Een kleine reparatie start vanaf €150, terwijl grotere reparaties kunnen oplopen tot €1500 of meer. We geven altijd eerst een gratis inspectie en transparante offerte."
+          answer: "We geven altijd eerst een gratis inspectie en transparante offerte. Met 80+ jaar familietraditie zorgen wij voor eerlijke prijzen en kwaliteit reparaties."
         },
         {
           question: "Werken jullie in heel Pelt, inclusief alle deelgemeenten?",

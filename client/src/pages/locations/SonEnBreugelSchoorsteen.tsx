@@ -89,7 +89,7 @@ export default function SonEnBreugelSchoorsteen({ onOpenContactModal }: SonEnBre
         },
         {
           question: "Wat kost schoorsteenreiniging in Son en Breugel?",
-          answer: "Een standaard schoorsteenreiniging kost tussen €80-120. Bij extra werkzaamheden zoals reparaties komen daar kosten bij. We geven altijd vooraf een duidelijke offerte."
+          answer: "We geven altijd vooraf een duidelijke en transparante offerte. Met 80+ jaar familietraditie zorgen wij voor eerlijke prijzen en kwaliteit service."
         },
         {
           question: "Werken jullie in beide delen van de gemeente?",

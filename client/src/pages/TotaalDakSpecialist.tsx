@@ -186,7 +186,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Lekkage Opsporing</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Thermografisch onderzoek</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Professionele lekdetectie</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Vochtmeting</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Snelle reparatie</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Preventief onderhoud</li>
@@ -328,7 +328,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Daklekkage Reparatie</h3>
                 <p className="text-gray-600 mb-4">
-                  <strong>Daklekkage</strong> spoedservice 24/7 door ervaren <strong>dakdekkers</strong>. Snelle lokalisatie en permanente reparatie van lekkende daken met thermografisch onderzoek.
+                  <strong>Daklekkage</strong> spoedservice 24/7 door ervaren <strong>dakdekkers</strong>. Snelle lokalisatie en permanente reparatie van lekkende daken met 80+ jaar familietraditie.
                 </p>
                 <Link href="/totaal-dak-specialist/daklekkage" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over daklekkage →
@@ -408,7 +408,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakinspectie & Advies</h3>
                 <p className="text-gray-600 mb-4">
-                  Grondige <strong>dakinspectie</strong> door ervaren <strong>dakdekkers</strong>. Thermografisch onderzoek detecteert problemen vroeg en voorkomt dure <strong>dakwerken</strong> reparaties.
+                  Grondige <strong>dakinspectie</strong> door ervaren <strong>dakdekkers</strong>. 80+ jaar familietraditie detecteert problemen vroeg en voorkomt dure <strong>dakwerken</strong> reparaties.
                 </p>
                 <Link href="/totaal-dak-specialist/dakinspectie" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over dakinspectie →
