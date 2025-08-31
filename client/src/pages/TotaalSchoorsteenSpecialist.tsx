@@ -303,9 +303,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Grondige <strong>schoorsteen inspectie</strong> door ervaren <strong>schoorsteenvegers</strong>. Veiligheidscontrole en technische keuring van rookkanaal en constructie.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/totaal-schoorsteen-specialist/schoorsteen-inspectie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen inspectie →
-                </div>
+                </Link>
               </div>
             </div>
 
