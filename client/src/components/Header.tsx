@@ -157,14 +157,14 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
           </div>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center flex-shrink-0 min-w-[120px] justify-end">
+          <div className="hidden lg:flex items-center flex-shrink-0">
             <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}>
               Gratis offerte
             </Link>
           </div>
 
           {/* Mobile CTA Button and Menu */}
-          <div className="lg:hidden flex items-center space-x-2 flex-shrink-0 min-w-[120px] justify-end">
+          <div className="lg:hidden flex items-center space-x-2">
             <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
               Offerte
             </Link>
