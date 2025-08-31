@@ -66,15 +66,19 @@ export default function SpecialistHeader({
     return () => window.removeEventListener('closeMobileMenu', handleCloseMobileMenu);
   }, []);
 
-  const getSpecialistPath = () => {
+  // Get specialist-specific colors (same pattern as main Header)
+  const getSpecialistColors = () => {
     switch(specialist) {
-      case "TDS": return "/totaal-dak-specialist";
-      case "TSS": return "/totaal-schoorsteen-specialist";
-      case "TOS": return "/totaal-onderhoud-specialist";
-      case "TBS": return "/totaal-bouw-specialist";
-      default: return "/";
+      case "TDS": return { primary: "text-tbgs-red", hover: "hover:text-red-700", bg: "bg-tbgs-red", hoverBg: "hover:bg-red-700" };
+      case "TSS": return { primary: "text-tbgs-blue", hover: "hover:text-blue-700", bg: "bg-tbgs-blue", hoverBg: "hover:bg-blue-700" };
+      case "TOS": return { primary: "text-tbgs-green", hover: "hover:text-green-700", bg: "bg-tbgs-green", hoverBg: "hover:bg-green-700" };
+      case "TBS": return { primary: "text-tbgs-orange", hover: "hover:text-orange-700", bg: "bg-tbgs-orange", hoverBg: "hover:bg-orange-700" };
+      default: return { primary: "text-tbgs-navy", hover: "hover:text-tbgs-navy", bg: "bg-tbgs-navy", hoverBg: "hover:bg-blue-800" };
     }
   };
+
+  const colors = getSpecialistColors();
+
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -85,7 +89,7 @@ export default function SpecialistHeader({
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
-                <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg font-bold ${primaryColor} whitespace-nowrap`}>{companyName}</h1>
+                <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg font-bold ${colors.primary} whitespace-nowrap`}>{companyName}</h1>
                 <p className="text-xs text-gray-600">{tagline}</p>
               </div>
             </div>
@@ -95,11 +99,11 @@ export default function SpecialistHeader({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
-            <Link href="/locaties" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
-            <Link href="/kennisbank" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
-            <Link href="/onze-projecten" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
-            <Link href="/over-ons" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Over Ons</Link>
-            <Link href="/contact" className={`text-gray-700 hover:${primaryColor} font-medium transition-colors whitespace-nowrap`}>Contact</Link>
+            <Link href="/locaties" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
+            <Link href="/kennisbank" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
+            <Link href="/onze-projecten" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
+            <Link href="/over-ons" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Contact</Link>
           </nav>
 
           {/* Desktop Search */}
@@ -133,7 +137,7 @@ export default function SpecialistHeader({
           <div className="hidden lg:flex items-center flex-shrink-0">
             <button 
               onClick={onOpenContactModal}
-              className={`${primaryColor.replace('text-', 'bg-')} text-white px-4 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm whitespace-nowrap`}
+              className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}
             >
               Gratis offerte
             </button>
@@ -141,7 +145,7 @@ export default function SpecialistHeader({
 
           {/* Mobile CTA Button and Menu */}
           <div className="lg:hidden flex items-center space-x-2">
-            <Link href="/offerte" className={`${primaryColor.replace('text-', 'bg-')} text-white px-3 py-2 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors text-sm`}>
+            <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
               Offerte
             </Link>
             <button 
@@ -171,13 +175,13 @@ export default function SpecialistHeader({
                 <div className="flex items-center space-x-3">
                   <img src={logo} alt={`${companyName} Logo`} className="w-10 h-10 object-contain" />
                   <div>
-                    <h3 className={`text-sm font-bold ${primaryColor} leading-tight`}>{companyName}</h3>
+                    <h3 className={`text-sm font-bold ${colors.primary} leading-tight`}>{companyName}</h3>
                     <p className="text-xs text-gray-600">Menu</p>
                   </div>
                 </div>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`p-2 text-gray-700 hover:${primaryColor.replace('text-', 'text-')} transition-colors`}
+                  className={`p-2 text-gray-700 ${colors.hover} transition-colors`}
                 >
                   <i className="fas fa-times text-xl"></i>
                 </button>
@@ -189,7 +193,7 @@ export default function SpecialistHeader({
                 <div className="p-6 border-b border-gray-200">
                   <div className="relative">
                     <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
-                      isSearchFocused ? primaryColor : 'text-gray-400'
+                      isSearchFocused ? colors.primary : 'text-gray-400'
                     }`} />
                     <input
                       ref={mobileSearchInputRef}
@@ -274,7 +278,7 @@ export default function SpecialistHeader({
                     onOpenContactModal();
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`${primaryColor.replace('text-', 'bg-')} text-white px-6 py-4 rounded-lg font-semibold hover:${hoverColor.replace('text-', 'bg-')} transition-colors w-full shadow-lg`}
+                  className={`${colors.bg} text-white px-6 py-4 rounded-lg font-semibold ${colors.hoverBg} transition-colors w-full shadow-lg`}
                 >
                   <i className="fas fa-calculator mr-2"></i>
                   Gratis offerte
