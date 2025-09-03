@@ -1,7 +1,7 @@
 // Vercel serverless function for sending emails using Resend
 import { Resend } from 'resend';
 
-const resend = new Resend('re_6jkbvCDw_5PS45oAiJRicknQV9z2E1mkf');
+const resend = new Resend('re_Ytvimt8Q_9Rw3VLPkQQN7T2GPcgMAGymf');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
