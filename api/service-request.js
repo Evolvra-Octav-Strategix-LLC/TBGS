@@ -10,8 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Webhook URL for email service
-const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
+// Webhook URL for email service (must be set in Vercel environment variables)
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://tbgs-bv-website.replit.app/api/email-webhook';
 
 // Service request validation schema
 const serviceRequestSchema = z.object({
