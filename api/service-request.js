@@ -10,8 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Webhook URL for email service (must be set in Vercel environment variables)
-const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://tbgs-bv-website.replit.app/api/email-webhook';
+// Internal Vercel email service URL
+const EMAIL_SERVICE_URL = 'https://tbgs.vercel.app/api/send-email';
 
 // Service request validation schema
 const serviceRequestSchema = z.object({
@@ -58,9 +58,9 @@ const serviceRequests = pgTable("service_requests", {
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service via webhook to main server
+// Email service via internal Vercel email API
 async function sendEmailViaWebhook(emailData, files) {
-  console.log('📧 Sending email via webhook to main server...');
+  console.log('📧 Sending email via internal Vercel service...');
   try {
     // Prepare files for webhook (encode buffers as base64)
     const webhookFiles = [];
@@ -81,7 +81,7 @@ async function sendEmailViaWebhook(emailData, files) {
       }
     }
 
-    const response = await fetch(EMAIL_WEBHOOK_URL, {
+    const response = await fetch(EMAIL_SERVICE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ export default async function handler(req, res) {
 
     console.log(`⚡ Request saved to database: ${savedRequest.id}`);
 
-    // Send emails via webhook to main server
+    // Send emails via internal Vercel email service
     try {
       await sendEmailViaWebhook({
         ...validatedData,
@@ -194,9 +194,9 @@ export default async function handler(req, res) {
         id: savedRequest.id
       }, files);
       
-      console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
+      console.log(`✓ Emails sent for ${savedRequest.id}`);
     } catch (emailError) {
-      console.error('Webhook email failed (form still submitted):', emailError);
+      console.error('Email sending failed (form still submitted):', emailError);
     }
 
     // Return success immediately

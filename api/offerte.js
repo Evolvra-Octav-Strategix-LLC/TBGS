@@ -10,8 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Webhook URL for email service (must be set in Vercel environment variables)
-const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://tbgs-bv-website.replit.app/api/email-webhook';
+// Internal Vercel email service URL
+const EMAIL_SERVICE_URL = 'https://tbgs.vercel.app/api/send-email';
 
 // Database schema
 const offerteRequests = pgTable("offerte_requests", {
@@ -58,9 +58,9 @@ const offerteFormSchema = z.object({
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service via webhook to main server
+// Email service via internal Vercel email API
 async function sendEmailViaWebhook(emailData, files) {
-  console.log('📧 Sending offerte email via webhook to main server...');
+  console.log('📧 Sending offerte email via internal Vercel service...');
   try {
     // Prepare files for webhook (encode buffers as base64)
     const webhookFiles = [];
@@ -81,7 +81,7 @@ async function sendEmailViaWebhook(emailData, files) {
       }
     }
 
-    const response = await fetch(EMAIL_WEBHOOK_URL, {
+    const response = await fetch(EMAIL_SERVICE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
