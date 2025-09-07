@@ -5,3 +5,35 @@ server/public
 vite.config.ts.*
 *.tar.gz
 .vercel
+
+# Environment files (contain secrets)
+.env
+.env.local
+.env.production
+.env.development
+
+# Docker volumes and data
+postgres_data/
+redis_data/
+nextcloud_data/
+uploads/
+nginx/logs/
+nginx/ssl/
+
+# Backup files
+*.backup
+*.bak
+backups/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
