@@ -89,6 +89,10 @@ docker-compose ps
 echo -e "${YELLOW}🔒 Getting SSL certificates...${NC}"
 docker-compose run --rm certbot
 
+# Run database migrations
+echo -e "${YELLOW}📊 Running database migrations...${NC}"
+docker-compose exec tbgs-app npm run db:push || echo "Migration will run on first app start"
+
 # Reload nginx with SSL
 echo -e "${YELLOW}🔄 Reloading nginx with SSL...${NC}"
 docker-compose restart nginx
