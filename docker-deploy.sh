@@ -21,7 +21,7 @@ fi
 
 # Variables
 APP_DIR="/opt/tbgs"
-REPO_URL="https://github.com/yourusername/tbgs-website.git"  # Replace with your repo
+REPO_URL="https://github.com/Evolvra-Octav-Strategix-LLC/TBGS.git"
 BRANCH="main"
 
 # Install Docker if not present
