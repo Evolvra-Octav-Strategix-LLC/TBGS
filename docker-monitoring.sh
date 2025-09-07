@@ -81,7 +81,7 @@ echo ""
 
 # Check website accessibility
 echo -e "${YELLOW}🌐 Website Accessibility:${NC}"
-for url in "https://tbgs.nl" "https://nextcloud.tbgs.nl"; do
+for url in "https://tbgs.nl" "https://nextcloud.tbgs.nl" "https://portainer.tbgs.nl"; do
     if curl -s --max-time 10 "$url" > /dev/null; then
         echo -e "${GREEN}✅ $url is accessible${NC}"
     else
