@@ -10,8 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Internal Vercel email service URL
-const EMAIL_SERVICE_URL = 'https://tbgs.vercel.app/api/send-email';
+// Webhook URL for email service
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
 
 // Contact modal validation schema
 const contactModalSchema = z.object({
@@ -60,9 +60,9 @@ const contactModalRequests = pgTable("contact_modal_requests", {
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service via internal Vercel email API
+// Email service via webhook to main server
 async function sendEmailViaWebhook(emailData, files) {
-  console.log('📧 Sending contact modal email via internal Vercel service...');
+  console.log('📧 Sending contact modal email via webhook to main server...');
   try {
     // Prepare files for webhook (encode buffers as base64)
     const webhookFiles = [];
@@ -83,7 +83,7 @@ async function sendEmailViaWebhook(emailData, files) {
       }
     }
 
-    const response = await fetch(EMAIL_SERVICE_URL, {
+    const response = await fetch(EMAIL_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

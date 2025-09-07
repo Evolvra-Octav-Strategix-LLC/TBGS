@@ -10,8 +10,8 @@ import { z } from 'zod';
 
 neonConfig.webSocketConstructor = ws;
 
-// Internal Vercel email service URL
-const EMAIL_SERVICE_URL = 'https://tbgs.vercel.app/api/send-email';
+// Webhook URL for email service
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
 
 // Service request validation schema
 const serviceRequestSchema = z.object({
@@ -58,9 +58,9 @@ const serviceRequests = pgTable("service_requests", {
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const db = drizzle({ client: pool });
 
-// Email service via internal Vercel email API
+// Email service via webhook to main server
 async function sendEmailViaWebhook(emailData, files) {
-  console.log('📧 Sending email via internal Vercel service...');
+  console.log('📧 Sending email via webhook to main server...');
   try {
     // Prepare files for webhook (encode buffers as base64)
     const webhookFiles = [];
@@ -81,7 +81,7 @@ async function sendEmailViaWebhook(emailData, files) {
       }
     }
 
-    const response = await fetch(EMAIL_SERVICE_URL, {
+    const response = await fetch(EMAIL_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ export default async function handler(req, res) {
 
     console.log(`⚡ Request saved to database: ${savedRequest.id}`);
 
-    // Send emails via internal Vercel email service
+    // Send emails via webhook to main server
     try {
       await sendEmailViaWebhook({
         ...validatedData,
@@ -194,9 +194,9 @@ export default async function handler(req, res) {
         id: savedRequest.id
       }, files);
       
-      console.log(`✓ Emails sent for ${savedRequest.id}`);
+      console.log(`✓ Webhook emails sent for ${savedRequest.id}`);
     } catch (emailError) {
-      console.error('Email sending failed (form still submitted):', emailError);
+      console.error('Webhook email failed (form still submitted):', emailError);
     }
 
     // Return success immediately
