@@ -1,0 +1,236 @@
+root@212:/opt/tbgs# # Look at the complete vite setup
+docker exec tbgs-app cat /app/dist/index.js | grep -A 20 -B 5 "setupVite\|static\|public"
+}) {
+  const aclPolicy = await getObjectAclPolicy(objectFile);
+  if (!aclPolicy) {
+    return false;
+  }
+  if (aclPolicy.visibility === "public" && requestedPermission === "read" /* READ */) {
+    return true;
+  }
+  if (!userId) {
+    return false;
+  }
+  if (aclPolicy.owner === userId) {
+    return true;
+  }
+  for (const rule of aclPolicy.aclRules || []) {
+    const accessGroup = createObjectAccessGroup(rule.group);
+    if (await accessGroup.hasMember(userId) && isPermissionAllowed(requestedPermission, rule.permission)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// server/objectStorage.ts
+var REPLIT_SIDECAR_ENDPOINT = "http://127.0.0.1:1106";
+var objectStorageClient = new Storage({
+--
+  }
+};
+var ObjectStorageService = class {
+  constructor() {
+  }
+  // Gets the public object search paths.
+  getPublicObjectSearchPaths() {
+    const pathsStr = process.env.PUBLIC_OBJECT_SEARCH_PATHS || "";
+    const paths = Array.from(
+      new Set(
+        pathsStr.split(",").map((path6) => path6.trim()).filter((path6) => path6.length > 0)
+      )
+    );
+    if (paths.length === 0) {
+      throw new Error(
+        "PUBLIC_OBJECT_SEARCH_PATHS not set. Create a bucket in 'Object Storage' tool and set PUBLIC_OBJECT_SEARCH_PATHS env var (comma-separated paths)."
+      );
+    }
+    return paths;
+  }
+  // Gets the private object directory.
+  getPrivateObjectDir() {
+    const dir = process.env.PRIVATE_OBJECT_DIR || "";
+    if (!dir) {
+      throw new Error(
+        "PRIVATE_OBJECT_DIR not set. Create a bucket in 'Object Storage' tool and set PRIVATE_OBJECT_DIR env var."
+      );
+    }
+    return dir;
+  }
+  // Search for a public object from the search paths.
+  async searchPublicObject(filePath) {
+    for (const searchPath of this.getPublicObjectSearchPaths()) {
+      const fullPath = `${searchPath}/${filePath}`;
+      const { bucketName, objectName } = parseObjectPath(fullPath);
+      const bucket = objectStorageClient.bucket(bucketName);
+      const file = bucket.file(objectName);
+      const [exists] = await file.exists();
+      if (exists) {
+        return file;
+      }
+    }
+    return null;
+  }
+  // Downloads an object to the response.
+  async downloadObject(file, res, cacheTtlSec = 3600) {
+    try {
+      const [metadata] = await file.getMetadata();
+      const aclPolicy = await getObjectAclPolicy(file);
+      const isPublic = aclPolicy?.visibility === "public";
+      res.set({
+        "Content-Type": metadata.contentType || "application/octet-stream",
+        "Content-Length": metadata.size,
+        "Cache-Control": `${isPublic ? "public" : "private"}, max-age=${cacheTtlSec}`
+      });
+      const stream = file.createReadStream();
+      stream.on("error", (err) => {
+        console.error("Stream error:", err);
+        if (!res.headersSent) {
+          res.status(500).json({ error: "Error streaming file" });
+        }
+      });
+      stream.pipe(res);
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      if (!res.headersSent) {
+        res.status(500).json({ error: "Error downloading file" });
+      }
+    }
+  }
+  // Gets the upload URL for an object entity.
+  async getObjectEntityUploadURL() {
+    const privateObjectDir = this.getPrivateObjectDir();
+    if (!privateObjectDir) {
+--
+    process.env.GRIPP_API_TOKEN_1 || "WGfdU9N2vESmERtVq8BN3gMT4rD1zd",
+    process.env.GRIPP_API_TOKEN_2 || "2KfdaAQ8xCDc2VicbDcNzFhaxVWtov"
+  ].filter(Boolean);
+  try {
+    console.log("\u{1F50D} Available tokens:", tokens.map((token, i) => `API ${i + 1}: ${token.substring(0, 8)}...`));
+    const apiUrl = "https://api.gripp.com/public/api3.php";
+    const companyData = {
+      notes: formData.requestDescription,
+      active: true,
+      foundationdate: "2017-09-28",
+      invoicesendby: "EMAIL",
+      invoiceemail: formData.email,
+      visitingaddress_street: formData.street.charAt(0).toUpperCase() + formData.street.slice(1).toLowerCase(),
+      visitingaddress_zipcode: formatZipcode(formData.postalCode),
+      visitingaddress_streetnumber: formData.houseNumber,
+      visitingaddress_city: formData.city.charAt(0).toUpperCase() + formData.city.slice(1).toLowerCase(),
+      email: formData.email,
+      phone: formatPhone(formData.phoneNumber),
+      relationtype: "PRIVATEPERSON",
+      firstname: formData.firstName.charAt(0).toUpperCase() + formData.firstName.slice(1).toLowerCase(),
+      infix: formData.infix || "",
+      companyroles: [1],
+      lastname: formData.lastName.charAt(0).toUpperCase() + formData.lastName.slice(1).toLowerCase()
+    };
+    const jsonRpcRequest = [{
+      method: "company.create",
+--
+    } catch (error) {
+      console.error("Error getting upload URL:", error);
+      res.status(500).json({ error: "Failed to get upload URL" });
+    }
+  });
+  app2.get("/public-objects/:filePath(*)", async (req, res) => {
+    const filePath = req.params.filePath;
+    const objectStorageService = new ObjectStorageService();
+    try {
+      const file = await objectStorageService.searchPublicObject(filePath);
+      if (!file) {
+        return res.status(404).json({ error: "File not found" });
+      }
+      objectStorageService.downloadObject(file, res);
+    } catch (error) {
+      console.error("Error searching for public object:", error);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+  });
+  app2.get("/objects/:objectPath(*)", async (req, res) => {
+    const objectStorageService = new ObjectStorageService();
+    try {
+      const objectFile = await objectStorageService.getObjectEntityFile(req.path);
+      objectStorageService.downloadObject(objectFile, res);
+    } catch (error) {
+      console.error("Error accessing object:", error);
+      if (error instanceof ObjectNotFoundError) {
+        return res.sendStatus(404);
+      }
+      return res.sendStatus(500);
+    }
+  });
+  app2.get("/api/google-business/:placeId", async (req, res) => {
+    const { placeId } = req.params;
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    if (!apiKey) {
+--
+      "@assets": path3.resolve(import.meta.dirname, "attached_assets")
+    }
+  },
+  root: path3.resolve(import.meta.dirname, "client"),
+  build: {
+    outDir: path3.resolve(import.meta.dirname, "dist/public"),
+    emptyOutDir: true
+  },
+  server: {
+    fs: {
+      strict: true,
+      deny: ["**/.*"]
+    }
+  }
+});
+
+// server/vite.ts
+import { nanoid } from "nanoid";
+var viteLogger = createLogger();
+function log(message, source = "express") {
+  const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+async function setupVite(app2, server) {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true
+  };
+  const vite = await createViteServer({
+    ...vite_config_default,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      }
+    },
+    server: serverOptions,
+    appType: "custom"
+  });
+  app2.use(vite.middlewares);
+  app2.use("*", async (req, res, next) => {
+--
+app.use(express2.json({ limit: "10mb" }));
+app.use(express2.urlencoded({ extended: true, limit: "10mb" }));
+async function startServer() {
+  try {
+    const server = await registerRoutes(app);
+    await setupVite(app, server);
+    const port = process.env.PORT || 5e3;
+    server.listen(port, () => {
+      log(`serving on port ${port}`);
+      taskProcessor.start();
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    process.exit(1);
+  }
+}
+startServer();
+root@212:/opt/tbgs# 
