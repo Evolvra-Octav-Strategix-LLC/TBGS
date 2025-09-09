@@ -102,7 +102,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/lib/letsencrypt:/var/lib/letsencrypt
       - ./nginx/html:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email your-email@example.com --agree-tos --no-eff-email -d tbgs.nl -d www.tbgs.nl -d nextcloud.tbgs.nl -d portainer.tbgs.nl
+    command: certonly --webroot --webroot-path=/var/www/html --email Info@tbgs.nl --agree-tos --no-eff-email -d tbgs.nl -d www.tbgs.nl -d nextcloud.tbgs.nl -d portainer.tbgs.nl
     networks:
       - tbgs-network
 
