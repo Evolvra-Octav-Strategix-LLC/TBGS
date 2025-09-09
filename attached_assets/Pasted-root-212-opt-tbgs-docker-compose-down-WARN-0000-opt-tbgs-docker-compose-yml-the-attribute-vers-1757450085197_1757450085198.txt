@@ -1,0 +1,98 @@
+root@212:/opt/tbgs# docker-compose down
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+root@212:/opt/tbgs# # Ga naar je project directory
+cd /opt/tbgs
+
+# Check of alle files er zijn
+ls -la
+
+# Containers bouwen en starten (dit kan 5-10 minuten duren)
+docker-compose up --build -d
+total 644
+drwxr-xr-x 12 root root   4096 Sep  9 21:09 .
+drwxr-xr-x  4 root root   4096 Sep  9 21:06 ..
+-rw-r--r--  1 root root    503 Sep  9 20:54 .dockerignore
+-rw-r--r--  1 root root   1250 Sep  9 20:54 .env.docker
+-rw-r--r--  1 root root   1250 Sep  9 21:08 .env.production
+drwxr-xr-x  8 root root   4096 Sep  9 21:09 .git
+-rw-r--r--  1 root root    394 Sep  9 20:54 .gitignore
+-rw-r--r--  1 root root    774 Sep  9 20:54 .replit
+-rw-r--r--  1 root root   5676 Sep  9 20:54 DOCKER_DEPLOYMENT.md
+-rw-r--r--  1 root root   1334 Sep  9 20:54 Dockerfile
+-rw-r--r--  1 root root  12098 Sep  9 20:54 SEO-URL-COMPLETE-OVERVIEW.md
+drwxr-xr-x  2 root root   4096 Sep  9 20:54 api
+drwxr-xr-x  2 root root  12288 Sep  9 20:54 attached_assets
+drwxr-xr-x  4 root root   4096 Sep  9 20:54 client
+-rw-r--r--  1 root root    459 Sep  9 20:54 components.json
+-rwxr-xr-x  1 root root   1723 Sep  9 20:54 deploy.sh
+-rwxr-xr-x  1 root root   1676 Sep  9 20:54 docker-backup.sh
+-rw-r--r--  1 root root   3026 Sep  9 20:54 docker-compose.yml
+-rwxr-xr-x  1 root root   3950 Sep  9 20:54 docker-deploy.sh
+-rwxr-xr-x  1 root root   2537 Sep  9 20:54 docker-monitoring.sh
+-rw-r--r--  1 root root    325 Sep  9 20:54 drizzle.config.ts
+-rw-r--r--  1 root root    314 Sep  9 20:54 ecosystem.config.js
+-rw-r--r--  1 root root   4207 Sep  9 20:54 import-files-guide.md
+drwxr-xr-x  3 root root   4096 Sep  9 21:09 nextcloud
+drwxr-xr-x  5 root root   4096 Sep  9 21:09 nginx
+-rw-r--r--  1 root root   2060 Sep  9 20:54 nginx.conf
+-rw-r--r--  1 root root 467603 Sep  9 20:54 package-lock.json
+-rw-r--r--  1 root root   4633 Sep  9 20:54 package.json
+-rw-r--r--  1 root root     80 Sep  9 20:54 postcss.config.js
+-rw-r--r--  1 root root    731 Sep  9 20:54 postgres-init.sql
+-rw-r--r--  1 root root   4935 Sep  9 20:54 replit.md
+drwxr-xr-x  2 root root   4096 Sep  9 20:54 scripts
+drwxr-xr-x  2 root root   4096 Sep  9 20:54 server
+drwxr-xr-x  2 root root   4096 Sep  9 20:54 shared
+-rw-r--r--  1 root root   2622 Sep  9 20:54 tailwind.config.ts
+-rw-r--r--  1 root root    657 Sep  9 20:54 tsconfig.json
+drwxr-xr-x  2 root root   4096 Sep  9 21:09 uploads
+-rw-r--r--  1 root root    456 Sep  9 20:54 vercel.json
+-rw-r--r--  1 root root    971 Sep  9 20:54 vite.config.ts
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Building 1.4s (15/19)                                                       
+ => [internal] load local bake definitions                                 0.0s
+ => => reading from stdin 473B                                             0.0s
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 1.37kB                                     0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine          0.7s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 545B                                          0.0s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 24.60kB                                       0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                      0.0s
+ => CACHED [builder 3/6] COPY package*.json ./                             0.0s
+ => CACHED [builder 4/6] RUN npm ci --only=production && npm cache clean   0.0s
+ => CACHED [builder 5/6] COPY . .                                          0.0s
+ => CACHED [production 2/9] RUN apk add --no-cache     tini     && addgro  0.0s
+ => CACHED [production 3/9] WORKDIR /app                                   0.0s
+ => CACHED [production 4/9] COPY package*.json ./                          0.0s
+ => CACHED [production 5/9] RUN npm ci --only=production && npm cache cle  0.0s
+ => ERROR [builder 6/6] RUN npm run build                                  0.5s
+------                                                                          
+ > [builder 6/6] RUN npm run build:                                             
+0.442                                                                           
+0.442 > rest-express@1.0.0 build
+0.442 > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+0.442 
+0.448 sh: vite: not found
+------
+Dockerfile:17
+
+--------------------
+
+  15 |     
+
+  16 |     # Build the application
+
+  17 | >>> RUN npm run build
+
+  18 |     
+
+  19 |     # Production stage
+
+--------------------
+
+failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+
+root@212:/opt/tbgs# 
