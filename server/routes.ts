@@ -111,7 +111,7 @@ const processMultipartRequest = (req: any): Promise<{fields: any, files: any[]}>
   return new Promise((resolve, reject) => {
     const form = new multiparty.Form({
       maxFilesSize: 12 * 1024 * 1024 * 8, // 96MB total
-      maxFields: 20
+      maxFields: 100  // Increased to handle many files + form fields
     });
     
     form.parse(req, (err: unknown, fields: unknown, files: unknown) => {
