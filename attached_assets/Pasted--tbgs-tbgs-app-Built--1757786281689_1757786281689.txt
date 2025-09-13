@@ -1,0 +1,26 @@
+✔ tbgs-tbgs-app                       Built                                                                                                                               0.0s 
+ ✔ Network tbgs_tbgs-network           Created                                                                                                                             0.1s 
+ ✔ Container tbgs-portainer            Started                                                                                                                             0.7s 
+ ✔ Container tbgs-postgres             Started                                                                                                                             0.8s 
+ ✔ Container tbgs-redis                Started                                                                                                                             0.8s 
+ ✔ Container tbgs-app                  Started                                                                                                                             1.1s 
+ ✔ Container tbgs-nextcloud            Started                                                                                                                             1.0s 
+ ✔ Container tbgs-nginx-proxy-manager  Started                                                                                                                             1.5s 
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME                       IMAGE                             COMMAND                  SERVICE               CREATED         STATUS                                     PORTS
+tbgs-app                   tbgs-tbgs-app                     "/sbin/tini -- node …"   tbgs-app              2 seconds ago   Up Less than a second (health: starting)   3000/tcp
+tbgs-nextcloud             nextcloud:28-apache               "/entrypoint.sh apac…"   nextcloud             2 seconds ago   Up 1 second                                80/tcp
+tbgs-nginx-proxy-manager   jc21/nginx-proxy-manager:latest   "/init"                  nginx-proxy-manager   2 seconds ago   Up Less than a second                      0.0.0.0:80-81->80-81/tcp, [::]:80-81->80-81/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp
+tbgs-portainer             portainer/portainer-ce:latest     "/portainer -H unix:…"   portainer             2 seconds ago   Up 1 second                                8000/tcp, 9000/tcp, 9443/tcp
+tbgs-postgres              postgres:15-alpine                "docker-entrypoint.s…"   postgres              2 seconds ago   Up 1 second                                5432/tcp
+tbgs-redis                 redis:7-alpine                    "docker-entrypoint.s…"   redis                 2 seconds ago   Up 1 second                                6379/tcp
+root@212:/opt/tbgs# # Check de logs
+docker-compose logs app
+
+# Test je website
+curl http://localhost:3000
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+no such service: app
+curl: (7) Failed to connect to localhost port 3000 after 1 ms: Connection refused
+root@212:/opt/tbgs# 1
+
