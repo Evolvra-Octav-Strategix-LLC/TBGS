@@ -1,0 +1,23 @@
+ ✔ tbgs-tbgs-app                       Built                                                                                                                                                    0.0s 
+ ✔ Network tbgs_tbgs-network           Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-portainer            Started                                                                                                                                                  0.6s 
+ ✔ Container tbgs-postgres             Healthy                                                                                                                                                 11.2s 
+ ✔ Container tbgs-dashy                Started                                                                                                                                                  0.7s 
+ ✔ Container tbgs-app                  Started                                                                                                                                                 11.8s 
+ ✔ Container tbgs-pgadmin              Started                                                                                                                                                 11.8s 
+ ✔ Container tbgs-nextcloud            Started                                                                                                                                                 11.8s 
+ ✔ Container tbgs-nginx-proxy-manager  Started                                                                                                                                                 12.7s 
+⏳ Waiting for services to start up...
+🔍 Checking TBGS Application health...
+⏳ Waiting for TBGS Application... (1/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (2/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (3/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (4/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (5/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (6/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (7/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (8/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (9/10) - Status: Restarting
+⏳ Waiting for TBGS Application... (10/10) - Status: Restarting
+❌ TBGS Application health check failed
+root@212:/opt/tbgs# 
