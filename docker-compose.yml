@@ -1,27 +1,56 @@
-version: '3.8'
+# TBGS Complete Infrastructure Stack
+name: tbgs
+
+networks:
+  tbgs-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  nextcloud_data:
+    driver: local
+  nextcloud_apps:
+    driver: local
+  nextcloud_config:
+    driver: local
+  portainer_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+  npm_data:
+    driver: local
+  npm_ssl:
+    driver: local
 
 services:
-  # TBGS Web Application
+  # Main TBGS Application
   tbgs-app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: tbgs-app
     restart: unless-stopped
-    env_file:
-      - .env.production
+    env_file: .env.production
     environment:
       - NODE_ENV=production
-      - PORT=3000
-      - DATABASE_URL=postgresql://tbgs_user:TBGSSecure2024!Production@postgres:5432/tbgs_production
-      - REDIS_URL=redis://redis:6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     volumes:
       - ./uploads:/app/uploads
     networks:
       - tbgs-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   # PostgreSQL Database
   postgres:
@@ -29,27 +58,102 @@ services:
     container_name: tbgs-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: tbgs_production
-      POSTGRES_USER: tbgs_user
-      POSTGRES_PASSWORD: TBGSSecure2024!Production
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # Nextcloud database credentials for init script
+      NEXTCLOUD_DB_USER: ${NEXTCLOUD_DB_USER}
+      NEXTCLOUD_DB_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./postgres-init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./010-nextcloud-init.sh:/docker-entrypoint-initdb.d/010-nextcloud-init.sh:ro
     networks:
       - tbgs-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # Redis for Sessions
+  # Redis Cache
   redis:
     image: redis:7-alpine
     container_name: tbgs-redis
     restart: unless-stopped
-    command: redis-server --appendonly yes
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
     volumes:
       - redis_data:/data
     networks:
       - tbgs-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
-  # Nextcloud for File Storage
+  # Nginx Proxy Manager (Only External Access Point)
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: tbgs-nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - "80:80"           # HTTP
+      - "443:443"         # HTTPS  
+      - "127.0.0.1:8081:81" # Admin Panel (localhost only for security)
+    environment:
+      DB_SQLITE_FILE: "/data/database.db"
+    volumes:
+      - npm_data:/data
+      - npm_ssl:/etc/letsencrypt
+    networks:
+      - tbgs-network
+    depends_on:
+      - tbgs-app
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:81/api/nginx/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Dashy Dashboard
+  dashy:
+    image: lissy93/dashy:latest
+    container_name: tbgs-dashy
+    restart: unless-stopped
+    volumes:
+      - ./dashy/conf.yml:/app/public/conf.yml:ro
+    networks:
+      - tbgs-network
+    healthcheck:
+      test: ["CMD", "node", "/app/services/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # pgAdmin Database Management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: tbgs-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - tbgs-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/misc/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nextcloud File Storage
   nextcloud:
     image: nextcloud:28-apache
     container_name: tbgs-nextcloud
@@ -57,66 +161,42 @@ services:
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_DB: nextcloud
-      POSTGRES_USER: nextcloud_user
-      POSTGRES_PASSWORD: NextcloudSecure2024!
-      NEXTCLOUD_ADMIN_USER: admin
-      NEXTCLOUD_ADMIN_PASSWORD: TBGSNextcloudAdmin2024!
-      NEXTCLOUD_TRUSTED_DOMAINS: nextcloud.tbgs.nl tbgs.nl
+      POSTGRES_USER: ${NEXTCLOUD_DB_USER}
+      POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD}
+      NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
+      NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
+      NEXTCLOUD_TRUSTED_DOMAINS: ${NEXTCLOUD_TRUSTED_DOMAINS}
       OVERWRITEPROTOCOL: https
-      OVERWRITEHOST: nextcloud.tbgs.nl
+      OVERWRITEHOST: ${NEXTCLOUD_HOST}
     volumes:
       - nextcloud_data:/var/www/html
       - nextcloud_apps:/var/www/html/custom_apps
       - nextcloud_config:/var/www/html/config
       - ./nextcloud/uploads:/var/www/html/data
-    depends_on:
-      - postgres
     networks:
       - tbgs-network
-
-  # Nginx Proxy Manager - Web-based SSL and Domain Management
-  nginx-proxy-manager:
-    image: 'jc21/nginx-proxy-manager:latest'
-    container_name: tbgs-nginx-proxy-manager
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "81:81"  # Admin web interface
-    volumes:
-      - npm_data:/data
-      - npm_letsencrypt:/etc/letsencrypt
-    environment:
-      DB_SQLITE_FILE: "/data/database.sqlite"
     depends_on:
-      - tbgs-app
-      - nextcloud
-      - portainer
-    networks:
-      - tbgs-network
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/status.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
-  # Portainer for Container Management
+  # Portainer Container Management
   portainer:
     image: portainer/portainer-ce:latest
     container_name: tbgs-portainer
     restart: unless-stopped
     command: -H unix:///var/run/docker.sock
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - portainer_data:/data
     networks:
       - tbgs-network
-
-volumes:
-  postgres_data:
-  redis_data:
-  nextcloud_data:
-  nextcloud_apps:
-  nextcloud_config:
-  portainer_data:
-  npm_data:
-  npm_letsencrypt:
-
-networks:
-  tbgs-network:
-    driver: bridge
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9000/api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

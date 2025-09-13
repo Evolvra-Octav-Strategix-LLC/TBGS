@@ -1,73 +1,103 @@
 #!/bin/bash
+# TBGS Clean Deployment Script
+# This script ensures a clean GitOps workflow with zero conflicts
 
-# TBGS Production Deployment Script
-# Run this script on your DigitalOcean droplet
-
-set -e
+set -e  # Exit on any error
 
 echo "🚀 Starting TBGS deployment..."
+echo "📅 $(date)"
 
-# Variables
-APP_DIR="/var/www/tbgs"
-REPO_URL="https://github.com/yourusername/tbgs-website.git"  # Replace with your repo
-BRANCH="main"
-
-# Check if running as root
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
+# Check if we're in the right directory
+if [ ! -f "docker-compose.yml" ]; then
+    echo "❌ Error: docker-compose.yml not found. Are you in the TBGS directory?"
     exit 1
 fi
 
-# Create app directory if it doesn't exist
-if [ ! -d "$APP_DIR" ]; then
-    echo "📁 Creating application directory..."
-    mkdir -p $APP_DIR
-    chown tbgs:tbgs $APP_DIR
-fi
-
-# Switch to app directory
-cd $APP_DIR
-
-# Clone or pull latest code
-if [ ! -d ".git" ]; then
-    echo "📥 Cloning repository..."
-    sudo -u tbgs git clone $REPO_URL .
-else
-    echo "📥 Pulling latest changes..."
-    sudo -u tbgs git pull origin $BRANCH
-fi
-
-# Install dependencies
-echo "📦 Installing dependencies..."
-sudo -u tbgs npm ci --production
-
-# Build application
-echo "🏗️ Building application..."
-sudo -u tbgs npm run build
-
-# Set up environment variables
-echo "⚙️ Setting up environment..."
+# Check if .env.production exists
 if [ ! -f ".env.production" ]; then
-    echo "❌ .env.production file not found!"
-    echo "Please create .env.production with your production environment variables"
+    echo "❌ Error: .env.production not found. Please copy .env.example to .env.production and configure it."
     exit 1
 fi
 
-# Database migration
-echo "🗄️ Running database migrations..."
-sudo -u tbgs npm run db:push
+echo "🔄 Fetching latest changes from repository..."
+# Force clean pull - no conflicts allowed
+git fetch --all
+git reset --hard origin/main
 
-# Restart PM2 application
-echo "🔄 Restarting application..."
-if pm2 list | grep -q "tbgs-production"; then
-    pm2 restart tbgs-production
-else
-    cd $APP_DIR && sudo -u tbgs pm2 start ecosystem.config.js
-fi
+echo "🛑 Stopping existing containers..."
+docker compose down
 
-# Save PM2 configuration
-pm2 save
-pm2 startup
+echo "🧹 Cleaning up old images and containers..."
+docker system prune -f
 
-echo "✅ Deployment completed successfully!"
-echo "🌐 Your website should be accessible at https://tbgs.nl"
+echo "🔨 Building and starting services..."
+docker compose up -d --build
+
+echo "⏳ Waiting for services to start up..."
+sleep 30
+
+# Health check function using docker compose health status
+check_service_health() {
+    local service_name=$1
+    local display_name=$2
+    echo "🔍 Checking $display_name health..."
+    
+    for i in {1..10}; do
+        local health_status=$(docker compose ps --format "table {{.Service}}\t{{.Status}}" | grep "^${service_name}" | awk '{print $2}')
+        
+        if [[ "$health_status" == *"healthy"* ]] || [[ "$health_status" == *"Up"* ]]; then
+            echo "✅ $display_name is healthy"
+            return 0
+        fi
+        
+        echo "⏳ Waiting for $display_name... ($i/10) - Status: $health_status"
+        sleep 10
+    done
+    
+    echo "❌ $display_name health check failed"
+    return 1
+}
+
+# Alternative direct API health check for TBGS app (bypasses NPM)
+check_tbgs_api_direct() {
+    echo "🔍 Checking TBGS App API directly..."
+    
+    for i in {1..5}; do
+        # Use wget instead of curl as it's more commonly available in containers
+        if docker compose exec -T tbgs-app wget --quiet --tries=1 --spider "http://localhost:3000/api/health" > /dev/null 2>&1; then
+            echo "✅ TBGS App API is responding"
+            return 0
+        fi
+        echo "⏳ Waiting for TBGS App API... ($i/5)"
+        sleep 5
+    done
+    
+    echo "⚠️ TBGS App API check failed, but container may still be starting"
+    return 1
+}
+
+# Check service health using Docker health status
+check_service_health "tbgs-app" "TBGS Application"
+check_service_health "postgres" "PostgreSQL Database" 
+check_service_health "redis" "Redis Cache"
+check_service_health "nginx-proxy-manager" "Nginx Proxy Manager"
+
+# Additional direct API check
+check_tbgs_api_direct || echo "⚠️ Direct API health check failed, check logs if needed"
+
+echo "📊 Container status:"
+docker compose ps
+
+echo "📋 Recent logs:"
+docker compose logs --tail=20
+
+echo "🎉 Deployment completed!"
+echo "🌐 Your services should now be available:"
+echo "   - Main website: https://tbgs.nl"
+echo "   - Dashboard: https://dashboard.tbgs.nl"
+echo "   - pgAdmin: https://pgadmin.tbgs.nl"
+echo "   - Nextcloud: https://nextcloud.tbgs.nl"
+echo "   - Portainer: https://portainer.tbgs.nl"
+echo "   - NPM Admin: http://127.0.0.1:8081"
+
+echo "✅ All done! Check https://tbgs.nl to verify everything is working."

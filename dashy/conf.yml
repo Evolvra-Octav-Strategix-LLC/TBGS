@@ -1,0 +1,93 @@
+---
+# TBGS Dashboard Configuration
+pageInfo:
+  title: TBGS Control Dashboard
+  description: Totaal Bouw Groep Specialisten - Infrastructure Management
+  logo: https://tbgs.nl/logo.png
+  navLinks:
+    - title: Main Website
+      path: https://tbgs.nl
+    - title: GitHub
+      path: https://github.com
+
+appConfig:
+  theme: colorful
+  layout: auto
+  iconSize: medium
+  language: nl
+  startingView: default
+  defaultOpeningMethod: newtab
+  statusCheck: true
+  statusCheckInterval: 30
+
+sections:
+  - name: TBGS Applications
+    icon: fas fa-rocket
+    items:
+      - title: TBGS Website
+        description: Main company website
+        url: https://tbgs.nl
+        icon: fas fa-home
+        id: 0_1_tbgswebsite
+        statusCheck: true
+
+      - title: TBGS API Health
+        description: Application health status
+        url: https://tbgs.nl/api/health
+        icon: fas fa-heartbeat
+        id: 0_2_tbgshealth
+        statusCheck: true
+
+  - name: Database Management
+    icon: fas fa-database
+    items:
+      - title: pgAdmin
+        description: PostgreSQL administration
+        url: https://pgadmin.tbgs.nl
+        icon: fas fa-database
+        id: 1_1_pgadmin
+        statusCheck: true
+
+  - name: File & Storage
+    icon: fas fa-cloud
+    items:
+      - title: Nextcloud
+        description: File storage and collaboration
+        url: https://nextcloud.tbgs.nl
+        icon: fab fa-skyatlas
+        id: 2_1_nextcloud
+        statusCheck: true
+
+  - name: Infrastructure
+    icon: fas fa-server
+    items:
+      - title: Portainer
+        description: Docker container management
+        url: https://portainer.tbgs.nl
+        icon: fab fa-docker
+        id: 3_1_portainer
+        statusCheck: true
+
+      - title: Nginx Proxy Manager
+        description: Reverse proxy and SSL management
+        url: http://127.0.0.1:8081
+        icon: fas fa-network-wired
+        id: 3_2_nginx
+        statusCheck: false
+
+  - name: Monitoring & Tools
+    icon: fas fa-chart-line
+    items:
+      - title: Server Status
+        description: System monitoring
+        url: https://monitor.tbgs.nl
+        icon: fas fa-tachometer-alt
+        id: 4_1_monitor
+        statusCheck: true
+
+      - title: SSL Checker
+        description: Check SSL certificate status
+        url: https://www.ssllabs.com/ssltest/analyze.html?d=tbgs.nl
+        icon: fas fa-shield-alt
+        id: 4_2_ssl
+        statusCheck: false

@@ -13,30 +13,36 @@ RUN npm ci && npm cache clean --force
 # Copy source code
 COPY . .
 
-# Build the application
-RUN npm run build
+# Build the application - Fix the output path issue
+RUN npm run build && \
+    mkdir -p dist/server && \
+    npx esbuild server/index.ts \
+        --platform=node \
+        --packages=external \
+        --bundle \
+        --format=esm \
+        --outfile=dist/server/index.js
 
 # Production stage
 FROM node:20-alpine AS production
 
-# Install production dependencies
-RUN apk add --no-cache \
-    tini \
-    && addgroup -g 1001 -S tbgs \
-    && adduser -S tbgs -u 1001
+# Install tini and create user
+RUN apk add --no-cache tini && \
+    addgroup -g 1001 -S tbgs && \
+    adduser -S tbgs -u 1001
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files and install production dependencies
+# Copy package files and install production dependencies only
 COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist ./
+COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/shared ./shared
 
-# Create uploads directory
+# Create uploads directory and set permissions
 RUN mkdir -p uploads && chown -R tbgs:tbgs /app
 
 # Switch to non-root user
