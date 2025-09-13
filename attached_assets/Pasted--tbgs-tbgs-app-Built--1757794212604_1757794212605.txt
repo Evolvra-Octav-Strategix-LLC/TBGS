@@ -1,0 +1,12 @@
+ ✔ tbgs-tbgs-app                       Built                                                                                                                                                    0.0s 
+ ✔ Network tbgs_tbgs-network           Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-portainer            Started                                                                                                                                                  0.8s 
+ ✘ Container tbgs-postgres             Error                                                                                                                                                    1.8s 
+ ✔ Container tbgs-dashy                Started                                                                                                                                                  0.7s 
+ ✘ Container tbgs-redis                Error                                                                                                                                                    1.8s 
+ ✔ Container tbgs-pgadmin              Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-nextcloud            Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-app                  Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-nginx-proxy-manager  Created                                                                                                                                                  0.0s 
+dependency failed to start: container tbgs-postgres is unhealthy
+root@212:/opt/tbgs# 

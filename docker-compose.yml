@@ -1,6 +1,10 @@
 # TBGS Complete Infrastructure Stack
 name: tbgs
 
+# Global environment file
+env_file:
+  - .env.production
+
 networks:
   tbgs-network:
     driver: bridge
@@ -33,7 +37,6 @@ services:
       dockerfile: Dockerfile
     container_name: tbgs-app
     restart: unless-stopped
-    env_file: .env.production
     environment:
       - NODE_ENV=production
     ports:
