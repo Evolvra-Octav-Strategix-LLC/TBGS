@@ -70,7 +70,7 @@ class EmailService {
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Adres:</td>
-                <td style="padding: 8px 0;">${data.address}</td>
+                <td style="padding: 8px 0;"><a href="https://www.google.com/maps/search/${encodeURIComponent(data.address)}" target="_blank" style="color: #1e88e5; text-decoration: none;">${data.address}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Service:</td>
@@ -103,18 +103,15 @@ class EmailService {
       if (data.files && data.files.length > 0) {
         console.log(`📎 Adding ${data.files.length} user uploaded files...`);
         for (const file of data.files) {
-          console.log(`🔍 File details:`, { path: file.path, originalname: file.originalname, mimetype: file.mimetype });
           if (file.path) {
             attachments.push({
               filename: file.originalname || 'upload.file',
               path: file.path,
               contentType: file.mimetype || 'application/octet-stream'
             });
-            console.log(`✅ Added file: ${file.originalname} (${file.mimetype})`);
+            console.log(`✅ Added file: ${file.originalname}`);
           }
         }
-      } else {
-        console.log(`📎 No files to attach (files: ${data.files ? data.files.length : 'undefined'})`);
       }
       
       // Create high-end TBGS vCard attachment with logo 
@@ -228,7 +225,10 @@ class EmailService {
 
             <div style="background: #2c3e50; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
               <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
-              <p style="margin: 0; font-size: 16px;">
+              <p style="margin: 0 0 15px 0; font-size: 16px;">
+                <a href="https://wa.me/31614595142" target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
+                  📱 WhatsApp: 06-14595142
+                </a><br>
                 Bel direct: <a href="tel:+31614595142" style="color: #2ecc71; text-decoration: none; font-weight: bold;">06-14595142</a><br>
                 Email: <a href="mailto:info@tbgs.nl" style="color: #2ecc71; text-decoration: none;">info@tbgs.nl</a>
               </p>
