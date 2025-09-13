@@ -93,11 +93,11 @@ docker compose logs --tail=20
 
 echo "🎉 Deployment completed!"
 echo "🌐 Your services should now be available:"
-echo "   - Main website: https://tbgs.nl"
-echo "   - Dashboard: https://dashboard.tbgs.nl"
-echo "   - pgAdmin: https://pgadmin.tbgs.nl"
-echo "   - Nextcloud: https://nextcloud.tbgs.nl"
-echo "   - Portainer: https://portainer.tbgs.nl"
-echo "   - NPM Admin: http://127.0.0.1:8081"
+echo "   - Main website: http://212.192.2.129:3000 (direct) or https://tbgs.nl (after NPM setup)"
+echo "   - NPM Admin Panel: http://212.192.2.129:8081"
+echo "   - Dashboard: https://dashboard.tbgs.nl (after NPM setup)"
+echo "   - pgAdmin: https://pgadmin.tbgs.nl (after NPM setup)"
+echo "   - Nextcloud: https://nextcloud.tbgs.nl (after NPM setup)"
+echo "   - Portainer: https://portainer.tbgs.nl (after NPM setup)"
 
 echo "✅ All done! Check https://tbgs.nl to verify everything is working."
