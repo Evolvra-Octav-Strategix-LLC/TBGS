@@ -13,9 +13,9 @@ if [ ! -f "docker-compose.yml" ]; then
     exit 1
 fi
 
-# Check if .env.production exists
-if [ ! -f ".env.production" ]; then
-    echo "❌ Error: .env.production not found. Please copy .env.example to .env.production and configure it."
+# Check if .env exists
+if [ ! -f ".env" ]; then
+    echo "❌ Error: .env not found. Please copy .env.example to .env and configure it."
     exit 1
 fi
 
