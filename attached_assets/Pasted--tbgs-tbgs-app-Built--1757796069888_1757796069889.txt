@@ -1,0 +1,12 @@
+ ✔ tbgs-tbgs-app                       Built                                                                                                                                                    0.0s 
+ ✔ Network tbgs_tbgs-network           Created                                                                                                                                                  0.1s 
+ ✘ Container tbgs-redis                Error                                                                                                                                                    2.3s 
+ ✔ Container tbgs-postgres             Healthy                                                                                                                                                 11.3s 
+ ✔ Container tbgs-portainer            Started                                                                                                                                                  0.7s 
+ ✔ Container tbgs-dashy                Started                                                                                                                                                  0.6s 
+ ✔ Container tbgs-nextcloud            Started                                                                                                                                                 11.7s 
+ ✔ Container tbgs-pgadmin              Started                                                                                                                                                 11.7s 
+ ✔ Container tbgs-app                  Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-nginx-proxy-manager  Created                                                                                                                                                  0.0s 
+dependency failed to start: container tbgs-redis is unhealthy
+root@212:/opt/tbgs# 

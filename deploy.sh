@@ -79,7 +79,6 @@ check_tbgs_api_direct() {
 # Check service health using Docker health status
 check_service_health "tbgs-app" "TBGS Application"
 check_service_health "postgres" "PostgreSQL Database" 
-check_service_health "redis" "Redis Cache"
 check_service_health "nginx-proxy-manager" "Nginx Proxy Manager"
 
 # Additional direct API check

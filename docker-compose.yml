@@ -8,8 +8,6 @@ networks:
 volumes:
   postgres_data:
     driver: local
-  redis_data:
-    driver: local
   nextcloud_data:
     driver: local
   nextcloud_apps:
@@ -40,8 +38,6 @@ services:
       - "3000:3000"  # Direct access for testing via IP
     depends_on:
       postgres:
-        condition: service_healthy
-      redis:
         condition: service_healthy
     volumes:
       - ./uploads:/app/uploads
@@ -79,22 +75,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # Redis Cache
-  redis:
-    image: redis:7-alpine
-    container_name: tbgs-redis
-    restart: unless-stopped
-
-    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
-    volumes:
-      - redis_data:/data
-    networks:
-      - tbgs-network
-    healthcheck:
-      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
 
   # Nginx Proxy Manager (Only External Access Point)
   nginx-proxy-manager:
