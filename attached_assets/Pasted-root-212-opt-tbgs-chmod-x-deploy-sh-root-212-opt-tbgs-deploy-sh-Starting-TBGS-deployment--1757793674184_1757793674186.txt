@@ -1,0 +1,116 @@
+root@212:/opt/tbgs# chmod +x deploy.sh
+root@212:/opt/tbgs# ./deploy.sh
+🚀 Starting TBGS deployment...
+📅 Sat Sep 13 10:00:25 PM CEST 2025
+🔄 Fetching latest changes from repository...
+Fetching origin
+HEAD is now at ba31bd9 vps v1
+🛑 Stopping existing containers...
+WARN[0000] The "POSTGRES_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_DB" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_DB" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_ADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_ADMIN_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "REDIS_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "REDIS_PASSWORD" variable is not set. Defaulting to a blank string. 
+[+] Running 9/9
+ ✔ Container tbgs-nextcloud            Removed                                                                                                                                          0.0s 
+ ✔ Container tbgs-nginx-proxy-manager  Removed                                                                                                                                          0.0s 
+ ✔ Container tbgs-portainer            Removed                                                                                                                                          0.4s 
+ ✔ Container tbgs-pgadmin              Removed                                                                                                                                          0.0s 
+ ✔ Container tbgs-dashy                Removed                                                                                                                                          0.6s 
+ ✔ Container tbgs-app                  Removed                                                                                                                                          0.0s 
+ ✔ Container tbgs-postgres             Removed                                                                                                                                          0.0s 
+ ✔ Container tbgs-redis                Removed                                                                                                                                          0.0s 
+ ✔ Network tbgs_tbgs-network           Removed                                                                                                                                          0.3s 
+🧹 Cleaning up old images and containers...
+Deleted Images:
+deleted: sha256:50f34b7f9b13cc83ee948712929ec8478b9010f12cf69cf5b5c570ad125d202b
+
+Deleted build cache objects:
+hh4v83zqwkg00ru1bs0uw9wt8
+0hor9a8kunsqzvgv5xtjnmw46
+r5oplgt8j4ilp5st0c134el5o
+ph3xy420bytqmi23nf9px4hkp
+z563bbbon8aji3uvbgxsjzuly
+s6ewnjujzl0jjmc1yla1vwayl
+97pkck38unoxc8cgbymepslyc
+ptq7urukz00qa3y53yca471vp
+b62h09ts8z86lszmcxs4857lc
+mif45yzlhuij91i28zyl2gxkb
+tovbh5ehbnnlgeu6ic1ad36n3
+vmz4s7wvzy0uhep2fdv7hv37q
+yciwhsgbitlv4yatj20oag8tx
+per24gd9fzuq64eu315t07e21
+wr4qswxr8971ra4op3bifkvtv
+
+Total reclaimed space: 1.063GB
+🔨 Building and starting services...
+WARN[0000] The "REDIS_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "REDIS_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_ADMIN_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_ADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_DB" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "POSTGRES_DB" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+[+] Building 2.1s (20/20) FINISHED                                                                                                                                                           
+ => [internal] load local bake definitions                                                                                                                                              0.0s
+ => => reading from stdin 473B                                                                                                                                                          0.0s
+ => [internal] load build definition from Dockerfile                                                                                                                                    0.0s
+ => => transferring dockerfile: 1.61kB                                                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                                                                                       0.8s
+ => [internal] load .dockerignore                                                                                                                                                       0.0s
+ => => transferring context: 545B                                                                                                                                                       0.0s
+ => [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db94f7342d6c33560d6613f188bbcf4bbe1f4eb47d5e2a08e1a37722                                                         0.0s
+ => [internal] load build context                                                                                                                                                       0.9s
+ => => transferring context: 75.11MB                                                                                                                                                    0.9s
+ => CACHED [production 2/8] RUN apk add --no-cache tini &&     addgroup -g 1001 -S tbgs &&     adduser -S tbgs -u 1001                                                                  0.0s
+ => CACHED [production 3/8] WORKDIR /app                                                                                                                                                0.0s
+ => CACHED [production 4/8] COPY package*.json ./                                                                                                                                       0.0s
+ => CACHED [production 5/8] RUN npm ci --only=production && npm cache clean --force                                                                                                     0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                                                                                                                                   0.0s
+ => CACHED [builder 3/6] COPY package*.json ./                                                                                                                                          0.0s
+ => CACHED [builder 4/6] RUN npm ci && npm cache clean --force                                                                                                                          0.0s
+ => CACHED [builder 5/6] COPY . .                                                                                                                                                       0.0s
+ => CACHED [builder 6/6] RUN npm run build &&     mkdir -p dist/server &&     npx esbuild server/index.ts         --platform=node         --packages=external         --bundle          0.0s
+ => CACHED [production 6/8] COPY --from=builder /app/dist ./dist                                                                                                                        0.0s
+ => CACHED [production 7/8] COPY --from=builder /app/shared ./shared                                                                                                                    0.0s
+ => CACHED [production 8/8] RUN mkdir -p uploads && chown -R tbgs:tbgs /app                                                                                                             0.0s
+ => exporting to image                                                                                                                                                                  0.0s
+ => => exporting layers                                                                                                                                                                 0.0s
+ => => writing image sha256:7e8d6cf5778f499972babe0770e20c4508ef7a762cc6c2ddc12435cb5ca72f4c                                                                                            0.0s
+ => => naming to docker.io/library/tbgs-tbgs-app                                                                                                                                        0.0s
+ => resolving provenance for metadata file                                                                                                                                              0.0s
+[+] Running 10/10
+ ✔ tbgs-tbgs-app                       Built                                                                                                                                            0.0s 
+ ✔ Network tbgs_tbgs-network           Created                                                                                                                                          0.1s 
+ ✔ Container tbgs-dashy                Started                                                                                                                                          1.0s 
+ ✘ Container tbgs-redis                Error                                                                                                                                            2.0s 
+ ✘ Container tbgs-postgres             Error                                                                                                                                            2.2s 
+ ✔ Container tbgs-portainer            Started                                                                                                                                          0.8s 
+ ✔ Container tbgs-nextcloud            Created                                                                                                                                          0.1s 
+ ✔ Container tbgs-pgadmin              Created                                                                                                                                          0.1s 
+ ✔ Container tbgs-app                  Created                                                                                                                                          0.1s 
+ ✔ Container tbgs-nginx-proxy-manager  Created                                                                                                                                          0.0s 
+dependency failed to start: container tbgs-postgres is unhealthy
+root@212:/opt/tbgs# 
