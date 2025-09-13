@@ -1,0 +1,96 @@
+root@212:/opt/tbgs# # Voeg de ontbrekende variables toe
+cat >> .env << 'EOF'
+
+# Database Configuration
+POSTGRES_USER=tbgs_user
+POSTGRES_PASSWORD=TBGSSecure2024!Production
+POSTGRES_DB=tbgs_production
+
+# pgAdmin Configuration  
+PGADMIN_EMAIL=admin@tbgs.nl
+PGADMIN_PASSWORD=TBGSAdmin2024!
+
+# Nextcloud Configuration
+NEXTCLOUD_DB_USER=nextcloud_user
+NEXTCLOUD_DB_PASSWORD=NextcloudSecure2024!
+NEXTCLOUD_ADMIN_USER=admin
+NEXTCLOUD_ADMIN_PASSWORD=TBGSNextcloud2024!
+NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.tbgs.nl,tbgs.nl,212.192.2.129
+NEXTCLOUD_HOST=nextcloud.tbgs.nl
+
+# Application Secrets
+JWT_SECRET=some_very_long_secret_key_here_minimum_32_characters
+SESSION_SECRET=another_very_long_secret_key_here_minimum_32_characters
+EOF
+root@212:/opt/tbgs# cat .env
+# Docker Environment Configuration
+# Ready for production deployment with your actual secrets
+
+# Application
+NODE_ENV=production
+PORT=3000
+
+# Database
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=tbgs_production
+POSTGRES_USER=tbgs_user
+POSTGRES_PASSWORD=TBGSSecure2024!Production
+DATABASE_URL=postgresql://tbgs_user:TBGSSecure2024!Production@postgres:5432/tbgs_production
+
+# Redis
+REDIS_URL=redis://redis:6379
+
+# Email Service (Your existing Gmail SMTP - NO SendGrid needed)
+GMAIL_USER=Info@tbgs.nl
+GMAIL_APP_PASSWORD=afsd vblw wipc hqnp
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+MAIL_FROM=Info@tbgs.nl
+MAIL_TO=Info@tbgs.nl
+
+# Google Places API (Your existing key)
+GOOGLE_PLACES_API_KEY=AIzaSyDcnWjazRb8XCuRFrCASBxwEjhCg4s2IMw
+
+# Session Security (Your existing key)
+SESSION_SECRET=L3xG6brvJTE3J/pujVXWk5nMp1DXepNwKGKsp/YNt3+AtOcZnYlVNKQ3d1xUpK/U4tChG/DOrImqTvN9bLZd3A==
+
+# URLs
+FRONTEND_URL=https://tbgs.nl
+BACKEND_URL=https://tbgs.nl
+
+# Nextcloud Database
+NEXTCLOUD_POSTGRES_DB=nextcloud
+NEXTCLOUD_POSTGRES_USER=nextcloud_user
+NEXTCLOUD_POSTGRES_PASSWORD=NextcloudSecure2024!
+
+# Nextcloud Admin
+NEXTCLOUD_ADMIN_USER=admin
+NEXTCLOUD_ADMIN_PASSWORD=TBGSNextcloudAdmin2024!
+
+# SSL Email for Let's Encrypt
+SSL_EMAIL=Info@tbgs.nl
+
+# Database Configuration
+POSTGRES_USER=tbgs_user
+POSTGRES_PASSWORD=TBGSSecure2024!Production
+POSTGRES_DB=tbgs_production
+
+# pgAdmin Configuration  
+PGADMIN_EMAIL=admin@tbgs.nl
+PGADMIN_PASSWORD=TBGSAdmin2024!
+
+# Nextcloud Configuration
+NEXTCLOUD_DB_USER=nextcloud_user
+NEXTCLOUD_DB_PASSWORD=NextcloudSecure2024!
+NEXTCLOUD_ADMIN_USER=admin
+NEXTCLOUD_ADMIN_PASSWORD=TBGSNextcloud2024!
+NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.tbgs.nl,tbgs.nl,212.192.2.129
+NEXTCLOUD_HOST=nextcloud.tbgs.nl
+
+# Application Secrets
+JWT_SECRET=some_very_long_secret_key_here_minimum_32_characters
+SESSION_SECRET=another_very_long_secret_key_here_minimum_32_characters
+root@212:/opt/tbgs# 
+
