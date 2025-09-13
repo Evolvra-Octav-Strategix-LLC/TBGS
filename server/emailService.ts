@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { createTBGSVCard } from './vcard';
 
 interface EmailData {
   selectedService: string;
@@ -12,6 +13,12 @@ interface EmailData {
   submittedAt: Date;
   formType?: 'popup' | 'offerte';
   files?: any[]; // Keep for compatibility but ignore
+  // Google Places API data (for vCard generation)
+  street?: string;
+  houseNumber?: string;
+  city?: string;
+  postcode?: string;
+  country?: string;
 }
 
 class EmailService {
@@ -89,11 +96,94 @@ class EmailService {
         </html>
       `;
 
+      // Create attachments array starting with user uploaded files
+      const attachments = [];
+      
+      // Add user uploaded files first
+      if (data.files && data.files.length > 0) {
+        console.log(`📎 Adding ${data.files.length} user uploaded files...`);
+        for (const file of data.files) {
+          if (file.path || file.buffer) {
+            attachments.push({
+              filename: file.originalname || file.filename || 'upload.file',
+              path: file.path, // Use path if available
+              content: file.buffer, // Or buffer if path not available
+              contentType: file.mimetype || 'application/octet-stream'
+            });
+            console.log(`✓ Added file: ${file.originalname || file.filename}`);
+          }
+        }
+      }
+      
+      // Create high-end TBGS vCard attachment with logo 
+      try {
+        const vcardData = {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          projectDescription: data.projectDescription,
+          selectedService: data.selectedService,
+          // Add individual components if available from Google Places API
+          street: (data as any).street,
+          houseNumber: (data as any).houseNumber,
+          city: (data as any).city,
+          postcode: (data as any).postcode,
+          country: (data as any).country
+        };
+        
+        const vcardBuffer = createTBGSVCard(vcardData);
+        
+        // Create comprehensive filename with name, address and postcode
+        let filenameParts = [];
+        
+        // Add name
+        if (data.firstName || data.lastName) {
+          filenameParts.push([data.firstName, data.lastName].filter(Boolean).join('_'));
+        }
+        
+        // Add address info for easy identification
+        if ((data as any).street && (data as any).houseNumber) {
+          filenameParts.push(`${(data as any).street}_${(data as any).houseNumber}`.replace(/[^a-zA-Z0-9_]/g, '_'));
+          if ((data as any).postcode) {
+            filenameParts.push((data as any).postcode.replace(/\s/g, ''));
+          }
+        } else if (data.address) {
+          // Fallback: parse address string
+          const addressParts = data.address.split(',')[0].trim();
+          const cleanAddress = addressParts.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+          if (cleanAddress) {
+            filenameParts.push(cleanAddress);
+          }
+          
+          const postcodeMatch = data.address.match(/(\d{4}\s*[A-Za-z]{2})/);
+          if (postcodeMatch) {
+            filenameParts.push(postcodeMatch[1].replace(/\s/g, ''));
+          }
+        }
+        
+        const filename = filenameParts.length > 0 
+          ? `${filenameParts.join('_').toLowerCase().replace(/[^a-z0-9_]/g, '')}_tbgs.vcf`
+          : 'tbgs_contact.vcf';
+        
+        attachments.push({
+          filename,
+          contentType: 'text/vcard; charset=utf-8',
+          content: vcardBuffer,
+        });
+        
+        console.log(`✓ TBGS vCard attachment created: ${filename}`);
+      } catch (vcardError) {
+        console.warn('vCard generation failed:', vcardError);
+      }
+
       await this.transporter.sendMail({
         from: process.env.GMAIL_USER,
         to: process.env.GMAIL_USER, // Send to yourself (admin)
         subject,
-        html
+        html,
+        attachments
       });
 
       console.log('✅ Notification email sent successfully');
