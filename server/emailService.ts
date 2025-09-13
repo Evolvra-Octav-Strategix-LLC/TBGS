@@ -226,7 +226,7 @@ class EmailService {
             <div style="background: #2c3e50; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
               <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
               <p style="margin: 0; font-size: 16px;">
-                <a href="https://wa.me/31614595142" target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+                <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20aanvraag%20ingediend%20en%20ik%20vroeg%20me%20af%20...." target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
                   📱 WhatsApp: 06-14595142
                 </a>
               </p>
