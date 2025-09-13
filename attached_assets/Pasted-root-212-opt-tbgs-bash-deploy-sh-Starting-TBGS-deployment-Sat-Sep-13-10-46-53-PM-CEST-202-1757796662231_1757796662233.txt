@@ -1,0 +1,182 @@
+root@212:/opt/tbgs# bash deploy.sh
+🚀 Starting TBGS deployment...
+📅 Sat Sep 13 10:46:53 PM CEST 2025
+🔄 Fetching latest changes from repository...
+Fetching origin
+HEAD is now at 3634ab7 Remove Redis cache service and related configurations
+🛑 Stopping existing containers...
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+[+] Running 8/8
+ ✔ Container tbgs-nextcloud            Removed                                                                                                                                                  1.3s 
+ ✔ Container tbgs-portainer            Removed                                                                                                                                                  0.5s 
+ ✔ Container tbgs-nginx-proxy-manager  Removed                                                                                                                                                  0.0s 
+ ✔ Container tbgs-dashy                Removed                                                                                                                                                  0.7s 
+ ✔ Container tbgs-pgadmin              Removed                                                                                                                                                  0.1s 
+ ✔ Container tbgs-app                  Removed                                                                                                                                                  0.1s 
+ ✔ Container tbgs-postgres             Removed                                                                                                                                                  0.3s 
+ ✔ Network tbgs_tbgs-network           Removed                                                                                                                                                  0.3s 
+🧹 Cleaning up old images and containers...
+Deleted Images:
+deleted: sha256:f9f55a50a805baa1f533757f4fefc4a9902da9b159e11fbaafc0b7c89279951e
+
+Deleted build cache objects:
+h6p01baunjbyg7ezq78jtd4el
+tmr0y85coh72ygc62935mpriv
+3bbgk0lzosx9eg6tsbeu84odh
+dm34y72pzwgf0cpppz0mlzvci
+j51i32lfbl4c9t4d75ejirw6g
+qfkc1tja3q55q2ocnfklaxjgc
+mtx66upgw1jbr0ztbzo7tofom
+lrw0qn1fiw5eehokbxwoutygu
+
+Total reclaimed space: 543.7MB
+🔨 Building and starting services...
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+[+] Building 40.2s (20/20) FINISHED                                                                                                                                                                  
+ => [internal] load local bake definitions                                                                                                                                                      0.0s
+ => => reading from stdin 473B                                                                                                                                                                  0.0s
+ => [internal] load build definition from Dockerfile                                                                                                                                            0.0s
+ => => transferring dockerfile: 1.61kB                                                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                                                                                                                               0.7s
+ => [internal] load .dockerignore                                                                                                                                                               0.0s
+ => => transferring context: 545B                                                                                                                                                               0.0s
+ => CACHED [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db94f7342d6c33560d6613f188bbcf4bbe1f4eb47d5e2a08e1a37722                                                          0.0s
+ => [internal] load build context                                                                                                                                                               0.8s
+ => => transferring context: 75.27MB                                                                                                                                                            0.8s
+ => [builder 2/6] WORKDIR /app                                                                                                                                                                  0.1s
+ => [builder 3/6] COPY package*.json ./                                                                                                                                                         0.1s
+ => [builder 4/6] RUN npm ci && npm cache clean --force                                                                                                                                        23.2s
+ => [builder 5/6] COPY . .                                                                                                                                                                      0.3s 
+ => [builder 6/6] RUN npm run build &&     mkdir -p dist/server &&     npx esbuild server/index.ts         --platform=node         --packages=external         --bundle         --format=esm   13.9s 
+ => CACHED [production 2/8] RUN apk add --no-cache tini &&     addgroup -g 1001 -S tbgs &&     adduser -S tbgs -u 1001                                                                          0.0s 
+ => CACHED [production 3/8] WORKDIR /app                                                                                                                                                        0.0s 
+ => CACHED [production 4/8] COPY package*.json ./                                                                                                                                               0.0s 
+ => CACHED [production 5/8] RUN npm ci --only=production && npm cache clean --force                                                                                                             0.0s 
+ => CACHED [production 6/8] COPY --from=builder /app/dist ./dist                                                                                                                                0.0s 
+ => CACHED [production 7/8] COPY --from=builder /app/shared ./shared                                                                                                                            0.0s 
+ => CACHED [production 8/8] RUN mkdir -p uploads && chown -R tbgs:tbgs /app                                                                                                                     0.0s
+ => exporting to image                                                                                                                                                                          0.0s
+ => => exporting layers                                                                                                                                                                         0.0s
+ => => writing image sha256:3d2ae0f5e298d060ed529212be8a1e9c9af03bc8881bebf1360cdcc8c4e91c25                                                                                                    0.0s
+ => => naming to docker.io/library/tbgs-tbgs-app                                                                                                                                                0.0s
+ => resolving provenance for metadata file                                                                                                                                                      0.0s
+[+] Running 1/2
+ ✔ tbgs-tbgs-app              Built                                                                                                                                                             0.0s 
+[+] Running 9/9_tbgs-network  Creating                                                                                                                                                          0.1s 
+ ✔ tbgs-tbgs-app                       Built                                                                                                                                                    0.0s  ✔ Network tbgs_tbgs-network           Created                                                                                                                                                  0.1s 
+ ✔ Container tbgs-portainer            Started                                                                                                                                                  0.5s 
+ ✔ Container tbgs-postgres             Healthy                                                                                                                                                 11.1s 
+ ✔ Container tbgs-dashy                Started                                                                                                                                                  0.5s 
+ ✔ Container tbgs-app                  Started                                                                                                                                                 11.8s 
+ ✔ Container tbgs-pgadmin              Started                                                                                                                                                 11.6s 
+ ✔ Container tbgs-nextcloud            Started                                                                                                                                                 11.9s 
+ ✔ Container tbgs-nginx-proxy-manager  Started                                                                                                                                                 12.5s 
+⏳ Waiting for services to start up...
+🔍 Checking TBGS Application health...
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (1/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (2/10) - Status: Restarting
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (3/10) - Status: Restarting
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (4/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (5/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (6/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (7/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (8/10) - Status: Restarting
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (9/10) - Status: Restarting
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_HOST" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_TRUSTED_DOMAINS" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_USER" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "NEXTCLOUD_DB_PASSWORD" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_EMAIL" variable is not set. Defaulting to a blank string. 
+WARN[0000] The "PGADMIN_PASSWORD" variable is not set. Defaulting to a blank string. 
+⏳ Waiting for TBGS Application... (10/10) - Status: Restarting
+❌ TBGS Application health check failed
+root@212:/opt/tbgs# 
+
