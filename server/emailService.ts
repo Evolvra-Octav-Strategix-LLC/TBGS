@@ -225,12 +225,10 @@ class EmailService {
 
             <div style="background: #2c3e50; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
               <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
-              <p style="margin: 0 0 15px 0; font-size: 16px;">
-                <a href="https://wa.me/31614595142" target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
+              <p style="margin: 0; font-size: 16px;">
+                <a href="https://wa.me/31614595142" target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
                   📱 WhatsApp: 06-14595142
-                </a><br>
-                Bel direct: <a href="tel:+31614595142" style="color: #2ecc71; text-decoration: none; font-weight: bold;">06-14595142</a><br>
-                Email: <a href="mailto:info@tbgs.nl" style="color: #2ecc71; text-decoration: none;">info@tbgs.nl</a>
+                </a>
               </p>
             </div>
             
