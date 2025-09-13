@@ -1,6 +1,18 @@
 import nodemailer from 'nodemailer';
 import { createTBGSVCard } from './vcard';
 
+// HTML escape utility for security
+const escapeHtml = (text: string): string => {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+};
+
 interface EmailData {
   selectedService: string;
   address: string;
@@ -58,37 +70,37 @@ class EmailService {
             <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; width: 120px;">Naam:</td>
-                <td style="padding: 8px 0;">${data.firstName} ${data.lastName}</td>
+                <td style="padding: 8px 0;">${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Email:</td>
-                <td style="padding: 8px 0;"><a href="mailto:${data.email}">${data.email}</a></td>
+                <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Telefoon:</td>
-                <td style="padding: 8px 0;"><a href="tel:${data.phone}">${data.phone}</a></td>
+                <td style="padding: 8px 0;"><a href="tel:${escapeHtml(data.phone)}">${escapeHtml(data.phone)}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Adres:</td>
-                <td style="padding: 8px 0;"><a href="https://www.google.com/maps/search/${encodeURIComponent(data.address)}" target="_blank" style="color: #1e88e5; text-decoration: none;">${data.address}</a></td>
+                <td style="padding: 8px 0;"><a href="https://www.google.com/maps/search/${encodeURIComponent(data.address)}" target="_blank" rel="noopener noreferrer" style="color: #1e88e5; text-decoration: none;">${escapeHtml(data.address)}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Service:</td>
-                <td style="padding: 8px 0;">${data.selectedService}</td>
+                <td style="padding: 8px 0;">${escapeHtml(data.selectedService)}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold;">Contact voorkeur:</td>
-                <td style="padding: 8px 0;">${data.contactPreference}</td>
+                <td style="padding: 8px 0;">${escapeHtml(data.contactPreference)}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; vertical-align: top;">Beschrijving:</td>
-                <td style="padding: 8px 0; line-height: 1.5;">${data.projectDescription}</td>
+                <td style="padding: 8px 0; line-height: 1.5;">${escapeHtml(data.projectDescription)}</td>
               </tr>
             </table>
             
             <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
               <p style="margin: 0; color: #666; font-size: 14px;">
-                Ontvangen op ${data.submittedAt.toLocaleDateString('nl-NL')} om ${data.submittedAt.toLocaleTimeString('nl-NL')}
+                Ontvangen op ${new Date(data.submittedAt).toLocaleDateString('nl-NL')} om ${new Date(data.submittedAt).toLocaleTimeString('nl-NL')}
               </p>
             </div>
           </div>
@@ -209,7 +221,7 @@ class EmailService {
           <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px;">
               <h1 style="color: white; margin: 0; font-size: 28px;">
-                Bedankt ${data.firstName}!
+                Bedankt ${escapeHtml(data.firstName)}!
               </h1>
               <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
                 Je aanvraag is succesvol ontvangen
@@ -218,15 +230,15 @@ class EmailService {
             
             <div style="text-align: center; margin-bottom: 30px;">
               <p style="font-size: 18px; line-height: 1.6; margin: 0;">
-                We hebben je aanvraag voor <strong>${data.selectedService}</strong> ontvangen.<br>
+                We hebben je aanvraag voor <strong>${escapeHtml(data.selectedService)}</strong> ontvangen.<br>
                 Een van onze specialisten neemt binnen 24 uur contact met je op.
               </p>
             </div>
 
-            <div style="background: #2c3e50; color: white; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
-              <h3 style="margin: 0 0 15px 0; font-size: 18px;">Vragen of spoedeisend?</h3>
+            <div style="background: #f8f9fa; color: #333; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 25px; border: 1px solid #e9ecef;">
+              <h3 style="margin: 0 0 15px 0; font-size: 18px; color: #075e54;">Vragen of spoedeisend?</h3>
               <p style="margin: 0; font-size: 16px;">
-                <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20aanvraag%20ingediend%20en%20ik%20vroeg%20me%20af%20...." target="_blank" style="background: #25d366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
+                <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20aanvraag%20ingediend%20en%20ik%20vroeg%20me%20af%20...." target="_blank" rel="noopener noreferrer" style="background: #dcf8c6; color: #075e54; padding: 12px 20px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; border: 2px solid #25d366;">
                   📱 WhatsApp: 06-14595142
                 </a>
               </p>
