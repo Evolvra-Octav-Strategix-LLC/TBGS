@@ -1,0 +1,68 @@
+root@212:/opt/tbgs# # Check de app logs
+docker-compose logs tbgs-app --tail 50
+
+# Als er nog database errors zijn:
+docker volume rm tbgs_postgres_data
+docker-compose up -d
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+tbgs-app  |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+tbgs-app  |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+tbgs-app  |     at node:internal/main/run_main_module:28:49 {
+tbgs-app  |   code: 'MODULE_NOT_FOUND',
+tbgs-app  |   requireStack: []
+tbgs-app  | }
+tbgs-app  | 
+tbgs-app  | Node.js v20.19.5
+tbgs-app  | node:internal/modules/cjs/loader:1210
+tbgs-app  |   throw err;
+tbgs-app  |   ^
+tbgs-app  | 
+tbgs-app  | Error: Cannot find module '/app/server/index.js'
+tbgs-app  |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+tbgs-app  |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+tbgs-app  |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+tbgs-app  |     at node:internal/main/run_main_module:28:49 {
+tbgs-app  |   code: 'MODULE_NOT_FOUND',
+tbgs-app  |   requireStack: []
+tbgs-app  | }
+tbgs-app  | 
+tbgs-app  | Node.js v20.19.5
+tbgs-app  | node:internal/modules/cjs/loader:1210
+tbgs-app  |   throw err;
+tbgs-app  |   ^
+tbgs-app  | 
+tbgs-app  | Error: Cannot find module '/app/server/index.js'
+tbgs-app  |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+tbgs-app  |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+tbgs-app  |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+tbgs-app  |     at node:internal/main/run_main_module:28:49 {
+tbgs-app  |   code: 'MODULE_NOT_FOUND',
+tbgs-app  |   requireStack: []
+tbgs-app  | }
+tbgs-app  | 
+tbgs-app  | Node.js v20.19.5
+tbgs-app  | node:internal/modules/cjs/loader:1210
+tbgs-app  |   throw err;
+tbgs-app  |   ^
+tbgs-app  | 
+tbgs-app  | Error: Cannot find module '/app/server/index.js'
+tbgs-app  |     at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+tbgs-app  |     at Module._load (node:internal/modules/cjs/loader:1038:27)
+tbgs-app  |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+tbgs-app  |     at node:internal/main/run_main_module:28:49 {
+tbgs-app  |   code: 'MODULE_NOT_FOUND',
+tbgs-app  |   requireStack: []
+tbgs-app  | }
+tbgs-app  | 
+tbgs-app  | Node.js v20.19.5
+Error response from daemon: remove tbgs_postgres_data: volume is in use - [dac3bd4f61e657d094a88eb718dc92b6d2324c9386f8b31d2dc883ea7897a71d]
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 6/6
+ ✔ Container tbgs-postgres             Running                                                                                                                                          0.0s 
+ ✔ Container tbgs-nextcloud            Running                                                                                                                                          0.0s 
+ ✔ Container tbgs-portainer            Running                                                                                                                                          0.0s 
+ ✔ Container tbgs-redis                Running                                                                                                                                          0.0s 
+ ✔ Container tbgs-nginx-proxy-manager  Running                                                                                                                                          0.0s 
+ ✔ Container tbgs-app                  Started                                                                                                                                          0.0s 
+root@212:/opt/tbgs# 
+
