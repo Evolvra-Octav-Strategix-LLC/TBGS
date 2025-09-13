@@ -1,0 +1,3351 @@
+root@212:/opt/tbgs# # Check de logs van je TBGS app
+docker-compose logs tbgs-app
+
+# Check alle services status
+docker-compose ps
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+tbgs-app  | 5:55:07 PM [express] Production mode: serving static files from dist/public
+tbgs-app  | 5:55:07 PM [express] serving on port 3000
+tbgs-app  | 🚀 Background task processor started
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+tbgs-app  | Background task processor error: PostgresError: relation "image_tasks" does not exist
+tbgs-app  |     at ErrorResponse (file:///app/node_modules/postgres/src/connection.js:794:26)
+tbgs-app  |     at handle (file:///app/node_modules/postgres/src/connection.js:480:6)
+tbgs-app  |     at Socket.data (file:///app/node_modules/postgres/src/connection.js:315:9)
+tbgs-app  |     at Socket.emit (node:events:524:28)
+tbgs-app  |     at addChunk (node:internal/streams/readable:561:12)
+tbgs-app  |     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+tbgs-app  |     at Readable.push (node:internal/streams/readable:392:5)
+tbgs-app  |     at TCP.onStreamRead (node:internal/stream_base_commons:191:23) {
+tbgs-app  |   severity_local: 'ERROR',
+tbgs-app  |   severity: 'ERROR',
+tbgs-app  |   code: '42P01',
+tbgs-app  |   position: '183',
+tbgs-app  |   file: 'parse_relation.c',
+tbgs-app  |   line: '1392',
+tbgs-app  |   routine: 'parserOpenTable'
+tbgs-app  | }
+WARN[0000] /opt/tbgs/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME                       IMAGE                             COMMAND                  SERVICE               CREATED         STATUS                   PORTS
+tbgs-app                   tbgs-tbgs-app                     "/sbin/tini -- node …"   tbgs-app              6 minutes ago   Up 6 minutes (healthy)   3000/tcp
+tbgs-nextcloud             nextcloud:28-apache               "/entrypoint.sh apac…"   nextcloud             6 minutes ago   Up 6 minutes             80/tcp
+tbgs-nginx-proxy-manager   jc21/nginx-proxy-manager:latest   "/init"                  nginx-proxy-manager   6 minutes ago   Up 6 minutes             0.0.0.0:80-81->80-81/tcp, [::]:80-81->80-81/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp
+tbgs-portainer             portainer/portainer-ce:latest     "/portainer -H unix:…"   portainer             6 minutes ago   Up 6 minutes             8000/tcp, 9000/tcp, 9443/tcp
+tbgs-postgres              postgres:15-alpine                "docker-entrypoint.s…"   postgres              6 minutes ago   Up 6 minutes             5432/tcp
+tbgs-redis                 redis:7-alpine                    "docker-entrypoint.s…"   redis                 6 minutes ago   Up 6 minutes             6379/tcp
+root@212:/opt/tbgs# 
+
