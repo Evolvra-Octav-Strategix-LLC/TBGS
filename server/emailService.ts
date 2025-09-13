@@ -103,16 +103,18 @@ class EmailService {
       if (data.files && data.files.length > 0) {
         console.log(`📎 Adding ${data.files.length} user uploaded files...`);
         for (const file of data.files) {
-          if (file.path || file.buffer) {
+          console.log(`🔍 File details:`, { path: file.path, originalname: file.originalname, mimetype: file.mimetype });
+          if (file.path) {
             attachments.push({
-              filename: file.originalname || file.filename || 'upload.file',
-              path: file.path, // Use path if available
-              content: file.buffer, // Or buffer if path not available
+              filename: file.originalname || 'upload.file',
+              path: file.path,
               contentType: file.mimetype || 'application/octet-stream'
             });
-            console.log(`✓ Added file: ${file.originalname || file.filename}`);
+            console.log(`✅ Added file: ${file.originalname} (${file.mimetype})`);
           }
         }
+      } else {
+        console.log(`📎 No files to attach (files: ${data.files ? data.files.length : 'undefined'})`);
       }
       
       // Create high-end TBGS vCard attachment with logo 
