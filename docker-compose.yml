@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
     container_name: tbgs-app
     restart: unless-stopped
-    env_file: .env.production
+
     environment:
       - NODE_ENV=production
     ports:
@@ -59,7 +59,7 @@ services:
     image: postgres:15-alpine
     container_name: tbgs-postgres
     restart: unless-stopped
-    env_file: .env.production
+
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -84,7 +84,7 @@ services:
     image: redis:7-alpine
     container_name: tbgs-redis
     restart: unless-stopped
-    env_file: .env.production
+
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
     volumes:
       - redis_data:/data
@@ -140,7 +140,7 @@ services:
     image: dpage/pgadmin4:latest
     container_name: tbgs-pgadmin
     restart: unless-stopped
-    env_file: .env.production
+
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
@@ -163,7 +163,7 @@ services:
     image: nextcloud:28-apache
     container_name: tbgs-nextcloud
     restart: unless-stopped
-    env_file: .env.production
+
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_DB: nextcloud
