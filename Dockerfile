@@ -33,8 +33,7 @@ COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/server ./server
+COPY --from=builder /app/dist ./
 COPY --from=builder /app/shared ./shared
 
 # Create uploads directory
@@ -54,4 +53,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application
-CMD ["node", "server/index.js"]
+CMD ["node", "dist/server/index.js"]
