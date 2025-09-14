@@ -1,0 +1,68 @@
+docker compose up -d && docker logs tbgs-app --follow
+[+] Building 180.9s (20/20) FINISHED                                                    
+ => [internal] load local bake definitions                                         0.0s
+ => => reading from stdin 497B                                                     0.0s
+ => [internal] load build definition from Dockerfile                               0.0s
+ => => transferring dockerfile: 1.62kB                                             0.0s
+ => [internal] load metadata for docker.io/library/node:20-alpine                  0.7s
+ => [internal] load .dockerignore                                                  0.0s
+ => => transferring context: 545B                                                  0.0s
+ => CACHED [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db9  0.0s
+ => [internal] load build context                                                  0.3s
+ => => transferring context: 8.71MB                                                0.3s
+ => CACHED [builder 2/6] WORKDIR /app                                              0.0s
+ => [production 2/8] RUN apk add --no-cache tini &&     addgroup -g 1001 -S tbgs   1.4s
+ => [builder 3/6] COPY package*.json ./                                            0.1s
+ => [builder 4/6] RUN npm ci && npm cache clean --force                           46.1s
+ => [production 3/8] WORKDIR /app                                                  0.1s 
+ => [production 4/8] COPY package*.json ./                                         0.1s 
+ => [production 5/8] RUN npm ci --only=production && npm cache clean --force      45.0s 
+ => [builder 5/6] COPY . .                                                         0.8s 
+ => [builder 6/6] RUN npx vite build &&     mkdir -p dist &&     cp -r server sh  14.8s 
+ => [production 6/8] COPY --from=builder /app/dist ./dist                          0.4s 
+ => [production 7/8] COPY --from=builder /app/shared ./shared                      0.0s 
+ => [production 8/8] RUN mkdir -p uploads && chown -R tbgs:tbgs /app             110.7s 
+ => exporting to image                                                             5.4s 
+ => => exporting layers                                                            5.4s 
+ => => writing image sha256:3c24c29c11e418712927578ed7dee07d60f330b6d578e8876c353  0.0s 
+ => => naming to docker.io/library/tbgs-tbgs-app                                   0.0s 
+ => resolving provenance for metadata file                                         0.0s 
+[+] Building 1/1                                                                        
+ ✔ tbgs-tbgs-app  Built                                                            0.0s 
+[+] Running 7/7
+ ✔ Container tbgs-postgres             Healthy                                     0.7s 
+ ✔ Container tbgs-app                  Started                                     1.1s 
+ ✔ Container tbgs-dashy                Running                                     0.0s 
+ ✔ Container tbgs-portainer            Running                                     0.0s 
+ ✔ Container tbgs-pgadmin              Running                                     0.0s 
+ ✔ Container tbgs-nextcloud            Running                                     0.0s 
+ ✔ Container tbgs-nginx-proxy-manager  Run...                                      0.0s 
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/app/dist/server/production.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v20.19.5
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/app/dist/server/production.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v20.19.5
+root@212:/opt/tbgs# 

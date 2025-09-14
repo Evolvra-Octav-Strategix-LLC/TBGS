@@ -17,7 +17,7 @@ function log(message: string, source = "express") {
 
 // Production static file serving (no vite dependencies)
 function serveStatic(app: express.Express) {
-  const distPath = path.resolve(import.meta.dirname, "../public");
+  const distPath = path.resolve(import.meta.dirname, "..");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(

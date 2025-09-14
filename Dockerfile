@@ -20,7 +20,7 @@ RUN npx vite build && \
     npx esbuild server/production.ts \
         --platform=node \
         --format=esm \
-        --outdir=dist \
+        --outdir=dist/server \
         --out-extension:.js=.js
 
 # Production stage
