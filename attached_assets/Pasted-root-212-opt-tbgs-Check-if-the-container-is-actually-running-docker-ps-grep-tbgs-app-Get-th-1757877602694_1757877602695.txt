@@ -1,0 +1,61 @@
+root@212:/opt/tbgs# # Check if the container is actually running
+docker ps | grep tbgs-app
+
+# Get the recent logs from Docker directly 
+docker logs tbgs-app --tail 50
+
+# Check if the app is responding
+curl -s http://localhost:3000/api/health || echo "Health check failed"
+5bdcc2da29e4   tbgs-tbgs-app                     "/sbin/tini -- node …"   3 minutes ago   Restarting (1) 46 seconds ago                                                                                                                           tbgs-app
+  throw Error('Dynamic require of "' + x + '" is not supported');
+        ^
+
+Error: Dynamic require of "path" is not supported
+    at file:///app/dist/server/index.js:11:9
+    at node_modules/depd/index.js (file:///app/dist/server/index.js:44:21)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/body-parser/index.js (file:///app/dist/server/index.js:17032:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/lib/express.js (file:///app/dist/server/index.js:23665:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/index.js (file:///app/dist/server/index.js:23734:23)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at file:///app/dist/server/index.js:78467:30
+
+Node.js v20.19.5
+file:///app/dist/server/index.js:11
+  throw Error('Dynamic require of "' + x + '" is not supported');
+        ^
+
+Error: Dynamic require of "path" is not supported
+    at file:///app/dist/server/index.js:11:9
+    at node_modules/depd/index.js (file:///app/dist/server/index.js:44:21)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/body-parser/index.js (file:///app/dist/server/index.js:17032:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/lib/express.js (file:///app/dist/server/index.js:23665:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/index.js (file:///app/dist/server/index.js:23734:23)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at file:///app/dist/server/index.js:78467:30
+
+Node.js v20.19.5
+file:///app/dist/server/index.js:11
+  throw Error('Dynamic require of "' + x + '" is not supported');
+        ^
+
+Error: Dynamic require of "path" is not supported
+    at file:///app/dist/server/index.js:11:9
+    at node_modules/depd/index.js (file:///app/dist/server/index.js:44:21)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/body-parser/index.js (file:///app/dist/server/index.js:17032:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/lib/express.js (file:///app/dist/server/index.js:23665:22)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at node_modules/express/index.js (file:///app/dist/server/index.js:23734:23)
+    at __require2 (file:///app/dist/server/index.js:17:50)
+    at file:///app/dist/server/index.js:78467:30
+
+Node.js v20.19.5
+Health check failed
+root@212:/opt/tbgs# 

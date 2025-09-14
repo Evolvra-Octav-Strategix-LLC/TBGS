@@ -15,13 +15,13 @@ COPY . .
 
 # Build the application - Split frontend and backend builds
 RUN npx vite build && \
-    mkdir -p dist/server && \
+    mkdir -p dist && \
+    cp -r server shared dist/ && \
     npx esbuild server/production.ts \
         --platform=node \
-        --packages=external \
-        --bundle \
         --format=esm \
-        --outfile=dist/server/index.js
+        --outdir=dist \
+        --out-extension:.js=.js
 
 # Production stage
 FROM node:20-alpine AS production
@@ -59,4 +59,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application
-CMD ["node", "dist/server/index.js"]
+CMD ["node", "dist/server/production.js"]
