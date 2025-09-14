@@ -13,14 +13,15 @@ RUN npm ci && npm cache clean --force
 # Copy source code
 COPY . .
 
-# Build the application - Fix the output path issue
+# Build the application - Bundle all dependencies to avoid runtime issues
 RUN npm run build && \
     mkdir -p dist/server && \
     npx esbuild server/index.ts \
         --platform=node \
-        --packages=external \
         --bundle \
         --format=esm \
+        --external:@replit/vite-plugin-runtime-error-modal \
+        --external:@replit/vite-plugin-cartographer \
         --outfile=dist/server/index.js
 
 # Production stage
