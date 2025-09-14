@@ -13,8 +13,8 @@ RUN npm ci && npm cache clean --force
 # Copy source code
 COPY . .
 
-# Build the application - Bundle all dependencies to avoid runtime issues
-RUN npm run build && \
+# Build the application - Split frontend and backend builds
+RUN npx vite build && \
     mkdir -p dist/server && \
     npx esbuild server/index.ts \
         --platform=node \
@@ -22,6 +22,8 @@ RUN npm run build && \
         --format=esm \
         --external:@replit/vite-plugin-runtime-error-modal \
         --external:@replit/vite-plugin-cartographer \
+        --external:lightningcss \
+        --external:@babel/preset-typescript \
         --outfile=dist/server/index.js
 
 # Production stage
