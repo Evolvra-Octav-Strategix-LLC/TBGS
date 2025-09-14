@@ -16,8 +16,8 @@ COPY . .
 # Build the application - Split frontend and backend builds
 RUN npx vite build && \
     mkdir -p dist && \
-    cp -r server shared dist/ && \
-    npx esbuild server/production.ts \
+    cp -r shared dist/ && \
+    npx esbuild server/*.ts \
         --platform=node \
         --format=esm \
         --outdir=dist/server \
