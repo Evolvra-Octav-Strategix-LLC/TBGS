@@ -17,7 +17,7 @@ function log(message: string, source = "express") {
 
 // Production static file serving (no vite dependencies)
 function serveStatic(app: express.Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  const distPath = path.resolve(import.meta.dirname, "../public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
@@ -49,7 +49,7 @@ async function startServer() {
     log('Running in production mode, serving static files');
     serveStatic(app);
 
-    const port = process.env.PORT || 5000;
+    const port = process.env.PORT || 3000;
     server.listen(port, () => {
       log(`serving on port ${port}`);
       
