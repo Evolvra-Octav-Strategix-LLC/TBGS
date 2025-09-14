@@ -1,0 +1,10 @@
+root@212:/opt/tbgs# # Bekijk alle container statussen
+docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                          PORTS                                                                                                                   NAMES
+b78cbb176763   jc21/nginx-proxy-manager:latest   "/init"                  21 hours ago   Up 21 hours (unhealthy)         0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp, 0.0.0.0:8081->81/tcp, [::]:8081->81/tcp   tbgs-nginx-proxy-manager
+b2dffac503b4   dpage/pgadmin4:latest             "/entrypoint.sh"         21 hours ago   Up 21 hours (healthy)           80/tcp, 443/tcp                                                                                                         tbgs-pgadmin
+8e1b7b1d02cd   nextcloud:28-apache               "/entrypoint.sh apac…"   21 hours ago   Up 21 hours (unhealthy)         80/tcp                                                                                                                  tbgs-nextcloud
+44420d892da3   tbgs-tbgs-app                     "/sbin/tini -- node …"   21 hours ago   Restarting (1) 47 seconds ago                                                                                                                           tbgs-app
+7f05bcf056ea   lissy93/dashy:latest              "docker-entrypoint.s…"   21 hours ago   Up 21 hours (healthy)           8080/tcp                                                                                                                tbgs-dashy
+35d66f4c250c   postgres:15-alpine                "docker-entrypoint.s…"   21 hours ago   Up 21 hours (healthy)           5432/tcp                                                                                                                tbgs-postgres
+39d9edf6aa43   portainer/portainer-ce:latest     "/portainer -H unix:…"   21 hours ago   Up 21 hours (unhealthy)         8000/tcp, 9000/tcp, 9443/tcp    
