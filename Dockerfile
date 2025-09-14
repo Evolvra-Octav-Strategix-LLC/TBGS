@@ -18,6 +18,7 @@ RUN npx vite build && \
     mkdir -p dist/server && \
     npx esbuild server/production.ts \
         --platform=node \
+        --packages=external \
         --bundle \
         --format=esm \
         --outfile=dist/server/index.js
