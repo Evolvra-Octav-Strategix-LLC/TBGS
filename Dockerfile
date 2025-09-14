@@ -16,14 +16,10 @@ COPY . .
 # Build the application - Split frontend and backend builds
 RUN npx vite build && \
     mkdir -p dist/server && \
-    npx esbuild server/index.ts \
+    npx esbuild server/production.ts \
         --platform=node \
         --bundle \
         --format=esm \
-        --external:@replit/vite-plugin-runtime-error-modal \
-        --external:@replit/vite-plugin-cartographer \
-        --external:lightningcss \
-        --external:@babel/preset-typescript \
         --outfile=dist/server/index.js
 
 # Production stage

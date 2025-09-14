@@ -1,16 +1,36 @@
 import express from "express";
 import { registerRoutes } from "./routes";
 import { taskProcessor } from "./taskQueue";
+import path from "path";
+import fs from "fs";
 
-// Inline log function to avoid importing from vite module
+// Inline log function for production
 function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",
-    minute: "2-digit", 
-    second: "2-digit",
+    minute: "2-digit",
+    second: "2-digit", 
     hour12: true,
   });
   console.log(`${formattedTime} [${source}] ${message}`);
+}
+
+// Production static file serving (no vite dependencies)
+function serveStatic(app: express.Express) {
+  const distPath = path.resolve(import.meta.dirname, "public");
+
+  if (!fs.existsSync(distPath)) {
+    throw new Error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`,
+    );
+  }
+
+  app.use(express.static(distPath));
+
+  // fall through to index.html if the file doesn't exist
+  app.use("*", (_req, res) => {
+    res.sendFile(path.resolve(distPath, "index.html"));
+  });
 }
 
 const app = express();
@@ -25,18 +45,9 @@ async function startServer() {
     // Register API routes first
     const server = await registerRoutes(app);
     
-    // Setup Vite development server or static serving based on environment
-    if (process.env.NODE_ENV === 'production') {
-      log('Running in production mode, serving static files');
-      // Import and use static file serving for production
-      const { serveStatic } = await import('./vite');
-      serveStatic(app);
-    } else {
-      log('Running in development mode, setting up Vite');
-      // Import and setup Vite only in development
-      const { setupVite } = await import('./vite');
-      await setupVite(app, server);
-    }
+    // Production mode - serve static files only
+    log('Running in production mode, serving static files');
+    serveStatic(app);
 
     const port = process.env.PORT || 5000;
     server.listen(port, () => {
