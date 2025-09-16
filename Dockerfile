@@ -1,34 +1,34 @@
-# Multi-stage build for TBGS application
+# Robust multi-stage build for TBGS on Dokploy
 FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files and install ALL dependencies (needed for building)
 COPY package*.json ./
-
-# Install ALL dependencies (including dev deps for building)
 RUN npm ci && npm cache clean --force
 
 # Copy source code
 COPY . .
 
-# Build the application - Split frontend and backend builds
+# Build frontend and server with proper bundling
 RUN npx vite build && \
-    mkdir -p dist && \
-    cp -r shared dist/ && \
-    npx esbuild server/*.ts \
+    mkdir -p dist/server && \
+    npx esbuild server/production.ts \
         --platform=node \
+        --bundle \
         --format=esm \
-        --outdir=dist/server \
-        --out-extension:.js=.js
+        --packages=external \
+        --outfile=dist/server/production.js
 
 # Production stage
 FROM node:20-alpine AS production
 
-# Install tini and create user
-RUN apk add --no-cache tini && \
-    addgroup -g 1001 -S tbgs && \
+# Install curl for health checks and tini for process management
+RUN apk add --no-cache curl tini
+
+# Create user for security
+RUN addgroup -g 1001 -S tbgs && \
     adduser -S tbgs -u 1001
 
 # Set working directory
@@ -51,9 +51,9 @@ USER tbgs
 # Expose port
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+# Robust health check using curl
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Use tini as entrypoint for proper signal handling
 ENTRYPOINT ["/sbin/tini", "--"]
