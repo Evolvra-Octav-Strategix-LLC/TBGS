@@ -199,32 +199,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
           requestId: savedRequest.id
         });
 
-        // Send emails in background (non-blocking)
-        setImmediate(async () => {
-          try {
-            await emailService.sendNotificationEmail({
-              ...validatedData,
-              photos: [],
-              submittedAt: savedRequest.submittedAt || new Date(),
-              formType: 'popup' as const,
-              files: emailFiles
-            });
-            console.log(`✓ Background notification email sent for ${savedRequest.id}`);
-          } catch (emailError) {
-            console.error('Failed to send notification email:', emailError);
-          }
+        // Send emails directly (production-safe)
+        try {
+          await emailService.sendNotificationEmail({
+            ...validatedData,
+            photos: [],
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const,
+            files: emailFiles
+          });
+          console.log(`✓ Notification email sent for ${savedRequest.id}`);
+        } catch (emailError) {
+          console.error('Failed to send notification email:', emailError);
+        }
 
-          try {
-            await emailService.sendThankYouEmail({
-              ...validatedData,
-              photos: [],
-              submittedAt: savedRequest.submittedAt || new Date(),
-              formType: 'popup' as const
-            });
-            console.log(`✓ Background thank you email sent for ${savedRequest.id}`);
-          } catch (emailError) {
-            console.error('Failed to send thank you email:', emailError);
-          }
+        try {
+          await emailService.sendThankYouEmail({
+            ...validatedData,
+            photos: [],
+            submittedAt: savedRequest.submittedAt || new Date(),
+            formType: 'popup' as const
+          });
+          console.log(`✓ Thank you email sent for ${savedRequest.id}`);
+        } catch (emailError) {
+          console.error('Failed to send thank you email:', emailError);
+        }
 
           // Create customer in Gripp after successful email sending (with files)
           try {
@@ -278,7 +277,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           } catch (grippError) {
             console.error(`Service request: Gripp integration error for ${savedRequest.id}:`, grippError);
           }
-        });
 
         return;
       }
@@ -296,32 +294,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: savedRequest.id
       });
 
-      // Send emails in background (non-blocking)
-      setImmediate(async () => {
-        try {
-          await emailService.sendNotificationEmail({
-            ...validatedData,
-            photos: photosArray,
-            submittedAt: savedRequest.submittedAt || new Date(),
-            formType: 'popup' as const,
-            files: []
-          });
-          console.log(`✓ Background notification email sent voor aanvraag ${savedRequest.id} (no files)`);
-        } catch (emailError) {
-          console.error('Failed to send notification email:', emailError);
-        }
+      // Send emails directly (production-safe)
+      try {
+        await emailService.sendNotificationEmail({
+          ...validatedData,
+          photos: photosArray,
+          submittedAt: savedRequest.submittedAt || new Date(),
+          formType: 'popup' as const,
+          files: []
+        });
+        console.log(`✓ Notification email sent for aanvraag ${savedRequest.id} (no files)`);
+      } catch (emailError) {
+        console.error('Failed to send notification email:', emailError);
+      }
 
-        try {
-          await emailService.sendThankYouEmail({
-            ...validatedData,
-            photos: photosArray,
-            submittedAt: savedRequest.submittedAt || new Date(),
-            formType: 'popup' as const
-          });
-          console.log(`✓ Background thank you email sent voor aanvraag ${savedRequest.id} (no files)`);
-        } catch (emailError) {
-          console.error('Failed to send thank you email:', emailError);
-        }
+      try {
+        await emailService.sendThankYouEmail({
+          ...validatedData,
+          photos: photosArray,
+          submittedAt: savedRequest.submittedAt || new Date(),
+          formType: 'popup' as const
+        });
+        console.log(`✓ Thank you email sent for aanvraag ${savedRequest.id} (no files)`);
+      } catch (emailError) {
+        console.error('Failed to send thank you email:', emailError);
+      }
 
         // Create customer in Gripp after successful email sending (no files)
         try {
@@ -375,7 +372,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
         } catch (grippError) {
           console.error(`Service request: Gripp integration error for ${savedRequest.id} (no files):`, grippError);
         }
-      });
 
     } catch (error) {
       console.error('Service request error:', error);
