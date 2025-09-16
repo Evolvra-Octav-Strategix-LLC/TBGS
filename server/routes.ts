@@ -138,6 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY || '' });
   });
 
+
   // Service request submission endpoint met file upload support
   app.post("/api/service-request", async (req, res) => {
     console.log('🔥 /api/service-request endpoint hit');
