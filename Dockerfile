@@ -34,13 +34,16 @@ RUN addgroup -g 1001 -S tbgs && \
 # Set working directory
 WORKDIR /app
 
-# Copy package files and install production dependencies only
+# Copy package files and install production dependencies + drizzle-kit
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --only=production && \
+    npm install drizzle-kit && \
+    npm cache clean --force
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/shared ./shared
+COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
 
 # Create uploads directory and set permissions
 RUN mkdir -p uploads && chown -R tbgs:tbgs /app
