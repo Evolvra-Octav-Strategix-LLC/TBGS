@@ -2,16 +2,8 @@ import express from "express";
 import { registerRoutes } from "./routes";
 import { taskProcessor } from "./taskQueue";
 
-// Inline log function to avoid importing from vite module
-function log(message: string, source = "express") {
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit", 
-    second: "2-digit",
-    hour12: true,
-  });
-  console.log(`${formattedTime} [${source}] ${message}`);
-}
+// Import vite setup only (for development)
+import { setupVite } from "./vite";
 
 const app = express();
 
@@ -25,28 +17,18 @@ async function startServer() {
     // Register API routes first
     const server = await registerRoutes(app);
     
-    // Setup Vite development server or static serving based on environment
-    if (process.env.NODE_ENV === 'production') {
-      log('Running in production mode, serving static files');
-      // Import and use static file serving for production
-      const { serveStatic } = await import('./vite');
-      serveStatic(app);
-    } else {
-      log('Running in development mode, setting up Vite');
-      // Import and setup Vite only in development
-      const { setupVite } = await import('./vite');
-      await setupVite(app, server);
-    }
+    // Setup Vite development server
+    await setupVite(app, server);
 
     const port = process.env.PORT || 5000;
     server.listen(port, () => {
-      log(`serving on port ${port}`);
+      console.log(`Development server running on port ${port}`);
       
       // Start background task processor
       taskProcessor.start();
     });
   } catch (error) {
-    console.error("Failed to start server:", error);
+    console.error("Failed to start development server:", error);
     process.exit(1);
   }
 }

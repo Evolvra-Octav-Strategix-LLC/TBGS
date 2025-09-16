@@ -28,10 +28,15 @@ function serveStatic(app: express.Express) {
     );
   }
 
+  // Serve static files, but NOT for /api routes
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
+  // SPA fallback: serve index.html for non-API routes only
+  app.get("*", (req, res) => {
+    // Don't intercept API routes
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'API endpoint not found' });
+    }
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
@@ -76,12 +81,15 @@ async function startServer() {
     // Initialize database schema first
     await initializeDatabase();
     
-    // Register API routes
+    // Register API routes FIRST (before static files)
+    log('Registering API routes...');
     const server = await registerRoutes(app);
+    log('API routes registered successfully');
     
-    // Production mode - serve static files only
-    log('Running in production mode, serving static files');
+    // THEN serve static files (with fallback to index.html for SPA)
+    log('Setting up static file serving...');
     serveStatic(app);
+    log('Static file serving configured');
 
     const port = process.env.PORT || 3000;
     server.listen(port, () => {

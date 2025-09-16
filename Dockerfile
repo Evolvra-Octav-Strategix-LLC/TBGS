@@ -19,7 +19,7 @@ RUN npx vite build && \
         --bundle \
         --format=esm \
         --packages=external \
-        --outfile=dist/server/production.js
+        --outfile=dist/server/index.js
 
 # Production stage
 FROM node:20-alpine AS production
@@ -62,4 +62,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start the application
-CMD ["node", "dist/server/production.js"]
+CMD ["node", "dist/server/index.js"]
