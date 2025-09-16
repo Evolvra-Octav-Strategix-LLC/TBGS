@@ -1,0 +1,176 @@
+Deployment
+See all the details of this deployment | 
+
+Initializing deployment
+Cloning Repo github.com/Evolvra-Octav-Strategix-LLC/TBGS.git to /etc/dokploy/applications/tbgs-web-cbd6uv/code: ✅
+Cloning into '/etc/dokploy/applications/tbgs-web-cbd6uv/code'...
+remote: Enumerating objects: 390, done.
+Cloned github.com/Evolvra-Octav-Strategix-LLC/TBGS.git: ✅
+Build dockerfile: ✅
+Source Type: github: ✅
+#0 building with "default" instance using docker driver
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.62kB done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.7s
+#3 [internal] load .dockerignore
+#3 transferring context: 545B done
+#3 DONE 0.0s
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db94f7342d6c33560d6613f188bbcf4bbe1f4eb47d5e2a08e1a37722
+#4 CACHED
+#5 [builder 2/6] WORKDIR /app
+#5 CACHED
+#6 [internal] load build context
+#6 transferring context: 16.54MB 0.2s done
+#6 DONE 0.2s
+#7 [builder 3/6] COPY package*.json ./
+#7 DONE 0.1s
+#8 [production 2/9] RUN apk add --no-cache curl tini
+#8 0.244 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
+#8 0.408 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+#8 0.847 (1/10) Installing brotli-libs (1.1.0-r2)
+#8 0.874 (2/10) Installing c-ares (1.34.5-r0)
+#8 0.887 (3/10) Installing libunistring (1.3-r0)
+#8 0.930 (4/10) Installing libidn2 (2.3.7-r0)
+#8 0.946 (5/10) Installing nghttp2-libs (1.65.0-r0)
+#8 0.955 (6/10) Installing libpsl (0.21.5-r3)
+#8 0.965 (7/10) Installing zstd-libs (1.5.7-r0)
+#8 0.991 (8/10) Installing libcurl (8.14.1-r1)
+#8 1.013 (9/10) Installing curl (8.14.1-r1)
+#8 1.031 (10/10) Installing tini (0.19.0-r3)
+#8 1.041 Executing busybox-1.37.0-r18.trigger
+#8 1.054 OK: 15 MiB in 28 packages
+#8 DONE 1.2s
+#9 [builder 4/6] RUN npm ci && npm cache clean --force
+#9 ...
+#10 [production 3/9] RUN addgroup -g 1001 -S tbgs &&     adduser -S tbgs -u 1001
+#10 DONE 0.3s
+#11 [production 4/9] WORKDIR /app
+#11 DONE 0.0s
+#12 [production 5/9] COPY package*.json ./
+#12 DONE 0.0s
+#13 [production 6/9] RUN npm ci --only=production && npm cache clean --force
+#13 0.372 npm warn config only Use `--omit=dev` to omit dev dependencies from the install.
+#13 5.285 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#13 ...
+#9 [builder 4/6] RUN npm ci && npm cache clean --force
+#9 5.463 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#9 10.19 npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+#9 10.59 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+#9 10.59 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+#9 ...
+#13 [production 6/9] RUN npm ci --only=production && npm cache clean --force
+#13 10.67 npm warn deprecated fluent-ffmpeg@2.1.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+#13 14.55
+#13 14.55 added 679 packages, and audited 680 packages in 14s
+#13 14.55
+#13 14.55 79 packages are looking for funding
+#13 14.55   run `npm fund` for details
+#13 14.56
+#13 14.56 4 vulnerabilities (3 low, 1 high)
+#13 14.56
+#13 14.56 To address all issues, run:
+#13 14.56   npm audit fix
+#13 14.56
+#13 14.56 Run `npm audit` for details.
+#13 14.56 npm notice
+#13 14.56 npm notice New major version of npm available! 10.8.2 -> 11.6.0
+#13 14.56 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.0
+#13 14.56 npm notice To update run: npm install -g npm@11.6.0
+#13 14.56 npm notice
+#13 14.77 npm warn using --force Recommended protections disabled.
+#13 ...
+#9 [builder 4/6] RUN npm ci && npm cache clean --force
+#9 17.03
+#9 17.03 added 776 packages, and audited 777 packages in 17s
+#9 17.03
+#9 17.03 91 packages are looking for funding
+#9 17.03   run `npm fund` for details
+#9 17.08
+#9 17.08 11 vulnerabilities (3 low, 7 moderate, 1 high)
+#9 17.08
+#9 17.08 To address issues that do not require attention, run:
+#9 17.08   npm audit fix
+#9 17.08
+#9 17.08 To address all issues (including breaking changes), run:
+#9 17.08   npm audit fix --force
+#9 17.08
+#9 17.08 Run `npm audit` for details.
+#9 17.08 npm notice
+#9 17.08 npm notice New major version of npm available! 10.8.2 -> 11.6.0
+#9 17.08 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.0
+#9 17.08 npm notice To update run: npm install -g npm@11.6.0
+#9 17.08 npm notice
+#9 17.29 npm warn using --force Recommended protections disabled.
+#9 DONE 18.4s
+#13 [production 6/9] RUN npm ci --only=production && npm cache clean --force
+#13 DONE 17.1s
+#14 [builder 5/6] COPY . .
+#14 DONE 0.2s
+#15 [builder 6/6] RUN npx vite build &&     mkdir -p dist/server &&     npx esbuild server/production.ts         --platform=node         --bundle         --format=esm         --packages=external         --outfile=dist/server/production.js
+#15 1.011 vite v5.4.19 building for production...
+#15 1.108 transforming...
+#15 1.488 Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+#15 1.488   npx update-browserslist-db@latest
+#15 1.488   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#15 9.396 ✓ 2753 modules transformed.
+#15 10.10 rendering chunks...
+#15 10.14 computing gzip size...
+#15 10.18 ../dist/public/index.html                                                               3.34 kB │ gzip:   1.25 kB
+#15 10.18 ../dist/public/assets/velux-CII1hANv.png                                                4.89 kB
+#15 10.18 ../dist/public/assets/bmi-dicDeHjg.png                                                  7.19 kB
+#15 10.18 ../dist/public/assets/unilin-D4zE21Su.png                                               7.65 kB
+#15 10.18 ../dist/public/assets/ubbink-druk1P-k.png                                               7.91 kB
+#15 10.18 ../dist/public/assets/Totaal Schoorsteen Specialist (1)_1754928058600-v4lIyV3h.jpg     12.87 kB
+#15 10.18 ../dist/public/assets/zinkunique-DK-p3bka.png                                          13.63 kB
+#15 10.18 ../dist/public/assets/recticel-Bl6Kyin0.jpg                                            18.58 kB
+#15 10.18 ../dist/public/assets/soudal-C_CI3Am2.png                                              21.46 kB
+#15 10.18 ../dist/public/assets/monier-CcUgGq9W.png                                              24.65 kB
+#15 10.18 ../dist/public/assets/IMAGE 2025-08-29 21_02_58_1756494183898-CUKudx5f.jpg            163.96 kB
+#15 10.18 ../dist/public/assets/image (19)_1754999543410-h8p7ryzu.png                           174.42 kB
+#15 10.18 ../dist/public/assets/image (17)_1754999543404-hfbiOjS-.png                           190.91 kB
+#15 10.18 ../dist/public/assets/TDS 545x642 (1)_1754935666048-CgTw0UVB.png                      202.44 kB
+#15 10.18 ../dist/public/assets/TSS 545x642 (1)_1754935673253-BxHE_U-r.png                      203.40 kB
+#15 10.18 ../dist/public/assets/defrancq-D8O9LhUl.png                                           214.08 kB
+#15 10.18 ../dist/public/assets/TBGS 545x642_1754935666047-BPuk_Itj.png                         215.70 kB
+#15 10.18 ../dist/public/assets/image (18)_1754999543407-D20NFhy3.png                           219.03 kB
+#15 10.18 ../dist/public/assets/image (21)_1755004272803-CMj2tpt8.png                           231.13 kB
+#15 10.18 ../dist/public/assets/TOS 545x642 (1)_1754935666048-rEGlieQ0.png                      286.87 kB
+#15 10.18 ../dist/public/assets/image (16)_1754999543400-D2SttU8x.png                           288.09 kB
+#15 10.18 ../dist/public/assets/TBS 545x642 (1)_1754935666048-RyOzPMmp.png                      294.07 kB
+#15 10.18 ../dist/public/assets/image (20)_1755004272803-T0CMuE8z.png                           335.38 kB
+#15 10.18 ../dist/public/assets/image (13)_1754999543397-BDNBUFOP.png                           340.27 kB
+#15 10.18 ../dist/public/assets/image (22)_1755004272803-Dq0LZT5y.png                           354.55 kB
+#15 10.18 ../dist/public/assets/image (23)_1755004272803-lAAUvE7o.png                           367.36 kB
+#15 10.18 ../dist/public/assets/image (26)_1755004272804-ADcuaS4r.png                           401.18 kB
+#15 10.18 ../dist/public/assets/image (25)_1755004272804-CXAwz20K.png                           453.50 kB
+#15 10.18 ../dist/public/assets/image (14)_1754999543397-BCfH9b3D.png                           488.29 kB
+#15 10.18 ../dist/public/assets/image (24)_1755004272803-C-AVBlSl.png                           582.61 kB
+#15 10.18 ../dist/public/assets/index-py6ziNbd.css                                              146.14 kB │ gzip:  21.92 kB
+#15 10.18 ../dist/public/assets/index-CJ0fWwow.js                                             1,704.58 kB │ gzip: 351.80 kB
+#15 10.18
+#15 10.18 (!) Some chunks are larger than 500 kB after minification. Consider:
+#15 10.18 - Using dynamic import() to code-split the application
+#15 10.18 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#15 10.18 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#15 10.18 ✓ built in 9.13s
+#15 10.87
+#15 10.87   dist/server/production.js  108.9kb
+#15 10.87
+#15 10.87 ⚡ Done in 13ms
+#15 DONE 11.0s
+#16 [production 7/9] COPY --from=builder /app/dist ./dist
+#16 DONE 0.1s
+#17 [production 8/9] COPY --from=builder /app/shared ./shared
+#17 DONE 0.0s
+#18 [production 9/9] RUN mkdir -p uploads && chown -R tbgs:tbgs /app
+#18 DONE 62.9s
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 3.9s done
+#19 writing image sha256:d208e3d53d74e0cd1db0457986af574602c10df0ab91970bece95fcf34bfe8ef
+#19 writing image sha256:d208e3d53d74e0cd1db0457986af574602c10df0ab91970bece95fcf34bfe8ef done
+#19 naming to docker.io/library/tbgs-web-cbd6uv done
+#19 DONE 3.9s
+Docker Deployed: ✅
