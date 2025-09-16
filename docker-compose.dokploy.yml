@@ -1,0 +1,24 @@
+# TBGS Application for Dokploy Deployment
+# Simplified - Dokploy handles database, nginx, SSL, domain routing
+# Note: This compose file may not be needed - Dokploy can build directly from Dockerfile.dokploy
+
+services:
+  tbgs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dokploy
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - uploads:/app/uploads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  uploads:
+    driver: local
