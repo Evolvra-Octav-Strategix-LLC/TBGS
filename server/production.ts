@@ -28,12 +28,16 @@ function serveStatic(app: express.Express) {
     );
   }
 
-  // Serve static files, but NOT for /api routes
-  app.use(express.static(distPath));
+  // Serve static files ONLY for non-API routes
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next(); // Let API routes handle this
+    }
+    return express.static(distPath)(req, res, next);
+  });
 
-  // SPA fallback: serve index.html for non-API routes only
-  app.get("*", (req, res) => {
-    // Don't intercept API routes
+  // SPA fallback: serve index.html for all remaining non-API routes
+  app.use((req, res, next) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API endpoint not found' });
     }
