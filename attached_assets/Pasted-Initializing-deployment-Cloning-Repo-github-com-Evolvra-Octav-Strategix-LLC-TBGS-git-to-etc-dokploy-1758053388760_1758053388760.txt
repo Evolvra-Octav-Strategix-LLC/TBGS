@@ -1,0 +1,53 @@
+Initializing deployment
+Cloning Repo github.com/Evolvra-Octav-Strategix-LLC/TBGS.git to /etc/dokploy/applications/tbgs-web-cbd6uv/code: ✅
+Cloning into '/etc/dokploy/applications/tbgs-web-cbd6uv/code'...
+remote: Enumerating objects: 387, done.
+Cloned github.com/Evolvra-Octav-Strategix-LLC/TBGS.git: ✅
+Build dockerfile: ✅
+Source Type: github: ✅
+#0 building with "default" instance using docker driver
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.62kB done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.3s
+#3 [internal] load .dockerignore
+#3 transferring context: 545B done
+#3 DONE 0.0s
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:eabac870db94f7342d6c33560d6613f188bbcf4bbe1f4eb47d5e2a08e1a37722
+#4 DONE 0.0s
+#5 [internal] load build context
+#5 transferring context: 16.40MB 0.1s done
+#5 DONE 0.1s
+#6 [production 4/9] WORKDIR /app
+#6 CACHED
+#7 [builder 3/6] COPY package*.json ./
+#7 CACHED
+#8 [production 5/9] COPY package*.json ./
+#8 CACHED
+#9 [production 3/9] RUN addgroup -g 1001 -S tbgs &&     adduser -S tbgs -u 1001
+#9 CACHED
+#10 [builder 5/6] COPY . .
+#10 CACHED
+#11 [production 8/9] COPY --from=builder /app/shared ./shared
+#11 CACHED
+#12 [production 2/9] RUN apk add --no-cache curl tini
+#12 CACHED
+#13 [production 7/9] COPY --from=builder /app/dist ./dist
+#13 CACHED
+#14 [production 6/9] RUN npm ci --only=production && npm cache clean --force
+#14 CACHED
+#15 [builder 4/6] RUN npm ci && npm cache clean --force
+#15 CACHED
+#16 [builder 2/6] WORKDIR /app
+#16 CACHED
+#17 [builder 6/6] RUN npx vite build &&     mkdir -p dist/server &&     npx esbuild server/production.ts         --platform=node         --bundle         --format=esm         --packages=external         --outfile=dist/server/production.js
+#17 CACHED
+#18 [production 9/9] RUN mkdir -p uploads && chown -R tbgs:tbgs /app
+#18 CACHED
+#19 exporting to image
+#19 exporting layers done
+#19 writing image sha256:d262606741e41e3b8eb7a6432727f0263d033a38665c6e280945d0a1db688e52 done
+#19 naming to docker.io/library/tbgs-web-cbd6uv done
+#19 DONE 0.0s
+Docker Deployed: ✅
