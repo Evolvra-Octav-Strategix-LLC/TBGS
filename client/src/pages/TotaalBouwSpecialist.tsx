@@ -1,7 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
-import LocationCards from "@/components/LocationCards";
+import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
@@ -528,10 +528,8 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             </p>
           </div>
           
-          <LocationCards 
-            specialist="bouw" 
-            onOpenContactModal={onOpenContactModal} 
-            showCTA={true}
+          <LocationAreasOnly 
+            specialist="bouw"
           />
         </div>
       </section>
