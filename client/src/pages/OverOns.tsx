@@ -42,7 +42,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
             <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-12">
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-tbgs-navy mb-1 sm:mb-2">1943</div>
-                <div className="text-sm sm:text-base text-slate-600">Gestart</div>
+                <div className="text-sm sm:text-base text-slate-600">Vakmanschap</div>
               </div>
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-tbgs-navy mb-1 sm:mb-2">4</div>
