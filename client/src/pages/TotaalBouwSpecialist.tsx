@@ -228,6 +228,222 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
               </Link>
             </div>
 
+            {/* Old service cards restored */}
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-plus text-tbgs-orange text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouw & Uitbreiding</h3>
+              <ul className="text-gray-600 space-y-2 mb-4">
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Aanbouw woonhuis</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre & overkapping</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage & berging</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
+              </ul>
+              <button 
+                onClick={onOpenContactModal}
+                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
+              >
+                Meer informatie →
+              </button>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-bath text-tbgs-orange text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Badkamer renovatie</h3>
+              <ul className="text-gray-600 space-y-2 mb-4">
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete badkamer</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Leidingwerk</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tegelwerk</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Sanitair installatie</li>
+              </ul>
+              <button 
+                onClick={onOpenContactModal}
+                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
+              >
+                Meer informatie →
+              </button>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-utensils text-tbgs-orange text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Keuken renovatie</h3>
+              <ul className="text-gray-600 space-y-2 mb-4">
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keukenverbouwing</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk kasten</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Werkblad installatie</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Apparatuur aansluiting</li>
+              </ul>
+              <button 
+                onClick={onOpenContactModal}
+                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
+              >
+                Meer informatie →
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Bouwwerken Artikelen Section */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Bouwwerken & Bouw Advies
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Alles over <strong>bouwwerken</strong>, <strong>verbouwingen</strong> en <strong>aanbouw</strong>. 
+              Professioneel advies van onze gecertificeerde <strong>bouwspecialisten</strong> en <strong>aannemers</strong>.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Metselwerk Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                <i className="fas fa-hammer text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-orange-100 text-tbgs-orange px-3 py-1 rounded-full text-sm font-semibold">Vakwerk</span>
+                  <span className="text-gray-500 text-sm">5 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Professioneel Metselwerk</h3>
+                <p className="text-gray-600 mb-4">
+                  Vakkundig <strong>metselwerk</strong> door ervaren <strong>metselaars</strong>. Van klassieke bakstenen gevels tot moderne tuinmuren met kwaliteitsmaterialen en garantie.
+                </p>
+                <Link href="/bouw/metselwerk" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over metselwerk →
+                </Link>
+              </div>
+            </div>
+
+            {/* Timmerwerken Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
+                <i className="fas fa-cut text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">Maatwerk</span>
+                  <span className="text-gray-500 text-sm">8 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Professioneel Timmerwerk</h3>
+                <p className="text-gray-600 mb-4">
+                  Vakkundig <strong>timmerwerk</strong> door ervaren <strong>timmerlieden</strong>. Van dakconstructies tot maatwerk met duurzame materialen en traditioneel vakmanschap.
+                </p>
+                <Link href="/bouw/timmerwerken" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over timmerwerk →
+                </Link>
+              </div>
+            </div>
+
+            {/* Opbouw Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <i className="fas fa-arrow-up text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Uitbreiding</span>
+                  <span className="text-gray-500 text-sm">6 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Opbouw op Uw Huis</h3>
+                <p className="text-gray-600 mb-4">
+                  Meer woonruimte door professionele <strong>opbouw</strong>. Van tweede verdiepingen tot dakkapellen, zonder verhuizing meer ruimte creëren.
+                </p>
+                <Link href="/bouw/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over opbouw →
+                </Link>
+              </div>
+            </div>
+
+            {/* Aanbouw Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                <i className="fas fa-plus text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">Uitbreiding</span>
+                  <span className="text-gray-500 text-sm">7 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouwen aan Uw Huis</h3>
+                <p className="text-gray-600 mb-4">
+                  Meer woonruimte door professionele <strong>aanbouw</strong>. Van woonkamer uitbreiding tot serre, uw woning uitbreiden zonder verhuizing.
+                </p>
+                <Link href="/bouw/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over aanbouw →
+                </Link>
+              </div>
+            </div>
+
+            {/* Verbouwing Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                <i className="fas fa-home text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Renovatie</span>
+                  <span className="text-gray-500 text-sm">9 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Uw Huis Verbouwen</h3>
+                <p className="text-gray-600 mb-4">
+                  Complete <strong>huisverbouwing</strong> door ervaren professionals. Van badkamer tot keuken, uw droomhuis realiseren met volledige begeleiding.
+                </p>
+                <Link href="/bouw/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over verbouwing →
+                </Link>
+              </div>
+            </div>
+
+            {/* Serre Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+                <i className="fas fa-cube text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm font-semibold">Glazen Uitbouw</span>
+                  <span className="text-gray-500 text-sm">6 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Serre Aanbouw</h3>
+                <p className="text-gray-600 mb-4">
+                  Glazen <strong>serre aanbouw</strong> brengt de buitenwereld naar binnen. Van klassieke serres tot moderne glazen uitbouw voor meer licht en ruimte.
+                </p>
+                <Link href="/bouw/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over serre aanbouw →
+                </Link>
+              </div>
+            </div>
+
+            {/* Nieuwbouw Article */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
+                <i className="fas fa-hard-hat text-white text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold">Sleutelklaar</span>
+                  <span className="text-gray-500 text-sm">12 min lezen</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Nieuwbouw Woningen</h3>
+                <p className="text-gray-600 mb-4">
+                  Sleutelklaar <strong>nieuwbouw</strong> van uw droomhuis. Van eengezinswoningen tot luxe villa's, moderne technieken en duurzame materialen.
+                </p>
+                <Link href="/bouw/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                  Lees meer over nieuwbouw →
+                </Link>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
