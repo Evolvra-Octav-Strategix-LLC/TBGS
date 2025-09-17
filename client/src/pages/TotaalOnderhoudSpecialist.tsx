@@ -318,7 +318,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>dakkapel reiniging</strong> voor optimale lichtinval en schone constructie. Complete zorg met maatwerk abonnement.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/dakkapel-reinigen" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/dakkapel-reinigen" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over dakkapel reinigen →
                 </Link>
               </div>
@@ -334,7 +334,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   Complete <strong>dakkapel onderhoud</strong> door ervaren specialisten. Preventief onderhoud voorkomt kostbare reparaties.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/onderhoud-dakkapel" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/onderhoud-dakkapel" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over dakkapel onderhoud →
                 </Link>
               </div>
@@ -350,7 +350,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   <strong>Houtbescherming</strong> voor dakconstructies door ervaren specialisten. Preventieve behandeling tegen aantasting.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/onderhoud-hout-dak" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/onderhoud-hout-dak" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over hout onderhoud →
                 </Link>
               </div>
@@ -366,7 +366,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   Vakkundig <strong>schilderwerk</strong> door ervaren schilders. Binnen- en buitenschilderwerk met perfecte afwerking.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/schilder" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/schilder" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over schilderwerk →
                 </Link>
               </div>
@@ -382,7 +382,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   Complete <strong>garage onderhoud</strong> door ervaren specialisten. Van dak tot vloer - alle aspecten van garage zorg.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/onderhoud-garage" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/onderhoud-garage" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over garage onderhoud →
                 </Link>
               </div>
@@ -398,7 +398,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <p className="text-gray-600 mb-4">
                   Professioneel <strong>dakgoot onderhoud</strong> voorkomt wateroverlast. Regelmatige reiniging en preventieve zorg.
                 </p>
-                <Link href="/totaal-onderhoud-specialist/onderhoud-dakgoot" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
+                <Link href="/onderhoud/onderhoud-dakgoot" className="text-tbgs-green font-semibold hover:text-green-700 transition-colors cursor-pointer">
                   Lees meer over dakgoot onderhoud →
                 </Link>
               </div>
