@@ -37,6 +37,17 @@ class EmailService {
   private transporter: nodemailer.Transporter;
 
   constructor() {
+    // Validate environment variables on startup
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error('❌ CRITICAL: Missing email credentials!');
+      console.error('📧 GMAIL_USER:', process.env.GMAIL_USER ? '✅ Set' : '❌ Missing');
+      console.error('📧 GMAIL_APP_PASSWORD:', process.env.GMAIL_APP_PASSWORD ? '✅ Set' : '❌ Missing');
+      console.error('📧 Please set these environment variables in Dokploy!');
+    } else {
+      console.log('✅ Email credentials found in environment');
+      console.log('📧 GMAIL_USER:', process.env.GMAIL_USER);
+    }
+
     this.transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
@@ -50,6 +61,14 @@ class EmailService {
 
   async sendNotificationEmail(data: EmailData) {
     try {
+      console.log('📧 Starting email send process...');
+      console.log('📧 SMTP Config: gmail.com:587');
+      console.log('📧 From user:', process.env.GMAIL_USER || 'NOT SET');
+      
+      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+        throw new Error('Email credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD in Dokploy environment variables.');
+      }
+      
       console.log('📧 Sending notification email to admin...');
       
       const subject = `Nieuwe aanvraag: ${data.selectedService} - ${data.firstName} ${data.lastName}`;
