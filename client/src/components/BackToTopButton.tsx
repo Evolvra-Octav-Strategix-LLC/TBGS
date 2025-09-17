@@ -12,16 +12,16 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
 
   // Get specialist colors based on current page
   const getSpecialistColors = () => {
-    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+    if (location === '/dak' || location.startsWith('/dak/')) {
       return 'from-tbgs-red to-red-600';
     }
-    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+    if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {
       return 'from-tbgs-blue to-blue-600';
     }
-    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+    if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
       return 'from-tbgs-green to-green-600';
     }
-    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+    if (location === '/bouw' || location.startsWith('/bouw/')) {
       return 'from-tbgs-orange to-orange-600';
     }
     return 'from-tbgs-navy to-blue-600';
