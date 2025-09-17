@@ -290,8 +290,69 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         </div>
       </section>
 
-      {/* Bouwwerken Artikelen Section */}
+      {/* Process Section */}
       <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Van Idee tot Realisatie
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Wij begeleiden u door het gehele bouwproces. Van eerste schets tot 
+              sleuteloverdracht, alles volgens planning en budget.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Ontwerp & Planning</h3>
+              <p className="text-gray-600">
+                Samen met u ontwikkelen wij het ontwerp en de planning. 
+                Vergunningaanvragen en technische uitwerking.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Offerte & Contract</h3>
+              <p className="text-gray-600">
+                Transparante offerte met alle details. Heldere afspraken 
+                vastgelegd in een duidelijk contract.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Bouw & Uitvoering</h3>
+              <p className="text-gray-600">
+                Professionele uitvoering door ons ervaren team. 
+                Regelmatige updates en open communicatie.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">4</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Oplevering & Garantie</h3>
+              <p className="text-gray-600">
+                Eindoplevering volgens afspraak en uitgebreide garantie. 
+                Nazorg en ondersteuning na oplevering.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bouwwerken Artikelen Section */}
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -448,66 +509,6 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Van Idee tot Realisatie
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Wij begeleiden u door het gehele bouwproces. Van eerste schets tot 
-              sleuteloverdracht, alles volgens planning en budget.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Ontwerp & Planning</h3>
-              <p className="text-gray-600">
-                Samen met u ontwikkelen wij het ontwerp en de planning. 
-                Vergunningaanvragen en technische uitwerking.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Offerte & Contract</h3>
-              <p className="text-gray-600">
-                Transparante offerte met alle details. Heldere afspraken 
-                vastgelegd in een duidelijk contract.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Bouw & Uitvoering</h3>
-              <p className="text-gray-600">
-                Professionele uitvoering door ons ervaren team. 
-                Regelmatige updates en open communicatie.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-tbgs-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">4</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Oplevering & Garantie</h3>
-              <p className="text-gray-600">
-                Eindoplevering volgens afspraak en uitgebreide garantie. 
-                Nazorg en ondersteuning na oplevering.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-orange text-white">
