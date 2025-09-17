@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import LocationCards from "@/components/LocationCards";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
@@ -453,6 +454,26 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Locaties Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Onze <span className="text-tbgs-green">Onderhoud Specialisten</span> in uw Regio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              TBGS onderhoudsspecialisten zijn actief in heel Nederland en België. Vind uw lokale onderhoudspartner voor snelle service en persoonlijk advies.
+            </p>
+          </div>
+          
+          <LocationCards 
+            specialist="onderhoud" 
+            onOpenContactModal={onOpenContactModal} 
+            showCTA={true}
+          />
         </div>
       </section>
 
