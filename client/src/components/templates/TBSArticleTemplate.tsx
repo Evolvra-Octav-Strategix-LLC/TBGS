@@ -1,7 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
-import LocationCards from "@/components/LocationCards";
+import LocationAreasOnly from "@/components/LocationAreasOnly";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 
 interface ArticleSection {
@@ -254,10 +254,8 @@ export default function TBSArticleTemplate({
                 </p>
               </div>
               
-              <LocationCards 
-                specialist="bouw" 
-                onOpenContactModal={onOpenContactModal} 
-                showCTA={true}
+              <LocationAreasOnly 
+                specialist="bouw"
               />
             </div>
 
