@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 // Rate limiting for contact form
 const contactFormLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs
+  max: 50, // Limit each IP to 50 requests per windowMs
   message: {
     success: false,
     message: 'Te veel aanvragen. Probeer het over 15 minuten opnieuw.'
