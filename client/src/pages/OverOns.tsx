@@ -76,8 +76,8 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                       <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1943 - 1970: De Basis</h3>
-                      <p className="text-sm sm:text-base text-slate-600">De eerste generatie legde de fundamenten. Traditioneel vakmanschap en kwaliteit als uitgangspunt.</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1943 - 1974: De Basis</h3>
+                      <p className="text-sm sm:text-base text-slate-600">De eerste generatie legde de fundamenten. Traditioneel vakmanschap en kwaliteit als uitgangspunt in platte en hellende daken.</p>
                     </div>
                   </div>
 
@@ -86,27 +86,27 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                       <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1970 - 1995: Uitbreiding</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1974 - 1998: Uitbreiding</h3>
                       <p className="text-sm sm:text-base text-slate-600">Uitbreiding naar schoorsteenservice en gespecialiseerde technieken. Groei door kwaliteit en betrouwbaarheid.</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tbgs-green rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
                       <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1995 - 2010: Preventie</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">1998 - 2012: Preventie</h3>
                       <p className="text-sm sm:text-base text-slate-600">Introductie van preventief onderhoud. "Voorkomen is beter dan genezen" werd ons kernprincipe.</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tbgs-orange rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-tbgs-green rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
                       <Award className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">2010 - Heden: Totaalspecialist</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">2012 - Heden: Totaalspecialist</h3>
                       <p className="text-sm sm:text-base text-slate-600">Transformatie tot complete bouwspecialist met vier gespecialiseerde teams onder één dak.</p>
                     </div>
                   </div>
