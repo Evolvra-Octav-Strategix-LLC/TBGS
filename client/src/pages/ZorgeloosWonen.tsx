@@ -2,6 +2,7 @@ import SEOHead from "@/lib/seo";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import Header from "@/components/Header";
+import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import { Clock, Euro, Shield, TrendingUp, Star, Check, Calendar, MessageCircle, Rocket, Cog, Phone } from "lucide-react";
 
 interface ZorgeloosWonenProps {
@@ -97,6 +98,7 @@ export default function ZorgeloosWonen({ onOpenContactModal }: ZorgeloosWonenPro
       />
 
       <Header specialist="TOS" onOpenContactModal={onOpenContactModal} />
+      <SpecialistNavigationBar />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-green-100 py-16 lg:py-24">
