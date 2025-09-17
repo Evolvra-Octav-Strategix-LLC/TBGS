@@ -167,6 +167,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Service request submission endpoint met file upload support
   app.post("/api/service-request", async (req, res) => {
     console.log('🔥 /api/service-request endpoint hit');
+    console.log('📋 Headers:', req.headers);
+    console.log('📋 Content-Type:', req.headers['content-type']);
+    
     try {
       let validatedData: any;
       let files: any[] = [];
@@ -175,18 +178,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const contentType = req.headers['content-type'] || '';
       
       if (contentType.includes('multipart/form-data')) {
+        console.log('🔍 Processing multipart form data...');
         // Handle multipart data (with files)
         const { fields, files: uploadedFiles } = await processMultipartRequest(req);
         
-        // Extract form data from multipart fields
+        console.log('📋 Raw multipart fields received:', JSON.stringify(fields, null, 2));
+        console.log('📋 Files received:', uploadedFiles.length);
+        
+        // Extract form data from multipart fields - FIX: Handle array values properly
         const formData: any = {};
-        for (const [key, values] of Object.entries(fields)) {
-          formData[key] = Array.isArray(values) ? values[0] : values;
+        for (const [key, values] of Object.entries(fields as Record<string, any>)) {
+          // multiparty always returns arrays, so get the first value
+          if (Array.isArray(values) && values.length > 0) {
+            formData[key] = values[0];
+          } else if (values) {
+            formData[key] = values;
+          }
         }
         
+        console.log('📋 Processed form data:', JSON.stringify(formData, null, 2));
+        
+        // Validate the processed form data
         validatedData = insertServiceRequestSchema.parse(formData);
         files = uploadedFiles;
       } else {
+        console.log('🔍 Processing JSON data...');
+        console.log('📋 Request body:', JSON.stringify(req.body, null, 2));
         // Handle JSON data (no files)
         validatedData = insertServiceRequestSchema.parse(req.body);
       }
@@ -427,13 +444,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let files = [];
       
       if (req.headers['content-type']?.includes('multipart/form-data')) {
+        console.log('🔍 Processing contact form multipart data...');
         const { fields, files: uploadedFiles } = await processMultipartRequest(req);
         
-        // Extract form data from multipart fields
+        console.log('📋 Contact form - Raw multipart fields:', JSON.stringify(fields, null, 2));
+        
+        // Extract form data from multipart fields - FIX: Handle array values properly
         const formData: any = {};
-        for (const [key, values] of Object.entries(fields)) {
-          formData[key] = Array.isArray(values) ? values[0] : values;
+        for (const [key, values] of Object.entries(fields as Record<string, any>)) {
+          // multiparty always returns arrays, so get the first value
+          if (Array.isArray(values) && values.length > 0) {
+            formData[key] = values[0];
+          } else if (values) {
+            formData[key] = values;
+          }
         }
+        
+        console.log('📋 Contact form - Processed form data:', JSON.stringify(formData, null, 2));
         
         validatedData = contactFormSchema.parse(formData);
         files = uploadedFiles;
@@ -536,13 +563,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let files = [];
       
       if (req.headers['content-type']?.includes('multipart/form-data')) {
+        console.log('🔍 Processing offerte form multipart data...');
         const { fields, files: uploadedFiles } = await processMultipartRequest(req);
         
-        // Extract form data from multipart fields
+        console.log('📋 Offerte form - Raw multipart fields:', JSON.stringify(fields, null, 2));
+        
+        // Extract form data from multipart fields - FIX: Handle array values properly
         const formData: any = {};
-        for (const [key, values] of Object.entries(fields)) {
-          formData[key] = Array.isArray(values) ? values[0] : values;
+        for (const [key, values] of Object.entries(fields as Record<string, any>)) {
+          // multiparty always returns arrays, so get the first value
+          if (Array.isArray(values) && values.length > 0) {
+            formData[key] = values[0];
+          } else if (values) {
+            formData[key] = values;
+          }
         }
+        
+        console.log('📋 Offerte form - Processed form data:', JSON.stringify(formData, null, 2));
         
         validatedData = offerteFormSchema.parse(formData);
         files = uploadedFiles;
@@ -664,13 +701,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let files = [];
       
       if (req.headers['content-type']?.includes('multipart/form-data')) {
+        console.log('🔍 Processing contact modal multipart data...');
         const { fields, files: uploadedFiles } = await processMultipartRequest(req);
         
-        // Extract form data from multipart fields
+        console.log('📋 Contact modal - Raw multipart fields:', JSON.stringify(fields, null, 2));
+        
+        // Extract form data from multipart fields - FIX: Handle array values properly
         const formData: any = {};
-        for (const [key, values] of Object.entries(fields)) {
-          formData[key] = Array.isArray(values) ? values[0] : values;
+        for (const [key, values] of Object.entries(fields as Record<string, any>)) {
+          // multiparty always returns arrays, so get the first value
+          if (Array.isArray(values) && values.length > 0) {
+            formData[key] = values[0];
+          } else if (values) {
+            formData[key] = values;
+          }
         }
+        
+        console.log('📋 Contact modal - Processed form data:', JSON.stringify(formData, null, 2));
         
         validatedData = contactModalSchema.parse(formData);
         files = uploadedFiles;
