@@ -11,7 +11,12 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs-extra');
 const path = require('path');
 const Joi = require('joi');
-require('dotenv').config();
+// Enhanced error handling for module loading and startup
+try {
+  require('dotenv').config();
+} catch (dotenvError) {
+  console.warn('⚠️  .env file not found, using environment variables only:', dotenvError.message);
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -945,14 +950,15 @@ app.post('/api/contact-legacy', contactFormLimiter, async (req, res) => {
   }
 });
 
-// Start server
+// Start server with comprehensive error handling
 const startServer = async () => {
   try {
     console.log('\n🚀 Starting TBGS Enhanced Email Service...');
     console.log('=' .repeat(60));
     
-    // Validate environment configuration
-    const envValidation = validateEnvironment();
+    // Validate environment configuration (reuse global envValidation)
+    // Re-validate environment at startup in case variables changed
+    Object.assign(envValidation, validateEnvironment());
     console.log('\n🔧 Environment Configuration:');
     console.log('=' .repeat(30));
     
@@ -1098,6 +1104,22 @@ process.on('SIGINT', async () => {
   process.exit(0);
 });
 
-startServer();
+// Initialize server with top-level error handling
+(async () => {
+  try {
+    console.log('🔄 Initializing TBGS Email Service...');
+    console.log(`📝 Node version: ${process.version}`);
+    console.log(`📁 Working directory: ${process.cwd()}`);
+    console.log(`📋 Environment: ${process.env.NODE_ENV || 'development'}`);
+    
+    await startServer();
+  } catch (initError) {
+    console.error('❌ FATAL: Failed to initialize service');
+    console.error('Error:', initError.message);
+    console.error('Stack:', initError.stack);
+    console.error('\n🔧 Please check your configuration and dependencies');
+    process.exit(1);
+  }
+})();
 
 module.exports = app;
