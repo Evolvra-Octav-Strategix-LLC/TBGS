@@ -307,6 +307,146 @@ const contactSchema = Joi.object({
   contactPreference: Joi.string().valid('Email', 'Phone', 'WhatsApp').default('Email')
 });
 
+// Index route - shows service is working in browser
+app.get('/', (req, res) => {
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>TBGS Email Service - Active</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+          background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+          color: white;
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .container {
+          text-align: center;
+          max-width: 600px;
+          padding: 40px 20px;
+          background: rgba(255,255,255,0.1);
+          border-radius: 20px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .logo {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+        .title {
+          font-size: 32px;
+          font-weight: 700;
+          margin-bottom: 10px;
+          color: #fff;
+        }
+        .subtitle {
+          font-size: 18px;
+          margin-bottom: 30px;
+          opacity: 0.9;
+        }
+        .status {
+          background: #27ae60;
+          color: white;
+          padding: 12px 24px;
+          border-radius: 25px;
+          font-weight: 600;
+          display: inline-block;
+          margin: 20px 0;
+          font-size: 16px;
+        }
+        .features {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+          margin-top: 30px;
+        }
+        .feature {
+          background: rgba(255,255,255,0.1);
+          padding: 15px;
+          border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+        .feature-icon {
+          font-size: 24px;
+          margin-bottom: 8px;
+        }
+        .endpoint {
+          background: rgba(52, 73, 94, 0.8);
+          padding: 15px;
+          border-radius: 10px;
+          margin-top: 30px;
+          font-family: 'Courier New', monospace;
+        }
+        .endpoint-title {
+          font-weight: 600;
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+        .endpoint-url {
+          color: #3498db;
+          font-size: 14px;
+          margin: 5px 0;
+        }
+        .timestamp {
+          font-size: 12px;
+          opacity: 0.7;
+          margin-top: 30px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="logo">🏗️</div>
+        <div class="title">TBGS Email Service</div>
+        <div class="subtitle">Enhanced Email Processing Service</div>
+        
+        <div class="status">✅ Service Active & Ready</div>
+        
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📧</div>
+            <div>Email Processing</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📁</div>
+            <div>File Upload Support</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🎬</div>
+            <div>FFmpeg Processing</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <div>Security Enhanced</div>
+          </div>
+        </div>
+        
+        <div class="endpoint">
+          <div class="endpoint-title">Available Endpoints:</div>
+          <div class="endpoint-url">GET /api/health - Health Check</div>
+          <div class="endpoint-url">POST /api/contact - Contact Form Processing</div>
+        </div>
+        
+        <div class="timestamp">
+          Service Version: 2.0.0 | ${new Date().toISOString()}
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+  
+  res.send(html);
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ 
