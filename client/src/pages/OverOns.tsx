@@ -252,7 +252,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                 <span className="text-sm sm:text-base lg:text-xl">Gratis inspectie aanvragen</span>
               </button>
               <a 
-                href="https://wa.me/31614595142" 
+                href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group bg-green-500 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl hover:bg-green-400 transition-all duration-300 shadow-2xl hover:shadow-green-500/25 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center w-full sm:w-auto"

@@ -103,7 +103,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       <i className="fas fa-calculator mr-2"></i>
                       Gratis offerte Aanvragen
                     </a>
-                    <a href="https://wa.me/31614595142" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
+                    <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
                       <i className="fab fa-whatsapp mr-2"></i>
                       WhatsApp Chat
                     </a>

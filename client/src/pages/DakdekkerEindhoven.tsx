@@ -207,7 +207,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
                 <Button 
                   size="lg" 
                   className="bg-green-600 hover:bg-green-500 text-white font-bold text-lg px-8 py-4"
-                  onClick={() => window.open('https://wa.me/31612345678?text=Hallo%2C%20ik%20heb%20daklekkage%20in%20Eindhoven%20en%20zou%20graag%20hulp%20willen.', '_blank')}
+                  onClick={() => window.open('https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C', '_blank')}
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   WhatsApp Direct
@@ -439,7 +439,7 @@ export default function DakdekkerEindhoven({ onOpenContactModal }: DakdekkerEind
               <Button 
                 size="lg" 
                 className="bg-green-600 hover:bg-green-500 text-white hover:text-white font-bold text-xl px-8 py-4 transition-colors"
-                onClick={() => window.open('https://wa.me/31612345678?text=Hallo%2C%20ik%20heb%20daklekkage%20in%20Eindhoven%20en%20heb%20hulp%20nodig.', '_blank')}
+                onClick={() => window.open('https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C', '_blank')}
               >
                 <MessageCircle className="mr-2 h-6 w-6" />
                 WhatsApp Nu

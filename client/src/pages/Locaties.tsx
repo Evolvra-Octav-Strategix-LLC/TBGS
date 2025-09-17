@@ -495,7 +495,7 @@ export default function Locaties() {
                       <Button 
                         size="sm"
                         className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold text-xs"
-                        onClick={() => window.open(`https://wa.me/${location.phone.replace(/\s+/g, '').replace('+', '')}?text=Hallo! Ik heb een vraag over jullie diensten in ${location.city}.`, '_blank')}
+                        onClick={() => window.open('https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C', '_blank')}
                       >
                         <MessageCircle className="w-3 h-3 mr-1" />
                         WhatsApp

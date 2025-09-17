@@ -141,7 +141,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
                     <p className="text-slate-700 mb-4">Snelle communicatie met foto's en berichten</p>
                     <a 
-                      href="https://wa.me/31402026744" 
+                      href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
