@@ -13,13 +13,12 @@ COPY . .
 
 # Build frontend and server with proper bundling
 RUN npx vite build && \
-    mkdir -p dist/server && \
     npx esbuild server/production.ts \
         --platform=node \
         --bundle \
         --format=esm \
         --packages=external \
-        --outfile=dist/server/index.js
+        --outfile=dist/index.js
 
 # Production stage
 FROM node:20-alpine AS production
@@ -44,12 +43,17 @@ RUN npm ci --only=production && \
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/shared ./shared
 COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
+COPY --from=builder /app/attached_assets ./attached_assets
 
 # Create uploads directory and set permissions
 RUN mkdir -p uploads && chown -R tbgs:tbgs /app
 
 # Switch to non-root user
 USER tbgs
+
+# Set production environment
+ENV NODE_ENV=production
+ENV PORT=3000
 
 # Expose port
 EXPOSE 3000
@@ -61,5 +65,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 # Use tini as entrypoint for proper signal handling
 ENTRYPOINT ["/sbin/tini", "--"]
 
-# Start the application
-CMD ["node", "dist/server/index.js"]
+# Start the application  
+CMD ["node", "dist/index.js"]
