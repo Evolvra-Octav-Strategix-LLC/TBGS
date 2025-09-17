@@ -17,7 +17,7 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
         {/* Nederland */}
         <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
           <div className="flex items-center mb-6">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mr-4 bg-[#d5ebff]">
+            <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
               <span className="text-2xl">🇳🇱</span>
             </div>
             <div>
