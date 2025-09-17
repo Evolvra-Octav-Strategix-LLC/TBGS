@@ -22,7 +22,7 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
       return 'from-tbgs-green to-green-600';
     }
     if (location === '/bouw' || location.startsWith('/bouw/')) {
-      return 'from-tbgs-orange to-orange-600';
+      return 'from-yellow-400 to-yellow-500';
     }
     return 'from-tbgs-navy to-blue-600';
   };
