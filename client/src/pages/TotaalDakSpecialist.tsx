@@ -95,10 +95,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-red rounded-full flex items-center justify-center">
-                    <img src={roofWarrantyIcon} alt="Levenslange garantie" className="w-10 h-10 object-contain brightness-0 invert" />
+                    <img src={roofWarrantyIcon} alt="tot 25 jaar garantie" className="w-10 h-10 object-contain brightness-0 invert" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900">Levenslange garantie</div>
+                    <div className="font-bold text-gray-900">tot 25 jaar garantie</div>
                     <div className="text-sm text-gray-600">Op al onze dakwerken</div>
                   </div>
                 </div>
