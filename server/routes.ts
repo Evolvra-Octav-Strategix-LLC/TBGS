@@ -53,6 +53,31 @@ const offerteFormSchema = z.object({
   nieuwsbrief: z.boolean().optional(),
 });
 
+// Contact modal form schema  
+const contactModalSchema = z.object({
+  serviceType: z.string().min(1, "Service type is verplicht"),
+  specialisme: z.string().min(1, "Specialist is verplicht"),
+  projectType: z.string().optional(),
+  firstName: z.string().min(1, "Voornaam is verplicht"),
+  lastName: z.string().min(1, "Achternaam is verplicht"),
+  email: z.string().email("Ongeldig e-mailadres"),
+  phone: z.string().min(1, "Telefoonnummer is verplicht"),
+  location: z.string().min(1, "Locatie is verplicht"),
+  description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
+  urgent: z.string().optional(),
+  privacy: z.string().optional(),
+  urgencyLevel: z.string().optional(),
+  timeOnPage: z.string().optional(),
+  interactionCount: z.string().optional(),
+  leadScore: z.string().optional(),
+  // Individual address components for better email subject formatting
+  street: z.string().optional(),
+  houseNumber: z.string().optional(),
+  city: z.string().optional(),
+  postcode: z.string().optional(),
+  country: z.string().optional()
+});
+
 // Admin authentication schemas
 const adminLoginSchema = z.object({
   email: z.string().email("Ongeldig e-mailadres"),
@@ -628,6 +653,112 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } finally {
       // tmp bestanden opruimen
       // Files are handled by processMultipartRequest and cleaned up there
+    }
+  });
+
+  // Contact modal form submission endpoint met file upload support
+  app.post("/api/contact-modal", async (req, res) => {
+    try {
+      // Process multipart data for forms with files
+      let validatedData;
+      let files = [];
+      
+      if (req.headers['content-type']?.includes('multipart/form-data')) {
+        const { fields, files: uploadedFiles } = await processMultipartRequest(req);
+        
+        // Extract form data from multipart fields
+        const formData: any = {};
+        for (const [key, values] of Object.entries(fields)) {
+          formData[key] = Array.isArray(values) ? values[0] : values;
+        }
+        
+        validatedData = contactModalSchema.parse(formData);
+        files = uploadedFiles;
+      } else {
+        // Handle regular JSON requests
+        validatedData = contactModalSchema.parse(req.body);
+      }
+      
+      // Transform contact modal data to email format (same as external function)
+      const emailData = {
+        firstName: validatedData.firstName,
+        lastName: validatedData.lastName,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        selectedService: `${validatedData.serviceType}${validatedData.projectType ? ` - ${validatedData.projectType}` : ''}`,
+        address: validatedData.location,
+        projectDescription: validatedData.description,
+        contactPreference: 'email',
+        photos: [] as string[],
+        submittedAt: new Date(),
+        formType: 'contact-modal' as const,
+        files: files
+      };
+
+      // Send notification email to admin
+      try {
+        await emailService.sendNotificationEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send contact modal notification email:', emailError);
+      }
+
+      // Send thank you email to client
+      try {
+        await emailService.sendThankYouEmail(emailData);
+      } catch (emailError) {
+        console.error('Failed to send contact modal thank you email:', emailError);
+      }
+
+      // Create customer in Gripp after successful email sending
+      try {
+        const grippData = {
+          requestDescription: `${validatedData.serviceType}${validatedData.projectType ? ` - ${validatedData.projectType}` : ''}: ${validatedData.description}`,
+          email: validatedData.email,
+          street: validatedData.street || '',
+          postalCode: validatedData.postcode || '',
+          houseNumber: validatedData.houseNumber || '',
+          city: validatedData.city || validatedData.location,
+          phoneNumber: validatedData.phone,
+          firstName: validatedData.firstName,
+          infix: '',
+          lastName: validatedData.lastName
+        };
+
+        const grippResult = await createGrippCompany(grippData);
+        if (grippResult.success) {
+          console.log('✅ Contact modal: Customer created in Gripp successfully');
+        } else {
+          console.error('❌ Contact modal: Failed to create customer in Gripp:', grippResult.error);
+        }
+      } catch (grippError) {
+        console.error('Contact modal: Gripp integration error:', grippError);
+        // Don't fail the request if Gripp fails
+      }
+
+      res.status(200).json({ 
+        success: true, 
+        message: "Uw aanvraag is succesvol verzonden. Wij nemen binnen 24 uur contact met u op." 
+      });
+
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Validation errors
+        res.status(400).json({
+          success: false,
+          message: "Controleer uw invoer en probeer opnieuw.",
+          errors: error.errors.map(err => ({
+            field: err.path.join('.'),
+            message: err.message
+          }))
+        });
+      } else {
+        // Other errors
+        console.error("Contact modal error:", error);
+        res.status(500).json({
+          success: false,
+          message: "Er is een fout opgetreden. Probeer het later opnieuw."
+        });
+      }
     }
   });
 

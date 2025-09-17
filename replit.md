@@ -62,6 +62,13 @@ TBS Expansion Completed: Full construction service expansion with 7 new TBS page
 - **Internal Linking**: Strategic system connecting knowledge base articles.
 - **NAP Consistency**: Consistent Name, Address, Phone blocks with Google Maps integration.
 
+### Email Integration
+- **Internal Email Service**: All email functionality consolidated into internal server using `server/emailService.ts`
+- **SMTP Integration**: Gmail SMTP with Nodemailer for reliable email delivery
+- **Contact Form Endpoints**: `/api/contact`, `/api/service-request`, `/api/offerte`, `/api/contact-modal` all handle email processing internally
+- **File Upload Support**: Multipart form data handling with secure file processing and email attachments
+- **No External Dependencies**: Removed all external API calls (previously `api.evolvra.ai`) for self-contained deployment
+
 ## External Dependencies
 
 ### Database and Backend Services
@@ -89,3 +96,24 @@ TBS Expansion Completed: Full construction service expansion with 7 new TBS page
 ### Replit-Specific Integrations
 - `@replit/vite-plugin-runtime-error-modal`
 - `@replit/vite-plugin-cartographer`
+
+## Environment Variables
+
+### Email Service Configuration
+- `GMAIL_USER`: Gmail email address for SMTP authentication (configured via SendGrid integration)
+- `GMAIL_APP_PASSWORD`: Gmail app-specific password for SMTP authentication (configured via SendGrid integration)
+
+### Database Configuration
+- `DATABASE_URL`: PostgreSQL connection string (automatically provided by Replit)
+
+### Security
+- `JWT_SECRET`: Secret key for admin authentication tokens (automatically generated)
+
+### Google Services
+- `GOOGLE_PLACES_API_KEY`: API key for Google Places integration (for address validation)
+
+### External Integrations
+- `GRIPP_API_URL`: Gripp CRM integration endpoint
+- `GRIPP_API_KEY`: API key for Gripp CRM integration
+
+**Note**: Email service uses SendGrid integration for secure SMTP configuration. No external webhook dependencies - all email processing handled internally by the Node.js server.
