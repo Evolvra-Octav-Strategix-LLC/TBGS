@@ -3,6 +3,26 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 
+// Helper function to extract city name from service area string and create URL
+function getCityUrl(cityText: string, country: 'nl' | 'be'): { cityName: string; url: string } {
+  // Extract city name (remove service descriptions like "schoorsteenveger", "schoorsteen", etc.)
+  const cityName = cityText
+    .replace(/\s+(schoorsteenveger|schoorsteen|vegen|reiniging|inspectie).*$/i, '')
+    .replace(/^\s*•\s*/, '') // Remove bullet point
+    .trim();
+  
+  // Convert to URL slug (lowercase, replace spaces with dashes)
+  const citySlug = cityName.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/'/g, '')
+    .replace(/\.+/g, '');
+  
+  return {
+    cityName,
+    url: `/${country}/${citySlug}`
+  };
+}
+
 interface ArticleSection {
   title: string;
   content: string;
@@ -259,9 +279,21 @@ export default function TSSArticleTemplate({
                       Nederland
                     </h3>
                     <div className="grid grid-cols-2 gap-2 text-gray-700">
-                      {serviceAreas.netherlands.map((city, index) => (
-                        <div key={index}>• {city}</div>
-                      ))}
+                      {serviceAreas.netherlands.map((city, index) => {
+                        const { cityName, url } = getCityUrl(city, 'nl');
+                        return (
+                          <div key={index} className="flex items-center">
+                            <span className="mr-2">•</span>
+                            <Link 
+                              href={url} 
+                              className="text-tbgs-blue hover:text-blue-700 font-medium transition-colors"
+                              data-testid={`link-service-nl-${cityName.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {cityName}
+                            </Link>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                   
@@ -271,9 +303,21 @@ export default function TSSArticleTemplate({
                       België
                     </h3>
                     <div className="grid grid-cols-2 gap-2 text-gray-700">
-                      {serviceAreas.belgium.map((city, index) => (
-                        <div key={index}>• {city}</div>
-                      ))}
+                      {serviceAreas.belgium.map((city, index) => {
+                        const { cityName, url } = getCityUrl(city, 'be');
+                        return (
+                          <div key={index} className="flex items-center">
+                            <span className="mr-2">•</span>
+                            <Link 
+                              href={url} 
+                              className="text-tbgs-blue hover:text-blue-700 font-medium transition-colors"
+                              data-testid={`link-service-be-${cityName.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {cityName}
+                            </Link>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
