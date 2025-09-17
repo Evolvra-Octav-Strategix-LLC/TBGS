@@ -19,7 +19,7 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
       return 'from-tbgs-blue to-blue-600';
     }
     if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
-      return 'from-green-500 to-green-600';
+      return 'from-tbgs-green to-green-600';
     }
     if (location === '/bouw' || location.startsWith('/bouw/')) {
       return 'from-yellow-400 to-yellow-500';
