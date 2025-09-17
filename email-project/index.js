@@ -72,9 +72,10 @@ const verifySmtpConnection = async () => {
   }
 };
 
-// Load email templates
+// Load email templates and vCard utility
 const adminEmailTemplate = require('./templates/admin-email');
 const clientEmailTemplate = require('./templates/client-email');
+const { createTBGSVCard } = require('./vcard');
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -159,14 +160,65 @@ app.post('/api/contact', contactFormLimiter, async (req, res) => {
         html: adminHtml
       };
 
-      // Add attachments if files are provided (from webhook)
+      // Prepare attachments array
+      mailOptions.attachments = [];
+
+      // Add file attachments if provided (from webhook)
       if (attachmentFiles && attachmentFiles.length > 0) {
-        mailOptions.attachments = attachmentFiles.map(file => ({
+        const fileAttachments = attachmentFiles.map(file => ({
           filename: file.originalname,
           content: Buffer.from(file.buffer, 'base64'),
           contentType: file.mimetype
         }));
-        console.log(`📎 Adding ${attachmentFiles.length} attachments to admin email`);
+        mailOptions.attachments.push(...fileAttachments);
+        console.log(`📎 Adding ${attachmentFiles.length} file attachments to admin email`);
+      }
+
+      // Create and add TBGS vCard attachment
+      try {
+        const vcardBuffer = createTBGSVCard(emailData);
+        
+        // Create comprehensive filename with name, address and postcode
+        let filenameParts = [];
+        
+        // Add name
+        if (firstName || lastName) {
+          filenameParts.push([firstName, lastName].filter(Boolean).join('_'));
+        }
+        
+        // Add address info for easy identification
+        if (emailData.street && emailData.houseNumber) {
+          filenameParts.push(`${emailData.street}_${emailData.houseNumber}`.replace(/[^a-zA-Z0-9_]/g, '_'));
+          if (emailData.postcode) {
+            filenameParts.push(emailData.postcode.replace(/\s/g, ''));
+          }
+        } else if (address) {
+          // Fallback: parse address string
+          const addressParts = address.split(',')[0].trim();
+          const cleanAddress = addressParts.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+          if (cleanAddress) {
+            filenameParts.push(cleanAddress);
+          }
+          
+          const postcodeMatch = address.match(/(\d{4}\s*[A-Za-z]{2})/);
+          if (postcodeMatch) {
+            filenameParts.push(postcodeMatch[1].replace(/\s/g, ''));
+          }
+        }
+        
+        const filename = filenameParts.length > 0 
+          ? `${filenameParts.join('_').toLowerCase().replace(/[^a-z0-9_]/g, '')}_tbgs.vcf`
+          : 'tbgs_contact.vcf';
+        
+        mailOptions.attachments.push({
+          filename,
+          contentType: 'text/vcard; charset=utf-8',
+          content: vcardBuffer
+        });
+        
+        console.log(`📇 TBGS vCard attachment created: ${filename}`);
+      } catch (vcardError) {
+        console.warn('vCard generation failed:', vcardError);
       }
 
       await transporter.sendMail(mailOptions);
