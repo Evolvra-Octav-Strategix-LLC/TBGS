@@ -55,6 +55,17 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
     }
   };
 
+  // Get specialist word to color
+  const getSpecialistWord = () => {
+    switch(specialist) {
+      case "TDS": return "Dak";
+      case "TSS": return "Schoorsteen";
+      case "TOS": return "Onderhoud";
+      case "TBS": return "Bouw";
+      default: return null;
+    }
+  };
+
   // Get specialist-specific colors
   const getSpecialistColors = () => {
     switch(specialist) {
@@ -113,7 +124,15 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className="text-xs sm:text-sm whitespace-nowrap font-medium text-gray-900">{getSpecialistTagline()}</p>
+                <p className="text-xs sm:text-sm whitespace-nowrap font-medium text-gray-900">
+                  {specialist ? (
+                    <>
+                      Totaal <span className={colors.primary}>{getSpecialistWord()}</span> Specialist
+                    </>
+                  ) : (
+                    getSpecialistTagline()
+                  )}
+                </p>
               </div>
             </div>
           </Link>
