@@ -39,29 +39,18 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
               Van <span className="text-tbgs-navy">Kleinzoon</span> tot <span className="text-tbgs-navy">Grootvader</span>
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-              <div className="group bg-gradient-to-br from-red-50 to-red-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-tbgs-red rounded-lg sm:rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">Dakspecialisten</h3>
-                <p className="text-sm sm:text-base text-slate-600">Platte en hellende daken met preventieve aanpak</p>
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-12">
+              <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-tbgs-red mb-1 sm:mb-2">TDS</div>
+                <div className="text-sm sm:text-base text-slate-600">Dakspecialisten</div>
               </div>
-              
-              <div className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-tbgs-blue rounded-lg sm:rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">Schoorsteenservice</h3>
-                <p className="text-sm sm:text-base text-slate-600">Inspectie, reiniging en volledige renovatie</p>
+              <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-tbgs-blue mb-1 sm:mb-2">TSS</div>
+                <div className="text-sm sm:text-base text-slate-600">Schoorsteenservice</div>
               </div>
-              
-              <div className="group bg-gradient-to-br from-green-50 to-green-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-tbgs-green rounded-lg sm:rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Award className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">Totaal Onderhoud</h3>
-                <p className="text-sm sm:text-base text-slate-600">Preventief onderhoud en complete ontzorging</p>
+              <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-tbgs-green mb-1 sm:mb-2">TOS</div>
+                <div className="text-sm sm:text-base text-slate-600">Totaal Onderhoud</div>
               </div>
             </div>
           </div>
