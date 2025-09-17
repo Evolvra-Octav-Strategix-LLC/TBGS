@@ -23,7 +23,7 @@ interface EmailData {
   phone: string;
   contactPreference: string;
   submittedAt: Date;
-  formType?: 'popup' | 'offerte';
+  formType?: 'popup' | 'offerte' | 'contact-modal';
   files?: any[]; // Keep for compatibility but ignore
   // Google Places API data (for vCard generation)
   street?: string;
