@@ -17,7 +17,7 @@ export default function LocationAreasOnly({ className = "", specialist }: Locati
         <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-200">
           <div className="flex items-center mb-6">
             <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mr-4">
-              <i className="fas fa-map-marker-alt text-2xl text-orange-600"></i>
+              <span className="text-2xl">🇳🇱</span>
             </div>
             <div>
               <h3 className="text-2xl font-bold text-slate-900">Nederland</h3>
