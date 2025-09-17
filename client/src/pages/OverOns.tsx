@@ -29,8 +29,10 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
               <span>4 Generaties Vakmanschap</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 mb-6 sm:mb-8 leading-tight">
-              <strong>Vakmanschap in de genen</strong> - sinds 1943 geven wij onze expertise door van generatie op generatie.
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 mb-6 sm:mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">Vakmanschap</span> in de genen
+              <br />
+              <span className="text-3xl sm:text-4xl lg:text-6xl">sinds 1943 geven wij onze expertise door van generatie op generatie</span>
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 font-light leading-relaxed mb-8 sm:mb-12 max-w-3xl mx-auto">
