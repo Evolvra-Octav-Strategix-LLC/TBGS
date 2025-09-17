@@ -25,15 +25,11 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
         description="🏠 Dakdekker specialist voor daklekkage, dakrenovatie, dakgoot reinigen & dak isolatie. ⚡ 24/7 spoedservice voor dakwerken in Nederland & België. ✅ Gecertificeerde dakspecialisten."
         url="https://tbgs.nl/totaal-dak-specialist"
       />
-
       <SpecialistNavigationBar />
-
       <Header 
         specialist="TDS"
         onOpenContactModal={onOpenContactModal}
       />
-
-
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-red-50 to-red-100 py-16 lg:py-24">
         <div className="container mx-auto px-4">
@@ -46,7 +42,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                     <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
                       Totaal Dak Specialist
                     </h1>
-                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-red font-semibold">TDS - Gecertificeerde dakdekkers voor alle dakwerken</p>
+                    <p className="text-xs sm:text-sm lg:text-lg text-tbgs-red font-semibold">TDS - Uw dak specialist</p>
                   </div>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
@@ -111,7 +107,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
-
       {/* Services Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -243,7 +238,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
-
       {/* Process Section */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -305,7 +299,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
-
       {/* Dakwerken Artikelen Section */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -444,7 +437,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-red text-white">
         <div className="container mx-auto px-4">
@@ -478,7 +470,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
-
       {/* Locaties Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -496,7 +487,6 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           />
         </div>
       </section>
-
       {/* Partner Slider */}
       <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
     </>
