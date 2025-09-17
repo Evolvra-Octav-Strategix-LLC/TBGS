@@ -62,8 +62,8 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
               Ons <span className="text-tbgs-navy">Verhaal</span>
             </h2>
-            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
-              Vier generaties later hebben wij duizenden kostbare herstelprojecten uitgevoerd die eigenlijk voorkomen hadden kunnen worden. <strong>Preventie is onze kracht.</strong>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              TBGS is een totaal ontzorgende organisatie die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. <strong>Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw dak, onderhoud of bouwproject.</strong>
             </p>
           </div>
 
