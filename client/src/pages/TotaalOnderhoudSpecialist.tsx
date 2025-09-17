@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
 
@@ -422,6 +423,9 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
           </div>
         </div>
       </section>
+
+      {/* Partner Slider */}
+      <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-green text-white">

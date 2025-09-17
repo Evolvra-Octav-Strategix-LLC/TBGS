@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import { 
@@ -377,6 +378,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
           </div>
         </div>
       </section>
+
+      {/* Partner Slider */}
+      <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-blue text-white">

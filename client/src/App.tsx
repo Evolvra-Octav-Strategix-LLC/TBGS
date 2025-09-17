@@ -218,6 +218,10 @@ function Router() {
     if (location === '/bouw' || location.startsWith('/bouw/')) {
       return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
     }
+    // Show partner slider only on home page
+    if (location === '/') {
+      return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy', showPartnerSlider: true };
+    }
     return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy' };
   };
 

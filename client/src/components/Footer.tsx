@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import PartnerSlider from "@/components/PartnerSlider";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
@@ -8,9 +9,10 @@ import tbgsLogo from "@assets/TBGS 545x642_1754935666047.png";
 interface FooterProps {
   backgroundColor?: string;
   accentColor?: string;
+  showPartnerSlider?: boolean;
 }
 
-export default function Footer({ backgroundColor = "bg-gray-900", accentColor = "text-tbgs-red" }: FooterProps) {
+export default function Footer({ backgroundColor = "bg-gray-900", accentColor = "text-tbgs-red", showPartnerSlider = false }: FooterProps) {
   return (
     <footer className={`${backgroundColor} text-white relative overflow-hidden`}>
       {/* Background Pattern */}
@@ -19,6 +21,13 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
       </div>
       
       <div className="relative">
+        {/* Partner Slider - Only on Home page */}
+        {showPartnerSlider && (
+          <div className="border-b border-white/10">
+            <PartnerSlider showTitle={false} showDescription={false} className="bg-transparent text-white" />
+          </div>
+        )}
+        
         {/* Main Footer Content */}
         <div className="py-16 lg:py-20">
           <div className="container mx-auto px-4">

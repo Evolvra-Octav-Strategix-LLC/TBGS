@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import { ShieldCheck } from "lucide-react";
@@ -6,72 +5,17 @@ import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
 import LocationCards from "@/components/LocationCards";
+import PartnerSlider from "@/components/PartnerSlider";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
 import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
-
-// Partner logos - using same pattern as other working logos
-import defrancqLogo from "@/assets/partners/defrancq.png";
-import unilinLogo from "@/assets/partners/unilin.png";
-import veluxLogo from "@/assets/partners/velux.png";
-import zinkUniqueLogo from "@/assets/partners/zinkunique.png";
-import monierLogo from "@/assets/partners/monier.png";
-import bmiLogo from "@/assets/partners/bmi.png";
-import recticelLogo from "@/assets/partners/recticel.jpg";
-import ubbinkLogo from "@/assets/partners/ubbink.png";
-import soudalLogo from "@/assets/partners/soudal.png";
 
 interface HomeProps {
   onOpenContactModal: () => void;
 }
 
 export default function Home({ onOpenContactModal }: HomeProps) {
-  const logosRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    // Setup infinite scroll - robust initialization
-    const initializeSlider = () => {
-      if (logosRef.current) {
-        const scroller = logosRef.current;
-        const scrollerInner = scroller.querySelector('.scroller__inner') as HTMLElement;
-        
-        if (scrollerInner && scrollerInner.children.length > 0) {
-          // Prevent double execution
-          if (scroller.hasAttribute('data-animated')) {
-            return;
-          }
-          
-          // First, prepare the element for animation
-          scrollerInner.style.opacity = '0';
-          
-          // Clone all images for infinite effect
-          const images = Array.from(scrollerInner.children);
-          images.forEach((img) => {
-            const clone = img.cloneNode(true) as HTMLElement;
-            clone.setAttribute('aria-hidden', 'true');
-            scrollerInner.appendChild(clone);
-          });
-          
-          // Enable animation smoothly
-          requestAnimationFrame(() => {
-            scroller.setAttribute('data-animated', 'true');
-            scrollerInner.style.opacity = '1';
-            // Force a repaint to ensure smooth start
-            scrollerInner.offsetHeight;
-          });
-        }
-      }
-    };
-
-    // Try immediate initialization
-    initializeSlider();
-    
-    // Backup with slight delay if DOM isn't ready
-    const timeoutId = setTimeout(initializeSlider, 50);
-    
-    return () => clearTimeout(timeoutId);
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -550,38 +494,6 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         </div>
       </section>
 
-      {/* Partners Section - Clean & Simple */}
-      <section className="py-8 lg:py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-6">
-              Onze partners
-            </h2>
-          </div>
-
-          {/* Kevin Powell's Horizontal Partners Scroller */}
-          <div className="scroller" data-speed="fast" ref={logosRef}>
-            <div className="scroller__inner">
-              <img src={defrancqLogo} alt="Defrancq" />
-              <img src={unilinLogo} alt="Unilin" />
-              <img src={veluxLogo} alt="Velux" />
-              <img src={zinkUniqueLogo} alt="Zinkunique" />
-              <img src={monierLogo} alt="Monier" />
-              <img src={bmiLogo} alt="BMI" />
-              <img src={recticelLogo} alt="Recticel" />
-              <img src={ubbinkLogo} alt="Ubbink" />
-              <img src={soudalLogo} alt="Soudal" />
-            </div>
-          </div>
-
-          {/* Simple Description */}
-          <div className="text-center mt-8 max-w-2xl mx-auto">
-            <p className="text-slate-600 text-base lg:text-lg leading-relaxed">
-              Wij werken uitsluitend met materialen van de hoogste kwaliteit, zodat we altijd duurzame en betrouwbare resultaten kunnen leveren voor uw dakrenovatie.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Customer Testimonials - Premium Design */}
       <section className="py-8 lg:py-24 bg-white relative overflow-hidden">

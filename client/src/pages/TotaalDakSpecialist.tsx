@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
 import roofRepairIcon from "@assets/image (20)_1755004272803.png";
@@ -440,6 +441,9 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
           </div>
         </div>
       </section>
+
+      {/* Partner Slider */}
+      <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-red text-white">
