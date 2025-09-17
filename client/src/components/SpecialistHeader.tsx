@@ -86,7 +86,15 @@ export default function SpecialistHeader({
               <img src={logo} alt={`${companyName} Logo`} className="w-12 h-12 object-contain" />
               <div>
                 <h1 className={`text-xs sm:text-sm md:text-base lg:text-lg font-bold ${primaryColor} whitespace-nowrap`}>{companyName}</h1>
-                <p className="text-xs text-gray-600">{tagline}</p>
+                {specialist === "TOS" ? (
+                  <p className="text-xs">
+                    <span className="text-gray-800">Totaal </span>
+                    <span className="text-tbgs-green font-medium">Onderhoud</span>
+                    <span className="text-gray-800"> Specialist</span>
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-600">{tagline}</p>
+                )}
               </div>
             </div>
           </Link>
