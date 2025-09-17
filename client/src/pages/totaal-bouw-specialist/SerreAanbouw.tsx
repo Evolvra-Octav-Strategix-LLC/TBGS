@@ -103,7 +103,7 @@ export default function SerreAanbouw({ onOpenContactModal }: SerreAanbouwProps) 
       ctaTitle="Klaar voor Uw Dromserre?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende serre offerte. Onze specialists adviseren u graag over de perfecte glazen uitbouw voor uw woning."
       primaryButtonText="Gratis Serre Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

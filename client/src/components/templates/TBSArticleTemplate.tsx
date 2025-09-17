@@ -142,10 +142,12 @@ export default function TBSArticleTemplate({
                   {primaryButtonText}
                 </button>
                 <a 
-                  href="tel:+31402026744"
+                  href="https://wa.me/31614595142"
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-phone mr-3"></i>
+                  <i className="fab fa-whatsapp mr-3"></i>
                   {secondaryButtonText}
                 </a>
               </div>
@@ -297,10 +299,12 @@ export default function TBSArticleTemplate({
                 {primaryButtonText}
               </button>
               <a 
-                href="tel:+31402026744"
+                href="https://wa.me/31614595142"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-orange transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-phone mr-3"></i>
+                <i className="fab fa-whatsapp mr-3"></i>
                 {secondaryButtonText}
               </a>
             </div>

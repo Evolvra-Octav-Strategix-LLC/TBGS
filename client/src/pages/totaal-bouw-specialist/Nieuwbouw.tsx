@@ -103,7 +103,7 @@ export default function Nieuwbouw({ onOpenContactModal }: NieuwbouwProps) {
       ctaTitle="Klaar voor Uw Droomhuis?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende nieuwbouw offerte. Onze specialists adviseren u graag over de mogelijkheden voor uw droomhuis."
       primaryButtonText="Gratis Nieuwbouw Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

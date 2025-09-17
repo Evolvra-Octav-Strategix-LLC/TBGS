@@ -103,7 +103,7 @@ export default function OpbouwHuis({ onOpenContactModal }: OpbouwHuisProps) {
       ctaTitle="Klaar voor Meer Woonruimte?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende opbouw offerte. Onze specialists adviseren u graag over de mogelijkheden voor uw woning."
       primaryButtonText="Gratis Opbouw Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

@@ -103,7 +103,7 @@ export default function Timmerwerken({ onOpenContactModal }: TimmerwerkProps) {
       ctaTitle="Klaar voor Vakkundig Timmerwerk?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende timmerwerk offerte. Onze specialists adviseren u graag over de beste oplossing voor uw project."
       primaryButtonText="Gratis Timmerwerk Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

@@ -103,7 +103,7 @@ export default function Metselwerk({ onOpenContactModal }: MetselwerkProps) {
       ctaTitle="Klaar voor Vakkundig Metselwerk?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende metselwerk offerte. Onze specialists adviseren u graag over de beste oplossing voor uw project."
       primaryButtonText="Gratis Metselwerk Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

@@ -64,11 +64,13 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   Dakwerk offerte
                 </button>
                 <a 
-                  href="tel:+31402026744"
+                  href="https://wa.me/31614595142"
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-phone mr-3"></i>
-                  Direct bellen
+                  <i className="fab fa-whatsapp mr-3"></i>
+                  Direct WhatsApp
                 </a>
               </div>
 
@@ -464,11 +466,13 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 Gratis Dakwerk offerte
               </button>
               <a 
-                href="tel:+31402026744"
+                href="https://wa.me/31614595142"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-red transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-phone mr-3"></i>
-                Direct bellen
+                <i className="fab fa-whatsapp mr-3"></i>
+                Direct WhatsApp
               </a>
             </div>
           </div>

@@ -103,7 +103,7 @@ export default function HuisVerbouwen({ onOpenContactModal }: HuisVerbouwenProps
       ctaTitle="Klaar voor Uw Droomhuis?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende verbouwing offerte. Onze specialists adviseren u graag over de mogelijkheden voor uw woning."
       primaryButtonText="Gratis Verbouwing Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );

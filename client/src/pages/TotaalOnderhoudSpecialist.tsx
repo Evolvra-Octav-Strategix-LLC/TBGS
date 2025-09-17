@@ -57,11 +57,13 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   Onderhoud offerte
                 </button>
                 <a 
-                  href="tel:+31402026744"
+                  href="https://wa.me/31614595142"
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-phone mr-3"></i>
-                  Direct bellen
+                  <i className="fab fa-whatsapp mr-3"></i>
+                  Direct WhatsApp
                 </a>
               </div>
 
@@ -446,11 +448,13 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 Gratis Onderhoud offerte
               </button>
               <a 
-                href="tel:+31402026744"
+                href="https://wa.me/31614595142"
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-green transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-phone mr-3"></i>
-                Direct bellen
+                <i className="fab fa-whatsapp mr-3"></i>
+                Direct WhatsApp
               </a>
             </div>
           </div>

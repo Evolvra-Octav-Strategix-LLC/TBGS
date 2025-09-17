@@ -103,7 +103,7 @@ export default function AanbouwHuis({ onOpenContactModal }: AanbouwHuisProps) {
       ctaTitle="Klaar voor Uw Droomaanbouw?"
       ctaDescription="Neem contact met ons op voor een vrijblijvende aanbouw offerte. Onze specialists adviseren u graag over de beste oplossing voor uw woning."
       primaryButtonText="Gratis Aanbouw Offerte"
-      secondaryButtonText="Direct bellen"
+      secondaryButtonText="Direct WhatsApp"
       onOpenContactModal={onOpenContactModal}
     />
   );
