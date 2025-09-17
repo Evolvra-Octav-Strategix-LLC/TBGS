@@ -110,27 +110,27 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/20">Onze specialiteiten</h4>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/totaal-dak-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/dak" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tdsLogo} alt="TDS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Totaal Dak Specialist</span>
+                      <span>Dak</span>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/totaal-schoorsteen-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/schoorsteen" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tssLogo} alt="TSS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Totaal Schoorsteen Specialist</span>
+                      <span>Schoorsteen</span>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/totaal-onderhoud-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/onderhoud" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tosLogo} alt="TOS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Totaal Onderhoud Specialist</span>
+                      <span>Onderhoud</span>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/totaal-bouw-specialist" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/bouw" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tbsLogo} alt="TBS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Totaal Bouw Specialist</span>
+                      <span>Bouw</span>
                     </Link>
                   </li>
                 </ul>

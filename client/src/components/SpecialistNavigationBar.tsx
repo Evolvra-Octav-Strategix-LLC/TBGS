@@ -22,7 +22,7 @@ export default function SpecialistNavigationBar() {
       <div className="w-full">
         <div className="grid grid-cols-4 gap-0">
           {/* TSS - Totaal Schoorsteen Specialist */}
-          <Link href="/totaal-schoorsteen-specialist" className="group block">
+          <Link href="/schoorsteen" className="group block">
             <div className={`tbgs-blue hover:bg-blue-700 transition-all duration-300 px-3 sm:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
@@ -40,7 +40,7 @@ export default function SpecialistNavigationBar() {
           </Link>
 
           {/* TDS - Totaal Dak Specialist */}
-          <Link href="/totaal-dak-specialist" className="group block">
+          <Link href="/dak" className="group block">
             <div className={`tbgs-red hover:bg-red-700 transition-all duration-300 px-3 sm:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
@@ -58,7 +58,7 @@ export default function SpecialistNavigationBar() {
           </Link>
 
           {/* TOS - Totaal Onderhoud Specialist */}
-          <Link href="/totaal-onderhoud-specialist" className="group block">
+          <Link href="/onderhoud" className="group block">
             <div className={`tbgs-green hover:bg-green-700 transition-all duration-300 px-3 sm:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
@@ -76,7 +76,7 @@ export default function SpecialistNavigationBar() {
           </Link>
 
           {/* TBS - Totaal Bouw Specialist */}
-          <Link href="/totaal-bouw-specialist" className="group block">
+          <Link href="/bouw" className="group block">
             <div className={`tbgs-orange hover:bg-yellow-600 transition-all duration-300 px-3 sm:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>

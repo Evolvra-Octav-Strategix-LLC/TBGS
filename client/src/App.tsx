@@ -48,7 +48,7 @@ import ContactModal from "@/components/ContactModal";
 import BackToTopButton from "@/components/BackToTopButton";
 import { FloatingServiceForm } from "@/components/FloatingServiceMenu";
 import { useState } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useRoute } from "wouter";
 
 // Main Locations Page
 import Locaties from "@/pages/Locaties";
@@ -174,24 +174,24 @@ function Router() {
 
   // Check if current page is a specialist page (which has its own header)
   const isSpecialistPage = [
-    '/totaal-dak-specialist',
-    '/totaal-schoorsteen-specialist', 
-    '/totaal-onderhoud-specialist',
-    '/totaal-bouw-specialist'
-  ].includes(location) || location.startsWith('/totaal-dak-specialist/') || location.startsWith('/totaal-schoorsteen-specialist/') || location.startsWith('/totaal-onderhoud-specialist/') || location.startsWith('/totaal-bouw-specialist/');
+    '/dak',
+    '/schoorsteen', 
+    '/onderhoud',
+    '/bouw'
+  ].includes(location) || location.startsWith('/dak/') || location.startsWith('/schoorsteen/') || location.startsWith('/onderhoud/') || location.startsWith('/bouw/');
 
   // Get specialist type based on current page
   const getCurrentSpecialist = (): "TDS" | "TSS" | "TOS" | "TBS" | undefined => {
-    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+    if (location === '/dak' || location.startsWith('/dak/')) {
       return 'TDS';
     }
-    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+    if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {
       return 'TSS';
     }
-    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+    if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
       return 'TOS';
     }
-    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+    if (location === '/bouw' || location.startsWith('/bouw/')) {
       return 'TBS';
     }
     return undefined;
@@ -199,16 +199,16 @@ function Router() {
 
   // Get footer colors based on current page
   const getFooterProps = () => {
-    if (location === '/totaal-dak-specialist' || location.startsWith('/totaal-dak-specialist/')) {
+    if (location === '/dak' || location.startsWith('/dak/')) {
       return { backgroundColor: 'bg-tbgs-red', accentColor: 'text-tbgs-red' };
     }
-    if (location === '/totaal-schoorsteen-specialist' || location.startsWith('/totaal-schoorsteen-specialist/')) {
+    if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {
       return { backgroundColor: 'bg-tbgs-blue', accentColor: 'text-tbgs-blue' };
     }
-    if (location === '/totaal-onderhoud-specialist' || location.startsWith('/totaal-onderhoud-specialist/')) {
+    if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
       return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
     }
-    if (location === '/totaal-bouw-specialist' || location.startsWith('/totaal-bouw-specialist/')) {
+    if (location === '/bouw' || location.startsWith('/bouw/')) {
       return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
     }
     return { backgroundColor: 'bg-gray-900', accentColor: 'text-tbgs-navy' };
@@ -227,35 +227,35 @@ function Router() {
       <main className="flex-1">
         <Switch>
           <Route path="/" component={() => <Home onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist" component={() => <TotaalDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist" component={() => <TotaalSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist" component={() => <TotaalOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-bouw-specialist" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak" component={() => <TotaalDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen" component={() => <TotaalSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud" component={() => <TotaalOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank" component={() => <Kennisbank onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/gratis-offerte" component={() => <GratisOfferte />} />
           <Route path="/offerte" component={() => <GratisOfferte />} />
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
 
-          <Route path="/totaal-dak-specialist/daklekkage" component={() => <Daklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/dakrenovatie" component={() => <Dakrenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/dakgoot-reinigen" component={() => <DakgootReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/dakisolatie" component={() => <Dakisolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/dakinspectie" component={() => <Dakinspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/dakbedekking" component={() => <Dakbedekking onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-dak-specialist/nokvorsten-repareren" component={() => <NokverstenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist/schoorsteen-vegen" component={() => <SchoorsteenVegen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist/schoorsteen-inspectie" component={() => <SchoorsteenInspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist/schoorsteen-renovatie" component={() => <SchoorsteenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist/schoorsteen-voegen-repareren" component={() => <SchoorsteenVoegenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-schoorsteen-specialist/schoorsteen-onderhoud" component={() => <SchoorsteenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/dakkapel-reinigen" component={() => <DakkapelReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/onderhoud-dakkapel" component={() => <OnderhoudDakkapel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/onderhoud-hout-dak" component={() => <OnderhoudHoutDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/schilder" component={() => <Schilder onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/onderhoud-garage" component={() => <OnderhoudGarage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/onderhoud-dakgoot" component={() => <OnderhoudDakgoot onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/totaal-onderhoud-specialist/preventief-onderhoud" component={() => <PreventiefOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/daklekkage" component={() => <Daklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/dakrenovatie" component={() => <Dakrenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/dakgoot-reinigen" component={() => <DakgootReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/dakisolatie" component={() => <Dakisolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/dakinspectie" component={() => <Dakinspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/dakbedekking" component={() => <Dakbedekking onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/dak/nokvorsten-repareren" component={() => <NokverstenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-vegen" component={() => <SchoorsteenVegen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-inspectie" component={() => <SchoorsteenInspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-renovatie" component={() => <SchoorsteenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-voegen-repareren" component={() => <SchoorsteenVoegenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-onderhoud" component={() => <SchoorsteenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/dakkapel-reinigen" component={() => <DakkapelReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/onderhoud-dakkapel" component={() => <OnderhoudDakkapel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/onderhoud-hout-dak" component={() => <OnderhoudHoutDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/schilder" component={() => <Schilder onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/onderhoud-garage" component={() => <OnderhoudGarage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/onderhoud-dakgoot" component={() => <OnderhoudDakgoot onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/onderhoud/preventief-onderhoud" component={() => <PreventiefOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -409,6 +409,16 @@ function Router() {
           <Route path="/veldhoven" component={() => <LocationVeldhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/best" component={() => <LocationBest onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          
+          {/* Redirect old specialist URLs to new clean URLs */}
+          <Route path="/totaal-dak-specialist" component={() => { window.location.replace('/dak'); return null; }} />
+          <Route path="/totaal-dak-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-dak-specialist', '/dak'); window.location.replace(newPath); return null; }} />
+          <Route path="/totaal-schoorsteen-specialist" component={() => { window.location.replace('/schoorsteen'); return null; }} />
+          <Route path="/totaal-schoorsteen-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-schoorsteen-specialist', '/schoorsteen'); window.location.replace(newPath); return null; }} />
+          <Route path="/totaal-onderhoud-specialist" component={() => { window.location.replace('/onderhoud'); return null; }} />
+          <Route path="/totaal-onderhoud-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-onderhoud-specialist', '/onderhoud'); window.location.replace(newPath); return null; }} />
+          <Route path="/totaal-bouw-specialist" component={() => { window.location.replace('/bouw'); return null; }} />
+          <Route path="/totaal-bouw-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-bouw-specialist', '/bouw'); window.location.replace(newPath); return null; }} />
           
           <Route component={NotFound} />
         </Switch>

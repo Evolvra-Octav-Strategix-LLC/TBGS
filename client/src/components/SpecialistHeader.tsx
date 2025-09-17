@@ -68,10 +68,10 @@ export default function SpecialistHeader({
 
   const getSpecialistPath = () => {
     switch(specialist) {
-      case "TDS": return "/totaal-dak-specialist";
-      case "TSS": return "/totaal-schoorsteen-specialist";
-      case "TOS": return "/totaal-onderhoud-specialist";
-      case "TBS": return "/totaal-bouw-specialist";
+      case "TDS": return "/dak";
+      case "TSS": return "/schoorsteen";
+      case "TOS": return "/onderhoud";
+      case "TBS": return "/bouw";
       default: return "/";
     }
   };

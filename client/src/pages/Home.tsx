@@ -231,7 +231,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-blue transition-colors leading-tight">
-                    <Link href="/totaal-schoorsteen-specialist" className="hover:underline block">
+                    <Link href="/schoorsteen" className="hover:underline block">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Schoorsteen</div>
                       <div>Specialist</div>
@@ -246,7 +246,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/totaal-schoorsteen-specialist" className="text-tbgs-blue font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
+                  <Link href="/schoorsteen" className="text-tbgs-blue font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>
@@ -266,7 +266,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors leading-tight">
-                    <Link href="/totaal-dak-specialist" className="hover:underline block">
+                    <Link href="/dak" className="hover:underline block">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Dak</div>
                       <div>Specialist</div>
@@ -281,7 +281,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/totaal-dak-specialist" className="text-tbgs-red font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
+                  <Link href="/dak" className="text-tbgs-red font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>
@@ -301,7 +301,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-green transition-colors leading-tight">
-                    <Link href="/totaal-onderhoud-specialist" className="hover:underline block">
+                    <Link href="/onderhoud" className="hover:underline block">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Onderhoud</div>
                       <div>Specialist</div>
@@ -316,7 +316,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/totaal-onderhoud-specialist" className="text-tbgs-green font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
+                  <Link href="/onderhoud" className="text-tbgs-green font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>
@@ -336,7 +336,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors leading-tight">
-                    <Link href="/totaal-bouw-specialist" className="hover:underline block">
+                    <Link href="/bouw" className="hover:underline block">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Bouw</div>
                       <div>Specialist</div>
@@ -351,7 +351,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/totaal-bouw-specialist" className="text-tbgs-orange font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
+                  <Link href="/bouw" className="text-tbgs-orange font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>

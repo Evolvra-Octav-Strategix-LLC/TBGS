@@ -215,32 +215,32 @@ const searchData: SearchResult[] = [
   // Service pages
   {
     id: 'svc-1',
-    title: 'Totaal Dak Specialist',
-    url: '/totaal-dak-specialist',
+    title: 'Dak',
+    url: '/dak',
     type: 'dienst',
     excerpt: 'Professionele dakwerkzaamheden door gecertificeerde specialisten',
     category: 'Dakwerken'
   },
   {
     id: 'svc-2',
-    title: 'Totaal Schoorsteen Specialist',
-    url: '/totaal-schoorsteen-specialist',
+    title: 'Schoorsteen',
+    url: '/schoorsteen',
     type: 'dienst',
     excerpt: 'Schoorsteenreiniging en onderhoud door ervaren vaklieden',
     category: 'Schoorsteenwerken'
   },
   {
     id: 'svc-3',
-    title: 'Totaal Onderhoud Specialist',
-    url: '/totaal-onderhoud-specialist',
+    title: 'Onderhoud',
+    url: '/onderhoud',
     type: 'dienst',
     excerpt: 'Preventief en curatief onderhoud voor uw woning of bedrijf',
     category: 'Onderhoud'
   },
   {
     id: 'svc-4',
-    title: 'Totaal Bouw Specialist',
-    url: '/totaal-bouw-specialist',
+    title: 'Bouw',
+    url: '/bouw',
     type: 'dienst',
     excerpt: 'Complete bouwdiensten van verbouwing tot nieuwbouw',
     category: 'Bouwwerken'
