@@ -21,7 +21,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
       />
       
       {/* Clean Hero Section */}
-      <section className="pt-20 pb-16 lg:pt-24 lg:pb-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section className="pt-12 pb-16 lg:pt-16 lg:pb-20 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-slate-600 mb-8">
