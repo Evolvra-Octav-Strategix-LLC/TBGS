@@ -270,15 +270,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             {/* Schoorsteen Vegen Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                <i className="fas fa-broom text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-broom text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Onderhoud</span>
-                  <span className="text-gray-500 text-sm">5 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vegen</h3>
                 <p className="text-gray-600 mb-4">
                   Professioneel <strong>schoorsteen vegen</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Jaarlijks onderhoud voor veilige rookafvoer en brandpreventie.
@@ -290,15 +286,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             {/* Schoorsteen Inspectie Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
-                <i className="fas fa-search text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-search text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">Inspectie</span>
-                  <span className="text-gray-500 text-sm">6 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Inspectie</h3>
                 <p className="text-gray-600 mb-4">
                   Grondige <strong>schoorsteen inspectie</strong> door ervaren <strong>schoorsteenvegers</strong>. Veiligheidscontrole en technische keuring van rookkanaal en constructie.
@@ -310,15 +302,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             {/* Schoorsteen Renovatie Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
-                <i className="fas fa-hammer text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-hammer text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">Renovatie</span>
-                  <span className="text-gray-500 text-sm">8 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
                 <p className="text-gray-600 mb-4">
                   Complete <strong>schoorsteen renovatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Modernisering van oude schoorstenen met duurzame materialen.
@@ -330,15 +318,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             {/* Schoorsteen Verwijderen Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                <i className="fas fa-trash text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-trash text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">Sloop</span>
-                  <span className="text-gray-500 text-sm">7 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
                 <p className="text-gray-600 mb-4">
                   Veilige <strong>schoorsteen verwijdering</strong> door ervaren <strong>schoorsteenvegers</strong>. Professionele sloop met dakwerk herstel en opruiming.
@@ -350,15 +334,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             {/* Schoorsteen Voegen/Repareren Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
-                <i className="fas fa-tools text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-tools text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">Reparatie</span>
-                  <span className="text-gray-500 text-sm">6 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Voegen/Repareren</h3>
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>schoorsteen reparatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Voegwerk, schoorsteenkap reparatie en noodservice.
@@ -370,15 +350,11 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             </div>
 
             {/* Schoorsteen Onderhoud Article */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-48 bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center">
-                <i className="fas fa-cog text-white text-6xl"></i>
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <i className="fas fa-cog text-tbgs-blue text-4xl"></i>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold">Service</span>
-                  <span className="text-gray-500 text-sm">5 min lezen</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Onderhoud</h3>
                 <p className="text-gray-600 mb-4">
                   Regelmatig <strong>schoorsteen onderhoud</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Preventief onderhoud voorkomt dure reparaties.
