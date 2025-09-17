@@ -60,7 +60,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   Dakwerk offerte
                 </button>
                 <a 
-                  href="https://wa.me/31614595142"
+                  href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
@@ -458,7 +458,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 Gratis Dakwerk offerte
               </button>
               <a 
-                href="https://wa.me/31614595142"
+                href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-red transition-colors flex items-center justify-center"
