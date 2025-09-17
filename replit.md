@@ -8,9 +8,10 @@ This project is a modern, SEO-optimized website for Totaal Bouw Groep Specialist
 
 Preferred communication style: Simple, everyday language.
 Domain Strategy: User wants separate domain names pointing to each specialist page for stronger SEO positioning.
-URL Standardization Requirement: All service URLs MUST use mandatory /nl/ and /be/ country prefixes (e.g., /nl/city/service).
+URL Strategy: Clean short URLs implemented (/dak, /schoorsteen, /onderhoud, /bouw) replacing long specialist names for better UX.
 SEO Focus: High-ranking priority for "daklekkage", "onderhoud" and other core services with conversion psychology.
 Implementation Style: Execute comprehensive SEO strategy with urgency messaging and cost-saving psychology.
+TBS Expansion Completed: Full construction service expansion with 7 new TBS pages and orange-themed templates.
 
 ## System Architecture
 
@@ -48,7 +49,10 @@ Implementation Style: Execute comprehensive SEO strategy with urgency messaging 
 - **Kennisbank Redesign**: Modernized with clean card design, "Meest Populair" section, colorful badges, and enhanced search functionality. New high-end SEO articles (groendaken, zonnepanelen) for improved GBP rankings.
 - **Pricing**: All pricing information is explicitly removed from the website.
 - **Terminology**: "Expert" is consistently changed to "specialist" throughout.
+- **Service Page Structure**: Main specialist pages now have both main service cards and loose articles sections (matching /dak page structure).
 - **Phase 2 Complete**: Full service-location matrix implemented with 80+ URL combinations across Netherlands and core Belgian market coverage.
+- **URL Restructuring Complete**: Migrated from `/totaal-[specialist]/` to clean short URLs (`/dak`, `/schoorsteen`, `/onderhoud`, `/bouw`).
+- **TBS Expansion Complete**: Added 7 construction service pages (Metselwerk, Timmerwerken, OpbouwHuis, AanbouwHuis, HuisVerbouwen, SerreAanbouw, Nieuwbouw) with TBSArticleTemplate and orange branding.
 
 ### System Design Choices
 - **SEO Optimization**: Dynamic SEO head component, Schema.org LocalBusiness markup, Google Business Profile integration, and comprehensive local SEO schema (geo-coordinates, opening hours, service catalog).
