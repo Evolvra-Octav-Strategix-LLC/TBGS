@@ -11,7 +11,7 @@ import { z } from 'zod';
 neonConfig.webSocketConstructor = ws;
 
 // Webhook URL for email service
-const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://c07fd8bb-fd42-499d-8f44-212b011ded97-00-3c70gedwkctgn.riker.replit.dev/api/email-webhook';
+const EMAIL_WEBHOOK_URL = process.env.EMAIL_WEBHOOK_URL || 'https://api.evolvra.ai/api/contact';
 
 // Contact modal validation schema
 const contactModalSchema = z.object({
