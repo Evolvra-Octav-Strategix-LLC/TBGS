@@ -89,6 +89,21 @@ app.get('/api/health', (req, res) => {
 app.post('/api/contact', contactFormLimiter, async (req, res) => {
   try {
     console.log('📧 Contact form submission received');
+    console.log('📋 Request body structure:', Object.keys(req.body));
+    
+    // Handle both direct form submission and webhook format from TBGS APIs
+    let formData, attachmentFiles = [];
+    
+    if (req.body.emailData) {
+      // Webhook format from TBGS APIs
+      formData = req.body.emailData;
+      attachmentFiles = req.body.files || [];
+      console.log('📧 Processing webhook format from TBGS API');
+    } else {
+      // Direct form submission format
+      formData = req.body;
+      console.log('📧 Processing direct form submission');
+    }
     
     const {
       firstName,
@@ -99,7 +114,7 @@ app.post('/api/contact', contactFormLimiter, async (req, res) => {
       address,
       projectDescription,
       contactPreference = 'Email'
-    } = req.body;
+    } = formData;
 
     // Validate required fields
     if (!firstName || !lastName || !email || !phone || !selectedService) {
@@ -126,18 +141,35 @@ app.post('/api/contact', contactFormLimiter, async (req, res) => {
       address: address || 'Niet opgegeven',
       projectDescription: projectDescription || 'Geen beschrijving opgegeven',
       contactPreference,
-      submittedAt: new Date()
+      submittedAt: formData.submittedAt || new Date(),
+      formType: formData.formType || 'contact',
+      // Include any additional fields from webhook
+      ...formData
     };
 
     // Send notification email to admin
     try {
       const adminHtml = adminEmailTemplate(emailData);
-      await transporter.sendMail({
+      
+      // Prepare email with attachments if files are present
+      const mailOptions = {
         from: process.env.SMTP_USER,
         to: process.env.CONTACT_RECEIVER || process.env.SMTP_USER,
         subject: `Nieuwe aanvraag: ${selectedService} - ${firstName} ${lastName}`,
         html: adminHtml
-      });
+      };
+
+      // Add attachments if files are provided (from webhook)
+      if (attachmentFiles && attachmentFiles.length > 0) {
+        mailOptions.attachments = attachmentFiles.map(file => ({
+          filename: file.originalname,
+          content: Buffer.from(file.buffer, 'base64'),
+          contentType: file.mimetype
+        }));
+        console.log(`📎 Adding ${attachmentFiles.length} attachments to admin email`);
+      }
+
+      await transporter.sendMail(mailOptions);
       console.log('✅ Admin notification email sent');
     } catch (adminEmailError) {
       console.error('❌ Failed to send admin email:', adminEmailError);
