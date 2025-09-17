@@ -16,6 +16,7 @@ import Kennisbank from "@/pages/Kennisbank";
 import GratisOfferte from "@/pages/GratisOfferte";
 import OverOns from "@/pages/OverOns";
 import Contact from "@/pages/Contact";
+import ZorgeloosWonen from "@/pages/ZorgeloosWonen";
 import AdminApp from "@/pages/admin/AdminApp";
 import AdminArticle from "@/pages/AdminArticle";
 
@@ -192,7 +193,8 @@ function Router() {
     '/dak',
     '/schoorsteen', 
     '/onderhoud',
-    '/bouw'
+    '/bouw',
+    '/zorgeloos-wonen'
   ].includes(location) || location.startsWith('/dak/') || location.startsWith('/schoorsteen/') || location.startsWith('/onderhoud/') || location.startsWith('/bouw/');
 
   // Get specialist type based on current page
@@ -203,7 +205,7 @@ function Router() {
     if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {
       return 'TSS';
     }
-    if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
+    if (location === '/onderhoud' || location.startsWith('/onderhoud/') || location === '/zorgeloos-wonen') {
       return 'TOS';
     }
     if (location === '/bouw' || location.startsWith('/bouw/')) {
@@ -220,7 +222,7 @@ function Router() {
     if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {
       return { backgroundColor: 'bg-tbgs-blue', accentColor: 'text-tbgs-blue' };
     }
-    if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
+    if (location === '/onderhoud' || location.startsWith('/onderhoud/') || location === '/zorgeloos-wonen') {
       return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
     }
     if (location === '/bouw' || location.startsWith('/bouw/')) {
@@ -255,6 +257,7 @@ function Router() {
           <Route path="/offerte" component={() => <GratisOfferte />} />
           <Route path="/over-ons" component={() => <OverOns onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/contact" component={() => <Contact onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/zorgeloos-wonen" component={() => <ZorgeloosWonen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
 
           <Route path="/dak/daklekkage" component={() => <Daklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/dak/dakrenovatie" component={() => <Dakrenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
