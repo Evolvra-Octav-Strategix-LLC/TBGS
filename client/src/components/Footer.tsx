@@ -112,19 +112,19 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <li>
                     <Link href="/dak" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tdsLogo} alt="TDS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Dak</span>
+                      <span>Totaal Dak Specialist</span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/schoorsteen" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tssLogo} alt="TSS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Schoorsteen</span>
+                      <span>Totaal Schoorsteen Specialist</span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/onderhoud" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tosLogo} alt="TOS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
-                      <span>Onderhoud</span>
+                      <span>Totaal Onderhoud Specialist</span>
                     </Link>
                   </li>
                   <li>
