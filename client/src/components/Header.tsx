@@ -131,7 +131,11 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
 
           {/* Desktop Search */}
           <div className="hidden xl:flex items-center relative flex-1 max-w-sm mx-6">
-            <div className="bg-white rounded-full shadow-md px-4 py-2 w-full border border-gray-100">
+            <div className={`bg-white rounded-full shadow-lg px-4 py-2 w-full border-2 transition-all duration-300 ${
+              isSearchFocused 
+                ? 'border-blue-400 shadow-blue-100 ring-4 ring-blue-50' 
+                : 'border-gray-200 hover:border-gray-300 hover:shadow-xl'
+            }`}>
               <div className="relative">
                 <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-colors ${
                   isSearchFocused ? 'text-gray-600' : 'text-gray-400'
