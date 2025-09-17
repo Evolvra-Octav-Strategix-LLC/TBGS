@@ -298,7 +298,7 @@ export default function TDSArticleTemplate({
             {/* Navigation back to TDS */}
             <div className="text-center mb-8">
               <Link 
-                href="/totaal-dak-specialist" 
+                href="/dak" 
                 className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>

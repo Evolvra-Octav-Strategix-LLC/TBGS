@@ -19,42 +19,42 @@ const serviceOptions: ServiceOption[] = [
     id: 'dakinspectie',
     title: 'Dakinspectie',
     icon: Home,
-    href: '/diensten/dakinspectie',
+    href: '/dak/dakinspectie',
     description: 'Professionele inspectie van uw dak'
   },
   {
     id: 'stormschade',
     title: 'Stormschade/lekkage',
     icon: AlertTriangle,
-    href: '/diensten/stormschade',
+    href: '/dak/daklekkage',
     description: 'Spoedige reparatie van storm- en waterschade'
   },
   {
     id: 'pannendak',
     title: 'Pannendak',
     icon: Wrench,
-    href: '/diensten/pannendak',
+    href: '/dak/dakbedekking',
     description: 'Leggen en repareren van pannendaken'
   },
   {
     id: 'plat-dak',
     title: 'Plat dak',
     icon: Building2,
-    href: '/diensten/plat-dak',
+    href: '/kennisbank/plat-dak',
     description: 'Specialist in platte daken'
   },
   {
     id: 'dakisolatie',
     title: 'Dakisolatie',
     icon: Shield,
-    href: '/diensten/dakisolatie',
+    href: '/dak/dakisolatie',
     description: 'Energiebesparende dakisolatie'
   },
   {
     id: 'dakkapel',
     title: 'Dakkapel',
     icon: Building2,
-    href: '/diensten/dakkapel',
+    href: '/onderhoud/onderhoud-dakkapel',
     description: 'Plaatsing van dakkapellen'
   },
 
@@ -62,14 +62,14 @@ const serviceOptions: ServiceOption[] = [
     id: 'dakgoten',
     title: 'Dakgoten en regenpijpen',
     icon: Droplets,
-    href: '/diensten/dakgoten',
+    href: '/dak/dakgoot-reinigen',
     description: 'Installatie en onderhoud'
   },
   {
     id: 'zonnepanelen',
     title: 'Zonnepanelen en meer',
     icon: Sun,
-    href: '/diensten/zonnepanelen',
+    href: '/kennisbank/zonnepanelen',
     description: 'Duurzame energie-oplossingen'
   }
 ];

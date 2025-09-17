@@ -298,7 +298,7 @@ export default function TOSArticleTemplate({
             {/* Navigation back to TOS */}
             <div className="text-center mb-8">
               <Link 
-                href="/totaal-onderhoud-specialist" 
+                href="/onderhoud" 
                 className="inline-flex items-center text-green-600 hover:text-green-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>

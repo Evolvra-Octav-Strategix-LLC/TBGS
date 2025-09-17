@@ -298,11 +298,11 @@ export default function TSSArticleTemplate({
             {/* Navigation back to TSS */}
             <div className="text-center mb-8">
               <Link 
-                href="/totaal-schoorsteen-specialist" 
+                href="/schoorsteen" 
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>
-                Terug naar Totaal Schoorsteen Specialist
+                Terug naar Schoorsteen
               </Link>
             </div>
 
