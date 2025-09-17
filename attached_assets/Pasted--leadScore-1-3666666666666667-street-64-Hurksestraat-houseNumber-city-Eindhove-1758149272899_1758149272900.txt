@@ -1,0 +1,99 @@
+"leadScore": "1.3666666666666667",
+"street": "64 Hurksestraat",
+"houseNumber": "",
+"city": "Eindhoven",
+"postcode": "5652 LD",
+"country": "Netherlands"
+}
+📁 Files received: 5
+⚡ Instant submission with 5 files...
+⚡ Using 5 pre-compressed files from client
+⚡ INSTANT submission complete for b4c381ce-20cc-493b-9dd4-59a25fbbc48e
+📧 Sending notification email to admin...
+📎 Adding 5 user uploaded files...
+✅ Added file: tbgs-7e4bac42-1002-4b03-b075-572b92e51a7f.jpeg
+✅ Added file: tbgs-11ffd93f-309e-4012-8d33-9568fee79497.jpeg
+✅ Added file: tbgs-14b39001-ab2d-4dcc-be9e-279395cf2fdc.jpeg
+✅ Added file: tbgs-38bedb0a-330b-4a99-891f-6dc61e39dc3b.jpeg
+✅ Added file: tbgs-43f5477c-1676-4aaa-afe9-9d8c5c2465dc.jpeg
+✓ TBGS logo loaded for vCard: TBGS 545x642_1754928031668.png
+✓ TBGS vCard attachment created: rick_vanhelmont_hurksestraat_64_5652ld_tbgs.vcf
+❌ Failed to send notification email: Error: Connection timeout
+at SMTPConnection._formatError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+at SMTPConnection._onError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:795:20)
+at Timeout.<anonymous> (/app/node_modules/nodemailer/lib/smtp-connection/index.js:237:22)
+at listOnTimeout (node:internal/timers:581:17)
+at process.processTimers (node:internal/timers:519:7) {
+code: 'ETIMEDOUT',
+command: 'CONN'
+}
+Failed to send notification email: Error: Connection timeout
+at SMTPConnection._formatError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+at SMTPConnection._onError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:795:20)
+at Timeout.<anonymous> (/app/node_modules/nodemailer/lib/smtp-connection/index.js:237:22)
+at listOnTimeout (node:internal/timers:581:17)
+at process.processTimers (node:internal/timers:519:7) {
+code: 'ETIMEDOUT',
+command: 'CONN'
+}
+📧 Sending thank you email to customer...
+❌ Failed to send thank you email: Error: Connection timeout
+at SMTPConnection._formatError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+at SMTPConnection._onError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:795:20)
+at Timeout.<anonymous> (/app/node_modules/nodemailer/lib/smtp-connection/index.js:237:22)
+at listOnTimeout (node:internal/timers:581:17)
+at process.processTimers (node:internal/timers:519:7) {
+code: 'ETIMEDOUT',
+command: 'CONN'
+}
+Failed to send thank you email: Error: Connection timeout
+at SMTPConnection._formatError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+at SMTPConnection._onError (/app/node_modules/nodemailer/lib/smtp-connection/index.js:795:20)
+at Timeout.<anonymous> (/app/node_modules/nodemailer/lib/smtp-connection/index.js:237:22)
+at listOnTimeout (node:internal/timers:581:17)
+at process.processTimers (node:internal/timers:519:7) {
+code: 'ETIMEDOUT',
+command: 'CONN'
+}
+🔍 Available tokens: [ 'API 1: WGfdU9N2...', 'API 2: 2KfdaAQ8...' ]
+🔄 Sending Gripp JSON-RPC request...
+📋 Company fields: {
+notes: 'hh\r\n',
+active: true,
+foundationdate: '2017-09-28',
+invoicesendby: 'EMAIL',
+invoiceemail: 'rickvanhelmont@gmail.com',
+visitingaddress_street: 'Hurksestraat',
+visitingaddress_zipcode: '5652 LD',
+visitingaddress_streetnumber: '64',
+visitingaddress_city: 'Eindhoven',
+email: 'rickvanhelmont@gmail.com',
+phone: '+31634040165',
+relationtype: 'PRIVATEPERSON',
+firstname: 'Rick',
+infix: '',
+companyroles: [ 1 ],
+lastname: 'Van helmont'
+}
+🔑 Sending to Gripp API 1/2...
+✅ Gripp API 1 batch response: [
+{
+id: 1,
+thread: 'wtBCLx4zYjAYKA==',
+result: { success: true, recordid: 101132 },
+error: null
+}
+]
+✅ Gripp company created successfully in API 1: { success: true, recordid: 101132 }
+🔑 Sending to Gripp API 2/2...
+✅ Gripp API 2 batch response: [
+{
+id: 1,
+thread: 'Sk9r3UNGJB3H9Q==',
+result: { success: true, recordid: 102217 },
+error: null
+}
+]
+✅ Gripp company created successfully in API 2: { success: true, recordid: 102217 }
+✅ Customer created in 2/2 Gripp systems
+✅ Service request: Customer created in Gripp successfully for b4c381ce-20cc-493b-9dd4-59a25fbbc48e

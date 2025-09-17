@@ -48,21 +48,113 @@ class EmailService {
       console.log('📧 GMAIL_USER:', process.env.GMAIL_USER);
     }
 
+    // Try multiple SMTP configurations for different hosting environments
+    const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587;
+    const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+    
     this.transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
+      port: smtpPort,
+      secure: smtpSecure,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD
-      }
+      },
+      // Add timeouts and retry for network issues
+      connectionTimeout: 60000,  // 60 seconds
+      greetingTimeout: 30000,    // 30 seconds  
+      socketTimeout: 60000,      // 60 seconds
+      // Alternative ports if 587 is blocked
+      pool: true,
+      maxConnections: 5,
+      maxMessages: 100
     });
+    
+    console.log(`📧 SMTP configured: smtp.gmail.com:${smtpPort} (secure: ${smtpSecure})`);
+    
+    // Test SMTP connectivity on startup (async, don't block startup)
+    this.testConnectivity();
+  }
+
+  private async testConnectivity() {
+    try {
+      console.log('🔍 Testing SMTP connectivity...');
+      await this.transporter.verify();
+      console.log('✅ SMTP connection verified successfully');
+    } catch (error: any) {
+      console.warn('⚠️ SMTP connectivity test failed:', error.message);
+      if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
+        console.warn('💡 This may indicate firewall restrictions. Email sending will attempt automatic fallback to port 465.');
+      }
+    }
+  }
+
+  private async sendWithRetry(mailOptions: any, maxRetries = 3): Promise<any> {
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const currentPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) || 587 : 587;
+        const currentSecure = process.env.SMTP_SECURE === 'true' || currentPort === 465;
+        console.log(`📧 Email attempt ${attempt}/${maxRetries} via port ${currentPort} (secure: ${currentSecure})...`);
+        
+        const result = await this.transporter.sendMail(mailOptions);
+        return result;
+      } catch (error: any) {
+        console.error(`❌ Email attempt ${attempt} failed:`, error.message);
+        
+        // If connection timeout/refused and we haven't tried port 465 yet, try automatic fallback
+        if ((error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') && 
+            attempt === 1 && 
+            !process.env.SMTP_PORT) { // Only auto-fallback if user hasn't manually set port
+          
+          console.log('🔄 Connection failed on port 587, trying fallback to port 465 with SSL...');
+          
+          // Create fallback transporter with port 465 + SSL
+          const fallbackTransporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+              user: process.env.GMAIL_USER,
+              pass: process.env.GMAIL_APP_PASSWORD
+            },
+            connectionTimeout: 60000,
+            greetingTimeout: 30000,
+            socketTimeout: 60000
+          });
+          
+          try {
+            console.log('📧 Attempting send via port 465 with SSL...');
+            const result = await fallbackTransporter.sendMail(mailOptions);
+            console.log('✅ Email sent successfully via port 465 fallback!');
+            return result;
+          } catch (fallbackError: any) {
+            console.error('❌ Port 465 fallback also failed:', fallbackError.message);
+            // Continue with normal retry logic
+          }
+        }
+        
+        if (attempt === maxRetries) {
+          // Final attempt failed
+          if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
+            throw new Error(`SMTP connection failed after ${maxRetries} attempts and automatic fallback. This may be due to firewall restrictions blocking SMTP ports. Contact your hosting provider about SMTP egress restrictions.`);
+          }
+          throw error;
+        }
+        
+        // Wait before retry (exponential backoff)
+        const delay = Math.pow(2, attempt - 1) * 1000; // 1s, 2s, 4s
+        console.log(`⏳ Retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+    }
   }
 
   async sendNotificationEmail(data: EmailData) {
     try {
       console.log('📧 Starting email send process...');
-      console.log('📧 SMTP Config: gmail.com:587');
+      const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587;
+      const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+      console.log(`📧 SMTP Config: smtp.gmail.com:${smtpPort} (secure: ${smtpSecure})`);
       console.log('📧 From user:', process.env.GMAIL_USER || 'NOT SET');
       
       if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
@@ -208,7 +300,8 @@ class EmailService {
         console.warn('vCard generation failed:', vcardError);
       }
 
-      await this.transporter.sendMail({
+      // Retry email sending with exponential backoff
+      await this.sendWithRetry({
         from: process.env.GMAIL_USER,
         to: process.env.GMAIL_USER, // Send to yourself (admin)
         subject,
@@ -273,7 +366,7 @@ class EmailService {
         </html>
       `;
 
-      await this.transporter.sendMail({
+      await this.sendWithRetry({
         from: process.env.GMAIL_USER,
         to: data.email,
         subject,
