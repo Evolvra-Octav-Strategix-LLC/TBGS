@@ -113,7 +113,7 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
-                <p className={`text-xs sm:text-sm whitespace-nowrap font-medium ${specialist ? colors.primary : 'text-gray-600'}`}>{getSpecialistTagline()}</p>
+                <p className="text-xs sm:text-sm whitespace-nowrap font-medium text-gray-900">{getSpecialistTagline()}</p>
               </div>
             </div>
           </Link>
