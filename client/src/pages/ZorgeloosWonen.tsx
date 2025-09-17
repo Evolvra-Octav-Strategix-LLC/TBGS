@@ -97,8 +97,8 @@ export default function ZorgeloosWonen({ onOpenContactModal }: ZorgeloosWonenPro
         url="https://tbgs.nl/zorgeloos-wonen"
       />
 
-      <Header specialist="TOS" onOpenContactModal={onOpenContactModal} />
       <SpecialistNavigationBar />
+      <Header specialist="TOS" onOpenContactModal={onOpenContactModal} />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-green-100 py-16 lg:py-24">
