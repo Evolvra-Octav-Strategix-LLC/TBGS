@@ -21,7 +21,7 @@ export default function LocationAreasOnly({ className = "", specialist }: Locati
             </div>
             <div>
               <h3 className="text-2xl font-bold text-slate-900">Nederland</h3>
-              <p className="text-slate-600">Brabant & omstreken</p>
+              <p className="text-slate-600">Eindhoven & omstreken</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
