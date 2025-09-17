@@ -134,28 +134,102 @@ const escapeHtml = (text) => {
   return text.replace(/[&<>"']/g, (m) => map[m]);
 };
 
+// Environment variable validation
+const validateEnvironment = () => {
+  const requiredEnvVars = {
+    'SMTP_USER': process.env.SMTP_USER,
+    'SMTP_PASS': process.env.SMTP_PASS
+  };
+  
+  const optionalEnvVars = {
+    'SMTP_HOST': process.env.SMTP_HOST || 'smtp.gmail.com',
+    'SMTP_PORT': process.env.SMTP_PORT || '587',
+    'CONTACT_RECEIVER': process.env.CONTACT_RECEIVER,
+    'CORS_ORIGINS': process.env.CORS_ORIGINS
+  };
+  
+  const missing = Object.entries(requiredEnvVars)
+    .filter(([key, value]) => !value)
+    .map(([key]) => key);
+    
+  return {
+    valid: missing.length === 0,
+    missing,
+    required: requiredEnvVars,
+    optional: optionalEnvVars,
+    hasSmtpCredentials: !!(process.env.SMTP_USER && process.env.SMTP_PASS)
+  };
+};
+
+// SMTP connection status tracking
+let smtpConnectionStatus = {
+  connected: false,
+  error: null,
+  lastChecked: null,
+  configured: false
+};
+
 // Email transporter configuration with proper security
 const smtpPort = Number(process.env.SMTP_PORT) || 587;
-const transporter = nodemailer.createTransporter({
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: smtpPort,
-  secure: smtpPort === 465, // true for 465 (SMTPS), false for 587 (STARTTLS)
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
-});
+const envValidation = validateEnvironment();
 
-// Verify SMTP configuration at startup
+let transporter = null;
+
+if (envValidation.hasSmtpCredentials) {
+  transporter = nodemailer.createTransporter({
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: smtpPort,
+    secure: smtpPort === 465, // true for 465 (SMTPS), false for 587 (STARTTLS)
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
+  smtpConnectionStatus.configured = true;
+} else {
+  console.log('⚠️  SMTP credentials not configured - email functionality will be disabled');
+  smtpConnectionStatus.configured = false;
+}
+
+// Verify SMTP configuration at startup (non-fatal)
 const verifySmtpConnection = async () => {
+  if (!transporter) {
+    smtpConnectionStatus = {
+      connected: false,
+      error: 'SMTP not configured - missing SMTP_USER or SMTP_PASS environment variables',
+      lastChecked: new Date(),
+      configured: false
+    };
+    console.log('⚠️  SMTP verification skipped - no credentials configured');
+    return false;
+  }
+  
   try {
     await transporter.verify();
+    smtpConnectionStatus = {
+      connected: true,
+      error: null,
+      lastChecked: new Date(),
+      configured: true
+    };
     console.log('✅ SMTP connection verified successfully');
     console.log(`📧 Using ${process.env.SMTP_HOST || 'smtp.gmail.com'}:${smtpPort} (secure: ${smtpPort === 465})`);
+    return true;
   } catch (error) {
-    console.error('❌ SMTP verification failed:', error.message);
-    console.error('🔧 Check your SMTP environment variables');
-    process.exit(1);
+    smtpConnectionStatus = {
+      connected: false,
+      error: error.message,
+      lastChecked: new Date(),
+      configured: true
+    };
+    console.warn('⚠️  SMTP verification failed:', error.message);
+    console.warn('📧 Email functionality will be limited');
+    console.warn('🔧 Check your SMTP environment variables:');
+    console.warn('   - SMTP_USER:', process.env.SMTP_USER ? '✓ Set' : '✗ Missing');
+    console.warn('   - SMTP_PASS:', process.env.SMTP_PASS ? '✓ Set' : '✗ Missing');
+    console.warn('   - SMTP_HOST:', process.env.SMTP_HOST || 'smtp.gmail.com (default)');
+    console.warn('   - SMTP_PORT:', process.env.SMTP_PORT || '587 (default)');
+    return false;
   }
 };
 
@@ -409,7 +483,9 @@ app.get('/', (req, res) => {
         <div class="title">TBGS Email Service</div>
         <div class="subtitle">Enhanced Email Processing Service</div>
         
-        <div class="status">✅ Service Active & Ready</div>
+        <div class="status" id="service-status">
+          ${envValidation.hasSmtpCredentials && smtpConnectionStatus.connected ? '✅ Service Active & Ready' : '⚠️ Service Active (Limited Functionality)'}
+        </div>
         
         <div class="features">
           <div class="feature">
@@ -436,6 +512,25 @@ app.get('/', (req, res) => {
           <div class="endpoint-url">POST /api/contact - Contact Form Processing</div>
         </div>
         
+        ${envValidation.valid ? '' : `
+        <div style="background: rgba(231, 76, 60, 0.2); border: 1px solid rgba(231, 76, 60, 0.5); padding: 15px; border-radius: 10px; margin: 20px 0;">
+          <div style="font-weight: 600; margin-bottom: 10px; color: #e74c3c;">⚠️ Configuration Issues</div>
+          <div style="font-size: 14px; line-height: 1.5;">
+            ${envValidation.missing.length > 0 ? `Missing required environment variables:<br>• ${envValidation.missing.join('<br>• ')}` : ''}
+            ${!envValidation.hasSmtpCredentials ? '<br>• Email functionality is disabled' : ''}
+          </div>
+        </div>`}
+        
+        ${!smtpConnectionStatus.configured ? `
+        <div style="background: rgba(243, 156, 18, 0.2); border: 1px solid rgba(243, 156, 18, 0.5); padding: 15px; border-radius: 10px; margin: 20px 0;">
+          <div style="font-weight: 600; margin-bottom: 10px; color: #f39c12;">📧 Email Status</div>
+          <div style="font-size: 14px;">SMTP not configured - contact forms will be received but emails won't be sent</div>
+        </div>` : smtpConnectionStatus.connected ? '' : `
+        <div style="background: rgba(231, 76, 60, 0.2); border: 1px solid rgba(231, 76, 60, 0.5); padding: 15px; border-radius: 10px; margin: 20px 0;">
+          <div style="font-weight: 600; margin-bottom: 10px; color: #e74c3c;">📧 SMTP Error</div>
+          <div style="font-size: 14px;">${smtpConnectionStatus.error || 'SMTP connection failed'}</div>
+        </div>`}
+        
         <div class="timestamp">
           Service Version: 2.0.0 | ${new Date().toISOString()}
         </div>
@@ -447,15 +542,52 @@ app.get('/', (req, res) => {
   res.send(html);
 });
 
-// Health check endpoint
+// Health check endpoint with environment and SMTP status
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'healthy', 
+  const envValidation = validateEnvironment();
+  const healthStatus = {
+    status: 'healthy',
     service: 'TBGS Email Service Enhanced',
     version: '2.0.0',
     timestamp: new Date().toISOString(),
-    features: ['multipart-upload', 'ffmpeg-processing', 'image-optimization', 'security-enhanced']
-  });
+    features: ['multipart-upload', 'ffmpeg-processing', 'image-optimization', 'security-enhanced'],
+    configuration: {
+      environment: {
+        valid: envValidation.valid,
+        missingRequired: envValidation.missing,
+        smtpConfigured: envValidation.hasSmtpCredentials
+      },
+      smtp: {
+        configured: smtpConnectionStatus.configured,
+        connected: smtpConnectionStatus.connected,
+        lastChecked: smtpConnectionStatus.lastChecked,
+        error: smtpConnectionStatus.error
+      },
+      directories: {
+        uploads: fs.existsSync(uploadsDir),
+        processed: fs.existsSync(processedDir)
+      }
+    },
+    warnings: []
+  };
+  
+  // Add warnings for missing configuration
+  if (!envValidation.valid) {
+    healthStatus.warnings.push(`Missing required environment variables: ${envValidation.missing.join(', ')}`);
+  }
+  
+  if (!smtpConnectionStatus.configured) {
+    healthStatus.warnings.push('SMTP not configured - email functionality disabled');
+  } else if (!smtpConnectionStatus.connected) {
+    healthStatus.warnings.push('SMTP configured but connection failed - check credentials');
+  }
+  
+  // Set overall status based on critical issues
+  if (!envValidation.hasSmtpCredentials) {
+    healthStatus.status = 'degraded';
+  }
+  
+  res.json(healthStatus);
 });
 
 // Enhanced contact form endpoint with multipart support
@@ -530,6 +662,26 @@ app.post('/api/contact', fileUploadLimiter, upload.array('files', 10), async (re
       filesProcessed: processedFiles.length,
       totalFileSize: processedFiles.reduce((sum, file) => sum + file.size, 0)
     };
+
+    // Check if SMTP is configured before attempting to send emails
+    if (!transporter || !smtpConnectionStatus.configured) {
+      console.warn('⚠️  SMTP not configured - emails will not be sent');
+      console.warn('📧 Contact form data received but not emailed:');
+      console.warn(`   Name: ${validatedData.firstName} ${validatedData.lastName}`);
+      console.warn(`   Email: ${validatedData.email}`);
+      console.warn(`   Service: ${validatedData.selectedService}`);
+      console.warn('🔧 Configure SMTP_USER and SMTP_PASS environment variables to enable email functionality');
+      
+      // Still return success to user but note emails weren't sent
+      res.status(200).json({
+        success: true,
+        message: 'Uw aanvraag is ontvangen! Let op: email functionaliteit is momenteel niet beschikbaar.',
+        filesProcessed: processedFiles.length,
+        totalSize: emailData.totalFileSize,
+        warning: 'Email not sent - SMTP not configured'
+      });
+      return;
+    }
 
     // Send notification email to admin
     try {
@@ -705,6 +857,23 @@ app.post('/api/contact-legacy', contactFormLimiter, async (req, res) => {
       ...formData
     };
 
+    // Check if SMTP is configured before attempting to send emails  
+    if (!transporter || !smtpConnectionStatus.configured) {
+      console.warn('⚠️  SMTP not configured - legacy contact form emails will not be sent');
+      console.warn('📧 Legacy contact form data received but not emailed:');
+      console.warn(`   Name: ${firstName} ${lastName}`);
+      console.warn(`   Email: ${email}`);
+      console.warn(`   Service: ${selectedService}`);
+      console.warn('🔧 Configure SMTP_USER and SMTP_PASS environment variables to enable email functionality');
+      
+      res.status(200).json({
+        success: true,
+        message: 'Uw aanvraag is ontvangen! Let op: email functionaliteit is momenteel niet beschikbaar.',
+        warning: 'Email not sent - SMTP not configured'
+      });
+      return;
+    }
+
     // Send admin email
     try {
       const adminHtml = adminEmailTemplate(emailData);
@@ -779,27 +948,121 @@ app.post('/api/contact-legacy', contactFormLimiter, async (req, res) => {
 // Start server
 const startServer = async () => {
   try {
-    // Verify SMTP connection before starting the server
+    console.log('\n🚀 Starting TBGS Enhanced Email Service...');
+    console.log('=' .repeat(60));
+    
+    // Validate environment configuration
+    const envValidation = validateEnvironment();
+    console.log('\n🔧 Environment Configuration:');
+    console.log('=' .repeat(30));
+    
+    // Show required environment variables status
+    console.log('🔑 Required Variables:');
+    Object.entries(envValidation.required).forEach(([key, value]) => {
+      const status = value ? '✅' : '❌';
+      const display = value ? (key.includes('PASS') ? '✓ Set (hidden)' : `✓ ${value}`) : '✗ Not set';
+      console.log(`   ${status} ${key}: ${display}`);
+    });
+    
+    // Show optional environment variables status
+    console.log('\n🔍 Optional Variables:');
+    Object.entries(envValidation.optional).forEach(([key, value]) => {
+      const status = value ? '✅' : '⚠️ ';
+      const display = value || 'Using default/not set';
+      console.log(`   ${status} ${key}: ${display}`);
+    });
+    
+    // Environment validation summary
+    if (envValidation.valid) {
+      console.log('\n✅ Environment validation: PASSED');
+    } else {
+      console.log('\n⚠️  Environment validation: PARTIAL');
+      console.log(`❌ Missing required variables: ${envValidation.missing.join(', ')}`);
+      console.log('📧 Email functionality will be disabled');
+    }
+    
+    console.log('\n📧 SMTP Configuration Check:');
+    console.log('=' .repeat(30));
+    
+    // Verify SMTP connection (non-fatal)
     await verifySmtpConnection();
+    
+    console.log('\n🔩 System Dependencies:');
+    console.log('=' .repeat(30));
     
     // Check ffmpeg availability
     try {
       ffmpeg.setFfmpegPath(process.env.FFMPEG_PATH || 'ffmpeg');
-      console.log('✅ FFmpeg is available for video/audio processing');
+      console.log('✅ FFmpeg: Available for video/audio processing');
     } catch (ffmpegError) {
-      console.warn('⚠️  FFmpeg not available - video/audio processing will be limited:', ffmpegError.message);
+      console.log('⚠️  FFmpeg: Not available - video/audio processing will be limited');
+      console.log(`    Reason: ${ffmpegError.message}`);
     }
     
+    // Check Sharp (image processing)
+    try {
+      const sharp = require('sharp');
+      console.log('✅ Sharp: Available for image processing');
+    } catch (sharpError) {
+      console.log('❌ Sharp: Not available - image processing will fail');
+    }
+    
+    // Directory setup
+    console.log('\n📁 Directory Setup:');
+    console.log('=' .repeat(20));
+    console.log(`✅ Upload directory: ${uploadsDir}`);
+    console.log(`✅ Processing directory: ${processedDir}`);
+    
+    // Start the server
     app.listen(PORT, '0.0.0.0', () => {
-      console.log('🚀 TBGS Enhanced Email Service running on port', PORT);
-      console.log(`📬 Contact receiver: ${process.env.CONTACT_RECEIVER || process.env.SMTP_USER}`);
-      console.log(`🔒 CORS origins: ${process.env.CORS_ORIGINS || 'all origins allowed'}`);
-      console.log('✨ Features: Multipart upload, FFmpeg processing, Image optimization, Enhanced security');
-      console.log(`📁 Upload directory: ${uploadsDir}`);
-      console.log(`🔄 Processing directory: ${processedDir}`);
+      console.log('\n\n🎉 SERVER STARTED SUCCESSFULLY!');
+      console.log('=' .repeat(60));
+      console.log(`🎯 Service: TBGS Enhanced Email Service v2.0.0`);
+      console.log(`🔌 Port: ${PORT}`);
+      console.log(`🌐 Access: http://localhost:${PORT}`);
+      console.log(`📬 Contact receiver: ${process.env.CONTACT_RECEIVER || process.env.SMTP_USER || 'Not configured'}`);
+      console.log(`🔒 CORS origins: ${process.env.CORS_ORIGINS || 'All origins allowed (development)'}`);
+      
+      console.log('\n✨ Available Features:');
+      console.log('   ✅ Multipart file upload support');
+      console.log('   ✅ Image optimization (WebP conversion)');
+      console.log('   ✅ Video/audio processing with FFmpeg');
+      console.log('   ✅ Enhanced security with rate limiting');
+      console.log('   ✅ Health check endpoint (/api/health)');
+      console.log(`   ${envValidation.hasSmtpCredentials && smtpConnectionStatus.connected ? '✅' : '⚠️ '} Email functionality`);
+      
+      console.log('\n🔗 Endpoints:');
+      console.log(`   GET  /           - Service status page`);
+      console.log(`   GET  /api/health - Health check with detailed status`);
+      console.log(`   POST /api/contact - Enhanced contact form (multipart)`);
+      console.log(`   POST /api/contact-legacy - Legacy contact form (JSON)`);
+      
+      if (!envValidation.hasSmtpCredentials) {
+        console.log('\n⚠️  IMPORTANT NOTICE:');
+        console.log('   Email functionality is DISABLED');
+        console.log('   Contact forms will be received but emails won\'t be sent');
+        console.log('   To enable email functionality, set these environment variables:');
+        console.log('   - SMTP_USER (required)');
+        console.log('   - SMTP_PASS (required)');
+        console.log('   - SMTP_HOST (optional, defaults to smtp.gmail.com)');
+        console.log('   - SMTP_PORT (optional, defaults to 587)');
+        console.log('   - CONTACT_RECEIVER (optional, defaults to SMTP_USER)');
+      } else if (!smtpConnectionStatus.connected) {
+        console.log('\n⚠️  EMAIL WARNING:');
+        console.log('   SMTP credentials are set but connection failed');
+        console.log(`   Error: ${smtpConnectionStatus.error}`);
+        console.log('   Please verify your SMTP credentials and network connectivity');
+      }
+      
+      console.log('\n🔄 Service is ready and accepting requests!');
+      console.log('=' .repeat(60));
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('\n❌ CRITICAL ERROR: Failed to start server');
+    console.error('=' .repeat(40));
+    console.error('Error details:', error.message);
+    console.error('Stack trace:', error.stack);
+    console.error('\n🔧 Please check your configuration and try again');
     process.exit(1);
   }
 };
