@@ -1,27 +1,8 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import LocationCards from "@/components/LocationCards";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
-
-// Helper function to extract city name from service area string and create URL
-function getCityUrl(cityText: string, country: 'nl' | 'be'): { cityName: string; url: string } {
-  // Extract city name (remove service descriptions like "verbouwing", "renovatie", etc.)
-  const cityName = cityText
-    .replace(/\s+(verbouwing|renovatie|aanbouw|bouw|nieuwbouw|timmerwerk).*$/i, '')
-    .replace(/^\s*•\s*/, '') // Remove bullet point
-    .trim();
-  
-  // Convert to URL slug (lowercase, replace spaces with dashes)
-  const citySlug = cityName.toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/'/g, '')
-    .replace(/\.+/g, '');
-  
-  return {
-    cityName,
-    url: `/${country}/${citySlug}`
-  };
-}
 
 interface ArticleSection {
   title: string;
@@ -264,65 +245,21 @@ export default function TBSArticleTemplate({
               </div>
             )}
 
-            {/* Service Areas */}
-            {serviceAreas && (
-              <div className="bg-gray-50 p-8 rounded-2xl mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Service Gebieden</h2>
-                <p className="text-lg text-gray-700 mb-6">
-                  Onze <strong>bouwspecialisten</strong> zijn actief in heel Nederland en België:
+            {/* Service Areas - Using LocationCards Component */}
+            <div className="mb-16">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Service Gebieden</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Onze <strong>bouwspecialisten</strong> zijn actief in heel Nederland. Vind uw lokale specialist voor snelle service.
                 </p>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                      <span className="text-2xl mr-2">🇳🇱</span>
-                      Nederland
-                    </h3>
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {serviceAreas.netherlands.map((area, index) => {
-                        const { cityName, url } = getCityUrl(area, 'nl');
-                        return (
-                          <div key={index} className="flex items-center text-gray-700">
-                            <div className="w-2 h-2 bg-tbgs-orange rounded-full mr-3"></div>
-                            <Link 
-                              href={url} 
-                              className="text-tbgs-orange hover:text-orange-700 font-medium transition-colors"
-                              data-testid={`link-service-nl-${cityName.toLowerCase().replace(/\s+/g, '-')}`}
-                            >
-                              {cityName}
-                            </Link>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                      <span className="text-2xl mr-2">🇧🇪</span>
-                      België
-                    </h3>
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {serviceAreas.belgium.map((area, index) => {
-                        const { cityName, url } = getCityUrl(area, 'be');
-                        return (
-                          <div key={index} className="flex items-center text-gray-700">
-                            <div className="w-2 h-2 bg-tbgs-orange rounded-full mr-3"></div>
-                            <Link 
-                              href={url} 
-                              className="text-tbgs-orange hover:text-orange-700 font-medium transition-colors"
-                              data-testid={`link-service-be-${cityName.toLowerCase().replace(/\s+/g, '-')}`}
-                            >
-                              {cityName}
-                            </Link>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
               </div>
-            )}
+              
+              <LocationCards 
+                specialist="bouw" 
+                onOpenContactModal={onOpenContactModal} 
+                showCTA={true}
+              />
+            </div>
 
             {/* FAQ */}
             {faqs && (
