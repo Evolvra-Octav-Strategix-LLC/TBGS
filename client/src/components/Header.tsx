@@ -47,10 +47,10 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
   // Get specialist-specific tagline
   const getSpecialistTagline = () => {
     switch(specialist) {
-      case "TDS": return "Totaal Dak Specialist";
-      case "TSS": return "Totaal Schoorsteen Specialist";
-      case "TOS": return "Totaal Onderhoud Specialist";
-      case "TBS": return "Totaal Bouw Specialist";
+      case "TDS": return "Dak";
+      case "TSS": return "Schoorsteen";
+      case "TOS": return "Onderhoud";
+      case "TBS": return "Bouw";
       default: return "Totaal Bouw Groep Specialisten";
     }
   };

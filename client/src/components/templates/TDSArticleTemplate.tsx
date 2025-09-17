@@ -302,7 +302,7 @@ export default function TDSArticleTemplate({
                 className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>
-                Terug naar Totaal Dak Specialist
+                Terug naar Dak
               </Link>
             </div>
 

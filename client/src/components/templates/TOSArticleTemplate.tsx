@@ -302,7 +302,7 @@ export default function TOSArticleTemplate({
                 className="inline-flex items-center text-green-600 hover:text-green-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>
-                Terug naar Totaal Onderhoud Specialist
+                Terug naar Onderhoud
               </Link>
             </div>
 
