@@ -30,11 +30,11 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
             </div>
             
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 mb-6 sm:mb-8 leading-tight">
-              Van <span className="text-tbgs-navy">Grootvader</span> tot <span className="text-tbgs-navy">Kleinzoon</span>
+              <strong>Vakmanschap in de genen</strong> - sinds 1943 geven wij onze expertise door van generatie op generatie.
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 font-light leading-relaxed mb-8 sm:mb-12 max-w-3xl mx-auto">
-              <strong>Vakmanschap in de genen</strong> - sinds 1943 geven wij onze expertise door van generatie op generatie.
+              Van <span className="text-tbgs-navy">Kleinzoon</span> tot <span className="text-tbgs-navy">Grootvader</span>
             </p>
             
             <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-12">
