@@ -483,9 +483,6 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
       </section>
 
 
-      {/* Partner Slider */}
-      <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
-
       {/* CTA Section */}
       <section className="py-16 lg:py-24 bg-tbgs-orange text-white">
         <div className="container mx-auto px-4">
@@ -517,6 +514,9 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
           </div>
         </div>
       </section>
+
+      {/* Partner Slider */}
+      <PartnerSlider showTitle={false} showDescription={false} className="border-t border-gray-100" />
     </>
   );
 }
