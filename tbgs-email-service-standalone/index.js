@@ -956,15 +956,15 @@ const startServer = async () => {
     console.log('\n🚀 Starting TBGS Enhanced Email Service...');
     console.log('=' .repeat(60));
     
-    // Validate environment configuration (reuse global envValidation)
-    // Re-validate environment at startup in case variables changed
-    Object.assign(envValidation, validateEnvironment());
+    // Validate environment configuration at startup
+    // Re-validate environment in case variables changed
+    const currentEnvValidation = validateEnvironment();
     console.log('\n🔧 Environment Configuration:');
     console.log('=' .repeat(30));
     
     // Show required environment variables status
     console.log('🔑 Required Variables:');
-    Object.entries(envValidation.required).forEach(([key, value]) => {
+    Object.entries(currentEnvValidation.required).forEach(([key, value]) => {
       const status = value ? '✅' : '❌';
       const display = value ? (key.includes('PASS') ? '✓ Set (hidden)' : `✓ ${value}`) : '✗ Not set';
       console.log(`   ${status} ${key}: ${display}`);
@@ -972,18 +972,18 @@ const startServer = async () => {
     
     // Show optional environment variables status
     console.log('\n🔍 Optional Variables:');
-    Object.entries(envValidation.optional).forEach(([key, value]) => {
+    Object.entries(currentEnvValidation.optional).forEach(([key, value]) => {
       const status = value ? '✅' : '⚠️ ';
       const display = value || 'Using default/not set';
       console.log(`   ${status} ${key}: ${display}`);
     });
     
     // Environment validation summary
-    if (envValidation.valid) {
+    if (currentEnvValidation.valid) {
       console.log('\n✅ Environment validation: PASSED');
     } else {
       console.log('\n⚠️  Environment validation: PARTIAL');
-      console.log(`❌ Missing required variables: ${envValidation.missing.join(', ')}`);
+      console.log(`❌ Missing required variables: ${currentEnvValidation.missing.join(', ')}`);
       console.log('📧 Email functionality will be disabled');
     }
     
@@ -1035,7 +1035,7 @@ const startServer = async () => {
       console.log('   ✅ Video/audio processing with FFmpeg');
       console.log('   ✅ Enhanced security with rate limiting');
       console.log('   ✅ Health check endpoint (/api/health)');
-      console.log(`   ${envValidation.hasSmtpCredentials && smtpConnectionStatus.connected ? '✅' : '⚠️ '} Email functionality`);
+      console.log(`   ${currentEnvValidation.hasSmtpCredentials && smtpConnectionStatus.connected ? '✅' : '⚠️ '} Email functionality`);
       
       console.log('\n🔗 Endpoints:');
       console.log(`   GET  /           - Service status page`);
@@ -1043,7 +1043,7 @@ const startServer = async () => {
       console.log(`   POST /api/contact - Enhanced contact form (multipart)`);
       console.log(`   POST /api/contact-legacy - Legacy contact form (JSON)`);
       
-      if (!envValidation.hasSmtpCredentials) {
+      if (!currentEnvValidation.hasSmtpCredentials) {
         console.log('\n⚠️  IMPORTANT NOTICE:');
         console.log('   Email functionality is DISABLED');
         console.log('   Contact forms will be received but emails won\'t be sent');
