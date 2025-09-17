@@ -54,7 +54,7 @@ import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
 import BackToTopButton from "@/components/BackToTopButton";
 import { FloatingServiceForm } from "@/components/FloatingServiceMenu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useRoute } from "wouter";
 
 // Main Locations Page
@@ -178,6 +178,14 @@ import DakdekkerEindhoven from "@/pages/DakdekkerEindhoven";
 function Router() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [location] = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [location]);
 
   // Check if current page is a specialist page (which has its own header)
   const isSpecialistPage = [
