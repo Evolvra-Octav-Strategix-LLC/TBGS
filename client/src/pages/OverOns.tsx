@@ -39,56 +39,6 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
               Van <span className="text-tbgs-navy">Kleinzoon</span> tot <span className="text-tbgs-navy">Grootvader</span>
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-green-500">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-600 mb-2">€15.000+</div>
-                <div className="text-sm sm:text-base font-semibold text-slate-800 mb-1">Kostenbesparing per jaar</div>
-                <div className="text-xs sm:text-sm text-slate-600">Door preventief onderhoud</div>
-              </div>
-              
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-blue-500">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-600 mb-2">24u</div>
-                <div className="text-sm sm:text-base font-semibold text-slate-800 mb-1">Reactietijd garantie</div>
-                <div className="text-xs sm:text-sm text-slate-600">Voor noodreparaties</div>
-              </div>
-              
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-orange-500">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-orange-600 mb-2">€0</div>
-                <div className="text-sm sm:text-base font-semibold text-slate-800 mb-1">Verrassingskosten</div>
-                <div className="text-xs sm:text-sm text-slate-600">Transparante prijzen</div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-tbgs-navy to-blue-700 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white text-center shadow-2xl">
-              <div className="mb-4 sm:mb-6">
-                <div className="text-lg sm:text-xl font-bold mb-2">🚨 <span className="text-yellow-400">Waarschuwing:</span> Uitgesteld onderhoud kost 5x meer!</div>
-                <p className="text-sm sm:text-base text-blue-100">Preventie vandaag = duizenden euro's besparing morgen</p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-                <a 
-                  href="https://wa.me/31614595142" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-green-400 transition-all duration-300 shadow-xl hover:shadow-green-500/25 transform hover:-translate-y-1 inline-flex items-center w-full sm:w-auto"
-                  data-testid="button-whatsapp-urgent"
-                >
-                  <i className="fab fa-whatsapp text-lg sm:text-xl mr-2 group-hover:animate-bounce"></i>
-                  <span>Spoed WhatsApp</span>
-                </a>
-                <button 
-                  onClick={onOpenContactModal}
-                  className="group bg-yellow-400 text-slate-900 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-yellow-300 transition-all duration-300 shadow-xl hover:shadow-yellow-500/25 transform hover:-translate-y-1 inline-flex items-center w-full sm:w-auto"
-                  data-testid="button-contact-urgent"
-                >
-                  <span>Gratis Inspectie</span>
-                </button>
-              </div>
-              
-              <p className="text-xs sm:text-sm text-blue-200 mt-3 sm:mt-4">
-                <strong>Binnen 2 uur reactie</strong> • <strong>Gratis advies</strong> • <strong>Geen verplichtingen</strong>
-              </p>
-            </div>
           </div>
         </div>
       </section>
