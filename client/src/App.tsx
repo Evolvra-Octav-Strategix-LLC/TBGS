@@ -41,6 +41,13 @@ import Schilder from "@/pages/totaal-onderhoud-specialist/Schilder";
 import OnderhoudGarage from "@/pages/totaal-onderhoud-specialist/OnderhoudGarage";
 import OnderhoudDakgoot from "@/pages/totaal-onderhoud-specialist/OnderhoudDakgoot";
 import PreventiefOnderhoud from "@/pages/totaal-onderhoud-specialist/PreventiefOnderhoud";
+import Metselwerk from "@/pages/totaal-bouw-specialist/Metselwerk";
+import Timmerwerken from "@/pages/totaal-bouw-specialist/Timmerwerken";
+import OpbouwHuis from "@/pages/totaal-bouw-specialist/OpbouwHuis";
+import AanbouwHuis from "@/pages/totaal-bouw-specialist/AanbouwHuis";
+import HuisVerbouwen from "@/pages/totaal-bouw-specialist/HuisVerbouwen";
+import SerreAanbouw from "@/pages/totaal-bouw-specialist/SerreAanbouw";
+import Nieuwbouw from "@/pages/totaal-bouw-specialist/Nieuwbouw";
 import Header from "@/components/Header";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import Footer from "@/components/Footer";
@@ -256,6 +263,13 @@ function Router() {
           <Route path="/onderhoud/onderhoud-garage" component={() => <OnderhoudGarage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/onderhoud-dakgoot" component={() => <OnderhoudDakgoot onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/preventief-onderhoud" component={() => <PreventiefOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/metselwerk" component={() => <Metselwerk onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/timmerwerken" component={() => <Timmerwerken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/opbouw-op-uw-huis" component={() => <OpbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/aanbouwen-aan-uw-huis" component={() => <AanbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/uw-huis-verbouwen" component={() => <HuisVerbouwen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/serre-aanbouw" component={() => <SerreAanbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouw/nieuwbouw" component={() => <Nieuwbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />

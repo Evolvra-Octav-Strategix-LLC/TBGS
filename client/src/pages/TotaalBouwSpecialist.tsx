@@ -118,97 +118,98 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-home text-tbgs-orange text-2xl"></i>
+                <i className="fas fa-hammer text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Verbouwingen</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Metselwerk</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Woonhuisverbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Kantoorverbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Winkelinterieurs</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Zolderverbouwing</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Baksteen metselwerk</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Natuursteen metselwerk</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Gevelmetselwerk</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinmuren</li>
               </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
+              <Link href="/bouw/metselwerk" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
-              </button>
+              </Link>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-cut text-tbgs-orange text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Timmerwerken</h3>
+              <ul className="text-gray-600 space-y-2 mb-4">
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakconstructies</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Kozijnen & Ramen</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Trappen</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk</li>
+              </ul>
+              <Link href="/bouw/timmerwerken" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                Meer informatie →
+              </Link>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-arrow-up text-tbgs-orange text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Opbouw op Uw Huis</h3>
+              <ul className="text-gray-600 space-y-2 mb-4">
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tweede verdieping</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakkapel uitbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Zolderverbouwing</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
+              </ul>
+              <Link href="/bouw/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+                Meer informatie →
+              </Link>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-plus text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouw & Uitbreiding</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouwen aan Uw Huis</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Aanbouw woonhuis</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre & overkapping</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage & berging</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Woonkamer uitbreiding</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keuken aanbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre aanbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage aanbouw</li>
               </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
+              <Link href="/bouw/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
-              </button>
+              </Link>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-bath text-tbgs-orange text-2xl"></i>
+                <i className="fas fa-home text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Badkamer renovatie</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Uw Huis Verbouwen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete badkamer</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Leidingwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tegelwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Sanitair installatie</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete renovatie</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Badkamer verbouwing</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keuken verbouwing</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Indeling wijzigen</li>
               </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
+              <Link href="/bouw/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
-              </button>
-            </div>
-
-            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-utensils text-tbgs-orange text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Keuken renovatie</h3>
-              <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keukenverbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk kasten</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Werkblad installatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Apparatuur aansluiting</li>
-              </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
-                Meer informatie →
-              </button>
+              </Link>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-cube text-tbgs-orange text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Metselwerk</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Serre Aanbouw</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Muren & scheidingswanden</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Betonstort</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Funderingen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Schouwbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Klassieke serre</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Moderne glazen uitbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Wintertuinen</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinkamer serre</li>
               </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
+              <Link href="/bouw/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
-              </button>
+              </Link>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
@@ -217,18 +218,16 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Nieuwbouw</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Woningbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Bedrijfspanden</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Agrarische bouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Duurzame bouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Eengezinswoning</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Villa nieuwbouw</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Energieneutrale woning</li>
+                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Moderne architectuur</li>
               </ul>
-              <button 
-                onClick={onOpenContactModal}
-                className="text-tbgs-orange font-semibold hover:text-yellow-700 transition-colors"
-              >
+              <Link href="/bouw/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
-              </button>
+              </Link>
             </div>
+
           </div>
         </div>
       </section>
