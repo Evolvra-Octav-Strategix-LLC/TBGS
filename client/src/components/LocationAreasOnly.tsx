@@ -6,8 +6,8 @@ interface LocationAreasOnlyProps {
 }
 
 export default function LocationAreasOnly({ className = "", specialist }: LocationAreasOnlyProps) {
-  // Show Belgium section for all specialists except "bouw"
-  const showBelgiumSection = specialist !== "bouw";
+  // Show Belgium section for all specialists
+  const showBelgiumSection = true;
 
   return (
     <div className={`max-w-2xl mx-auto ${className}`} data-testid="location-areas-container">

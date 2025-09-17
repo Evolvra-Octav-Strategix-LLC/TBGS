@@ -8,8 +8,8 @@ interface LocationCardsProps {
 }
 
 export default function LocationCards({ onOpenContactModal, showCTA = true, className = "", specialist }: LocationCardsProps) {
-  // Show Belgium section for all specialists except "bouw"
-  const showBelgiumSection = specialist !== "bouw";
+  // Show Belgium section for all specialists
+  const showBelgiumSection = true;
   return (
     <div className={`grid lg:grid-cols-2 gap-16 items-center ${className}`} data-testid="location-cards-container">
       {/* Left Side - Service Areas */}
