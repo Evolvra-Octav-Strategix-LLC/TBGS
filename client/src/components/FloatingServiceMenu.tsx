@@ -509,22 +509,22 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center justify-center space-x-4">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'services' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'services' ? `${colors.bg} text-white` : 'bg-gray-300 text-gray-600'
                 }`}>
                   1
                 </div>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'photo' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'photo' ? `${colors.bg} text-white` : 'bg-gray-300 text-gray-600'
                 }`}>
                   2
                 </div>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'description' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'description' ? `${colors.bg} text-white` : 'bg-gray-300 text-gray-600'
                 }`}>
                   3
                 </div>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step === 'custom' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                  step === 'custom' ? `${colors.bg} text-white` : 'bg-gray-300 text-gray-600'
                 }`}>
                   4
                 </div>
@@ -544,7 +544,13 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Waar kunnen wij je mee
                 </h3>
-                <h3 className="text-lg font-bold text-blue-600 mb-3">
+                <h3 className={`text-lg font-bold mb-3 ${
+                  specialist === 'TDS' ? 'text-tbgs-red' :
+                  specialist === 'TSS' ? 'text-tbgs-blue' :
+                  specialist === 'TOS' ? 'text-tbgs-green' :
+                  specialist === 'TBS' ? 'text-tbgs-orange' :
+                  'text-tbgs-navy'
+                }`}>
                   helpen?
                 </h3>
                 <div className="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
