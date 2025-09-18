@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import { createTBGSVCard } from './vcard';
 
 // HTML escape utility for security
@@ -34,111 +34,55 @@ interface EmailData {
 }
 
 class EmailService {
-  private transporter: nodemailer.Transporter;
+  private resend: Resend;
 
   constructor() {
     // Validate environment variables on startup
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-      console.error('❌ CRITICAL: Missing email credentials!');
-      console.error('📧 GMAIL_USER:', process.env.GMAIL_USER ? '✅ Set' : '❌ Missing');
-      console.error('📧 GMAIL_APP_PASSWORD:', process.env.GMAIL_APP_PASSWORD ? '✅ Set' : '❌ Missing');
-      console.error('📧 Please set these environment variables in Dokploy!');
+    if (!process.env.RESEND_API_KEY) {
+      console.error('❌ CRITICAL: Missing Resend API key!');
+      console.error('📧 RESEND_API_KEY:', process.env.RESEND_API_KEY ? '✅ Set' : '❌ Missing');
+      console.error('📧 Please set RESEND_API_KEY environment variable!');
+      throw new Error('RESEND_API_KEY is required');
     } else {
-      console.log('✅ Email credentials found in environment');
-      console.log('📧 GMAIL_USER:', process.env.GMAIL_USER);
+      console.log('✅ Resend API key found in environment');
+      console.log('📧 Using Resend email service');
     }
 
-    // Try multiple SMTP configurations for different hosting environments
-    const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587;
-    const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+    this.resend = new Resend(process.env.RESEND_API_KEY);
     
-    this.transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: smtpPort,
-      secure: smtpSecure,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD
-      },
-      // Add timeouts and retry for network issues
-      connectionTimeout: 60000,  // 60 seconds
-      greetingTimeout: 30000,    // 30 seconds  
-      socketTimeout: 60000,      // 60 seconds
-      // Alternative ports if 587 is blocked
-      pool: true,
-      maxConnections: 5,
-      maxMessages: 100
-    });
-    
-    console.log(`📧 SMTP configured: smtp.gmail.com:${smtpPort} (secure: ${smtpSecure})`);
-    
-    // Test SMTP connectivity on startup (async, don't block startup)
+    // Test Resend connectivity on startup
     this.testConnectivity();
   }
 
   private async testConnectivity() {
     try {
-      console.log('🔍 Testing SMTP connectivity...');
-      await this.transporter.verify();
-      console.log('✅ SMTP connection verified successfully');
+      console.log('🔍 Testing Resend connectivity...');
+      // Test by getting domains (basic API call)
+      await this.resend.domains.list();
+      console.log('✅ Resend connection verified successfully');
     } catch (error: any) {
-      console.warn('⚠️ SMTP connectivity test failed:', error.message);
-      if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
-        console.warn('💡 This may indicate firewall restrictions. Email sending will attempt automatic fallback to port 465.');
-      }
+      console.warn('⚠️ Resend connectivity test failed:', error.message);
     }
   }
 
-  private async sendWithRetry(mailOptions: any, maxRetries = 3): Promise<any> {
+  private async sendWithRetry(emailOptions: any, maxRetries = 3): Promise<any> {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        const currentPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) || 587 : 587;
-        const currentSecure = process.env.SMTP_SECURE === 'true' || currentPort === 465;
-        console.log(`📧 Email attempt ${attempt}/${maxRetries} via port ${currentPort} (secure: ${currentSecure})...`);
+        console.log(`📧 Email attempt ${attempt}/${maxRetries} via Resend...`);
         
-        const result = await this.transporter.sendMail(mailOptions);
+        const result = await this.resend.emails.send(emailOptions);
+        
+        if (result.error) {
+          throw new Error(`Resend API error: ${result.error.message}`);
+        }
+        
+        console.log(`✅ Email sent successfully! ID: ${result.data?.id}`);
         return result;
       } catch (error: any) {
         console.error(`❌ Email attempt ${attempt} failed:`, error.message);
         
-        // If connection timeout/refused and we haven't tried port 465 yet, try automatic fallback
-        if ((error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') && 
-            attempt === 1 && 
-            !process.env.SMTP_PORT) { // Only auto-fallback if user hasn't manually set port
-          
-          console.log('🔄 Connection failed on port 587, trying fallback to port 465 with SSL...');
-          
-          // Create fallback transporter with port 465 + SSL
-          const fallbackTransporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            auth: {
-              user: process.env.GMAIL_USER,
-              pass: process.env.GMAIL_APP_PASSWORD
-            },
-            connectionTimeout: 60000,
-            greetingTimeout: 30000,
-            socketTimeout: 60000
-          });
-          
-          try {
-            console.log('📧 Attempting send via port 465 with SSL...');
-            const result = await fallbackTransporter.sendMail(mailOptions);
-            console.log('✅ Email sent successfully via port 465 fallback!');
-            return result;
-          } catch (fallbackError: any) {
-            console.error('❌ Port 465 fallback also failed:', fallbackError.message);
-            // Continue with normal retry logic
-          }
-        }
-        
         if (attempt === maxRetries) {
-          // Final attempt failed
-          if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
-            throw new Error(`SMTP connection failed after ${maxRetries} attempts and automatic fallback. This may be due to firewall restrictions blocking SMTP ports. Contact your hosting provider about SMTP egress restrictions.`);
-          }
-          throw error;
+          throw new Error(`Failed to send email after ${maxRetries} attempts: ${error.message}`);
         }
         
         // Wait before retry (exponential backoff)
@@ -152,13 +96,10 @@ class EmailService {
   async sendNotificationEmail(data: EmailData) {
     try {
       console.log('📧 Starting email send process...');
-      const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587;
-      const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
-      console.log(`📧 SMTP Config: smtp.gmail.com:${smtpPort} (secure: ${smtpSecure})`);
-      console.log('📧 From user:', process.env.GMAIL_USER || 'NOT SET');
+      console.log('📧 Using Resend email service');
       
-      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-        throw new Error('Email credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD in Dokploy environment variables.');
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error('Resend API key not configured. Set RESEND_API_KEY environment variable.');
       }
       
       console.log('📧 Sending notification email to admin...');
@@ -219,7 +160,7 @@ class EmailService {
         </html>
       `;
 
-      // Create attachments array starting with user uploaded files
+      // Create attachments array
       const attachments = [];
       
       // Add user uploaded files first
@@ -227,10 +168,13 @@ class EmailService {
         console.log(`📎 Adding ${data.files.length} user uploaded files...`);
         for (const file of data.files) {
           if (file.path) {
+            const fs = require('fs');
+            const fileContent = fs.readFileSync(file.path);
+            
             attachments.push({
               filename: file.originalname || 'upload.file',
-              path: file.path,
-              contentType: file.mimetype || 'application/octet-stream'
+              content: fileContent,
+              content_type: file.mimetype || 'application/octet-stream'
             });
             console.log(`✅ Added file: ${file.originalname}`);
           }
@@ -291,8 +235,8 @@ class EmailService {
         
         attachments.push({
           filename,
-          contentType: 'text/vcard; charset=utf-8',
           content: vcardBuffer,
+          content_type: 'text/vcard; charset=utf-8'
         });
         
         console.log(`✓ TBGS vCard attachment created: ${filename}`);
@@ -300,13 +244,13 @@ class EmailService {
         console.warn('vCard generation failed:', vcardError);
       }
 
-      // Retry email sending with exponential backoff
+      // Send email using Resend
       await this.sendWithRetry({
-        from: process.env.GMAIL_USER,
-        to: process.env.GMAIL_USER, // Send to yourself (admin)
+        from: 'TBGS BV <info@tbgs.nl>',
+        to: ['info@tbgs.nl'],
         subject,
         html,
-        attachments
+        attachments: attachments.length > 0 ? attachments : undefined
       });
 
       console.log('✅ Notification email sent successfully');
@@ -367,8 +311,8 @@ class EmailService {
       `;
 
       await this.sendWithRetry({
-        from: process.env.GMAIL_USER,
-        to: data.email,
+        from: 'TBGS BV <info@tbgs.nl>',
+        to: [data.email],
         subject,
         html
       });
