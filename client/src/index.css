@@ -220,6 +220,10 @@
   --_animation-duration: 12s;
 }
 
+.scroller[data-speed="medium"] {
+  --_animation-duration: 18s;
+}
+
 .scroller[data-speed="slow"] {
   --_animation-duration: 30s;
 }

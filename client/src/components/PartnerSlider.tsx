@@ -80,7 +80,7 @@ export default function PartnerSlider({
         )}
 
         {/* Partner Logos Scroller */}
-        <div className="scroller" data-speed="slow" ref={logosRef}>
+        <div className="scroller" data-speed="medium" ref={logosRef}>
           <div className="scroller__inner">
             <img src={defrancqLogo} alt="Defrancq" />
             <img src={unilinLogo} alt="Unilin" />
