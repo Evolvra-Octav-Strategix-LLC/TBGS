@@ -97,17 +97,19 @@ export default function ZorgeloosWonen({ onOpenContactModal }: ZorgeloosWonenPro
         url="https://tbgs.nl/zorgeloos-wonen"
       />
 
-      <SpecialistNavigationBar />
-      <Header specialist="TOS" onOpenContactModal={onOpenContactModal} />
+      <div className="mb-4 sm:mb-0">
+        <SpecialistNavigationBar />
+      </div>
+      <Header specialist="TOS" onOpenContactModal={onOpenContactModal} useH2={true} />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 to-green-100 py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-green-50 to-green-100 py-12 sm:py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="max-w-3xl mx-auto font-bold tracking-tight text-balance [hyphens:auto] break-words text-[clamp(1.75rem,4vw+0.5rem,3rem)] md:text-[clamp(2.25rem,2.5vw+1rem,3.75rem)] leading-[1.15] md:leading-[1.1] text-gray-900 mb-4">
               Zorgeloos Wonen
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed mb-8">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
               Complete ontzorging voor uw woning. Preventief onderhoud, reguliere controles 
               en acute reparaties - alles in één abonnement.
             </p>

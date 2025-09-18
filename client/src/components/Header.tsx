@@ -7,9 +7,10 @@ import SimpleSearchDropdown from "./SimpleSearchDropdown";
 interface HeaderProps {
   onOpenContactModal: () => void;
   specialist?: "TDS" | "TSS" | "TOS" | "TBS";
+  useH2?: boolean; // Use h2 instead of h1 when page already has an h1
 }
 
-export default function Header({ onOpenContactModal, specialist }: HeaderProps) {
+export default function Header({ onOpenContactModal, specialist, useH2 = false }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -123,7 +124,11 @@ export default function Header({ onOpenContactModal, specialist }: HeaderProps) 
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
-                <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
+                {useH2 ? (
+                  <h2 className="text-xl font-bold text-tbgs-navy">TBGS BV</h2>
+                ) : (
+                  <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
+                )}
                 <p className="text-xs sm:text-sm whitespace-nowrap font-medium text-gray-900">
                   {specialist ? (
                     <>
