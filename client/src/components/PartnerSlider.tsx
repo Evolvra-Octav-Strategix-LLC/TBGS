@@ -8,6 +8,8 @@ import bmiLogo from "@/assets/partners/bmi.png";
 import recticelLogo from "@/assets/partners/recticel.jpg";
 import ubbinkLogo from "@/assets/partners/ubbink.png";
 import soudalLogo from "@/assets/partners/soudal.png";
+import icopalLogo from "@assets/icopal-logo-auto_width_440-3706882960_1758228709473.png";
+import koramicLogo from "@assets/koramic-logo-vector-211622967_1758228709494.png";
 
 interface PartnerSliderProps {
   className?: string;
@@ -89,6 +91,8 @@ export default function PartnerSlider({
             <img src={recticelLogo} alt="Recticel" />
             <img src={ubbinkLogo} alt="Ubbink" />
             <img src={soudalLogo} alt="Soudal" />
+            <img src={icopalLogo} alt="Icopal" />
+            <img src={koramicLogo} alt="Koramic" />
           </div>
         </div>
 
