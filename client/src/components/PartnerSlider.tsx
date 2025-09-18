@@ -91,8 +91,8 @@ export default function PartnerSlider({
             <img src={recticelLogo} alt="Recticel" />
             <img src={ubbinkLogo} alt="Ubbink" />
             <img src={soudalLogo} alt="Soudal" />
-            <img src={icopalLogo} alt="Icopal" />
             <img src={koramicLogo} alt="Koramic" />
+            <img src={icopalLogo} alt="Icopal" />
           </div>
         </div>
 
