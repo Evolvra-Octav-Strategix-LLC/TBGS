@@ -449,9 +449,7 @@ export default function ContactModalV2() {
               />
             </FormControl>
             <div className="space-y-1 leading-none">
-              <FormLabel className="text-sm text-gray-600 cursor-pointer">
-                🚨 Dit is urgent - neem binnen 2 uur contact op
-              </FormLabel>
+              <FormLabel className="text-sm text-gray-600 cursor-pointer">🚨 Dit is urgent neem Z.S.M contact op!</FormLabel>
             </div>
           </FormItem>
         )}
