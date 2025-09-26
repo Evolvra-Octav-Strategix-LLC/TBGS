@@ -53,8 +53,8 @@ export default function GratisOfferte() {
               </p>
             </div>
 
-            {/* Priority Service Cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* All Service Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-8">
               {/* Daklekkage - Highest Priority */}
               <Link href="/dak" className="group">
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-red-200 bg-gradient-to-br from-red-50 to-white">
@@ -120,10 +120,8 @@ export default function GratisOfferte() {
                   </CardContent>
                 </Card>
               </Link>
-            </div>
 
-            {/* Additional Services Row */}
-            <div className="grid md:grid-cols-2 gap-8">
+              {/* Bouw & Renovatie */}
               <Link href="/bouw" className="group">
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 bg-gradient-to-br from-orange-50 to-white">
                   <CardHeader className="text-center pb-4">
@@ -144,8 +142,10 @@ export default function GratisOfferte() {
                   </CardContent>
                 </Card>
               </Link>
+            </div>
 
-              {/* Urgency & Contact Card */}
+            {/* Urgency & Contact Card */}
+            <div className="max-w-2xl mx-auto">
               <Card className="h-full bg-gradient-to-br from-tbgs-navy to-blue-700 text-white border-0">
                 <CardHeader className="pb-4">
                   <div className="flex items-center">
