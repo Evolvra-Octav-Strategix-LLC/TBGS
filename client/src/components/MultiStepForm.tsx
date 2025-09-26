@@ -10,6 +10,8 @@ interface MultiStepFormProps {
     content: React.ReactNode;
     requiredFields?: string[];
   }[];
+  currentStep?: number;
+  onStepChange?: (step: number) => void;
   onSubmit: () => void;
   onBack?: () => void;
   isSubmitting?: boolean;
@@ -19,7 +21,9 @@ interface MultiStepFormProps {
 }
 
 export function MultiStepForm({ 
-  steps, 
+  steps,
+  currentStep: controlledCurrentStep,
+  onStepChange,
   onSubmit, 
   onBack, 
   isSubmitting = false, 
@@ -27,13 +31,16 @@ export function MultiStepForm({
   className = "",
   validateStep
 }: MultiStepFormProps) {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [internalCurrentStep, setInternalCurrentStep] = useState(0);
+  const currentStep = controlledCurrentStep !== undefined ? controlledCurrentStep : internalCurrentStep;
+  const setCurrentStep = onStepChange || setInternalCurrentStep;
   
   const progressPercentage = ((currentStep + 1) / steps.length) * 100;
   
   const goToNextStep = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      const nextStep = currentStep + 1;
+      setCurrentStep(nextStep);
       // Scroll to position accounting for header height (approximately 120px from top)
       window.scrollTo({ top: 120, behavior: 'smooth' });
     }
@@ -50,7 +57,8 @@ export function MultiStepForm({
   
   const goToPreviousStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      const prevStep = currentStep - 1;
+      setCurrentStep(prevStep);
     }
   };
   

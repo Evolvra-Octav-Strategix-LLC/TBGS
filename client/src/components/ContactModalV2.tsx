@@ -39,6 +39,7 @@ const formSchema = z.object({
 type OfferteFormData = z.infer<typeof formSchema>;
 
 export default function ContactModalV2() {
+  const [currentStep, setCurrentStep] = useState(0);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [processedFiles, setProcessedFiles] = useState<{original: File, compressed: File, status: 'processing' | 'completed' | 'failed'}[]>([]);
   const [isProcessingFiles, setIsProcessingFiles] = useState(false);
@@ -616,18 +617,22 @@ export default function ContactModalV2() {
 
   return (
     <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-tbgs-navy">
-          Gratis Offerte Aanvragen
-        </CardTitle>
-        <CardDescription className="text-center">
-          Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte
-        </CardDescription>
-      </CardHeader>
+      {currentStep !== 2 && (
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-center text-tbgs-navy">
+            Gratis Offerte Aanvragen
+          </CardTitle>
+          <CardDescription className="text-center">
+            Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte
+          </CardDescription>
+        </CardHeader>
+      )}
       <CardContent>
         <Form {...form}>
           <MultiStepForm
             steps={steps}
+            currentStep={currentStep}
+            onStepChange={setCurrentStep}
             onSubmit={() => form.handleSubmit(onSubmit)()}
             onBack={() => {}}
             isSubmitting={submitMutation.isPending}
