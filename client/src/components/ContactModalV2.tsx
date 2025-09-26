@@ -518,21 +518,16 @@ export default function ContactModalV2() {
         />
       </div>
 
-      {/* Adres en Telefoonnummer */}
+      {/* E-mailadres en Telefoonnummer */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
-          name="location"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Adres *</FormLabel>
+              <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <GooglePlacesInput
-                  value={field.value}
-                  onChange={field.onChange}
-                  placeholder="Straat en huisnummer"
-                  className="border border-gray-300 placeholder:text-gray-500"
-                />
+                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -554,21 +549,25 @@ export default function ContactModalV2() {
         />
       </div>
 
+      {/* Adres */}
       <FormField
         control={form.control}
-        name="email"
+        name="location"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>E-mailadres *</FormLabel>
+            <FormLabel>Adres *</FormLabel>
             <FormControl>
-              <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
+              <GooglePlacesInput
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Straat en huisnummer"
+                className="border border-gray-300 placeholder:text-gray-500"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-
-
 
       <FormField
         control={form.control}
