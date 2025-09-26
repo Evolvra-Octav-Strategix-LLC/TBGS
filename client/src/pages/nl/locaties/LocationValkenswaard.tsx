@@ -137,7 +137,7 @@ export default function LocationValkenswaard({ onOpenContactModal }: LocationVal
         }
       ]}
       
-      phone="+31 40 244 58 20"
+      phone="040-202 67 44"
       coordinates={{ lat: 51.3500, lng: 5.4600 }}
       onOpenContactModal={onOpenContactModal}
     />

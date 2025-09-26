@@ -264,7 +264,7 @@ export default function LocationHubTemplate({
                   onClick={() => window.open(`https://wa.me/31614595142?text=Hallo Team TBGS, ik heb een vraag over TBGS diensten in ${city}. Kunnen jullie mij helpen?`, '_blank')}
                 >
                   <FaWhatsapp className="w-5 h-5 mr-3" />
-                  WhatsApp ({city})
+                  WhatsApp
                 </Button>
               </div>
 
@@ -618,7 +618,7 @@ export default function LocationHubTemplate({
                   onClick={() => window.open(`https://wa.me/31614595142?text=Hallo Team TBGS, ik heb een vraag over TBGS diensten in ${city}. Kunnen jullie mij helpen?`, '_blank')}
                 >
                   <FaWhatsapp className="w-5 h-5 mr-3" />
-                  WhatsApp ({city})
+                  WhatsApp
                 </Button>
               </div>
             </div>
