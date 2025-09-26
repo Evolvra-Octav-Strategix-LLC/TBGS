@@ -14,6 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import { MultiStepForm } from "@/components/MultiStepForm";
 import { Upload, X, FileText, Camera, FileImage } from "lucide-react";
+import { useLocation } from "wouter";
 import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
 import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
 import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
@@ -52,6 +53,7 @@ export default function ContactModalV2() {
   } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
 
   const form = useForm<OfferteFormData>({
     resolver: zodResolver(formSchema),
@@ -150,6 +152,11 @@ export default function ContactModalV2() {
       setUploadedFiles([]);
       setProcessedFiles([]);
       setAddressComponents(null);
+      
+      // Redirect to home page after successful submission
+      setTimeout(() => {
+        setLocation('/');
+      }, 2000); // Wait 2 seconds to let user see the success message
     },
     onError: (error: Error) => {
       toast({
