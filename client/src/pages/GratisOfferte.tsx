@@ -18,7 +18,8 @@ import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 export default function GratisOfferte() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Start with collapsed header like in form steps (120px from top)
+    window.scrollTo(0, 120);
   }, []);
 
   return (
