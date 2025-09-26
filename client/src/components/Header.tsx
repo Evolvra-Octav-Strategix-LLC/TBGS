@@ -129,7 +129,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                 ) : (
                   <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
                 )}
-                <p className="text-xs sm:text-sm font-medium text-gray-900 hidden xs:block">
+                <p className="text-xs sm:text-sm font-medium text-gray-900">
                   {specialist ? (
                     <>
                       Totaal <span className={colors.primary}>{getSpecialistWord()}</span> Specialist
