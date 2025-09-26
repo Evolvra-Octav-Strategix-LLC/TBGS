@@ -36,6 +36,7 @@ import SchoorsteenInspectie from "@/pages/totaal-schoorsteen-specialist/Schoorst
 import SchoorsteenRenovatie from "@/pages/totaal-schoorsteen-specialist/SchoorsteenRenovatie";
 import SchoorsteenVoegenRepareren from "@/pages/totaal-schoorsteen-specialist/SchoorsteenVoegenRepareren";
 import SchoorsteenOnderhoud from "@/pages/totaal-schoorsteen-specialist/SchoorsteenOnderhoud";
+import SchoorsteenVerwijderen from "@/pages/totaal-schoorsteen-specialist/SchoorsteenVerwijderen";
 import DakkapelReinigen from "@/pages/totaal-onderhoud-specialist/DakkapelReinigen";
 import OnderhoudDakkapel from "@/pages/totaal-onderhoud-specialist/OnderhoudDakkapel";
 import OnderhoudHoutDak from "@/pages/totaal-onderhoud-specialist/OnderhoudHoutDak";
@@ -278,6 +279,7 @@ function Router() {
           <Route path="/schoorsteen/schoorsteen-renovatie" component={() => <SchoorsteenRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/schoorsteen/schoorsteen-voegen-repareren" component={() => <SchoorsteenVoegenRepareren onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/schoorsteen/schoorsteen-onderhoud" component={() => <SchoorsteenOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/schoorsteen/schoorsteen-verwijderen" component={() => <SchoorsteenVerwijderen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/dakkapel-reinigen" component={() => <DakkapelReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/onderhoud-dakkapel" component={() => <OnderhoudDakkapel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/onderhoud-hout-dak" component={() => <OnderhoudHoutDak onOpenContactModal={() => setIsContactModalOpen(true)} />} />
