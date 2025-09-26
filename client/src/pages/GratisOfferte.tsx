@@ -5,7 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/lib/seo";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactModal from "@/components/ContactModal";
 import ContactModalV2 from "@/components/ContactModalV2";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
@@ -17,13 +19,7 @@ import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
 import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 export default function GratisOfferte() {
-  useEffect(() => {
-    // Start with collapsed header like in form steps (120px from top)
-    // Delay to ensure page is fully loaded
-    setTimeout(() => {
-      window.scrollTo({ top: 120, behavior: 'instant' });
-    }, 50);
-  }, []);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <>
@@ -33,9 +29,12 @@ export default function GratisOfferte() {
         keywords="gratis offerte, dakdekker offerte, schoorsteen reparatie offerte, bouw offerte, onderhoud offerte, TBGS aanvraag"
         url="/offerte"
       />
+      <Header 
+        onOpenContactModal={() => setIsContactModalOpen(true)} 
+      />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Form Section - Direct Focus */}
-        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50 pt-24">
           <div className="max-w-6xl mx-auto py-8">
             <ContactModalV2 />
           </div>
@@ -325,6 +324,13 @@ export default function GratisOfferte() {
           </div>
         </section>
       </main>
+      
+      {/* Header Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+      
       <Footer showPartnerSlider={true} />
     </>
   );
