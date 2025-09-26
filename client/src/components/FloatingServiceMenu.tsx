@@ -837,7 +837,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                         type="text"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 placeholder:text-gray-500"
                         placeholder="Jan"
                         autoComplete="nope"
                         id="firstName-input"
@@ -855,7 +855,7 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 placeholder:text-gray-500"
                         placeholder="Jansen"
                         autoComplete="nope"
                         id="lastName-input"
@@ -867,51 +867,54 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      E-mailadres
-                    </label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      placeholder="Bijv. email@example.com"
-                      autoComplete="nope"
-                      id="email-input"
-                      name="email"
-                      data-form-type="email"
-                      role="textbox"
-                      aria-autocomplete="none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefoonnummer
-                    </label>
-                    <div className="flex">
-                      <select
-                        value={phoneCountry}
-                        onChange={(e) => setPhoneCountry(e.target.value)}
-                        className="flex items-center px-3 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                      >
-                        <option value="nl">🇳🇱 +31</option>
-                        <option value="be">🇧🇪 +32</option>
-                      </select>
+                  {/* E-mailadres en Telefoonnummer - Horizontale lijn */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        E-mailadres
+                      </label>
                       <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                        placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 placeholder:text-gray-500"
+                        placeholder="email@example.com"
                         autoComplete="nope"
-                        id="phone-input"
-                        name="phone"
-                        data-form-type="tel"
+                        id="email-input"
+                        name="email"
+                        data-form-type="email"
                         role="textbox"
                         aria-autocomplete="none"
                       />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Telefoonnummer
+                      </label>
+                      <div className="flex">
+                        <select
+                          value={phoneCountry}
+                          onChange={(e) => setPhoneCountry(e.target.value)}
+                          className="flex items-center px-2 bg-gray-50 border border-r-0 border-gray-300 rounded-l-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                        >
+                          <option value="nl">🇳🇱 +31</option>
+                          <option value="be">🇧🇪 +32</option>
+                        </select>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="flex-1 p-3 border border-gray-300 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 placeholder:text-gray-500"
+                          placeholder={phoneCountry === 'nl' ? '6 12 34 56 78' : '4 56 78 90 12'}
+                          autoComplete="nope"
+                          id="phone-input"
+                          name="phone"
+                          data-form-type="tel"
+                          role="textbox"
+                          aria-autocomplete="none"
+                        />
+                      </div>
                     </div>
                   </div>
 

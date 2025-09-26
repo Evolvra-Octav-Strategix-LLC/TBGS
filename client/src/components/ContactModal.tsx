@@ -600,8 +600,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   // Step 3: Contact Information
   const step3Content = (
     <div className="space-y-6">
-      {/* Personal Information */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {/* Voornaam en Achternaam - Horizontale lijn */}
+      <div className="grid grid-cols-2 gap-3 md:gap-6">
         <FormField
           control={form.control}
           name="firstName"
@@ -609,7 +609,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Voornaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw voornaam" className="h-12 border border-gray-300" {...field} />
+                <Input placeholder="Uw voornaam" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -623,13 +623,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Achternaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw achternaam" className="h-12 border border-gray-300" {...field} />
+                <Input placeholder="Uw achternaam" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+      </div>
 
+      {/* E-mailadres en Telefoonnummer */}
+      <div className="grid grid-cols-2 gap-3 md:gap-6">
         <FormField
           control={form.control}
           name="email"
@@ -637,7 +640,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 border border-gray-300" {...field} />
+                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -651,7 +654,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
-                <Input placeholder="06 12345678" className="h-12 border border-gray-300" {...field} />
+                <Input placeholder="06 12345678" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
