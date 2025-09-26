@@ -82,16 +82,16 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   onClick={onOpenContactModal}
-                  className="group bg-tbgs-navy text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="group bg-tbgs-navy text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:bg-blue-800 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <i className="fas fa-search mr-3 transition-transform group-hover:scale-110"></i>
+                  <i className="fas fa-search mr-2 sm:mr-3 transition-transform group-hover:scale-110 text-sm sm:text-base"></i>
                   Gratis inspectie in 24u gepland
                 </button>
                 <button 
                   onClick={() => scrollToSection('projecten')}
-                  className="group border-2 border-slate-300 text-slate-700 px-10 py-5 rounded-2xl font-semibold text-lg hover:border-tbgs-navy hover:text-tbgs-navy transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/50"
+                  className="group border-2 border-slate-300 text-slate-700 px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold text-sm sm:text-base lg:text-lg hover:border-tbgs-navy hover:text-tbgs-navy transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/50"
                 >
-                  <i className="fas fa-play mr-3 transition-transform group-hover:scale-110"></i>
+                  <i className="fas fa-play mr-2 sm:mr-3 transition-transform group-hover:scale-110 text-sm sm:text-base"></i>
                   Bekijk onze projecten
                 </button>
               </div>
