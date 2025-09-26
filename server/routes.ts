@@ -1044,30 +1044,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({ error: "Google Places API key not configured" });
     }
     
-    try {
-      // Fetch real data from Google Places API
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,formatted_address,formatted_phone_number,website,opening_hours,geometry,photos,user_ratings_total&key=${apiKey}`
-      );
-      
-      if (!response.ok) {
-        throw new Error(`Google Places API error: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data.status !== 'OK') {
-        console.error('Google Places API status:', data.status, data.error_message);
-        throw new Error(`Google Places API status: ${data.status}`);
-      }
-      
-      // Return the real business data from Google
-      res.json(data.result);
-    } catch (error) {
-      console.error("Error fetching Google Business data:", error);
-      
-      // Return your actual TBGS business data
-      const tbgsData = {
+    // Temporarily force fallback to use correct TBGS reviews
+    // TODO: Find correct Place ID for TBGS to get authentic reviews
+    console.log(`Forcing fallback for Place ID: ${placeId} to ensure correct TBGS reviews`);
+    
+    // Return your actual TBGS business data
+    const tbgsData = {
         place_id: placeId,
         name: "TBGS BV - Totaal Bouw Groep Specialisten",
         formatted_address: "Hurksestraat 64, 5652 AL Eindhoven, Nederland",
@@ -1145,8 +1127,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ]
       };
 
-      res.json(tbgsData);
-    }
+    res.json(tbgsData);
   });
 
   // ==================== ADMIN API ROUTES ====================
