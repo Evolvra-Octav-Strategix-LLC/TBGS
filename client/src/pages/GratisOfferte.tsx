@@ -88,7 +88,7 @@ export default function GratisOfferte() {
                     <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & Service</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4">Preventief onderhoud bespaart u duizenden euro's. Onze specialisten houden uw woning in topconditie.</p>
+                    <p className="text-gray-600 mb-4">Preventief onderhoud voorkomt kostbare reparaties. Onze specialisten houden uw woning in topconditie.</p>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Preventief onderhoudsplan</li>
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Dakgoot onderhoud</li>
@@ -163,7 +163,7 @@ export default function GratisOfferte() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="mb-4 text-blue-100">Lekkage of noodgeval? Wij zijn 24/7 bereikbaar en staan binnen 2 uur bij u voor de deur.</p>
+                  <p className="mb-4 text-blue-100">Lekkage of noodgeval? Wij zijn 24/7 bereikbaar en staan binnen 24 uur bij u voor de deur.</p>
                   <div className="space-y-3">
                     <a href="tel:+31402026744" className="flex items-center text-white hover:text-blue-200 transition-colors">
                       <Phone className="w-4 h-4 mr-2" />
@@ -194,7 +194,7 @@ export default function GratisOfferte() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-2">Snelle Reactie</h4>
-                      <p className="text-gray-600">Binnen 2 uur contact en inspectie. Voor spoedgevallen direct ter plaatse.</p>
+                      <p className="text-gray-600">Binnen 24 uur contact en inspectie. Voor spoedgevallen direct ter plaatse.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -298,54 +298,55 @@ export default function GratisOfferte() {
             <div className="space-y-8">
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Wat kost een offerte voor dakrenovatie in Eindhoven?
+                  Waarom zou ik een offerte aanvragen bij TBGS?
                 </h3>
                 <p className="text-gray-700">
-                  Het aanvragen van een offerte bij TBGS is altijd gratis en vrijblijvend. De kosten voor dakrenovatie 
-                  variëren afhankelijk van de grootte van het dak, gekozen materialen en complexiteit van het project. 
-                  Gemiddeld liggen de kosten tussen €75-€150 per m² voor complete dakrenovatie.
+                  TBGS heeft 80+ jaar ervaring als familiebedrijf en werkt met gecertificeerde specialisten. Alle offertes zijn gratis en vrijblijvend, met transparante communicatie over werkzaamheden en garantie op alle uitgevoerd werk.
                 </p>
               </div>
               
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Hoe snel krijg ik een reactie van TBGS?
+                  Hoe snel krijg ik reactie op mijn offerteaanvraag?
                 </h3>
                 <p className="text-gray-700">
-                  Wij nemen binnen 24 uur contact met u op na het indienen van uw offerteaanvraag. Voor spoedgevallen 
-                  zoals daklekkage bieden wij 24/7 service en kunnen wij vaak dezelfde dag nog ter plaatse zijn.
+                  Wij nemen binnen 24 uur contact met u op na het indienen van uw offerteaanvraag. Voor spoedgevallen zoals daklekkage bieden wij 24/7 service en streven we ernaar dezelfde dag ter plaatse te zijn.
                 </p>
               </div>
               
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Is een offerte gratis en vrijblijvend?
+                  Wat gebeurt er na mijn offerteaanvraag?
                 </h3>
                 <p className="text-gray-700">
-                  Ja, alle offertes van TBGS zijn volledig gratis en vrijblijvend. Dit geldt voor alle onze diensten: 
-                  dakwerkzaamheden, schoorsteenreparaties, onderhoudsdiensten en bouwprojecten. Er zijn geen verborgen kosten.
+                  Na uw aanvraag nemen we contact op voor een gratis inspectie ter plaatse. We bespreken uw wensen, maken foto's en meten op. Binnen 48 uur ontvangt u een gedetailleerde, vrijblijvende offerte met duidelijke omschrijving en garantievoorwaarden.
                 </p>
               </div>
               
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Werken jullie ook in België (bijv. Lommel en Pelt)?
+                  Werken jullie ook in België?
                 </h3>
                 <p className="text-gray-700">
-                  Ja, TBGS is actief in zowel Nederland als België. In België werken wij voornamelijk in de provincie Limburg, 
-                  inclusief Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel en omliggende gemeenten. Dezelfde kwaliteit en service 
-                  als in Nederland.
+                  Ja, TBGS is actief in zowel Nederland als België. In België werken wij vooral in de provincie Limburg, inclusief gemeenten zoals Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel en Kaulille. Dezelfde kwaliteit en service als in Nederland.
                 </p>
               </div>
               
               <div className="bg-gray-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  Kan ik een spoedaanvraag doen bij een lekkage?
+                  Wat als ik spoed heb met een lekkage?
                 </h3>
                 <p className="text-gray-700">
-                  Absoluut! Voor noodgevallen zoals daklekkage, schoorsteenproblemen of andere urgente reparaties bieden wij 
-                  24/7 spoedservice. Bel direct +31 (0)40 244 58 20 of markeer uw aanvraag als 'urgent' in het formulier. 
-                  Wij zijn vaak binnen enkele uren ter plaatse.
+                  Voor noodgevallen hebben wij 24/7 spoedservice beschikbaar. Bel direct 040 202 6744 of markeer uw aanvraag als 'urgent' in het formulier. We streven ernaar binnen 24 uur ter plaatse te zijn en voeren eerst een noodreparatie uit om verdere schade te voorkomen.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Wat voor garantie krijg ik op het werk?
+                </h3>
+                <p className="text-gray-700">
+                  TBGS geeft uitgebreide garantie op alle uitgevoerde werkzaamheden. De garantietermijn verschilt per type werk, van 2 jaar op onderhoud tot 10 jaar op dakbedekkingen. Alle garantievoorwaarden worden duidelijk vermeld in uw offerte.
                 </p>
               </div>
             </div>
