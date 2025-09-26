@@ -63,7 +63,7 @@ export default function GratisOfferte() {
                       <img src={tdsLogo} alt="TDS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-tbgs-red text-white">24/7 spoedservice</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage reparatie</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-tbgs-red transition-colors">Daklekkage reparatie</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Binnen 24 uur ter plaatse voor alle daklekkages. Van pannendak tot platdak - onze specialisten lossen het direct op.</p>
@@ -85,7 +85,7 @@ export default function GratisOfferte() {
                       <img src={tosLogo} alt="TOS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-tbgs-green text-white">Preventief</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & service</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-tbgs-green transition-colors">Onderhoud & service</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Preventief onderhoud voorkomt kostbare reparaties. Onze specialisten houden uw woning in topconditie.</p>
@@ -107,7 +107,7 @@ export default function GratisOfferte() {
                       <img src={tssLogo} alt="TSS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-tbgs-blue text-white">Jaarlijks</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">Schoorsteen specialist</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-tbgs-blue transition-colors">Schoorsteen specialist</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Veilige en efficiënte schoorsteenservice. Van jaarlijkse controle tot volledige renovatie.</p>
@@ -129,7 +129,7 @@ export default function GratisOfferte() {
                       <img src={tbsLogo} alt="TBS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-tbgs-orange text-white">Complete projecten</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & renovatie</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-tbgs-orange transition-colors">Bouw & renovatie</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Van kleine verbouwingen tot complete renovaties. Uw droomproject van A tot Z.</p>
