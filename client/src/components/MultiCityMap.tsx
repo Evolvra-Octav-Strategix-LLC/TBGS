@@ -92,47 +92,89 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
     // Info window for markers
     const infoWindow = new window.google.maps.InfoWindow();
 
-    // Add markers for each city
-    serviceCities.forEach((city) => {
-      const marker = new window.google.maps.Marker({
-        position: { lat: city.lat, lng: city.lng },
-        map: map,
-        title: `${city.name}, ${city.country}`,
-        icon: {
-          url: city.country === 'Netherlands' 
-            ? 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'  // Netherlands = Blue
-            : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',   // Belgium = Red
-          scaledSize: new window.google.maps.Size(32, 32)
-        }
-      });
+    // Create a large service area polygon instead of individual markers
+    const serviceAreaCoords = [
+      // Northern boundary (Netherlands)
+      { lat: 51.55, lng: 5.35 },   // Northwest
+      { lat: 51.55, lng: 5.7 },    // Northeast
+      
+      // Eastern boundary
+      { lat: 51.4, lng: 5.7 },     // East Netherlands
+      { lat: 51.3, lng: 5.5 },     // East transition
+      
+      // Southern boundary (Belgium)
+      { lat: 51.15, lng: 5.5 },    // Southeast Belgium
+      { lat: 51.15, lng: 5.0 },    // Southwest Belgium
+      
+      // Western boundary
+      { lat: 51.25, lng: 4.95 },   // West Belgium
+      { lat: 51.35, lng: 5.25 },   // West transition
+      { lat: 51.45, lng: 5.3 },    // West Netherlands
+    ];
 
-      // Add click event for info window
-      marker.addListener('click', () => {
-        const countryFlag = city.country === 'Netherlands' ? '🇳🇱' : '🇧🇪';
-        const content = `
-          <div style="font-family: Arial, sans-serif; min-width: 200px;">
-            <h3 style="margin: 0 0 8px 0; color: #1e40af;">${countryFlag} ${city.name}</h3>
-            <p style="margin: 0 0 8px 0; color: #64748b;">${city.country}</p>
-            <div style="margin-top: 12px;">
-              <a href="https://maps.google.com/?q=${city.lat},${city.lng}" 
-                 target="_blank" 
-                 style="color: #1e40af; text-decoration: none; font-weight: 500;">
-                📍 Routebeschrijving
+    // Create the service area polygon
+    const serviceArea = new window.google.maps.Polygon({
+      paths: serviceAreaCoords,
+      strokeColor: '#1e40af',
+      strokeOpacity: 0.8,
+      strokeWeight: 3,
+      fillColor: '#3b82f6',
+      fillOpacity: 0.2,
+      map: map
+    });
+
+    // Add central marker for the service area
+    const centralMarker = new window.google.maps.Marker({
+      position: { lat: centerLat, lng: centerLng },
+      map: map,
+      title: 'TBGS Servicegebied - Nederland & België',
+      icon: {
+        url: 'https://maps.google.com/mapfiles/ms/icons/blue-pushpin.png',
+        scaledSize: new window.google.maps.Size(40, 40)
+      }
+    });
+
+    // Add click event for service area info
+    const showServiceAreaInfo = () => {
+      const content = `
+        <div style="font-family: Arial, sans-serif; min-width: 280px;">
+          <h3 style="margin: 0 0 8px 0; color: #1e40af;">🏠 TBGS Servicegebied</h3>
+          <p style="margin: 0 0 12px 0; color: #64748b;">Complete bouwdiensten in Nederland & België</p>
+          
+          <div style="margin-bottom: 12px;">
+            <h4 style="margin: 0 0 4px 0; color: #374151; font-size: 14px;">🇳🇱 Nederland:</h4>
+            <p style="margin: 0; color: #6b7280; font-size: 13px;">Eindhoven, Nuenen, Veldhoven, Best, Son en Breugel, Geldrop, Mierlo, Waalre, Valkenswaard</p>
+          </div>
+          
+          <div style="margin-bottom: 12px;">
+            <h4 style="margin: 0 0 4px 0; color: #374151; font-size: 14px;">🇧🇪 België:</h4>
+            <p style="margin: 0; color: #6b7280; font-size: 13px;">Retie, Lommel, Hamont-Achel, Pelt, Sint-Huibrechts-Lille, Overpelt, Neerpelt</p>
+          </div>
+          
+          <div style="border-top: 1px solid #e5e7eb; padding-top: 12px; margin-top: 12px;">
+            <div style="margin-bottom: 8px;">
+              <a href="/locaties" 
+                 style="color: #059669; text-decoration: none; font-weight: 500; font-size: 14px;">
+                🏠 Bekijk alle locaties
               </a>
             </div>
-            <div style="margin-top: 8px;">
-              <a href="/nl/locaties/${city.name.toLowerCase().replace(/\s+/g, '-')}" 
-                 style="color: #059669; text-decoration: none; font-weight: 500;">
-                🏠 Onze diensten in ${city.name}
+            <div>
+              <a href="/contact" 
+                 style="color: #1e40af; text-decoration: none; font-weight: 500; font-size: 14px;">
+                📞 Contact opnemen
               </a>
             </div>
           </div>
-        `;
-        
-        infoWindow.setContent(content);
-        infoWindow.open(map, marker);
-      });
-    });
+        </div>
+      `;
+      
+      infoWindow.setContent(content);
+      infoWindow.open(map, centralMarker);
+    };
+
+    // Add click events
+    centralMarker.addListener('click', showServiceAreaInfo);
+    serviceArea.addListener('click', showServiceAreaInfo);
 
     // Fit map to show all markers
     const bounds = new window.google.maps.LatLngBounds();
@@ -156,16 +198,19 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
       
       {/* Legend */}
       <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border">
-        <h4 className="font-semibold text-sm text-gray-900 mb-2">Servicegebied TBGS</h4>
+        <h4 className="font-semibold text-sm text-gray-900 mb-2">TBGS Servicegebied</h4>
         <div className="space-y-1 text-xs">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <span className="text-gray-700">🇳🇱 Nederland</span>
+            <span className="text-gray-700">Servicegebied</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span className="text-gray-700">🇧🇪 België</span>
+            <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+            <span className="text-gray-700">Hoofdkantoor</span>
           </div>
+        </div>
+        <div className="mt-2 pt-2 border-t border-gray-200">
+          <p className="text-xs text-gray-600">🇳🇱 Nederland • 🇧🇪 België</p>
         </div>
       </div>
     </div>
