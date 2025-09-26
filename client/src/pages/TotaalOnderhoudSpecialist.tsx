@@ -200,7 +200,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-building text-tbgs-green text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">VvE Onderhoud</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">VvE onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Appartementencomplexen</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Gemeenschappelijke ruimtes</li>
@@ -219,7 +219,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
                 <i className="fas fa-leaf text-tbgs-green text-2xl"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Duurzaam Onderhoud</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Duurzaam onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Milieuvriendelijke producten</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Energiebesparende oplossingen</li>
@@ -255,7 +255,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-20 h-20 bg-tbgs-green rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">1</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Inspectie & Analyse</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Inspectie & analyse</h3>
               <p className="text-gray-600">
                 Grondige inspectie van uw pand en gedetailleerde analyse van de onderhoudsstaat. 
                 Advies over prioriteiten en planning.
@@ -266,7 +266,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-20 h-20 bg-tbgs-green rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">2</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Planning & Offerte</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Planning & offerte</h3>
               <p className="text-gray-600">
                 Uitgebreide planning van alle werkzaamheden en transparante offerte. 
                 Duidelijke communicatie over kosten en tijdslijnen.
@@ -277,7 +277,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-20 h-20 bg-tbgs-green rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">3</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Uitvoering Onderhoud</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Uitvoering onderhoud</h3>
               <p className="text-gray-600">
                 Professionele uitvoering door ervaren vakmensen. 
                 Minimale overlast en dagelijkse voortgangsrapportage.
@@ -288,7 +288,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="w-20 h-20 bg-tbgs-green rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-white">4</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Nazorg & Garantie</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Nazorg & garantie</h3>
               <p className="text-gray-600">
                 Eindcontrole en nazorg. Onderhoudsadvies voor de toekomst 
                 en uitgebreide garantie op alle werkzaamheden.
@@ -303,7 +303,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Onderhoud Kennisbank
+              Onderhoud kennisbank
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Uitgebreide informatieartikelen over onderhoud, preventie en zorg voor uw woning. 
@@ -318,7 +318,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-home text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakkapel Reinigen</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakkapel reinigen</h3>
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>dakkapel reiniging</strong> voor optimale lichtinval en schone constructie. Complete zorg met maatwerk abonnement.
                 </p>
@@ -334,7 +334,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-tools text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Dakkapel</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud dakkapel</h3>
                 <p className="text-gray-600 mb-4">
                   Complete <strong>dakkapel onderhoud</strong> door ervaren specialisten. Preventief onderhoud voorkomt kostbare reparaties.
                 </p>
@@ -350,7 +350,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-tree text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Hout in Dak</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud hout in dak</h3>
                 <p className="text-gray-600 mb-4">
                   <strong>Houtbescherming</strong> voor dakconstructies door ervaren specialisten. Preventieve behandeling tegen aantasting.
                 </p>
@@ -382,7 +382,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-car text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Garage</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud garage</h3>
                 <p className="text-gray-600 mb-4">
                   Complete <strong>garage onderhoud</strong> door ervaren specialisten. Van dak tot vloer - alle aspecten van garage zorg.
                 </p>
@@ -398,7 +398,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-tint text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud Dakgoot</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud dakgoot</h3>
                 <p className="text-gray-600 mb-4">
                   Professioneel <strong>dakgoot onderhoud</strong> voorkomt wateroverlast. Regelmatige reiniging en preventieve zorg.
                 </p>
@@ -414,7 +414,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 <i className="fas fa-shield-alt text-green-600 text-4xl"></i>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief Onderhoud</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief onderhoud</h3>
                 <p className="text-gray-600 mb-4">
                   <strong>Preventief onderhoud</strong> bespaart geld en voorkomt problemen. Maatwerk onderhoudsprogramma voor uw woning.
                 </p>

@@ -53,7 +53,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                 <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-clock text-2xl text-green-600"></i>
                 </div>
-                <div className="font-bold text-slate-900 mb-2">Snelle Reactie</div>
+                <div className="font-bold text-slate-900 mb-2">Snelle reactie</div>
                 <div className="text-slate-600 text-sm">Binnen 24 uur contact</div>
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
@@ -183,7 +183,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
             {/* Quick Contact Form */}
             <div>
               <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-8 lg:p-12 text-white sticky top-8">
-                <h2 className="text-3xl font-bold mb-8">Snelle Offerte Aanvraag</h2>
+                <h2 className="text-3xl font-bold mb-8">Snelle offerte aanvraag</h2>
                 
                 {/* Service Selection */}
                 <div className="mb-6">

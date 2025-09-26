@@ -28,7 +28,7 @@ export default function GratisOfferte() {
   return (
     <>
       <SEOHead 
-        title="Gratis Offerte Aanvragen - TBGS B.V. | Professionele Dak-, Schoorsteen-, Onderhoud- en Bouwdiensten"
+        title="Gratis offerte aanvragen - TBGS B.V. | Professionele Dak-, Schoorsteen-, Onderhoud- en Bouwdiensten"
         description="Vraag nu een gratis offerte aan voor uw dak-, schoorsteen-, onderhoud- of bouwproject. TBGS B.V. biedt professionele diensten in heel Nederland en België. Binnen 24 uur contact!"
         keywords="gratis offerte, dakdekker offerte, schoorsteen reparatie offerte, bouw offerte, onderhoud offerte, TBGS aanvraag"
         url="/offerte"
@@ -63,7 +63,7 @@ export default function GratisOfferte() {
                       <img src={tdsLogo} alt="TDS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-red-500 text-white">24/7 Spoedservice</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage Reparatie</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage reparatie</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Binnen 24 uur ter plaatse voor alle daklekkages. Van pannendak tot platdak - onze specialisten lossen het direct op.</p>
@@ -85,7 +85,7 @@ export default function GratisOfferte() {
                       <img src={tosLogo} alt="TOS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-green-500 text-white">Preventief</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & Service</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & service</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Preventief onderhoud voorkomt kostbare reparaties. Onze specialisten houden uw woning in topconditie.</p>
@@ -107,7 +107,7 @@ export default function GratisOfferte() {
                       <img src={tssLogo} alt="TSS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-blue-500 text-white">Jaarlijks</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">Schoorsteen Specialist</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">Schoorsteen specialist</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Veilige en efficiënte schoorsteenservice. Van jaarlijkse controle tot volledige renovatie.</p>
@@ -131,7 +131,7 @@ export default function GratisOfferte() {
                       <img src={tbsLogo} alt="TBS Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <Badge className="mb-3 bg-orange-500 text-white">Complete Projecten</Badge>
-                    <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & Renovatie</CardTitle>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & renovatie</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 mb-4">Van kleine verbouwingen tot complete renovaties. Uw droomproject van A tot Z.</p>
@@ -154,7 +154,7 @@ export default function GratisOfferte() {
                     </div>
                     <div>
                       <Badge className="mb-2 bg-red-500 text-white">Urgent</Badge>
-                      <CardTitle className="text-lg">Spoedservice Beschikbaar</CardTitle>
+                      <CardTitle className="text-lg">Spoedservice beschikbaar</CardTitle>
                     </div>
                   </div>
                 </CardHeader>
@@ -182,14 +182,14 @@ export default function GratisOfferte() {
             <div className="grid lg:grid-cols-2 gap-16">
               {/* Process Section */}
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Ons Bewezen Proces</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Ons bewezen proces</h3>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-10 h-10 bg-tbgs-navy rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-bold">1</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Snelle Reactie</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">Snelle reactie</h4>
                       <p className="text-gray-600">Binnen 24 uur contact en inspectie. Voor spoedgevallen direct ter plaatse.</p>
                     </div>
                   </div>
@@ -198,7 +198,7 @@ export default function GratisOfferte() {
                       <span className="text-white font-bold">2</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Gratis Inspectie</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">Gratis inspectie</h4>
                       <p className="text-gray-600">Uitgebreide inspectie en transparante offerte zonder verborgen kosten.</p>
                     </div>
                   </div>
@@ -207,7 +207,7 @@ export default function GratisOfferte() {
                       <span className="text-white font-bold">3</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Vakkundige Uitvoering</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">Vakkundige uitvoering</h4>
                       <p className="text-gray-600">Gecertificeerde specialisten met 80+ jaar ervaring en volledige garantie.</p>
                     </div>
                   </div>
@@ -216,13 +216,13 @@ export default function GratisOfferte() {
 
               {/* Benefits Section */}
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Waarom TBGS Kiezen?</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Waarom TBGS kiezen?</h3>
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-4 shadow-sm">
                     <div className="flex items-center space-x-3">
                       <Award className="w-6 h-6 text-yellow-500" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">80 Jaar Familietraditie</h4>
+                        <h4 className="font-semibold text-gray-900">80 jaar familietraditie</h4>
                         <p className="text-sm text-gray-600">Van vader op zoon, vier generaties vakmanschap</p>
                       </div>
                     </div>
