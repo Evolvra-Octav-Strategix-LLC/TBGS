@@ -62,7 +62,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tdsLogo} alt="TDS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-red-500 text-white">24/7 spoedservice</Badge>
+                    <Badge className="mb-3 bg-tbgs-red text-white">24/7 spoedservice</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage reparatie</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -84,7 +84,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tosLogo} alt="TOS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-green-500 text-white">Preventief</Badge>
+                    <Badge className="mb-3 bg-tbgs-green text-white">Preventief</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & service</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -106,7 +106,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tssLogo} alt="TSS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-blue-500 text-white">Jaarlijks</Badge>
+                    <Badge className="mb-3 bg-tbgs-blue text-white">Jaarlijks</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">Schoorsteen specialist</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -128,7 +128,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tbsLogo} alt="TBS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-orange-500 text-white">Complete projecten</Badge>
+                    <Badge className="mb-3 bg-tbgs-orange text-white">Complete projecten</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & renovatie</CardTitle>
                   </CardHeader>
                   <CardContent>
