@@ -220,7 +220,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <div><Link href="/daken/daklekkage" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Daklekkage</Link></div>
                     <div><Link href="/daken/dakisolatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakisolatie</Link></div>
                     <div><Link href="/daken/dakgoot-reinigen" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakgoten</Link></div>
-                    <div><Link href="/daken/dakrenovatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakreparatie</Link></div>
+                    <div><Link href="/daken/dakrenovatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakrenovatie</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
