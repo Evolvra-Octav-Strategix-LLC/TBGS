@@ -29,7 +29,6 @@ const formSchema = z.object({
   phone: z.string().min(10, "Telefoonnummer is verplicht"),
   location: z.string().min(1, "Locatie is verplicht"),
   description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
-  tijdlijn: z.string().min(1, "Selecteer een tijdlijn"),
   budget: z.string().optional(),
   contactVoorkeur: z.string().min(1, "Selecteer contactvoorkeur"),
   attachments: z.array(z.string()).optional(),
@@ -66,7 +65,6 @@ export default function ContactModalV2() {
       phone: "",
       location: "",
       description: "",
-      tijdlijn: "",
       budget: "",
       contactVoorkeur: "",
       attachments: [],
@@ -295,14 +293,6 @@ export default function ContactModalV2() {
     { value: "onderhoud", label: "Onderhoudscontract", description: "Jaarlijks preventief onderhoud" }
   ];
 
-  const tijdlijnen = [
-    { value: "asap", label: "Zo snel mogelijk" },
-    { value: "1-week", label: "Binnen 1 week" },
-    { value: "2-weeks", label: "Binnen 2 weken" },
-    { value: "1-month", label: "Binnen 1 maand" },
-    { value: "3-months", label: "Binnen 3 maanden" },
-    { value: "flexible", label: "Flexibel" }
-  ];
 
   const budgetOpties = [
     { value: "unknown", label: "Weet ik nog niet" },
@@ -533,28 +523,6 @@ export default function ContactModalV2() {
       />
 
 
-      <FormField
-        control={form.control}
-        name="tijdlijn"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Gewenste tijdlijn *</FormLabel>
-            <FormControl>
-              <Select value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger className="border border-gray-300">
-                  <SelectValue placeholder="Wanneer moet het klaar zijn?" />
-                </SelectTrigger>
-                <SelectContent>
-                  {tijdlijnen.map((tijdlijn) => (
-                    <SelectItem key={tijdlijn.value} value={tijdlijn.value}>{tijdlijn.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
 
       <FormField
         control={form.control}
