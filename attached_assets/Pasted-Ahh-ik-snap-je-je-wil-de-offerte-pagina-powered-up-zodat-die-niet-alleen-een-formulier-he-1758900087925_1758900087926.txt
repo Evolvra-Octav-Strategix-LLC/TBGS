@@ -1,0 +1,109 @@
+Ahh ik snap je ⚡ — je wil de **/offerte pagina “powered up”** zodat die niet alleen een formulier heeft, maar ook echt een **SEO & GBP booster** wordt. Denk: conversie + autoriteit + geo-signalen in één.
+
+Hier is hoe je dat nóg krachtiger maakt:
+
+---
+
+# 🔥 Power-Up Strategie voor je Offertepagina
+
+## 1. **Hero + Formulier bovenaan (focus op conversie)**
+
+* Hou het formulier prominent bovenaan.
+* Voeg een **USP-header** erboven:
+
+  > “Vraag vandaag nog uw gratis dakinspectie aan – binnen 24 uur reactie.”
+* Zet er direct trust-icons bij (25+ jaar ervaring, garantie, 24/7 service).
+
+---
+
+## 2. **SEO Contentblok (400–600 woorden)**
+
+* Korte intro: *waarom een offerte aanvragen belangrijk is*.
+* Leg uit: hoe het proces werkt (aanvraag → inspectie → offerte → uitvoering).
+* Highlight je diensten: daklekkage, renovatie, onderhoud, schoorsteen.
+* Voeg geo-signalen: *“Wij werken in Eindhoven, Nuenen, Veldhoven, Best, maar ook in België zoals Lommel en Pelt.”*
+* Schrijf dit in **natuurlijke taal** → Google ziet zowel zoekwoorden als context.
+
+---
+
+## 3. **Google Maps Embed + NAP**
+
+* Voeg een **Google Maps iframe** toe van je GBP-locatie.
+* Zet daaronder exact:
+
+  ```
+  Totaal Bouw Groep Specialisten B.V. (TBGS)
+  [Adres]
+  [Postcode] [Stad]
+  Tel: [nummer]
+  ```
+* Dit zorgt voor **NAP-consistency** → belangrijk voor GBP-ranking.
+
+---
+
+## 4. **FAQ Sectie (Schema.org FAQ markup)**
+
+Voorbeeldvragen:
+
+* Wat kost een offerte voor dakrenovatie in Eindhoven?
+* Hoe snel krijg ik een reactie van TBGS?
+* Is een offerte gratis en vrijblijvend?
+* Werken jullie ook in België (bijv. Lommel en Pelt)?
+* Kan ik spoed aanvragen bij een lekkage?
+
+👉 Met FAQ-schema kan dit als **rich result** in Google verschijnen → dubbel zichtbaar.
+
+---
+
+## 5. **Review/Trust Blok**
+
+* Zet 1–2 klantreviews specifiek mét plaatsnaam:
+
+  > ⭐⭐⭐⭐⭐
+  > “Binnen één dag geholpen met mijn daklekkage in Eindhoven. Super service!”
+* Voeg **Review schema markup** toe → sterretjes kunnen in Google getoond worden.
+
+---
+
+## 6. **Geo-Interne Links**
+
+* Onder de reviews:
+
+  > “Wij leveren offertes o.a. in Eindhoven, Nuenen, Veldhoven, Best, Lommel en Pelt.”
+* Elke stad → interne link naar de juiste city/service landingspagina.
+
+👉 Dit stuurt SEO-juice direct naar je belangrijkste lokale pagina’s.
+
+---
+
+## 7. **Call-to-Action Footer**
+
+* Eindig de pagina met nog één CTA, bv.:
+
+  > “Klaar om uw project te starten?
+  > Vraag direct uw gratis offerte aan en ons team neemt binnen 24 uur contact op.”
+
+---
+
+# ⚡ Samengevat – Powered Up /Offerte pagina
+
+1. **Formulier + USP’s** → conversie.
+2. **SEO contentblok (400–600 woorden)** → ranking.
+3. **Google Maps embed + NAP** → GBP boost.
+4. **FAQ met schema** → rich snippets.
+5. **Review sectie** → social proof.
+6. **Interne links naar city pages** → lokale SEO kracht.
+7. **CTA footer** → extra conversie.
+
+---
+
+👉 Dit maakt je offertepagina een **hybride monster**:
+
+* **Hoog in Google (SEO)**
+* **Sterk in Maps (GBP)**
+* **Betrouwbaar (reviews + NAP)**
+* **Conversiegericht (formulier + CTA’s)**
+
+---
+
+Wil je dat ik een **kant-en-klare voorbeeldtekst (400 woorden, SEO/geo-ready)** schrijf die je meteen onder je offerteformulier kunt plakken als startpunt?
