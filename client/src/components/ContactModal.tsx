@@ -664,35 +664,36 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         )}
       />
 
-      {/* E-mailadres */}
-      <FormField
-        control={form.control}
-        name="email"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>E-mailadres *</FormLabel>
-            <FormControl>
-              <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      {/* E-mailadres en Telefoonnummer */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>E-mailadres *</FormLabel>
+              <FormControl>
+                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      {/* Telefoonnummer */}
-      <FormField
-        control={form.control}
-        name="phone"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Telefoonnummer *</FormLabel>
-            <FormControl>
-              <Input placeholder="06 12345678" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefoonnummer *</FormLabel>
+              <FormControl>
+                <Input placeholder="06 12345678" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
 
       {/* Privacy Agreement */}
       <FormField
