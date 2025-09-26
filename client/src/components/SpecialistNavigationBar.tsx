@@ -23,7 +23,7 @@ export default function SpecialistNavigationBar() {
         <div className="grid grid-cols-4 gap-0">
           {/* TSS - Totaal Schoorsteen Specialist */}
           <Link href="/schoorsteen" className="group block">
-            <div className={`tbgs-blue hover:bg-tbgs-blue transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
+            <div className={`tbgs-blue hover:bg-blue-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
@@ -41,7 +41,7 @@ export default function SpecialistNavigationBar() {
 
           {/* TDS - Totaal Dak Specialist */}
           <Link href="/dak" className="group block">
-            <div className={`tbgs-red hover:bg-tbgs-red transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
+            <div className={`tbgs-red hover:bg-red-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
@@ -59,7 +59,7 @@ export default function SpecialistNavigationBar() {
 
           {/* TOS - Totaal Onderhoud Specialist */}
           <Link href="/onderhoud" className="group block">
-            <div className={`tbgs-green hover:bg-tbgs-green transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
+            <div className={`tbgs-green hover:bg-green-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
@@ -77,7 +77,7 @@ export default function SpecialistNavigationBar() {
 
           {/* TBS - Totaal Bouw Specialist */}
           <Link href="/bouw" className="group block">
-            <div className={`tbgs-orange hover:bg-tbgs-orange transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
+            <div className={`tbgs-orange hover:bg-orange-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
