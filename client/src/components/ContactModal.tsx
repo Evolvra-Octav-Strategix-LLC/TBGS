@@ -728,30 +728,25 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       {/* Modal content */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
         <div 
-          className="bg-white rounded-xl max-w-md sm:max-w-3xl lg:max-w-5xl w-full max-h-[90vh] sm:max-h-[95vh] overflow-hidden pointer-events-auto shadow-xl"
+          className="bg-white rounded-xl max-w-md sm:max-w-3xl lg:max-w-5xl w-full max-h-[90vh] sm:max-h-[95vh] overflow-y-auto pointer-events-auto shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex justify-between items-center p-4 sm:p-6 border-b">
+          <div className="p-4 sm:p-6">
+            <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg sm:text-xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
               <Button variant="ghost" size="sm" onClick={onClose}>
                 <X className="w-5 h-5" />
               </Button>
             </div>
-            
-            {/* Scrollable content */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
 
-              <Form {...form}>
-                <MultiStepForm
-                  steps={steps}
-                  onSubmit={onSubmit}
-                  onBack={onClose}
-                  isSubmitting={submitMutation.isPending}
-                />
-              </Form>
-            </div>
+            <Form {...form}>
+              <MultiStepForm
+                steps={steps}
+                onSubmit={onSubmit}
+                onBack={onClose}
+                isSubmitting={submitMutation.isPending}
+              />
+            </Form>
           </div>
         </div>
       </div>
