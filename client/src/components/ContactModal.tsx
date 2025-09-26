@@ -679,6 +679,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <Input 
                 placeholder="uw.email@voorbeeld.nl" 
                 type="email" 
+                value={field.value || ""}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                name={field.name}
                 className={`h-10 border transition-colors placeholder:text-gray-500 ${
                   emailValue.length > 0 && !isEmailValid 
                     ? 'border-red-300 focus:border-red-500' 
@@ -686,7 +690,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       ? 'border-green-300 focus:border-green-500'
                       : 'border-gray-300 focus:border-blue-500'
                 }`}
-                {...field} 
               />
             </FormControl>
             <div className="flex justify-between items-center mt-1">
