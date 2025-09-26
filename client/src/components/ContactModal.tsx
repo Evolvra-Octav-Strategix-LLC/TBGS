@@ -20,7 +20,6 @@ import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 const formSchema = z.object({
   serviceType: z.string().min(1, "Selecteer een servicetype"),
-  specialisme: z.string().min(1, "Selecteer een specialist"),
   projectType: z.string().optional(),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
@@ -82,7 +81,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       serviceType: "",
-      specialisme: "",
       projectType: "",
       firstName: "",
       lastName: "",
@@ -104,7 +102,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       // Add form fields
       formData.append('selectedService', data.serviceType + (data.projectType ? ` - ${data.projectType}` : ''));
       formData.append('serviceType', data.serviceType);
-      formData.append('specialist', data.specialisme);
+      formData.append('specialist', 'General'); // Default since no specialist selection
       formData.append('projectType', data.projectType || '');
       formData.append('address', data.location);
       formData.append('projectDescription', data.description);
@@ -213,8 +211,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     tbs: ["Verbouwing", "Aanbouw", "Renovatie", "Keuken", "Badkamer", "Nieuwbouw"]
   };
 
-  const selectedSpecialisme = form.watch("specialisme");
-  const currentProjectTypes = selectedSpecialisme ? projectTypes[selectedSpecialisme as keyof typeof projectTypes] || [] : [];
+  // No specialist selection needed anymore
+  const currentProjectTypes: string[] = [];
   
   // Watch description field for live character counting
   const descriptionValue = form.watch("description") || "";
@@ -363,7 +361,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   };
 
-  // Step 1: Service & Specialist Selection
+  // Step 1: Service Selection
   const step1Content = (
     <div className="space-y-4">
       {/* Service Type Selection */}
@@ -411,79 +409,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         />
       </div>
 
-      {/* Specialist Selection */}
-      <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="specialisme"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-base font-semibold">Welke specialist heeft u nodig?</FormLabel>
-              <FormControl>
-                <div className="grid grid-cols-1 gap-2">
-                  {specialismen.map((spec) => (
-                    <div
-                      key={spec.value}
-                      className={`p-3 border-2 rounded-lg cursor-pointer transition-all hover:shadow-sm ${
-                        field.value === spec.value
-                          ? `border-white ${spec.color} text-white`
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                      }`}
-                      onClick={() => field.onChange(spec.value)}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                          <img 
-                            src={spec.logo} 
-                            alt={spec.label}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h5 className={`font-semibold ${
-                            field.value === spec.value ? 'text-white' : 'text-gray-900'
-                          }`}>
-                            {spec.label}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
 
-      {/* Project Type Selection */}
-      {selectedSpecialisme && (
-        <div className="space-y-3">
-          <FormField
-            control={form.control}
-            name="projectType"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-base font-semibold">Type Werkzaamheden</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger className="h-12 border border-gray-300">
-                      <SelectValue placeholder="Selecteer het type project" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {currentProjectTypes.map((type) => (
-                      <SelectItem key={type} value={type}>{type}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-      )}
     </div>
   );
 
@@ -730,8 +656,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const steps = [
     {
-      title: "Service & Specialist",
-      description: "Wat heeft u nodig en welke specialist moet u hebben?",
+      title: "Service",
+      description: "Wat heeft u nodig?",
       content: step1Content
     },
     {
