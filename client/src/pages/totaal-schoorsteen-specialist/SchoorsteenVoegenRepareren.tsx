@@ -224,7 +224,7 @@ export default function SchoorsteenVoegenRepareren({ onOpenContactModal }: Schoo
     <TSSArticleTemplate
       title="Schoorsteen Voegen Repareren 2025 | CO-Preventie | Onderhoudsabonnement | Nederland & België"
       description="🏠 Schoorsteen voegen repareren 2025! ✅ Voorkom CO-vergiftiging, verzanding behandeling, onderhoudsabonnement, bovenplaat & loodwerk - Nederland & België!"
-      url="https://tbgs.nl/totaal-schoorsteen-specialist/schoorsteen-voegen-repareren"
+      url="https://tbgs.nl/schoorsteen/schoorsteen-voegen-repareren"
       heroTitle="Schoorsteen voegen/repareren"
       heroSubtitle="Professionele reparatie van verzande voegen en schoorsteenlekkages. Voorkom levensgevaarlijke CO-dampen met vakkundig voegwerk."
       heroDescription="Complete schoorsteenreparatie inclusief voegen, bovenplaat en loodwerk. Onderhoudsabonnement voorkomt achterstallig onderhoud en zorgt voor jaarlijkse controle."

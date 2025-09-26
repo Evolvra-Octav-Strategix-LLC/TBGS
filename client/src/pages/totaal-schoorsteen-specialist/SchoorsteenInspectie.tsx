@@ -238,7 +238,7 @@ export default function SchoorsteenInspectie({ onOpenContactModal }: Schoorsteen
     <TSSArticleTemplate
       title="Schoorsteen Inspectie 2025 | Camera-Onderzoek | Onderhoudscertificaat | Nederland & België"
       description="🏠 Schoorsteen inspectie 2025! ✅ Camera-onderzoek rookkanaal, zonder hakwerk, fotografische documentatie, onderhoudscertificaat voor verzekering - Nederland & België!"
-      url="https://tbgs.nl/totaal-schoorsteen-specialist/schoorsteen-inspectie"
+      url="https://tbgs.nl/schoorsteen/schoorsteen-inspectie"
       heroTitle="Schoorsteen inspectie"
       heroSubtitle="Professionele camera-inspectie van rookkanalen. Geen hak- of breekwerk - uitgebreide fotografische documentatie voor verzekeringsdoeleinden."
       heroDescription="Grondige inspectie met speciaal camerasysteem detecteert verstoppingen, lekkages en scheuren. Schriftelijk rapport met betrouwbaar advies voor veilig stoken."

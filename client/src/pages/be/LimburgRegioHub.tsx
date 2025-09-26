@@ -159,15 +159,15 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center text-sm text-gray-600">
                     <ArrowRight className="w-4 h-4 mr-2 text-tbgs-blue" />
-                    <Link href="/be/totaal-schoorsteen-specialist/lommel" className="hover:text-tbgs-blue">Schoorsteenveger Lommel</Link>
+                    <Link href="/be/schoorsteen/lommel" className="hover:text-tbgs-blue">Schoorsteenveger Lommel</Link>
                   </div>
                   <div className="flex items-center text-sm text-gray-600">
                     <ArrowRight className="w-4 h-4 mr-2 text-tbgs-blue" />
-                    <Link href="/be/totaal-schoorsteen-specialist/hamont-achel" className="hover:text-tbgs-blue">Schoorsteenveger Hamont-Achel</Link>
+                    <Link href="/be/schoorsteen/hamont-achel" className="hover:text-tbgs-blue">Schoorsteenveger Hamont-Achel</Link>
                   </div>
                   <div className="flex items-center text-sm text-gray-600">
                     <ArrowRight className="w-4 h-4 mr-2 text-tbgs-blue" />
-                    <Link href="/be/totaal-schoorsteen-specialist/pelt" className="hover:text-tbgs-blue">Schoorsteenveger Pelt</Link>
+                    <Link href="/be/schoorsteen/pelt" className="hover:text-tbgs-blue">Schoorsteenveger Pelt</Link>
                   </div>
                 </div>
               </CardContent>

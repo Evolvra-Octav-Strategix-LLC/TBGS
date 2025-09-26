@@ -37,7 +37,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
       <SEOHead 
         title="Totaal Schoorsteen Specialist (TSS) - Schoorsteenwerken | TBGS"
         description="TSS - Totaal Schoorsteen Specialist van TBGS. Specialist in schoorsteenonderhoud, reparaties, vervangingen en rookkanaal services in Nederland en België."
-        url="https://tbgs.nl/totaal-schoorsteen-specialist"
+        url="https://tbgs.nl/schoorsteen"
       />
 
       <SpecialistNavigationBar />
@@ -283,7 +283,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Professioneel <strong>schoorsteen vegen</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Jaarlijks onderhoud voor veilige rookafvoer en brandpreventie.
                 </p>
-                <Link href="/totaal-schoorsteen-specialist/schoorsteen-vegen" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-vegen" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen vegen →
                 </Link>
               </div>
@@ -299,7 +299,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Grondige <strong>schoorsteen inspectie</strong> door ervaren <strong>schoorsteenvegers</strong>. Veiligheidscontrole en technische keuring van rookkanaal en constructie.
                 </p>
-                <Link href="/totaal-schoorsteen-specialist/schoorsteen-inspectie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-inspectie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen inspectie →
                 </Link>
               </div>
@@ -315,7 +315,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Complete <strong>schoorsteen renovatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Modernisering van oude schoorstenen met duurzame materialen.
                 </p>
-                <Link href="/totaal-schoorsteen-specialist/schoorsteen-renovatie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-renovatie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen renovatie →
                 </Link>
               </div>
@@ -347,7 +347,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>schoorsteen reparatie</strong> door vakkundige <strong>schoorsteenvegers</strong>. Voegwerk, schoorsteenkap reparatie en noodservice.
                 </p>
-                <Link href="/totaal-schoorsteen-specialist/schoorsteen-voegen-repareren" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-voegen-repareren" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen repareren →
                 </Link>
               </div>
@@ -363,7 +363,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Regelmatig <strong>schoorsteen onderhoud</strong> door gecertificeerde <strong>schoorsteenvegers</strong>. Preventief onderhoud voorkomt dure reparaties.
                 </p>
-                <Link href="/totaal-schoorsteen-specialist/schoorsteen-onderhoud" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-onderhoud" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen onderhoud →
                 </Link>
               </div>

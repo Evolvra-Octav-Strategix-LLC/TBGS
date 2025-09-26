@@ -235,7 +235,7 @@ export default function SchoorsteenOnderhoud({ onOpenContactModal }: Schoorsteen
     <TSSArticleTemplate
       title="Schoorsteen Onderhoud 2025 | ASPB Vegers | Onderhoudsabonnement | Nederland & België"
       description="🏠 Schoorsteen onderhoud 2025! ✅ ASPB schoorsteenvegers, binnen/buiten onderhoud, maatwerk abonnement, dak specialist - Nederland & België!"
-      url="https://tbgs.nl/totaal-schoorsteen-specialist/schoorsteen-onderhoud"
+      url="https://tbgs.nl/schoorsteen/schoorsteen-onderhoud"
       heroTitle="Schoorsteen onderhoud"
       heroSubtitle="Complete schoorsteenonderhoud door ASPB-vegers en dakspecialisten. Binnen- en buitenkant onderhoud met maatwerk onderhoudsabonnement."
       heroDescription="Gezonde leefomgeving met professioneel onderhoud. Samenstel uw eigen abonnement - betaal alleen voor gewenste diensten."

@@ -219,7 +219,7 @@ export default function SchoorsteenVegen({ onOpenContactModal }: SchoorsteenVege
     <TSSArticleTemplate
       title="Schoorsteen Vegen 2025 | ASPB Erkende Schoorsteenveger | Jaarlijkse Reiniging"
       description="🏠 Schoorsteen vegen 2025! ✅ ASPB erkende schoorsteenveger, jaarlijkse reiniging, buitendaks vegen, brandpreventie. Abonnement service - Nederland & België!"
-      url="https://tbgs.nl/totaal-schoorsteen-specialist/schoorsteen-vegen"
+      url="https://tbgs.nl/schoorsteen/schoorsteen-vegen"
       heroTitle="Schoorsteen vegen"
       heroSubtitle="Professionele schoorsteenreiniging door ASPB-erkende schoorsteenvegers. Jaarlijkse reiniging voor brandveiligheid en optimale rookafvoer."
       heroDescription="Buitendaks vegen met professioneel materiaal, veiligheidscontrole en reinigingscertificaat. Bescherm uw gezin met regelmatige schoorsteenreiniging."

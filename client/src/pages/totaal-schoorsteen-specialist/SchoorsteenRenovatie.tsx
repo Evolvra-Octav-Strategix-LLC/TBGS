@@ -200,7 +200,7 @@ export default function SchoorsteenRenovatie({ onOpenContactModal }: Schoorsteen
     <TSSArticleTemplate
       title="Schoorsteen Renovatie 2025 | ASPB Specialisten | Gaskachel Aansluiting | Nederland & België"
       description="🏠 Schoorsteen renovatie 2025! ✅ ASPB specialisten, voegen renovatie, gaskachel aansluiting, onderhoudsabonnement op maat - Nederland & België!"
-      url="https://tbgs.nl/totaal-schoorsteen-specialist/schoorsteen-renovatie"
+      url="https://tbgs.nl/schoorsteen/schoorsteen-renovatie"
       heroTitle="Schoorsteen renovatie"
       heroSubtitle="Complete schoorsteenrenovatie door ASPB-gecertificeerde specialisten. Van voegen herstelling tot moderne gaskachel aansluitingen."
       heroDescription="Uw schoorsteen weer als nieuw met professionele renovatie. Voorkom rookterugslag en CO-vergiftiging met vakkundige modernisering."
