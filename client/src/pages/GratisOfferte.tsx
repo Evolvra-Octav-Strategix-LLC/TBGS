@@ -90,7 +90,7 @@ export default function GratisOfferte() {
                   <CardContent>
                     <p className="text-gray-600 mb-4">Preventief onderhoud bespaart u duizenden euro's. Onze specialisten houden uw woning in topconditie.</p>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Gevelreiniging</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Preventief onderhoudsplan</li>
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Dakgoot onderhoud</li>
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Schilderwerk</li>
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Inspectieservice</li>
