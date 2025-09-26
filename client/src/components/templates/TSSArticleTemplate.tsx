@@ -117,7 +117,7 @@ export default function TSSArticleTemplate({
             <div className="space-y-8">
               <div className="space-y-4">
                 {urgencyText && (
-                  <div className="bg-blue-600 text-white px-4 py-2 rounded-full inline-block">
+                  <div className="bg-tbgs-blue text-white px-4 py-2 rounded-full inline-block">
                     <i className="fas fa-exclamation-triangle mr-2"></i>
                     {urgencyText}
                   </div>
@@ -136,14 +136,14 @@ export default function TSSArticleTemplate({
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   onClick={onOpenContactModal}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                  className="bg-tbgs-blue text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-tools mr-3"></i>
                   {primaryButtonText}
                 </button>
                 <a 
                   href="tel:+31402026744"
-                  className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center"
+                  className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fas fa-phone mr-3"></i>
                   {secondaryButtonText}
@@ -152,15 +152,15 @@ export default function TSSArticleTemplate({
 
               <div className="grid grid-cols-3 gap-6 pt-8 border-t">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">{stats.stat1.number}</div>
+                  <div className="text-3xl font-bold text-tbgs-blue">{stats.stat1.number}</div>
                   <div className="text-sm text-gray-600">{stats.stat1.text}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">{stats.stat2.number}</div>
+                  <div className="text-3xl font-bold text-tbgs-blue">{stats.stat2.number}</div>
                   <div className="text-sm text-gray-600">{stats.stat2.text}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">{stats.stat3.number}</div>
+                  <div className="text-3xl font-bold text-tbgs-blue">{stats.stat3.number}</div>
                   <div className="text-sm text-gray-600">{stats.stat3.text}</div>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function TSSArticleTemplate({
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center">
                     <i className="fas fa-certificate text-white text-xl"></i>
                   </div>
                   <div>
@@ -202,7 +202,7 @@ export default function TSSArticleTemplate({
             {sections.map((section, index) => (
               <div key={index} className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                  {section.icon && <i className={`${section.icon} text-blue-600 mr-4`}></i>}
+                  {section.icon && <i className={`${section.icon} text-tbgs-blue mr-4`}></i>}
                   {section.title}
                 </h2>
                 
@@ -215,7 +215,7 @@ export default function TSSArticleTemplate({
                     {section.items.map((item, itemIndex) => (
                       <div key={itemIndex} className="bg-gray-50 p-6 rounded-xl border hover:shadow-md transition-shadow">
                         <div className="flex items-center mb-3">
-                          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                          <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center mr-4">
                             <i className="fas fa-check text-white"></i>
                           </div>
                           <h3 className="text-lg font-bold text-gray-900">{item}</h3>
@@ -234,7 +234,7 @@ export default function TSSArticleTemplate({
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {processSteps.map((step, index) => (
                     <div key={index} className="text-center">
-                      <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 bg-tbgs-blue rounded-full flex items-center justify-center mx-auto mb-4">
                         <span className="text-2xl font-bold text-white">{index + 1}</span>
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
@@ -278,7 +278,7 @@ export default function TSSArticleTemplate({
             <div className="text-center mb-8">
               <Link 
                 href="/schoorsteen" 
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
+                className="inline-flex items-center text-tbgs-blue hover:text-blue-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>
                 Terug naar Schoorsteen
@@ -290,7 +290,7 @@ export default function TSSArticleTemplate({
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-blue-600 text-white">
+      <section className="py-16 lg:py-24 bg-tbgs-blue text-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
@@ -303,14 +303,14 @@ export default function TSSArticleTemplate({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={onOpenContactModal}
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
+                className="bg-white text-tbgs-blue px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-envelope mr-3"></i>
                 {primaryButtonText}
               </button>
               <a 
                 href="tel:+31402026744"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-blue transition-colors flex items-center justify-center"
               >
                 <i className="fas fa-phone mr-3"></i>
                 {secondaryButtonText}
