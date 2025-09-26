@@ -195,24 +195,6 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
         style={{ height }}
         className="w-full"
       />
-      
-      {/* Legend */}
-      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border">
-        <h4 className="font-semibold text-sm text-gray-900 mb-2">TBGS Servicegebied</h4>
-        <div className="space-y-1 text-xs">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <span className="text-gray-700">Servicegebied</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-            <span className="text-gray-700">Hoofdkantoor</span>
-          </div>
-        </div>
-        <div className="mt-2 pt-2 border-t border-gray-200">
-          <p className="text-xs text-gray-600">🇳🇱 Nederland • 🇧🇪 België</p>
-        </div>
-      </div>
     </div>
   );
 }
