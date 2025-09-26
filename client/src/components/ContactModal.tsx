@@ -709,16 +709,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 }}
               />
             </FormControl>
-            <div className="space-y-1 leading-none">
-              <FormLabel 
-                className="cursor-pointer" 
-                onClick={() => {
-                  field.onChange(!field.value);
-                }}
-              >
+            <div 
+              className="space-y-1 leading-none cursor-pointer" 
+              onClick={() => {
+                field.onChange(!field.value);
+              }}
+            >
+              <FormLabel className="cursor-pointer">
                 Ik ga akkoord met de privacyverklaring *
               </FormLabel>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 cursor-pointer">
                 Uw gegevens worden vertrouwelijk behandeld en alleen gebruikt voor het opstellen van uw offerte.
               </p>
             </div>
