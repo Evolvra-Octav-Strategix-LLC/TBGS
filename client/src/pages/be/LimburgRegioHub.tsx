@@ -40,7 +40,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
           latitude: 51.2000,
           longitude: 5.4000
         },
-        areaServed: ["Limburg", "België", "Belgisch Limburg", "Lommel", "Hamont-Achel", "Pelt", "Retie"],
+        areaServed: ["Limburg", "België", "Belgisch Limburg", "Lommel", "Hamont-Achel", "Pelt", "Kaulille"],
         rating: {
           ratingValue: 4.8,
           reviewCount: 89
@@ -66,7 +66,7 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
             
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Totaal Bouw & Gespecialiseerde Services actief in heel Limburg, België. Van Lommel tot Hamont-Achel, 
-              van Pelt tot Retie - lokale vakmannen voor al uw bouwbehoeften.
+              van Pelt tot Kaulille - lokale vakmannen voor al uw bouwbehoeften.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -309,9 +309,9 @@ export default function LimburgRegioHub({ onOpenContactModal }: LimburgRegioHubP
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-tbgs-blue" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Retie</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Kaulille</h3>
                 <p className="text-sm text-gray-600 mb-3">Kempen regio</p>
-                <Link href="/be/retie">
+                <Link href="/be/kaulille">
                   <Button variant="outline" size="sm" className="w-full">
                     Meer Info
                   </Button>

@@ -20,7 +20,7 @@ const serviceCities: City[] = [
   { name: 'Valkenswaard', lat: 51.3500, lng: 5.4600, country: 'Netherlands' },
 
   // Belgium
-  { name: 'Retie', lat: 51.2667, lng: 5.0833, country: 'Belgium' },
+  { name: 'Kaulille', lat: 51.1872, lng: 5.5257, country: 'Belgium' },
   { name: 'Lommel', lat: 51.2306, lng: 5.3139, country: 'Belgium' },
   { name: 'Hamont-Achel', lat: 51.2500, lng: 5.5500, country: 'Belgium' },
   { name: 'Pelt', lat: 51.2167, lng: 5.4167, country: 'Belgium' },
@@ -149,7 +149,7 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
           
           <div style="margin-bottom: 12px;">
             <h4 style="margin: 0 0 4px 0; color: #374151; font-size: 14px;">🇧🇪 België:</h4>
-            <p style="margin: 0; color: #6b7280; font-size: 13px;">Retie, Lommel, Hamont-Achel, Pelt, Sint-Huibrechts-Lille, Overpelt, Neerpelt</p>
+            <p style="margin: 0; color: #6b7280; font-size: 13px;">Kaulille, Lommel, Hamont-Achel, Pelt, Sint-Huibrechts-Lille, Overpelt, Neerpelt</p>
           </div>
           
           <div style="border-top: 1px solid #e5e7eb; padding-top: 12px; margin-top: 12px;">

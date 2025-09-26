@@ -24,7 +24,7 @@ export default function LommelDaklekkage({ onOpenContactModal }: LommelDaklekkag
       citySlug="lommel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Retie", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Kaulille", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Daklekkage Reparatie"
       serviceDescription="Professionele daklekkage reparatie in Lommel. Snelle service, garantie, 25+ jaar ervaring."

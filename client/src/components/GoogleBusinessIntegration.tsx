@@ -360,7 +360,7 @@ export default function GoogleBusinessIntegration({
                 <div>
                   <p className="font-semibold text-slate-700 mb-1">België:</p>
                   <div className="flex flex-wrap justify-center gap-1">
-                    <Link href="/be/retie" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Retie</Link>
+                    <Link href="/be/kaulille" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Kaulille</Link>
                     <span className="text-slate-400">•</span>
                     <Link href="/be/lommel" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Lommel</Link>
                     <span className="text-slate-400">•</span>

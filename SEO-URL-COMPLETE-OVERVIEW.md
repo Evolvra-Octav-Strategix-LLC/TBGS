@@ -124,7 +124,7 @@ Mierlo Services:
 /be/lommel (Primary Belgium city)
 /be/hamont (Hamont hub)
 /be/hamont-achel (Hamont-Achel hub)
-/be/retie (Retie hub)
+/be/kaulille (Kaulille hub)
 /be/pelt (Pelt hub)
 /be/sint-huibrechts-lille (Sint-Huibrechts-Lille hub)
 /be/overpelt (Overpelt hub)

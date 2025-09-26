@@ -24,7 +24,7 @@ export default function LommelOnderhoud({ onOpenContactModal }: LommelOnderhoudP
       citySlug="lommel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Retie", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Kaulille", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Onderhoud & Service"
       serviceDescription="Professioneel onderhoud van woningen en bedrijfspanden in Lommel. Preventief onderhoud, reparaties en technische diensten."
