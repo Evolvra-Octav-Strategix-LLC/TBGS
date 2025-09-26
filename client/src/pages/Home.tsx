@@ -342,7 +342,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 
                 
                 <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                  <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze <strong>80+ jaar ervaring</strong> weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                  <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. door onze 80+ jaar ervaring weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                 </p>
                 
                 <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-6 text-white mb-6">
@@ -431,7 +431,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="bg-gradient-to-r from-tbgs-navy to-blue-600 rounded-3xl p-8 lg:p-12 text-white">
                   <h4 className="text-2xl lg:text-3xl font-bold mb-6">Onze missie</h4>
                   <p className="text-xl lg:text-2xl leading-relaxed font-light max-w-4xl mx-auto">
-                    <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze <strong>80+ jaar ervaring</strong> weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                    TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
+                  </p>
+                  <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
+                    door onze 80+ jaar ervaring weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                   </p>
                   <div className="mt-8">
                     <Link href="/over-ons">
