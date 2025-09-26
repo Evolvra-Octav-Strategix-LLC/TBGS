@@ -267,6 +267,11 @@ export default function ContactModalV2() {
   };
 
   const onSubmit = (data: OfferteFormData) => {
+    // Show immediate feedback
+    toast({
+      title: "Bezig met verzenden...",
+      description: "Uw aanvraag wordt verwerkt.",
+    });
     submitMutation.mutate(data);
   };
 
