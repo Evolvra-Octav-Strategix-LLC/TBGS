@@ -419,8 +419,24 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   Professionele <strong>nokvorsten reparatie</strong> door ervaren <strong>dakdekkers</strong>. Vakkundige <strong>dakwerken</strong> reparatie van nokvorsten en complete dakrand afwerking.
                 </p>
-                <Link href="/dak/nokvorsten-repareren" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                <Link href="/daken/nokvorsten-repareren" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
                   Lees meer over nokvorsten repareren →
+                </Link>
+              </div>
+            </div>
+
+            {/* Dakgoot Lekkage Article */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
+                <i className="fas fa-water text-tbgs-red text-4xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoot Lekkage Reparatie</h3>
+                <p className="text-gray-600 mb-4">
+                  <strong>Dakgoot lekkage</strong> 24/7 spoedservice door gecertificeerde <strong>dakgoot specialisten</strong>. Premium <strong>dakgoot reparatie</strong> met 80+ jaar vakmanschap voorkomt waterschade en structurele problemen.
+                </p>
+                <Link href="/kennisbank/dakgoot" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakgoot reparatie →
                 </Link>
               </div>
             </div>
