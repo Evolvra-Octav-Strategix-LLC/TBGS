@@ -342,7 +342,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 
                 
                 <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
-                  <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                  <strong>TBGS is een totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen. door onze 80+ jaar ervaring weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                 </p>
                 
                 <div className="bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl p-6 text-white mb-6">
@@ -434,7 +434,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     TBGS is een <strong>totaal ontzorgende organisatie</strong> die u overal bij bijstaat. Van preventieve controles tot noodreparaties - wij nemen uw project volledig in beheer om problemen te voorkomen.
                   </p>
                   <p className="text-lg lg:text-xl leading-relaxed font-light max-w-3xl mx-auto mt-6 opacity-90">
-                    Door onze 80+ jaar ervaring weten onze specialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
+                    door onze 80+ jaar ervaring weten wij als totaalspecialisten precies waar u tegenaan kunt lopen. Onze aanpak zorgt ervoor dat u zich nooit zorgen hoeft te maken over uw <strong>dak, onderhoud of bouwproject</strong>.
                   </p>
                   <div className="mt-8">
                     <Link href="/over-ons">
