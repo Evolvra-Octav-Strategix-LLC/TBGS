@@ -20,9 +20,9 @@ import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
 import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 const formSchema = z.object({
-  serviceType: z.string().min(1, "Selecteer een servicetype"),
-  specialisme: z.string().min(1, "Selecteer een specialist"),
-  projectType: z.string().optional(),
+  serviceType: z.string().optional(),
+  specialisme: z.string().optional(),
+  projectType: z.string().min(1, "Selecteer een projecttype"),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
   email: z.string().email("Ongeldig e-mailadres"),
@@ -82,7 +82,7 @@ export default function ContactModalV2() {
       const formData = new FormData();
       
       // Add form fields matching service-request schema
-      formData.append('selectedService', data.specialisme + (data.projectType ? ` - ${data.projectType}` : ''));
+      formData.append('selectedService', data.projectType || 'Algemeen Project');
       formData.append('address', data.location);
       formData.append('projectDescription', data.description);
       formData.append('firstName', data.firstName);
@@ -369,75 +369,37 @@ export default function ContactModalV2() {
       <div className="space-y-4">
         <FormField
           control={form.control}
-          name="specialisme"
+          name="projectType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-base font-semibold">Welke specialist heeft u nodig?</FormLabel>
+              <FormLabel className="text-base font-semibold">Type Project *</FormLabel>
               <FormControl>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {specialisten.map((specialist) => (
-                    <div
-                      key={specialist.value}
-                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
-                        field.value === specialist.value
-                          ? `border-white ${specialist.color} text-white`
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                      }`}
-                      onClick={() => field.onChange(specialist.value)}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                          <img 
-                            src={specialist.logo} 
-                            alt={specialist.label}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h5 className={`font-semibold text-sm ${
-                            field.value === specialist.value ? 'text-white' : 'text-gray-900'
-                          }`}>
-                            {specialist.label}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="border border-gray-300">
+                    <SelectValue placeholder="Kies het type project" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="daklekkage">Daklekkage Reparatie</SelectItem>
+                    <SelectItem value="dakrenovatie">Dak Renovatie</SelectItem>
+                    <SelectItem value="dakbedekking">Nieuwe Dakbedekking</SelectItem>
+                    <SelectItem value="schoorsteenreparatie">Schoorsteen Reparatie</SelectItem>
+                    <SelectItem value="schoorsteenonderhoud">Schoorsteen Onderhoud</SelectItem>
+                    <SelectItem value="gevelreiniging">Gevelreiniging</SelectItem>
+                    <SelectItem value="schilderwerk">Schilderwerk</SelectItem>
+                    <SelectItem value="onderhoud">Algemeen Onderhoud</SelectItem>
+                    <SelectItem value="verbouwing">Verbouwing</SelectItem>
+                    <SelectItem value="aanbouw">Aanbouw</SelectItem>
+                    <SelectItem value="renovatie">Renovatie</SelectItem>
+                    <SelectItem value="nieuwbouw">Nieuwbouw</SelectItem>
+                    <SelectItem value="anders">Anders</SelectItem>
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
       </div>
-
-      {/* Project Type Selection */}
-      {form.watch("specialisme") && (
-        <div className="space-y-4">
-          <FormField
-            control={form.control}
-            name="projectType"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Type Project</FormLabel>
-                <FormControl>
-                  <Select value={field.value} onValueChange={field.onChange}>
-                    <SelectTrigger className="border border-gray-300">
-                      <SelectValue placeholder="Kies projecttype" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {(projectTypes[form.watch("specialisme") as keyof typeof projectTypes] || []).map((type) => (
-                        <SelectItem key={type} value={type}>{type}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-      )}
     </div>
   );
 
@@ -725,8 +687,8 @@ export default function ContactModalV2() {
 
   const steps = [
     {
-      title: "Service & Specialist",
-      description: "Kies uw service en specialist",
+      title: "Project Type",
+      description: "Vertel ons welk type project u heeft",
       content: step1Content
     },
     {
