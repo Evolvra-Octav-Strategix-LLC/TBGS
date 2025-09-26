@@ -41,8 +41,9 @@ export function MultiStepForm({
     if (currentStep < steps.length - 1) {
       const nextStep = currentStep + 1;
       setCurrentStep(nextStep);
-      // Scroll to position accounting for header height (approximately 120px from top)
-      window.scrollTo({ top: 120, behavior: 'smooth' });
+      // Adjust scroll position based on whether step 3 (index 2) will have hidden header
+      const scrollTop = nextStep === 2 ? 20 : 120; // Less scroll for step 3 without header
+      window.scrollTo({ top: scrollTop, behavior: 'smooth' });
     }
   };
 
