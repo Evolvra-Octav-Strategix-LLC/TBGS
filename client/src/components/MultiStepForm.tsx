@@ -107,7 +107,11 @@ export function MultiStepForm({
           {isLastStep ? (
             <Button
               type="button"
-              onClick={onSubmit}
+              onClick={() => {
+                // Maintain same scroll behavior as other steps
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+                onSubmit();
+              }}
               disabled={!isValid || isSubmitting}
               className="bg-tbgs-navy hover:bg-blue-800 flex items-center space-x-2"
             >
