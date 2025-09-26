@@ -22,7 +22,7 @@ import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 const formSchema = z.object({
   serviceType: z.string().optional(),
   specialisme: z.string().optional(),
-  projectType: z.string().min(1, "Selecteer een projecttype"),
+  projectType: z.string().optional(),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
   email: z.string().email("Ongeldig e-mailadres"),
@@ -82,7 +82,7 @@ export default function ContactModalV2() {
       const formData = new FormData();
       
       // Add form fields matching service-request schema
-      formData.append('selectedService', data.projectType || 'Algemeen Project');
+      formData.append('selectedService', 'Algemeen Project');
       formData.append('address', data.location);
       formData.append('projectDescription', data.description);
       formData.append('firstName', data.firstName);
@@ -317,94 +317,8 @@ export default function ContactModalV2() {
     { value: "whatsapp", label: "WhatsApp" }
   ];
 
-  // Step 1: Service & Specialist Selection
+  // Step 1: Project Details
   const step1Content = (
-    <div className="space-y-8">
-      {/* Service Type Selection */}
-      <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="serviceType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-base font-semibold">Wat heeft u nodig?</FormLabel>
-              <FormControl>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {serviceTypes.map((service) => (
-                    <div
-                      key={service.value}
-                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
-                        field.value === service.value
-                          ? 'border-tbgs-navy bg-blue-50'
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                      }`}
-                      onClick={() => field.onChange(service.value)}
-                    >
-                      <div className="flex items-start space-x-3">
-                        <div className={`w-4 h-4 rounded-full border-2 mt-1 flex items-center justify-center ${
-                          field.value === service.value
-                            ? 'border-tbgs-navy bg-tbgs-navy'
-                            : 'border-gray-300'
-                        }`}>
-                          {field.value === service.value && (
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="font-semibold text-gray-900 mb-1 text-sm">{service.label}</h5>
-                          <p className="text-xs text-gray-600">{service.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-
-      {/* Specialist Selection */}
-      <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="projectType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-base font-semibold">Type Project *</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="border border-gray-300">
-                    <SelectValue placeholder="Kies het type project" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="daklekkage">Daklekkage Reparatie</SelectItem>
-                    <SelectItem value="dakrenovatie">Dak Renovatie</SelectItem>
-                    <SelectItem value="dakbedekking">Nieuwe Dakbedekking</SelectItem>
-                    <SelectItem value="schoorsteenreparatie">Schoorsteen Reparatie</SelectItem>
-                    <SelectItem value="schoorsteenonderhoud">Schoorsteen Onderhoud</SelectItem>
-                    <SelectItem value="gevelreiniging">Gevelreiniging</SelectItem>
-                    <SelectItem value="schilderwerk">Schilderwerk</SelectItem>
-                    <SelectItem value="onderhoud">Algemeen Onderhoud</SelectItem>
-                    <SelectItem value="verbouwing">Verbouwing</SelectItem>
-                    <SelectItem value="aanbouw">Aanbouw</SelectItem>
-                    <SelectItem value="renovatie">Renovatie</SelectItem>
-                    <SelectItem value="nieuwbouw">Nieuwbouw</SelectItem>
-                    <SelectItem value="anders">Anders</SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-    </div>
-  );
-
-  // Step 2: Project Details
-  const step2Content = (
     <div className="space-y-6">
       <FormField
         control={form.control}
@@ -483,8 +397,8 @@ export default function ContactModalV2() {
     </div>
   );
 
-  // Step 3: Contact Information
-  const step3Content = (
+  // Step 2: Contact Information
+  const step2Content = (
     <div className="space-y-6">
       {/* Voornaam en Achternaam - Horizontale lijn */}
       <div className="grid grid-cols-2 gap-3 md:gap-6">
@@ -687,19 +601,14 @@ export default function ContactModalV2() {
 
   const steps = [
     {
-      title: "Project Type",
-      description: "Vertel ons welk type project u heeft",
-      content: step1Content
-    },
-    {
       title: "Project Details",
       description: "Vertel over uw project",
-      content: step2Content
+      content: step1Content
     },
     {
       title: "Contact Informatie",
       description: "Hoe kunnen we u bereiken?",
-      content: step3Content
+      content: step2Content
     }
   ];
 
