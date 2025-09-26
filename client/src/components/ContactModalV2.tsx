@@ -402,7 +402,7 @@ export default function ContactModalV2() {
   const step3Content = (
     <div className="space-y-6">
       {/* Voornaam en Achternaam - Horizontale lijn */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-3 md:gap-6">
         <FormField
           control={form.control}
           name="firstName"
