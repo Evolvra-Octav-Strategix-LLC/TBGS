@@ -55,11 +55,11 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-3 left-3 z-40 bg-gradient-to-br ${getSpecialistColors()} text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center group border border-white/20 ${className}`}
+      className={`fixed bottom-3 left-3 z-40 bg-gradient-to-br ${getSpecialistColors()} text-white w-11 h-11 md:w-12 md:h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center justify-center group border border-white/20 ${className}`}
       aria-label="Terug naar boven"
       title="Terug naar boven"
     >
-      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce" />
+      <ChevronUp className="w-5 h-5 md:w-5 md:h-5 group-hover:animate-bounce" />
     </button>
   );
 }

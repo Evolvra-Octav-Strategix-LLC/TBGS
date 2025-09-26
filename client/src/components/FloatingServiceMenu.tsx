@@ -1031,15 +1031,15 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
         <button
           onClick={toggleForm}
           type="button"
-          className={`${colors.bg} ${colors.hoverBg} ${colors.activeBg} text-white rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex items-center justify-center space-x-2 sm:space-x-3 px-3 sm:px-4 py-2 sm:py-3 group cursor-pointer select-none border border-white/20`}
+          className={`${colors.bg} ${colors.hoverBg} ${colors.activeBg} text-white rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex items-center justify-center space-x-2 md:space-x-3 px-3 md:px-4 py-2.5 md:py-3 group cursor-pointer select-none border border-white/20`}
           style={{ zIndex: 9999 }}
         >
           {/* Avatar Icon */}
-          <div className="w-5 h-5 sm:w-7 sm:h-7 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+          <div className="w-6 h-6 md:w-7 md:h-7 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4" />
           </div>
           {/* Text */}
-          <span className="text-xs sm:text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
+          <span className="text-sm md:text-sm font-medium whitespace-nowrap">Offerte aanvragen</span>
         </button>
       )}
     </div>
