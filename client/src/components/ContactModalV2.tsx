@@ -34,7 +34,6 @@ const formSchema = z.object({
   attachments: z.array(z.string()).optional(),
   urgent: z.boolean().default(false),
   privacy: z.boolean().refine((val) => val === true, "U moet akkoord gaan met de privacyverklaring"),
-  nieuwsbrief: z.boolean().default(false),
 });
 
 type OfferteFormData = z.infer<typeof formSchema>;
@@ -70,7 +69,6 @@ export default function ContactModalV2() {
       attachments: [],
       urgent: false,
       privacy: false,
-      nieuwsbrief: false,
     },
   });
 
@@ -472,16 +470,21 @@ export default function ContactModalV2() {
         />
       </div>
 
-      {/* E-mailadres en Telefoonnummer */}
+      {/* Adres en Telefoonnummer */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
-          name="email"
+          name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>E-mailadres *</FormLabel>
+              <FormLabel>Adres *</FormLabel>
               <FormControl>
-                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
+                <GooglePlacesInput
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Straat en huisnummer"
+                  className="border border-gray-300 placeholder:text-gray-500"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -505,17 +508,12 @@ export default function ContactModalV2() {
 
       <FormField
         control={form.control}
-        name="location"
+        name="email"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Adres *</FormLabel>
+            <FormLabel>E-mailadres *</FormLabel>
             <FormControl>
-              <GooglePlacesInput
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Straat en huisnummer"
-                className="border border-gray-300 placeholder:text-gray-500"
-              />
+              <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -593,27 +591,6 @@ export default function ContactModalV2() {
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="nieuwsbrief"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-              <FormControl>
-                <Checkbox
-                  checked={field.value === true}
-                  onCheckedChange={(checked) => {
-                    field.onChange(checked === true);
-                  }}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm text-gray-600 cursor-pointer">
-                  Ja, ik wil graag updates ontvangen over tips en aanbiedingen
-                </FormLabel>
-              </div>
-            </FormItem>
-          )}
-        />
       </div>
     </div>
   );
