@@ -337,7 +337,7 @@ export default function GratisOfferte() {
                   Wat als ik spoed heb met een lekkage?
                 </h3>
                 <p className="text-gray-700">
-                  Voor noodgevallen hebben wij 24/7 <Link href="/dak/daklekkage" className="text-tbgs-red font-medium hover:underline">daklekkage spoedservice</Link> beschikbaar. Bel direct <a href="tel:+31402026744" className="text-tbgs-navy font-semibold hover:underline">040 202 6744</a> of markeer uw aanvraag als 'urgent' in het formulier. We streven ernaar binnen 24 uur ter plaatse te zijn en voeren eerst een noodreparatie uit om verdere schade te voorkomen.
+                  Voor noodgevallen hebben wij 24/7 <Link href="/dak/daklekkage" className="text-tbgs-red font-medium hover:underline">daklekkage spoedservice</Link> beschikbaar. Bel direct <a href="tel:+31402026744" className="text-tbgs-navy font-semibold hover:underline">040 202 6744</a> of <a href="https://wa.me/31402445820?text=🚨%20SPOED%20DAKLEKKAGE%20-%20Ik%20heb%20urgente%20hulp%20nodig%20bij%20een%20daklekkage!" target="_blank" rel="noopener noreferrer" className="text-green-600 font-medium hover:underline">WhatsApp ons direct</a>, of markeer uw aanvraag als 'urgent' in het formulier. We streven ernaar binnen 24 uur ter plaatse te zijn en voeren eerst een noodreparatie uit om verdere schade te voorkomen.
                 </p>
               </div>
               
