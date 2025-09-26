@@ -66,7 +66,7 @@ export default function GratisOfferte() {
                     <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage Reparatie</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4">Binnen 2 uur ter plaatse voor alle daklekkages. Van pannendak tot platdak - onze specialisten lossen het direct op.</p>
+                    <p className="text-gray-600 mb-4">Binnen 24 uur ter plaatse voor alle daklekkages. Van pannendak tot platdak - onze specialisten lossen het direct op.</p>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Dakgoot lekkage</li>
                       <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Pannendak herstel</li>
