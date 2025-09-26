@@ -550,24 +550,37 @@ export default function ContactModalV2() {
       </div>
 
       {/* Adres */}
-      <FormField
-        control={form.control}
-        name="location"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Adres *</FormLabel>
-            <FormControl>
-              <GooglePlacesInput
-                value={field.value}
-                onChange={field.onChange}
-                placeholder="Straat en huisnummer"
-                className="border border-gray-300 placeholder:text-gray-500"
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      <div style={{ position: "relative", zIndex: 10 }}>
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Adres *</FormLabel>
+              <FormControl>
+                <GooglePlacesInput
+                  value={field.value}
+                  onChange={(address, details) => {
+                    field.onChange(address);
+                    if (details) {
+                      setAddressComponents({
+                        street: details.street || '',
+                        houseNumber: '', // Will be parsed from street
+                        city: details.city || '',
+                        postcode: details.postalCode || '',
+                        country: details.country || ''
+                      });
+                    }
+                  }}
+                  placeholder="Straat en huisnummer"
+                  className="border border-gray-300 placeholder:text-gray-500"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
 
       <FormField
         control={form.control}
