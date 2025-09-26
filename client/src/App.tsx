@@ -118,6 +118,10 @@ import WaalreDaklekkage from "@/pages/locations/WaalreDaklekkage";
 import WaalreRenovatie from "@/pages/locations/WaalreRenovatie";
 import WaalreOnderhoud from "@/pages/locations/WaalreOnderhoud";
 import WaalreSchoorsteen from "@/pages/locations/WaalreSchoorsteen";
+import ValkenswaardDaklekkage from "@/pages/locations/ValkenswaardDaklekkage";
+import ValkenswaardRenovatie from "@/pages/locations/ValkenswaardRenovatie";
+import ValkenswaardOnderhoud from "@/pages/locations/ValkenswaardOnderhoud";
+import ValkenswaardSchoorsteen from "@/pages/locations/ValkenswaardSchoorsteen";
 
 // Location-Service Pages - Belgium
 import LommelDaklekkage from "@/pages/locations/LommelDaklekkage";
@@ -394,6 +398,10 @@ function Router() {
           <Route path="/nl/waalre/renovatie" component={() => <WaalreRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/waalre/onderhoud" component={() => <WaalreOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/waalre/schoorsteen" component={() => <WaalreSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/valkenswaard/daklekkage" component={() => <ValkenswaardDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/valkenswaard/renovatie" component={() => <ValkenswaardRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/valkenswaard/onderhoud" component={() => <ValkenswaardOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/valkenswaard/schoorsteen" component={() => <ValkenswaardSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* BE Location-Service Routes - Implemented cities */}
           <Route path="/be/lommel/daklekkage" component={() => <LommelDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
