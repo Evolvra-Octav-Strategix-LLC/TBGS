@@ -41,101 +41,225 @@ export default function GratisOfferte() {
           </div>
         </section>
 
-        {/* SEO Content Block */}
+        {/* High-Priority Services Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-              Waarom Een Offerte Aanvragen Bij TBGS B.V.?
-            </h2>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-gray-700 mb-6">
-                Bij TBGS B.V. begrijpen we dat het aanvragen van een offerte een belangrijke stap is in uw bouw-, renovatie- of onderhoudsproject. 
-                Met meer dan 80 jaar ervaring als familiebedrijf in de regio Eindhoven en omstreken, bieden wij transparante en concurrerende offertes 
-                voor al uw dakwerkzaamheden, schoorsteenreparaties, onderhoudsdiensten en bouwprojecten.
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Onze Meest Gevraagde Diensten
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                24/7 spoedservice voor daklekkage, professioneel onderhoud en alle bouw- en renovatiewerkzaamheden
               </p>
-              
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Ons Offerteproces: Van Aanvraag Tot Uitvoering</h3>
-              <p className="text-gray-700 mb-4">
-                Ons gestructureerde proces zorgt ervoor dat u altijd weet waar u aan toe bent:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-gray-700">
-                <li><strong>Aanvraag:</strong> Vul eenvoudig ons formulier in met uw projectdetails</li>
-                <li><strong>Gratis Inspectie:</strong> Binnen 24 uur nemen wij contact op voor een afspraak</li>
-                <li><strong>Offerte:</strong> Binnen 48 uur ontvangt u een gedetailleerde, vrijblijvende offerte</li>
-                <li><strong>Uitvoering:</strong> Bij akkoord starten we uw project met vakkundige uitvoering</li>
-              </ul>
-              
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Onze Specialistische Diensten</h3>
-              <p className="text-gray-700 mb-4">
-                TBGS B.V. bestaat uit vier gespecialiseerde divisies, elk met eigen expertise:
-              </p>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="flex items-start space-x-3">
-                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                    <img 
-                      src={tdsLogo} 
-                      alt="TDS Logo"
-                      className="w-full h-full object-contain"
-                    />
+            </div>
+
+            {/* Priority Service Cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {/* Daklekkage - Highest Priority */}
+              <Link href="/dak" className="group">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-red-200 bg-gradient-to-br from-red-50 to-white">
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <img src={tdsLogo} alt="TDS Logo" className="w-12 h-12 object-contain" />
+                    </div>
+                    <Badge className="mb-3 bg-red-500 text-white">24/7 Spoedservice</Badge>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage Reparatie</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">Binnen 2 uur ter plaatse voor alle daklekkages. Van pannendak tot platdak - onze specialisten lossen het direct op.</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Dakgoot lekkage</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Pannendak herstel</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Platdak reparatie</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Noodafdichting</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Onderhoud - High Priority */}
+              <Link href="/onderhoud" className="group">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-green-200 bg-gradient-to-br from-green-50 to-white">
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <img src={tosLogo} alt="TOS Logo" className="w-12 h-12 object-contain" />
+                    </div>
+                    <Badge className="mb-3 bg-green-500 text-white">Preventief</Badge>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-green-600 transition-colors">Onderhoud & Service</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">Preventief onderhoud bespaart u duizenden euro's. Onze specialisten houden uw woning in topconditie.</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Gevelreiniging</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Dakgoot onderhoud</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Schilderwerk</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Inspectieservice</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Schoorsteen Service */}
+              <Link href="/schoorsteen" className="group">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200 bg-gradient-to-br from-blue-50 to-white">
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <img src={tssLogo} alt="TSS Logo" className="w-12 h-12 object-contain" />
+                    </div>
+                    <Badge className="mb-3 bg-blue-500 text-white">Jaarlijks</Badge>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">Schoorsteen Specialist</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">Veilige en efficiënte schoorsteenservice. Van jaarlijkse controle tot volledige renovatie.</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Reiniging & controle</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Reparatie & herstel</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Rookgasafvoer</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Nieuwbouw</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
+            {/* Additional Services Row */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <Link href="/bouw" className="group">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 bg-gradient-to-br from-orange-50 to-white">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                        <img src={tbsLogo} alt="TBS Logo" className="w-8 h-8 object-contain" />
+                      </div>
+                      <div>
+                        <Badge className="mb-2 bg-orange-500 text-white">Complete Projecten</Badge>
+                        <CardTitle className="text-lg text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & Renovatie</CardTitle>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-3">Van kleine verbouwingen tot complete renovaties. Uw droomproject van A tot Z.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Aanbouw</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Verbouwing</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Badkamers</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Keukens</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Urgency & Contact Card */}
+              <Card className="h-full bg-gradient-to-br from-tbgs-navy to-blue-700 text-white border-0">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <Badge className="mb-2 bg-red-500 text-white">Urgent</Badge>
+                      <CardTitle className="text-lg">Spoedservice Beschikbaar</CardTitle>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-tbgs-red mb-2">TDS - Totaal Dak Specialist</h4>
-                    <p className="text-gray-600 text-sm">Daklekkage, dakrenovatie, dakbedekking, zonnepanelen en alle dakwerkzaamheden</p>
+                </CardHeader>
+                <CardContent>
+                  <p className="mb-4 text-blue-100">Lekkage of noodgeval? Wij zijn 24/7 bereikbaar en staan binnen 2 uur bij u voor de deur.</p>
+                  <div className="space-y-3">
+                    <a href="tel:+31402026744" className="flex items-center text-white hover:text-blue-200 transition-colors">
+                      <Phone className="w-4 h-4 mr-2" />
+                      <span className="font-semibold">040 202 6744</span>
+                    </a>
+                    <a href="https://wa.me/31402026744" className="flex items-center text-white hover:text-blue-200 transition-colors">
+                      <FaWhatsapp className="w-4 h-4 mr-2" />
+                      <span>Direct WhatsApp</span>
+                    </a>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                    <img 
-                      src={tssLogo} 
-                      alt="TSS Logo"
-                      className="w-full h-full object-contain"
-                    />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Process & Benefits Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
+              {/* Process Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Ons Bewezen Proces</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-tbgs-navy rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold">1</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">Snelle Reactie</h4>
+                      <p className="text-gray-600">Binnen 2 uur contact en inspectie. Voor spoedgevallen direct ter plaatse.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-tbgs-blue mb-2">TSS - Totaal Schoorsteen Specialist</h4>
-                    <p className="text-gray-600 text-sm">Schoorsteenreparatie, jaarlijkse controle, rookgasafvoer en nieuwe schoorsteenbouw</p>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-tbgs-navy rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold">2</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">Gratis Inspectie</h4>
+                      <p className="text-gray-600">Uitgebreide inspectie en transparante offerte zonder verborgen kosten.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                    <img 
-                      src={tosLogo} 
-                      alt="TOS Logo"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-tbgs-green mb-2">TOS - Totaal Onderhoud Specialist</h4>
-                    <p className="text-gray-600 text-sm">Gevelreiniging, schilderwerk, dakgootonderhoud en preventief onderhoud</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
-                    <img 
-                      src={tbsLogo} 
-                      alt="TBS Logo"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-tbgs-orange mb-2">TBS - Totaal Bouw Specialist</h4>
-                    <p className="text-gray-600 text-sm">Verbouwingen, aanbouw, renovaties, keukens, badkamers en nieuwbouwprojecten</p>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-tbgs-navy rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold">3</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-2">Vakkundige Uitvoering</h4>
+                      <p className="text-gray-600">Gecertificeerde specialisten met 80+ jaar ervaring en volledige garantie.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Werkgebied: Nederland & België</h3>
-              <p className="text-gray-700 mb-4">
-                Vanuit onze basis in Eindhoven werken wij in heel Nederland en België. Onze specialisten zijn actief in 
-                <strong> Eindhoven, Nuenen, Veldhoven, Best, Waalre, Geldrop-Mierlo</strong> en vele andere Nederlandse gemeenten. 
-                In België bedienen wij onder andere <strong>Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel, Kaulille</strong> en de gehele provincie Limburg.
-              </p>
-              
-              <p className="text-gray-700">
-                Of het nu gaat om urgente daklekkage in Eindhoven, schoorsteenonderhoud in Lommel, of een complete renovatie in Veldhoven - 
-                TBGS B.V. staat voor u klaar met vakkundig advies en een eerlijke offerte. Neem vandaag nog contact op en ervaar waarom 
-                duizenden klanten ons vertrouwen voor hun bouw- en onderhoudsprojecten.
-              </p>
+
+              {/* Benefits Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Waarom TBGS Kiezen?</h3>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <Award className="w-6 h-6 text-yellow-500" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">80 Jaar Familietraditie</h4>
+                        <p className="text-sm text-gray-600">Van vader op zoon, vier generaties vakmanschap</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <Shield className="w-6 h-6 text-green-500" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Volledige Garantie</h4>
+                        <p className="text-sm text-gray-600">Uitgebreide garantie op alle uitgevoerde werkzaamheden</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <Users className="w-6 h-6 text-blue-500" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Lokale Specialisten</h4>
+                        <p className="text-sm text-gray-600">Bekend met Nederlandse en Belgische bouwstijlen</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <Zap className="w-6 h-6 text-red-500" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">24/7 Spoedservice</h4>
+                        <p className="text-sm text-gray-600">Altijd beschikbaar voor noodgevallen</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
