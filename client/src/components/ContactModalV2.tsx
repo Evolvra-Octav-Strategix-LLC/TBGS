@@ -42,6 +42,15 @@ type OfferteFormData = z.infer<typeof formSchema>;
 
 export default function ContactModalV2() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [processedFiles, setProcessedFiles] = useState<{original: File, compressed: File, status: 'processing' | 'completed' | 'failed'}[]>([]);
+  const [isProcessingFiles, setIsProcessingFiles] = useState(false);
+  const [addressComponents, setAddressComponents] = useState<{
+    street: string;
+    houseNumber: string;
+    city: string;
+    postcode: string;
+    country: string;
+  } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -69,42 +78,60 @@ export default function ContactModalV2() {
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
-      // Create FormData for file uploads
+      // Create FormData for file uploads (same as FloatingServiceMenu)
       const formData = new FormData();
       
-      // Use the separate address fields directly
-      const adres = data.location || '';
-      
-      // Add form fields matching offerte.js schema
-      formData.append('voornaam', data.firstName);
-      formData.append('achternaam', data.lastName);
+      // Add form fields matching service-request schema
+      formData.append('selectedService', data.specialisme + (data.projectType ? ` - ${data.projectType}` : ''));
+      formData.append('address', data.location);
+      formData.append('projectDescription', data.description);
+      formData.append('firstName', data.firstName);
+      formData.append('lastName', data.lastName);
       formData.append('email', data.email);
-      formData.append('telefoon', data.phone);
-      formData.append('adres', adres);
-      formData.append('postcode', '');
-      formData.append('plaats', '');
-      formData.append('specialisme', data.specialisme);
-      formData.append('projectType', data.projectType || '');
-      formData.append('tijdlijn', data.tijdlijn);
-      formData.append('budget', data.budget || '');
-      formData.append('beschrijving', data.description);
-      formData.append('contactVoorkeur', data.contactVoorkeur);
-      formData.append('privacyAkkoord', data.privacy.toString());
-      formData.append('nieuwsbrief', data.nieuwsbrief.toString());
+      formData.append('phone', data.phone);
+      formData.append('contactPreference', data.contactVoorkeur || 'email');
+      formData.append('photos', JSON.stringify(uploadedFiles.map(file => file.name)));
       
-      // Add file uploads from state
-      uploadedFiles.forEach((file, index) => {
+      // Add pre-compressed files (ready for instant submission!)
+      const filesToSubmit = processedFiles.length > 0 
+        ? processedFiles.filter(p => p.status === 'completed').map(p => p.compressed)
+        : uploadedFiles;
+        
+      filesToSubmit.forEach((file, index) => {
         formData.append('files', file);
       });
+      
+      console.log(`🚀 Submitting ${filesToSubmit.length} pre-processed files (instant!)`);
 
-      const response = await fetch('/api/offerte', {
+      // Add urgency and lead scoring data
+      formData.append('urgencyLevel', data.urgent ? 'urgent' : 'normal');
+      formData.append('timeOnPage', '0');
+      formData.append('interactionCount', '1');
+      formData.append('leadScore', '3');
+      
+      // Add individual address components for better email subject formatting
+      if (addressComponents) {
+        formData.append('street', addressComponents.street);
+        formData.append('houseNumber', addressComponents.houseNumber);
+        formData.append('city', addressComponents.city);
+        formData.append('postcode', addressComponents.postcode);
+        formData.append('country', addressComponents.country);
+      }
+
+      const response = await fetch('/api/service-request', {
         method: 'POST',
         body: formData,
       });
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        throw new Error(`Server fout: HTTP error! status: ${response.status}. Probeer het later opnieuw.`);
+      }
+
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
+      if (!result.success) {
         throw new Error(result.message || 'Er is een fout opgetreden');
       }
 
@@ -117,6 +144,8 @@ export default function ContactModalV2() {
       });
       form.reset();
       setUploadedFiles([]);
+      setProcessedFiles([]);
+      setAddressComponents(null);
     },
     onError: (error: Error) => {
       toast({
@@ -127,24 +156,118 @@ export default function ContactModalV2() {
     },
   });
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (files) {
-      const newFiles = Array.from(files);
-      if (uploadedFiles.length + newFiles.length <= 5) {
-        setUploadedFiles(prev => [...prev, ...newFiles]);
-      } else {
+
+  // Image compression function (same as FloatingServiceMenu)
+  const compressImage = (file: File): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        // Quick compression settings for speed
+        const maxWidth = 1200;
+        const maxHeight = 800;
+        let { width, height } = img;
+        
+        if (width > maxWidth || height > maxHeight) {
+          const aspectRatio = width / height;
+          if (width > height) {
+            width = maxWidth;
+            height = width / aspectRatio;
+          } else {
+            height = maxHeight;
+            width = height * aspectRatio;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        ctx?.drawImage(img, 0, 0, width, height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            // Add "tbgs-" prefix to filename
+            const originalName = file.name;
+            const fileExtension = originalName.substring(originalName.lastIndexOf('.'));
+            const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+            const newFileName = `tbgs-${baseName}${fileExtension}`;
+            
+            const compressedFile = new File([blob], newFileName, {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        }, 'image/jpeg', 0.75);
+      };
+      
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  // Handle file selection with compression (same as FloatingServiceMenu)
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    const maxFileSize = 10 * 1024 * 1024; // 10MB per file
+    
+    const validFiles = files.filter(file => {
+      if (file.size > maxFileSize) {
         toast({
-          title: "Te veel bestanden",
-          description: "U kunt maximaal 5 bestanden uploaden.",
-          variant: "destructive",
+          title: "Bestand te groot",
+          description: `Het bestand "${file.name}" is te groot. Maximum bestandsgrootte is 10MB.`,
+          variant: "destructive"
         });
+        return false;
+      }
+      return true;
+    });
+    
+    if (validFiles.length === 0) return;
+    
+    setUploadedFiles(prev => [...prev, ...validFiles].slice(0, 5));
+    setIsProcessingFiles(true);
+    
+    console.log(`🔄 Starting immediate compression of ${validFiles.length} files...`);
+    
+    // Process each file immediately
+    const newProcessedFiles = [];
+    for (const file of validFiles) {
+      try {
+        const initialFileData = {original: file, compressed: file, status: 'processing' as const};
+        setProcessedFiles(prev => [...prev, initialFileData]);
+        
+        let finalFileData;
+        if (file.type.startsWith('image/')) {
+          const compressed = await compressImage(file);
+          const compressionRatio = ((file.size - compressed.size) / file.size * 100).toFixed(1);
+          console.log(`✅ Compressed ${file.name}: ${(file.size/1024).toFixed(1)}KB → ${(compressed.size/1024).toFixed(1)}KB (${compressionRatio}% reduction)`);
+          
+          finalFileData = {original: file, compressed: compressed, status: 'completed' as const};
+        } else {
+          finalFileData = {original: file, compressed: file, status: 'completed' as const};
+        }
+        
+        newProcessedFiles.push(finalFileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? finalFileData : p));
+      } catch (error) {
+        console.error(`Failed to compress ${file.name}:`, error);
+        const fileData = {original: file, compressed: file, status: 'failed' as const};
+        newProcessedFiles.push(fileData);
+        setProcessedFiles(prev => prev.map(p => p.original === file ? fileData : p));
       }
     }
+    
+    setIsProcessingFiles(false);
+    console.log(`✅ All files processed and ready for instant submission!`);
   };
 
   const removeFile = (index: number) => {
+    const fileToRemove = uploadedFiles[index];
     setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+    setProcessedFiles(prev => prev.filter(p => p.original !== fileToRemove));
   };
 
   const onSubmit = (data: OfferteFormData) => {
@@ -359,8 +482,8 @@ export default function ContactModalV2() {
               ref={fileInputRef}
               type="file"
               multiple
-              accept="image/*,.pdf"
-              onChange={handleFileUpload}
+              accept="image/*,.pdf,.doc,.docx"
+              onChange={handleFileSelect}
               className="hidden"
             />
             

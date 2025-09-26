@@ -141,7 +141,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         formData.append('country', addressComponents.country);
       }
 
-      const response = await fetch('/api/contact-modal', {
+      const response = await fetch('/api/service-request', {
         method: 'POST',
         body: formData,
       });
@@ -323,7 +323,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const removeFile = (indexToRemove: number) => {
+    const fileToRemove = uploadedFiles[indexToRemove];
     setUploadedFiles(prev => prev.filter((_, index) => index !== indexToRemove));
+    setProcessedFiles(prev => prev.filter(p => p.original !== fileToRemove));
   };
 
   const handleLocationChange = (address: string, details?: {
