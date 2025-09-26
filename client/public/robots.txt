@@ -1,20 +1,117 @@
 User-agent: *
 Allow: /
 
-# Belangrijke pagina's voor crawling
+# Specialist hoofdpagina's (hoge prioriteit)
 Allow: /daken
 Allow: /schoorsteen
 Allow: /onderhoud
 Allow: /bouwen
+
+# Belangrijke conversie pagina's
 Allow: /contact
 Allow: /offerte
-Allow: /gratis-inspectie
+Allow: /gratis-offerte
+Allow: /over-ons
+Allow: /zorgeloos-wonen
+
+# Dakwerk services (hoge SEO waarde)
+Allow: /daken/daklekkage
+Allow: /daken/dakrenovatie
+Allow: /daken/dakgoot-reinigen
+Allow: /daken/dakisolatie
+Allow: /daken/dakinspectie
+Allow: /daken/dakbedekking
+Allow: /daken/nokvorsten-repareren
+
+# Schoorsteen services
+Allow: /schoorsteen/schoorsteen-vegen
+Allow: /schoorsteen/schoorsteen-inspectie
+Allow: /schoorsteen/schoorsteen-renovatie
+Allow: /schoorsteen/schoorsteen-voegen-repareren
+Allow: /schoorsteen/schoorsteen-onderhoud
+
+# Onderhoud services
+Allow: /onderhoud/dakkapel-reinigen
+Allow: /onderhoud/onderhoud-dakkapel
+Allow: /onderhoud/onderhoud-hout-dak
+Allow: /onderhoud/schilder
+Allow: /onderhoud/onderhoud-garage
+
+# Bouwwerk services
+Allow: /bouwen/metselwerk
+Allow: /bouwen/timmerwerken
+Allow: /bouwen/opbouw-op-uw-huis
+Allow: /bouwen/aanbouwen-aan-uw-huis
+Allow: /bouwen/uw-huis-verbouwen
+Allow: /bouwen/serre-aanbouw
+Allow: /bouwen/nieuwbouw
+
+# Kennisbank (SEO content)
 Allow: /kennisbank
+Allow: /kennisbank/daklekkage-herkennen-voorkomen
+Allow: /kennisbank/energiebesparing-door-isolatie
+Allow: /kennisbank/jaarlijkse-schoorsteencontrole
+Allow: /kennisbank/patio-dak
+Allow: /kennisbank/terras-dak
+Allow: /kennisbank/schuin-dak
+Allow: /kennisbank/plat-dak
+Allow: /kennisbank/schilderwerken
+Allow: /kennisbank/regenpijp
+Allow: /kennisbank/dakgoot
+Allow: /kennisbank/gevellekkage
+Allow: /kennisbank/dakbedekking-materialen
+Allow: /kennisbank/dakpannen-welke-keus
+Allow: /kennisbank/lekkage-dakkapellen
+Allow: /kennisbank/dakkapel-renovatie
+Allow: /kennisbank/groendaken
+Allow: /kennisbank/zonnepanelen
+
+# Primaire locatie pagina's (Nederland)
+Allow: /dakdekker-eindhoven
+Allow: /eindhoven
+Allow: /nuenen
+Allow: /veldhoven
+Allow: /best
+Allow: /lommel
+
+# Nederland service-locatie combinaties (hoge prioriteit)
+Allow: /nl/eindhoven/
+Allow: /nl/eindhoven/daklekkage
+Allow: /nl/eindhoven/renovatie
+Allow: /nl/eindhoven/onderhoud
+Allow: /nl/eindhoven/schoorsteen
+Allow: /nl/eindhoven/bouwwerkzaamheden
+Allow: /nl/nuenen/
+Allow: /nl/nuenen/daklekkage
+Allow: /nl/veldhoven/
+Allow: /nl/veldhoven/daklekkage
+Allow: /nl/best/
+Allow: /nl/best/daklekkage
+
+# België service-locatie combinaties
+Allow: /be/
+Allow: /be/limburg
+Allow: /be/lommel/
+Allow: /be/lommel/daklekkage
+Allow: /be/lommel/renovatie
+Allow: /be/lommel/onderhoud
+Allow: /be/lommel/schoorsteen
+
+# Admin toegang beperken
+Disallow: /admin
+
+# Crawl instructies
+Crawl-delay: 1
 
 # Sitemaps
 Sitemap: https://www.tbgs.nl/sitemap.xml
 
-# Contact informatie
+# Contact informatie voor search engines
 # TBGS BV - Totaal Bouw Groep Specialisten
+# Opgericht: 1940 (80+ jaar ervaring)
 # Telefoon: 040-202-6744
+# Email: info@tbgs.nl
 # Website: https://www.tbgs.nl
+# Werkgebied: Nederland (Eindhoven e.o.) en België (Limburg)
+# Specialisaties: Dakwerk, Schoorsteenservice, Onderhoud, Bouwwerkzaamheden
+# Spoedservice: 24/7 daklekkage service beschikbaar
