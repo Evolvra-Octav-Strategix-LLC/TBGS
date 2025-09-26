@@ -174,24 +174,25 @@ export class GooglePlacesService {
   async cacheBusinessDataForLocations(): Promise<Record<string, BusinessData | null>> {
     const locations = [
       // Netherlands locations
-      { name: 'TBGS', city: 'Eindhoven', country: 'nl' as const },
-      { name: 'TBGS', city: 'Nuenen', country: 'nl' as const },
-      { name: 'TBGS', city: 'Veldhoven', country: 'nl' as const },
-      { name: 'TBGS', city: 'Best', country: 'nl' as const },
-      { name: 'TBGS', city: 'Son en Breugel', country: 'nl' as const },
-      { name: 'TBGS', city: 'Geldrop', country: 'nl' as const },
-      { name: 'TBGS', city: 'Mierlo', country: 'nl' as const },
-      { name: 'TBGS', city: 'Waalre', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Eindhoven', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Nuenen', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Veldhoven', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Best', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Son en Breugel', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Geldrop', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Mierlo', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Waalre', country: 'nl' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Valkenswaard', country: 'nl' as const },
       
       // Belgium locations
-      { name: 'TBGS', city: 'Lommel', country: 'be' as const },
-      { name: 'TBGS', city: 'Retie', country: 'be' as const },
-      { name: 'TBGS', city: 'Hamont-Achel', country: 'be' as const },
-      { name: 'TBGS', city: 'Pelt', country: 'be' as const },
-      { name: 'TBGS', city: 'Sint-Huibrechts-Lille', country: 'be' as const },
-      { name: 'TBGS', city: 'Overpelt', country: 'be' as const },
-      { name: 'TBGS', city: 'Neerpelt', country: 'be' as const },
-      { name: 'TBGS', city: 'Hamont', country: 'be' as const }
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Lommel', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Retie', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Hamont-Achel', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Pelt', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Sint-Huibrechts-Lille', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Overpelt', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Neerpelt', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Hamont', country: 'be' as const }
     ];
 
     const cache: Record<string, BusinessData | null> = {};
