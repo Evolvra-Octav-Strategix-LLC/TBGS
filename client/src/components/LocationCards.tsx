@@ -66,6 +66,10 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
                   <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
                   <Link href="/nl/waalre" className="hover:text-tbgs-navy font-medium" data-testid="link-location-waalre">Waalre</Link>
                 </li>
+                <li className="flex items-center">
+                  <i className="fas fa-check-circle text-blue-500 w-4 mr-2"></i>
+                  <Link href="/nl/valkenswaard" className="hover:text-tbgs-navy font-medium" data-testid="link-location-valkenswaard">Valkenswaard</Link>
+                </li>
               </ul>
             </div>
           </div>
