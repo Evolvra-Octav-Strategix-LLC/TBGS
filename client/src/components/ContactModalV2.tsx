@@ -25,7 +25,7 @@ const formSchema = z.object({
   projectType: z.string().optional(),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
-  email: z.string().email("Ongeldig e-mailadres"),
+  email: z.string().min(1, "E-mailadres is verplicht").email("Ongeldig e-mailadres"),
   phone: z.string().min(10, "Telefoonnummer is verplicht"),
   location: z.string().min(1, "Locatie is verplicht"),
   description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
