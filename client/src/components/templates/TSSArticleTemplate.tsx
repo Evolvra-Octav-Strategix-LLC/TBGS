@@ -214,11 +214,11 @@ export default function TSSArticleTemplate({
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {section.items.map((item, itemIndex) => (
                       <div key={itemIndex} className="bg-gray-50 p-6 rounded-xl border hover:shadow-md transition-shadow">
-                        <div className="flex items-center mb-3">
-                          <div className="w-12 h-12 bg-tbgs-blue rounded-full flex items-center justify-center mr-4">
-                            <i className="fas fa-check text-white"></i>
+                        <div className="flex items-start mb-3">
+                          <div className="w-10 h-10 bg-tbgs-blue rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                            <i className="fas fa-check text-white text-sm"></i>
                           </div>
-                          <h3 className="text-lg font-bold text-gray-900">{item}</h3>
+                          <h3 className="text-lg font-bold text-gray-900 leading-relaxed">{item}</h3>
                         </div>
                       </div>
                     ))}
