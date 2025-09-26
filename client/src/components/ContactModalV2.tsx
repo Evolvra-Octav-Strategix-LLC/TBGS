@@ -483,53 +483,28 @@ export default function ContactModalV2() {
       />
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="tijdlijn"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Gewenste tijdlijn *</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="border border-gray-300">
-                    <SelectValue placeholder="Wanneer moet het klaar zijn?" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {tijdlijnen.map((tijdlijn) => (
-                      <SelectItem key={tijdlijn.value} value={tijdlijn.value}>{tijdlijn.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="budget"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Budget (optioneel)</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="border border-gray-300">
-                    <SelectValue placeholder="Wat is uw budget?" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {budgetOpties.map((budget) => (
-                      <SelectItem key={budget.value} value={budget.value}>{budget.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
+      <FormField
+        control={form.control}
+        name="tijdlijn"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Gewenste tijdlijn *</FormLabel>
+            <FormControl>
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger className="border border-gray-300">
+                  <SelectValue placeholder="Wanneer moet het klaar zijn?" />
+                </SelectTrigger>
+                <SelectContent>
+                  {tijdlijnen.map((tijdlijn) => (
+                    <SelectItem key={tijdlijn.value} value={tijdlijn.value}>{tijdlijn.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
       <FormField
         control={form.control}
