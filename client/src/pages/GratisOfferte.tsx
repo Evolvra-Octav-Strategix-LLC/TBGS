@@ -26,21 +26,6 @@ export default function GratisOfferte() {
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 pt-[2px] pb-[2px]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
-              <div className="mb-8">
-                <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm font-semibold bg-tbgs-navy text-white">
-                  80 Jaar Ervaring • 4 Generaties Vakmanschap
-                </Badge>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                  Gratis Offerte
-                  <span className="block text-3xl md:text-4xl lg:text-5xl text-tbgs-navy mt-2">
-                    Binnen 24 Uur
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-                  Professionele dienstverlening voor al uw dak-, schoorsteen-, onderhoud- en bouwprojecten. 
-                  Van spoedservice tot complete renovaties - wij staan voor u klaar.
-                </p>
-              </div>
 
             </div>
           </div>
