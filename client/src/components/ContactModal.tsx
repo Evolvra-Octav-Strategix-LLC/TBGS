@@ -223,10 +223,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const remainingChars = minChars - currentChars;
   const isDescriptionValid = currentChars >= minChars;
   
-  // Watch email field for live validation
-  const emailValue = form.watch("email") || "";
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const isEmailValid = emailValue.length > 0 && emailRegex.test(emailValue);
 
   // Immediate compression when files are selected (same as FloatingServiceMenu)
   const compressImage = (file: File): Promise<File> => {
@@ -676,32 +672,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <FormItem>
             <FormLabel>E-mailadres *</FormLabel>
             <FormControl>
-              <Input 
-                placeholder="uw.email@voorbeeld.nl" 
-                type="email" 
-                value={field.value || ""}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-                name={field.name}
-                className={`h-10 border transition-colors placeholder:text-gray-500 ${
-                  emailValue.length > 0 && !isEmailValid 
-                    ? 'border-red-300 focus:border-red-500' 
-                    : isEmailValid 
-                      ? 'border-green-300 focus:border-green-500'
-                      : 'border-gray-300 focus:border-blue-500'
-                }`}
-              />
+              <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
             </FormControl>
-            <div className="flex justify-between items-center mt-1">
-              <FormMessage />
-              {emailValue.length > 0 && (
-                <div className={`text-xs transition-colors ${
-                  isEmailValid ? 'text-green-600' : 'text-red-500'
-                }`}>
-                  {isEmailValid ? '✓ Geldig e-mailadres' : '✗ Ongeldig e-mailadres'}
-                </div>
-              )}
-            </div>
+            <FormMessage />
           </FormItem>
         )}
       />
