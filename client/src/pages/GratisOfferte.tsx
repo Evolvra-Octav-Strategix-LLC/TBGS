@@ -26,33 +26,8 @@ export default function GratisOfferte() {
         url="/offerte"
       />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        {/* Hero Section with USP */}
-        <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-tbgs-navy to-blue-700 text-white">
-          <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Vraag Vandaag Nog Uw Gratis Offerte Aan
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Binnen 24 uur reactie • Gratis dakinspectie • 25+ jaar ervaring • Werkzaamheden in Nederland & België
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
-                <CheckCircle className="w-5 h-5 text-green-300" />
-                <span>24/7 Spoedservice</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
-                <Award className="w-5 h-5 text-yellow-300" />
-                <span>Kwaliteitsgarantie</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
-                <Star className="w-5 h-5 text-yellow-300" />
-                <span>4.8★ Google Reviews</span>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Form Section - Top Priority */}
-        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50 -mt-8 relative z-10">
+        {/* Form Section - Direct Focus */}
+        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50 pt-8">
           <div className="max-w-6xl mx-auto pt-8 pb-16">
             <ContactModalV2 />
           </div>
