@@ -137,11 +137,11 @@ export default function DakgootLekkage({ onOpenContactModal }: DakgootLekkagePro
         <div class="grid md:grid-cols-3 gap-6 mt-8">
           <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
             <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
-              <i class="fas fa-tools text-blue-600 mr-3"></i>
-              Voegen Reparatie
+              <i class="fas fa-shield-alt text-blue-600 mr-3"></i>
+              Dakgoot Coating
             </h3>
             <p class="text-blue-800">
-              Professionele afdichting van dakgoot voegen met premium sealants. Permanent waterdicht en UV-bestendig.
+              Geavanceerde nano-coating beschermt dakgoten tegen corrosie en vervuiling. Verlengt levensduur met 15+ jaar extra garantie.
             </p>
           </div>
           
