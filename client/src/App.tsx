@@ -70,6 +70,7 @@ import LocationSonEnBreugel from "@/pages/nl/locaties/LocationSonEnBreugel";
 import LocationGeldrop from "@/pages/nl/locaties/LocationGeldrop";
 import LocationMierlo from "@/pages/nl/locaties/LocationMierlo";
 import LocationWaalre from "@/pages/nl/locaties/LocationWaalre";
+import LocationValkenswaard from "@/pages/nl/locaties/LocationValkenswaard";
 
 // BE - Limburg Regio Hub
 import LimburgRegioHub from "@/pages/be/LimburgRegioHub";
@@ -322,6 +323,7 @@ function Router() {
           <Route path="/nl/locaties/geldrop" component={() => <LocationGeldrop onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/locaties/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/locaties/valkenswaard" component={() => <LocationValkenswaard onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* NL - Direct city routes (for SEO compatibility) */}
           <Route path="/nl/eindhoven" component={() => <LocationEindhoven onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -331,6 +333,7 @@ function Router() {
           <Route path="/nl/geldrop" component={() => <LocationGeldrop onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/mierlo" component={() => <LocationMierlo onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/nl/waalre" component={() => <LocationWaalre onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/nl/valkenswaard" component={() => <LocationValkenswaard onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           
           {/* NL Specialist × Location routes temporarily removed - will be added as pages are created */}
           
