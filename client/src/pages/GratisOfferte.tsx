@@ -6,7 +6,9 @@ import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/lib/seo";
 import Footer from "@/components/Footer";
 import ContactModalV2 from "@/components/ContactModalV2";
-import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home } from "lucide-react";
+import GoogleReviewSlider from "@/components/GoogleReviewSlider";
+import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
+import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home, ArrowRight } from "lucide-react";
 
 export default function GratisOfferte() {
   useEffect(() => {
@@ -116,6 +118,144 @@ export default function GratisOfferte() {
             </div>
           </div>
         </section>
+        
+        {/* Google Maps + NAP Block */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Bezoek Onze Locatie
+                </h2>
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    Totaal Bouw Groep Specialisten B.V. (TBGS)
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <MapPin className="w-5 h-5 text-tbgs-navy mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Hoofdkantoor</p>
+                        <p className="text-gray-600">Reactorweg 47</p>
+                        <p className="text-gray-600">3542 AD Utrecht</p>
+                        <p className="text-gray-600">Nederland</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-tbgs-navy flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Telefoon</p>
+                        <a href="tel:+31402445820" className="text-tbgs-navy hover:underline">
+                          +31 (0)40 244 58 20
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Mail className="w-5 h-5 text-tbgs-navy flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">E-mail</p>
+                        <a href="mailto:info@tbgs.nl" className="text-tbgs-navy hover:underline">
+                          info@tbgs.nl
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Clock className="w-5 h-5 text-tbgs-navy mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium text-gray-900">Openingstijden</p>
+                        <p className="text-gray-600">Ma-Vr: 07:00 - 17:00</p>
+                        <p className="text-gray-600">Za: 08:00 - 12:00</p>
+                        <p className="text-gray-600">24/7 Spoedservice beschikbaar</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.1234567890123!2d5.1234567!3d52.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sReactorweg%2047%2C%203542%20AD%20Utrecht!5e0!3m2!1snl!2snl!4v1234567890123!5m2!1snl!2snl"
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="TBGS B.V. Locatie op Google Maps"
+                  ></iframe>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 text-center">
+                  Klik op de kaart voor routebeschrijving
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* FAQ Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Veelgestelde Vragen Over Offertes
+            </h2>
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Wat kost een offerte voor dakrenovatie in Eindhoven?
+                </h3>
+                <p className="text-gray-700">
+                  Het aanvragen van een offerte bij TBGS is altijd gratis en vrijblijvend. De kosten voor dakrenovatie 
+                  variëren afhankelijk van de grootte van het dak, gekozen materialen en complexiteit van het project. 
+                  Gemiddeld liggen de kosten tussen €75-€150 per m² voor complete dakrenovatie.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Hoe snel krijg ik een reactie van TBGS?
+                </h3>
+                <p className="text-gray-700">
+                  Wij nemen binnen 24 uur contact met u op na het indienen van uw offerteaanvraag. Voor spoedgevallen 
+                  zoals daklekkage bieden wij 24/7 service en kunnen wij vaak dezelfde dag nog ter plaatse zijn.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Is een offerte gratis en vrijblijvend?
+                </h3>
+                <p className="text-gray-700">
+                  Ja, alle offertes van TBGS zijn volledig gratis en vrijblijvend. Dit geldt voor alle onze diensten: 
+                  dakwerkzaamheden, schoorsteenreparaties, onderhoudsdiensten en bouwprojecten. Er zijn geen verborgen kosten.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Werken jullie ook in België (bijv. Lommel en Pelt)?
+                </h3>
+                <p className="text-gray-700">
+                  Ja, TBGS is actief in zowel Nederland als België. In België werken wij voornamelijk in de provincie Limburg, 
+                  inclusief Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel en omliggende gemeenten. Dezelfde kwaliteit en service 
+                  als in Nederland.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Kan ik een spoedaanvraag doen bij een lekkage?
+                </h3>
+                <p className="text-gray-700">
+                  Absoluut! Voor noodgevallen zoals daklekkage, schoorsteenproblemen of andere urgente reparaties bieden wij 
+                  24/7 spoedservice. Bel direct +31 (0)40 244 58 20 of markeer uw aanvraag als 'urgent' in het formulier. 
+                  Wij zijn vaak binnen enkele uren ter plaatse.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* Why Choose TBGS Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -155,6 +295,223 @@ export default function GratisOfferte() {
             </div>
           </div>
         </section>
+        
+        {/* Review & Trust Block */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Wat Onze Klanten Zeggen
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Lees de ervaringen van duizenden tevreden klanten uit Eindhoven, Nederland en België
+              </p>
+            </div>
+            
+            {/* Google Reviews Slider */}
+            <div className="mb-12">
+              <GoogleReviewSlider placeId="ChIJVSc2_yXbxkcROATmSZNFGFU" className="" />
+            </div>
+            
+            {/* Featured Customer Testimonials with Geo-locations */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    "Binnen één dag geholpen met mijn daklekkage in Eindhoven. Super snelle service en vakkundige reparatie. Zeer tevreden!"
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-900">Jan van Berg</p>
+                      <p className="text-sm text-gray-500">Eindhoven</p>
+                    </div>
+                    <Badge variant="outline" className="text-tbgs-red border-tbgs-red">
+                      TDS Daklekkage
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    "Professionele schoorsteenreiniging in Lommel. Vriendelijke monteurs en eerlijke prijzen. Zeker een aanrader!"
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-900">Marie Janssen</p>
+                      <p className="text-sm text-gray-500">Lommel, België</p>
+                    </div>
+                    <Badge variant="outline" className="text-tbgs-blue border-tbgs-blue">
+                      TSS Reiniging
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    "Complete badkamerrenovatie door TBS in Veldhoven. Van A tot Z perfect geregeld. Uitstekend vakmanschap!"
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-900">Peter Willems</p>
+                      <p className="text-sm text-gray-500">Veldhoven</p>
+                    </div>
+                    <Badge variant="outline" className="text-tbgs-orange border-tbgs-orange">
+                      TBS Renovatie
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+        
+        {/* Locations & Google Business Profile */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Onze Werkgebieden
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                TBGS B.V. levert kwaliteitsdiensten in heel Nederland en België
+              </p>
+            </div>
+            
+            {/* Google Business Integration */}
+            <div className="mb-12">
+              <GoogleBusinessIntegration 
+                placeId="ChIJVSc2_yXbxkcROATmSZNFGFU"
+                showReviews={false}
+                showMap={true}
+                showHours={true}
+                className=""
+              />
+            </div>
+            
+            {/* Service Area Grid with Geo-Internal Links */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Nederland</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-tbgs-navy">Hoofdsteden</h4>
+                    <div className="space-y-1">
+                      <Link href="/nl/eindhoven/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Eindhoven →
+                      </Link>
+                      <Link href="/nl/nuenen/renovatie" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Nuenen →
+                      </Link>
+                      <Link href="/nl/veldhoven/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Veldhoven →
+                      </Link>
+                      <Link href="/nl/best/schoorsteen" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Best →
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-tbgs-navy">Regio</h4>
+                    <div className="space-y-1">
+                      <Link href="/nl/waalre/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Waalre →
+                      </Link>
+                      <Link href="/nl/geldrop-mierlo/renovatie" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Geldrop-Mierlo →
+                      </Link>
+                      <Link href="/nl/son-en-breugel/schoorsteen" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Son en Breugel →
+                      </Link>
+                      <Link href="/nl/locaties" className="block text-tbgs-navy font-medium hover:underline">
+                        Alle Nederlandse locaties →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">België</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-tbgs-navy">Limburg</h4>
+                    <div className="space-y-1">
+                      <Link href="/be/lommel/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Lommel →
+                      </Link>
+                      <Link href="/be/pelt/renovatie" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Pelt →
+                      </Link>
+                      <Link href="/be/neerpelt/schoorsteen" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Neerpelt →
+                      </Link>
+                      <Link href="/be/overpelt/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Overpelt →
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-tbgs-navy">Grensregio</h4>
+                    <div className="space-y-1">
+                      <Link href="/be/hamont-achel/renovatie" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Hamont-Achel →
+                      </Link>
+                      <Link href="/be/retie/daklekkage" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Retie →
+                      </Link>
+                      <Link href="/be/sint-huibrechts-lille/schoorsteen" className="block text-gray-600 hover:text-tbgs-navy hover:underline">
+                        Sint-Huibrechts-Lille →
+                      </Link>
+                      <Link href="/be/locaties" className="block text-tbgs-navy font-medium hover:underline">
+                        Alle Belgische locaties →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-tbgs-navy to-blue-700 text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Klaar Om Uw Project Te Starten?
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              Vraag direct uw gratis offerte aan en ons team neemt binnen 24 uur contact op.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              Nu Offerte Aanvragen
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+        </section>
+        
         {/* Trust Indicators */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-tbgs-navy">
           <div className="max-w-4xl mx-auto text-center">
