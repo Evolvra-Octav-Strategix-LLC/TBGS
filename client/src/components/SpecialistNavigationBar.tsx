@@ -23,7 +23,7 @@ export default function SpecialistNavigationBar() {
         <div className="grid grid-cols-4 gap-0">
           {/* TSS - Totaal Schoorsteen Specialist */}
           <Link href="/schoorsteen" className="group block">
-            <div className={`tbgs-blue hover:bg-blue-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
+            <div className={`tbgs-blue hover:bg-blue-900 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
               <div className={`flex flex-col items-center transition-all duration-300 ${
