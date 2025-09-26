@@ -123,6 +123,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/daken/dakgoot-lekkage</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- SCHOORSTEEN SERVICES -->
   <url>

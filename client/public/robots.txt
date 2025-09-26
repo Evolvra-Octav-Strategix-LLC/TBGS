@@ -18,6 +18,7 @@ Allow: /zorgeloos-wonen
 Allow: /daken/daklekkage
 Allow: /daken/dakrenovatie
 Allow: /daken/dakgoot-reinigen
+Allow: /daken/dakgoot-lekkage
 Allow: /daken/dakisolatie
 Allow: /daken/dakinspectie
 Allow: /daken/dakbedekking

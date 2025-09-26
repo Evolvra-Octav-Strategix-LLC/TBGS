@@ -26,6 +26,7 @@ import JaarlijkseSchoorsteencontrole from "@/pages/JaarlijkseSchoorsteencontrole
 import Daklekkage from "@/pages/totaal-dak-specialist/Daklekkage";
 import Dakrenovatie from "@/pages/totaal-dak-specialist/Dakrenovatie";
 import DakgootReinigen from "@/pages/totaal-dak-specialist/DakgootReinigen";
+import DakgootLekkage from "@/pages/totaal-dak-specialist/DakgootLekkage";
 import Dakisolatie from "@/pages/totaal-dak-specialist/Dakisolatie";
 import Dakinspectie from "@/pages/totaal-dak-specialist/Dakinspectie";
 import Dakbedekking from "@/pages/totaal-dak-specialist/Dakbedekking";
@@ -267,6 +268,7 @@ function Router() {
           <Route path="/daken/daklekkage" component={() => <Daklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/daken/dakrenovatie" component={() => <Dakrenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/daken/dakgoot-reinigen" component={() => <DakgootReinigen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/daken/dakgoot-lekkage" component={() => <DakgootLekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/daken/dakisolatie" component={() => <Dakisolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/daken/dakinspectie" component={() => <Dakinspectie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/daken/dakbedekking" component={() => <Dakbedekking onOpenContactModal={() => setIsContactModalOpen(true)} />} />

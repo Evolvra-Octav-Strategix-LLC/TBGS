@@ -435,8 +435,8 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 <p className="text-gray-600 mb-4">
                   <strong>Dakgoot lekkage</strong> 24/7 spoedservice door gecertificeerde <strong>dakgoot specialisten</strong>. Premium <strong>dakgoot reparatie</strong> met 80+ jaar vakmanschap voorkomt waterschade en structurele problemen.
                 </p>
-                <Link href="/kennisbank/dakgoot" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
-                  Lees meer over dakgoot reparatie →
+                <Link href="/daken/dakgoot-lekkage" className="text-tbgs-red font-semibold hover:text-red-700 transition-colors cursor-pointer">
+                  Lees meer over dakgoot lekkage →
                 </Link>
               </div>
             </div>
