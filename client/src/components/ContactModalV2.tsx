@@ -28,8 +28,6 @@ const formSchema = z.object({
   email: z.string().email("Ongeldig e-mailadres"),
   phone: z.string().min(10, "Telefoonnummer is verplicht"),
   location: z.string().min(1, "Locatie is verplicht"),
-  postcode: z.string().min(6, "Postcode is verplicht"),
-  plaats: z.string().min(1, "Plaats is verplicht"),
   description: z.string().min(10, "Beschrijving moet minimaal 10 karakters bevatten"),
   tijdlijn: z.string().min(1, "Selecteer een tijdlijn"),
   budget: z.string().optional(),
@@ -58,8 +56,6 @@ export default function ContactModalV2() {
       email: "",
       phone: "",
       location: "",
-      postcode: "",
-      plaats: "",
       description: "",
       tijdlijn: "",
       budget: "",
@@ -78,8 +74,6 @@ export default function ContactModalV2() {
       
       // Use the separate address fields directly
       const adres = data.location || '';
-      const postcode = data.postcode || '';
-      const plaats = data.plaats || '';
       
       // Add form fields matching offerte.js schema
       formData.append('voornaam', data.firstName);
@@ -87,8 +81,8 @@ export default function ContactModalV2() {
       formData.append('email', data.email);
       formData.append('telefoon', data.phone);
       formData.append('adres', adres);
-      formData.append('postcode', postcode);
-      formData.append('plaats', plaats);
+      formData.append('postcode', '');
+      formData.append('plaats', '');
       formData.append('specialisme', data.specialisme);
       formData.append('projectType', data.projectType || '');
       formData.append('tijdlijn', data.tijdlijn);
@@ -484,35 +478,6 @@ export default function ContactModalV2() {
         )}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="postcode"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Postcode *</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="1234 AB" className="border border-gray-300 placeholder:text-gray-500" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="plaats"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Plaats *</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="Uw woonplaats" className="border border-gray-300 placeholder:text-gray-500" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
