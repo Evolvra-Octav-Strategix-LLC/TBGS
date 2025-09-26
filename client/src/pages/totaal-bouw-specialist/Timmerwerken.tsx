@@ -85,7 +85,7 @@ export default function Timmerwerken({ onOpenContactModal }: TimmerwerkProps) {
     <TBSArticleTemplate
       title="Timmerwerk Specialist - Professioneel Timmerwerk | TBS TBGS"
       description="TBS timmerwerk specialist. Vakkundig timmerwerk van dakconstructies tot maatwerk. ✓ 80+ jaar ervaring ✓ Garantie ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/timmerwerken"
+      url="https://tbgs.nl/bouwen/timmerwerken"
       heroTitle="Professioneel Timmerwerk"
       heroSubtitle="Vakkundig timmerwerk door ervaren vakmensen"
       heroDescription="Specialist in alle soorten timmerwerk: van dakconstructies tot maatwerk. Onze ervaren timmerlieden werken met kwaliteitshout en garantie op vakmanschap."

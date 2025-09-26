@@ -85,7 +85,7 @@ export default function AanbouwHuis({ onOpenContactModal }: AanbouwHuisProps) {
     <TBSArticleTemplate
       title="Aanbouw Huis Specialist - Woonkamer & Keuken Aanbouw | TBS TBGS"
       description="TBS aanbouw specialist. Professionele aanbouw van woonkamers, keukens en serre. ✓ Vergunningen ✓ 80+ jaar ervaring ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/aanbouwen-aan-uw-huis"
+      url="https://tbgs.nl/bouwen/aanbouwen-aan-uw-huis"
       heroTitle="Aanbouw aan Uw Huis"
       heroSubtitle="Meer woonruimte door professionele aanbouw"
       heroDescription="Specialist in aanbouw van woningen: van woonkamer uitbreiding tot serre. Meer woonruimte zonder verhuizing, met volledige begeleiding van ontwerp tot oplevering."

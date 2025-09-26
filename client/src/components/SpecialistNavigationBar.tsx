@@ -76,7 +76,7 @@ export default function SpecialistNavigationBar() {
           </Link>
 
           {/* TBS - Totaal Bouw Specialist */}
-          <Link href="/bouw" className="group block">
+          <Link href="/bouwen" className="group block">
             <div className={`tbgs-orange hover:bg-orange-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>

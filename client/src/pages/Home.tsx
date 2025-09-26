@@ -280,7 +280,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-orange transition-colors leading-tight">
-                    <Link href="/bouw" className="hover:underline block">
+                    <Link href="/bouwen" className="hover:underline block">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Bouw</div>
                       <div>Specialist</div>
@@ -295,7 +295,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/bouw" className="text-tbgs-orange font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
+                  <Link href="/bouwen" className="text-tbgs-orange font-bold opacity-70 hover:opacity-100 transition-all duration-300 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </div>

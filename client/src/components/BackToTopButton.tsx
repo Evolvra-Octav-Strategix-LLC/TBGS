@@ -21,7 +21,7 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
     if (location === '/onderhoud' || location.startsWith('/onderhoud/')) {
       return 'from-tbgs-green to-green-600';
     }
-    if (location === '/bouw' || location.startsWith('/bouw/')) {
+    if (location === '/bouwen' || location.startsWith('/bouwen/')) {
       return 'from-yellow-400 to-yellow-500';
     }
     return 'from-tbgs-navy to-blue-600';

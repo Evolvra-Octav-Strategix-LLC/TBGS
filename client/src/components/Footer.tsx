@@ -137,7 +137,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                     </Link>
                   </li>
                   <li>
-                    <Link href="/bouw" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/bouwen" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tbsLogo} alt="TBS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Bouw Specialist</span>
                     </Link>

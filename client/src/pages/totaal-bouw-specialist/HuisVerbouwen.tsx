@@ -85,7 +85,7 @@ export default function HuisVerbouwen({ onOpenContactModal }: HuisVerbouwenProps
     <TBSArticleTemplate
       title="Huis Verbouwen Specialist - Complete Huisverbouwing | TBS TBGS"
       description="TBS verbouwing specialist. Complete huisverbouwing van badkamer tot keuken. ✓ Vergunningen ✓ 80+ jaar ervaring ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/uw-huis-verbouwen"
+      url="https://tbgs.nl/bouwen/uw-huis-verbouwen"
       heroTitle="Uw Huis Verbouwen"
       heroSubtitle="Complete huisverbouwing door ervaren professionals"
       heroDescription="Specialist in complete huisverbouwingen: van badkamer tot keuken, van renovatie tot modernisering. Uw droomhuis realiseren met volledige begeleiding."

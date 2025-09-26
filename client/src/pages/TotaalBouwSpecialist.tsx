@@ -131,7 +131,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Gevelmetselwerk</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinmuren</li>
               </ul>
-              <Link href="/bouw/metselwerk" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/metselwerk" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -147,7 +147,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Trappen</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk</li>
               </ul>
-              <Link href="/bouw/timmerwerken" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/timmerwerken" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -163,7 +163,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Zolderverbouwing</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
               </ul>
-              <Link href="/bouw/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -179,7 +179,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre aanbouw</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage aanbouw</li>
               </ul>
-              <Link href="/bouw/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -195,7 +195,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keuken verbouwing</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Indeling wijzigen</li>
               </ul>
-              <Link href="/bouw/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -211,7 +211,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Wintertuinen</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinkamer serre</li>
               </ul>
-              <Link href="/bouw/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -227,7 +227,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Energieneutrale woning</li>
                 <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Moderne architectuur</li>
               </ul>
-              <Link href="/bouw/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
+              <Link href="/bouwen/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
               </Link>
             </div>
@@ -379,7 +379,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Vakkundig <strong>metselwerk</strong> door ervaren <strong>metselaars</strong>. Van klassieke bakstenen gevels tot moderne tuinmuren met kwaliteitsmaterialen en garantie.
                 </p>
-                <Link href="/bouw/metselwerk" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/metselwerk" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over metselwerk →
                 </Link>
               </div>
@@ -395,7 +395,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Vakkundig <strong>timmerwerk</strong> door ervaren <strong>timmerlieden</strong>. Van dakconstructies tot maatwerk met duurzame materialen en traditioneel vakmanschap.
                 </p>
-                <Link href="/bouw/timmerwerken" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/timmerwerken" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over timmerwerk →
                 </Link>
               </div>
@@ -411,7 +411,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Meer woonruimte door professionele <strong>opbouw</strong>. Van tweede verdiepingen tot dakkapellen, zonder verhuizing meer ruimte creëren.
                 </p>
-                <Link href="/bouw/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over opbouw →
                 </Link>
               </div>
@@ -427,7 +427,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Meer woonruimte door professionele <strong>aanbouw</strong>. Van woonkamer uitbreiding tot serre, uw woning uitbreiden zonder verhuizing.
                 </p>
-                <Link href="/bouw/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over aanbouw →
                 </Link>
               </div>
@@ -443,7 +443,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Complete <strong>huisverbouwing</strong> door ervaren professionals. Van badkamer tot keuken, uw droomhuis realiseren met volledige begeleiding.
                 </p>
-                <Link href="/bouw/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over verbouwing →
                 </Link>
               </div>
@@ -459,7 +459,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Glazen <strong>serre aanbouw</strong> brengt de buitenwereld naar binnen. Van klassieke serres tot moderne glazen uitbouw voor meer licht en ruimte.
                 </p>
-                <Link href="/bouw/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over serre aanbouw →
                 </Link>
               </div>
@@ -475,7 +475,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 <p className="text-gray-600 mb-4">
                   Sleutelklaar <strong>nieuwbouw</strong> van uw droomhuis. Van eengezinswoningen tot luxe villa's, moderne technieken en duurzame materialen.
                 </p>
-                <Link href="/bouw/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
+                <Link href="/bouwen/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-orange-700 transition-colors cursor-pointer">
                   Lees meer over nieuwbouw →
                 </Link>
               </div>

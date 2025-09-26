@@ -122,7 +122,7 @@ export default function GratisOfferte() {
               </Link>
 
               {/* Bouw & Renovatie */}
-              <Link href="/bouw" className="group">
+              <Link href="/bouwen" className="group">
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 bg-gradient-to-br from-orange-50 to-white">
                   <CardHeader className="text-center pb-4">
                     <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -297,7 +297,7 @@ export default function GratisOfferte() {
                   Waarom zou ik een offerte aanvragen bij TBGS?
                 </h3>
                 <p className="text-gray-700">
-                  TBGS heeft 80+ jaar ervaring als familiebedrijf en werkt met gecertificeerde specialisten voor <Link href="/dak" className="text-tbgs-red font-medium hover:underline">dakwerk</Link>, <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoud</Link>, <Link href="/schoorsteen" className="text-tbgs-blue font-medium hover:underline">schoorsteenservice</Link> en <Link href="/bouw" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link>. Alle offertes zijn gratis en vrijblijvend, met transparante communicatie en garantie op alle uitgevoerd werk.
+                  TBGS heeft 80+ jaar ervaring als familiebedrijf en werkt met gecertificeerde specialisten voor <Link href="/daken" className="text-tbgs-red font-medium hover:underline">dakwerk</Link>, <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoud</Link>, <Link href="/schoorsteen" className="text-tbgs-blue font-medium hover:underline">schoorsteenservice</Link> en <Link href="/bouwen" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link>. Alle offertes zijn gratis en vrijblijvend, met transparante communicatie en garantie op alle uitgevoerd werk.
                 </p>
               </div>
               
@@ -342,7 +342,7 @@ export default function GratisOfferte() {
                   Wat voor garantie krijg ik op het werk?
                 </h3>
                 <p className="text-gray-700">
-                  TBGS geeft uitgebreide garantie op alle uitgevoerde werkzaamheden. De garantietermijn verschilt per type werk, van 2 jaar op <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoudswerk</Link> tot 10 jaar op <Link href="/dak" className="text-tbgs-red font-medium hover:underline">dakbedekkingen</Link>. Voor <Link href="/bouw" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link> hanteren we standaard 5 jaar garantie. Alle voorwaarden staan duidelijk in uw offerte.
+                  TBGS geeft uitgebreide garantie op alle uitgevoerde werkzaamheden. De garantietermijn verschilt per type werk, van 2 jaar op <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoudswerk</Link> tot 10 jaar op <Link href="/daken" className="text-tbgs-red font-medium hover:underline">dakbedekkingen</Link>. Voor <Link href="/bouwen" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link> hanteren we standaard 5 jaar garantie. Alle voorwaarden staan duidelijk in uw offerte.
                 </p>
               </div>
             </div>

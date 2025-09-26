@@ -85,7 +85,7 @@ export default function Metselwerk({ onOpenContactModal }: MetselwerkProps) {
     <TBSArticleTemplate
       title="Metselwerk Specialist - Professioneel Metselwerk | TBS TBGS"
       description="TBS metselwerk specialist. Vakkundig metselwerk van bakstenen gevels tot tuinmuren. ✓ 80+ jaar ervaring ✓ Garantie ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/metselwerk"
+      url="https://tbgs.nl/bouwen/metselwerk"
       heroTitle="Professioneel Metselwerk"
       heroSubtitle="Vakkundig metselwerk door ervaren vakmensen"
       heroDescription="Specialist in alle soorten metselwerk: van klassieke bakstenen gevels tot moderne tuinmuren. Onze ervaren metselaars werken met kwaliteitsmaterialen en garantie op vakmanschap."

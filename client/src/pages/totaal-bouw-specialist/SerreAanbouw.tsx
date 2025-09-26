@@ -85,7 +85,7 @@ export default function SerreAanbouw({ onOpenContactModal }: SerreAanbouwProps) 
     <TBSArticleTemplate
       title="Serre Aanbouw Specialist - Glazen Uitbouw & Wintertuinen | TBS TBGS"
       description="TBS serre specialist. Professionele serre aanbouw van klassiek tot modern. ✓ Vergunningen ✓ 80+ jaar ervaring ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/serre-aanbouw"
+      url="https://tbgs.nl/bouwen/serre-aanbouw"
       heroTitle="Serre Aanbouw"
       heroSubtitle="Glazen uitbouw voor meer woongenot"
       heroDescription="Specialist in serre aanbouw: van klassieke serres tot moderne glazen uitbouw. Meer licht en ruimte in uw huis met professionele serrebouw op maat."

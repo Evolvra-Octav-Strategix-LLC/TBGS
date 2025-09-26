@@ -198,9 +198,9 @@ function Router() {
     '/daken',
     '/schoorsteen', 
     '/onderhoud',
-    '/bouw',
+    '/bouwen',
     '/zorgeloos-wonen'
-  ].includes(location) || location.startsWith('/daken/') || location.startsWith('/schoorsteen/') || location.startsWith('/onderhoud/') || location.startsWith('/bouw/');
+  ].includes(location) || location.startsWith('/daken/') || location.startsWith('/schoorsteen/') || location.startsWith('/onderhoud/') || location.startsWith('/bouwen/');
 
   // Get specialist type based on current page
   const getCurrentSpecialist = (): "TDS" | "TSS" | "TOS" | "TBS" | undefined => {
@@ -213,7 +213,7 @@ function Router() {
     if (location === '/onderhoud' || location.startsWith('/onderhoud/') || location === '/zorgeloos-wonen') {
       return 'TOS';
     }
-    if (location === '/bouw' || location.startsWith('/bouw/')) {
+    if (location === '/bouwen' || location.startsWith('/bouwen/')) {
       return 'TBS';
     }
     return undefined;
@@ -230,7 +230,7 @@ function Router() {
     if (location === '/onderhoud' || location.startsWith('/onderhoud/') || location === '/zorgeloos-wonen') {
       return { backgroundColor: 'bg-tbgs-green', accentColor: 'text-tbgs-green' };
     }
-    if (location === '/bouw' || location.startsWith('/bouw/')) {
+    if (location === '/bouwen' || location.startsWith('/bouwen/')) {
       return { backgroundColor: 'bg-tbgs-orange', accentColor: 'text-tbgs-orange' };
     }
     // Show partner slider only on home page
@@ -256,7 +256,7 @@ function Router() {
           <Route path="/daken" component={() => <TotaalDakSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/schoorsteen" component={() => <TotaalSchoorsteenSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud" component={() => <TotaalOnderhoudSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen" component={() => <TotaalBouwSpecialist onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank" component={() => <Kennisbank onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/gratis-offerte" component={() => <GratisOfferte />} />
           <Route path="/offerte" component={() => <GratisOfferte />} />
@@ -283,13 +283,13 @@ function Router() {
           <Route path="/onderhoud/onderhoud-garage" component={() => <OnderhoudGarage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/onderhoud-dakgoot" component={() => <OnderhoudDakgoot onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/onderhoud/preventief-onderhoud" component={() => <PreventiefOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/metselwerk" component={() => <Metselwerk onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/timmerwerken" component={() => <Timmerwerken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/opbouw-op-uw-huis" component={() => <OpbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/aanbouwen-aan-uw-huis" component={() => <AanbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/uw-huis-verbouwen" component={() => <HuisVerbouwen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/serre-aanbouw" component={() => <SerreAanbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/bouw/nieuwbouw" component={() => <Nieuwbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/metselwerk" component={() => <Metselwerk onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/timmerwerken" component={() => <Timmerwerken onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/opbouw-op-uw-huis" component={() => <OpbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/aanbouwen-aan-uw-huis" component={() => <AanbouwHuis onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/uw-huis-verbouwen" component={() => <HuisVerbouwen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/serre-aanbouw" component={() => <SerreAanbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/bouwen/nieuwbouw" component={() => <Nieuwbouw onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/daklekkage-herkennen-voorkomen" component={() => <DaklekkageHerkennenVoorkomen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/energiebesparing-door-isolatie" component={() => <EnergibesparingDoorIsolatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/kennisbank/jaarlijkse-schoorsteencontrole" component={() => <JaarlijkseSchoorsteencontrole onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -457,8 +457,8 @@ function Router() {
           <Route path="/totaal-schoorsteen-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-schoorsteen-specialist', '/schoorsteen'); window.location.replace(newPath); return null; }} />
           <Route path="/totaal-onderhoud-specialist" component={() => { window.location.replace('/onderhoud'); return null; }} />
           <Route path="/totaal-onderhoud-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-onderhoud-specialist', '/onderhoud'); window.location.replace(newPath); return null; }} />
-          <Route path="/totaal-bouw-specialist" component={() => { window.location.replace('/bouw'); return null; }} />
-          <Route path="/totaal-bouw-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-bouw-specialist', '/bouw'); window.location.replace(newPath); return null; }} />
+          <Route path="/totaal-bouw-specialist" component={() => { window.location.replace('/bouwen'); return null; }} />
+          <Route path="/totaal-bouw-specialist/*" component={() => { const currentPath = window.location.pathname; const newPath = currentPath.replace('/totaal-bouw-specialist', '/bouwen'); window.location.replace(newPath); return null; }} />
           
           <Route component={NotFound} />
         </Switch>

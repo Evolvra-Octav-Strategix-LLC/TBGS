@@ -71,7 +71,7 @@ export default function SpecialistHeader({
       case "TDS": return "/daken";
       case "TSS": return "/schoorsteen";
       case "TOS": return "/onderhoud";
-      case "TBS": return "/bouw";
+      case "TBS": return "/bouwen";
       default: return "/";
     }
   };

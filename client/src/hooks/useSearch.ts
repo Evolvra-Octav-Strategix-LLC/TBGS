@@ -168,8 +168,8 @@ export function initializeSearchContent() {
       tags: ['onderhoud', 'preventief', 'reparatie', 'service']
     },
     {
-      title: 'Bouw',
-      url: '/bouw',
+      title: 'Bouwen',
+      url: '/bouwen',
       type: 'dienst',
       excerpt: 'Complete bouwdiensten van verbouwing tot nieuwbouw',
       category: 'Bouwwerken',

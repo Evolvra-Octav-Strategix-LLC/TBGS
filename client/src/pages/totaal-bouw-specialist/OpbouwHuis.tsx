@@ -85,7 +85,7 @@ export default function OpbouwHuis({ onOpenContactModal }: OpbouwHuisProps) {
     <TBSArticleTemplate
       title="Opbouw Huis Specialist - Tweede Verdieping & Dakopbouw | TBS TBGS"
       description="TBS opbouw specialist. Professionele opbouw van tweede verdiepingen en dakkapellen. ✓ Vergunningen ✓ 80+ jaar ervaring ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/opbouw-op-uw-huis"
+      url="https://tbgs.nl/bouwen/opbouw-op-uw-huis"
       heroTitle="Opbouw op Uw Huis"
       heroSubtitle="Meer woonruimte door professionele opbouw"
       heroDescription="Specialist in opbouw van woningen: van tweede verdiepingen tot dakkapellen. Meer woonruimte zonder verhuizing, met volledige begeleiding van ontwerp tot oplevering."

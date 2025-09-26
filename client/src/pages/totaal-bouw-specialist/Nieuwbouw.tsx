@@ -85,7 +85,7 @@ export default function Nieuwbouw({ onOpenContactModal }: NieuwbouwProps) {
     <TBSArticleTemplate
       title="Nieuwbouw Specialist - Droomhuis Bouwen Sleutelklaar | TBS TBGS"
       description="TBS nieuwbouw specialist. Sleutelklaar bouwen van eengezinswoningen tot villa's. ✓ Ontwerp tot oplevering ✓ 80+ jaar ervaring ✓ Gratis offerte"
-      url="https://tbgs.nl/bouw/nieuwbouw"
+      url="https://tbgs.nl/bouwen/nieuwbouw"
       heroTitle="Nieuwbouw Woningen"
       heroSubtitle="Sleutelklaar bouwen van uw droomhuis"
       heroDescription="Specialist in nieuwbouw woningen: van eengezinswoningen tot luxe villa's. Uw droomhuis bouwen met volledige begeleiding van ontwerp tot sleutelklare oplevering."
