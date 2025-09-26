@@ -53,6 +53,13 @@ export default function ContactModalV2() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
+  // Watch description field for live character counting
+  const descriptionValue = form.watch("description") || "";
+  const minChars = 10;
+  const currentChars = descriptionValue.length;
+  const remainingChars = minChars - currentChars;
+  const isDescriptionValid = currentChars >= minChars;
+
   const form = useForm<OfferteFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -378,7 +385,21 @@ export default function ContactModalV2() {
                 className="min-h-[100px] border border-gray-300"
               />
             </FormControl>
-            <FormMessage />
+            <div className="flex justify-between items-center">
+              <FormMessage />
+              <div className={`text-xs ${
+                isDescriptionValid 
+                  ? "text-green-600" 
+                  : remainingChars > 0 
+                    ? "text-orange-500" 
+                    : "text-red-500"
+              }`}>
+                {currentChars}/{minChars} karakters
+                {!isDescriptionValid && remainingChars > 0 && (
+                  <span className="ml-1">({remainingChars} nog nodig)</span>
+                )}
+              </div>
+            </div>
           </FormItem>
         )}
       />
