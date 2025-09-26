@@ -660,7 +660,7 @@ export default function ContactModalV2() {
       {currentStep !== 2 && (
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center text-tbgs-navy">
-            Gratis Offerte Aanvragen
+            Gratis offerte aanvragen
           </CardTitle>
           <CardDescription className="text-center">
             Vul onderstaand formulier in en ontvang binnen 24 uur een persoonlijke offerte
