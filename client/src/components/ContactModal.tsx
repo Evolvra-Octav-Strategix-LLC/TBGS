@@ -215,6 +215,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const selectedSpecialisme = form.watch("specialisme");
   const currentProjectTypes = selectedSpecialisme ? projectTypes[selectedSpecialisme as keyof typeof projectTypes] || [] : [];
+  
+  // Watch description field for live character counting
+  const descriptionValue = form.watch("description") || "";
+  const minChars = 10;
+  const currentChars = descriptionValue.length;
+  const remainingChars = minChars - currentChars;
+  const isDescriptionValid = currentChars >= minChars;
 
   // Immediate compression when files are selected (same as FloatingServiceMenu)
   const compressImage = (file: File): Promise<File> => {
@@ -492,11 +499,34 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormControl>
               <Textarea
                 placeholder="Beschrijf uw project zo uitgebreid mogelijk voor een nauwkeurige offerte..."
-                className="min-h-[80px] text-sm leading-relaxed placeholder:text-gray-400 border border-gray-300"
+                className={`min-h-[80px] text-sm leading-relaxed placeholder:text-gray-400 border transition-colors ${
+                  currentChars > 0 && !isDescriptionValid 
+                    ? 'border-red-300 focus:border-red-500' 
+                    : isDescriptionValid 
+                      ? 'border-green-300 focus:border-green-500'
+                      : 'border-gray-300 focus:border-blue-500'
+                }`}
                 {...field}
               />
             </FormControl>
-            <FormMessage />
+            <div className="flex justify-between items-center mt-1">
+              <FormMessage />
+              <div className={`text-xs transition-colors ${
+                currentChars > 0 && !isDescriptionValid
+                  ? 'text-red-500'
+                  : isDescriptionValid
+                    ? 'text-green-600'
+                    : 'text-gray-500'
+              }`}>
+                {currentChars > 0 && !isDescriptionValid ? (
+                  <>Nog {remainingChars} karakters nodig</>
+                ) : isDescriptionValid ? (
+                  <>✓ {currentChars} karakters</>
+                ) : (
+                  <>Minimaal {minChars} karakters vereist</>
+                )}
+              </div>
+            </div>
           </FormItem>
         )}
       />
