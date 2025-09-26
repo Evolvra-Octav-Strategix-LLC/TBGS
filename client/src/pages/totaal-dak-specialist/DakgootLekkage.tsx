@@ -137,7 +137,7 @@ export default function DakgootLekkage({ onOpenContactModal }: DakgootLekkagePro
         <div class="grid md:grid-cols-3 gap-6 mt-8">
           <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
             <h3 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
-              <i class="fas fa-shield-alt text-blue-600 mr-3"></i>
+              <i class="fas fa-spray-can text-blue-600 mr-3"></i>
               Dakgoot Coating
             </h3>
             <p class="text-blue-800">
