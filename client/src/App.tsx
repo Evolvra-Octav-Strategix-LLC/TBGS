@@ -77,7 +77,7 @@ import LimburgRegioHub from "@/pages/be/LimburgRegioHub";
 
 // BE - City Hubs (Locatie Hubs) - All Belgium locations
 import LocationLommel from "@/pages/be/LocationLommel";
-import LocationRetie from "@/pages/be/LocationRetie";
+import LocationKaulille from "@/pages/be/LocationKaulille";
 import LocationHamontAchel from "@/pages/be/LocationHamontAchel";
 import LocationPelt from "@/pages/be/LocationPelt";
 import LocationSintHuibrechtsLille from "@/pages/be/LocationSintHuibrechtsLille";
@@ -128,10 +128,10 @@ import LommelDaklekkage from "@/pages/locations/LommelDaklekkage";
 import LommelRenovatie from "@/pages/locations/LommelRenovatie";
 import LommelOnderhoud from "@/pages/locations/LommelOnderhoud";
 import LommelSchoorsteen from "@/pages/locations/LommelSchoorsteen";
-import RetieDaklekkage from "@/pages/locations/RetieDaklekkage";
-import RetieRenovatie from "@/pages/locations/RetieRenovatie";
-import RetieOnderhoud from "@/pages/locations/RetieOnderhoud";
-import RetieSchoorsteen from "@/pages/locations/RetieSchoorsteen";
+import KaulilleDaklekkage from "@/pages/locations/KaulilleDaklekkage";
+import KaulilleRenovatie from "@/pages/locations/KaulilleRenovatie";
+import KaulilleOnderhoud from "@/pages/locations/KaulilleOnderhoud";
+import KaulilleSchoorsteen from "@/pages/locations/KaulilleSchoorsteen";
 import HamontAchelDaklekkage from "@/pages/locations/HamontAchelDaklekkage";
 import HamontAchelRenovatie from "@/pages/locations/HamontAchelRenovatie";
 import HamontAchelOnderhoud from "@/pages/locations/HamontAchelOnderhoud";
@@ -348,7 +348,7 @@ function Router() {
           
           {/* BE - City Hubs (Locatie Hubs) - All Belgium locations */}
           <Route path="/be/lommel" component={() => <LocationLommel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/retie" component={() => <LocationRetie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/kaulille" component={() => <LocationKaulille onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel" component={() => <LocationHamontAchel onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/pelt" component={() => <LocationPelt onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/sint-huibrechts-lille" component={() => <LocationSintHuibrechtsLille onOpenContactModal={() => setIsContactModalOpen(true)} />} />
@@ -408,10 +408,10 @@ function Router() {
           <Route path="/be/lommel/renovatie" component={() => <LommelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/lommel/onderhoud" component={() => <LommelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/lommel/schoorsteen" component={() => <LommelSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/retie/daklekkage" component={() => <RetieDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/retie/renovatie" component={() => <RetieRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/retie/onderhoud" component={() => <RetieOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
-          <Route path="/be/retie/schoorsteen" component={() => <RetieSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/kaulille/daklekkage" component={() => <KaulilleDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/kaulille/renovatie" component={() => <KaulilleRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/kaulille/onderhoud" component={() => <KaulilleOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
+          <Route path="/be/kaulille/schoorsteen" component={() => <KaulilleSchoorsteen onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/daklekkage" component={() => <HamontAchelDaklekkage onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/renovatie" component={() => <HamontAchelRenovatie onOpenContactModal={() => setIsContactModalOpen(true)} />} />
           <Route path="/be/hamont-achel/onderhoud" component={() => <HamontAchelOnderhoud onOpenContactModal={() => setIsContactModalOpen(true)} />} />
