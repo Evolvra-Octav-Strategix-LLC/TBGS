@@ -18,6 +18,7 @@ interface MultiStepFormProps {
   isValid?: boolean;
   className?: string;
   validateStep?: (stepIndex: number) => boolean;
+  hideStepHeaderOnFinalStep?: boolean;
 }
 
 export function MultiStepForm({ 
@@ -29,7 +30,8 @@ export function MultiStepForm({
   isSubmitting = false, 
   isValid = true,
   className = "",
-  validateStep
+  validateStep,
+  hideStepHeaderOnFinalStep = false
 }: MultiStepFormProps) {
   const [internalCurrentStep, setInternalCurrentStep] = useState(0);
   const currentStep = controlledCurrentStep !== undefined ? controlledCurrentStep : internalCurrentStep;
@@ -78,14 +80,16 @@ export function MultiStepForm({
       </div>
       
       {/* Step Header */}
-      <div className="text-center space-y-2">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-          {steps[currentStep].title}
-        </h2>
-        <p className="text-gray-600">
-          {steps[currentStep].description}
-        </p>
-      </div>
+      {!(hideStepHeaderOnFinalStep && isLastStep) && (
+        <div className="text-center space-y-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+            {steps[currentStep].title}
+          </h2>
+          <p className="text-gray-600">
+            {steps[currentStep].description}
+          </p>
+        </div>
+      )}
       
       {/* Step Content */}
       <div className="min-h-[400px] flex flex-col">

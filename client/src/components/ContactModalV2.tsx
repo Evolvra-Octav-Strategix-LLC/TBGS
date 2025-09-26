@@ -657,6 +657,7 @@ export default function ContactModalV2() {
             onSubmit={() => form.handleSubmit(onSubmit)()}
             onBack={() => {}}
             isSubmitting={submitMutation.isPending}
+            hideStepHeaderOnFinalStep={true}
           />
         </Form>
       </CardContent>
