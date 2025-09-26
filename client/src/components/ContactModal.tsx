@@ -637,14 +637,27 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </FormControl>
             <div 
               className="space-y-1 leading-none cursor-pointer" 
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 field.onChange(!field.value);
               }}
             >
-              <FormLabel className="cursor-pointer">
+              <FormLabel 
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  field.onChange(!field.value);
+                }}
+              >
                 Ik ga akkoord met de privacyverklaring *
               </FormLabel>
-              <p className="text-sm text-gray-500 cursor-pointer">
+              <p 
+                className="text-sm text-gray-500 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  field.onChange(!field.value);
+                }}
+              >
                 Uw gegevens worden vertrouwelijk behandeld en alleen gebruikt voor het opstellen van uw offerte.
               </p>
             </div>
