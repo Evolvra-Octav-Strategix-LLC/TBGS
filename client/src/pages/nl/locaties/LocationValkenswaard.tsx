@@ -65,50 +65,50 @@ export default function LocationValkenswaard({ onOpenContactModal }: LocationVal
       
       reviews={[
         {
-          name: "Annemarie Koolen",
+          name: "Marco B.",
           location: "Valkenswaard Centrum",
           rating: 5,
-          text: "Uitstekende service! Ze hebben onze daklekkage snel en professioneel opgelost. Zeer tevreden met het resultaat en de nette afwerking.",
+          text: "Hele fijne service gehad van TBGS. Daklekkage was binnen 24 uur verholpen. Netjes gewerkt en faire prijs. Zeker aan te raden!",
           service: "Daklekkage reparatie",
           date: "December 2024"
         },
         {
-          name: "Piet van Schaijk", 
+          name: "Linda van den Berg", 
           location: "Valkenhorst", 
           rating: 5,
-          text: "TBGS heeft onze keuken volledig gerenoveerd. Mooi werk geleverd en alles netjes achtergelaten. Echt een aanrader!",
-          service: "Keukenrenovatie",
+          text: "Complete badkamerrenovatie laten doen. Professioneel werk, goed overleg vooraf en keurig opgeleverd. Top bedrijf!",
+          service: "Badkamerrenovatie",
           date: "November 2024"
         },
         {
-          name: "Marloes Driessen",
+          name: "J. Hermans",
           location: "Dommelen",
-          rating: 5, 
-          text: "Al jaren klant voor ons onderhoudscontract. Ze zijn betrouwbaar, denken mee en voorkomen problemen voordat ze ontstaan.",
+          rating: 4, 
+          text: "Goede service voor ons onderhoudscontract. Komen netjes op tijd en denken goed mee. Enige minpunt was de wachttijd voor afspraak.",
           service: "Jaarlijks onderhoud",
           date: "Oktober 2024"
         },
         {
-          name: "Marc Verhagen",
+          name: "Frank S.",
           location: "Borkel en Schaft",
           rating: 5,
-          text: "Professionele schoorsteenreiniging en controle. Alles keurig uitgevoerd en goed uitgelegd. Zeer tevreden!",
+          text: "Schoorsteen grondig gereinigd en gecontroleerd. Duidelijke uitleg en alles netjes achtergelaten. Goede prijs-kwaliteit verhouding.",
           service: "Schoorsteenreiniging", 
           date: "September 2024"
         },
         {
-          name: "Sandra Wolfs",
-          location: "Valkenswaard-Oost",
+          name: "Petra Janssen",
+          location: "Valkenswaard",
           rating: 5,
-          text: "Na storm waren er dakpannen beschadigd. TBGS was er snel bij en heeft alles vakkundig gerepareerd. Top service!",
-          service: "Dakpannen vervangen",
+          text: "Na de storm snel geholpen met kapotte dakpannen. Snelle reactie en vakkundige reparatie. Zeer tevreden klant!",
+          service: "Storm schade herstel",
           date: "Augustus 2024"
         },
         {
-          name: "Jan de Bruijn",
-          location: "Valkenswaard-West", 
+          name: "Rob v.d. Heuvel",
+          location: "Valkenswaard", 
           rating: 5,
-          text: "Betrouwbaar bedrijf waar je op kunt rekenen. Eerlijke prijzen en altijd op afspraak. Al jaren een tevreden klant.",
+          text: "Al meerdere klussen laten doen door TBGS. Altijd op tijd, eerlijke prijzen en kwaliteit werk. Echte aanrader voor de regio.",
           service: "Diverse werkzaamheden",
           date: "Juli 2024"
         }
