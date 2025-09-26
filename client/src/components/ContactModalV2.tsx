@@ -22,7 +22,7 @@ import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 const formSchema = z.object({
   serviceType: z.string().optional(),
   specialisme: z.string().optional(),
-  projectType: z.string().min(1, "Selecteer een projecttype"),
+  projectType: z.string().optional(),
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
   email: z.string().email("Ongeldig e-mailadres"),
@@ -82,7 +82,7 @@ export default function ContactModalV2() {
       const formData = new FormData();
       
       // Add form fields matching service-request schema
-      formData.append('selectedService', data.projectType || 'Algemeen Project');
+      formData.append('selectedService', data.serviceType || 'Algemeen Project');
       formData.append('address', data.location);
       formData.append('projectDescription', data.description);
       formData.append('firstName', data.firstName);
@@ -365,41 +365,6 @@ export default function ContactModalV2() {
         />
       </div>
 
-      {/* Specialist Selection */}
-      <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="projectType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-base font-semibold">Type Project *</FormLabel>
-              <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="border border-gray-300">
-                    <SelectValue placeholder="Kies het type project" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="daklekkage">Daklekkage Reparatie</SelectItem>
-                    <SelectItem value="dakrenovatie">Dak Renovatie</SelectItem>
-                    <SelectItem value="dakbedekking">Nieuwe Dakbedekking</SelectItem>
-                    <SelectItem value="schoorsteenreparatie">Schoorsteen Reparatie</SelectItem>
-                    <SelectItem value="schoorsteenonderhoud">Schoorsteen Onderhoud</SelectItem>
-                    <SelectItem value="gevelreiniging">Gevelreiniging</SelectItem>
-                    <SelectItem value="schilderwerk">Schilderwerk</SelectItem>
-                    <SelectItem value="onderhoud">Algemeen Onderhoud</SelectItem>
-                    <SelectItem value="verbouwing">Verbouwing</SelectItem>
-                    <SelectItem value="aanbouw">Aanbouw</SelectItem>
-                    <SelectItem value="renovatie">Renovatie</SelectItem>
-                    <SelectItem value="nieuwbouw">Nieuwbouw</SelectItem>
-                    <SelectItem value="anders">Anders</SelectItem>
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
     </div>
   );
 
@@ -687,8 +652,8 @@ export default function ContactModalV2() {
 
   const steps = [
     {
-      title: "Project Type",
-      description: "Vertel ons welk type project u heeft",
+      title: "Service Selectie",
+      description: "Kies het type service dat u nodig heeft",
       content: step1Content
     },
     {
