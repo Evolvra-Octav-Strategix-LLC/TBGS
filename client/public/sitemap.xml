@@ -195,6 +195,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/onderhoud/onderhoud-dakgoot</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/onderhoud/preventief-onderhoud</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- BOUWWERK SERVICES -->
   <url>
@@ -418,7 +432,7 @@
 
   <!-- NEDERLAND LOCATIE-SPECIFIEKE PAGINA'S -->
   
-  <!-- Eindhoven Services -->
+  <!-- Nederland City Hubs -->
   <url>
     <loc>https://www.tbgs.nl/nl/eindhoven</loc>
     <lastmod>2025-09-26</lastmod>
@@ -426,6 +440,63 @@
     <priority>0.8</priority>
   </url>
   
+  <url>
+    <loc>https://www.tbgs.nl/nl/nuenen</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/veldhoven</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/best</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/son-en-breugel</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/geldrop</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/mierlo</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/waalre</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/nl/valkenswaard</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Eindhoven Services (ALLEEN GELDIGE ROUTES) -->
   <url>
     <loc>https://www.tbgs.nl/nl/eindhoven/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -453,50 +524,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/eindhoven/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/eindhoven/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/eindhoven/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/eindhoven/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/eindhoven/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <!-- Nuenen Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/nuenen/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -524,50 +553,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/nuenen/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
   <!-- Veldhoven Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/veldhoven/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -595,50 +582,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/veldhoven/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
   <!-- Best Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/best</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/best/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -666,50 +611,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/best/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/best/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/best/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/best/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/best/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
   <!-- Son en Breugel Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/son-en-breugel/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -737,50 +640,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/son-en-breugel/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
   <!-- Geldrop Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/geldrop/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -808,50 +669,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/geldrop/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
   <!-- Mierlo Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/mierlo/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -879,50 +698,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo/bouwwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo/herstelwerkzaamheden</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/mierlo/verbouwing</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
   <!-- Waalre Services -->
-  <url>
-    <loc>https://www.tbgs.nl/nl/waalre</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/nl/waalre/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -950,37 +727,31 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- Valkenswaard Services -->
+  <url>
+    <loc>https://www.tbgs.nl/nl/valkenswaard/daklekkage</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
-    <loc>https://www.tbgs.nl/nl/waalre/bouwwerkzaamheden</loc>
+    <loc>https://www.tbgs.nl/nl/valkenswaard/renovatie</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.tbgs.nl/nl/waalre/herstelwerkzaamheden</loc>
+    <loc>https://www.tbgs.nl/nl/valkenswaard/onderhoud</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://www.tbgs.nl/nl/waalre/schilderwerk</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/waalre/uitbreidingen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/nl/waalre/verbouwing</loc>
+    <loc>https://www.tbgs.nl/nl/valkenswaard/schoorsteen</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -1003,7 +774,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Lommel Services -->
+  <!-- Belgium City Hubs -->
   <url>
     <loc>https://www.tbgs.nl/be/lommel</loc>
     <lastmod>2025-09-26</lastmod>
@@ -1011,6 +782,56 @@
     <priority>0.7</priority>
   </url>
   
+  <url>
+    <loc>https://www.tbgs.nl/be/kaulille</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/hamont-achel</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/pelt</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/sint-huibrechts-lille</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/overpelt</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/neerpelt</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/hamont</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Lommel Services -->
   <url>
     <loc>https://www.tbgs.nl/be/lommel/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -1039,50 +860,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Hamont-Achel Services -->
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont-achel</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont-achel/daklekkage</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont-achel/renovatie</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont-achel/onderhoud</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont-achel/schoorsteen</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
   <!-- Kaulille Services -->
-  <url>
-    <loc>https://www.tbgs.nl/be/kaulille</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/be/kaulille/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -1111,14 +889,36 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Pelt Services -->
+  <!-- Hamont-Achel Services -->
   <url>
-    <loc>https://www.tbgs.nl/be/pelt</loc>
+    <loc>https://www.tbgs.nl/be/hamont-achel/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://www.tbgs.nl/be/hamont-achel/renovatie</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/hamont-achel/onderhoud</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.tbgs.nl/be/hamont-achel/schoorsteen</loc>
+    <lastmod>2025-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Pelt Services -->
   <url>
     <loc>https://www.tbgs.nl/be/pelt/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -1149,13 +949,6 @@
 
   <!-- Sint-Huibrechts-Lille Services -->
   <url>
-    <loc>https://www.tbgs.nl/be/sint-huibrechts-lille</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.tbgs.nl/be/sint-huibrechts-lille/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1184,13 +977,6 @@
   </url>
 
   <!-- Overpelt Services -->
-  <url>
-    <loc>https://www.tbgs.nl/be/overpelt</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/be/overpelt/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
@@ -1221,13 +1007,6 @@
 
   <!-- Neerpelt Services -->
   <url>
-    <loc>https://www.tbgs.nl/be/neerpelt</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.tbgs.nl/be/neerpelt/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1256,13 +1035,6 @@
   </url>
 
   <!-- Hamont Services -->
-  <url>
-    <loc>https://www.tbgs.nl/be/hamont</loc>
-    <lastmod>2025-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
   <url>
     <loc>https://www.tbgs.nl/be/hamont/daklekkage</loc>
     <lastmod>2025-09-26</lastmod>
