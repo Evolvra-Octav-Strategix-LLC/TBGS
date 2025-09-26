@@ -512,34 +512,6 @@ export default function GratisOfferte() {
             </Button>
           </div>
         </section>
-        
-        {/* Trust Indicators */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-tbgs-navy">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">
-              Vertrouwd Door Duizenden Klanten
-            </h2>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-2">80+</div>
-                <div className="text-sm opacity-90">Jaar Ervaring</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-2">5000+</div>
-                <div className="text-sm opacity-90">Projecten Voltooid</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-2">4.8★</div>
-                <div className="text-sm opacity-90">Google Reviews</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-2">24u</div>
-                <div className="text-sm opacity-90">Reactietijd</div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer showPartnerSlider={true} />
     </>
