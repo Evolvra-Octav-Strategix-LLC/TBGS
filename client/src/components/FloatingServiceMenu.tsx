@@ -867,8 +867,8 @@ export function FloatingServiceForm({ className = '', specialist }: FloatingServ
                     </div>
                   </div>
 
-                  {/* E-mailadres en Telefoonnummer - Horizontale lijn */}
-                  <div className="grid grid-cols-2 gap-3">
+                  {/* E-mailadres en Telefoonnummer - Verticaal gestapeld */}
+                  <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         E-mailadres
