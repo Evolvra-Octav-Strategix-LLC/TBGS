@@ -129,7 +129,7 @@ export default function LocationValkenswaard({ onOpenContactModal }: LocationVal
         },
         {
           question: "Hoe snel kunnen jullie in Valkenswaard ter plaatse zijn voor spoedgevallen?",
-          answer: "Voor spoedgevallen zoals daklekkage of acute reparaties kunnen we meestal binnen 2-4 uur ter plaatse zijn. Voor reguliere werkzaamheden plannen we binnen 24-48 uur een afspraak in."
+          answer: "We zijn normaal binnen 24 uur beschikbaar, tenzij er een noodgeval is of je hebt een abonnement. Voor reguliere werkzaamheden plannen we binnen 24-48 uur een afspraak in."
         },
         {
           question: "Werken jullie ook in de kleinere kernen rond Valkenswaard?",
