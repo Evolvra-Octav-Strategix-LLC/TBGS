@@ -18,7 +18,6 @@ interface MultiStepFormProps {
   isValid?: boolean;
   className?: string;
   validateStep?: (stepIndex: number) => boolean;
-  hideStepHeaderOnFinalStep?: boolean;
 }
 
 export function MultiStepForm({ 
@@ -30,8 +29,7 @@ export function MultiStepForm({
   isSubmitting = false, 
   isValid = true,
   className = "",
-  validateStep,
-  hideStepHeaderOnFinalStep = false
+  validateStep
 }: MultiStepFormProps) {
   const [internalCurrentStep, setInternalCurrentStep] = useState(0);
   const currentStep = controlledCurrentStep !== undefined ? controlledCurrentStep : internalCurrentStep;
@@ -43,9 +41,8 @@ export function MultiStepForm({
     if (currentStep < steps.length - 1) {
       const nextStep = currentStep + 1;
       setCurrentStep(nextStep);
-      // Adjust scroll position based on whether step 3 (index 2) will have hidden header
-      const scrollTop = nextStep === 2 ? 20 : 120; // Less scroll for step 3 without header
-      window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      // Scroll to position accounting for header height (approximately 120px from top)
+      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
   };
 
@@ -80,16 +77,14 @@ export function MultiStepForm({
       </div>
       
       {/* Step Header */}
-      {!(hideStepHeaderOnFinalStep && isLastStep) && (
-        <div className="text-center space-y-2">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-            {steps[currentStep].title}
-          </h2>
-          <p className="text-gray-600">
-            {steps[currentStep].description}
-          </p>
-        </div>
-      )}
+      <div className="text-center space-y-2">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+          {steps[currentStep].title}
+        </h2>
+        <p className="text-gray-600">
+          {steps[currentStep].description}
+        </p>
+      </div>
       
       {/* Step Content */}
       <div className="min-h-[400px] flex flex-col">
