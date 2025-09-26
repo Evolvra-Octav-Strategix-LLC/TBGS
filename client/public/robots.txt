@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Belangrijke pagina's voor crawling
+Allow: /daken
+Allow: /schoorsteen
+Allow: /onderhoud
+Allow: /bouwen
+Allow: /contact
+Allow: /offerte
+Allow: /gratis-inspectie
+Allow: /kennisbank
+
+# Sitemaps
+Sitemap: https://www.tbgs.nl/sitemap.xml
+
+# Contact informatie
+# TBGS BV - Totaal Bouw Groep Specialisten
+# Telefoon: 040-202-6744
+# Website: https://www.tbgs.nl

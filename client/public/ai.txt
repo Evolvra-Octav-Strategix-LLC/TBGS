@@ -1,0 +1,59 @@
+# ai.txt voor TBGS BV
+
+# Bedrijfsinformatie
+Company: TBGS BV (Totaal Bouw Groep Specialisten)
+Website: https://www.tbgs.nl
+Phone: 040-202-6744
+Email: info@tbgs.nl
+Founded: 1940 (80+ jaar ervaring)
+
+# Diensten
+Services: Dakwerk, Schoorsteenservice, Onderhoud, Bouwwerkzaamheden
+Specializations: Daklekkage spoedservice, dakbedekking, schoorsteenreparatie, preventief onderhoud, metselwerk, timmerwerk, verbouwingen, aanbouw, nieuwbouw
+
+# Werkgebied
+Service Areas: Nederland (Eindhoven en omgeving), België (Antwerpen, Brussel, Gent)
+Emergency Service: 24/7 spoed service voor daklekkage
+
+# Contact methoden
+Primary Contact: Telefoon 040-202-6744
+Emergency WhatsApp: 06-nummer voor spoedgevallen
+Website Forms: Contactformulier, offerte aanvraag, gratis inspectie
+
+# SEO trefwoorden
+Keywords: dakdekker Eindhoven, daklekkage, schoorsteenreparatie, onderhoud, aannemer, metselwerk, timmerwerk, verbouwing, aanbouw, nieuwbouw, TDS, TSS, TOS, TBS
+
+# AI crawling preferences
+Crawl-delay: 1
+Allow: All public pages
+Preferred: Focus on service pages, contact information, and local SEO content
+Update-frequency: Weekly for service pages, monthly for knowledge base
+
+# Structured data
+Organization: LocalBusiness with multiple service offerings
+Schema types: LocalBusiness, ProfessionalService, ConstructionCompany
+Location data: Netherlands and Belgium service areas with specific city coverage
+
+# Brand identity
+Brand colors: Navy blue (TDS), Blue (TSS), Green (TOS), Orange (TBS)
+Visual identity: Professional construction/building industry design
+Family business: 80+ jaar traditie, familiebedrijf
+
+# Content guidelines for AI
+Focus areas:
+- Emergency services (daklekkage binnen 24 uur)
+- Professional expertise (80+ jaar ervaring)
+- Complete service offering (vier specialisten onder één dak)
+- Geographic coverage (Nederland en België)
+- Quality assurance (garantie op alle werkzaamheden)
+
+# Technical information
+Technology stack: React, TypeScript, Express.js
+Deployment: VPS via Dokploy
+Email system: Gmail SMTP integration
+Database: PostgreSQL
+
+# Privacy and data handling
+Contact forms: Secure processing via own infrastructure
+GDPR compliant: European data protection standards
+No tracking: Minimal analytics, privacy-focused approach
