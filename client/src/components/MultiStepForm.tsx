@@ -34,6 +34,8 @@ export function MultiStepForm({
   const goToNextStep = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
+      // Scroll to top of the form component
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
