@@ -415,7 +415,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>Voornaam *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw voornaam" className="border border-gray-300" />
+                <Input {...field} placeholder="Uw voornaam" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -429,7 +429,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>Achternaam *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw achternaam" className="border border-gray-300" />
+                <Input {...field} placeholder="Uw achternaam" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -443,7 +443,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300" />
+                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -457,7 +457,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="+31 6 12345678" className="border border-gray-300" />
+                <Input {...field} placeholder="+31 6 12345678" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -476,7 +476,7 @@ export default function ContactModalV2() {
                 value={field.value}
                 onChange={field.onChange}
                 placeholder="Straat en huisnummer"
-                className="border border-gray-300"
+                className="border border-gray-300 placeholder:text-gray-500"
               />
             </FormControl>
             <FormMessage />
@@ -492,7 +492,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>Postcode *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="1234 AB" className="border border-gray-300" />
+                <Input {...field} placeholder="1234 AB" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -506,7 +506,7 @@ export default function ContactModalV2() {
             <FormItem>
               <FormLabel>Plaats *</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Uw woonplaats" className="border border-gray-300" />
+                <Input {...field} placeholder="Uw woonplaats" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
