@@ -459,7 +459,7 @@ function Router() {
         onClose={() => setIsContactModalOpen(false)} 
       />
       <BackToTopButton />
-      {location !== '/offerte' && <FloatingServiceForm specialist={getCurrentSpecialist()} />}
+      {location !== '/offerte' && location !== '/gratis-offerte' && <FloatingServiceForm specialist={getCurrentSpecialist()} />}
     </div>
   );
 }
