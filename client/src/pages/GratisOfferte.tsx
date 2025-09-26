@@ -311,7 +311,7 @@ export default function GratisOfferte() {
             </div>
             
             {/* Google Reviews Slider */}
-            <div className="mb-12">
+            <div>
               <GoogleReviewSlider placeId="ChIJVSc2_yXbxkcROATmSZNFGFU" className="" />
             </div>
           </div>
