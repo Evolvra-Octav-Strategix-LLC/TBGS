@@ -162,20 +162,20 @@ const locations: Location[] = [
   },
   // Belgium - Actieve gebieden
   {
-    id: "retie",
-    name: "TBGS Retie",
-    city: "Retie",
+    id: "kaulille",
+    name: "TBGS Kaulille",
+    city: "Kaulille",
     region: "Limburg, België",
     address: "",
     postalCode: "",
     phone: "+31 40 202 6744",
-    coordinates: { lat: 51.2667, lng: 5.0833 },
+    coordinates: { lat: 51.1872, lng: 5.5257 },
     services: ["TDS", "TBS"],
     rating: 4.8,
     reviewCount: 127,
-    description: "Grensoverschrijdende kwaliteit in Retie.",
+    description: "Grensoverschrijdende kwaliteit in Kaulille.",
     openingHours: ["Ma-Vr: 07:00-17:00", "Za: 08:00-16:00"],
-    slug: "retie"
+    slug: "kaulille"
   },
   {
     id: "lommel",

@@ -128,7 +128,7 @@ export default function GratisOfferte() {
               <p className="text-gray-700 mb-4">
                 Vanuit onze basis in Eindhoven werken wij in heel Nederland en België. Onze specialisten zijn actief in 
                 <strong> Eindhoven, Nuenen, Veldhoven, Best, Waalre, Geldrop-Mierlo</strong> en vele andere Nederlandse gemeenten. 
-                In België bedienen wij onder andere <strong>Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel, Retie</strong> en de gehele provincie Limburg.
+                In België bedienen wij onder andere <strong>Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel, Kaulille</strong> en de gehele provincie Limburg.
               </p>
               
               <p className="text-gray-700">

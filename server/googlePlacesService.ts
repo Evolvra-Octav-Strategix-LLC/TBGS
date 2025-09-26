@@ -186,7 +186,7 @@ export class GooglePlacesService {
       
       // Belgium locations
       { name: 'Totaal Dak Specialist TBGS BV', city: 'Lommel', country: 'be' as const },
-      { name: 'Totaal Dak Specialist TBGS BV', city: 'Retie', country: 'be' as const },
+      { name: 'Totaal Dak Specialist TBGS BV', city: 'Kaulille', country: 'be' as const },
       { name: 'Totaal Dak Specialist TBGS BV', city: 'Hamont-Achel', country: 'be' as const },
       { name: 'Totaal Dak Specialist TBGS BV', city: 'Pelt', country: 'be' as const },
       { name: 'Totaal Dak Specialist TBGS BV', city: 'Sint-Huibrechts-Lille', country: 'be' as const },
