@@ -433,6 +433,29 @@ export default function ContactModalV2() {
           )}
         </div>
       </div>
+
+      {/* Urgency Checkbox */}
+      <FormField
+        control={form.control}
+        name="urgent"
+        render={({ field }) => (
+          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+            <FormControl>
+              <Checkbox
+                checked={field.value === true}
+                onCheckedChange={(checked) => {
+                  field.onChange(checked === true);
+                }}
+              />
+            </FormControl>
+            <div className="space-y-1 leading-none">
+              <FormLabel className="text-sm text-gray-600 cursor-pointer">
+                🚨 Dit is urgent - neem binnen 2 uur contact op
+              </FormLabel>
+            </div>
+          </FormItem>
+        )}
+      />
     </div>
   );
 
@@ -545,53 +568,28 @@ export default function ContactModalV2() {
         )}
       />
 
-      <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="urgent"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-              <FormControl>
-                <Checkbox
-                  checked={field.value === true}
-                  onCheckedChange={(checked) => {
-                    field.onChange(checked === true);
-                  }}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm text-gray-600 cursor-pointer">
-                  🚨 Dit is urgent - neem binnen 2 uur contact op
-                </FormLabel>
-              </div>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="privacy"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-              <FormControl>
-                <Checkbox
-                  checked={field.value === true}
-                  onCheckedChange={(checked) => {
-                    field.onChange(checked === true);
-                  }}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm text-gray-600 cursor-pointer">
-                  Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
-                </FormLabel>
-                <FormMessage />
-              </div>
-            </FormItem>
-          )}
-        />
-
-      </div>
+      <FormField
+        control={form.control}
+        name="privacy"
+        render={({ field }) => (
+          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+            <FormControl>
+              <Checkbox
+                checked={field.value === true}
+                onCheckedChange={(checked) => {
+                  field.onChange(checked === true);
+                }}
+              />
+            </FormControl>
+            <div className="space-y-1 leading-none">
+              <FormLabel className="text-sm text-gray-600 cursor-pointer">
+                Ik ga akkoord met de <a href="#" className="text-tbgs-navy hover:underline">privacyverklaring</a> en algemene voorwaarden *
+              </FormLabel>
+              <FormMessage />
+            </div>
+          </FormItem>
+        )}
+      />
     </div>
   );
 
