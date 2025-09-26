@@ -53,13 +53,6 @@ export default function ContactModalV2() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  // Watch description field for live character counting
-  const descriptionValue = form.watch("description") || "";
-  const minChars = 10;
-  const currentChars = descriptionValue.length;
-  const remainingChars = minChars - currentChars;
-  const isDescriptionValid = currentChars >= minChars;
-
   const form = useForm<OfferteFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -79,6 +72,13 @@ export default function ContactModalV2() {
       privacy: false,
     },
   });
+
+  // Watch description field for live character counting
+  const descriptionValue = form.watch("description") || "";
+  const minChars = 10;
+  const currentChars = descriptionValue.length;
+  const remainingChars = minChars - currentChars;
+  const isDescriptionValid = currentChars >= minChars;
 
   const submitMutation = useMutation({
     mutationFn: async (data: OfferteFormData) => {
