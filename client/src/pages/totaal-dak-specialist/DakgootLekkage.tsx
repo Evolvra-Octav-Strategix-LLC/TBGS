@@ -65,7 +65,7 @@ export default function DakgootLekkage({ onOpenContactModal }: DakgootLekkagePro
     },
     {
       question: "Wat kost dakgoot lekkage reparatie?",
-      answer: "Dakgoot reparaties starten vanaf €125 voor kleine lekkages. Wij bieden altijd een gratis inspectie en transparante offerte vooraf met 80+ jaar vakmanschap garantie."
+      answer: "Wij bieden altijd een gratis inspectie en transparante offerte vooraf. Elke dakgoot reparatie is maatwerk, daarom bepalen wij eerst de exacte oorzaak en geven een eerlijke prijsopgave met 80+ jaar vakmanschap garantie."
     },
     {
       question: "Hoe voorkom ik dakgoot lekkage in de toekomst?",
