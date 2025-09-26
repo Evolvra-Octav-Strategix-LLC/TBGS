@@ -136,6 +136,31 @@ export default function GratisOfferte() {
           </div>
         </section>
         
+        {/* Locations & Google Business Profile */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Onze Werkgebieden
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                TBGS B.V. levert kwaliteitsdiensten in heel Nederland en België
+              </p>
+            </div>
+            
+            {/* Google Business Integration */}
+            <div className="mb-12">
+              <GoogleBusinessIntegration 
+                placeId="ChIJVSc2_yXbxkcROATmSZNFGFU"
+                showReviews={false}
+                showMap={true}
+                showHours={true}
+                className=""
+              />
+            </div>
+          </div>
+        </section>
+        
         {/* FAQ Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-4xl mx-auto">
@@ -254,31 +279,6 @@ export default function GratisOfferte() {
             {/* Google Reviews Slider */}
             <div>
               <GoogleReviewSlider placeId="ChIJVSc2_yXbxkcROATmSZNFGFU" className="" />
-            </div>
-          </div>
-        </section>
-        
-        {/* Locations & Google Business Profile */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Werkgebieden
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                TBGS B.V. levert kwaliteitsdiensten in heel Nederland en België
-              </p>
-            </div>
-            
-            {/* Google Business Integration */}
-            <div className="mb-12">
-              <GoogleBusinessIntegration 
-                placeId="ChIJVSc2_yXbxkcROATmSZNFGFU"
-                showReviews={false}
-                showMap={true}
-                showHours={true}
-                className=""
-              />
             </div>
           </div>
         </section>
