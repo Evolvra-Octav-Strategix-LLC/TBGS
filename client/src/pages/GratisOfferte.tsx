@@ -11,6 +11,10 @@ import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home, ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
+import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
+import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
+import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
 
 export default function GratisOfferte() {
   useEffect(() => {
@@ -62,21 +66,57 @@ export default function GratisOfferte() {
                 TBGS B.V. bestaat uit vier gespecialiseerde divisies, elk met eigen expertise:
               </p>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 className="font-semibold text-tbgs-red mb-2">🏠 TDS - Totaal Dak Specialist</h4>
-                  <p className="text-gray-600 text-sm">Daklekkage, dakrenovatie, dakbedekking, zonnepanelen en alle dakwerkzaamheden</p>
+                <div className="flex items-start space-x-3">
+                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
+                    <img 
+                      src={tdsLogo} 
+                      alt="TDS Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-tbgs-red mb-2">TDS - Totaal Dak Specialist</h4>
+                    <p className="text-gray-600 text-sm">Daklekkage, dakrenovatie, dakbedekking, zonnepanelen en alle dakwerkzaamheden</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-tbgs-blue mb-2">🏭 TSS - Totaal Schoorsteen Specialist</h4>
-                  <p className="text-gray-600 text-sm">Schoorsteenreparatie, jaarlijkse controle, rookgasafvoer en nieuwe schoorsteenbouw</p>
+                <div className="flex items-start space-x-3">
+                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
+                    <img 
+                      src={tssLogo} 
+                      alt="TSS Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-tbgs-blue mb-2">TSS - Totaal Schoorsteen Specialist</h4>
+                    <p className="text-gray-600 text-sm">Schoorsteenreparatie, jaarlijkse controle, rookgasafvoer en nieuwe schoorsteenbouw</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-tbgs-green mb-2">🔧 TOS - Totaal Onderhoud Specialist</h4>
-                  <p className="text-gray-600 text-sm">Gevelreiniging, schilderwerk, dakgootonderhoud en preventief onderhoud</p>
+                <div className="flex items-start space-x-3">
+                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
+                    <img 
+                      src={tosLogo} 
+                      alt="TOS Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-tbgs-green mb-2">TOS - Totaal Onderhoud Specialist</h4>
+                    <p className="text-gray-600 text-sm">Gevelreiniging, schilderwerk, dakgootonderhoud en preventief onderhoud</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-tbgs-orange mb-2">🏗️ TBS - Totaal Bouw Specialist</h4>
-                  <p className="text-gray-600 text-sm">Verbouwingen, aanbouw, renovaties, keukens, badkamers en nieuwbouwprojecten</p>
+                <div className="flex items-start space-x-3">
+                  <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center p-2 flex-shrink-0">
+                    <img 
+                      src={tbsLogo} 
+                      alt="TBS Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-tbgs-orange mb-2">TBS - Totaal Bouw Specialist</h4>
+                    <p className="text-gray-600 text-sm">Verbouwingen, aanbouw, renovaties, keukens, badkamers en nieuwbouwprojecten</p>
+                  </div>
                 </div>
               </div>
               
