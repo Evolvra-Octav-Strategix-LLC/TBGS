@@ -301,7 +301,7 @@ export default function GratisOfferte() {
                   Waarom zou ik een offerte aanvragen bij TBGS?
                 </h3>
                 <p className="text-gray-700">
-                  TBGS heeft 80+ jaar ervaring als familiebedrijf en werkt met gecertificeerde specialisten. Alle offertes zijn gratis en vrijblijvend, met transparante communicatie over werkzaamheden en garantie op alle uitgevoerd werk.
+                  TBGS heeft 80+ jaar ervaring als familiebedrijf en werkt met gecertificeerde specialisten voor <Link href="/dak" className="text-tbgs-red font-medium hover:underline">dakwerk</Link>, <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoud</Link>, <Link href="/schoorsteen" className="text-tbgs-blue font-medium hover:underline">schoorsteenservice</Link> en <Link href="/bouw" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link>. Alle offertes zijn gratis en vrijblijvend, met transparante communicatie en garantie op alle uitgevoerd werk.
                 </p>
               </div>
               
@@ -310,7 +310,7 @@ export default function GratisOfferte() {
                   Hoe snel krijg ik reactie op mijn offerteaanvraag?
                 </h3>
                 <p className="text-gray-700">
-                  Wij nemen binnen 24 uur contact met u op na het indienen van uw offerteaanvraag. Voor spoedgevallen zoals daklekkage bieden wij 24/7 service en streven we ernaar dezelfde dag ter plaatse te zijn.
+                  Wij nemen binnen 24 uur contact met u op na het indienen van uw offerteaanvraag. Voor spoedgevallen zoals <Link href="/dak" className="text-tbgs-red font-medium hover:underline">daklekkage</Link> bieden wij 24/7 service en streven we ernaar dezelfde dag ter plaatse te zijn in <Link href="/nl/eindhoven" className="text-tbgs-navy font-medium hover:underline">Eindhoven</Link> en omstreken.
                 </p>
               </div>
               
@@ -319,7 +319,7 @@ export default function GratisOfferte() {
                   Wat gebeurt er na mijn offerteaanvraag?
                 </h3>
                 <p className="text-gray-700">
-                  Na uw aanvraag nemen we contact op voor een gratis inspectie ter plaatse. We bespreken uw wensen, maken foto's en meten op. Binnen 48 uur ontvangt u een gedetailleerde, vrijblijvende offerte met duidelijke omschrijving en garantievoorwaarden.
+                  Na uw aanvraag nemen we contact op voor een <strong>gratis inspectie</strong> ter plaatse. We bespreken uw wensen, maken foto's en meten op. Binnen 48 uur ontvangt u een gedetailleerde, vrijblijvende offerte met duidelijke omschrijving en garantievoorwaarden. Bekijk onze <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoudsabonnementen</Link> voor regelmatige controles.
                 </p>
               </div>
               
@@ -328,7 +328,7 @@ export default function GratisOfferte() {
                   Werken jullie ook in België?
                 </h3>
                 <p className="text-gray-700">
-                  Ja, TBGS is actief in zowel Nederland als België. In België werken wij vooral in de provincie Limburg, inclusief gemeenten zoals Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel en Kaulille. Dezelfde kwaliteit en service als in Nederland.
+                  Ja, TBGS is actief in zowel Nederland als België. In België werken wij vooral in de provincie Limburg, inclusief <Link href="/be/lommel" className="text-tbgs-navy font-medium hover:underline">Lommel</Link>, <Link href="/be/pelt" className="text-tbgs-navy font-medium hover:underline">Pelt</Link>, <Link href="/be/neerpelt" className="text-tbgs-navy font-medium hover:underline">Neerpelt</Link>, Overpelt, Hamont-Achel en <Link href="/be/kaulille" className="text-tbgs-navy font-medium hover:underline">Kaulille</Link>. Dezelfde kwaliteit en service als in Nederland.
                 </p>
               </div>
               
@@ -337,7 +337,7 @@ export default function GratisOfferte() {
                   Wat als ik spoed heb met een lekkage?
                 </h3>
                 <p className="text-gray-700">
-                  Voor noodgevallen hebben wij 24/7 spoedservice beschikbaar. Bel direct 040 202 6744 of markeer uw aanvraag als 'urgent' in het formulier. We streven ernaar binnen 24 uur ter plaatse te zijn en voeren eerst een noodreparatie uit om verdere schade te voorkomen.
+                  Voor noodgevallen hebben wij 24/7 <Link href="/dak" className="text-tbgs-red font-medium hover:underline">daklekkage spoedservice</Link> beschikbaar. Bel direct <a href="tel:+31402026744" className="text-tbgs-navy font-semibold hover:underline">040 202 6744</a> of markeer uw aanvraag als 'urgent' in het formulier. We streven ernaar binnen 24 uur ter plaatse te zijn en voeren eerst een noodreparatie uit om verdere schade te voorkomen.
                 </p>
               </div>
               
@@ -346,7 +346,7 @@ export default function GratisOfferte() {
                   Wat voor garantie krijg ik op het werk?
                 </h3>
                 <p className="text-gray-700">
-                  TBGS geeft uitgebreide garantie op alle uitgevoerde werkzaamheden. De garantietermijn verschilt per type werk, van 2 jaar op onderhoud tot 10 jaar op dakbedekkingen. Alle garantievoorwaarden worden duidelijk vermeld in uw offerte.
+                  TBGS geeft uitgebreide garantie op alle uitgevoerde werkzaamheden. De garantietermijn verschilt per type werk, van 2 jaar op <Link href="/onderhoud" className="text-tbgs-green font-medium hover:underline">onderhoudswerk</Link> tot 10 jaar op <Link href="/dak" className="text-tbgs-red font-medium hover:underline">dakbedekkingen</Link>. Voor <Link href="/bouw" className="text-tbgs-orange font-medium hover:underline">bouwprojecten</Link> hanteren we standaard 5 jaar garantie. Alle voorwaarden staan duidelijk in uw offerte.
                 </p>
               </div>
             </div>
