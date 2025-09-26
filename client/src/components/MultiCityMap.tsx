@@ -93,36 +93,6 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
     // Info window for markers
     const infoWindow = new window.google.maps.InfoWindow();
 
-    // Create a large service area polygon instead of individual markers
-    const serviceAreaCoords = [
-      // Northern boundary (Netherlands)
-      { lat: 51.55, lng: 5.35 },   // Northwest
-      { lat: 51.55, lng: 5.7 },    // Northeast
-      
-      // Eastern boundary
-      { lat: 51.4, lng: 5.7 },     // East Netherlands
-      { lat: 51.3, lng: 5.5 },     // East transition
-      
-      // Southern boundary (Belgium)
-      { lat: 51.15, lng: 5.5 },    // Southeast Belgium
-      { lat: 51.15, lng: 5.0 },    // Southwest Belgium
-      
-      // Western boundary
-      { lat: 51.25, lng: 4.95 },   // West Belgium
-      { lat: 51.35, lng: 5.25 },   // West transition
-      { lat: 51.45, lng: 5.3 },    // West Netherlands
-    ];
-
-    // Create the service area polygon
-    const serviceArea = new window.google.maps.Polygon({
-      paths: serviceAreaCoords,
-      strokeColor: '#1e40af',
-      strokeOpacity: 0.8,
-      strokeWeight: 3,
-      fillColor: '#3b82f6',
-      fillOpacity: 0.2,
-      map: map
-    });
 
     // Add central marker for the service area
     const centralMarker = new window.google.maps.Marker({
@@ -175,7 +145,6 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
 
     // Add click events
     centralMarker.addListener('click', showServiceAreaInfo);
-    serviceArea.addListener('click', showServiceAreaInfo);
 
     // Add individual city markers on top of the service area
     serviceCities.forEach((city) => {
