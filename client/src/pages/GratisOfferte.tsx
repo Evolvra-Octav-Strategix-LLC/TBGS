@@ -22,18 +22,98 @@ export default function GratisOfferte() {
         url="/offerte"
       />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        {/* Hero Section */}
-        <section className="relative py-12 px-4 sm:px-6 lg:px-8 pt-[2px] pb-[2px]">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center">
-
+        {/* Hero Section with USP */}
+        <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-tbgs-navy to-blue-700 text-white">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Vraag Vandaag Nog Uw Gratis Offerte Aan
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+              Binnen 24 uur reactie • Gratis dakinspectie • 25+ jaar ervaring • Werkzaamheden in Nederland & België
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
+                <CheckCircle className="w-5 h-5 text-green-300" />
+                <span>24/7 Spoedservice</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
+                <Award className="w-5 h-5 text-yellow-300" />
+                <span>Kwaliteitsgarantie</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2">
+                <Star className="w-5 h-5 text-yellow-300" />
+                <span>4.8★ Google Reviews</span>
+              </div>
             </div>
           </div>
         </section>
-        {/* Form Section - Moved to Top */}
-        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50">
+        {/* Form Section - Top Priority */}
+        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50 -mt-8 relative z-10">
           <div className="max-w-6xl mx-auto pt-8 pb-16">
             <ContactModalV2 />
+          </div>
+        </section>
+
+        {/* SEO Content Block */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+              Waarom Een Offerte Aanvragen Bij TBGS B.V.?
+            </h2>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-gray-700 mb-6">
+                Bij TBGS B.V. begrijpen we dat het aanvragen van een offerte een belangrijke stap is in uw bouw-, renovatie- of onderhoudsproject. 
+                Met meer dan 80 jaar ervaring als familiebedrijf in de regio Eindhoven en omstreken, bieden wij transparante en concurrerende offertes 
+                voor al uw dakwerkzaamheden, schoorsteenreparaties, onderhoudsdiensten en bouwprojecten.
+              </p>
+              
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Ons Offerteproces: Van Aanvraag Tot Uitvoering</h3>
+              <p className="text-gray-700 mb-4">
+                Ons gestructureerde proces zorgt ervoor dat u altijd weet waar u aan toe bent:
+              </p>
+              <ul className="list-disc pl-6 mb-6 text-gray-700">
+                <li><strong>Aanvraag:</strong> Vul eenvoudig ons formulier in met uw projectdetails</li>
+                <li><strong>Gratis Inspectie:</strong> Binnen 24 uur nemen wij contact op voor een afspraak</li>
+                <li><strong>Offerte:</strong> Binnen 48 uur ontvangt u een gedetailleerde, vrijblijvende offerte</li>
+                <li><strong>Uitvoering:</strong> Bij akkoord starten we uw project met vakkundige uitvoering</li>
+              </ul>
+              
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Onze Specialistische Diensten</h3>
+              <p className="text-gray-700 mb-4">
+                TBGS B.V. bestaat uit vier gespecialiseerde divisies, elk met eigen expertise:
+              </p>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 className="font-semibold text-tbgs-red mb-2">🏠 TDS - Totaal Dak Specialist</h4>
+                  <p className="text-gray-600 text-sm">Daklekkage, dakrenovatie, dakbedekking, zonnepanelen en alle dakwerkzaamheden</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-tbgs-blue mb-2">🏭 TSS - Totaal Schoorsteen Specialist</h4>
+                  <p className="text-gray-600 text-sm">Schoorsteenreparatie, jaarlijkse controle, rookgasafvoer en nieuwe schoorsteenbouw</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-tbgs-green mb-2">🔧 TOS - Totaal Onderhoud Specialist</h4>
+                  <p className="text-gray-600 text-sm">Gevelreiniging, schilderwerk, dakgootonderhoud en preventief onderhoud</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-tbgs-orange mb-2">🏗️ TBS - Totaal Bouw Specialist</h4>
+                  <p className="text-gray-600 text-sm">Verbouwingen, aanbouw, renovaties, keukens, badkamers en nieuwbouwprojecten</p>
+                </div>
+              </div>
+              
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Werkgebied: Nederland & België</h3>
+              <p className="text-gray-700 mb-4">
+                Vanuit onze basis in Eindhoven werken wij in heel Nederland en België. Onze specialisten zijn actief in 
+                <strong> Eindhoven, Nuenen, Veldhoven, Best, Waalre, Geldrop-Mierlo</strong> en vele andere Nederlandse gemeenten. 
+                In België bedienen wij onder andere <strong>Lommel, Pelt, Neerpelt, Overpelt, Hamont-Achel, Retie</strong> en de gehele provincie Limburg.
+              </p>
+              
+              <p className="text-gray-700">
+                Of het nu gaat om urgente daklekkage in Eindhoven, schoorsteenonderhoud in Lommel, of een complete renovatie in Veldhoven - 
+                TBGS B.V. staat voor u klaar met vakkundig advies en een eerlijke offerte. Neem vandaag nog contact op en ervaar waarom 
+                duizenden klanten ons vertrouwen voor hun bouw- en onderhoudsprojecten.
+              </p>
+            </div>
           </div>
         </section>
         {/* Why Choose TBGS Section */}
