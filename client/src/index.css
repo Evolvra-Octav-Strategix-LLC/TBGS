@@ -121,6 +121,29 @@
     overflow: hidden;
   }
 
+  /* Extra small device utilities */
+  @media (max-width: 374px) {
+    .header-responsive {
+      padding-left: 0.25rem !important;
+      padding-right: 0.25rem !important;
+    }
+    
+    .text-responsive {
+      font-size: 0.625rem !important;
+    }
+    
+    .logo-responsive {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+    }
+  }
+
+  /* Prevent any horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   /* Ensure form stays within viewport on mobile */
   @media (max-height: 700px) {
     .floating-service-form {

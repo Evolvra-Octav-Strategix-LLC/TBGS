@@ -117,8 +117,8 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 rounded-b-3xl">
-      <div className="w-full max-w-screen-2xl mx-auto px-8 py-4">
-        <div className="flex items-center justify-between gap-8">
+      <div className="w-full max-w-screen-2xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 lg:gap-8">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <div className="flex items-center space-x-3 cursor-pointer">
@@ -129,7 +129,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                 ) : (
                   <h1 className="text-xl font-bold text-tbgs-navy">TBGS BV</h1>
                 )}
-                <p className="text-xs sm:text-sm whitespace-nowrap font-medium text-gray-900">
+                <p className="text-xs sm:text-sm font-medium text-gray-900 hidden xs:block">
                   {specialist ? (
                     <>
                       Totaal <span className={colors.primary}>{getSpecialistWord()}</span> Specialist
@@ -145,7 +145,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
 
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-shrink-0">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-shrink-0">
             <Link href="/locaties" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
             <Link href="/kennisbank" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
             <Link href="/onze-projecten" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
@@ -154,7 +154,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
           </nav>
 
           {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative flex-1 max-w-sm mx-6">
+          <div className="hidden xl:flex items-center relative flex-1 max-w-xs mx-2">
             <div className={`bg-white rounded-full shadow-lg px-4 py-2 w-full border-2 transition-all duration-300 ${
               isSearchFocused 
                 ? 'border-blue-400 shadow-blue-100 ring-4 ring-blue-50' 
@@ -192,8 +192,8 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
           </div>
 
           {/* Mobile CTA Button and Menu */}
-          <div className="lg:hidden flex items-center space-x-2">
-            <Link href="/offerte" className={`${colors.bg} text-white px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
+          <div className="lg:hidden flex items-center space-x-1 sm:space-x-2">
+            <Link href="/offerte" className={`${colors.bg} text-white px-2 sm:px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-xs sm:text-sm`}>
               Offerte
             </Link>
             <button 
