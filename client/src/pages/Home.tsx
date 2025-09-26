@@ -182,10 +182,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     </Link>
                   </h3>
                   <div className="text-slate-600 text-center space-y-1">
-                    <div><Link href="/nl/eindhoven/schoorsteenrenovatie" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenrenovatie</Link></div>
-                    <div><Link href="/nl/eindhoven/schoorsteenreparatie" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenreparatie</Link></div>
-                    <div><Link href="/nl/eindhoven/schoorsteenreiniging" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenreiniging</Link></div>
-                    <div><Link href="/nl/eindhoven/schoorsteenonderhoud" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenonderhoud</Link></div>
+                    <div><Link href="/schoorsteen/schoorsteen-renovatie" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenrenovatie</Link></div>
+                    <div><Link href="/schoorsteen/schoorsteen-voegen-repareren" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenreparatie</Link></div>
+                    <div><Link href="/schoorsteen/schoorsteen-vegen" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenreiniging</Link></div>
+                    <div><Link href="/schoorsteen/schoorsteen-onderhoud" className="text-slate-600 group-hover:text-tbgs-blue hover:text-tbgs-blue hover:underline font-medium transition-colors duration-500">Schoorsteenonderhoud</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
@@ -217,10 +217,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     </Link>
                   </h3>
                   <div className="text-slate-600 text-center space-y-1">
-                    <div><Link href="/nl/eindhoven/daklekkage" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Daklekkage</Link></div>
-                    <div><Link href="/nl/eindhoven/dakisolatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakisolatie</Link></div>
-                    <div><Link href="/nl/eindhoven/dakgoten" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakgoten</Link></div>
-                    <div><Link href="/nl/eindhoven/dakreparatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakreparatie</Link></div>
+                    <div><Link href="/daken/daklekkage" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Daklekkage</Link></div>
+                    <div><Link href="/daken/dakisolatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakisolatie</Link></div>
+                    <div><Link href="/daken/dakgoot-reinigen" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakgoten</Link></div>
+                    <div><Link href="/daken/dakrenovatie" className="text-slate-600 group-hover:text-tbgs-red hover:text-tbgs-red hover:underline font-medium transition-colors duration-500">Dakreparatie</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
@@ -252,10 +252,10 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     </Link>
                   </h3>
                   <div className="text-slate-600 text-center space-y-1">
-                    <div><Link href="/nl/eindhoven/onderhoud" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Onderhoud</Link></div>
-                    <div><Link href="/nl/eindhoven/herstelwerkzaamheden" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Herstelwerkzaamheden</Link></div>
+                    <div><Link href="/onderhoud/preventief-onderhoud" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Onderhoud</Link></div>
+                    <div><Link href="/onderhoud/onderhoud-dakgoot" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Herstelwerkzaamheden</Link></div>
                     <div><Link href="/nl/eindhoven/renovatie" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Renovatie</Link></div>
-                    <div><Link href="/nl/eindhoven/schilderwerk" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Schilderwerk</Link></div>
+                    <div><Link href="/onderhoud/schilder" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Schilderwerk</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
@@ -289,8 +289,8 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/nl/eindhoven/bouwwerkzaamheden" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Bouwwerkzaamheden</Link></div>
                     <div><Link href="/nl/eindhoven/renovatie" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Renovaties</Link></div>
-                    <div><Link href="/nl/eindhoven/uitbreidingen" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Uitbreidingen</Link></div>
-                    <div><Link href="/nl/eindhoven/verbouwing" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Verbouwing</Link></div>
+                    <div><Link href="/bouwen/aanbouw-huis" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Uitbreidingen</Link></div>
+                    <div><Link href="/bouwen/uw-huis-verbouwen" className="text-slate-600 group-hover:text-tbgs-orange hover:text-tbgs-orange hover:underline font-medium transition-colors duration-500">Verbouwing</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
                   </div>
                 </div>
