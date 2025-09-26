@@ -27,8 +27,8 @@ export default function GratisOfferte() {
       />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Form Section - Direct Focus */}
-        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50 pt-8">
-          <div className="max-w-6xl mx-auto pt-8 pb-16">
+        <section className="px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-6xl mx-auto py-8">
             <ContactModalV2 />
           </div>
         </section>
