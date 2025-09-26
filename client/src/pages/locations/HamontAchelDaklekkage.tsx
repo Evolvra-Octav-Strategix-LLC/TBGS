@@ -24,7 +24,7 @@ export default function HamontAchelDaklekkage({ onOpenContactModal }: HamontAche
       citySlug="hamont-achel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Retie", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Lommel", "Kaulille", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Daklekkage Reparatie"
       serviceDescription="Professionele daklekkage reparatie in Hamont-Achel. Snelle service, garantie, 25+ jaar ervaring."

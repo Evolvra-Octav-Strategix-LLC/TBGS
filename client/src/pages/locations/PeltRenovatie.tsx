@@ -24,7 +24,7 @@ export default function PeltRenovatie({ onOpenContactModal }: PeltRenovatieProps
       citySlug="pelt" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Retie"]}
+      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Kaulille"]}
       
       serviceTitle="Renovatie & Verbouw"
       serviceDescription="Complete woningrenovaties in Pelt door ervaren vakspecialisten. Van badkamer tot zolder met kwaliteit en vakmanschap."

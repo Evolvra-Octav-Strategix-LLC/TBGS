@@ -24,7 +24,7 @@ export default function LommelSchoorsteen({ onOpenContactModal }: LommelSchoorst
       citySlug="lommel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Retie", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Kaulille", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Schoorsteen Service"
       serviceDescription="Professionele schoorsteenreiniging en onderhoud in Lommel. Veiligheid en kwaliteit gegarandeerd."

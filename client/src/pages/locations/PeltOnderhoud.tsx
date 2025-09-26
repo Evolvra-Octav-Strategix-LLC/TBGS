@@ -24,7 +24,7 @@ export default function PeltOnderhoud({ onOpenContactModal }: PeltOnderhoudProps
       citySlug="pelt" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Retie"]}
+      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Kaulille"]}
       
       serviceTitle="Onderhoud & Service"
       serviceDescription="Professioneel onderhoud van woningen en bedrijfspanden in Pelt. Preventief onderhoud, reparaties en technische diensten."

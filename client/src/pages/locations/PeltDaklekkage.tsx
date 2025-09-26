@@ -24,7 +24,7 @@ export default function PeltDaklekkage({ onOpenContactModal }: PeltDaklekkagePro
       citySlug="pelt" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Retie"]}
+      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Kaulille"]}
       
       serviceTitle="Daklekkage Reparatie"
       serviceDescription="Professionele daklekkage reparatie in Pelt. Snelle service, garantie, 25+ jaar ervaring."

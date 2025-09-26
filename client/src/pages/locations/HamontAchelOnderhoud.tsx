@@ -24,7 +24,7 @@ export default function HamontAchelOnderhoud({ onOpenContactModal }: HamontAchel
       citySlug="hamont-achel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Retie", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Lommel", "Kaulille", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Onderhoud & Service"
       serviceDescription="Professioneel onderhoud van woningen en bedrijfspanden in Hamont-Achel. Preventief onderhoud, reparaties en technische diensten."

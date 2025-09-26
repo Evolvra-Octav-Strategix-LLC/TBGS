@@ -24,7 +24,7 @@ export default function HamontAchelSchoorsteen({ onOpenContactModal }: HamontAch
       citySlug="hamont-achel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Retie", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Lommel", "Kaulille", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Schoorsteen Service"
       serviceDescription="Professionele schoorsteenreiniging en onderhoud in Hamont-Achel. Veiligheid en kwaliteit gegarandeerd."

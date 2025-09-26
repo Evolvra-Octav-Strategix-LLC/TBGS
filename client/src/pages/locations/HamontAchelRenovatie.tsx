@@ -24,7 +24,7 @@ export default function HamontAchelRenovatie({ onOpenContactModal }: HamontAchel
       citySlug="hamont-achel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Retie", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Lommel", "Kaulille", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Renovatie & Verbouw"
       serviceDescription="Complete woningrenovaties in Hamont-Achel door ervaren vakspecialisten. Van badkamer tot zolder met kwaliteit en vakmanschap."

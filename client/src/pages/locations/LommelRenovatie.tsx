@@ -24,7 +24,7 @@ export default function LommelRenovatie({ onOpenContactModal }: LommelRenovatieP
       citySlug="lommel" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Retie", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
+      nearbyAreas={["Kaulille", "Hamont-Achel", "Pelt", "Overpelt", "Neerpelt"]}
       
       serviceTitle="Renovatie & Verbouw"
       serviceDescription="Complete woningrenovaties in Lommel door ervaren vakspecialisten. Van badkamer tot zolder met kwaliteit en vakmanschap."

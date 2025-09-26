@@ -24,7 +24,7 @@ export default function PeltSchoorsteen({ onOpenContactModal }: PeltSchoorsteenP
       citySlug="pelt" 
       country="be"
       region="Limburg"
-      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Retie"]}
+      nearbyAreas={["Lommel", "Overpelt", "Neerpelt", "Hamont-Achel", "Kaulille"]}
       
       serviceTitle="Schoorsteen Service"
       serviceDescription="Professionele schoorsteenreiniging en onderhoud in Pelt. Veiligheid en kwaliteit gegarandeerd."
