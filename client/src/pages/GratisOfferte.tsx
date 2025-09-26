@@ -126,25 +126,21 @@ export default function GratisOfferte() {
             <div className="grid md:grid-cols-2 gap-8">
               <Link href="/bouw" className="group">
                 <Card className="h-full hover:shadow-xl transition-all duration-300 border-2 hover:border-orange-200 bg-gradient-to-br from-orange-50 to-white">
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                        <img src={tbsLogo} alt="TBS Logo" className="w-8 h-8 object-contain" />
-                      </div>
-                      <div>
-                        <Badge className="mb-2 bg-orange-500 text-white">Complete Projecten</Badge>
-                        <CardTitle className="text-lg text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & Renovatie</CardTitle>
-                      </div>
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <img src={tbsLogo} alt="TBS Logo" className="w-12 h-12 object-contain" />
                     </div>
+                    <Badge className="mb-3 bg-orange-500 text-white">Complete Projecten</Badge>
+                    <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & Renovatie</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-3">Van kleine verbouwingen tot complete renovaties. Uw droomproject van A tot Z.</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Aanbouw</span>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Verbouwing</span>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Badkamers</span>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">Keukens</span>
-                    </div>
+                    <p className="text-gray-600 mb-4">Van kleine verbouwingen tot complete renovaties. Uw droomproject van A tot Z.</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Aanbouw</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Verbouwing</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Badkamers</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2" />Keukens</li>
+                    </ul>
                   </CardContent>
                 </Card>
               </Link>
