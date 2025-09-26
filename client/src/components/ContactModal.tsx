@@ -501,26 +501,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         )}
       />
 
-      {/* Location */}
-      <FormField
-        control={form.control}
-        name="location"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-base font-semibold">Locatie *</FormLabel>
-            <FormControl>
-              <GooglePlacesInput
-                value={field.value}
-                onChange={handleLocationChange}
-                placeholder="Begin met typen van uw adres..."
-                className="h-12 border border-gray-300"
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-
       {/* File Upload Section */}
       <div className="space-y-4">
         <div className="border-2 border-dashed border-gray-300 rounded-xl p-6">
@@ -633,36 +613,55 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         />
       </div>
 
-      {/* E-mailadres en Telefoonnummer */}
-      <div className="grid grid-cols-2 gap-3">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>E-mailadres *</FormLabel>
-              <FormControl>
-                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      {/* Locatie */}
+      <FormField
+        control={form.control}
+        name="location"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Locatie *</FormLabel>
+            <FormControl>
+              <GooglePlacesInput
+                value={field.value}
+                onChange={handleLocationChange}
+                placeholder="Begin met typen van uw adres..."
+                className="h-10 border border-gray-300"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Telefoonnummer *</FormLabel>
-              <FormControl>
-                <Input placeholder="06 12345678" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
+      {/* E-mailadres */}
+      <FormField
+        control={form.control}
+        name="email"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>E-mailadres *</FormLabel>
+            <FormControl>
+              <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      {/* Telefoonnummer */}
+      <FormField
+        control={form.control}
+        name="phone"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Telefoonnummer *</FormLabel>
+            <FormControl>
+              <Input placeholder="06 12345678" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
       {/* Privacy Agreement */}
       <FormField
