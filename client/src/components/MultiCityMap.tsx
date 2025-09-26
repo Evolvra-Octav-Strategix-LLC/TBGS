@@ -22,9 +22,9 @@ const serviceCities: City[] = [
   // Belgium
   { name: 'Retie', lat: 51.2667, lng: 5.0833, country: 'Belgium' },
   { name: 'Lommel', lat: 51.2306, lng: 5.3139, country: 'Belgium' },
-  { name: 'Hamont-Achel', lat: 51.2500, lng: 5.3167, country: 'Belgium' },
+  { name: 'Hamont-Achel', lat: 51.2500, lng: 5.5500, country: 'Belgium' },
   { name: 'Pelt', lat: 51.2167, lng: 5.4167, country: 'Belgium' },
-  { name: 'Sint-Huibrechts-Lille', lat: 51.1833, lng: 5.3000, country: 'Belgium' },
+  { name: 'Sint-Huibrechts-Lille', lat: 51.2251, lng: 5.4836, country: 'Belgium' },
   { name: 'Overpelt', lat: 51.2000, lng: 5.4167, country: 'Belgium' },
   { name: 'Neerpelt', lat: 51.2281, lng: 5.4394, country: 'Belgium' },
 ];
