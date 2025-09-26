@@ -518,37 +518,6 @@ export default function ContactModalV2() {
         />
       </div>
 
-      {/* E-mailadres en Telefoonnummer */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>E-mailadres *</FormLabel>
-              <FormControl>
-                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Telefoonnummer *</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="+31 6 12345678" className="border border-gray-300 placeholder:text-gray-500" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-
       {/* Adres */}
       <div style={{ position: "relative", zIndex: 10 }}>
         <FormField
@@ -575,6 +544,37 @@ export default function ContactModalV2() {
                   placeholder="Straat en huisnummer"
                   className="border border-gray-300 placeholder:text-gray-500"
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      {/* E-mailadres en Telefoonnummer */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>E-mailadres *</FormLabel>
+              <FormControl>
+                <Input {...field} type="email" placeholder="uw.email@voorbeeld.nl" className="border border-gray-300 placeholder:text-gray-500" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Telefoonnummer *</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="+31 6 12345678" className="border border-gray-300 placeholder:text-gray-500" />
               </FormControl>
               <FormMessage />
             </FormItem>
