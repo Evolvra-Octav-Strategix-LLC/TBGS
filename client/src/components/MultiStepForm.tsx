@@ -122,7 +122,7 @@ export function MultiStepForm({
                 </>
               ) : (
                 <>
-                  <span>Verstuur Aanvraag</span>
+                  <span>Verstuur aanvraag</span>
                   <ChevronRight className="w-4 h-4" />
                 </>
               )}

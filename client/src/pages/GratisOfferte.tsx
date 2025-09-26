@@ -46,7 +46,7 @@ export default function GratisOfferte() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Meest Gevraagde Diensten
+                Onze meest gevraagde diensten
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 24/7 spoedservice voor daklekkage, professioneel onderhoud en alle bouw- en renovatiewerkzaamheden
@@ -62,7 +62,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tdsLogo} alt="TDS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-red-500 text-white">24/7 Spoedservice</Badge>
+                    <Badge className="mb-3 bg-red-500 text-white">24/7 spoedservice</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-red-600 transition-colors">Daklekkage reparatie</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -130,7 +130,7 @@ export default function GratisOfferte() {
                     <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <img src={tbsLogo} alt="TBS Logo" className="w-12 h-12 object-contain" />
                     </div>
-                    <Badge className="mb-3 bg-orange-500 text-white">Complete Projecten</Badge>
+                    <Badge className="mb-3 bg-orange-500 text-white">Complete projecten</Badge>
                     <CardTitle className="text-xl text-gray-900 group-hover:text-orange-600 transition-colors">Bouw & renovatie</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -231,7 +231,7 @@ export default function GratisOfferte() {
                     <div className="flex items-center space-x-3">
                       <Shield className="w-6 h-6 text-green-500" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Volledige Garantie</h4>
+                        <h4 className="font-semibold text-gray-900">Volledige garantie</h4>
                         <p className="text-sm text-gray-600">Uitgebreide garantie op alle uitgevoerde werkzaamheden</p>
                       </div>
                     </div>
@@ -240,7 +240,7 @@ export default function GratisOfferte() {
                     <div className="flex items-center space-x-3">
                       <Users className="w-6 h-6 text-blue-500" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Lokale Specialisten</h4>
+                        <h4 className="font-semibold text-gray-900">Lokale specialisten</h4>
                         <p className="text-sm text-gray-600">Bekend met Nederlandse en Belgische bouwstijlen</p>
                       </div>
                     </div>
@@ -249,7 +249,7 @@ export default function GratisOfferte() {
                     <div className="flex items-center space-x-3">
                       <Zap className="w-6 h-6 text-red-500" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">24/7 Spoedservice</h4>
+                        <h4 className="font-semibold text-gray-900">24/7 spoedservice</h4>
                         <p className="text-sm text-gray-600">Altijd beschikbaar voor noodgevallen</p>
                       </div>
                     </div>
@@ -265,7 +265,7 @@ export default function GratisOfferte() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Onze Werkgebieden
+                Onze werkgebieden
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 TBGS B.V. levert kwaliteitsdiensten in heel Nederland en België
@@ -289,7 +289,7 @@ export default function GratisOfferte() {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              Veelgestelde Vragen Over Offertes
+              Veelgestelde vragen over offertes
             </h2>
             <div className="space-y-8">
               <div className="bg-gray-50 rounded-lg p-6">
@@ -353,7 +353,7 @@ export default function GratisOfferte() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Wat Onze Klanten Zeggen
+                Wat onze klanten zeggen
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Lees de ervaringen van duizenden tevreden klanten uit Eindhoven, Nederland en België
@@ -371,7 +371,7 @@ export default function GratisOfferte() {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-tbgs-navy to-blue-700 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Klaar Om Uw Project Te Starten?
+              Klaar om uw project te starten?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
               Vraag direct uw gratis offerte aan en ons team neemt binnen 24 uur contact op.
@@ -382,7 +382,7 @@ export default function GratisOfferte() {
                 className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                Nu Offerte Aanvragen
+                Nu offerte aanvragen
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               
@@ -398,7 +398,7 @@ export default function GratisOfferte() {
                   className="flex items-center"
                 >
                   <FaWhatsapp className="w-6 h-6 mr-2" />
-                  WhatsApp Contact
+                  WhatsApp contact
                 </a>
               </Button>
             </div>

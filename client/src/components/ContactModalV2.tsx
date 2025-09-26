@@ -639,17 +639,17 @@ export default function ContactModalV2() {
 
   const steps = [
     {
-      title: "Service Selectie",
+      title: "Service selectie",
       description: "Kies het type service dat u nodig heeft",
       content: step1Content
     },
     {
-      title: "Project Details",
+      title: "Project details",
       description: "Vertel over uw project",
       content: step2Content
     },
     {
-      title: "Contact Informatie",
+      title: "Contact informatie",
       description: "Hoe kunnen we u bereiken?",
       content: step3Content
     }
