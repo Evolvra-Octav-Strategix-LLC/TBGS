@@ -331,9 +331,9 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 <p className="text-gray-600 mb-4">
                   Veilige <strong>schoorsteen verwijdering</strong> door ervaren <strong>schoorsteenvegers</strong>. Professionele sloop met dakwerk herstel en opruiming.
                 </p>
-                <div className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
+                <Link href="/schoorsteen/schoorsteen-renovatie" className="text-tbgs-blue font-semibold hover:text-blue-700 transition-colors cursor-pointer">
                   Lees meer over schoorsteen verwijderen →
-                </div>
+                </Link>
               </div>
             </div>
 
