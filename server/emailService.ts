@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { createTBGSVCard } from './vcard';
 
 // HTML escape utility for security
@@ -24,7 +24,7 @@ interface EmailData {
   contactPreference: string;
   submittedAt: Date;
   formType?: 'popup' | 'offerte' | 'contact-modal';
-  files?: any[]; // Keep for compatibility but ignore
+  files?: any[];
   // Google Places API data (for vCard generation)
   street?: string;
   houseNumber?: string;
@@ -34,49 +34,57 @@ interface EmailData {
 }
 
 class EmailService {
-  private resend: Resend;
+  private transporter: nodemailer.Transporter;
 
   constructor() {
     // Validate environment variables on startup
-    if (!process.env.RESEND_API_KEY) {
-      console.error('❌ CRITICAL: Missing Resend API key!');
-      console.error('📧 RESEND_API_KEY:', process.env.RESEND_API_KEY ? '✅ Set' : '❌ Missing');
-      console.error('📧 Please set RESEND_API_KEY environment variable!');
-      throw new Error('RESEND_API_KEY is required');
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error('❌ CRITICAL: Missing Gmail SMTP credentials!');
+      console.error('📧 GMAIL_USER:', process.env.GMAIL_USER ? '✅ Set' : '❌ Missing');
+      console.error('📧 GMAIL_APP_PASSWORD:', process.env.GMAIL_APP_PASSWORD ? '✅ Set' : '❌ Missing');
+      console.error('📧 Please set GMAIL_USER and GMAIL_APP_PASSWORD environment variables!');
+      throw new Error('Gmail SMTP credentials are required');
     } else {
-      console.log('✅ Resend API key found in environment');
-      console.log('📧 Using Resend email service');
+      console.log('✅ Email credentials found in environment');
+      console.log('📧 GMAIL_USER:', process.env.GMAIL_USER);
+      console.log('📧 SMTP configured: smtp.gmail.com:587 (secure: false)');
     }
 
-    this.resend = new Resend(process.env.RESEND_API_KEY);
+    // Create Gmail SMTP transporter
+    this.transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
     
-    // Test Resend connectivity on startup
+    // Test SMTP connectivity on startup
     this.testConnectivity();
   }
 
   private async testConnectivity() {
     try {
-      console.log('🔍 Testing Resend connectivity...');
-      // Test by getting domains (basic API call)
-      await this.resend.domains.list();
-      console.log('✅ Resend connection verified successfully');
+      console.log('🔍 Testing SMTP connectivity...');
+      await this.transporter.verify();
+      console.log('✅ SMTP connection verified successfully');
     } catch (error: any) {
-      console.warn('⚠️ Resend connectivity test failed:', error.message);
+      console.warn('⚠️ SMTP connectivity test failed:', error.message);
     }
   }
 
-  private async sendWithRetry(emailOptions: any, maxRetries = 3): Promise<any> {
+  private async sendWithRetry(mailOptions: any, maxRetries = 3): Promise<any> {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        console.log(`📧 Email attempt ${attempt}/${maxRetries} via Resend...`);
+        console.log(`📧 Email attempt ${attempt}/${maxRetries} via Gmail SMTP...`);
         
-        const result = await this.resend.emails.send(emailOptions);
-        
-        if (result.error) {
-          throw new Error(`Resend API error: ${result.error.message}`);
-        }
-        
-        console.log(`✅ Email sent successfully! ID: ${result.data?.id}`);
+        const result = await this.transporter.sendMail(mailOptions);
+        console.log(`✅ Email sent successfully! Message ID: ${result.messageId}`);
         return result;
       } catch (error: any) {
         console.error(`❌ Email attempt ${attempt} failed:`, error.message);
@@ -96,10 +104,10 @@ class EmailService {
   async sendNotificationEmail(data: EmailData) {
     try {
       console.log('📧 Starting email send process...');
-      console.log('📧 Using Resend email service');
+      console.log('📧 Using Gmail SMTP service');
       
-      if (!process.env.RESEND_API_KEY) {
-        throw new Error('Resend API key not configured. Set RESEND_API_KEY environment variable.');
+      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+        throw new Error('Gmail SMTP credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.');
       }
       
       console.log('📧 Sending notification email to admin...');
@@ -168,13 +176,10 @@ class EmailService {
         console.log(`📎 Adding ${data.files.length} user uploaded files...`);
         for (const file of data.files) {
           if (file.path) {
-            const fs = require('fs');
-            const fileContent = fs.readFileSync(file.path);
-            
             attachments.push({
               filename: file.originalname || 'upload.file',
-              content: fileContent,
-              content_type: file.mimetype || 'application/octet-stream'
+              path: file.path,
+              contentType: file.mimetype || 'application/octet-stream'
             });
             console.log(`✅ Added file: ${file.originalname}`);
           }
@@ -236,7 +241,7 @@ class EmailService {
         attachments.push({
           filename,
           content: vcardBuffer,
-          content_type: 'text/vcard; charset=utf-8'
+          contentType: 'text/vcard; charset=utf-8'
         });
         
         console.log(`✓ TBGS vCard attachment created: ${filename}`);
@@ -244,15 +249,16 @@ class EmailService {
         console.warn('vCard generation failed:', vcardError);
       }
 
-      // Send email using Resend
-      await this.sendWithRetry({
-        from: 'TBGS BV <info@tbgs.nl>',
-        to: ['info@tbgs.nl'],
+      // Send email using Gmail SMTP
+      const mailOptions = {
+        from: `"TBGS BV" <${process.env.GMAIL_USER}>`,
+        to: 'info@tbgs.nl',
         subject,
         html,
         attachments: attachments.length > 0 ? attachments : undefined
-      });
+      };
 
+      await this.sendWithRetry(mailOptions);
       console.log('✅ Notification email sent successfully');
     } catch (error) {
       console.error('❌ Failed to send notification email:', error);
@@ -310,13 +316,14 @@ class EmailService {
         </html>
       `;
 
-      await this.sendWithRetry({
-        from: 'TBGS BV <info@tbgs.nl>',
-        to: [data.email],
+      const mailOptions = {
+        from: `"TBGS BV" <${process.env.GMAIL_USER}>`,
+        to: data.email,
         subject,
         html
-      });
+      };
 
+      await this.sendWithRetry(mailOptions);
       console.log('✅ Thank you email sent successfully');
     } catch (error) {
       console.error('❌ Failed to send thank you email:', error);

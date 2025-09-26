@@ -64,11 +64,11 @@ TBS Expansion Completed: Full construction service expansion with 7 new TBS page
 
 ### Email Integration ✅ **COMPLETE**
 - **Architecture**: Single self-contained Node.js deployment with internal email processing
-- **Email Service**: Resend API integration using `RESEND_API_KEY` credentials for reliable email delivery
+- **SMTP Integration**: Gmail SMTP via Nodemailer using `GMAIL_USER` and `GMAIL_APP_PASSWORD` credentials  
 - **Form Processing**: All 4 contact endpoints work properly - `/api/contact`, `/api/service-request`, `/api/offerte`, `/api/contact-modal`
 - **Email Features**: Professional HTML templates, file attachments, vCard generation, admin + thank-you emails
 - **Integration Status**: Multipart form parsing fixed, external API dependencies removed, CRM integration maintained
-- **Production Ready**: All contact forms tested and working correctly with Resend email delivery
+- **Production Ready**: All contact forms tested and working correctly with email delivery
 
 ## External Dependencies
 
@@ -101,7 +101,8 @@ TBS Expansion Completed: Full construction service expansion with 7 new TBS page
 ## Environment Variables
 
 ### Email Service Configuration
-- `RESEND_API_KEY`: Resend API key for reliable email delivery service
+- `GMAIL_USER`: Gmail email address for SMTP authentication (configured via SendGrid integration)
+- `GMAIL_APP_PASSWORD`: Gmail app-specific password for SMTP authentication (configured via SendGrid integration)
 
 ### Database Configuration
 - `DATABASE_URL`: PostgreSQL connection string (automatically provided by Replit)
@@ -116,4 +117,4 @@ TBS Expansion Completed: Full construction service expansion with 7 new TBS page
 - `GRIPP_API_URL`: Gripp CRM integration endpoint
 - `GRIPP_API_KEY`: API key for Gripp CRM integration
 
-**Note**: Email service uses Resend API for reliable email delivery. No external webhook dependencies - all email processing handled internally by the Node.js server with automatic retry logic and error handling.
+**Note**: Email service uses SendGrid integration for secure SMTP configuration. No external webhook dependencies - all email processing handled internally by the Node.js server.
