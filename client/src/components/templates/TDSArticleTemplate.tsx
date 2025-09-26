@@ -277,11 +277,11 @@ export default function TDSArticleTemplate({
             {/* Navigation back to TDS */}
             <div className="text-center mb-8">
               <Link 
-                href="/dak" 
+                href="/daken" 
                 className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold text-lg"
               >
                 <i className="fas fa-arrow-left mr-3"></i>
-                Terug naar Dak
+                Terug naar Daken
               </Link>
             </div>
 

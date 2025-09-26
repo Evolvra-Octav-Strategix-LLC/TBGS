@@ -19,21 +19,21 @@ const serviceOptions: ServiceOption[] = [
     id: 'dakinspectie',
     title: 'Dakinspectie',
     icon: Home,
-    href: '/dak/dakinspectie',
+    href: '/daken/dakinspectie',
     description: 'Professionele inspectie van uw dak'
   },
   {
     id: 'stormschade',
     title: 'Stormschade/lekkage',
     icon: AlertTriangle,
-    href: '/dak/daklekkage',
+    href: '/daken/daklekkage',
     description: 'Spoedige reparatie van storm- en waterschade'
   },
   {
     id: 'pannendak',
     title: 'Pannendak',
     icon: Wrench,
-    href: '/dak/dakbedekking',
+    href: '/daken/dakbedekking',
     description: 'Leggen en repareren van pannendaken'
   },
   {
@@ -47,7 +47,7 @@ const serviceOptions: ServiceOption[] = [
     id: 'dakisolatie',
     title: 'Dakisolatie',
     icon: Shield,
-    href: '/dak/dakisolatie',
+    href: '/daken/dakisolatie',
     description: 'Energiebesparende dakisolatie'
   },
   {
@@ -62,7 +62,7 @@ const serviceOptions: ServiceOption[] = [
     id: 'dakgoten',
     title: 'Dakgoten en regenpijpen',
     icon: Droplets,
-    href: '/dak/dakgoot-reinigen',
+    href: '/daken/dakgoot-reinigen',
     description: 'Installatie en onderhoud'
   },
   {

@@ -68,7 +68,7 @@ export default function SpecialistHeader({
 
   const getSpecialistPath = () => {
     switch(specialist) {
-      case "TDS": return "/dak";
+      case "TDS": return "/daken";
       case "TSS": return "/schoorsteen";
       case "TOS": return "/onderhoud";
       case "TBS": return "/bouw";

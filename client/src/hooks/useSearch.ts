@@ -144,8 +144,8 @@ export function initializeSearchContent() {
 
     // Service pages
     {
-      title: 'Dak',
-      url: '/dak',
+      title: 'Daken',
+      url: '/daken',
       type: 'dienst',
       excerpt: 'Professionele dakwerkzaamheden door gecertificeerde specialisten',
       category: 'Dakwerken',

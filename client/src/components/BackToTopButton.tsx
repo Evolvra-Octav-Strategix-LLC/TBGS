@@ -12,7 +12,7 @@ export default function BackToTopButton({ className = "" }: BackToTopButtonProps
 
   // Get specialist colors based on current page
   const getSpecialistColors = () => {
-    if (location === '/dak' || location.startsWith('/dak/')) {
+    if (location === '/daken' || location.startsWith('/daken/')) {
       return 'from-tbgs-red to-red-600';
     }
     if (location === '/schoorsteen' || location.startsWith('/schoorsteen/')) {

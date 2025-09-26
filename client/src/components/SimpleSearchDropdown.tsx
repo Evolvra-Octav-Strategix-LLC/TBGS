@@ -215,8 +215,8 @@ const searchData: SearchResult[] = [
   // Service pages
   {
     id: 'svc-1',
-    title: 'Dak',
-    url: '/dak',
+    title: 'Daken',
+    url: '/daken',
     type: 'dienst',
     excerpt: 'Professionele dakwerkzaamheden door gecertificeerde specialisten',
     category: 'Dakwerken'

@@ -119,7 +119,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                 <h4 className="text-lg font-semibold mb-6 pb-2 border-b border-white/20">Onze specialiteiten</h4>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/dak" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
+                    <Link href="/daken" className="group flex items-center space-x-3 text-white/70 hover:text-white transition-colors">
                       <img src={tdsLogo} alt="TDS" className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" />
                       <span>Totaal Dak Specialist</span>
                     </Link>

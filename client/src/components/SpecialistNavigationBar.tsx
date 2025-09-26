@@ -40,7 +40,7 @@ export default function SpecialistNavigationBar() {
           </Link>
 
           {/* TDS - Totaal Dak Specialist */}
-          <Link href="/dak" className="group block">
+          <Link href="/daken" className="group block">
             <div className={`tbgs-red hover:bg-red-800 transition-all duration-300 px-1 sm:px-2 md:px-3 lg:px-4 text-center text-white ${
               isScrolled ? 'py-4 sm:py-4' : 'py-6 sm:py-8'
             }`}>
