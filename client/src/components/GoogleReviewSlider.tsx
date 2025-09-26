@@ -191,6 +191,8 @@ export default function GoogleReviewSlider({ placeId, className = "" }: GoogleRe
 
 // Mobile-optimized single card component matching Google's design
 function MobileReviewCard({ review }: { review: GoogleReview }) {
+  const [showFullText, setShowFullText] = useState(false);
+  
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -209,18 +211,26 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
     return colors[index];
   };
 
+  const truncateText = (text: string, maxLength: number = 120) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + '...';
+  };
+
+  const shouldTruncate = review.text.length > 120;
+  const displayText = showFullText ? review.text : truncateText(review.text);
+
   return (
     <Card className="bg-white border border-gray-200 shadow-lg w-full max-w-sm">
-      <CardContent className="p-4">
-        <div className="flex items-start space-x-3 mb-3">
-          <div className={`w-10 h-10 ${getAvatarColor(review.author_name)} rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0`}>
+      <CardContent className="p-3">
+        <div className="flex items-start space-x-2 mb-2">
+          <div className={`w-8 h-8 ${getAvatarColor(review.author_name)} rounded-full flex items-center justify-center text-white font-semibold text-xs flex-shrink-0`}>
             {getInitials(review.author_name)}
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-1">
-              <h4 className="font-medium text-gray-900 text-sm truncate">{review.author_name}</h4>
+              <h4 className="font-medium text-gray-900 text-xs truncate">{review.author_name}</h4>
               <div className="ml-2 flex-shrink-0">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -228,7 +238,7 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
                 </svg>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mb-2">{review.relative_time_description}</p>
+            <p className="text-xs text-gray-500 mb-1">{review.relative_time_description}</p>
             
             <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
@@ -245,13 +255,18 @@ function MobileReviewCard({ review }: { review: GoogleReview }) {
           </div>
         </div>
         
-        <p className="text-gray-700 leading-relaxed text-sm mb-3">{review.text}</p>
+        <p className="text-gray-700 leading-relaxed text-xs mb-2">{displayText}</p>
         
-        <div>
-          <button className="text-tbgs-navy hover:text-blue-800 text-sm font-medium transition-colors">
-            Lees meer
-          </button>
-        </div>
+        {shouldTruncate && (
+          <div>
+            <button 
+              onClick={() => setShowFullText(!showFullText)}
+              className="text-tbgs-navy hover:text-blue-800 text-xs font-medium transition-colors"
+            >
+              {showFullText ? 'Minder lezen' : 'Meer lezen'}
+            </button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
@@ -292,31 +307,31 @@ function ReviewCard({ review }: { review: GoogleReview }) {
   const initials = getInitials(review.author_name);
   const avatarColor = getUserColor(review.author_name);
 
-  const truncateText = (text: string, maxLength: number = 140) => {
+  const truncateText = (text: string, maxLength: number = 120) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength).trim() + '...';
   };
 
   const [showFullText, setShowFullText] = useState(false);
-  const shouldTruncate = review.text.length > 140;
+  const shouldTruncate = review.text.length > 120;
   const displayText = showFullText ? review.text : truncateText(review.text);
 
   return (
     <Card className="bg-white shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200 rounded-lg">
-      <CardContent className="p-6">
+      <CardContent className="p-4">
         {/* Header with avatar and name */}
-        <div className="flex items-center mb-4">
-          <div className={`w-10 h-10 ${avatarColor} rounded-full flex items-center justify-center text-white font-semibold text-sm mr-3 flex-shrink-0`}>
+        <div className="flex items-center mb-3">
+          <div className={`w-8 h-8 ${avatarColor} rounded-full flex items-center justify-center text-white font-semibold text-xs mr-2 flex-shrink-0`}>
             {initials}
           </div>
           <div className="min-w-0 flex-1">
-            <h4 className="font-medium text-gray-900 text-sm truncate">{displayName}</h4>
+            <h4 className="font-medium text-gray-900 text-xs truncate">{displayName}</h4>
             <p className="text-xs text-gray-500">{review.relative_time_description}</p>
           </div>
         </div>
 
         {/* Review content */}
-        <p className="text-gray-700 text-sm leading-relaxed mb-4">
+        <p className="text-gray-700 text-xs leading-relaxed mb-3">
           {displayText}
         </p>
 
@@ -324,9 +339,9 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         {shouldTruncate && (
           <button 
             onClick={() => setShowFullText(!showFullText)}
-            className="text-blue-600 text-xs hover:underline mb-4 font-medium"
+            className="text-blue-600 text-xs hover:underline mb-3 font-medium"
           >
-            {showFullText ? 'Read less' : 'Read more'}
+            {showFullText ? 'Minder lezen' : 'Meer lezen'}
           </button>
         )}
 
@@ -336,7 +351,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`w-4 h-4 ${
+                className={`w-3 h-3 ${
                   i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
                 }`}
               />
@@ -344,7 +359,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
           </div>
           {/* Google logo */}
           <div className="flex items-center">
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <svg className="w-3 h-3" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
