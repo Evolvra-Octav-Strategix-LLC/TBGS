@@ -210,7 +210,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-tbgs-red transition-colors leading-tight">
-                    <Link href="/dak" className="group-hover:text-tbgs-red hover:underline block transition-colors duration-500">
+                    <Link href="/daken" className="group-hover:text-tbgs-red hover:underline block transition-colors duration-500">
                       <div className="mb-1">Totaal</div>
                       <div className="mb-1">Dak</div>
                       <div>Specialist</div>
@@ -225,7 +225,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/dak" className="text-tbgs-red font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
+                  <Link href="/daken" className="text-tbgs-red font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
                   </Link>
                 </div>
