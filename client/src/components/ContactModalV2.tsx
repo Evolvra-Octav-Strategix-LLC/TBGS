@@ -401,6 +401,7 @@ export default function ContactModalV2() {
   // Step 3: Contact Information
   const step3Content = (
     <div className="space-y-6">
+      {/* Voornaam en Achternaam - Horizontale lijn */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
@@ -429,7 +430,10 @@ export default function ContactModalV2() {
             </FormItem>
           )}
         />
+      </div>
 
+      {/* E-mailadres en Telefoonnummer */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
           name="email"
