@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Phone, Globe, Clock, ExternalLink, Quote } from "lucide-react";
+import MultiCityMap from "@/components/MultiCityMap";
 
 interface GoogleReview {
   author_name: string;
@@ -248,18 +249,7 @@ export default function GoogleBusinessIntegration({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="w-full h-64 bg-gray-100 rounded-lg relative overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79259.89308369855!2d5.369766!3d51.441642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6fb1ff85e75d3%3A0x9b4069d04e6ba2a8!2sEindhoven!5e0!3m2!1snl!2snl!4v1642607951234!5m2!1snl!2snl"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
-            </div>
+            <MultiCityMap height="256px" className="rounded-lg" />
             <div className="mt-4 space-y-2">
               <div className="text-center">
                 <Button variant="outline" asChild>
