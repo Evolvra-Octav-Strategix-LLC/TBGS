@@ -253,7 +253,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </h3>
                   <div className="text-slate-600 text-center space-y-1">
                     <div><Link href="/onderhoud/preventief-onderhoud" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Onderhoud</Link></div>
-                    <div><Link href="/onderhoud/onderhoud-dakkapel" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Herstelwerkzaamheden</Link></div>
+                    <div><Link href="/onderhoud/onderhoud-dakkapel" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Dakkapel onderhoud</Link></div>
                     <div><Link href="/onderhoud/onderhoud-garage" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Garage Onderhoud</Link></div>
                     <div><Link href="/onderhoud/schilder" className="text-slate-600 group-hover:text-tbgs-green hover:text-tbgs-green hover:underline font-medium transition-colors duration-500">Schilderwerk</Link></div>
                     <div className="text-sm text-slate-500 mt-2">Door <strong>ervaren specialisten</strong>.</div>
