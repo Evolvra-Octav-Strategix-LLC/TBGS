@@ -283,6 +283,8 @@ export default function GoogleBusinessIntegration({
                     <Link href="/nl/locaties/mierlo" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Mierlo</Link>
                     <span className="text-slate-400">•</span>
                     <Link href="/nl/locaties/waalre" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Waalre</Link>
+                    <span className="text-slate-400">•</span>
+                    <Link href="/nl/valkenswaard" className="text-gray-500 hover:text-blue-600 font-medium hover:underline">Valkenswaard</Link>
                   </div>
                 </div>
                 <div>
