@@ -357,9 +357,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   // Step 1: Service & Specialist Selection
   const step1Content = (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Service Type Selection */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         <FormField
           control={form.control}
           name="serviceType"
@@ -367,11 +367,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel className="text-base font-semibold">Wat heeft u nodig?</FormLabel>
               <FormControl>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {serviceTypes.map((service) => (
                     <div
                       key={service.value}
-                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
+                      className={`p-3 border-2 rounded-lg cursor-pointer transition-all hover:shadow-sm ${
                         field.value === service.value
                           ? 'border-tbgs-navy bg-blue-50'
                           : 'border-gray-200 hover:border-gray-300 bg-white'
@@ -412,11 +412,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel className="text-base font-semibold">Welke specialist heeft u nodig?</FormLabel>
               <FormControl>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-2">
                   {specialismen.map((spec) => (
                     <div
                       key={spec.value}
-                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
+                      className={`p-3 border-2 rounded-lg cursor-pointer transition-all hover:shadow-sm ${
                         field.value === spec.value
                           ? `border-white ${spec.color} text-white`
                           : 'border-gray-200 hover:border-gray-300 bg-white'
@@ -451,7 +451,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       {/* Project Type Selection */}
       {selectedSpecialisme && (
-        <div className="space-y-4">
+        <div className="space-y-3">
           <FormField
             control={form.control}
             name="projectType"
@@ -481,7 +481,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   // Step 2: Project Details & Upload
   const step2Content = (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Project Description */}
       <FormField
         control={form.control}
@@ -492,7 +492,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormControl>
               <Textarea
                 placeholder="Beschrijf uw project zo uitgebreid mogelijk voor een nauwkeurige offerte..."
-                className="min-h-[120px] text-base leading-relaxed placeholder:text-gray-400 border border-gray-300"
+                className="min-h-[80px] text-sm leading-relaxed placeholder:text-gray-400 border border-gray-300"
                 {...field}
               />
             </FormControl>
@@ -601,9 +601,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   // Step 3: Contact Information
   const step3Content = (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Voornaam en Achternaam - Horizontale lijn */}
-      <div className="grid grid-cols-2 gap-3 md:gap-6">
+      <div className="grid grid-cols-2 gap-3">
         <FormField
           control={form.control}
           name="firstName"
@@ -611,7 +611,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Voornaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw voornaam" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
+                <Input placeholder="Uw voornaam" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -625,7 +625,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Achternaam *</FormLabel>
               <FormControl>
-                <Input placeholder="Uw achternaam" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
+                <Input placeholder="Uw achternaam" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -634,7 +634,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       </div>
 
       {/* E-mailadres en Telefoonnummer */}
-      <div className="grid grid-cols-2 gap-3 md:gap-6">
+      <div className="grid grid-cols-2 gap-3">
         <FormField
           control={form.control}
           name="email"
@@ -642,7 +642,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>E-mailadres *</FormLabel>
               <FormControl>
-                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
+                <Input placeholder="uw.email@voorbeeld.nl" type="email" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -656,7 +656,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <FormItem>
               <FormLabel>Telefoonnummer *</FormLabel>
               <FormControl>
-                <Input placeholder="06 12345678" className="h-12 border border-gray-300 placeholder:text-gray-500" {...field} />
+                <Input placeholder="06 12345678" className="h-10 border border-gray-300 placeholder:text-gray-500" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -728,25 +728,30 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       {/* Modal content */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
         <div 
-          className="bg-white rounded-xl max-w-md sm:max-w-2xl lg:max-w-4xl w-full max-h-[85vh] sm:max-h-[90vh] overflow-y-auto pointer-events-auto shadow-xl my-8 sm:my-0"
+          className="bg-white rounded-xl max-w-md sm:max-w-3xl lg:max-w-5xl w-full max-h-[90vh] sm:max-h-[95vh] overflow-hidden pointer-events-auto shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="p-3 sm:p-6 lg:p-8">
-            <div className="flex justify-between items-center mb-3 sm:mb-6">
-              <h3 className="text-lg sm:text-2xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
+          <div className="flex flex-col h-full">
+            {/* Header */}
+            <div className="flex justify-between items-center p-4 sm:p-6 border-b">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900">Gratis offerte Aanvragen</h3>
               <Button variant="ghost" size="sm" onClick={onClose}>
                 <X className="w-5 h-5" />
               </Button>
             </div>
+            
+            {/* Scrollable content */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
 
-            <Form {...form}>
-              <MultiStepForm
-                steps={steps}
-                onSubmit={onSubmit}
-                onBack={onClose}
-                isSubmitting={submitMutation.isPending}
-              />
-            </Form>
+              <Form {...form}>
+                <MultiStepForm
+                  steps={steps}
+                  onSubmit={onSubmit}
+                  onBack={onClose}
+                  isSubmitting={submitMutation.isPending}
+                />
+              </Form>
+            </div>
           </div>
         </div>
       </div>
