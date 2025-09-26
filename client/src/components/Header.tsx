@@ -323,10 +323,10 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20vraag%20over..." 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors bg-green-600 hover:bg-green-700 rounded-lg px-3 py-2.5"
+                  className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <i className="fab fa-whatsapp mr-3 text-lg"></i>
+                  <i className="fab fa-whatsapp mr-3 text-base"></i>
                   <span className="text-base">WhatsApp ons direct</span>
                 </a>
                 
