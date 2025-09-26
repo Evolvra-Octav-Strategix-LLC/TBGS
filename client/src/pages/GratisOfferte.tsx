@@ -10,6 +10,7 @@ import ContactModalV2 from "@/components/ContactModalV2";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home, ArrowRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function GratisOfferte() {
   useEffect(() => {
@@ -350,14 +351,32 @@ export default function GratisOfferte() {
             <p className="text-xl mb-8 text-blue-100">
               Vraag direct uw gratis offerte aan en ons team neemt binnen 24 uur contact op.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Nu Offerte Aanvragen
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-tbgs-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Nu Offerte Aanvragen
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              
+              <Button 
+                size="lg" 
+                className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold"
+                asChild
+              >
+                <a 
+                  href="https://wa.me/31402445820?text=Hallo%20TBGS%2C%20ik%20wil%20graag%20een%20gratis%20offerte%20aanvragen." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center"
+                >
+                  <FaWhatsapp className="w-6 h-6 mr-2" />
+                  WhatsApp Contact
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
