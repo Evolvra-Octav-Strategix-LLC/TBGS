@@ -207,7 +207,7 @@ export default function DakgootLekkage({ onOpenContactModal }: DakgootLekkagePro
             
             <div class="flex items-start space-x-4">
               <div class="bg-red-100 rounded-full p-3 flex-shrink-0">
-                <i class="fas fa-shield-check text-red-600 text-xl"></i>
+                <i class="fas fa-certificate text-red-600 text-xl"></i>
               </div>
               <div>
                 <h3 class="text-xl font-bold text-gray-900 mb-2">10 Jaar Garantie</h3>
