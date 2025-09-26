@@ -17,6 +17,7 @@ const serviceCities: City[] = [
   { name: 'Geldrop', lat: 51.4208, lng: 5.5597, country: 'Netherlands' },
   { name: 'Mierlo', lat: 51.4439, lng: 5.6228, country: 'Netherlands' },
   { name: 'Waalre', lat: 51.3831, lng: 5.4475, country: 'Netherlands' },
+  { name: 'Valkenswaard', lat: 51.3500, lng: 5.4600, country: 'Netherlands' },
 
   // Belgium
   { name: 'Retie', lat: 51.2667, lng: 5.0833, country: 'Belgium' },
@@ -175,6 +176,52 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
     // Add click events
     centralMarker.addListener('click', showServiceAreaInfo);
     serviceArea.addListener('click', showServiceAreaInfo);
+
+    // Add individual city markers on top of the service area
+    serviceCities.forEach((city) => {
+      const marker = new window.google.maps.Marker({
+        position: { lat: city.lat, lng: city.lng },
+        map: map,
+        title: `${city.name}, ${city.country}`,
+        icon: {
+          url: city.country === 'Netherlands' 
+            ? 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'  // Netherlands = Blue
+            : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',   // Belgium = Red
+          scaledSize: new window.google.maps.Size(32, 32)
+        }
+      });
+
+      // Add click event for city page navigation
+      marker.addListener('click', () => {
+        const countryFlag = city.country === 'Netherlands' ? '🇳🇱' : '🇧🇪';
+        const citySlug = city.name.toLowerCase().replace(/\s+/g, '-');
+        const countryCode = city.country === 'Netherlands' ? 'nl' : 'be';
+        const cityUrl = `/${countryCode}/${citySlug}`;
+        
+        const content = `
+          <div style="font-family: Arial, sans-serif; min-width: 200px;">
+            <h3 style="margin: 0 0 8px 0; color: #1e40af;">${countryFlag} ${city.name}</h3>
+            <p style="margin: 0 0 8px 0; color: #64748b;">${city.country}</p>
+            <div style="margin-top: 12px;">
+              <a href="https://maps.google.com/?q=${city.lat},${city.lng}" 
+                 target="_blank" 
+                 style="color: #1e40af; text-decoration: none; font-weight: 500;">
+                📍 Routebeschrijving
+              </a>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="${cityUrl}" 
+                 style="color: #059669; text-decoration: none; font-weight: 500;">
+                🏠 Onze diensten in ${city.name}
+              </a>
+            </div>
+          </div>
+        `;
+        
+        infoWindow.setContent(content);
+        infoWindow.open(map, marker);
+      });
+    });
 
     // Fit map to show all markers
     const bounds = new window.google.maps.LatLngBounds();
