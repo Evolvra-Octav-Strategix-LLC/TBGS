@@ -120,7 +120,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
       <div className="w-full max-w-screen-2xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 lg:gap-8">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0" aria-label="TBGS BV Homepage">
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src="/img/TBGS%20545x642_1754935848756.png" alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
