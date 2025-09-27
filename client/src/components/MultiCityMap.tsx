@@ -49,7 +49,7 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
     // Load Google Maps API if not already loaded
     if (!window.google) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_PLACES_API_KEY || 'YOUR_API_KEY'}&callback=initMultiCityMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_PLACES_API_KEY || 'YOUR_API_KEY'}&loading=async&callback=initMultiCityMap`;
       script.async = true;
       script.defer = true;
       
