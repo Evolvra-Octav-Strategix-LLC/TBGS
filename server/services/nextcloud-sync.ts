@@ -114,7 +114,7 @@ export class NextcloudSyncService {
       }
       
       // Get list of files from Nextcloud - including subdirectories
-      const remoteFiles = await this.getImageFilesRecursively(this.config.remoteDir);
+      const remoteFiles = await this.getImageFilesRecursively(`/${this.config.remoteDir}`);
       
       console.log(`📁 Found ${remoteFiles.length} images in Nextcloud`);
 
@@ -141,7 +141,7 @@ export class NextcloudSyncService {
   }
 
   // Recursively get all image files from directory and subdirectories
-  private async getImageFilesRecursively(dirPath: string): Promise<any[]> {
+  private async getImageFilesRecursively(dirPath: string, relativePath: string = ''): Promise<any[]> {
     const imageFiles: any[] = [];
     
     try {
@@ -156,21 +156,21 @@ export class NextcloudSyncService {
           // Recursively search subdirectories
           console.log(`📂 Scanning subdirectory: ${item.basename}`);
           const subDirPath = `${dirPath}/${item.basename}`;
-          const subImages = await this.getImageFilesRecursively(subDirPath);
-          
-          // Update paths to include subdirectory
-          subImages.forEach(img => {
-            img.relativePath = `${item.basename}/${img.relativePath || img.filename}`;
-            img.fullPath = `${subDirPath}/${img.filename}`; // Use original filename for download
-          });
+          const subRelativePath = relativePath ? `${relativePath}/${item.basename}` : item.basename;
+          const subImages = await this.getImageFilesRecursively(subDirPath, subRelativePath);
           
           imageFiles.push(...subImages);
         } else if (item.type === 'file') {
           // Check if it's an image file
           if (/\.(jpg|jpeg|png|webp|avif|gif)$/i.test(item.filename)) {
-            item.relativePath = item.filename; // For root level files
-            item.fullPath = `${dirPath}/${item.filename}`; // Full remote path for download
-            imageFiles.push(item);
+            const fileRelativePath = relativePath ? `${relativePath}/${item.filename}` : item.filename;
+            // CRITICAL FIX: Set properties directly on the item to avoid any interference
+            const cleanItem = {
+              ...item,
+              relativePath: fileRelativePath,
+              fullPath: `${dirPath}/${item.filename}` // Absolute path - no relativePath prefix!
+            };
+            imageFiles.push(cleanItem);
           }
         }
       }
@@ -183,7 +183,7 @@ export class NextcloudSyncService {
 
   private async syncSingleImage(file: any): Promise<void> {
     const filename = file.relativePath || file.filename; // Use relative path for subdirectories
-    const remotePath = file.fullPath || `${this.config.remoteDir}/${filename}`; // Use full path for download
+    const remotePath = file.fullPath; // Use ONLY the fullPath - never fallback to construct
     const localPath = path.join(this.config.localDir, filename);
     const lastModified = new Date(file.lastmod);
 
@@ -201,7 +201,7 @@ export class NextcloudSyncService {
     }
 
     // Download file from Nextcloud
-    console.log(`⬇️ Downloading ${filename}...`);
+    console.log(`⬇️ Downloading ${remotePath}...`);
     const fileBuffer = await this.client.getFileContents(remotePath, { format: 'binary' }) as Buffer;
     
     // Save original file
