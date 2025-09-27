@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
+import { Calculator, Check, Eye, Shield, Clock, Award, Phone, Wrench, Home, Droplets, Hammer, Search, Layers, Mail, Thermometer, Sparkles } from "lucide-react";
 // Using full HD logo via /img/ endpoint for highest quality
 const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.webp";
 import roofRepairIcon from "@/assets/webp/image (20)_1755004272803.webp";
@@ -57,7 +58,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   onClick={onOpenContactModal}
                   className="bg-tbgs-red text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-calculator mr-3"></i>
+                  <Calculator className="w-5 h-5 mr-3" />
                   Dakwerk offerte
                 </button>
                 <a 
@@ -66,7 +67,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <span className="mr-3">💬</span>
                   Direct WhatsApp
                 </a>
               </div>
@@ -129,10 +130,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Hellende Daken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Pannendaken</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Leien dakbedekking</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Bitumen shingles</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Dakpannen vervangen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Pannendaken</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Leien dakbedekking</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Bitumen shingles</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Dakpannen vervangen</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -148,10 +149,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Platte Daken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>EPDM rubber</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Bitumen dakbedekking</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Groene daken</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Dakafwatering</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />EPDM rubber</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Bitumen dakbedekking</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Groene daken</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Dakafwatering</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -167,10 +168,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakisolatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Spouwmuurisolatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Zoldervloerisolatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Dakplatisolatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Energiebesparing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Spouwmuurisolatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Zoldervloerisolatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Dakplatisolatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Energiebesparing</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -186,10 +187,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Lekkage Opsporing</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Professionele lekdetectie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Vochtmeting</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Snelle reparatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Preventief onderhoud</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Professionele lekdetectie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Vochtmeting</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Snelle reparatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Preventief onderhoud</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -205,10 +206,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoten & Boeidelen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Dakgoot vervanging</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Boeidelen renovatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Regenpijpen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Onderhoud & reiniging</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Dakgoot vervanging</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Boeidelen renovatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Regenpijpen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Onderhoud & reiniging</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -224,10 +225,10 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Dakreparaties</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Spoedservice 24/7</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Gebroken dakpannen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Storm schade</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-red w-4 mr-2"></i>Nooddak installatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Spoedservice 24/7</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Gebroken dakpannen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Storm schade</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-red mr-2" />Nooddak installatie</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -317,7 +318,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Daklekkage Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-tint text-tbgs-red text-4xl"></i>
+                <Droplets className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Daklekkage Reparatie</h3>
@@ -333,7 +334,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dakrenovatie Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-hammer text-tbgs-red text-4xl"></i>
+                <Hammer className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakrenovatie</h3>
@@ -349,7 +350,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dakgoot reinigen Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-broom text-tbgs-red text-4xl"></i>
+                <Sparkles className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoot Reinigen</h3>
@@ -365,7 +366,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dak isolatie Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-thermometer-half text-tbgs-red text-4xl"></i>
+                <Thermometer className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dak Isolatie</h3>
@@ -381,7 +382,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dakinspectie Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-search text-tbgs-red text-4xl"></i>
+                <Search className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakinspectie & Advies</h3>
@@ -397,7 +398,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dakbedekking Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-layer-group text-tbgs-red text-4xl"></i>
+                <Layers className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakbedekking</h3>
@@ -413,7 +414,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Nokvorsten Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-tools text-tbgs-red text-4xl"></i>
+                <Wrench className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Nokvorsten Repareren</h3>
@@ -429,7 +430,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
             {/* Dakgoot Lekkage Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-                <i className="fas fa-water text-tbgs-red text-4xl"></i>
+                <Droplets className="w-10 h-10 text-tbgs-red" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakgoot Lekkage Reparatie</h3>
@@ -448,7 +449,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
               onClick={onOpenContactModal}
               className="bg-tbgs-red text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors inline-flex items-center"
             >
-              <i className="fas fa-envelope mr-3"></i>
+              <Mail className="w-5 h-5 mr-3" />
               Vraag advies aan onze dakexperts
             </button>
           </div>
@@ -471,7 +472,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-red px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-calculator mr-3"></i>
+                <Calculator className="w-5 h-5 mr-3" />
                 Gratis Dakwerk offerte
               </button>
               <a 
@@ -480,7 +481,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-red transition-colors flex items-center justify-center"
               >
-                <i className="fab fa-whatsapp mr-3"></i>
+                <span className="mr-3">💬</span>
                 Direct WhatsApp
               </a>
             </div>

@@ -17,7 +17,11 @@ import {
   AlertTriangle,
   Award,
   CheckCircle,
-  Home
+  Home,
+  Search,
+  Trash,
+  Mail,
+  Sparkles
 } from "lucide-react";
 import certifiedIcon from "@/assets/webp/image (13)_1754999543397.webp";
 import cleaningIcon from "@/assets/webp/image (19)_1754999543410.webp";
@@ -84,7 +88,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp text-xl mr-3"></i>
+                  <span className="text-xl mr-3">💬</span>
                   Direct WhatsApp
                 </a>
               </div>
@@ -277,7 +281,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Vegen Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-broom text-tbgs-blue text-4xl"></i>
+                <Sparkles className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Vegen</h3>
@@ -293,7 +297,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Inspectie Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-search text-tbgs-blue text-4xl"></i>
+                <Search className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Inspectie</h3>
@@ -309,7 +313,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Renovatie Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-hammer text-tbgs-blue text-4xl"></i>
+                <Hammer className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Renovatie</h3>
@@ -325,7 +329,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Verwijderen Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-trash text-tbgs-blue text-4xl"></i>
+                <Trash className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Verwijderen</h3>
@@ -341,7 +345,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Voegen/Repareren Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-tools text-tbgs-blue text-4xl"></i>
+                <Wrench className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Voegen/Repareren</h3>
@@ -357,7 +361,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
             {/* Schoorsteen Onderhoud Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <i className="fas fa-cog text-tbgs-blue text-4xl"></i>
+                <Cog className="w-10 h-10 text-tbgs-blue" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schoorsteen Onderhoud</h3>
@@ -376,7 +380,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
               onClick={onOpenContactModal}
               className="bg-tbgs-blue text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors inline-flex items-center"
             >
-              <i className="fas fa-envelope mr-3"></i>
+              <Mail className="w-5 h-5 mr-3" />
               Vraag advies aan onze schoorsteenexperts
             </button>
           </div>
@@ -409,7 +413,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-blue transition-colors flex items-center justify-center"
               >
-                <i className="fab fa-whatsapp text-xl mr-3"></i>
+                <span className="text-xl mr-3">💬</span>
                 Direct WhatsApp
               </a>
             </div>

@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
+import { Calculator, Check, Wrench, Shield, Clock, Mail, Hammer, Paintbrush, Sparkles, Zap, Award, Eye, Calendar, Building, Car, Trees, Droplets } from "lucide-react";
 // Using full HD logo via /img/ endpoint for highest quality
 const tosLogo = "/img/TOS%20545x642%20(1)_1755096847747.webp";
 
@@ -54,7 +55,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   onClick={onOpenContactModal}
                   className="bg-tbgs-green text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-calculator mr-3"></i>
+                  <Calculator className="w-5 h-5 mr-3" />
                   Onderhoud offerte
                 </button>
                 <a 
@@ -63,7 +64,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <span className="mr-3">💬</span>
                   Direct WhatsApp
                 </a>
               </div>
@@ -93,7 +94,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center">
-                    <i className="fas fa-leaf text-tbgs-green text-xl"></i>
+                    <span className="text-xl text-tbgs-green">🌿</span>
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Duurzaam</div>
@@ -123,14 +124,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-home text-tbgs-green text-2xl"></i>
+                <Award className="w-8 h-8 text-tbgs-green" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Gevelreiniging</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Hogedruk reiniging</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Gevelrestauratie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Anti-graffiti coating</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Voegwerk herstellen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Hogedruk reiniging</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Gevelrestauratie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Anti-graffiti coating</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Voegwerk herstellen</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -142,14 +143,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-paint-brush text-tbgs-green text-2xl"></i>
+                <Paintbrush className="w-8 h-8 text-tbgs-green" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Schilderwerk</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Binnen schilderwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Buiten schilderwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Houtrot behandeling</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Lak- en beitswerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Binnen schilderwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Buiten schilderwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Houtrot behandeling</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Lak- en beitswerk</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -161,14 +162,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-wrench text-tbgs-green text-2xl"></i>
+                <Wrench className="w-8 h-8 text-tbgs-green" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Algemene reparaties</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Timmerwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Loodgieterswerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Elektrische klussen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Tegelwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Timmerwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Loodgieterswerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Elektrische klussen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Tegelwerk</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -180,14 +181,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-calendar-check text-tbgs-green text-2xl"></i>
+                <Calendar className="w-8 h-8 text-tbgs-green" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Onderhoudscontracten</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Jaarlijkse inspectie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Onderhoudsplanning</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Kostenbesparing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Onderhoudscontracten</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Jaarlijkse inspectie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Onderhoudsplanning</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Kostenbesparing</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -199,14 +200,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-building text-tbgs-green text-2xl"></i>
+                <Building className="w-8 h-8 text-tbgs-green" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">VvE onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Appartementencomplexen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Gemeenschappelijke ruimtes</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Meerjarenplanning</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Budgetbeheer</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Appartementencomplexen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Gemeenschappelijke ruimtes</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Meerjarenplanning</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Budgetbeheer</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -218,14 +219,14 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-leaf text-tbgs-green text-2xl"></i>
+                <span className="text-2xl text-tbgs-green">🌿</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Duurzaam onderhoud</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Milieuvriendelijke producten</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Energiebesparende oplossingen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Afvalreductie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-green w-4 mr-2"></i>Duurzaamheidscertificaten</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Milieuvriendelijke producten</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Energiebesparende oplossingen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Afvalreductie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-green mr-2" />Duurzaamheidscertificaten</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -316,7 +317,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Dakkapel Reinigen Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-home text-green-600 text-4xl"></i>
+                <Award className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Dakkapel reinigen</h3>
@@ -332,7 +333,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Onderhoud Dakkapel Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-tools text-green-600 text-4xl"></i>
+                <Wrench className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud dakkapel</h3>
@@ -348,7 +349,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Onderhoud Hout Dak Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-tree text-green-600 text-4xl"></i>
+                <Trees className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud hout in dak</h3>
@@ -364,7 +365,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Schilder Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-paint-brush text-green-600 text-4xl"></i>
+                <Paintbrush className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Schilder</h3>
@@ -380,7 +381,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Onderhoud Garage Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-car text-green-600 text-4xl"></i>
+                <Car className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud garage</h3>
@@ -396,7 +397,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Onderhoud Dakgoot Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-tint text-green-600 text-4xl"></i>
+                <Droplets className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Onderhoud dakgoot</h3>
@@ -412,7 +413,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
             {/* Preventief Onderhoud Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <i className="fas fa-shield-alt text-green-600 text-4xl"></i>
+                <Shield className="w-10 h-10 text-green-600" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Preventief onderhoud</h3>
@@ -445,7 +446,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-green px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-calculator mr-3"></i>
+                <Calculator className="w-5 h-5 mr-3" />
                 Gratis Onderhoud offerte
               </button>
               <a 
@@ -454,7 +455,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-green transition-colors flex items-center justify-center"
               >
-                <i className="fab fa-whatsapp mr-3"></i>
+                <span className="mr-3">💬</span>
                 Direct WhatsApp
               </a>
             </div>

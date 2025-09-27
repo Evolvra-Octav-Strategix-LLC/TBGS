@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
-import { Search, Phone, ArrowRight } from "lucide-react";
+import { Search, Phone, ArrowRight, Menu, X } from "lucide-react";
 import tbgsLogo from "@assets/tbgs-logo-48.webp";
 import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
@@ -200,7 +200,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
               className="text-gray-700 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
