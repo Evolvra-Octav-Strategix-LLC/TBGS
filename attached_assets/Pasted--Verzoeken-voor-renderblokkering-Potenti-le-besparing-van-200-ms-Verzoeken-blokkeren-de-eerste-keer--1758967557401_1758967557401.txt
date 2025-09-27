@@ -1,0 +1,124 @@
+
+Verzoeken voor renderblokkering Potentiële besparing van 200 ms
+Verzoeken blokkeren de eerste keer renderen van de pagina, waardoor LCP kan worden vertraagd. Door verzoeken uit te stellen of in te sluiten kun je deze netwerkverzoeken van de kritieke route verwijderen.LCPFCP
+URL
+Overdrachtsgrootte
+Duur
+tbgs.nl 1e partij
+147,0 KiB	630 ms
+/assets/index-BcQYF94U.css(tbgs.nl)
+147,0 KiB
+630 ms
+Google Fonts cdn 
+1,5 KiB	230 ms
+/css2?family=Inter:wght@400;500;600;700;800&display=swap(fonts.googleapis.com)
+1,5 KiB
+230 ms
+Efficiënte levensduur voor het cachegeheugen gebruiken Potentiële besparing van 80 KiB
+Een lange levensduur voor het cachegeheugen kan herhaalde bezoeken aan je pagina versnellen. Meer informatieLCPFCP
+Verzoek
+Cache-TTL
+Overdrachtsgrootte
+Google Maps utility 
+93 KiB
+…api/js?key=AIzaSyDcn…&callback=initMultiCityMap(maps.googleapis.com)
+30 m
+93 KiB
+Gedwongen dynamische aanpassing
+Veel API's, die meestal de indelingsgeometrie lezen, dwingen de weergave-engine om de scriptuitvoering te onderbreken om de stijl en indeling te berekenen. Meer informatie over gedwongen dynamische aanpassing en de bijbehorende beperkende maatregelen.
+Topfunctieaanroep
+Totale tijd voor dynamische aanpassing
+/assets/index-8yOouHg7.js:26:1876(tbgs.nl)
+150 ms
+Bron
+Totale tijd voor dynamische aanpassing
+/assets/index-8yOouHg7.js:2414:676318(tbgs.nl)
+150 ms
+/assets/index-8yOouHg7.js:471:95224(tbgs.nl)
+1 ms
+[niet toegeschreven]
+6 ms
+…api/js?key=AIzaSyDcn…&callback=initMultiCityMap:235:447(maps.googleapis.com)
+1 ms
+LCP-verzoekdetectie
+Optimaliseer LCP door de LCP-afbeelding vindbaar te maken vanuit de HTML en lazy loading te voorkomenLCP
+Lazy loading niet toegepast
+fetchpriority=high moet worden toegepast
+Verzoek is vindbaar in het oorspronkelijke document
+Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven
+<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.…" alt="Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven" class="rounded-3xl shadow-2xl w-full h-auto object-cover">
+Netwerkafhankelijkheidsstructuur
+Vermijd het doorlinken van kritieke verzoeken door de lengte van ketens te verkleinen, de downloadgrootte van resources te beperken of het downloaden van onnodige resources uit te stellen om de laadtijd van de pagina te verbeteren.LCP
+Maximum latentie voor kritiek pad: 719 ms
+Beginnavigatie
+https://tbgs.nl - 60 ms, 4,14 KiB
+/css2?family=Inter:wght@400;500;600;700;800&display=swap(fonts.googleapis.com) - 59 ms, 1,50 KiB
+…v20/UcC73FwrK….woff2(fonts.gstatic.com) - 572 ms, 48,09 KiB
+/assets/index-8yOouHg7.js(tbgs.nl) - 185 ms, 1.797,10 KiB
+…google-business/ChIJVSc2_yXbxkcROATmSZNFGFU(tbgs.nl) - 719 ms, 2,84 KiB
+/assets/index-BcQYF94U.css(tbgs.nl) - 75 ms, 147,03 KiB
+…js/replit-dev-banner.js(replit.com) - 188 ms, 2,63 KiB
+Preconnected origins
+preconnect hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.
+no origins were preconnected
+Preconnect candidates
+Add preconnect hints to your most important origins, but try to use no more than 4.
+No additional origins are good candidates for preconnecting
+Vertraging van documentverzoek Potentiële besparing van 3 KiB
+Je eerste netwerkverzoek is het belangrijkst. Verminder de vertraging door omleidingen te vermijden, een snelle serverreactie te garanderen en tekstcompressie aan te zetten.LCPFCP
+Vermijdt omleidingen
+Server responds quickly (observed 32 ms)
+Geen compressie toegepast
+Lettertypeweergave Potentiële besparing van 20 ms
+Overweeg font-display in te stellen op swap of optional om te zorgen dat tekst consistent zichtbaar is. swap kan verder worden geoptimaliseerd om indelingsverschuivingen te verminderen met overschrijvingen van lettertypestatistieken.FCP
+URL
+Potentiële besparingen
+Cloudflare CDN cdn 
+40 ms
+…webfonts/fa-brands-400.woff2(cdnjs.cloudflare.com)
+20 ms
+…webfonts/fa-solid-900.woff2(cdnjs.cloudflare.com)
+20 ms
+Oorzaken van indelingsverschuivingen
+DOM-grootte optimaliseren
+LCP breakdown
+Derden
+These insights are also available in the Chrome DevTools Performance Panel - record a trace to view more detailed information.
+Diagnostische gegevens
+Beperk niet-gebruikt JavaScript Potentiële besparing van 1.532 KiB
+Beperk niet-gebruikt JavaScript en stel het laden van scripts uit totdat ze nodig zijn zodat er minder bytes worden verbruikt door netwerkactiviteit. Meer informatie over hoe je ongebruikt JavaScript vermindertLCPFCP
+URL
+Overdrachtsgrootte
+Potentiële besparingen
+tbgs.nl 1e partij
+1.794,2 KiB	1.406,0 KiB
+/assets/index-8yOouHg7.js(tbgs.nl)
+1.794,2 KiB
+1.406,0 KiB
+Google Maps utility 
+224,9 KiB	126,4 KiB
+…api/js?key=AIzaSyDcn…&callback=initMultiCityMap(maps.googleapis.com)
+92,3 KiB
+49,3 KiB
+…7e/common.js(maps.googleapis.com)
+36,4 KiB
+27,0 KiB
+…7e/util.js(maps.googleapis.com)
+70,4 KiB
+26,6 KiB
+…7e/map.js(maps.googleapis.com)
+25,8 KiB
+23,4 KiB
+Beperk niet-gebruikte css Potentiële besparing van 134 KiB
+Beperk niet-gebruikte regels uit stylesheets en stel css uit die niet wordt gebruikt voor content boven de vouw zodat er minder bytes worden verbruikt door netwerkactiviteit. Meer informatie over hoe je ongebruikte CSS vermindertLCPFCP
+URL
+Overdrachtsgrootte
+Potentiële besparingen
+tbgs.nl 1e partij
+146,7 KiB	116,1 KiB
+/assets/index-BcQYF94U.css(tbgs.nl)
+146,7 KiB
+116,1 KiB
+Cloudflare CDN cdn 
+18,2 KiB	17,9 KiB
+…css/all.min.css(cdnjs.cloudflare.com)
