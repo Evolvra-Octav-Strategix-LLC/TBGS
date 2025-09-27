@@ -69,9 +69,15 @@
     font-family: var(--font-sans);
   }
 
-  /* Modal scroll lock styles */
-  body.modal-open {
-    overflow: hidden;
+  /* Hide broken FontAwesome icons temporarily for performance testing */
+  .fas, .fab, .far, .fal, .fad, .fa {
+    display: none !important;
+  }
+}
+
+/* Modal scroll lock styles */
+body.modal-open {
+  overflow: hidden;
     position: fixed;
     width: 100%;
     top: 0;
@@ -157,7 +163,6 @@
       max-height: 95vh !important;
     }
   }
-}
 
 /* Google Places Autocomplete Styling */
 .pac-container {

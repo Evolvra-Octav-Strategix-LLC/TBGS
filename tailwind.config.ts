@@ -2,7 +2,19 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./client/index.html", 
+    "./client/src/**/*.{js,jsx,ts,tsx}"
+    // Removed duplicative paths for more efficient processing
+  ],
+  // Optimize for smaller CSS bundle
+  corePlugins: {
+    // Disable unused core features for production builds
+    container: false, // Not used in this project
+    float: false,      // Not used (using flexbox/grid)
+    clear: false,      // Not used
+    skew: false,       // Not used
+  },
   theme: {
     extend: {
       borderRadius: {

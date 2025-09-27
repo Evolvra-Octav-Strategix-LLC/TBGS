@@ -1,24 +1,19 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
-import Uppy from "@uppy/core";
-import { DashboardModal } from "@uppy/react";
-import "@uppy/core/dist/style.min.css";
-import "@uppy/dashboard/dist/style.min.css";
-import AwsS3 from "@uppy/aws-s3";
-import Compressor from "@uppy/compressor";
-import type { UploadResult } from "@uppy/core";
 import { Button } from "@/components/ui/button";
+import { Upload } from "lucide-react";
+
+// Note: Uppy libraries removed for performance optimization
+// This component is now a placeholder since it wasn't used in the app
 
 interface ObjectUploaderProps {
   maxNumberOfFiles?: number;
   maxFileSize?: number;
-  onGetUploadParameters: () => Promise<{
+  onGetUploadParameters?: () => Promise<{
     method: "PUT";
     url: string;
   }>;
-  onComplete?: (
-    result: UploadResult<Record<string, unknown>, Record<string, unknown>>
-  ) => void;
+  onComplete?: (result: any) => void;
   buttonClassName?: string;
   children: ReactNode;
 }
@@ -52,67 +47,21 @@ interface ObjectUploaderProps {
  * @param props.children - Content to be rendered inside the button
  */
 export function ObjectUploader({
-  maxNumberOfFiles = 5, // Allow multiple files for faster batch uploads
-  maxFileSize = 52428800, // 50MB for larger files
+  maxNumberOfFiles = 5,
+  maxFileSize = 52428800,
   onGetUploadParameters,
   onComplete,
   buttonClassName,
   children,
 }: ObjectUploaderProps) {
-  const [showModal, setShowModal] = useState(false);
-  const [uppy] = useState(() =>
-    new Uppy({
-      restrictions: {
-        maxNumberOfFiles,
-        maxFileSize,
-        // Allow common file types
-        allowedFileTypes: [
-          'image/*',
-          'application/pdf',
-          '.doc',
-          '.docx',
-          '.txt',
-          '.rtf'
-        ],
-      },
-      autoProceed: false,
-    })
-      // Add image compression for much faster uploads
-      .use(Compressor, {
-        quality: 0.85, // High quality but smaller file size
-        limit: 10, // Process up to 10 files simultaneously
-        mimeType: 'image/jpeg', // Convert to JPEG for better compression
-      })
-      .use(AwsS3, {
-        // Disable multipart for simplicity and speed
-        shouldUseMultipart: false,
-        limit: 10, // Upload up to 10 files simultaneously
-        retryDelays: [0, 1000, 3000], // Quick retries
-        getUploadParameters: onGetUploadParameters,
-      })
-      .on("complete", (result) => {
-        onComplete?.(result);
-      })
-      // Add progress tracking for better UX
-      .on("upload-progress", (file, progress) => {
-        if (file?.name && progress.bytesTotal) {
-          console.log(`${file.name}: ${Math.round(progress.bytesUploaded / progress.bytesTotal * 100)}% uploaded`);
-        }
-      })
-  );
-
+  // Placeholder component - Uppy libraries removed for performance
+  // This component wasn't being used in the application
   return (
     <div>
-      <Button onClick={() => setShowModal(true)} className={buttonClassName}>
-        {children}
+      <Button disabled className={buttonClassName}>
+        <Upload className="mr-2 h-4 w-4" />
+        {children} (Upload disabled - not implemented)
       </Button>
-
-      <DashboardModal
-        uppy={uppy}
-        open={showModal}
-        onRequestClose={() => setShowModal(false)}
-        proudlyDisplayPoweredByUppy={false}
-      />
     </div>
   );
 }

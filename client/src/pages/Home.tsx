@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UsersCog, Handshake, Clock, Heart, Star, MapPin } from "lucide-react";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
@@ -85,14 +85,14 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   onClick={onOpenContactModal}
                   className="group bg-tbgs-navy text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:bg-blue-800 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <i className="fas fa-search mr-2 sm:mr-3 transition-transform group-hover:scale-110 text-sm sm:text-base"></i>
+                  <Search className="mr-2 sm:mr-3 transition-transform group-hover:scale-110 w-4 h-4 sm:w-5 sm:h-5" />
                   Gratis inspectie in 24u gepland
                 </button>
                 <button 
                   onClick={() => scrollToSection('projecten')}
                   className="group border-2 border-slate-300 text-slate-700 px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-semibold text-sm sm:text-base lg:text-lg hover:border-tbgs-navy hover:text-tbgs-navy transition-all duration-300 flex items-center justify-center backdrop-blur-sm bg-white/50"
                 >
-                  <i className="fas fa-play mr-2 sm:mr-3 transition-transform group-hover:scale-110 text-sm sm:text-base"></i>
+                  <Play className="mr-2 sm:mr-3 transition-transform group-hover:scale-110 w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" />
                   Bekijk onze projecten
                 </button>
               </div>
@@ -128,7 +128,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="absolute -bottom-4 -left-4 lg:-bottom-8 lg:-left-8 bg-white p-3 lg:p-6 rounded-xl lg:rounded-2xl shadow-xl border border-slate-200">
                 <div className="flex items-center space-x-2 lg:space-x-4">
                   <div className="w-8 h-8 lg:w-14 lg:h-14 bg-green-100 rounded-full flex items-center justify-center">
-                    <i className="fas fa-shield-alt text-green-600 text-sm lg:text-xl"></i>
+                    <Shield className="text-green-600 w-4 h-4 lg:w-6 lg:h-6" />
                   </div>
                   <div>
                     <div className="font-bold text-slate-900 text-xs lg:text-base">100% Garantie</div>
@@ -152,7 +152,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 lg:mb-20">
             <div className="inline-flex items-center space-x-2 bg-slate-100 rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
-              <i className="fas fa-tools"></i>
+              <Wrench className="w-5 h-5" />
               <span>Onze specialiteiten</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
@@ -172,7 +172,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <img src={tssLogo} alt="TSS Logo" className="w-16 h-16 object-contain opacity-88 group-hover:opacity-100 transition-all duration-500" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-blue rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <i className="fas fa-arrow-right text-white text-xs"></i>
+                    <ArrowRight className="text-white w-3 h-3" />
                   </div>
                 </div>
                 <div>
@@ -193,7 +193,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/schoorsteen" className="text-slate-700 font-bold hover:text-tbgs-blue transition-all duration-500 hover:underline">
-                    Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
+                    Meer informatie <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
                   </Link>
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <img src={tdsLogo} alt="TDS Logo" className="w-16 h-16 object-contain opacity-88 group-hover:opacity-100 transition-all duration-500" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-red rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <i className="fas fa-arrow-right text-white text-xs"></i>
+                    <ArrowRight className="text-white w-3 h-3" />
                   </div>
                 </div>
                 <div>
@@ -228,7 +228,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/daken" className="text-slate-700 font-bold hover:text-tbgs-red transition-all duration-500 hover:underline">
-                    Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
+                    Meer informatie <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
                   </Link>
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <img src={tosLogo} alt="TOS Logo" className="w-16 h-16 object-contain opacity-88 group-hover:opacity-100 transition-all duration-500" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-green rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <i className="fas fa-arrow-right text-white text-xs"></i>
+                    <ArrowRight className="text-white w-3 h-3" />
                   </div>
                 </div>
                 <div>
@@ -263,7 +263,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/onderhoud" className="text-slate-700 font-bold hover:text-tbgs-green transition-all duration-500 hover:underline">
-                    Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
+                    Meer informatie <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
                   </Link>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <img src={tbsLogo} alt="TBS Logo" className="w-16 h-16 object-contain opacity-88 group-hover:opacity-100 transition-all duration-500" />
                   </div>
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-tbgs-orange rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <i className="fas fa-arrow-right text-white text-xs"></i>
+                    <ArrowRight className="text-white w-3 h-3" />
                   </div>
                 </div>
                 <div>
@@ -298,7 +298,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 </div>
                 <div className="flex items-center justify-center">
                   <Link href="/bouwen" className="text-slate-700 font-bold hover:text-tbgs-orange transition-all duration-500 hover:underline">
-                    Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
+                    Meer informatie <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
                   </Link>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
             <div className="relative z-10">
               <div className="text-center mb-16">
                 <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
-                  <i className="fas fa-building"></i>
+                  <Building className="w-5 h-5" />
                   <span>Ons verhaal</span>
                 </div>
                 <h3 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">

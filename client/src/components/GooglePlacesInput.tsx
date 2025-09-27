@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useGoogleMapsLoader } from "@/hooks/useGoogleMapsLoader";
 
 interface GooglePlacesInputProps {
   value: string;
@@ -27,44 +28,25 @@ export function GooglePlacesInput({
 }: GooglePlacesInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<any>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const { isLoaded, isLoading, error, loadMaps } = useGoogleMapsLoader({ libraries: ['places'] });
 
   useEffect(() => {
-    // Check if Google Maps API is already loaded
-    if (window.google && window.google.maps && window.google.maps.places) {
+    if (isLoaded) {
       initializeAutocomplete();
-      return;
     }
+  }, [isLoaded]);
 
-    // Check if API key is available from environment variables
-    const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
-    
-    console.log("API Key status:", apiKey ? "Found" : "Not found");
-    if (!apiKey) {
-      console.warn("Google Places API key not found. Please set VITE_GOOGLE_PLACES_API_KEY environment variable.");
-      return;
-    }
-
-    // Load Google Maps API
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-
-    window.initMap = () => {
-      setIsLoaded(true);
-      initializeAutocomplete();
-    };
-
-    document.head.appendChild(script);
+  useEffect(() => {
+    // Load Google Maps API when component mounts (lazy load)
+    loadMaps().catch(console.error);
 
     return () => {
       // Cleanup
-      if (autocompleteRef.current) {
-        window.google?.maps?.event?.clearInstanceListeners?.(autocompleteRef.current);
+      if (autocompleteRef.current && window.google?.maps?.event) {
+        window.google.maps.event.clearInstanceListeners(autocompleteRef.current);
       }
     };
-  }, []);
+  }, [loadMaps]);
 
   const initializeAutocomplete = () => {
     if (!inputRef.current || !window.google) return;

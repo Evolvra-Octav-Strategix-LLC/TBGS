@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useGoogleMapsLoader } from '@/hooks/useGoogleMapsLoader';
 
 interface City {
   name: string;
@@ -44,28 +45,18 @@ declare global {
 export default function MultiCityMap({ height = "400px", className = "" }: MultiCityMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
+  const { isLoaded, isLoading, error, loadMaps } = useGoogleMapsLoader();
 
   useEffect(() => {
-    // Load Google Maps API if not already loaded
-    if (!window.google) {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${import.meta.env.VITE_GOOGLE_PLACES_API_KEY || 'YOUR_API_KEY'}&loading=async&callback=initMultiCityMap`;
-      script.async = true;
-      script.defer = true;
-      
-      window.initMultiCityMap = initializeMap;
-      document.head.appendChild(script);
-    } else {
+    if (isLoaded) {
       initializeMap();
     }
+  }, [isLoaded]);
 
-    return () => {
-      // Cleanup
-      if (window.initMultiCityMap) {
-        window.initMultiCityMap = undefined as any;
-      }
-    };
-  }, []);
+  useEffect(() => {
+    // Load Google Maps API when component mounts (lazy load)
+    loadMaps().catch(console.error);
+  }, [loadMaps]);
 
   const initializeMap = () => {
     if (!mapRef.current || !window.google) return;
