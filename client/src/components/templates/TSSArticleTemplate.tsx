@@ -128,9 +128,7 @@ export default function TSSArticleTemplate({
                 <p className="text-xl text-gray-600 leading-relaxed">
                   {heroSubtitle}
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {heroDescription}
-                </p>
+                <p className="text-lg text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: heroDescription }} />
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
