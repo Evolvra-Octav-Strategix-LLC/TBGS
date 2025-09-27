@@ -191,7 +191,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/schoorsteen" className="text-tbgs-blue font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
+                  <Link href="/schoorsteen" className="text-slate-700 font-bold hover:text-tbgs-blue transition-all duration-500 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
                   </Link>
                 </div>
@@ -226,7 +226,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/daken" className="text-tbgs-red font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
+                  <Link href="/daken" className="text-slate-700 font-bold hover:text-tbgs-red transition-all duration-500 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
                   </Link>
                 </div>
@@ -261,7 +261,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/onderhoud" className="text-tbgs-green font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
+                  <Link href="/onderhoud" className="text-slate-700 font-bold hover:text-tbgs-green transition-all duration-500 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
                   </Link>
                 </div>
@@ -296,7 +296,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/bouwen" className="text-tbgs-orange font-bold opacity-70 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 hover:underline">
+                  <Link href="/bouwen" className="text-slate-700 font-bold hover:text-tbgs-orange transition-all duration-500 hover:underline">
                     Meer informatie <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-500"></i>
                   </Link>
                 </div>

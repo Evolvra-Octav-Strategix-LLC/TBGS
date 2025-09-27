@@ -1,0 +1,34 @@
+
+De contrastverhouding van achtergrond- en voorgrondkleuren is niet voldoende
+Voor veel gebruikers is tekst met weinig contrast moeilijk of onmogelijk te lezen. Meer informatie over hoe je voor voldoende kleurcontrast zorgt
+Mislukte elementen
+Onderhoud
+<div class="font-bold text-xs sm:text-xs">
+Onderhoud
+<div class="tbgs-green hover:bg-green-800 transition-all duration-300 px-1 sm:px-2 md:…">
+Bouw
+<div class="font-bold text-xs sm:text-xs">
+Bouw
+<div class="tbgs-orange hover:bg-orange-800 transition-all duration-300 px-1 sm:px-2 m…">
+Meer informatie
+<a href="/schoorsteen" class="text-tbgs-blue font-bold opacity-70 group-hover:opacity-100 hover:opacity-…">
+Totaal Schoorsteen Specialist Schoorsteenrenovatie Schoorsteenreparatie Schoors…
+<div class="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl …">
+Meer informatie
+<a href="/daken" class="text-tbgs-red font-bold opacity-70 group-hover:opacity-100 hover:opacity-1…">
+Totaal Dak Specialist Daklekkage Dakisolatie Dakgoten Dakrenovatie Door ervaren…
+<div class="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl …">
+Meer informatie
+<a href="/onderhoud" class="text-tbgs-green font-bold opacity-70 group-hover:opacity-100 hover:opacity…">
+Totaal Onderhoud Specialist Onderhoud Dakkapel onderhoud Garage Onderhoud Schil…
+<div class="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl …">
+Meer informatie
+<a href="/bouwen" class="text-tbgs-orange font-bold opacity-70 group-hover:opacity-100 hover:opacit…">
+Totaal Bouw Specialist Metselwerk Nieuwbouw Uitbreidingen Verbouwing Door ervar…
+<div class="group bg-white border-2 border-slate-200 rounded-3xl p-8 hover:shadow-2xl …">
+SW
+<div class="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center text-w…">
+Nu Open
+<div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-se…">
+WhatsApp
+<a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 p…">
