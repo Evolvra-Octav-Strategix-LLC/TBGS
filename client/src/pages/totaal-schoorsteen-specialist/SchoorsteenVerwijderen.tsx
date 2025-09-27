@@ -96,23 +96,23 @@ export default function SchoorsteenVerwijderen({ onOpenContactModal }: Schoorste
   const sections = [
     {
       title: "Waarom Kiezen voor Professionele Schoorsteen Verwijdering?",
-      content: "Een **ongebruikte schoorsteen verwijderen** biedt talloze voordelen voor uw woning. Door een **professionele schoorsteen sloop** voorkomt u onderhoudsproblemen, verbetert u de dakisolatie en geeft u uw woning een modernere uitstraling. Onze **ASPB-gecertificeerde specialisten** garanderen veilige verwijdering volgens alle Nederlandse en Belgische bouwvoorschriften.",
+      content: "Een <strong>ongebruikte schoorsteen verwijderen</strong> biedt talloze voordelen voor uw woning. Door een <strong>professionele schoorsteen sloop</strong> voorkomt u onderhoudsproblemen, verbetert u de dakisolatie en geeft u uw woning een modernere uitstraling. Onze <strong>ASPB-gecertificeerde specialisten</strong> garanderen veilige verwijdering volgens alle Nederlandse en Belgische bouwvoorschriften.",
       icon: "fas fa-home",
       items: verwijderingServices
     },
     {
       title: "Schoorsteen Verwijderen: Vergunningen & Procedures",
-      content: "Voor **schoorsteen verwijdering** in Nederland en België zijn specifieke vergunningen vereist. Onze specialisten begeleiden u volledig bij de **gemeente procedures** en zorgen dat alle **sloopvergunningen** correct worden aangevraagd. Wij kennen de lokale regelgeving in Eindhoven, Amsterdam, Antwerpen en alle andere gebieden waar wij actief zijn.",
+      content: "Voor <strong>schoorsteen verwijdering</strong> in Nederland en België zijn specifieke vergunningen vereist. Onze specialisten begeleiden u volledig bij de <strong>gemeente procedures</strong> en zorgen dat alle <strong>sloopvergunningen</strong> correct worden aangevraagd. Wij kennen de lokale regelgeving in Eindhoven, Amsterdam, Antwerpen en alle andere gebieden waar wij actief zijn.",
       icon: "fas fa-file-contract"
     },
     {
       title: "Veiligheid & Vakmanschap bij Schoorsteen Sloop",
-      content: "**Schoorsteen verwijdering** vereist specialistische kennis en apparatuur. Onze gecertificeerde vaklieden gebruiken moderne slooptechnieken en comprehensive veiligheidsprotocollen. Van kleine woningschoorstenen tot **industriële schoorsteen sloop** - wij hebben 80+ jaar ervaring in alle types verwijdering projecten.",
+      content: "<strong>Schoorsteen verwijdering</strong> vereist specialistische kennis en apparatuur. Onze gecertificeerde vaklieden gebruiken moderne slooptechnieken en comprehensive veiligheidsprotocollen. Van kleine woningschoorstenen tot <strong>industriële schoorsteen sloop</strong> - wij hebben 80+ jaar ervaring in alle types verwijdering projecten.",
       icon: "fas fa-hard-hat"
     },
     {
       title: "Dakwerk Herstel na Schoorsteen Verwijdering",
-      content: "Na **schoorsteen verwijdering** is professioneel **dakwerk herstel** essentieel. Wij garanderen waterdichte afsluiting, herstel van dakpannen en optimalisatie van dakisolatie. Dit voorkomt lekkages en verbetert de energieprestatie van uw woning significant.",
+      content: "Na <strong>schoorsteen verwijdering</strong> is professioneel <strong>dakwerk herstel</strong> essentieel. Wij garanderen waterdichte afsluiting, herstel van dakpannen en optimalisatie van dakisolatie. Dit voorkomt lekkages en verbetert de energieprestatie van uw woning significant.",
       icon: "fas fa-tools"
     }
   ];
@@ -124,7 +124,7 @@ export default function SchoorsteenVerwijderen({ onOpenContactModal }: Schoorste
       url="https://www.tbgs.nl/schoorsteen/schoorsteen-verwijderen"
       heroTitle="Schoorsteen Verwijderen"
       heroSubtitle="Professionele Sloop & Dakwerk Herstel"
-      heroDescription="Veilige **schoorsteen verwijdering** door ASPB-gecertificeerde specialisten. Volledige begeleiding bij vergunningen, vakkundige sloop en professioneel dakwerk herstel. Moderniseer uw woning met onze 80+ jaar ervaring."
+      heroDescription="Veilige <strong>schoorsteen verwijdering</strong> door ASPB-gecertificeerde specialisten. Volledige begeleiding bij vergunningen, vakkundige sloop en professioneel dakwerk herstel. Moderniseer uw woning met onze 80+ jaar ervaring."
       heroImage="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
       heroImageAlt="Professionele schoorsteen verwijdering door TBGS specialisten"
       urgencyText="Binnen 24u vrijblijvende offerte"
@@ -133,7 +133,7 @@ export default function SchoorsteenVerwijderen({ onOpenContactModal }: Schoorste
         stat2: { number: "80+", text: "Jaar vakmanschap" },
         stat3: { number: "100%", text: "Vergunning succes" }
       }}
-      mainContent="**Schoorsteen verwijdering** is een specialistisch vakgebied dat expertise, vergunningen en professioneel materiaal vereist. Onze **ASPB-gecertificeerde schoorsteenspecialisten** hebben ruim 80 jaar ervaring in veilige sloop van alle schoorsteentypes. Van kleine woningschoorstenen tot grote industriële exemplaren - wij garanderen vakkundige verwijdering met complete dakwerk herstel."
+      mainContent="<strong>Schoorsteen verwijdering</strong> is een specialistisch vakgebied dat expertise, vergunningen en professioneel materiaal vereist. Onze <strong>ASPB-gecertificeerde schoorsteenspecialisten</strong> hebben ruim 80 jaar ervaring in veilige sloop van alle schoorsteentypes. Van kleine woningschoorstenen tot grote industriële exemplaren - wij garanderen vakkundige verwijdering met complete dakwerk herstel."
       sections={sections}
       processSteps={processSteps}
       serviceAreas={serviceAreas}
