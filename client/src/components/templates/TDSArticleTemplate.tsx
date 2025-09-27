@@ -172,7 +172,7 @@ export default function TDSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="red" />
                   Direct Specialist WhatsAppen
                 </a>
               </div>

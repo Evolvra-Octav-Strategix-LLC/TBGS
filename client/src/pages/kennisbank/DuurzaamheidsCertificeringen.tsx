@@ -67,7 +67,7 @@ export default function DuurzaamheidsCertificeringen() {
                   href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20ben%20ge%C3%AFnteresseerd%20in%20duurzaamheidscertificering%20begeleiding"
                   className="bg-green-400 hover:bg-green-300 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="green" />
                   Certificering Specialist
                 </a>
                 <button className="bg-transparent border-2 border-green-300 hover:bg-green-300 hover:text-slate-900 text-green-300 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">

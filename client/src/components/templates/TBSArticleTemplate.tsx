@@ -172,7 +172,7 @@ export default function TBSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="orange" />
                   {secondaryButtonText}
                 </a>
               </div>

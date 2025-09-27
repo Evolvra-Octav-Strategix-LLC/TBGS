@@ -170,7 +170,7 @@ export default function TSSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="blue" />
                   Direct Specialist WhatsAppen
                 </a>
               </div>

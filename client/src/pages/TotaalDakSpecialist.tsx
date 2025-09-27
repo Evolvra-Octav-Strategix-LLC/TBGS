@@ -68,7 +68,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="red" />
                   Direct WhatsApp
                 </a>
               </div>

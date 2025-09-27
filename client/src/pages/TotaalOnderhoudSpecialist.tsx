@@ -65,7 +65,7 @@ export default function TotaalOnderhoudSpecialist({ onOpenContactModal }: Totaal
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <WhatsAppIcon className="mr-3" />
+                  <WhatsAppIcon className="mr-3" color="green" />
                   Direct WhatsApp
                 </a>
               </div>
