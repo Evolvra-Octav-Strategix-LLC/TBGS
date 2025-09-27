@@ -89,11 +89,7 @@ export default function MultiCityMap({ height = "400px", className = "" }: Multi
     const centralMarker = new window.google.maps.Marker({
       position: { lat: centerLat, lng: centerLng },
       map: map,
-      title: 'TBGS Servicegebied - Nederland & België',
-      icon: {
-        url: 'https://maps.google.com/mapfiles/ms/icons/blue-pushpin.png',
-        scaledSize: new window.google.maps.Size(40, 40)
-      }
+      title: 'TBGS Servicegebied - Nederland & België'
     });
 
     // Add click event for service area info
