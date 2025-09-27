@@ -1,6 +1,33 @@
 import { useEffect, useState } from "react";
 import SEOHead from "@/lib/seo";
 import LocationCards from "@/components/LocationCards";
+import { Phone, Clock, Euro, Search, Mail, Reply, Camera, AlertTriangle, Send, Home, Building, Wrench, Hammer, HelpCircle } from "lucide-react";
+
+// Icon mapping function to convert FontAwesome class names to Lucide icons
+const renderIcon = (iconClass: string, className: string = "") => {
+  const iconMap: { [key: string]: any } = {
+    'fas fa-home': Home,
+    'fas fa-industry': Building,
+    'fas fa-tools': Wrench,
+    'fas fa-hammer': Hammer,
+    'fas fa-question-circle': HelpCircle,
+    'fas fa-phone': Phone,
+    'fas fa-clock': Clock,
+    'fas fa-euro-sign': Euro,
+    'fas fa-search': Search,
+    'fas fa-envelope': Mail,
+    'fas fa-reply': Reply,
+    'fas fa-camera': Camera,
+    'fas fa-exclamation-triangle': AlertTriangle,
+    'fas fa-paper-plane': Send
+  };
+  
+  const IconComponent = iconMap[iconClass];
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  return null;
+};
 
 interface ContactProps {
   onOpenContactModal: () => void;
@@ -36,7 +63,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-slate-600 mb-8">
-              <i className="fas fa-phone"></i>
+              <Phone className="w-5 h-5" />
               <span>Neem Contact Op</span>
             </div>
             
@@ -51,21 +78,21 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-clock text-2xl text-green-600"></i>
+                  <Clock className="w-8 h-8 text-green-600" />
                 </div>
                 <div className="font-bold text-slate-900 mb-2">Snelle reactie</div>
                 <div className="text-slate-600 text-sm">Binnen 24 uur contact</div>
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-euro-sign text-2xl text-blue-600"></i>
+                  <Euro className="w-8 h-8 text-blue-600" />
                 </div>
                 <div className="font-bold text-slate-900 mb-2">Gratis offerte</div>
                 <div className="text-slate-600 text-sm">Altijd vrijblijvend</div>
               </div>
               <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-search text-2xl text-purple-600"></i>
+                  <Search className="w-8 h-8 text-purple-600" />
                 </div>
                 <div className="font-bold text-slate-900 mb-2">Gratis inspectie</div>
                 <div className="text-slate-600 text-sm">Preventieve check</div>
@@ -89,7 +116,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 mb-8 border-l-4 border-green-500">
                 <div className="flex items-start">
                   <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                    <i className="fas fa-phone text-2xl text-white"></i>
+                    <Phone className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Bel direct</h3>
@@ -101,7 +128,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                       040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
-                      <i className="fas fa-clock mr-2"></i>
+                      <Clock className="w-5 h-5 mr-2" />
                       Ma-Vr: 07:00-18:00 | Za: 08:00-16:00
                     </p>
                   </div>
@@ -112,7 +139,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 mb-8 border-l-4 border-blue-500">
                 <div className="flex items-start">
                   <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                    <i className="fas fa-envelope text-2xl text-white"></i>
+                    <Mail className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Email</h3>
@@ -124,7 +151,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                       info@tbgs.nl
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
-                      <i className="fas fa-reply mr-2"></i>
+                      <Reply className="w-5 h-5 mr-2" />
                       Reactie binnen 24 uur
                     </p>
                   </div>
@@ -135,7 +162,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-3xl p-8 mb-8 border-l-4 border-emerald-500">
                 <div className="flex items-start">
                   <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                    <i className="fab fa-whatsapp text-2xl text-white"></i>
+                    <span className="text-2xl text-white">💬</span>
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>
@@ -149,7 +176,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                       040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
-                      <i className="fas fa-camera mr-2"></i>
+                      <Camera className="w-5 h-5 mr-2" />
                       Stuur foto's van uw situatie
                     </p>
                   </div>
@@ -160,7 +187,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-3xl p-8 border-l-4 border-red-500">
                 <div className="flex items-start">
                   <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                    <i className="fas fa-exclamation-triangle text-2xl text-white"></i>
+                    <AlertTriangle className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">24/7 Noodservice</h3>
@@ -172,7 +199,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                       040 202 6744
                     </a>
                     <p className="text-sm text-slate-600 mt-2">
-                      <i className="fas fa-clock mr-2"></i>
+                      <Clock className="w-5 h-5 mr-2" />
                       24 uur per dag beschikbaar
                     </p>
                   </div>
@@ -200,7 +227,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                         }`}
                       >
                         <div className="flex items-center space-x-3">
-                          <i className={`${service.icon} text-lg`}></i>
+                          {renderIcon(service.icon, "w-5 h-5")}
                           <span className="font-medium text-sm">{service.name}</span>
                         </div>
                       </button>
@@ -213,7 +240,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     onClick={onOpenContactModal}
                     className="w-full bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
-                    <i className="fas fa-paper-plane mr-3"></i>
+                    <Send className="w-5 h-5 mr-3" />
                     Gratis offerte Aanvragen
                   </button>
 
@@ -221,7 +248,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                     onClick={onOpenContactModal}
                     className="w-full bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
-                    <i className="fas fa-search mr-3"></i>
+                    <Search className="w-5 h-5 mr-3" />
                     Gratis inspectie aanvragen
                   </button>
                 </div>

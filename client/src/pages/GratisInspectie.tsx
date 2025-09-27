@@ -1,5 +1,29 @@
 import { useEffect, useState } from "react";
 import SEOHead from "@/lib/seo";
+import { Search, Gift, Clock, User, FileText, CalendarPlus, Lightbulb, CheckCircle, Phone, Home, Building } from "lucide-react";
+
+// Icon mapping function to convert FontAwesome class names to Lucide icons
+const renderIcon = (iconClass: string, className: string = "") => {
+  const iconMap: { [key: string]: any } = {
+    'fas fa-home': Home,
+    'fas fa-industry': Building,
+    'fas fa-search': Search,
+    'fas fa-gift': Gift,
+    'fas fa-clock': Clock,
+    'fas fa-user-tie': User,
+    'fas fa-file-alt': FileText,
+    'fas fa-calendar-plus': CalendarPlus,
+    'fas fa-lightbulb': Lightbulb,
+    'fas fa-check-circle': CheckCircle,
+    'fas fa-phone': Phone
+  };
+  
+  const IconComponent = iconMap[iconClass];
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  return null;
+};
 
 interface GratisInspectieProps {
   onOpenContactModal?: () => void;
@@ -93,7 +117,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-slate-600 mb-8">
-              <i className="fas fa-search"></i>
+              <Search className="w-5 h-5" />
               <span>100% Gratis & Vrijblijvend</span>
             </div>
             
@@ -108,7 +132,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-3xl p-8 mb-12">
               <div className="flex items-center justify-center mb-6">
                 <div className="w-20 h-20 bg-green-500 rounded-3xl flex items-center justify-center">
-                  <i className="fas fa-gift text-3xl text-white"></i>
+                  <Gift className="w-12 h-12 text-white" />
                 </div>
               </div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Waarom gratis?</h2>
@@ -165,7 +189,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center">
                     <div className={`w-16 h-16 bg-${inspection.color}/10 rounded-2xl flex items-center justify-center mr-6`}>
-                      <i className={`${inspection.icon} text-2xl text-${inspection.color}`}></i>
+                      {renderIcon(inspection.icon, `w-8 h-8 text-${inspection.color}`)}
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-slate-900">{inspection.title}</h3>
@@ -194,15 +218,15 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                     <h4 className="font-bold text-slate-900 mb-3">Details:</h4>
                     <div className="space-y-2">
                       <div className="flex items-center">
-                        <i className="fas fa-clock text-slate-400 w-4 mr-3"></i>
+                        <Clock className="w-4 h-4 text-slate-400 mr-3" />
                         <span className="text-slate-700 text-sm">Duur: {inspection.duration}</span>
                       </div>
                       <div className="flex items-center">
-                        <i className="fas fa-user-tie text-slate-400 w-4 mr-3"></i>
+                        <User className="w-4 h-4 text-slate-400 mr-3" />
                         <span className="text-slate-700 text-sm">Door specialist</span>
                       </div>
                       <div className="flex items-center">
-                        <i className="fas fa-file-alt text-slate-400 w-4 mr-3"></i>
+                        <FileText className="w-4 h-4 text-slate-400 mr-3" />
                         <span className="text-slate-700 text-sm">Schriftelijk rapport</span>
                       </div>
                     </div>
@@ -216,7 +240,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                   }}
                   className={`w-full bg-${inspection.color} text-white px-6 py-4 rounded-2xl font-bold text-lg hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
                 >
-                  <i className="fas fa-calendar-plus mr-3"></i>
+                  <CalendarPlus className="w-5 h-5 mr-3" />
                   {inspection.title} Aanvragen
                 </button>
               </div>
@@ -251,7 +275,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center space-x-2 bg-green-500 text-white rounded-full px-4 py-2 text-sm font-bold mb-6">
-                  <i className="fas fa-lightbulb"></i>
+                  <Lightbulb className="w-5 h-5" />
                   <span>Voorbeeld uit de Praktijk</span>
                 </div>
                 <h3 className="text-3xl font-bold text-slate-900 mb-6">€12.000 besparing door preventieve inspectie</h3>
@@ -278,7 +302,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
                   className="w-full rounded-2xl shadow-lg"
                 />
                 <div className="absolute top-4 left-4 bg-green-500 text-white px-4 py-2 rounded-xl font-bold">
-                  <i className="fas fa-check-circle mr-2"></i>
+                  <CheckCircle className="w-5 h-5 mr-2" />
                   Probleem voorkomen
                 </div>
               </div>
@@ -335,7 +359,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
               ].map((processStep, index) => (
                 <div key={index} className="text-center relative">
                   <div className="w-20 h-20 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <i className={`${processStep.icon} text-2xl text-white`}></i>
+                    {renderIcon(processStep.icon, "w-8 h-8 text-white")}
                   </div>
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {processStep.step}
@@ -367,7 +391,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-phone text-2xl text-white"></i>
+                  <Phone className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Bel direct</h3>
                 <p className="opacity-90 mb-4">Voor snelle afspraak</p>
@@ -378,7 +402,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
               
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-calendar-plus text-2xl text-white"></i>
+                  <CalendarPlus className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Online afspraak</h3>
                 <p className="opacity-90 mb-4">Kies zelf tijd en datum</p>
@@ -393,7 +417,7 @@ export default function GratisInspectie({ onOpenContactModal }: GratisInspectieP
 
             <div className="bg-green-500/20 border border-green-500/30 rounded-2xl p-8">
               <div className="flex items-center justify-center space-x-4 mb-4">
-                <i className="fas fa-clock text-green-400 text-2xl"></i>
+                <Clock className="w-8 h-8 text-green-400" />
                 <span className="text-2xl font-bold">Actie Deze Week</span>
               </div>
               <p className="text-lg">
