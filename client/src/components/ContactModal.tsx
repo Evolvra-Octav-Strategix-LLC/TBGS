@@ -13,10 +13,11 @@ import { useMutation } from "@tanstack/react-query";
 import { GooglePlacesInput } from "@/components/GooglePlacesInput";
 import { MultiStepForm } from "@/components/MultiStepForm";
 import { Upload, X, FileText, Camera, FileImage } from "lucide-react";
-import tdsLogo from "@assets/tds-logo-64.webp";
-import tssLogo from "@assets/tss-logo-64.webp";
-import tosLogo from "@assets/tos-logo-64.webp";
-import tbsLogo from "@assets/tbs-logo-64.webp";
+// Using full HD logos via /img/ endpoint for highest quality
+const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.png";
+const tssLogo = "/img/TSS%20545x642%20(1)_1755096878001.png";
+const tosLogo = "/img/TOS%20545x642%20(1)_1755096847747.png";
+const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.png";
 
 const formSchema = z.object({
   serviceType: z.string().min(1, "Selecteer een servicetype"),

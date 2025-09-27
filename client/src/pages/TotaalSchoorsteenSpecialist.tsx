@@ -4,7 +4,8 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
-import tssLogo from "@assets/tss-logo-alt-64.webp";
+// Using full HD logo via /img/ endpoint for highest quality
+const tssLogo = "/img/TSS%20545x642%20(1)_1755096878001.png";
 import { 
   Calculator, 
   Phone, 

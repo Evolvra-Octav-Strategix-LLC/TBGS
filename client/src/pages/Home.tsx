@@ -6,10 +6,11 @@ import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
 import LocationCards from "@/components/LocationCards";
 import PartnerSlider from "@/components/PartnerSlider";
-import tssLogo from "@assets/tss-logo-64.webp";
-import tdsLogo from "@assets/tds-logo-64.webp";
-import tosLogo from "@assets/tos-logo-64.webp";
-import tbsLogo from "@assets/tbs-logo-64.webp";
+// Using full HD logos via /img/ endpoint for highest quality
+const tssLogo = "/img/TSS%20545x642%20(1)_1755096878001.png";
+const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.png";
+const tosLogo = "/img/TOS%20545x642%20(1)_1755096847747.png";
+const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.png";
 
 interface HomeProps {
   onOpenContactModal: () => void;
