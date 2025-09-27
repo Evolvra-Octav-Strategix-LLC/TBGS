@@ -354,11 +354,11 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                 
                 {/* Social Icons */}
                 <div className="flex justify-center space-x-4 mt-4">
-                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <span className="text-lg">🌍</span>
+                  <a href="https://www.google.com/search?q=TBGS+BV+Eindhoven" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200 transition-colors" title="Vind ons op Google">
+                    <span className="text-lg font-bold">G</span>
                   </a>
-                  <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <span className="text-lg">📷</span>
+                  <a href="https://www.facebook.com/TBGSBV" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-200 transition-colors" title="Volg ons op Facebook">
+                    <span className="text-lg font-bold">f</span>
                   </a>
                 </div>
               </div>

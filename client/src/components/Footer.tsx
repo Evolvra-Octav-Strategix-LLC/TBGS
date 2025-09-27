@@ -210,19 +210,13 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   </div>
 
                   <div className="pt-4">
-                    <p className="text-sm text-white/70 mb-3">Volg ons op social media</p>
+                    <p className="text-sm text-white/70 mb-3">Volg ons online</p>
                     <div className="flex space-x-3">
-                      <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <span className="text-white">🌍</span>
+                      <a href="https://www.google.com/search?q=TBGS+BV+Eindhoven" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" title="Vind ons op Google">
+                        <span className="text-white text-sm font-bold">G</span>
                       </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <span className="text-white">📷</span>
-                      </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <span className="text-white">💼</span>
-                      </a>
-                      <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <span className="text-white">📺</span>
+                      <a href="https://www.facebook.com/TBGSBV" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" title="Volg ons op Facebook">
+                        <span className="text-white text-sm font-bold">f</span>
                       </a>
                     </div>
                   </div>
