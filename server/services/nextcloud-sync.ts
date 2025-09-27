@@ -113,22 +113,12 @@ export class NextcloudSyncService {
         console.log('⚠️ Could not list root directory, continuing with default path...');
       }
       
-      // Get list of files from Nextcloud
-      const remoteFiles = await this.client.getDirectoryContents(this.config.remoteDir);
+      // Get list of files from Nextcloud - including subdirectories
+      const remoteFiles = await this.getImageFilesRecursively(this.config.remoteDir);
       
-      if (!Array.isArray(remoteFiles)) {
-        throw new Error('Failed to get directory contents');
-      }
+      console.log(`📁 Found ${remoteFiles.length} images in Nextcloud`);
 
-      // Filter only image files
-      const imageFiles = remoteFiles.filter(file => 
-        file.type === 'file' && 
-        /\.(jpg|jpeg|png|webp|avif|gif)$/i.test(file.filename)
-      );
-
-      console.log(`📁 Found ${imageFiles.length} images in Nextcloud`);
-
-      for (const file of imageFiles) {
+      for (const file of remoteFiles) {
         try {
           await this.syncSingleImage(file);
           stats.success++;
@@ -150,11 +140,55 @@ export class NextcloudSyncService {
     return stats;
   }
 
+  // Recursively get all image files from directory and subdirectories
+  private async getImageFilesRecursively(dirPath: string): Promise<any[]> {
+    const imageFiles: any[] = [];
+    
+    try {
+      const contents = await this.client.getDirectoryContents(dirPath);
+      
+      if (!Array.isArray(contents)) {
+        return imageFiles;
+      }
+
+      for (const item of contents) {
+        if (item.type === 'directory') {
+          // Recursively search subdirectories
+          console.log(`📂 Scanning subdirectory: ${item.basename}`);
+          const subDirPath = `${dirPath}/${item.basename}`;
+          const subImages = await this.getImageFilesRecursively(subDirPath);
+          
+          // Update paths to include subdirectory
+          subImages.forEach(img => {
+            img.relativePath = `${item.basename}/${img.relativePath || img.filename}`;
+            img.fullPath = `${subDirPath}/${img.filename}`; // Use original filename for download
+          });
+          
+          imageFiles.push(...subImages);
+        } else if (item.type === 'file') {
+          // Check if it's an image file
+          if (/\.(jpg|jpeg|png|webp|avif|gif)$/i.test(item.filename)) {
+            item.relativePath = item.filename; // For root level files
+            item.fullPath = `${dirPath}/${item.filename}`; // Full remote path for download
+            imageFiles.push(item);
+          }
+        }
+      }
+    } catch (error) {
+      console.error(`❌ Error scanning directory ${dirPath}:`, error);
+    }
+
+    return imageFiles;
+  }
+
   private async syncSingleImage(file: any): Promise<void> {
-    const filename = file.filename;
-    const remotePath = `${this.config.remoteDir}/${filename}`;
+    const filename = file.relativePath || file.filename; // Use relative path for subdirectories
+    const remotePath = file.fullPath || `${this.config.remoteDir}/${filename}`; // Use full path for download
     const localPath = path.join(this.config.localDir, filename);
     const lastModified = new Date(file.lastmod);
+
+    // Ensure local subdirectories exist
+    await fs.mkdir(path.dirname(localPath), { recursive: true });
 
     // Check if file exists in database and is up to date
     const existingRecord = await db.query.nextcloudImages.findFirst({
