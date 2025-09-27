@@ -1,4 +1,4 @@
-import whatsappLogo from "@assets/whatsapp_logo_white_transparent_final.webp";
+import whatsappLogo from "@assets/whatsapp_logo_tbgs_blue.webp";
 
 interface WhatsAppIconProps {
   className?: string;
