@@ -142,20 +142,13 @@ export default function TDSArticleTemplate({
                   {primaryButtonText}
                 </button>
                 <a 
-                  href="tel:+31402026744"
-                  className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center"
-                >
-                  <i className="fas fa-phone mr-3"></i>
-                  {secondaryButtonText}
-                </a>
-                <a 
                   href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20vraag%20over%20dakwerken"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors flex items-center justify-center"
+                  className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fab fa-whatsapp mr-3"></i>
-                  WhatsApp Direct
+                  {secondaryButtonText}
                 </a>
               </div>
 
@@ -318,20 +311,13 @@ export default function TDSArticleTemplate({
                 {primaryButtonText}
               </button>
               <a 
-                href="tel:+31402026744"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center"
-              >
-                <i className="fas fa-phone mr-3"></i>
-                {secondaryButtonText}
-              </a>
-              <a 
                 href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20heb%20een%20vraag%20over%20dakwerken"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors flex items-center justify-center border-2 border-green-500"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center"
               >
                 <i className="fab fa-whatsapp mr-3"></i>
-                WhatsApp Direct
+                {secondaryButtonText}
               </a>
             </div>
           </div>
