@@ -5,6 +5,7 @@ import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import { Calculator, Check, Eye, Shield, Clock, Award, Phone, Wrench, Home, Droplets, Hammer, Search, Layers, Mail, Thermometer, Sparkles } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 // Using full HD logo via /img/ endpoint for highest quality
 const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.webp";
 import roofRepairIcon from "@/assets/webp/image (20)_1755004272803.webp";
@@ -67,7 +68,7 @@ export default function TotaalDakSpecialist({ onOpenContactModal }: TotaalDakSpe
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-red text-tbgs-red px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-red hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <span className="mr-3">💬</span>
+                  <WhatsAppIcon className="mr-3" />
                   Direct WhatsApp
                 </a>
               </div>

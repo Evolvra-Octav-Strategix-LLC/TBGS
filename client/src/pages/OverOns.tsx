@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import SEOHead from "@/lib/seo";
 import { ShieldCheck, Users, Clock, Award, Building2, Heart, Star, MapPin } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 interface OverOnsProps {
   onOpenContactModal: () => void;
@@ -257,7 +258,7 @@ export default function OverOns({ onOpenContactModal }: OverOnsProps) {
                 rel="noopener noreferrer"
                 className="group bg-green-500 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl hover:bg-green-400 transition-all duration-300 shadow-2xl hover:shadow-green-500/25 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center w-full sm:w-auto"
               >
-                <span className="text-xl sm:text-2xl mr-2 sm:mr-3 group-hover:animate-bounce">💬</span>
+                <WhatsAppIcon className="mr-2 sm:mr-3 group-hover:animate-bounce" size={6} />
                 <span className="text-sm sm:text-base lg:text-xl">Direct WhatsApp</span>
               </a>
             </div>

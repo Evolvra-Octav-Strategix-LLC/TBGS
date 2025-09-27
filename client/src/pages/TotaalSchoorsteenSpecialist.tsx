@@ -23,6 +23,7 @@ import {
   Mail,
   Sparkles
 } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import certifiedIcon from "@/assets/webp/image (13)_1754999543397.webp";
 import cleaningIcon from "@/assets/webp/image (19)_1754999543410.webp";
 import removalIcon from "@/assets/webp/image (16)_1754999543400.webp";
@@ -88,7 +89,7 @@ export default function TotaalSchoorsteenSpecialist({ onOpenContactModal }: Tota
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <span className="text-xl mr-3">💬</span>
+                  <WhatsAppIcon className="mr-3" size={5} />
                   Direct WhatsApp
                 </a>
               </div>

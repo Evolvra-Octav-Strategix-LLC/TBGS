@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import PartnerSlider from "@/components/PartnerSlider";
 import { MapPin, Phone, Mail, Clock, Calculator, Award, Shield, Users } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
 // Using full HD logos via /img/ endpoint for highest quality
 const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.webp";
 const tssLogo = "/img/TSS%20545x642%20(1)_1755096878001.webp";
@@ -106,7 +107,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                       Gratis offerte Aanvragen
                     </a>
                     <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
-                      <span className="mr-2">💬</span>
+                      <WhatsAppIcon className="mr-2" size={4} />
                       WhatsApp Chat
                     </a>
                   </div>

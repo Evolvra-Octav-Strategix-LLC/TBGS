@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import { AlertTriangle, Wrench, Award, Check, ArrowLeft, Mail, Home, Cog, Hammer, Shield, Clock, Calculator } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // Icon mapping function to convert FontAwesome class names to Lucide icons
 const renderIcon = (iconClass: string, className: string) => {
@@ -171,7 +172,7 @@ export default function TDSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <span className="mr-3">💬</span>
+                  <WhatsAppIcon className="mr-3" />
                   Direct Specialist WhatsAppen
                 </a>
               </div>

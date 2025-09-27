@@ -1,6 +1,7 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
 import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UserCog, Handshake, Clock, Heart, Star, MapPin, Settings } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
@@ -613,7 +614,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">Start uw project</h2>
           <div className="text-lg mb-6 opacity-90 flex flex-col sm:flex-row items-center justify-center gap-2">
             <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300">
-              <span className="mr-2">💬</span>
+              <WhatsAppIcon className="mr-2" size={4} />
               WhatsApp
             </a>
             <span>of vraag een gratis inspectie aan</span>

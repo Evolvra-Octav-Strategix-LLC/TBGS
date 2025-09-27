@@ -5,6 +5,7 @@ import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 import { Calculator, Award, Hammer, Check, ArrowUp, Plus, Home, Box, HardHat, Bath, Shield, Eye, Wrench, Utensils } from 'lucide-react';
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 // Using full HD logo via /img/ endpoint for highest quality
 const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.webp";
 
@@ -64,7 +65,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <span className="mr-3">💬</span>
+                  <WhatsAppIcon className="mr-3" />
                   Direct WhatsApp
                 </a>
               </div>

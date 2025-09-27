@@ -1,4 +1,6 @@
 import SEOHead from "@/lib/seo";
+import { Shield, CalendarCheck } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function WaterdichtingssystemenAdvanced() {
   return (
@@ -18,7 +20,7 @@ export default function WaterdichtingssystemenAdvanced() {
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center bg-blue-100 text-blue-700 px-6 py-3 rounded-full font-medium mb-8">
-                <i className="fas fa-shield-alt mr-3"></i>
+                <Shield className="w-5 h-5 mr-3" />
                 Waterdichte Bouwoplossingen
               </div>
               
@@ -65,11 +67,11 @@ export default function WaterdichtingssystemenAdvanced() {
                   href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C%20ik%20ben%20ge%C3%AFnteresseerd%20in%20geavanceerde%20waterdichtingssystemen"
                   className="bg-cyan-400 hover:bg-cyan-300 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <WhatsAppIcon className="mr-3" />
                   Direct Contact Specialist
                 </a>
                 <button className="bg-transparent border-2 border-cyan-300 hover:bg-cyan-300 hover:text-slate-900 text-cyan-300 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                  <i className="fas fa-calendar-check mr-3"></i>
+                  <CalendarCheck className="w-5 h-5 mr-3" />
                   Plan Gratis Inspectie
                 </button>
               </div>

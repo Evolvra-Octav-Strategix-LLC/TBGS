@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SEOHead from "@/lib/seo";
 import LocationCards from "@/components/LocationCards";
 import { Phone, Clock, Euro, Search, Mail, Reply, Camera, AlertTriangle, Send, Home, Building, Wrench, Hammer, HelpCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // Icon mapping function to convert FontAwesome class names to Lucide icons
 const renderIcon = (iconClass: string, className: string = "") => {
@@ -162,7 +163,7 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-3xl p-8 mb-8 border-l-4 border-emerald-500">
                 <div className="flex items-start">
                   <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                    <span className="text-2xl text-white">💬</span>
+                    <WhatsAppIcon className="text-white" size={8} />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h3>

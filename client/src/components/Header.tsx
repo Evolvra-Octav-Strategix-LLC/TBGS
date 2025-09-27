@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Search, Phone, ArrowRight, Menu, X } from "lucide-react";
 import tbgsLogo from "@assets/tbgs-logo-48.webp";
 import SimpleSearchDropdown from "./SimpleSearchDropdown";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 interface HeaderProps {
   onOpenContactModal: () => void;
@@ -326,7 +327,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <span className="mr-3 text-base">💬</span>
+                  <WhatsAppIcon className="mr-3" size={4} />
                   <span className="text-base">WhatsApp ons direct</span>
                 </a>
                 
