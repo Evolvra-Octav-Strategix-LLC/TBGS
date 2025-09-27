@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import PartnerSlider from "@/components/PartnerSlider";
+import { MapPin, Phone, Mail, Clock, Calculator, Award, Shield, Users } from "lucide-react";
 // Using full HD logos via /img/ endpoint for highest quality
 const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.webp";
 const tssLogo = "/img/TSS%20545x642%20(1)_1755096878001.webp";
@@ -52,7 +53,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                        <i className="fas fa-map-marker-alt text-white"></i>
+                        <MapPin className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <p className="font-medium">Hoofdvestiging</p>
@@ -61,7 +62,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                        <i className="fas fa-phone text-white"></i>
+                        <Phone className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <p className="font-medium">Direct contact</p>
@@ -72,7 +73,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                        <i className="fas fa-envelope text-white"></i>
+                        <Mail className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <p className="font-medium">Email</p>
@@ -81,7 +82,7 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                        <i className="fas fa-clock text-white"></i>
+                        <Clock className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <p className="font-medium">Openingstijden</p>
@@ -101,11 +102,11 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   </p>
                   <div className="space-y-3">
                     <a href="/gratis-offerte" className="w-full bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors flex items-center justify-center">
-                      <i className="fas fa-calculator mr-2"></i>
+                      <Calculator className="w-4 h-4 mr-2" />
                       Gratis offerte Aanvragen
                     </a>
                     <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" target="_blank" rel="noopener noreferrer" className="w-full border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center justify-center">
-                      <i className="fab fa-whatsapp mr-2"></i>
+                      <span className="mr-2">💬</span>
                       WhatsApp Chat
                     </a>
                   </div>
@@ -189,19 +190,19 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <i className="fas fa-certificate text-green-400 text-sm"></i>
+                        <Award className="w-4 h-4 text-green-400" />
                       </div>
                       <span className="text-sm text-white/80">VCA Veiligheidscertificaat</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                        <i className="fas fa-shield-alt text-blue-400 text-sm"></i>
+                        <Shield className="w-4 h-4 text-blue-400" />
                       </div>
                       <span className="text-sm text-white/80">15 Jaar Garantie</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center">
-                        <i className="fas fa-users text-yellow-400 text-sm"></i>
+                        <Users className="w-4 h-4 text-yellow-400" />
                       </div>
                       <span className="text-sm text-white/80">Gecertificeerde Teams</span>
                     </div>
@@ -211,16 +212,16 @@ export default function Footer({ backgroundColor = "bg-gray-900", accentColor = 
                     <p className="text-sm text-white/70 mb-3">Volg ons op social media</p>
                     <div className="flex space-x-3">
                       <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i className="fab fa-facebook text-white"></i>
+                        <span className="text-white">🌍</span>
                       </a>
                       <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i className="fab fa-instagram text-white"></i>
+                        <span className="text-white">📷</span>
                       </a>
                       <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i className="fab fa-linkedin text-white"></i>
+                        <span className="text-white">💼</span>
                       </a>
                       <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i className="fab fa-youtube text-white"></i>
+                        <span className="text-white">📺</span>
                       </a>
                     </div>
                   </div>

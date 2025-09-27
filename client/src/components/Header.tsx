@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
-import { Search } from "lucide-react";
+import { Search, Phone, ArrowRight } from "lucide-react";
 import tbgsLogo from "@assets/tbgs-logo-48.webp";
 import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
@@ -326,7 +326,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <i className="fab fa-whatsapp mr-3 text-base"></i>
+                  <span className="mr-3 text-base">💬</span>
                   <span className="text-base">WhatsApp ons direct</span>
                 </a>
                 
@@ -336,7 +336,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   className="flex items-center text-white font-medium py-2 mb-3 hover:text-gray-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <i className="fas fa-phone mr-3 text-base"></i>
+                  <Phone className="w-4 h-4 mr-3" />
                   <span className="text-base">040 202 6744</span>
                 </a>
                 
@@ -348,16 +348,16 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   }}
                   className="bg-tbgs-green text-white px-4 py-2.5 rounded-lg font-medium hover:bg-green-700 transition-colors w-full text-sm shadow-md flex items-center justify-center"
                 >
-                  Gratis offerte <i className="fas fa-arrow-right ml-2 text-xs"></i>
+                  Gratis offerte <ArrowRight className="w-3 h-3 ml-2" />
                 </button>
                 
                 {/* Social Icons */}
                 <div className="flex justify-center space-x-4 mt-4">
                   <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-facebook text-lg"></i>
+                    <span className="text-lg">🌍</span>
                   </a>
                   <a href="#" className="text-white hover:text-gray-200 transition-colors">
-                    <i className="fab fa-instagram text-lg"></i>
+                    <span className="text-lg">📷</span>
                   </a>
                 </div>
               </div>
