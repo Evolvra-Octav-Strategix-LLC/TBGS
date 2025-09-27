@@ -4,7 +4,7 @@ import tdsLogo from "@assets/tds-logo-alt-64.webp";
 import tssLogo from "@assets/tss-logo-alt-64.webp";
 import tosLogo from "@assets/tos-logo-alt-64.webp";
 import tbsLogo from "@assets/tbs-logo-alt-64.webp";
-import tbgsLogo from "@assets/tbgs-logo-footer-48.webp";
+import tbgsLogo from "@assets/tbgs-logo-64.webp";
 
 interface FooterProps {
   backgroundColor?: string;
