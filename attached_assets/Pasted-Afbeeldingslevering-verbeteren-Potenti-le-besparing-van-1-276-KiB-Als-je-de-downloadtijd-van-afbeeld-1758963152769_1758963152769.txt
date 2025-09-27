@@ -1,0 +1,50 @@
+Afbeeldingslevering verbeteren Potentiële besparing van 1.276 KiB
+Als je de downloadtijd van afbeeldingen verkort, kunnen de waargenomen laadtijd van de pagina en LCP verbeteren. Meer informatie over hoe je de afbeeldingsgrootte optimaliseertLCPFCP
+URL
+Brongrootte
+Potentiële besparingen
+tbgs.nl 1e partij
+1.174,3 KiB	1.171,7 KiB
+/assets/TBS%20545x642%20(1)_17549356….png(tbgs.nl)
+287,2 KiB
+286,6 KiB
+Als je een moderne bestandsindeling (WebP, AVIF) gebruikt of de compressie van de afbeelding verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+230,2 KiB
+Dit afbeeldingsbestand is groter dan nodig (545x642) voor de getoonde afmetingen (54x64). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
+284,3 KiB
+/assets/TOS%20545x642%20(1)_17549356….png(tbgs.nl)
+280,1 KiB
+279,6 KiB
+Als je een moderne bestandsindeling (WebP, AVIF) gebruikt of de compressie van de afbeelding verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+223,2 KiB
+Dit afbeeldingsbestand is groter dan nodig (545x642) voor de getoonde afmetingen (54x64). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
+277,4 KiB
+/assets/TBGS%20545x642….png(tbgs.nl)
+210,6 KiB
+210,3 KiB
+Als je een moderne bestandsindeling (WebP, AVIF) gebruikt of de compressie van de afbeelding verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+153,7 KiB
+Dit afbeeldingsbestand is groter dan nodig (545x642) voor de getoonde afmetingen (41x48). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
+209,5 KiB
+/assets/TSS%20545x642%20(1)_17549356….png(tbgs.nl)
+198,6 KiB
+198,1 KiB
+Als je een moderne bestandsindeling (WebP, AVIF) gebruikt of de compressie van de afbeelding verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+141,7 KiB
+Dit afbeeldingsbestand is groter dan nodig (545x642) voor de getoonde afmetingen (54x64). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
+196,7 KiB
+/assets/TDS%20545x642%20(1)_17549356….png(tbgs.nl)
+197,7 KiB
+197,1 KiB
+Als je een moderne bestandsindeling (WebP, AVIF) gebruikt of de compressie van de afbeelding verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+140,8 KiB
+Dit afbeeldingsbestand is groter dan nodig (545x642) voor de getoonde afmetingen (54x64). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
+195,7 KiB
+unsplash.com
+146,6 KiB	103,9 KiB
+/photo-154…-d81bb19240f5?ixlib=…(images.unsplash.com)
+146,6 KiB
+103,9 KiB
+Als je de afbeeldingscompressiefactor verhoogt, kan dit de downloadgrootte van deze afbeelding verbeteren.
+68,5 KiB
+Dit afbeeldingsbestand is groter dan nodig (800x600) voor de getoonde afmetingen (592x444). Gebruik responsieve afbeeldingen om de downloadgrootte van de afbeelding te verkleinen.
