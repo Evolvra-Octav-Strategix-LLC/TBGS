@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { CalendarCheck, Search, Check } from 'lucide-react';
 
 interface LocationCardsProps {
   onOpenContactModal?: () => void;
@@ -30,19 +31,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <h4 className="font-bold text-slate-900 mb-3">Hoofdlocaties</h4>
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/nl/eindhoven" className="hover:text-tbgs-navy font-medium" data-testid="link-location-eindhoven">Eindhoven</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/nl/nuenen" className="hover:text-tbgs-navy font-medium" data-testid="link-location-nuenen">Nuenen</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/nl/veldhoven" className="hover:text-tbgs-navy font-medium" data-testid="link-location-veldhoven">Veldhoven</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/nl/best" className="hover:text-tbgs-navy font-medium" data-testid="link-location-best">Best</Link>
                 </li>
               </ul>
@@ -92,19 +93,19 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               <h4 className="font-bold text-slate-900 mb-3">Actieve gebieden</h4>
               <ul className="space-y-2 text-slate-600">
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/be/kaulille" className="hover:text-tbgs-navy font-medium" data-testid="link-location-kaulille">Kaulille</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/be/lommel" className="hover:text-tbgs-navy font-medium" data-testid="link-location-lommel">Lommel</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/be/hamont-achel" className="hover:text-tbgs-navy font-medium" data-testid="link-location-hamont-achel">Hamont-Achel</Link>
                 </li>
                 <li className="flex items-center">
-                  <i className="fas fa-check-circle text-green-500 w-4 mr-2"></i>
+                  <Check className="w-4 h-4 text-green-500 mr-2" />
                   <Link href="/be/hamont" className="hover:text-tbgs-navy font-medium" data-testid="link-location-hamont">Hamont</Link>
                 </li>
               </ul>
@@ -140,7 +141,7 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
           <div className="bg-gradient-to-br from-tbgs-navy to-blue-700 text-white rounded-3xl p-10 shadow-xl">
             <div className="text-center mb-8">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="fas fa-calendar-check text-3xl"></i>
+                <CalendarCheck className="w-8 h-8" />
               </div>
               <h3 className="text-3xl font-bold mb-4">Gratis inspectie in 24u</h3>
               <p className="text-lg opacity-90 leading-relaxed">
@@ -155,7 +156,7 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
                   className="w-full bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   data-testid="button-plan-inspection"
                 >
-                  <i className="fas fa-search mr-3"></i>
+                  <Search className="w-5 h-5 mr-3" />
                   Plan gratis inspectie
                 </button>
               )}
@@ -179,25 +180,25 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-green-600"></i>
+                  <Check className="w-4 h-4 text-green-600" />
                 </div>
                 <span className="text-slate-700">Lokale kennis van bouwvoorschriften</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-blue-600"></i>
+                  <Check className="w-4 h-4 text-blue-600" />
                 </div>
                 <span className="text-slate-700">Korte reistijd = lagere kosten</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-purple-600"></i>
+                  <Check className="w-4 h-4 text-purple-600" />
                 </div>
                 <span className="text-slate-700">Snelle service bij noodgevallen</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                  <i className="fas fa-check text-yellow-600"></i>
+                  <Check className="w-4 h-4 text-yellow-600" />
                 </div>
                 <span className="text-slate-700">Persoonlijke relatie met klanten</span>
               </div>

@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
+import { Calculator, Award, Hammer, Check, ArrowUp, Plus, Home, Box, HardHat, Bath, Shield, Eye, Wrench, Utensils } from 'lucide-react';
 // Using full HD logo via /img/ endpoint for highest quality
 const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.webp";
 
@@ -54,7 +55,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                   onClick={onOpenContactModal}
                   className="bg-tbgs-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-calculator mr-3"></i>
+                  <Calculator className="w-5 h-5 mr-3" />
                   Bouw offerte
                 </button>
                 <a 
@@ -63,7 +64,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <span className="mr-3">💬</span>
                   Direct WhatsApp
                 </a>
               </div>
@@ -93,7 +94,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center">
-                    <i className="fas fa-award text-tbgs-orange text-xl"></i>
+                    <Award className="w-6 h-6 text-tbgs-orange" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gekwalificeerd</div>
@@ -123,14 +124,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Service Cards */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-hammer text-tbgs-orange text-2xl"></i>
+                <Hammer className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Metselwerk</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Baksteen metselwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Natuursteen metselwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Gevelmetselwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinmuren</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Baksteen metselwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Natuursteen metselwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Gevelmetselwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Tuinmuren</li>
               </ul>
               <Link href="/bouwen/metselwerk" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -139,14 +140,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-cut text-tbgs-orange text-2xl"></i>
+                <Wrench className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Timmerwerken</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakconstructies</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Kozijnen & Ramen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Trappen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Dakconstructies</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Kozijnen & Ramen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Trappen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Maatwerk</li>
               </ul>
               <Link href="/bouwen/timmerwerken" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -155,14 +156,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-arrow-up text-tbgs-orange text-2xl"></i>
+                <ArrowUp className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Opbouw op uw huis</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tweede verdieping</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakkapel uitbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Zolderverbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Tweede verdieping</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Dakkapel uitbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Zolderverbouwing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Dakopbouw</li>
               </ul>
               <Link href="/bouwen/opbouw-op-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -171,14 +172,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-plus text-tbgs-orange text-2xl"></i>
+                <Plus className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouwen aan uw huis</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Woonkamer uitbreiding</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keuken aanbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre aanbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage aanbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Woonkamer uitbreiding</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Keuken aanbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Serre aanbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Garage aanbouw</li>
               </ul>
               <Link href="/bouwen/aanbouwen-aan-uw-huis" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -187,14 +188,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-home text-tbgs-orange text-2xl"></i>
+                <Home className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Uw huis verbouwen</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete renovatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Badkamer verbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keuken verbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Indeling wijzigen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Complete renovatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Badkamer verbouwing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Keuken verbouwing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Indeling wijzigen</li>
               </ul>
               <Link href="/bouwen/uw-huis-verbouwen" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -203,14 +204,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-cube text-tbgs-orange text-2xl"></i>
+                <Box className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Serre aanbouw</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Klassieke serre</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Moderne glazen uitbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Wintertuinen</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tuinkamer serre</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Klassieke serre</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Moderne glazen uitbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Wintertuinen</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Tuinkamer serre</li>
               </ul>
               <Link href="/bouwen/serre-aanbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -219,14 +220,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-hard-hat text-tbgs-orange text-2xl"></i>
+                <HardHat className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Nieuwbouw</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Eengezinswoning</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Villa nieuwbouw</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Energieneutrale woning</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Moderne architectuur</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Eengezinswoning</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Villa nieuwbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Energieneutrale woning</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Moderne architectuur</li>
               </ul>
               <Link href="/bouwen/nieuwbouw" className="text-tbgs-orange font-semibold hover:text-yellow-600 transition-colors cursor-pointer">
                 Meer informatie →
@@ -236,14 +237,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Old service cards restored */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-plus text-tbgs-orange text-2xl"></i>
+                <Plus className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouw & uitbreiding</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Aanbouw woonhuis</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Serre & overkapping</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Garage & berging</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Dakopbouw</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Aanbouw woonhuis</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Serre & overkapping</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Garage & berging</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Dakopbouw</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -255,14 +256,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-bath text-tbgs-orange text-2xl"></i>
+                <Bath className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Badkamer renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Complete badkamer</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Leidingwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Tegelwerk</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Sanitair installatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Complete badkamer</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Leidingwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Tegelwerk</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Sanitair installatie</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -274,14 +275,14 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-tbgs-orange bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-utensils text-tbgs-orange text-2xl"></i>
+                <Utensils className="w-8 h-8 text-tbgs-orange" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Keuken renovatie</h3>
               <ul className="text-gray-600 space-y-2 mb-4">
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Keukenverbouwing</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Maatwerk kasten</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Werkblad installatie</li>
-                <li className="flex items-center"><i className="fas fa-check text-tbgs-orange w-4 mr-2"></i>Apparatuur aansluiting</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Keukenverbouwing</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Maatwerk kasten</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Werkblad installatie</li>
+                <li className="flex items-center"><Check className="w-4 h-4 text-tbgs-orange mr-2" />Apparatuur aansluiting</li>
               </ul>
               <button 
                 onClick={onOpenContactModal}
@@ -373,7 +374,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Metselwerk Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-hammer text-tbgs-orange text-4xl"></i>
+                <Hammer className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Professioneel metselwerk</h3>
@@ -389,7 +390,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Timmerwerken Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-cut text-tbgs-orange text-4xl"></i>
+                <Wrench className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Professioneel timmerwerk</h3>
@@ -405,7 +406,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Opbouw Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-arrow-up text-tbgs-orange text-4xl"></i>
+                <ArrowUp className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Opbouw op uw huis</h3>
@@ -421,7 +422,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Aanbouw Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-plus text-tbgs-orange text-4xl"></i>
+                <Plus className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Aanbouwen aan uw huis</h3>
@@ -437,7 +438,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Verbouwing Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-home text-tbgs-orange text-4xl"></i>
+                <Home className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Uw huis verbouwen</h3>
@@ -453,7 +454,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Serre Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-cube text-tbgs-orange text-4xl"></i>
+                <Box className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Serre aanbouw</h3>
@@ -469,7 +470,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
             {/* Nieuwbouw Article */}
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <i className="fas fa-hard-hat text-tbgs-orange text-4xl"></i>
+                <HardHat className="w-10 h-10 text-tbgs-orange" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Nieuwbouw woningen</h3>
@@ -504,7 +505,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-calculator mr-3"></i>
+                <Calculator className="w-5 h-5 mr-3" />
                 Gratis Bouw offerte
               </button>
               <a 
@@ -513,7 +514,7 @@ export default function TotaalBouwSpecialist({ onOpenContactModal }: TotaalBouwS
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-orange transition-colors flex items-center justify-center"
               >
-                <i className="fab fa-whatsapp mr-3"></i>
+                <span className="mr-3">💬</span>
                 Direct WhatsApp
               </a>
             </div>
