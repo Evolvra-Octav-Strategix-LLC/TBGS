@@ -1,6 +1,8 @@
 import type { Express } from "express";
+import express from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { nextcloudSync } from './services/nextcloud-sync';
 import { z } from "zod";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 import { db } from "./db";
@@ -1585,6 +1587,105 @@ export async function registerRoutes(app: Express): Promise<Server> {
       environment: process.env.NODE_ENV || "development"
     });
   });
+
+  // Nextcloud Image Sync API
+  app.post("/api/images/sync", async (req, res) => {
+    try {
+      console.log('🔄 Manual Nextcloud sync triggered...');
+      const stats = await nextcloudSync.syncImages();
+      res.json({
+        success: true,
+        message: `Sync completed: ${stats.success} success, ${stats.errors} errors, ${stats.skipped} skipped`,
+        stats
+      });
+    } catch (error) {
+      console.error('❌ Sync failed:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Sync failed',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  app.get("/api/images/list", async (req, res) => {
+    try {
+      const images = await nextcloudSync.getAllImages();
+      res.json({
+        success: true,
+        images: images.map(img => ({
+          filename: img.filename,
+          localPath: img.localPath,
+          mimeType: img.mimeType,
+          fileSize: img.fileSize,
+          lastSyncAt: img.lastSyncAt,
+          optimizedVersions: img.optimizedVersions
+        }))
+      });
+    } catch (error) {
+      console.error('❌ Failed to list images:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Failed to list images'
+      });
+    }
+  });
+
+  app.get("/api/images/:filename/metadata", async (req, res) => {
+    try {
+      const { filename } = req.params;
+      const imageData = await nextcloudSync.getImageMetadata(filename);
+      
+      if (!imageData) {
+        return res.status(404).json({
+          success: false,
+          error: 'Image not found'
+        });
+      }
+
+      // Generate responsive srcsets
+      const responsive = {
+        webp: nextcloudSync.generateResponsiveSrcSet(imageData, 'webp'),
+        avif: nextcloudSync.generateResponsiveSrcSet(imageData, 'avif'),
+        jpeg: nextcloudSync.generateResponsiveSrcSet(imageData, 'jpeg')
+      };
+
+      res.json({
+        success: true,
+        image: imageData,
+        responsive
+      });
+    } catch (error) {
+      console.error('❌ Failed to get image metadata:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Failed to get image metadata'
+      });
+    }
+  });
+
+  // Static file serving with caching headers
+  app.use('/images', express.static('./public/images', {
+    maxAge: '30d',
+    immutable: true,
+    setHeaders: (res, path) => {
+      // Add CORS headers for cross-origin requests
+      res.set('Access-Control-Allow-Origin', '*');
+      res.set('Access-Control-Allow-Methods', 'GET');
+      res.set('Access-Control-Allow-Headers', 'Content-Type');
+      
+      // Add cache headers
+      res.set('Cache-Control', 'public, max-age=2592000, immutable');
+      res.set('Expires', new Date(Date.now() + 2592000 * 1000).toUTCString());
+      
+      // Set proper content type based on file extension
+      if (path.endsWith('.webp')) {
+        res.set('Content-Type', 'image/webp');
+      } else if (path.endsWith('.avif')) {
+        res.set('Content-Type', 'image/avif');
+      }
+    }
+  }));
 
   const httpServer = createServer(app);
   return httpServer;

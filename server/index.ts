@@ -1,6 +1,7 @@
 import express from "express";
 import { registerRoutes } from "./routes";
 import { taskProcessor } from "./taskQueue";
+import { nextcloudScheduler } from "./services/nextcloud-scheduler";
 
 // Import vite setup only (for development)
 import { setupVite } from "./vite";
@@ -26,6 +27,11 @@ async function startServer() {
       
       // Start background task processor
       taskProcessor.start();
+      
+      // Initialize Nextcloud scheduler
+      nextcloudScheduler.initialize().catch(error => {
+        console.error('Failed to initialize Nextcloud scheduler:', error);
+      });
     });
   } catch (error) {
     console.error("Failed to start development server:", error);
