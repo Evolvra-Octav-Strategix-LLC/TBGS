@@ -6,13 +6,13 @@ import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 // Using full HD logo via /img/ endpoint for highest quality
 const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.png";
-import roofRepairIcon from "@assets/image (20)_1755004272803.png";
-import gutterIcon from "@assets/image (21)_1755004272803.png";
-import leakageDetectionIcon from "@assets/image (22)_1755004272803.png";
-import roofInsulationIcon from "@assets/image (23)_1755004272803.png";
-import flatRoofIcon from "@assets/image (24)_1755004272803.png";
-import slopedRoofIcon from "@assets/image (25)_1755004272804.png";
-import roofWarrantyIcon from "@assets/image (26)_1755004272804.png";
+import roofRepairIcon from "@/assets/webp/image (20)_1755004272803.webp";
+import gutterIcon from "@/assets/webp/image (21)_1755004272803.webp";
+import leakageDetectionIcon from "@/assets/webp/image (22)_1755004272803.webp";
+import roofInsulationIcon from "@/assets/webp/image (23)_1755004272803.webp";
+import flatRoofIcon from "@/assets/webp/image (24)_1755004272803.webp";
+import slopedRoofIcon from "@/assets/webp/image (25)_1755004272804.webp";
+import roofWarrantyIcon from "@/assets/webp/image (26)_1755004272804.webp";
 
 interface TotaalDakSpecialistProps {
   onOpenContactModal: () => void;

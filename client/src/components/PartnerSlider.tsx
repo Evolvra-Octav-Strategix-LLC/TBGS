@@ -1,15 +1,15 @@
 import { useRef, useEffect } from "react";
-import defrancqLogo from "@/assets/partners/defrancq.png";
-import unilinLogo from "@/assets/partners/unilin.png";
-import veluxLogo from "@/assets/partners/velux.png";
-import zinkUniqueLogo from "@/assets/partners/zinkunique.png";
-import monierLogo from "@/assets/partners/monier.png";
-import bmiLogo from "@/assets/partners/bmi.png";
-import recticelLogo from "@/assets/partners/recticel.jpg";
-import ubbinkLogo from "@/assets/partners/ubbink.png";
-import soudalLogo from "@/assets/partners/soudal.png";
-import icopalLogo from "@assets/icopal-logo-auto_width_440-3706882960_1758228709473.png";
-import koramicLogo from "@assets/koramic-logo-vector-211622967_1758228709494.png";
+import defrancqLogo from "@/assets/webp/defrancq.webp";
+import unilinLogo from "@/assets/webp/unilin.webp";
+import veluxLogo from "@/assets/webp/velux.webp";
+import zinkUniqueLogo from "@/assets/webp/zinkunique.webp";
+import monierLogo from "@/assets/webp/monier.webp";
+import bmiLogo from "@/assets/webp/bmi.webp";
+import recticelLogo from "@/assets/webp/recticel.webp";
+import ubbinkLogo from "@/assets/webp/ubbink.webp";
+import soudalLogo from "@/assets/webp/soudal.webp";
+import icopalLogo from "@/assets/webp/icopal-logo-auto_width_440-3706882960_1758228709473.webp";
+import koramicLogo from "@/assets/webp/koramic-logo-vector-211622967_1758228709494.webp";
 
 interface PartnerSliderProps {
   className?: string;

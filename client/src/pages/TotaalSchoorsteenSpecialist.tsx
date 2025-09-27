@@ -19,14 +19,14 @@ import {
   CheckCircle,
   Home
 } from "lucide-react";
-import certifiedIcon from "@assets/image (13)_1754999543397.png";
-import cleaningIcon from "@assets/image (19)_1754999543410.png";
-import removalIcon from "@assets/image (16)_1754999543400.png";
-import repairIcon from "@assets/image (17)_1754999543404.png";
-import replacementIcon from "@assets/image (14)_1754999543397.png";
-import renovationIcon from "@assets/image (17)_1754999543404.png";
-import emergencyIcon from "@assets/image (18)_1754999543407.png";
-import heroImage from "@assets/Totaal Schoorsteen Specialist (1)_1754928058600.jpg";
+import certifiedIcon from "@/assets/webp/image (13)_1754999543397.webp";
+import cleaningIcon from "@/assets/webp/image (19)_1754999543410.webp";
+import removalIcon from "@/assets/webp/image (16)_1754999543400.webp";
+import repairIcon from "@/assets/webp/image (17)_1754999543404.webp";
+import replacementIcon from "@/assets/webp/image (14)_1754999543397.webp";
+import renovationIcon from "@/assets/webp/image (17)_1754999543404.webp";
+import emergencyIcon from "@/assets/webp/image (18)_1754999543407.webp";
+import heroImage from "@/assets/webp/Totaal Schoorsteen Specialist (1)_1754928058600.webp";
 
 interface TotaalSchoorsteenSpecialistProps {
   onOpenContactModal: () => void;

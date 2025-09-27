@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import { X, MessageCircle, Home, Wrench, Hammer, Building2, Shield, Sun, AlertTriangle, Droplets } from 'lucide-react';
-import cameraImage from '@assets/IMAGE 2025-08-29 21:02:58_1756494183898.jpg';
+import cameraImage from '@/assets/webp/IMAGE 2025-08-29 21:02:58_1756494183898.webp';
 import { GooglePlacesInput } from './GooglePlacesInput';
 
 
