@@ -122,7 +122,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <div className="flex items-center space-x-3 cursor-pointer">
-              <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
+              <img src="/img/TBGS%20545x642_1754935848756.png" alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
                 {useH2 ? (
                   <h2 className="text-xl font-bold text-tbgs-navy">TBGS BV</h2>
@@ -231,7 +231,7 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
                   className="flex items-center space-x-3"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <img src={tbgsLogo} alt="TBGS Logo" className="w-12 h-12 object-contain" />
+                  <img src="/img/TBGS%20545x642_1754935848756.png" alt="TBGS Logo" className="w-12 h-12 object-contain" />
                   <div>
                     <h3 className="font-bold text-white text-lg">TBGS BV</h3>
                     <div className="w-16 h-0.5 bg-white mt-1"></div>
