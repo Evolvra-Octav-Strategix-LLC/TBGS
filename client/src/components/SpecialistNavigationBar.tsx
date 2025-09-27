@@ -33,7 +33,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tssLogo} alt="TSS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-10 sm:h-10' : 'w-12 h-12 sm:w-12 sm:h-12'
                 }`} />
-                <div className="font-bold text-xs sm:text-xs">
+                <div className="font-bold text-sm sm:text-sm">
                   Schoorsteen
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tdsLogo} alt="TDS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-10 sm:h-10' : 'w-12 h-12 sm:w-12 sm:h-12'
                 }`} />
-                <div className="font-bold text-xs sm:text-xs">
+                <div className="font-bold text-sm sm:text-sm">
                   Dak
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tosLogo} alt="TOS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-10 sm:h-10' : 'w-12 h-12 sm:w-12 sm:h-12'
                 }`} />
-                <div className="font-bold text-xs sm:text-xs">
+                <div className="font-bold text-sm sm:text-sm">
                   Onderhoud
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function SpecialistNavigationBar() {
                 <img src={tbsLogo} alt="TBS Logo" className={`object-contain transition-all duration-300 ${
                   isScrolled ? 'w-10 h-10 sm:w-10 sm:h-10' : 'w-12 h-12 sm:w-12 sm:h-12'
                 }`} />
-                <div className="font-bold text-xs sm:text-xs">
+                <div className="font-bold text-sm sm:text-sm">
                   Bouw
                 </div>
               </div>
