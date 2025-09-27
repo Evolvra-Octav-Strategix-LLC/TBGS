@@ -148,7 +148,7 @@ export default function TDSArticleTemplate({
                   className="border-2 border-red-600 text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fab fa-whatsapp mr-3"></i>
-                  WhatsAppen
+                  Direct Specialist WhatsAppen
                 </a>
               </div>
 
@@ -317,7 +317,7 @@ export default function TDSArticleTemplate({
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center"
               >
                 <i className="fab fa-whatsapp mr-3"></i>
-                WhatsAppen
+                Direct Specialist WhatsAppen
               </a>
             </div>
           </div>

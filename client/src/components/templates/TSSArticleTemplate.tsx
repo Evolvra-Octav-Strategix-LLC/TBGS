@@ -148,7 +148,7 @@ export default function TSSArticleTemplate({
                   className="border-2 border-tbgs-blue text-tbgs-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-blue hover:text-white transition-colors flex items-center justify-center"
                 >
                   <i className="fab fa-whatsapp mr-3"></i>
-                  WhatsAppen
+                  Direct Specialist WhatsAppen
                 </a>
               </div>
 
@@ -317,7 +317,7 @@ export default function TSSArticleTemplate({
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-blue transition-colors flex items-center justify-center"
               >
                 <i className="fab fa-whatsapp mr-3"></i>
-                WhatsAppen
+                Direct Specialist WhatsAppen
               </a>
             </div>
           </div>
