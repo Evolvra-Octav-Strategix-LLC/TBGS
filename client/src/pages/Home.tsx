@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UserCog, Handshake, Clock, Heart, Star, MapPin } from "lucide-react";
+import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UserCog, Handshake, Clock, Heart, Star, MapPin, Settings } from "lucide-react";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
@@ -333,7 +333,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center mb-4">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
-                      <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
+                      <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
                       <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80+ jaar familiebedrijf</h4>
@@ -354,15 +354,15 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <i className="fas fa-check-circle text-green-300"></i>
+                      <CheckCircle className="w-5 h-5 text-green-300" />
                       <span>4 generaties ervaring</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <i className="fas fa-check-circle text-green-300"></i>
+                      <CheckCircle className="w-5 h-5 text-green-300" />
                       <span>Duizenden problemen opgelost</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <i className="fas fa-check-circle text-green-300"></i>
+                      <CheckCircle className="w-5 h-5 text-green-300" />
                       <span>4 gespecialiseerde teams</span>
                     </div>
                   </div>
@@ -372,7 +372,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 <div className="text-center">
                   <Link href="/over-ons">
                     <button className="inline-flex items-center bg-tbgs-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                      <i className="fas fa-book-open mr-2"></i>
+                      <BookOpen className="w-4 h-4 mr-2" />
                       Meer lezen over ons verhaal
                     </button>
                   </Link>
@@ -385,7 +385,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   <div>
                     <div className="flex items-center mb-6">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-tbgs-navy to-blue-600 rounded-2xl flex items-center justify-center mr-4">
-                        <i className="fas fa-users text-xl sm:text-2xl text-white"></i>
+                        <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div>
                         <h4 className="text-xl sm:text-2xl font-bold text-slate-900">80+ jaar familiebedrijf</h4>
@@ -397,7 +397,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                     <div className="mt-6">
                       <Link href="/over-ons">
                         <button className="inline-flex items-center bg-tbgs-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                          <i className="fas fa-book-open mr-2"></i>
+                          <BookOpen className="w-4 h-4 mr-2" />
                           Meer lezen over ons verhaal
                         </button>
                       </Link>
@@ -411,15 +411,15 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       </div>
                       <div className="space-y-4">
                         <div className="flex items-center space-x-3">
-                          <i className="fas fa-check-circle text-green-300"></i>
+                          <CheckCircle className="w-5 h-5 text-green-300" />
                           <span>4 generaties ervaring</span>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <i className="fas fa-check-circle text-green-300"></i>
+                          <CheckCircle className="w-5 h-5 text-green-300" />
                           <span>Duizenden problemen opgelost</span>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <i className="fas fa-check-circle text-green-300"></i>
+                          <CheckCircle className="w-5 h-5 text-green-300" />
                           <span>4 gespecialiseerde teams</span>
                         </div>
                       </div>
@@ -443,7 +443,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                       <button 
                         className="bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center"
                       >
-                        <i className="fas fa-book-open mr-3"></i>
+                        <BookOpen className="w-5 h-5 mr-3" />
                         Lees Ons Volledige Verhaal
                       </button>
                     </Link>
@@ -463,7 +463,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 
                 <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-blue-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
-                    <i className="fas fa-users-cog text-lg lg:text-2xl text-blue-600"></i>
+                    <Settings className="w-6 h-6 lg:w-8 lg:h-8 text-blue-600" />
                   </div>
                   <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">4 specialisten</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Dak, schoorsteen, onderhoud én bouw onder één dak</p>
@@ -471,7 +471,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 
                 <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-purple-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
-                    <i className="fas fa-handshake text-lg lg:text-2xl text-purple-600"></i>
+                    <Handshake className="w-6 h-6 lg:w-8 lg:h-8 text-purple-600" />
                   </div>
                   <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Totale ontzorging</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Eén aanspreekpunt van offerte tot nazorg</p>
@@ -479,7 +479,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                 
                 <div className="bg-white rounded-xl p-4 lg:p-6 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="w-12 h-12 lg:w-16 lg:h-16 bg-yellow-100 rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-4">
-                    <i className="fas fa-clock text-lg lg:text-2xl text-yellow-600"></i>
+                    <Clock className="w-6 h-6 lg:w-8 lg:h-8 text-yellow-600" />
                   </div>
                   <h5 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">Altijd vooruit</h5>
                   <p className="text-slate-600 text-xs lg:text-sm leading-tight">Door jarenlange ervaring weten wij waar u tegenaan loopt</p>
@@ -497,7 +497,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 lg:mb-20">
             <div className="inline-flex items-center space-x-2 bg-slate-100 rounded-full px-4 py-2 text-sm font-medium text-slate-600 mb-4">
-              <i className="fas fa-heart"></i>
+              <Heart className="w-5 h-5" />
               <span>Klantbeoordelingen</span>
             </div>
             <h2 className="text-3xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -515,11 +515,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="md:hidden px-4 py-4 space-y-3">
                 <div className="flex items-center justify-center space-x-3">
                   <div className="flex text-yellow-400 text-lg">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
                   </div>
                   <span className="text-xl font-black text-slate-900">4.9</span>
                 </div>
@@ -537,11 +537,11 @@ export default function Home({ onOpenContactModal }: HomeProps) {
               <div className="hidden md:flex items-center space-x-6 px-8 py-6">
                 <div className="flex items-center space-x-2">
                   <div className="flex text-yellow-400 text-2xl">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
+                    <Star className="w-5 h-5 fill-current" />
                   </div>
                   <span className="text-3xl font-black text-slate-900">4.9</span>
                 </div>
@@ -566,7 +566,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 lg:mb-20">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
-              <i className="fas fa-map-marker-alt"></i>
+              <MapPin className="w-5 h-5" />
               <span>Werkgebied</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
@@ -586,7 +586,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 lg:mb-20">
             <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium text-slate-600 mb-6">
-              <i className="fas fa-map-marker-alt"></i>
+              <MapPin className="w-5 h-5" />
               <span>Bedrijfsinformatie</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
@@ -613,7 +613,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">Start uw project</h2>
           <div className="text-lg mb-6 opacity-90 flex flex-col sm:flex-row items-center justify-center gap-2">
             <a href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300">
-              <i className="fab fa-whatsapp mr-2"></i>
+              <span className="mr-2">💬</span>
               WhatsApp
             </a>
             <span>of vraag een gratis inspectie aan</span>
