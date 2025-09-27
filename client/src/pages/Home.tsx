@@ -120,7 +120,7 @@ export default function Home({ onOpenContactModal }: HomeProps) {
                   src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
                   alt="Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven" 
                   className="rounded-3xl shadow-2xl w-full h-auto object-cover"
-                  fetchPriority="high"
+                  {...({ fetchpriority: "high" } as any)}
                 />
               </div>
               
