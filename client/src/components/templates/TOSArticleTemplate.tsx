@@ -3,6 +3,30 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
+import { AlertTriangle, Wrench, Award, Check, ArrowLeft, Mail, Home, Cog, Hammer, Shield, Clock, Calculator } from "lucide-react";
+
+// Icon mapping function to convert FontAwesome class names to Lucide icons
+const renderIcon = (iconClass: string, className: string) => {
+  const iconMap: { [key: string]: any } = {
+    'fas fa-home': Home,
+    'fas fa-cog': Cog,
+    'fas fa-hammer': Hammer,
+    'fas fa-wrench': Wrench,
+    'fas fa-shield': Shield,
+    'fas fa-shield-alt': Shield,
+    'fas fa-clock': Clock,
+    'fas fa-tools': Wrench,
+    'fas fa-award': Award,
+    'fas fa-check': Check,
+    'fas fa-calculator': Calculator
+  };
+  
+  const IconComponent = iconMap[iconClass];
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  return null;
+};
 
 interface ArticleSection {
   title: string;
@@ -118,7 +142,7 @@ export default function TOSArticleTemplate({
               <div className="space-y-4">
                 {urgencyText && (
                   <div className="bg-tbgs-green text-white px-4 py-2 rounded-full inline-block">
-                    <i className="fas fa-exclamation-triangle mr-2"></i>
+                    <AlertTriangle className="w-4 h-4 mr-2" />
                     {urgencyText}
                   </div>
                 )}
@@ -138,7 +162,7 @@ export default function TOSArticleTemplate({
                   onClick={onOpenContactModal}
                   className="bg-tbgs-green text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-tools mr-3"></i>
+                  <Wrench className="w-5 h-5 mr-3" />
                   {primaryButtonText}
                 </button>
                 <a 
@@ -147,7 +171,7 @@ export default function TOSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-green text-tbgs-green px-8 py-4 rounded-lg font-semibold text-lg hover:bg-tbgs-green hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <span className="mr-3">💬</span>
                   Direct Specialist WhatsAppen
                 </a>
               </div>
@@ -177,7 +201,7 @@ export default function TOSArticleTemplate({
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-green rounded-full flex items-center justify-center">
-                    <i className="fas fa-certificate text-white text-xl"></i>
+                    <Award className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerde Onderhoud Specialisten</div>
@@ -204,7 +228,7 @@ export default function TOSArticleTemplate({
             {sections.map((section, index) => (
               <div key={index} className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                  {section.icon && <i className={`${section.icon} text-tbgs-green mr-4`}></i>}
+                  {section.icon && renderIcon(section.icon, "w-6 h-6 text-tbgs-green mr-4")}
                   {section.title}
                 </h2>
                 
@@ -218,7 +242,7 @@ export default function TOSArticleTemplate({
                       <div key={itemIndex} className="bg-gray-50 p-6 rounded-xl border hover:shadow-md transition-shadow">
                         <div className="flex items-start mb-3">
                           <div className="w-10 h-10 bg-tbgs-green rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                            <i className="fas fa-check text-white text-sm"></i>
+                            <Check className="w-4 h-4 text-white" />
                           </div>
                           <h3 className="text-lg font-bold text-gray-900 leading-relaxed">{item}</h3>
                         </div>
@@ -282,7 +306,7 @@ export default function TOSArticleTemplate({
                 href="/onderhoud" 
                 className="inline-flex items-center text-tbgs-green hover:text-green-700 font-semibold text-lg"
               >
-                <i className="fas fa-arrow-left mr-3"></i>
+                <ArrowLeft className="w-5 h-5 mr-3" />
                 Terug naar Onderhoud
               </Link>
             </div>
@@ -307,7 +331,7 @@ export default function TOSArticleTemplate({
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-green px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-envelope mr-3"></i>
+                <Mail className="w-5 h-5 mr-3" />
                 {primaryButtonText}
               </button>
               <a 

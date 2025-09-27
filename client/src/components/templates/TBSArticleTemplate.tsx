@@ -3,6 +3,30 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
+import { AlertTriangle, Wrench, Award, Check, Calculator, Home, Cog, Hammer, Shield, Clock } from "lucide-react";
+
+// Icon mapping function to convert FontAwesome class names to Lucide icons
+const renderIcon = (iconClass: string, className: string) => {
+  const iconMap: { [key: string]: any } = {
+    'fas fa-home': Home,
+    'fas fa-cog': Cog,
+    'fas fa-hammer': Hammer,
+    'fas fa-wrench': Wrench,
+    'fas fa-shield': Shield,
+    'fas fa-shield-alt': Shield,
+    'fas fa-clock': Clock,
+    'fas fa-tools': Wrench,
+    'fas fa-award': Award,
+    'fas fa-check': Check,
+    'fas fa-calculator': Calculator
+  };
+  
+  const IconComponent = iconMap[iconClass];
+  if (IconComponent) {
+    return <IconComponent className={className} />;
+  }
+  return null;
+};
 
 interface ArticleSection {
   title: string;
@@ -118,7 +142,7 @@ export default function TBSArticleTemplate({
               <div className="space-y-4">
                 {urgencyText && (
                   <div className="bg-tbgs-orange text-white px-4 py-2 rounded-full inline-block">
-                    <i className="fas fa-exclamation-triangle mr-2"></i>
+                    <AlertTriangle className="w-4 h-4 mr-2" />
                     {urgencyText}
                   </div>
                 )}
@@ -138,7 +162,7 @@ export default function TBSArticleTemplate({
                   onClick={onOpenContactModal}
                   className="bg-tbgs-orange text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-600 transition-colors flex items-center justify-center"
                 >
-                  <i className="fas fa-tools mr-3"></i>
+                  <Wrench className="w-5 h-5 mr-3" />
                   {primaryButtonText}
                 </button>
                 <a 
@@ -147,7 +171,7 @@ export default function TBSArticleTemplate({
                   rel="noopener noreferrer"
                   className="border-2 border-tbgs-orange text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-tbgs-orange hover:text-white transition-colors flex items-center justify-center"
                 >
-                  <i className="fab fa-whatsapp mr-3"></i>
+                  <span className="mr-3">💬</span>
                   {secondaryButtonText}
                 </a>
               </div>
@@ -177,7 +201,7 @@ export default function TBSArticleTemplate({
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-tbgs-orange rounded-full flex items-center justify-center">
-                    <i className="fas fa-certificate text-white text-xl"></i>
+                    <Award className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900">Gecertificeerde Bouwers</div>
@@ -204,7 +228,7 @@ export default function TBSArticleTemplate({
             {sections.map((section, index) => (
               <div key={index} className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                  {section.icon && <i className={`${section.icon} text-tbgs-orange mr-4`}></i>}
+                  {section.icon && renderIcon(section.icon, "w-6 h-6 text-tbgs-orange mr-4")}
                   {section.title}
                 </h2>
                 
@@ -218,7 +242,7 @@ export default function TBSArticleTemplate({
                       <div key={itemIndex} className="bg-gray-50 p-6 rounded-xl border hover:shadow-md transition-shadow">
                         <div className="flex items-start mb-3">
                           <div className="w-10 h-10 bg-tbgs-orange rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
-                            <i className="fas fa-check text-white text-sm"></i>
+                            <Check className="w-4 h-4 text-white" />
                           </div>
                           <h3 className="text-lg font-bold text-gray-900 leading-relaxed">{item}</h3>
                         </div>
@@ -295,7 +319,7 @@ export default function TBSArticleTemplate({
                 onClick={onOpenContactModal}
                 className="bg-white text-tbgs-orange px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
               >
-                <i className="fas fa-calculator mr-3"></i>
+                <Calculator className="w-5 h-5 mr-3" />
                 {primaryButtonText}
               </button>
               <a 
@@ -304,7 +328,7 @@ export default function TBSArticleTemplate({
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-tbgs-orange transition-colors flex items-center justify-center"
               >
-                <i className="fab fa-whatsapp mr-3"></i>
+                <span className="mr-3">💬</span>
                 {secondaryButtonText}
               </a>
             </div>
