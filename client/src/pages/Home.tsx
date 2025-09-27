@@ -1,6 +1,6 @@
 import SEOHead from "@/lib/seo";
 import { Link } from "wouter";
-import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UsersCog, Handshake, Clock, Heart, Star, MapPin } from "lucide-react";
+import { ShieldCheck, Search, Play, Shield, Wrench, ArrowRight, Building, Users, CheckCircle, BookOpen, UserCog, Handshake, Clock, Heart, Star, MapPin } from "lucide-react";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import LocalSEOSchema from "@/components/LocalSEOSchema";
