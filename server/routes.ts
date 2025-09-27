@@ -17,6 +17,7 @@ import { googlePlacesService } from "./googlePlacesService";
 import { createGrippCompany } from "./grippService";
 import multiparty from 'multiparty';
 import fs from 'fs';
+import path from 'path';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import session from 'express-session';
@@ -1509,6 +1510,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Bulk Google reviews error:", error);
       res.status(500).json({ error: "Failed to fetch bulk reviews data" });
+    }
+  });
+
+  // Image serving endpoint - serves full HD images from attached_assets
+  app.get("/img/:filename", (req, res) => {
+    try {
+      const filename = req.params.filename;
+      
+      // Security: prevent directory traversal
+      if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
+        return res.status(400).json({ error: "Invalid filename" });
+      }
+      
+      const imagePath = path.resolve(process.cwd(), 'attached_assets', filename);
+      
+      // Check if file exists
+      if (!fs.existsSync(imagePath)) {
+        return res.status(404).json({ error: "Image not found" });
+      }
+      
+      // Get file extension to set proper content type
+      const ext = path.extname(filename).toLowerCase();
+      const contentTypes: { [key: string]: string } = {
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.webp': 'image/webp',
+        '.gif': 'image/gif',
+        '.svg': 'image/svg+xml'
+      };
+      
+      const contentType = contentTypes[ext] || 'application/octet-stream';
+      
+      // Set cache headers for better performance
+      res.set({
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=31536000', // Cache for 1 year
+        'ETag': `"${filename}-${fs.statSync(imagePath).mtime.getTime()}"`
+      });
+      
+      // Stream the file
+      const fileStream = fs.createReadStream(imagePath);
+      fileStream.pipe(res);
+      
+    } catch (error) {
+      console.error("Image serving error:", error);
+      res.status(500).json({ error: "Failed to serve image" });
     }
   });
 
