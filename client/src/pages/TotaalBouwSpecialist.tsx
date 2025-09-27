@@ -5,7 +5,7 @@ import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 // Using full HD logo via /img/ endpoint for highest quality
-const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.png";
+const tbsLogo = "/img/TBS%20545x642%20(1)_1755096847747.webp";
 
 interface TotaalBouwSpecialistProps {
   onOpenContactModal: () => void;

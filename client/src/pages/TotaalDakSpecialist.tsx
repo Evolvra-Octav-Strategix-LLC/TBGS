@@ -5,7 +5,7 @@ import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
 // Using full HD logo via /img/ endpoint for highest quality
-const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.png";
+const tdsLogo = "/img/TDS%20545x642%20(1)_1755096847747.webp";
 import roofRepairIcon from "@/assets/webp/image (20)_1755004272803.webp";
 import gutterIcon from "@/assets/webp/image (21)_1755004272803.webp";
 import leakageDetectionIcon from "@/assets/webp/image (22)_1755004272803.webp";
