@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
-import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
+import tbsLogo from "@assets/tbs-logo-alt-64.webp";
 
 interface TotaalBouwSpecialistProps {
   onOpenContactModal: () => void;

@@ -1,9 +1,9 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
-import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
-import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
-import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
-import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
+import tdsLogo from "@assets/tds-logo-alt-64.webp";
+import tssLogo from "@assets/tss-logo-alt-64.webp";
+import tosLogo from "@assets/tos-logo-alt-64.webp";
+import tbsLogo from "@assets/tbs-logo-alt-64.webp";
 
 export default function SpecialistNavigationBar() {
   const [isScrolled, setIsScrolled] = useState(false);

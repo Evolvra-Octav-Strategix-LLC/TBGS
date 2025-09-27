@@ -1,10 +1,10 @@
 import { Link } from "wouter";
 import PartnerSlider from "@/components/PartnerSlider";
-import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
-import tssLogo from "@assets/TSS 545x642 (1)_1754935673253.png";
-import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
-import tbsLogo from "@assets/TBS 545x642 (1)_1754935666048.png";
-import tbgsLogo from "@assets/TBGS 545x642_1754935666047.png";
+import tdsLogo from "@assets/tds-logo-alt-64.webp";
+import tssLogo from "@assets/tss-logo-alt-64.webp";
+import tosLogo from "@assets/tos-logo-alt-64.webp";
+import tbsLogo from "@assets/tbs-logo-alt-64.webp";
+import tbgsLogo from "@assets/tbgs-logo-footer-48.webp";
 
 interface FooterProps {
   backgroundColor?: string;

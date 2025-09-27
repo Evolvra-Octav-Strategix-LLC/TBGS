@@ -11,10 +11,10 @@ import GoogleReviewSlider from "@/components/GoogleReviewSlider";
 import GoogleBusinessIntegration from "@/components/GoogleBusinessIntegration";
 import { CheckCircle, Clock, Phone, Mail, MapPin, Calculator, FileText, Users, Award, Star, Zap, Shield, ThumbsUp, Building, Home, ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import tdsLogo from "@assets/TDS 545x642 (1)_1755096847747.png";
-import tssLogo from "@assets/TSS 545x642 (1)_1755096878001.png";
-import tosLogo from "@assets/TOS 545x642 (1)_1755096847747.png";
-import tbsLogo from "@assets/TBS 545x642 (1)_1755096847747.png";
+import tdsLogo from "@assets/tds-logo-64.webp";
+import tssLogo from "@assets/tss-logo-64.webp";
+import tosLogo from "@assets/tos-logo-64.webp";
+import tbsLogo from "@assets/tbs-logo-64.webp";
 
 export default function GratisOfferte() {
   useEffect(() => {

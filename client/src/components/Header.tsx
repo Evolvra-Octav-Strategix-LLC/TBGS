@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { Search } from "lucide-react";
-import tbgsLogo from "@assets/TBGS 545x642_1754935848756.png";
+import tbgsLogo from "@assets/tbgs-logo-48.webp";
 import SimpleSearchDropdown from "./SimpleSearchDropdown";
 
 interface HeaderProps {

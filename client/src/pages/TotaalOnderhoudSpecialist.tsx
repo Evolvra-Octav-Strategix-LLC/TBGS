@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
-import tosLogo from "@assets/TOS 545x642 (1)_1754935666048.png";
+import tosLogo from "@assets/tos-logo-alt-64.webp";
 
 interface TotaalOnderhoudSpecialistProps {
   onOpenContactModal: () => void;

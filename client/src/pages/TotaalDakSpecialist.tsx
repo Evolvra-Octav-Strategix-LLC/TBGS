@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import LocationAreasOnly from "@/components/LocationAreasOnly";
 import PartnerSlider from "@/components/PartnerSlider";
 import SpecialistNavigationBar from "@/components/SpecialistNavigationBar";
-import tdsLogo from "@assets/TDS 545x642 (1)_1754935666048.png";
+import tdsLogo from "@assets/tds-logo-alt-64.webp";
 import roofRepairIcon from "@assets/image (20)_1755004272803.png";
 import gutterIcon from "@assets/image (21)_1755004272803.png";
 import leakageDetectionIcon from "@assets/image (22)_1755004272803.png";
