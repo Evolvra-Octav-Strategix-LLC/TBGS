@@ -1,0 +1,70 @@
+Verzoeken voor renderblokkering Potentiële besparing van 240 ms
+Verzoeken blokkeren de eerste keer renderen van de pagina, waardoor LCP kan worden vertraagd. Door verzoeken uit te stellen of in te sluiten kun je deze netwerkverzoeken van de kritieke route verwijderen.LCPFCP
+URL
+Overdrachtsgrootte
+Duur
+tbgs.nl 1e partij
+147,1 KiB	630 ms
+/assets/index-NKDcTrSD.css(tbgs.nl)
+147,1 KiB
+630 ms
+replit.com
+2,6 KiB	230 ms
+…js/replit-dev-banner.js(replit.com)
+2,6 KiB
+230 ms
+Google Fonts cdn 
+1,5 KiB	230 ms
+/css2?family=Inter:wght@400;500;600;700;800&display=swap(fonts.googleapis.com)
+1,5 KiB
+230 ms
+Lettertypeweergave Potentiële besparing van 30 ms
+Overweeg font-display in te stellen op swap of optional om te zorgen dat tekst consistent zichtbaar is. swap kan verder worden geoptimaliseerd om indelingsverschuivingen te verminderen met overschrijvingen van lettertypestatistieken.FCP
+URL
+Potentiële besparingen
+Cloudflare CDN cdn 
+50 ms
+…webfonts/fa-solid-900.woff2(cdnjs.cloudflare.com)
+30 ms
+…webfonts/fa-brands-400.woff2(cdnjs.cloudflare.com)
+20 ms
+Gedwongen dynamische aanpassing
+Veel API's, die meestal de indelingsgeometrie lezen, dwingen de weergave-engine om de scriptuitvoering te onderbreken om de stijl en indeling te berekenen. Meer informatie over gedwongen dynamische aanpassing en de bijbehorende beperkende maatregelen.
+Topfunctieaanroep
+Totale tijd voor dynamische aanpassing
+/assets/index-BPzXWbn2.js:26:1876(tbgs.nl)
+143 ms
+Bron
+Totale tijd voor dynamische aanpassing
+/assets/index-BPzXWbn2.js:2414:676318(tbgs.nl)
+143 ms
+[niet toegeschreven]
+90 ms
+/assets/index-BPzXWbn2.js:471:95189(tbgs.nl)
+2 ms
+…7e/main.js:217:447(maps.googleapis.com)
+2 ms
+LCP-verzoekdetectie
+Optimaliseer LCP door de LCP-afbeelding vindbaar te maken vanuit de HTML en lazy loading te voorkomenLCP
+Lazy loading niet toegepast
+fetchpriority=high toegepast
+Verzoek is vindbaar in het oorspronkelijke document
+Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven
+<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.…" alt="Premium dakwerkers TBGS aan het werk op een moderne woning in Eindhoven" class="rounded-3xl shadow-2xl w-full h-auto object-cover" fetchpriority="high">
+Netwerkafhankelijkheidsstructuur
+Vermijd het doorlinken van kritieke verzoeken door de lengte van ketens te verkleinen, de downloadgrootte van resources te beperken of het downloaden van onnodige resources uit te stellen om de laadtijd van de pagina te verbeteren.LCP
+Maximum latentie voor kritiek pad: 1.064 ms
+Beginnavigatie
+https://tbgs.nl - 152 ms, 4,33 KiB
+/css2?family=Inter:wght@400;500;600;700;800&display=swap(fonts.googleapis.com) - 153 ms, 1,50 KiB
+…v20/UcC73FwrK….woff2(fonts.gstatic.com) - 897 ms, 48,09 KiB
+/assets/index-BPzXWbn2.js(tbgs.nl) - 493 ms, 1.797,08 KiB
+…google-business/ChIJVSc2_yXbxkcROATmSZNFGFU(tbgs.nl) - 1.064 ms, 2,84 KiB
+/assets/index-NKDcTrSD.css(tbgs.nl) - 384 ms, 147,12 KiB
+…js/replit-dev-banner.js(replit.com) - 228 ms, 2,63 KiB
+Preconnected origins
+preconnect hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.
+no origins were preconnected
+Preconnect candidates
+Add preconnect hints to your most important origins, but try to use no more than 4.
+No additional origins are good candidates for preconnecting

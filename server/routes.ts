@@ -1045,11 +1045,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({ error: "Google Places API key not configured" });
     }
     
-    // Temporarily force fallback to use correct TBGS reviews
-    // TODO: Find correct Place ID for TBGS to get authentic reviews
-    console.log(`Forcing fallback for Place ID: ${placeId} to ensure correct TBGS reviews`);
+    // Attempt to get real Google reviews first
+    try {
+      console.log(`Fetching real Google reviews for Place ID: ${placeId}`);
+      
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,formatted_address,formatted_phone_number,website,opening_hours,geometry,photos,user_ratings_total&key=${apiKey}`
+      );
+      
+      const data = await response.json();
+      
+      if (data.status === 'OK' && data.result) {
+        console.log(`✅ Successfully fetched real Google reviews for ${placeId}`);
+        return res.json(data.result);
+      } else {
+        console.log(`⚠️ Google API returned status: ${data.status}, falling back to TBGS data`);
+      }
+    } catch (error) {
+      console.log(`❌ Error fetching Google reviews: ${error}, falling back to TBGS data`);
+    }
     
-    // Return your actual TBGS business data
+    // Fallback to TBGS business data if Google API fails
     const tbgsData = {
         place_id: placeId,
         name: "TBGS BV - Totaal Bouw Groep Specialisten",
