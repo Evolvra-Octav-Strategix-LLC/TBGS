@@ -21,13 +21,24 @@ export class NextcloudSyncService {
   private isProcessing = false;
 
   constructor() {
+    // Ensure proper URL format
+    let baseUrl = process.env.NEXTCLOUD_URL || 'https://nextcloud.evolvra.ai';
+    if (!baseUrl.startsWith('http://') && !baseUrl.startsWith('https://')) {
+      baseUrl = 'https://' + baseUrl;
+    }
+    // Remove trailing slash if present
+    baseUrl = baseUrl.replace(/\/$/, '');
+    
     this.config = {
-      url: process.env.NEXTCLOUD_URL || 'https://nextcloud.evolvra.ai/remote.php/dav/files',
+      url: `${baseUrl}/remote.php/dav/files/${process.env.NEXTCLOUD_USERNAME || ''}`,
       username: process.env.NEXTCLOUD_USERNAME || '',
       password: process.env.NEXTCLOUD_PASSWORD || '',
       remoteDir: process.env.NEXTCLOUD_REMOTE_DIR || 'Website Images',
       localDir: process.env.NEXTCLOUD_LOCAL_DIR || './public/images'
     };
+
+    console.log(`🔗 Nextcloud WebDAV URL: ${this.config.url}`);
+    console.log(`📁 Remote directory: ${this.config.remoteDir}`);
 
     this.client = createClient(this.config.url, {
       username: this.config.username,
@@ -63,6 +74,44 @@ export class NextcloudSyncService {
 
     try {
       console.log('🔄 Starting Nextcloud image sync...');
+      
+      // First, let's check if the remote directory exists by listing root directories
+      try {
+        console.log('📂 Checking available directories...');
+        const rootContents = await this.client.getDirectoryContents('/');
+        console.log('📁 Available directories:', rootContents.map((item: any) => item.basename).join(', '));
+        
+        // Look for Website Images folder (case insensitive)
+        const websiteImagesFolder = rootContents.find((item: any) => 
+          item.basename.toLowerCase().includes('website') && 
+          item.basename.toLowerCase().includes('images')
+        );
+        
+        if (websiteImagesFolder) {
+          console.log(`✅ Found folder: ${websiteImagesFolder.basename}`);
+          this.config.remoteDir = websiteImagesFolder.basename;
+        } else {
+          // Look for Photos folder as alternative
+          const photosFolder = rootContents.find((item: any) => 
+            item.basename.toLowerCase() === 'photos'
+          );
+          
+          if (photosFolder) {
+            console.log(`📸 Using Photos folder instead of Website Images`);
+            this.config.remoteDir = photosFolder.basename;
+          } else {
+            console.log('⚠️ Neither Website Images nor Photos folder found');
+            console.log('📁 Please create a "Website Images" folder in your Nextcloud root directory');
+            console.log('   or add some images to the Photos folder');
+            
+            // Return early with a clear message
+            stats.skipped = 1;
+            return stats;
+          }
+        }
+      } catch (error) {
+        console.log('⚠️ Could not list root directory, continuing with default path...');
+      }
       
       // Get list of files from Nextcloud
       const remoteFiles = await this.client.getDirectoryContents(this.config.remoteDir);
