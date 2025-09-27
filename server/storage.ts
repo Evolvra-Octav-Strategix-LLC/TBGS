@@ -8,6 +8,9 @@ import { randomUUID } from "crypto";
 import { db } from "./db";
 import { eq, desc, like, and, or } from "drizzle-orm";
 
+// Export db for other services
+export { db };
+
 // modify the interface with any CRUD methods
 // you might need
 

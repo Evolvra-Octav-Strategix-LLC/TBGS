@@ -73,9 +73,36 @@ export const adminUsers = pgTable("admin_users", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// Background task queue for image processing
+// Nextcloud Images - Synced image metadata and optimization info
+export const nextcloudImages = pgTable("nextcloud_images", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  filename: text("filename").notNull(),
+  originalPath: text("original_path").notNull(), // Path in Nextcloud
+  localPath: text("local_path").notNull(), // Path in /images/
+  mimeType: text("mime_type").notNull(),
+  fileSize: integer("file_size").notNull(),
+  lastModified: timestamp("last_modified").notNull(),
+  // Optimized versions metadata
+  optimizedVersions: json("optimized_versions").$type<{
+    webp?: { path: string; sizes: { width: number; height: number; fileSize: number }[] };
+    avif?: { path: string; sizes: { width: number; height: number; fileSize: number }[] };
+    jpeg?: { path: string; sizes: { width: number; height: number; fileSize: number }[] };
+  }>().default({}),
+  syncStatus: text("sync_status").notNull().default("pending"), // pending, synced, error
+  lastSyncAt: timestamp("last_sync_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// Insert schemas
+export const insertNextcloudImageSchema = createInsertSchema(nextcloudImages).omit({
+  id: true,
+  createdAt: true,
+});
+
+// Background task queue for image processing  
 export const imageTasks = pgTable("image_tasks", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  type: text("type").notNull(), // "sync", "optimize", "cleanup"
   originalPath: text("original_path").notNull(),
   originalName: text("original_name").notNull(),
   status: text("status").notNull().default("pending"), // pending, processing, completed, failed
@@ -207,3 +234,6 @@ export type InsertAdminUser = z.infer<typeof insertAdminUserSchema>;
 export type AdminUser = typeof adminUsers.$inferSelect;
 export type InsertImageTask = z.infer<typeof insertImageTaskSchema>;
 export type ImageTask = typeof imageTasks.$inferSelect;
+
+export type NextcloudImage = typeof nextcloudImages.$inferSelect;
+export type InsertNextcloudImage = z.infer<typeof insertNextcloudImageSchema>;
