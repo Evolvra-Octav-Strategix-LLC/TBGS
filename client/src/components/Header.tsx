@@ -118,9 +118,9 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50 rounded-b-3xl">
       <div className="w-full max-w-screen-2xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 lg:gap-8">
+        <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-4 md:gap-6 lg:gap-8 min-h-[4rem]">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0" aria-label="TBGS BV Homepage">
+          <Link href="/" className="flex-shrink-0 order-0" aria-label="TBGS BV Homepage">
             <div className="flex items-center space-x-3 cursor-pointer">
               <img src="/img/TBGS%20545x642_1754935848756.png" alt="TBGS Logo" className="w-12 h-12 object-contain" />
               <div>
@@ -145,16 +145,16 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
 
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-shrink-0">
-            <Link href="/locaties" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Locaties</Link>
-            <Link href="/kennisbank" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Kennisbank</Link>
-            <Link href="/onze-projecten" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Onze projecten</Link>
-            <Link href="/over-ons" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Over Ons</Link>
-            <Link href="/contact" className={`text-gray-700 ${colors.hover} font-medium transition-colors whitespace-nowrap`}>Contact</Link>
+          <nav className="hidden md:flex items-center flex-wrap gap-2 lg:gap-4 xl:gap-6 flex-shrink-0 order-2 lg:order-1">
+            <Link href="/locaties" className={`text-gray-700 ${colors.hover} font-medium transition-colors text-sm lg:text-base`}>Locaties</Link>
+            <Link href="/kennisbank" className={`text-gray-700 ${colors.hover} font-medium transition-colors text-sm lg:text-base`}>Kennisbank</Link>
+            <Link href="/onze-projecten" className={`text-gray-700 ${colors.hover} font-medium transition-colors text-sm lg:text-base`}>Onze projecten</Link>
+            <Link href="/over-ons" className={`text-gray-700 ${colors.hover} font-medium transition-colors text-sm lg:text-base`}>Over Ons</Link>
+            <Link href="/contact" className={`text-gray-700 ${colors.hover} font-medium transition-colors text-sm lg:text-base`}>Contact</Link>
           </nav>
 
           {/* Desktop Search */}
-          <div className="hidden xl:flex items-center relative flex-1 max-w-xs mx-2">
+          <div className="hidden lg:flex items-center relative flex-1 max-w-xs mx-2 order-3 lg:order-2">
             <div className={`bg-white rounded-full shadow-lg px-4 py-2 w-full border-2 transition-all duration-300 ${
               isSearchFocused 
                 ? 'border-blue-400 shadow-blue-100 ring-4 ring-blue-50' 
@@ -185,15 +185,15 @@ export default function Header({ onOpenContactModal, specialist, useH2 = false }
           </div>
 
           {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center flex-shrink-0">
-            <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm whitespace-nowrap`}>
+          <div className="hidden lg:flex items-center flex-shrink-0 order-4 lg:order-3">
+            <Link href="/offerte" className={`${colors.bg} text-white px-4 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-sm`}>
               Gratis offerte
             </Link>
           </div>
 
           {/* Mobile CTA Button and Menu */}
-          <div className="lg:hidden flex items-center space-x-1 sm:space-x-2">
-            <Link href="/offerte" className={`${colors.bg} text-white px-2 sm:px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-xs sm:text-sm`}>
+          <div className="lg:hidden flex items-center space-x-1 sm:space-x-2 order-1">
+            <Link href="/offerte" className={`${colors.bg} text-white px-2 sm:px-3 py-2 rounded-lg font-semibold ${colors.hoverBg} transition-colors text-xs sm:text-sm hidden [@media(min-width:380px)]:block`}>
               Offerte
             </Link>
             <button 
