@@ -153,7 +153,7 @@ export default function LocationCards({ onOpenContactModal, showCTA = true, clas
               {onOpenContactModal && (
                 <button 
                   onClick={onOpenContactModal}
-                  className="w-full bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full bg-white text-tbgs-navy px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
                   data-testid="button-plan-inspection"
                 >
                   <Search className="w-5 h-5 mr-3" />
