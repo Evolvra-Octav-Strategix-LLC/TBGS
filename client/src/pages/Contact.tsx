@@ -52,10 +52,10 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEOHead 
-        title="Contact TBGS BV - Gratis offerte & Inspectie Aanvragen | Nederland & België"
-        description="Neem contact op met TBGS BV voor dakwerk, schoorsteenservice, onderhoud en bouwprojecten. Gratis offertes, snelle reactietijd. Telefoon, email en contactformulier beschikbaar. Service in Nederland en België."
+        title="Contact TBGS BV - Dakspecialist Eindhoven | 040 202 6744 | Gratis Inspectie"
+        description="▶ Contact TBGS BV ▶ Dakspecialist Eindhoven ▶ Gratis inspectie binnen 24u ▶ 80+ jaar ervaring ▶ VCA gecertificeerd ▶ 24/7 noodservice ▶ Nederland & België ▶ Telefoon: 040 202 6744"
         url="/contact"
-        keywords="TBGS contact, gratis offerte aanvragen, dakspecialist contact, schoorsteenspecialist contact, bouwbedrijf contact Nederland België, gratis inspectie, telefoonnummer, email adres"
+        keywords="TBGS BV contact, dakspecialist Eindhoven, dakdekker contact, gratis inspectie, daklekkage specialist, schoorsteenspecialist, bouwbedrijf Brabant, 040 202 6744, VCA gecertificeerd, noodservice dak, contact formulier"
       />
       
       {/* Hero Section */}
@@ -208,62 +208,72 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
               </div>
             </div>
 
-            {/* Quick Contact Form */}
+            {/* Modern Contact Hub */}
             <div>
               <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-8 lg:p-12 text-white sticky top-8">
-                <h2 className="text-3xl font-bold mb-8">Snelle offerte aanvraag</h2>
+                <h2 className="text-3xl font-bold mb-8 text-center">Neem Direct Contact Op</h2>
                 
-                {/* Service Selection */}
-                <div className="mb-6">
-                  <label className="block text-lg font-semibold mb-4">Waar kunnen wij u mee helpen?</label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {services.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => setSelectedService(service.id)}
-                        className={`p-4 rounded-xl border-2 transition-all duration-300 text-left ${
-                          selectedService === service.id
-                            ? 'border-white bg-white/20 shadow-lg'
-                            : 'border-white/30 hover:border-white/60 hover:bg-white/10'
-                        }`}
-                      >
-                        <div className="flex items-center space-x-3">
-                          {renderIcon(service.icon, "w-5 h-5")}
-                          <span className="font-medium text-sm">{service.name}</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <div className="space-y-4">
+                  {/* Primary Contact Button */}
+                  <a 
+                    href="tel:+31402026744" 
+                    className="w-full bg-green-500 hover:bg-green-600 text-white px-8 py-6 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
+                    data-testid="button-call-primary"
+                  >
+                    <Phone className="w-6 h-6 mr-3" />
+                    040 202 6744
+                    <span className="ml-2 text-sm opacity-90">(Direct bellen)</span>
+                  </a>
 
-                <div className="space-y-6">
+                  {/* WhatsApp Contact */}
+                  <a 
+                    href="https://wa.me/31614595142?text=Hallo%20Team%20TBGS%2C"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
+                    data-testid="button-whatsapp-contact"
+                  >
+                    <WhatsAppIcon className="mr-3" size={6} />
+                    WhatsApp Chat
+                    <span className="ml-2 text-sm opacity-90">(Met foto's)</span>
+                  </a>
+
+                  {/* Contact Form Modal */}
                   <button 
                     onClick={onOpenContactModal}
-                    className="w-full bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
+                    data-testid="button-contact-form"
                   >
-                    <Send className="w-5 h-5 mr-3" />
-                    Gratis offerte Aanvragen
+                    <Send className="w-6 h-6 mr-3" />
+                    Verstuur Bericht
+                    <span className="ml-2 text-sm opacity-90">(Online formulier)</span>
                   </button>
 
-                  <button 
-                    onClick={onOpenContactModal}
-                    className="w-full bg-transparent border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  {/* Emergency Contact */}
+                  <a 
+                    href="tel:+31402026744" 
+                    className="w-full bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
+                    data-testid="button-emergency-contact"
                   >
-                    <Search className="w-5 h-5 mr-3" />
-                    Gratis inspectie aanvragen
-                  </button>
+                    <AlertTriangle className="w-5 h-5 mr-3" />
+                    24/7 Noodservice
+                  </a>
                 </div>
 
-                {/* Trust Indicators */}
-                <div className="mt-8 pt-8 border-t border-white/20">
-                  <div className="grid grid-cols-2 gap-6 text-center">
-                    <div>
-                      <div className="text-2xl font-bold mb-1">&lt; 24u</div>
-                      <div className="text-sm opacity-80">Reactietijd</div>
+                {/* Quick Response Promise */}
+                <div className="mt-8 pt-6 border-t border-white/20 text-center">
+                  <div className="flex items-center justify-center space-x-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-400">&lt; 2u</div>
+                      <div className="text-xs opacity-80">Eerste reactie</div>
                     </div>
-                    <div>
-                      <div className="text-2xl font-bold mb-1">100%</div>
-                      <div className="text-sm opacity-80">Vrijblijvend</div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-400">100%</div>
+                      <div className="text-xs opacity-80">Vrijblijvend</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-yellow-400">80+</div>
+                      <div className="text-xs opacity-80">Jaar ervaring</div>
                     </div>
                   </div>
                 </div>
@@ -321,6 +331,111 @@ export default function Contact({ onOpenContactModal }: ContactProps) {
                 <p className="text-slate-700 leading-relaxed">
                   Absoluut! Van <strong>kleine daklekkages tot complete renovaties</strong> - geen klus is te klein of te groot. Onze Totaal Onderhoud Specialist (TOS) is gespecialiseerd in kleinere reparaties en preventief onderhoud.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Authority & Expertise Section */}
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+                Waarom <span className="bg-gradient-to-r from-tbgs-navy to-blue-600 bg-clip-text text-transparent">TBGS BV</span> Kiezen?
+              </h2>
+              <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+                Met meer dan 80 jaar ervaring in de bouw- en onderhoudssector bieden wij bewezen expertise en betrouwbaarheid.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+              <div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-8">Gecertificeerde Vakmannen</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">🏆</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-2">VCA Gecertificeerd Team</h4>
+                      <p className="text-slate-700">Al onze specialisten beschikken over VCA certificering voor veilig werken op hoogte en in risicovolle omgevingen.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">📋</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-2">Erkend Dakdekkersbedrijf</h4>
+                      <p className="text-slate-700">Officieel erkend door brancheverenigingen en aangesloten bij Dakdekkers Nederland voor kwaliteitsgarantie.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-2">24/7 Noodservice</h4>
+                      <p className="text-slate-700">Onze ervaren technikers staan 24 uur per dag klaar voor acute lekkages en noodreparaties in heel Brabant en België.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Ons Werkproces</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-tbgs-navy text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Gratis Inspectie</h4>
+                      <p className="text-slate-600 text-sm">Binnen 24 uur een vrijblijvende beoordeling ter plaatse</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-tbgs-navy text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Transparante Offerte</h4>
+                      <p className="text-slate-600 text-sm">Duidelijke kostenraming zonder verborgen kosten</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-tbgs-navy text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Professionele Uitvoering</h4>
+                      <p className="text-slate-600 text-sm">Vakkundig werk met hoogwaardige materialen</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-tbgs-navy text-white rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">Garantie & Service</h4>
+                      <p className="text-slate-600 text-sm">Uitgebreide garantie en nazorg op alle werkzaamheden</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Statistics */}
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div className="bg-green-50 rounded-2xl p-6">
+                <div className="text-4xl font-bold text-green-600 mb-2">2000+</div>
+                <div className="text-slate-700 font-medium">Tevreden klanten</div>
+              </div>
+              <div className="bg-blue-50 rounded-2xl p-6">
+                <div className="text-4xl font-bold text-blue-600 mb-2">&lt; 2u</div>
+                <div className="text-slate-700 font-medium">Reactietijd</div>
+              </div>
+              <div className="bg-purple-50 rounded-2xl p-6">
+                <div className="text-4xl font-bold text-purple-600 mb-2">80+</div>
+                <div className="text-slate-700 font-medium">Jaar ervaring</div>
+              </div>
+              <div className="bg-orange-50 rounded-2xl p-6">
+                <div className="text-4xl font-bold text-orange-600 mb-2">100%</div>
+                <div className="text-slate-700 font-medium">Verzekerd werk</div>
               </div>
             </div>
           </div>
